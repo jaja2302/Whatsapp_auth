@@ -5,6 +5,9 @@
   "main": "index.js",
   "author": "jaja",
   "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+},
   "dependencies": {
     "@whiskeysockets/baileys": "^6.6.0",
     "cors": "^2.8.5",
