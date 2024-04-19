@@ -1389,7 +1389,8 @@ app.get("/testing", async (req, res) => {
 
 async function sendhistorycron(estate) {
     try {
-        const apiUrl = 'http://ssms-qc.test/api/recordcronjob';
+        // const apiUrl = 'http://ssms-qc.test/api/recordcronjob';
+        const apiUrl = 'https://qc-apps.srs-ssms.com/api/recordcronjob';
         
         // Create the form data with variables estate and datetime
         const formData = new FormData();
@@ -1453,12 +1454,13 @@ async function fetchDataAndSaveAsJSON() {
 }
 async function sendfailcronjob() {
     try {
-        const apiUrl = 'http://ssms-qc.test/api/checkcronjob';
+        // const apiUrl = 'http://ssms-qc.test/api/checkcronjob';
+        const apiUrl = 'https://qc-apps.srs-ssms.com/api/checkcronjob';
         const response = await axios.get(apiUrl);
 
         let data = response.data.cronfail; 
 
-        console.log(data);
+        // console.log(data);
 
         for (const task of data) {
             try {
