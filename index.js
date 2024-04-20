@@ -1440,9 +1440,9 @@ tasks.forEach(task => {
 // Function to fetch data from API and save as JSON
 async function fetchDataAndSaveAsJSON() {
     try {
-        const apiUrl = 'http://ssms-qc.test/api/getdatacron';
+        const apiUrl = 'https://qc-apps.srs-ssms.com/api/getdatacron';
         const response = await axios.get(apiUrl);
-    console.log('ada');
+         console.log('ada');
         // Save response data as JSON
         fs.writeFile('data.json', JSON.stringify(response.data, null, 2), err => {
             if (err) {
