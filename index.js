@@ -501,7 +501,7 @@ async function sendMessagesBasedOnData() {
         const numberData = response.data;
 
         if (!Array.isArray(numberData) || numberData.length === 0) {
-            console.log('Invalid or empty data.'); // Log the error
+            // console.log('Invalid or empty data.'); // Log the error
             return;
         }
 
@@ -738,13 +738,13 @@ async function connectToWhatsApp() {
                 sock.end(`Unknown DisconnectReason: ${reason}|${lastDisconnect.error}`);
             }
         } else if (connection === 'open') {
-            // console.log('opened connection');
-            // let getGroups = await sock.groupFetchAllParticipating();
-            // let groups = Object.values(await sock.groupFetchAllParticipating())
-            // //console.log(groups);
-            // for (let group of groups) {
-            //     console.log("id_group: " + group.id + " || Nama Group: " + group.subject);
-            // }
+            console.log('opened connection');
+            let getGroups = await sock.groupFetchAllParticipating();
+            let groups = Object.values(await sock.groupFetchAllParticipating())
+            //console.log(groups);
+            for (let group of groups) {
+                console.log("id_group: " + group.id + " || Nama Group: " + group.subject);
+            }
             return;
         }
         if (update.qr) {
