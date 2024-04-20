@@ -338,6 +338,7 @@ async function sendtaksasiest(est) {
                 break;
 
             case 'BHE':
+            case 'BSE':
 
                 folder = 'Wilayah_8';
                 break;
@@ -440,6 +441,8 @@ async function sendtaksasiest(est) {
                 await sendPdfToGroups(folder, '120363149785590346@g.us');
                   // testing 
             //  await sendPdfToGroups(folder, '120363204285862734@g.us');
+            }else if (est === 'BSE')  {
+                await sendPdfToGroups(folder, '120363287835459613@g.us');
             }
         }else if (folder === 'Inti') {
             if (est === 'SJE') {
