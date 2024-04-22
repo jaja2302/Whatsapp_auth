@@ -297,9 +297,10 @@ async function sendtaksasiest(estate,group_id,folder) {
         await Generatedmapsest(estate,datetimeValue)
         await GenDefaultTaksasi(estate)
         await sendPdfToGroups(folder, group_id);
+
+        return 'succes';
     } catch (error) {
-        console.log(`Error fetching files:`, error);
-        // logError(error);
+        return 'error';
     }
 }
 
@@ -593,6 +594,8 @@ async function connectToWhatsApp() {
               const text = message.message.conversation;
               if (!text) continue; // Skip if there's no conversation text
               const noWa = message.key.remoteJid;
+
+           
               const lowerCaseMessage = text.toLowerCase();
             
               
@@ -612,22 +615,23 @@ async function connectToWhatsApp() {
                     });
             
                     if (estatesDB.includes(estate)) {
-                        console.log('Estate Tersedia');
+                        // console.log('Estate Tersedia');
                         
                         // Get the task data where estate matches the specified estate
                         const matchingTasks = tasks.filter(task => task.estate === estate);
-                        console.log('Tasks with matching estate:', matchingTasks);
+                        // console.log('Tasks with matching estate:', matchingTasks);
                         const estateFromMatchingTask = matchingTasks.length > 0 ? matchingTasks[0].estate : null;
                         const group_id = matchingTasks.length > 0 ? matchingTasks[0].group_id : null;
                         const folder = matchingTasks.length > 0 ? matchingTasks[0].wilayah : null;
-                    
+                        // console.log(noWa);
                         try {
-                            const result = await sendtaksasiest(estateFromMatchingTask,group_id,folder);
-                            if (result === 'invalid') {
-                                console.error('Error: Invalid estate value provided.');
-                                await sock.sendMessage(noWa, { text: 'Estate yang anda maksud tidak tersedia harap pastikan penulisan benar atau sesuai.Silahkan Coba Tarik Kembali!' }, { quoted: message });
+                            await sock.sendMessage(noWa, { text: 'Mohon tunggu laporan sedang di generate' }, { quoted: message });
+                            const result = await sendtaksasiest(estateFromMatchingTask, group_id, folder);
+                            if (result === 'success') {
+                                console.log('succes');
+                            } else if (result === 'error') {
+                                await sock.sendMessage(noWa, { text: 'Terjadi kesalahan saat mengirim taksasi. Silakan Hubungi Tim D.A.' }, { quoted: message });
                             }
-                          
                         } catch (error) {
                             console.error('Error fetching data:', error.message);
                         
