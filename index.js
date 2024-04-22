@@ -291,192 +291,12 @@ async function GenDefaultTaksasi(est) {
     }
 }
   
-async function sendtaksasiest(est) {
+async function sendtaksasiest(estate,group_id,folder) {
     try {
-        let folder;
-        // Mapping the est value to the corresponding folder
-        switch (est) {
-            case 'PLE':
-            case 'KNE':
-            case 'RDE':
-            case 'SLE':
-                folder = 'Wilayah_1';
-                break;
-            case 'KDE':
-            case 'BKE':
-            case 'RGE':
-            case 'SGE':
-                folder = 'Wilayah_2';
-                break;
-            case 'SYE':
-            case 'BGE':
-            case 'NBE':
-            case 'UPE':
-                folder = 'Wilayah_3';
-                break;
-            case 'MRE':
-            case 'NKE':
-            case 'PDE':
-            case 'SPE':
-                folder = 'Wilayah_4';
-                break;
-            case 'BTE':
-            case 'NNE':
-            case 'SBE':
-                folder = 'Wilayah_5';
-                break;
-            case 'MLE':
-            case 'SCE':
-                folder = 'Wilayah_6';
-                break;
-            case 'PKE':
-            case 'BDE':
-            case 'KTE':
-            case 'MKE':
-           
-                folder = 'Wilayah_7';
-                break;
-
-            case 'BHE':
-            case 'BSE':
-
-                folder = 'Wilayah_8';
-                break;
-        
-            case 'TBE':
-            case 'KTE4':
-            case 'SJE':
-            folder = 'Inti';
-            break;
-            case 'LME1':
-            case 'LME2':
-            folder = 'Plasma';
-                break;
-            case 'test':
-            folder = 'Wilayah_testing';
-                break;
-            default:
-                // Handle cases where est doesn't match any defined folders
-                console.log('Invalid est value provided.');
-                return 'invalid' ;
-        }
-      
-        // await Generatedmapsest(est);
         await checkAndDeleteFiles(); 
-        await Generatedmapsest(est,datetimeValue)
-        // console.log();
-        await GenDefaultTaksasi(est)
-        // testing 
-        if (folder === 'Wilayah_1') {
-            await sendPdfToGroups(folder, '120363025737216061@g.us');
-             // testing 
-            //  await sendPdfToGroups(folder, '120363204285862734@g.us');
-        } else if (folder === 'Wilayah_2') {
-            await sendPdfToGroups(folder, '120363047670143778@g.us');
-             // testing 
-            //  await sendPdfToGroups(folder, '120363204285862734@g.us');
-        } else if (folder === 'Wilayah_3') {
-            await sendPdfToGroups(folder, '120363048442215265@g.us');
-             // testing 
-            //  await sendPdfToGroups(folder, '120363204285862734@g.us');
-        }  else if (folder === 'Wilayah_4') {
-            if (est === 'SPE') {
-                await sendPdfToGroups(folder, '120363220419839708@g.us');
-                // testing 
-                // await sendPdfToGroups(folder, '120363204285862734@g.us');
-            }else if (est === 'NKE'){
-                await sendPdfToGroups(folder, '120363217152686034@g.us');
-                  // testing 
-                //   await sendPdfToGroups(folder, '120363204285862734@g.us');
-            }  else if (est === 'PDE'){
-                await sendPdfToGroups(folder, '120363217291038671@g.us');
-                  // testing 
-                // await sendPdfToGroups(folder, '120363204285862734@g.us');
-            }else if (est === 'MRE'){
-                // await sendPdfToGroups(folder, '120363217205685424@g.us');
-                // testing 
-                  await sendPdfToGroups(folder, '120363204285862734@g.us');
-            }
-        }else if (folder === 'Wilayah_5') {
-            if (est === 'SBE') {
-                await sendPdfToGroups(folder, '120363220146576654@g.us');
-                  // testing 
-                //  await sendPdfToGroups(folder, '120363204285862734@g.us');  
-            } else if (est === 'BTE') {
-                await sendPdfToGroups(folder, '120363226513991710@g.us');
-                  // testing 
-                //  await sendPdfToGroups(folder, '120363204285862734@g.us');
-            }  else if (est === 'NNE') {
-                await sendPdfToGroups(folder, '120363231670115838@g.us');
-                  // testing 
-            //  await sendPdfToGroups(folder, '120363204285862734@g.us');
-            } 
-        } else if (folder === 'Wilayah_6') {
-            if (est === 'SCE') {
-                await sendPdfToGroups(folder, '120363232871713646@g.us');
-                  // testing 
-            //  await sendPdfToGroups(folder, '120363204285862734@g.us');
-            } else if (est === 'MLE'){
-                await sendPdfToGroups(folder, '120363213054175770@g.us');
-                  // testing 
-            //  await sendPdfToGroups(folder, '120363204285862734@g.us');
-            }
-        } else if (folder === 'Wilayah_7') {
-            if (est === 'KTE') {
-                await sendPdfToGroups(folder, '120363170524329595@g.us');
-                  // testing 
-            //  await sendPdfToGroups(folder, '120363204285862734@g.us');
-            } else if (est === 'BDE') {
-                await sendPdfToGroups(folder, '120363166668733371@g.us');
-                  // testing 
-                //  await sendPdfToGroups(folder, '120363204285862734@g.us');
-            }
-
-            // testing 
-            // grup asli = 120363166668733371@g.us
-            // grup testing = 120363205553012899@g.us
-
-        } else if (folder === 'Wilayah_8') {
-            if (est === 'BHE') {
-                await sendPdfToGroups(folder, '120363149785590346@g.us');
-                  // testing 
-            //  await sendPdfToGroups(folder, '120363204285862734@g.us');
-            }else if (est === 'BSE')  {
-                await sendPdfToGroups(folder, '120363287835459613@g.us');
-            }
-        }else if (folder === 'Inti') {
-            if (est === 'SJE') {
-                await sendPdfToGroups(folder, '120363207525577365@g.us');
-                  // testing 
-            //  await sendPdfToGroups(folder, '120363204285862734@g.us');
-            } else if (est === 'KTE4'){
-                await sendPdfToGroups(folder, '120363210871038595@g.us');
-                  // testing 
-            //  await sendPdfToGroups(folder, '120363204285862734@g.us');
-            }
-            else {
-                await sendPdfToGroups(folder, '120363193125275627@g.us');
-                  // testing 
-                //  await sendPdfToGroups(folder, '120363204285862734@g.us');
-            }
-           
-        }else if (folder === 'Plasma') {
-            if (est === 'LME1') {
-                await sendPdfToGroups(folder, '120363208984887370@g.us');
-                  // testing 
-            //  await sendPdfToGroups(folder, '120363204285862734@g.us');
-            } else if (est === 'LME2'){
-                await sendPdfToGroups(folder, '120363193243380343@g.us');
-                  // testing 
-            //  await sendPdfToGroups(folder, '120363204285862734@g.us');
-            }
-        }else if (folder === 'Wilayah_testing') {
-            await sendPdfToGroups(folder, '120363204285862734@g.us');
-        }
-        // await sendMessage(`kirim pdf untuk ${est} sukses`);
- 
-        // await sendmsgAws(`kirim pdf untuk ${est} sukses`, '120363205553012899@g.us');
-
+        await Generatedmapsest(estate,datetimeValue)
+        await GenDefaultTaksasi(estate)
+        await sendPdfToGroups(folder, group_id);
     } catch (error) {
         console.log(`Error fetching files:`, error);
         // logError(error);
@@ -494,12 +314,12 @@ function formatPhoneNumber(phoneNumber) {
 
 let phoneNumber = "082295204921";
 let formattedNumber = formatPhoneNumber(phoneNumber);
-console.log(formattedNumber);  // Output: 6282295204921
+// console.log(formattedNumber);  // Output: 6282295204921
 
 // smartlab func 
 async function sendMessagesBasedOnData() {
     try {
-        console.log('smartlabs');
+        // console.log('smartlabs');
         const response = await axios.get('https://srs-ssms.com/whatsapp_bot/getmsgsmartlab.php');
         const numberData = response.data;
 
@@ -582,7 +402,7 @@ cron.schedule('*/1 * * * *', async () => {
 async function statusAWS() {
     try {
         const response = await axios.get('https://srs-ssms.com/iot/notif_wa_last_online_device.php');
-        console.log('iot');
+        // console.log('iot');
         // Check if response.data is not empty
         if (Array.isArray(response.data) && response.data.length > 0) {
             const jsonArray = response.data; // Use the response directly
@@ -767,144 +587,154 @@ async function connectToWhatsApp() {
     sock.ev.on("creds.update", saveCreds);
     sock.ev.on("messages.upsert", async function handleUpsert({ messages, type }) {
         for (const message of messages) {
-            if (!message.key.fromMe) {
-                const text = message.message.conversation;
-                if (!text) continue; // Skip processing if conversation text is null or empty
-                const noWa = message.key.remoteJid;
-                const lowerCaseMessage = text.toLowerCase();
-
-
-                if (lowerCaseMessage === "!tarik") {
-                    await sock.sendMessage(noWa, { text: "Masukan Estate Harus Huruf Besar ?\n Contoh : KNE \n _Perhatian Satu Perintah Untuk Per Estate_" }, { quoted: message });
+          if (!message.key.fromMe) {
+            // Check if message object exists and has a "message" property before accessing conversation
+            if (message && message.message) {
+              const text = message.message.conversation;
+              if (!text) continue; // Skip if there's no conversation text
+              const noWa = message.key.remoteJid;
+              const lowerCaseMessage = text.toLowerCase();
+            
+              
+              if (lowerCaseMessage.startsWith("!tarik")) {
+                // Extract the estate name from the command
+                const estateCommand = lowerCaseMessage.replace("!tarik", "").trim();
+                const estate = estateCommand.toUpperCase(); // Convert to uppercase for consistency
                 
-                    // Define a function to handle the timeout
-                    function handleTimeout() {
-                        console.log('Time up! User did not input the estate.');
-                        sock.sendMessage(noWa, { text: 'Waktu habis. Silakan coba lagi.' }, { quoted: message });
-                        sock.ev.off("messages.upsert", handleResponse); // Stop listening for messages
-                    }
-                
-                    // Set a timer for 5 seconds
-                    const timer = setTimeout(handleTimeout, 60000); // 60 seconds (1 minute) in milliseconds
+                // Check if the estate name is valid
+                if (estate) {
+                    const tasks = JSON.parse(fs.readFileSync('./data.json', 'utf8'));
+                    let estatesDB = [];
 
-                    async function handleResponse({ messages: responseMessages }) {
-                        for (const responseMessage of responseMessages) {
-                            if (!responseMessage.key.fromMe && responseMessage.key.remoteJid === noWa) {
-                                clearTimeout(timer); // Clear the timer as response is received
-                
-                                await sock.sendMessage(noWa, { text: 'Mohon Tunggu Laporan Sedang Di Proses' }, { quoted: message });
-                                const estate = responseMessage.message.conversation.toUpperCase();
-                                try {
-                                    const result = await sendtaksasiest(estate);
-                                    if (result === 'invalid') {
-                                        console.error('Error: Invalid estate value provided.');
-                                        await sock.sendMessage(noWa, { text: 'Estate yang anda maksud tidak tersedia harap pastikan penulisan benar atau sesuai.Silahkan Coba Tarik Kembali!' }, { quoted: message });
-                                    }
-                                    // Process other valid results here if needed
-                                } catch (error) {
-                                    console.error('Error fetching data:', error.message);
-                                    // Handle other errors if needed
-                                }
-                                sock.ev.off("messages.upsert", handleResponse); // Ensure event handling is correct
-                                break;
+                    // Extract estates from each task in the JSON data
+                    tasks.forEach(task => {
+                        estatesDB.push(task.estate);
+                    });
+            
+                    if (estatesDB.includes(estate)) {
+                        console.log('Estate Tersedia');
+                        
+                        // Get the task data where estate matches the specified estate
+                        const matchingTasks = tasks.filter(task => task.estate === estate);
+                        console.log('Tasks with matching estate:', matchingTasks);
+                        const estateFromMatchingTask = matchingTasks.length > 0 ? matchingTasks[0].estate : null;
+                        const group_id = matchingTasks.length > 0 ? matchingTasks[0].group_id : null;
+                        const folder = matchingTasks.length > 0 ? matchingTasks[0].wilayah : null;
+                    
+                        try {
+                            const result = await sendtaksasiest(estateFromMatchingTask,group_id,folder);
+                            if (result === 'invalid') {
+                                console.error('Error: Invalid estate value provided.');
+                                await sock.sendMessage(noWa, { text: 'Estate yang anda maksud tidak tersedia harap pastikan penulisan benar atau sesuai.Silahkan Coba Tarik Kembali!' }, { quoted: message });
                             }
+                          
+                        } catch (error) {
+                            console.error('Error fetching data:', error.message);
+                        
                         }
+                    } else {
+                        await sock.sendMessage(noWa, { text: 'Estate yang anda masukan tidak tersedia di database. Silahkan Ulangi dan Cek Kembali' }, { quoted: message });
+                        // Handle the case where the estate is not found in the database
                     }
-                
-                    sock.ev.on("messages.upsert", handleResponse);
+                } else {
+                    // Handle the case where no estate name is provided in the command
+                    await sock.sendMessage(noWa, { text: 'Mohon masukkan nama estate setelah perintah !tarik dilanjutkan dengan singkatan nama Estate.\n-Contoh !tarikkne = Untuk Estate KNE dan seterusnya' }, { quoted: message });
                 }
-                
-                
-                else if (lowerCaseMessage === "!menu") {
-                    await sock.sendMessage(noWa, { text: "Perintah Bot Yang tersida \n1 = !tarik (Menarik Estate yang di pilih untuk di generate ke dalam grup yang sudah di tentukan) \n2= !help (Hubungi Kami Secara langsung untuk keluhan dan masalah)" }, { quoted: message });
-                    break;
-                }else if (lowerCaseMessage === "!getgrup") {
-                    // console.log('ini group');
-                    let getGroups = await sock.groupFetchAllParticipating();
-                    let groups = Object.values(await sock.groupFetchAllParticipating());
-                    let datagrup = []; // Initialize an empty array to store group information
-                    
-                    for (let group of groups) {
-                        datagrup.push(`id_group: ${group.id} || Nama Group: ${group.subject}`);
-                    }
-                    
-                    await sock.sendMessage(noWa, { text: `List ${datagrup.join('\n')}` }, { quoted: message }); 
-
-                    break;
-                }  else if (lowerCaseMessage === "!update") {
-                    await fetchDataAndSaveAsJSON();
-                    
-                    await sock.sendMessage(noWa, { text: `Cronjob Database Patched Gan`}, { quoted: message }); 
-                } else if (lowerCaseMessage === "!cast") {
-                    // Send a message asking for the broadcast message
-                    await sock.sendMessage(noWa, { text: "Masukan Kata kata yang ingin di broadcast ke dalam group?" }, { quoted: message });
-                
-                    // Define a function to handle the response
-                    async function handleBroadcast({ messages: responseMessages }) {
-                        let messageSent = false; // Flag to track if the message has been sent
-                
-                        for (const responseMessage of responseMessages) {
-                            if (!responseMessage.key.fromMe && responseMessage.key.remoteJid === noWa) {
-                                // Get the broadcast message from the user's response
-                                const broadcastMessage = responseMessage.message.conversation;
-                
-                                console.log(broadcastMessage);
-                
-                                // Get the participating groups
-                                let groups = Object.values(await sock.groupFetchAllParticipating());
-                                let datagrup = groups.map((group) => ({
-                                    id_group: group.id,
-                                    nama: group.subject,
-                                }));
-                
-                                let groupdont = [
-                                    '120363200959267322@g.us',
-                                    '120363164661400702@g.us',
-                                    '120363214741096436@g.us',
-                                    '120363158376501304@g.us',
-                                ];
-                
-                                // Send a message indicating that the broadcast is being processed
-                                await sock.sendMessage(noWa, { text: 'Mohon Tunggu, Broadcast Sedang Di Proses' }, { quoted: message });
-                
-                                // Set a timer for 60 seconds (1 minute)
-                                const timer = setTimeout(async () => {
-                                    if (!messageSent) {
-                                        // If the message hasn't been sent within the time limit, notify the user
-                                        await sock.sendMessage(noWa, { text: 'Waktu habis! Silahkan coba kembali.' }, { quoted: message });
-                                    }
-                                }, 60000); // 60 seconds in milliseconds
-                
-                                // Send the broadcast message to groups
-                                for (const group of datagrup) {
-                                    if (!groupdont.includes(group.id_group)) {
-                                        await sock.sendMessage(group.id_group, { text: broadcastMessage });
-                                        console.log(group.id_group, { text: broadcastMessage });
-                                        messageSent = true; // Update the flag since the message has been sent
-                                    }
-                                }
-                
-                                // Clear the timer since the message has been sent or the timer has expired
-                                clearTimeout(timer);
-                
-                                // Send a message indicating that the broadcast message has been sent to all groups
-                                await sock.sendMessage(noWa, { text: 'Broadcast Pesan sudah di kirim Kesemua Grup' }, { quoted: message });
-                
-                                // Turn off the event listener for handling broadcast messages
-                                sock.ev.off("messages.upsert", handleBroadcast);
-                                break;
-                            }
-                        }
-                    }
-                
-                    // Listen for the user's response to the broadcast message
-                    sock.ev.on("messages.upsert", handleBroadcast);
-                }
-                
-                
             }
+            else if (lowerCaseMessage === "!menutest") {
+                await sock.sendMessage(noWa, { text: "Perintah Bot Yang tersida \n1 = !tarik (Menarik Estate yang di pilih untuk di generate ke dalam grup yang sudah di tentukan) \n2= !help (Hubungi Kami Secara langsung untuk keluhan dan masalah)" }, { quoted: message });
+                break;
+            }else if (lowerCaseMessage === "!getgruptest") {
+                // console.log('ini group');
+                let getGroups = await sock.groupFetchAllParticipating();
+                let groups = Object.values(await sock.groupFetchAllParticipating());
+                let datagrup = []; // Initialize an empty array to store group information
+                
+                for (let group of groups) {
+                    datagrup.push(`id_group: ${group.id} || Nama Group: ${group.subject}`);
+                }
+                
+                await sock.sendMessage(noWa, { text: `List ${datagrup.join('\n')}` }, { quoted: message }); 
+
+                break;
+            }  else if (lowerCaseMessage === "!updatetest") {
+                await fetchDataAndSaveAsJSON();
+                
+                await sock.sendMessage(noWa, { text: `Cronjob Database Patched Gan`}, { quoted: message }); 
+            } else if (lowerCaseMessage === "!casttest") {
+                // Send a message asking for the broadcast message
+                await sock.sendMessage(noWa, { text: "Masukan Kata kata yang ingin di broadcast ke dalam group?" }, { quoted: message });
+            
+                // Define a function to handle the response
+                async function handleBroadcast({ messages: responseMessages }) {
+                    let messageSent = false; // Flag to track if the message has been sent
+            
+                    for (const responseMessage of responseMessages) {
+                        if (!responseMessage.key.fromMe && responseMessage.key.remoteJid === noWa) {
+                            // Get the broadcast message from the user's response
+                            const broadcastMessage = responseMessage.message.conversation;
+            
+                            console.log(broadcastMessage);
+            
+                            // Get the participating groups
+                            let groups = Object.values(await sock.groupFetchAllParticipating());
+                            let datagrup = groups.map((group) => ({
+                                id_group: group.id,
+                                nama: group.subject,
+                            }));
+            
+                            let groupdont = [
+                                '120363200959267322@g.us',
+                                '120363164661400702@g.us',
+                                '120363214741096436@g.us',
+                                '120363158376501304@g.us',
+                            ];
+            
+                            // Send a message indicating that the broadcast is being processed
+                            await sock.sendMessage(noWa, { text: 'Mohon Tunggu, Broadcast Sedang Di Proses' }, { quoted: message });
+            
+                            // Set a timer for 60 seconds (1 minute)
+                            const timer = setTimeout(async () => {
+                                if (!messageSent) {
+                                    // If the message hasn't been sent within the time limit, notify the user
+                                    await sock.sendMessage(noWa, { text: 'Waktu habis! Silahkan coba kembali.' }, { quoted: message });
+                                }
+                            }, 60000); // 60 seconds in milliseconds
+            
+                            // Send the broadcast message to groups
+                            for (const group of datagrup) {
+                                if (!groupdont.includes(group.id_group)) {
+                                    await sock.sendMessage(group.id_group, { text: broadcastMessage });
+                                    console.log(group.id_group, { text: broadcastMessage });
+                                    messageSent = true; // Update the flag since the message has been sent
+                                }
+                            }
+            
+                            // Clear the timer since the message has been sent or the timer has expired
+                            clearTimeout(timer);
+            
+                            // Send a message indicating that the broadcast message has been sent to all groups
+                            await sock.sendMessage(noWa, { text: 'Broadcast Pesan sudah di kirim Kesemua Grup' }, { quoted: message });
+            
+                            // Turn off the event listener for handling broadcast messages
+                            sock.ev.off("messages.upsert", handleBroadcast);
+                            break;
+                        }
+                    }
+                }
+            
+                // Listen for the user's response to the broadcast message
+                sock.ev.on("messages.upsert", handleBroadcast);
+            }
+          
+
+            } else {
+              console.warn("Received a message with missing 'message' property:", message);
+            }
+          }
         }
-    });
+      });
+      
 }
 
 
@@ -1440,6 +1270,7 @@ tasks.forEach(task => {
 // Function to fetch data from API and save as JSON
 async function fetchDataAndSaveAsJSON() {
     try {
+        // const apiUrl = 'http://ssms-qc.test/api/getdatacron';
         const apiUrl = 'https://qc-apps.srs-ssms.com/api/getdatacron';
         const response = await axios.get(apiUrl);
          console.log('ada');

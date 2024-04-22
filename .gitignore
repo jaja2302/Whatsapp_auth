@@ -1,5 +1,7 @@
 /node_modules
-/yarn_lock
+/yarn.lock
 /baileys_auth_info
 /auth_info_baileys
-.vercel
+/.vercel
+/latest_id.txt
+/data.json
