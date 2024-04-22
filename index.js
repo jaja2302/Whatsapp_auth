@@ -645,10 +645,10 @@ async function connectToWhatsApp() {
                     await sock.sendMessage(noWa, { text: 'Mohon masukkan nama estate setelah perintah !tarik dilanjutkan dengan singkatan nama Estate.\n-Contoh !tarikkne = Untuk Estate KNE dan seterusnya' }, { quoted: message });
                 }
             }
-            else if (lowerCaseMessage === "!menutest") {
+            else if (lowerCaseMessage === "!menu") {
                 await sock.sendMessage(noWa, { text: "Perintah Bot Yang tersida \n1 = !tarik (Menarik Estate yang di pilih untuk di generate ke dalam grup yang sudah di tentukan) \n2= !help (Hubungi Kami Secara langsung untuk keluhan dan masalah)" }, { quoted: message });
                 break;
-            }else if (lowerCaseMessage === "!getgruptest") {
+            }else if (lowerCaseMessage === "!getgrup") {
                 // console.log('ini group');
                 let getGroups = await sock.groupFetchAllParticipating();
                 let groups = Object.values(await sock.groupFetchAllParticipating());
@@ -661,11 +661,11 @@ async function connectToWhatsApp() {
                 await sock.sendMessage(noWa, { text: `List ${datagrup.join('\n')}` }, { quoted: message }); 
 
                 break;
-            }  else if (lowerCaseMessage === "!updatetest") {
+            }  else if (lowerCaseMessage === "!update") {
                 await fetchDataAndSaveAsJSON();
                 
                 await sock.sendMessage(noWa, { text: `Cronjob Database Patched Gan`}, { quoted: message }); 
-            } else if (lowerCaseMessage === "!casttest") {
+            } else if (lowerCaseMessage === "!cast") {
                 // Send a message asking for the broadcast message
                 await sock.sendMessage(noWa, { text: "Masukan Kata kata yang ingin di broadcast ke dalam group?" }, { quoted: message });
             
