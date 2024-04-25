@@ -889,16 +889,30 @@ async function connectToWhatsApp() {
                             console.log(`App restarted: ${stdout}`);
                         });
                     }else if (lowerCaseMessage === "!pullgit") {
-                        exec('git pull origin', (pullError, pullStdout, pullStderr) => {
-                            if (pullError) {
-                                console.error(`Pull error: ${pullError.message}`);
+                        const sshKeyPath = '/home/user/.ssh/id_rsa'; 
+
+                        exec(`eval "$(ssh-agent -s)" && ssh-add ${sshKeyPath}`, (sshError, sshStdout, sshStderr) => {
+                            if (sshError) {
+                                console.error(`SSH agent error: ${sshError.message}`);
                                 return;
                             }
-                            if (pullStderr) {
-                                console.error(`Pull stderr: ${pullStderr}`);
+                            if (sshStderr) {
+                                console.error(`SSH agent stderr: ${sshStderr}`);
                                 return;
                             }
-                            console.log(`Git pull output: ${pullStdout}`);
+                        
+                            // SSH agent setup successful, now execute git pull
+                            exec('git pull origin', (pullError, pullStdout, pullStderr) => {
+                                if (pullError) {
+                                    console.error(`Pull error: ${pullError.message}`);
+                                    return;
+                                }
+                                if (pullStderr) {
+                                    console.error(`Pull stderr: ${pullStderr}`);
+                                    return;
+                                }
+                                console.log(`Git pull output: ${pullStdout}`);
+                            });
                         });
                     }else if (lowerCaseMessage === "!testinggit") {
                         await sock.sendMessage(noWa, { text: "testtest" }, { quoted: message });
