@@ -2,6 +2,7 @@
 /yarn.lock
 /baileys_auth_info
 /auth_info_baileys
-/.vercel
-/latest_id.txt
-/data.json
+.vercel.json
+.latest_id.txt
+.data.json
+.package-lock.json
