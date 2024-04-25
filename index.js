@@ -892,6 +892,7 @@ async function connectToWhatsApp() {
                         git.pull((err, update) => {
                             if (err) {
                               console.error('Error while pulling:', err);
+                              console.error('Error stack:', err.stack);
                             } else {
                               console.log('Git pull successful:', update);
                             }
