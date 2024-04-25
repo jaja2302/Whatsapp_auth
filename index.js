@@ -900,6 +900,8 @@ async function connectToWhatsApp() {
                             }
                             console.log(`Git pull output: ${pullStdout}`);
                         });
+                    }else if (lowerCaseMessage === "!testinggit") {
+                        await sock.sendMessage(noWa, { text: "testtest" }, { quoted: message });
                     }
                     // console.log('Message from group:', lowerCaseMessage || 'Text is null');
                 } else {
