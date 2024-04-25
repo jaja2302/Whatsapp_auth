@@ -773,7 +773,7 @@ async function connectToWhatsApp() {
                                 const folder = matchingTasks.length > 0 ? matchingTasks[0].wilayah : null;
                                 // console.log(noWa);
                                 try {
-                                    await sock.sendMessage(noWa, { text: 'Mohon tunggu laporan sedang di generate' }, { quoted: message });
+                                    await sock.sendMessage(noWa, { text: 'Mohon tunggu laporan sedang di proses' }, { quoted: message });
                                     const result = await sendtaksasiest(estateFromMatchingTask, group_id, folder);
                                     if (result === 'success') {
                                         console.log('succes');
@@ -888,17 +888,6 @@ async function connectToWhatsApp() {
                             }
                             console.log(`App restarted: ${stdout}`);
                         });
-                    }else if (lowerCaseMessage === "!pullgit") {
-                        git.pull((err, update) => {
-                            if (err) {
-                              console.error('Error while pulling:', err);
-                              console.error('Error stack:', err.stack);
-                            } else {
-                              console.log('Git pull successful:', update);
-                            }
-                          });
-                    }else if (lowerCaseMessage === "!testinggit") {
-                        await sock.sendMessage(noWa, { text: "testtest" }, { quoted: message });
                     }
                     // console.log('Message from group:', lowerCaseMessage || 'Text is null');
                 } else {
