@@ -15,7 +15,7 @@ const {
     useMultiFileAuthState,
     msgRetryCounterMap
 } = require("@whiskeysockets/baileys");
-
+const simpleGit = require('simple-git');
 const git = simpleGit();
 const log = (pino = require("pino"));
 const { session } = { "session": "baileys_auth_info" };
