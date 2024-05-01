@@ -389,12 +389,12 @@ async function deletemsg(idmsg) {
 }
 
 // 5 menit sekali 
-// cron.schedule('*/1 * * * *', async () => {
-//     await sendMessagesBasedOnData();
-// }, {
-//     scheduled: true,
-//     timezone: 'Asia/Jakarta'
-// });
+cron.schedule('*/1 * * * *', async () => {
+    await sendMessagesBasedOnData();
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta'
+});
 
 // end smartlab func 
 
@@ -424,16 +424,16 @@ async function statusAWS() {
         logError(error);
     }
 }
-// cron.schedule('0 * * * *', async () => {
-//     try {
-//         await statusAWS(); // Call the function to check AWS status and send message
-//     } catch (error) {
-//         console.error('Error in cron job:', error);
-//     }
-// }, {
-//     scheduled: true,
-//     timezone: 'Asia/Jakarta' // Set the timezone according to your location
-// });
+cron.schedule('0 * * * *', async () => {
+    try {
+        await statusAWS(); // Call the function to check AWS status and send message
+    } catch (error) {
+        console.error('Error in cron job:', error);
+    }
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone according to your location
+});
 
 // cron edit history 
 
@@ -506,17 +506,17 @@ async function statusHistory() {
         // Handle the error accordingly
     }
 }
-// cron.schedule('0 * * * *', async () => {
-//     try {
-//         // console.log('Running message history');
-//         await statusHistory(); // Call the function to check history and send message
-//     } catch (error) {
-//         console.error('Error in cron job:', error);
-//     }
-// }, {
-//     scheduled: true,
-//     timezone: 'Asia/Jakarta' // Set the timezone according to your location
-// });
+cron.schedule('0 * * * *', async () => {
+    try {
+        // console.log('Running message history');
+        await statusHistory(); // Call the function to check history and send message
+    } catch (error) {
+        console.error('Error in cron job:', error);
+    }
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta' // Set the timezone according to your location
+});
 
 // end aws 
 
@@ -1269,26 +1269,26 @@ async function sendhistorycron(estate) {
 }
 
 
-// const tasks = JSON.parse(fs.readFileSync('./data.json', 'utf8'));
-// tasks.forEach(task => {
-//          const timeString = task.datetime
-//          // Split the time string into hours and minutes
-//          const [hours, minutes] = timeString.split(':');
-//          const cronTime = `${minutes} ${hours} * * *`;
-//         cron.schedule(cronTime, async () => {
-//             console.log(`Sending files at ${cronTime} (WIB)...`);
-//             // await sock.sendMessage(idgroup, { text: `Cronjob ${cronTime}`})
-//             try {
-//                 await sock.sendMessage(idgroup, { text: `Check Cronjob Fail Tidak Terkirim Sebelumnya`})
-//                 await sendfailcronjob();
-//             } catch (error) {
-//                 console.error('Error performing task in cronjob:', error);
-//             }
-//         }, {
-//             scheduled: true,
-//             timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-//         });
-// });
+const tasks = JSON.parse(fs.readFileSync('./data.json', 'utf8'));
+tasks.forEach(task => {
+         const timeString = task.datetime
+         // Split the time string into hours and minutes
+         const [hours, minutes] = timeString.split(':');
+         const cronTime = `${minutes} ${hours} * * *`;
+        cron.schedule(cronTime, async () => {
+            console.log(`Sending files at ${cronTime} (WIB)...`);
+            // await sock.sendMessage(idgroup, { text: `Cronjob ${cronTime}`})
+            try {
+                await sock.sendMessage(idgroup, { text: `Check Cronjob Fail Tidak Terkirim Sebelumnya`})
+                await sendfailcronjob();
+            } catch (error) {
+                console.error('Error performing task in cronjob:', error);
+            }
+        }, {
+            scheduled: true,
+            timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+        });
+});
 
 
 // Function to fetch data from API and save as JSON
