@@ -34,7 +34,7 @@ const axios = require('axios');
 const { DateTime } = require('luxon');
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
-const { getdatataksasi } = require('./helper.js');
+const { generatemapstaksasi } = require('./helper.js');
 const moment = require('moment-timezone');
 // enable files upload
 app.use(fileUpload({
@@ -294,7 +294,8 @@ async function GenDefaultTaksasi(est) {
 async function sendtaksasiest(estate,group_id,folder) {
     try {
         await checkAndDeleteFiles(); 
-        await Generatedmapsest(estate,datetimeValue)
+        // await Generatedmapsest(estate,datetimeValue)
+        await generatemapstaksasi(estate,datetimeValue)
         await GenDefaultTaksasi(estate)
         await sendPdfToGroups(folder, group_id);
 
@@ -388,12 +389,12 @@ async function deletemsg(idmsg) {
 }
 
 // 5 menit sekali 
-cron.schedule('*/1 * * * *', async () => {
-    await sendMessagesBasedOnData();
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta'
-});
+// cron.schedule('*/1 * * * *', async () => {
+//     await sendMessagesBasedOnData();
+// }, {
+//     scheduled: true,
+//     timezone: 'Asia/Jakarta'
+// });
 
 // end smartlab func 
 
@@ -423,16 +424,16 @@ async function statusAWS() {
         logError(error);
     }
 }
-cron.schedule('0 * * * *', async () => {
-    try {
-        await statusAWS(); // Call the function to check AWS status and send message
-    } catch (error) {
-        console.error('Error in cron job:', error);
-    }
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone according to your location
-});
+// cron.schedule('0 * * * *', async () => {
+//     try {
+//         await statusAWS(); // Call the function to check AWS status and send message
+//     } catch (error) {
+//         console.error('Error in cron job:', error);
+//     }
+// }, {
+//     scheduled: true,
+//     timezone: 'Asia/Jakarta' // Set the timezone according to your location
+// });
 
 // cron edit history 
 
@@ -505,17 +506,17 @@ async function statusHistory() {
         // Handle the error accordingly
     }
 }
-cron.schedule('0 * * * *', async () => {
-    try {
-        // console.log('Running message history');
-        await statusHistory(); // Call the function to check history and send message
-    } catch (error) {
-        console.error('Error in cron job:', error);
-    }
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone according to your location
-});
+// cron.schedule('0 * * * *', async () => {
+//     try {
+//         // console.log('Running message history');
+//         await statusHistory(); // Call the function to check history and send message
+//     } catch (error) {
+//         console.error('Error in cron job:', error);
+//     }
+// }, {
+//     scheduled: true,
+//     timezone: 'Asia/Jakarta' // Set the timezone according to your location
+// });
 
 // end aws 
 
@@ -586,160 +587,6 @@ async function connectToWhatsApp() {
         }
     });
     sock.ev.on("creds.update", saveCreds);
-    // sock.ev.on("messages.upsert", async function handleUpsert({ messages, type }) {
-    //     for (const message of messages) {
-    //       if (!message.key.fromMe) {
-    //         // Check if message object exists and has a "message" property before accessing conversation
-    //         if (message && message.message) {
-    //           const text = message.message.conversation;
-    //           if (!text) continue; // Skip if there's no conversation text
-    //           const noWa = message.key.remoteJid;
-
-           
-    //           const lowerCaseMessage = text.toLowerCase();
-            
-              
-    //         if (lowerCaseMessage.startsWith("!tarik")) {
-    //             // Extract the estate name from the command
-    //             const estateCommand = lowerCaseMessage.replace("!tarik", "").trim();
-    //             const estate = estateCommand.toUpperCase(); // Convert to uppercase for consistency
-                
-    //             // Check if the estate name is valid
-    //             if (estate) {
-    //                 const tasks = JSON.parse(fs.readFileSync('./data.json', 'utf8'));
-    //                 let estatesDB = [];
-
-    //                 // Extract estates from each task in the JSON data
-    //                 tasks.forEach(task => {
-    //                     estatesDB.push(task.estate);
-    //                 });
-            
-    //                 if (estatesDB.includes(estate)) {
-    //                     // console.log('Estate Tersedia');
-                        
-    //                     // Get the task data where estate matches the specified estate
-    //                     const matchingTasks = tasks.filter(task => task.estate === estate);
-    //                     // console.log('Tasks with matching estate:', matchingTasks);
-    //                     const estateFromMatchingTask = matchingTasks.length > 0 ? matchingTasks[0].estate : null;
-    //                     const group_id = matchingTasks.length > 0 ? matchingTasks[0].group_id : null;
-    //                     const folder = matchingTasks.length > 0 ? matchingTasks[0].wilayah : null;
-    //                     // console.log(noWa);
-    //                     try {
-    //                         await sock.sendMessage(noWa, { text: 'Mohon tunggu laporan sedang di generate' }, { quoted: message });
-    //                         const result = await sendtaksasiest(estateFromMatchingTask, group_id, folder);
-    //                         if (result === 'success') {
-    //                             console.log('succes');
-    //                         } else if (result === 'error') {
-    //                             await sock.sendMessage(noWa, { text: 'Terjadi kesalahan saat mengirim taksasi. Silakan Hubungi Tim D.A.' }, { quoted: message });
-    //                         }
-    //                     } catch (error) {
-    //                         console.error('Error fetching data:', error.message);
-                        
-    //                     }
-    //                 } else {
-    //                     await sock.sendMessage(noWa, { text: 'Estate yang anda masukan tidak tersedia di database. Silahkan Ulangi dan Cek Kembali' }, { quoted: message });
-    //                     // Handle the case where the estate is not found in the database
-    //                 }
-    //             } else {
-    //                 // Handle the case where no estate name is provided in the command
-    //                 await sock.sendMessage(noWa, { text: 'Mohon masukkan nama estate setelah perintah !tarik dilanjutkan dengan singkatan nama Estate.\n-Contoh !tarikkne = Untuk Estate KNE dan seterusnya' }, { quoted: message });
-    //             }
-    //         }
-    //         else if (lowerCaseMessage === "!menu") {
-    //             await sock.sendMessage(noWa, { text: "Perintah Bot Yang tersida \n1 = !tarik (Menarik Estate yang di pilih untuk di generate ke dalam grup yang sudah di tentukan) \n2= !help (Hubungi Kami Secara langsung untuk keluhan dan masalah)" }, { quoted: message });
-    //             break;
-    //         }else if (lowerCaseMessage === "!getgrup") {
-    //             // console.log('ini group');
-    //             let getGroups = await sock.groupFetchAllParticipating();
-    //             let groups = Object.values(await sock.groupFetchAllParticipating());
-    //             let datagrup = []; // Initialize an empty array to store group information
-                
-    //             for (let group of groups) {
-    //                 datagrup.push(`id_group: ${group.id} || Nama Group: ${group.subject}`);
-    //             }
-                
-    //             await sock.sendMessage(noWa, { text: `List ${datagrup.join('\n')}` }, { quoted: message }); 
-
-    //             break;
-    //         }  else if (lowerCaseMessage === "!update") {
-    //             await fetchDataAndSaveAsJSON();
-                
-    //             await sock.sendMessage(noWa, { text: `Cronjob Database Patched Gan`}, { quoted: message }); 
-    //         } else if (lowerCaseMessage === "!cast") {
-    //             // Send a message asking for the broadcast message
-    //             await sock.sendMessage(noWa, { text: "Masukan Kata kata yang ingin di broadcast ke dalam group?" }, { quoted: message });
-            
-    //             // Define a function to handle the response
-    //             async function handleBroadcast({ messages: responseMessages }) {
-    //                 let messageSent = false; // Flag to track if the message has been sent
-            
-    //                 for (const responseMessage of responseMessages) {
-    //                     if (!responseMessage.key.fromMe && responseMessage.key.remoteJid === noWa) {
-    //                         // Get the broadcast message from the user's response
-    //                         const broadcastMessage = responseMessage.message.conversation;
-            
-    //                         console.log(broadcastMessage);
-            
-    //                         // Get the participating groups
-    //                         let groups = Object.values(await sock.groupFetchAllParticipating());
-    //                         let datagrup = groups.map((group) => ({
-    //                             id_group: group.id,
-    //                             nama: group.subject,
-    //                         }));
-            
-    //                         let groupdont = [
-    //                             '120363200959267322@g.us',
-    //                             '120363164661400702@g.us',
-    //                             '120363214741096436@g.us',
-    //                             '120363158376501304@g.us',
-    //                         ];
-            
-    //                         // Send a message indicating that the broadcast is being processed
-    //                         await sock.sendMessage(noWa, { text: 'Mohon Tunggu, Broadcast Sedang Di Proses' }, { quoted: message });
-            
-    //                         // Set a timer for 60 seconds (1 minute)
-    //                         const timer = setTimeout(async () => {
-    //                             if (!messageSent) {
-    //                                 // If the message hasn't been sent within the time limit, notify the user
-    //                                 await sock.sendMessage(noWa, { text: 'Waktu habis! Silahkan coba kembali.' }, { quoted: message });
-    //                             }
-    //                         }, 60000); // 60 seconds in milliseconds
-            
-    //                         // Send the broadcast message to groups
-    //                         for (const group of datagrup) {
-    //                             if (!groupdont.includes(group.id_group)) {
-    //                                 await sock.sendMessage(group.id_group, { text: broadcastMessage });
-    //                                 console.log(group.id_group, { text: broadcastMessage });
-    //                                 messageSent = true; // Update the flag since the message has been sent
-    //                             }
-    //                         }
-            
-    //                         // Clear the timer since the message has been sent or the timer has expired
-    //                         clearTimeout(timer);
-            
-    //                         // Send a message indicating that the broadcast message has been sent to all groups
-    //                         await sock.sendMessage(noWa, { text: 'Broadcast Pesan sudah di kirim Kesemua Grup' }, { quoted: message });
-            
-    //                         // Turn off the event listener for handling broadcast messages
-    //                         sock.ev.off("messages.upsert", handleBroadcast);
-    //                         break;
-    //                     }
-    //                 }
-    //             }
-            
-    //             // Listen for the user's response to the broadcast message
-    //             sock.ev.on("messages.upsert", handleBroadcast);
-    //         }
-          
-
-    //         } else {
-    //           console.warn("Received a message with missing 'message' property:", message);
-    //         }
-    //       }
-    //     }
-    // });
-
-
     sock.ev.on("messages.upsert", async function handleUpsert({ messages, type }) {
         for (const message of messages) {
             if (!message.key.fromMe) {
@@ -1422,26 +1269,26 @@ async function sendhistorycron(estate) {
 }
 
 
-const tasks = JSON.parse(fs.readFileSync('./data.json', 'utf8'));
-tasks.forEach(task => {
-         const timeString = task.datetime
-         // Split the time string into hours and minutes
-         const [hours, minutes] = timeString.split(':');
-         const cronTime = `${minutes} ${hours} * * *`;
-        cron.schedule(cronTime, async () => {
-            console.log(`Sending files at ${cronTime} (WIB)...`);
-            // await sock.sendMessage(idgroup, { text: `Cronjob ${cronTime}`})
-            try {
-                await sock.sendMessage(idgroup, { text: `Check Cronjob Fail Tidak Terkirim Sebelumnya`})
-                await sendfailcronjob();
-            } catch (error) {
-                console.error('Error performing task in cronjob:', error);
-            }
-        }, {
-            scheduled: true,
-            timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-        });
-});
+// const tasks = JSON.parse(fs.readFileSync('./data.json', 'utf8'));
+// tasks.forEach(task => {
+//          const timeString = task.datetime
+//          // Split the time string into hours and minutes
+//          const [hours, minutes] = timeString.split(':');
+//          const cronTime = `${minutes} ${hours} * * *`;
+//         cron.schedule(cronTime, async () => {
+//             console.log(`Sending files at ${cronTime} (WIB)...`);
+//             // await sock.sendMessage(idgroup, { text: `Cronjob ${cronTime}`})
+//             try {
+//                 await sock.sendMessage(idgroup, { text: `Check Cronjob Fail Tidak Terkirim Sebelumnya`})
+//                 await sendfailcronjob();
+//             } catch (error) {
+//                 console.error('Error performing task in cronjob:', error);
+//             }
+//         }, {
+//             scheduled: true,
+//             timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+//         });
+// });
 
 
 // Function to fetch data from API and save as JSON
@@ -1450,7 +1297,7 @@ async function fetchDataAndSaveAsJSON() {
         // const apiUrl = 'http://ssms-qc.test/api/getdatacron';
         const apiUrl = 'https://qc-apps.srs-ssms.com/api/getdatacron';
         const response = await axios.get(apiUrl);
-         console.log('ada');
+        //  console.log('ada');
         // Save response data as JSON
         fs.writeFile('data.json', JSON.stringify(response.data, null, 2), err => {
             if (err) {
@@ -1477,7 +1324,8 @@ async function sendfailcronjob() {
             try {
                 // await sock.sendMessage(task.group_id, { text: `Cronjob ${task.estate}`});
                 await checkAndDeleteFiles(); 
-                await Generatedmapsest(task.estate, datetimeValue);
+                // await Generatedmapsest(task.estate, datetimeValue);
+                await generatemapstaksasi(task.estate, datetimeValue);
                 await GenDefaultTaksasi(task.estate);
                 await sendPdfToGroups(task.wilayah, task.group_id);
                 await sendhistorycron(task.estate);

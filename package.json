@@ -9,14 +9,18 @@
     "start": "node index.js"
   },
   "dependencies": {
+    "@sparticuz/chromium": "^92.0.0",
     "@whiskeysockets/baileys": "^6.6.0",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.19.2",
     "express-fileupload": "^1.5.0",
     "luxon": "^3.4.4",
     "moment-timezone": "^0.5.45",
     "node-cron": "^3.0.3",
     "pino": "^8.20.0",
+    "puppeteer": "^22.7.1",
+    "puppeteer-core": "10.0.0",
     "qrcode": "^1.5.3",
     "qrcode-terminal": "^0.12.0",
     "simple-git": "^3.24.0",
