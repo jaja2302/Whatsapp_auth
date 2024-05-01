@@ -1264,6 +1264,7 @@ async function fetchDataAndSaveAsJSON() {
         console.error("Error fetching data:", error);
     }
 }
+
 async function sendfailcronjob() {
     try {
         // const apiUrl = 'http://ssms-qc.test/api/checkcronjob';
@@ -1272,25 +1273,29 @@ async function sendfailcronjob() {
 
         let data = response.data.cronfail; 
 
-        // console.log(data);
-
-        for (const task of data) {
-            try {
-                // await sock.sendMessage(task.group_id, { text: `Cronjob ${task.estate}`});
-                await checkAndDeleteFiles(); 
-                // await Generatedmapsest(task.estate, datetimeValue);
-                await generatemapstaksasi(task.estate, datetimeValue);
-                await GenDefaultTaksasi(task.estate);
-                await sendPdfToGroups(task.wilayah, task.group_id);
-                await sendhistorycron(task.estate,task.id);
-            } catch (error) {
-                console.error('Error performing task in cronjob:', error);
+        if (data.length === 0) {
+            console.log('nodata');   
+        } else {
+            for (const task of data) {
+                try {
+                    // await sock.sendMessage(task.group_id, { text: `Cronjob ${task.estate}`});
+                    await checkAndDeleteFiles(); 
+                    // await Generatedmapsest(task.estate, datetimeValue);
+                    await generatemapstaksasi(task.estate, datetimeValue);
+                    await GenDefaultTaksasi(task.estate);
+                    await sendPdfToGroups(task.wilayah, task.group_id);
+                    await sendhistorycron(task.estate, task.id);
+                } catch (error) {
+                    console.error('Error performing task in cronjob:', error);
+                }
             }
         }
+
     } catch (error) {
         console.error("Error fetching data:", error);
     }
 }
+
 
 
 app.get("/getdataapi", async (req, res) => {
@@ -1347,25 +1352,31 @@ cron.schedule('0 * * * *', async () => {
     scheduled: true,
     timezone: 'Asia/Jakarta' // Set the timezone according to your location
 });
-const tasks = JSON.parse(fs.readFileSync('./data.json', 'utf8'));
-tasks.forEach(task => {
-         const timeString = task.datetime
-         // Split the time string into hours and minutes
-         const [hours, minutes] = timeString.split(':');
-         const cronTime = `${minutes} ${hours} * * *`;
-        cron.schedule(cronTime, async () => {
-            console.log(`Sending files at ${cronTime} (WIB)...`);
-            // await sock.sendMessage(idgroup, { text: `Cronjob ${cronTime}`})
-            try {
-                await sock.sendMessage(idgroup, { text: `Check Cronjob Fail Tidak Terkirim Sebelumnya`})
-                await sendfailcronjob();
-            } catch (error) {
-                console.error('Error performing task in cronjob:', error);
-            }
-        }, {
-            scheduled: true,
-            timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-        });
+// const tasks = JSON.parse(fs.readFileSync('./data.json', 'utf8'));
+// tasks.forEach(task => {
+//          const timeString = task.datetime
+//          // Split the time string into hours and minutes
+//          const [hours, minutes] = timeString.split(':');
+//          const cronTime = `${minutes} ${hours} * * *`;
+//         cron.schedule(cronTime, async () => {
+//             console.log(`Sending files at ${cronTime} (WIB)...`);
+//             // await sock.sendMessage(idgroup, { text: `Cronjob ${cronTime}`})
+//             try {
+//                 await sock.sendMessage(idgroup, { text: `Check Cronjob Fail Tidak Terkirim Sebelumnya`})
+//                 await sendfailcronjob();
+//             } catch (error) {
+//                 console.error('Error performing task in cronjob:', error);
+//             }
+//         }, {
+//             scheduled: true,
+//             timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
+//         });
+// });
+cron.schedule('*/5 * * * *', async () => {
+    await sendfailcronjob();
+}, {
+    scheduled: true,
+    timezone: 'Asia/Jakarta'
 });
 
 
