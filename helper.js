@@ -4,7 +4,7 @@ async function generatemapstaksasi(est, datetime) {
     try {
         const browser = await puppeteer.launch({
             headless: true,
-	        //  executablePath: '/usr/bin/chromium-browser', untuk raspi
+	        executablePath: '/usr/bin/chromium-browser',
             ignoreHTTPSErrors: true,
         });
         const page = await browser.newPage();

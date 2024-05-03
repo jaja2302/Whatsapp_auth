@@ -614,7 +614,7 @@ async function connectToWhatsApp() {
                             await sock.sendMessage(noWa, { text: 'Mohon masukkan nama estate setelah perintah !tarik dilanjutkan dengan singkatan nama Estate.\n-Contoh !tarikkne = Untuk Estate KNE dan seterusnya' }, { quoted: message });
                         }
                     }else if (lowerCaseMessage === "!menu") {
-                        await sock.sendMessage(noWa, { text: "Perintah Bot Yang tersida \n1 = !tarik (Menarik Estate yang di pilih untuk di generate ke dalam grup yang sudah di tentukan) \n2= !help (Hubungi Kami Secara langsung untuk keluhan dan masalah)" }, { quoted: message });
+                        await sock.sendMessage(noWa, { text: "Perintah Bot Yang tersida \n1 = !tarik (Menarik Estate yang di pilih untuk di generate ke dalam grup yang sudah di tentukan) \n2.!getgrup (Menampilkan semua isi list group yang ada) \n3.!cast (melakukan broadcast pesan ke semua grup taksasi) \n4.!restart (Merestart Service Bot)" }, { quoted: message });
                         break;
                     }else if (lowerCaseMessage === "!getgrup") {
                         // console.log('ini group');
@@ -1372,7 +1372,7 @@ cron.schedule('0 * * * *', async () => {
 //             timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
 //         });
 // });
-cron.schedule('*/5 * * * *', async () => {
+cron.schedule('*/10 * * * *', async () => {
     await sendfailcronjob();
 }, {
     scheduled: true,
