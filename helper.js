@@ -1,32 +1,93 @@
 const puppeteer = require('puppeteer');
 
+// async function generatemapstaksasi(est, datetime) {
+//     let attempts = 0;
+//     while (attempts < 5) {
+//         try {
+//             const browser = await puppeteer.launch({
+//                 headless: false,
+//                 // executablePath: '/usr/bin/chromium-browser',
+//                 ignoreHTTPSErrors: true,
+//             });
+//             const page = await browser.newPage();
+//             await page.goto(`https://srs-ssms.com/rekap_pdf/convert_taksasi_pdf_get.php?datetime=${datetime}&estate=${est}`);
+//             await page.title();
+
+//             // Delay for 15 seconds before closing the page
+//             await new Promise(resolve => setTimeout(resolve, 15000));
+
+//             await page.close();
+//             await browser.close();
+
+//             return {
+//                 body: {}, // Provide your response body here
+//                 cookies: {}, // Provide your cookies object here
+//                 response: 'success',
+//             };
+//         } catch (error) {
+//             console.error('Attempt', attempts + 1, 'failed with error:', error);
+//             attempts++;
+//             if (attempts >= 5) {
+//                 return { error: 'Internal server error after 5 attempts' };
+//             }
+//         }
+//     }
+// }
+
+
 async function generatemapstaksasi(est, datetime) {
-    try {
-        const browser = await puppeteer.launch({
-            headless: true,
-	        executablePath: '/usr/bin/chromium-browser',
-            ignoreHTTPSErrors: true,
-        });
-        const page = await browser.newPage();
-        await page.goto(`https://srs-ssms.com/rekap_pdf/convert_taksasi_pdf_get.php?datetime=${datetime}&estate=${est}`);
-        const title = await page.title();
+    let attempts = 0;
+    let uploadSuccess = false;
 
-        // Delay for 5 seconds before closing the page
-        await new Promise(resolve => setTimeout(resolve, 5000));
+    while (attempts < 3 && !uploadSuccess) {
+        try {
+            const browser = await puppeteer.launch({
+                headless: false,
+                // executablePath: '/usr/bin/chromium-browser',
+                ignoreHTTPSErrors: true,
+            });
+            const page = await browser.newPage();
 
-        await page.close();
-        await browser.close();
+            // Listen for console events and check for the success message
+            page.on('console', msg => {
+                if (msg.text() === 'Upload successfully gan') {
+                    uploadSuccess = true;
+                }
+            });
 
-        return {
-            body: {}, // Provide your response body here
-            cookies: {}, // Provide your cookies object here
-            response: 'success',
-        };
-    } catch (error) {
-        // Handle errors
-        console.error('Error occurred:', error);
-        return { error: 'Internal server error' };
+            await page.goto(`https://srs-ssms.com/rekap_pdf/convert_taksasi_pdf_get.php?datetime=${datetime}&estate=${est}`);
+            await page.title();
+
+            // Delay for 15 seconds before checking the success flag
+            await new Promise(resolve => setTimeout(resolve, 10000));
+
+            if (uploadSuccess) {
+                console.log('Upload successful after', attempts + 1, 'attempts');
+                await page.close();
+                await browser.close();
+                return {
+                    body: {}, // Provide your response body here
+                    cookies: {}, // Provide your cookies object here
+                    response: 'success',
+                };
+            } else {
+                console.log('Upload not successful, retrying...');
+                await page.close();
+                await browser.close();
+                attempts++;
+            }
+        } catch (error) {
+            console.error('Attempt', attempts + 1, 'failed with error:', error);
+            attempts++;
+        }
+    }
+
+    if (!uploadSuccess) {
+        console.error('Upload failed after 5 attempts');
+        return { error: 'Upload failed after maximum attempts' };
     }
 }
+
+
 
 module.exports = { generatemapstaksasi };

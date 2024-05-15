@@ -294,12 +294,11 @@ async function GenDefaultTaksasi(est) {
 async function sendtaksasiest(estate,group_id,folder) {
     try {
         await checkAndDeleteFiles(); 
-        // await Generatedmapsest(estate,datetimeValue)
         await generatemapstaksasi(estate,datetimeValue)
         await GenDefaultTaksasi(estate)
         await sendPdfToGroups(folder, group_id);
 
-        return 'succes';
+        return 'success';
     } catch (error) {
         return 'error';
     }
@@ -568,55 +567,44 @@ async function connectToWhatsApp() {
                 const text = message.message.conversation || message.message.extendedTextMessage?.text;
                 const lowerCaseMessage = text ? text.toLowerCase() : null;
                 if (message.key.remoteJid.endsWith('@g.us')) {
-                    if (lowerCaseMessage.startsWith("!tarik")) {
+                    if (lowerCaseMessage && lowerCaseMessage.startsWith("!tarik")) {
                         // Extract the estate name from the command
                         const estateCommand = lowerCaseMessage.replace("!tarik", "").trim();
                         const estate = estateCommand.toUpperCase(); // Convert to uppercase for consistency
                         
                         // Check if the estate name is valid
-                        if (estate) {
-                            const tasks = JSON.parse(fs.readFileSync('./data.json', 'utf8'));
-                            let estatesDB = [];
-        
-                            // Extract estates from each task in the JSON data
-                            tasks.forEach(task => {
-                                estatesDB.push(task.estate);
-                            });
-                    
-                            if (estatesDB.includes(estate)) {
-                                // console.log('Estate Tersedia');
-                                
-                                // Get the task data where estate matches the specified estate
-                                const matchingTasks = tasks.filter(task => task.estate === estate);
-                                // console.log('Tasks with matching estate:', matchingTasks);
-                                const estateFromMatchingTask = matchingTasks.length > 0 ? matchingTasks[0].estate : null;
-                                const group_id = matchingTasks.length > 0 ? matchingTasks[0].group_id : null;
-                                const folder = matchingTasks.length > 0 ? matchingTasks[0].wilayah : null;
-                                // console.log(noWa);
-                                try {
-                                    await sock.sendMessage(noWa, { text: 'Mohon tunggu laporan sedang di proses' }, { quoted: message });
-                                    const result = await sendtaksasiest(estateFromMatchingTask, group_id, folder);
-                                    if (result === 'success') {
-                                        console.log('succes');
-                                    } else if (result === 'error') {
-                                        await sock.sendMessage(noWa, { text: 'Terjadi kesalahan saat mengirim taksasi. Silakan Hubungi Tim D.A.' }, { quoted: message });
-                                    }
-                                } catch (error) {
-                                    console.error('Error fetching data:', error.message);
-                                
-                                }
-                            } else {
-                                await sock.sendMessage(noWa, { text: 'Estate yang anda masukan tidak tersedia di database. Silahkan Ulangi dan Cek Kembali' }, { quoted: message });
-                                // Handle the case where the estate is not found in the database
-                            }
-                        } else {
-                            // Handle the case where no estate name is provided in the command
+                        if (!estate) {
                             await sock.sendMessage(noWa, { text: 'Mohon masukkan nama estate setelah perintah !tarik dilanjutkan dengan singkatan nama Estate.\n-Contoh !tarikkne = Untuk Estate KNE dan seterusnya' }, { quoted: message });
-                        }
+                            return;
+                          }
+                        
+                          const apiUrl = 'https://qc-apps.srs-ssms.com/api/getdatacron';
+                          try {
+                            const response = await axios.get(apiUrl);
+                            const dataestate = response.data;
+                            const matchingTasks = dataestate.filter(task => task.estate === estate);
+                        
+                            if (matchingTasks.length > 0) {
+                              const { estate: estateFromMatchingTask, group_id, wilayah: folder } = matchingTasks[0];
+                              await sock.sendMessage(noWa, { text: 'Mohon tunggu laporan sedang di proses' }, { quoted: message });
+                              const result = await sendtaksasiest(estateFromMatchingTask, group_id, folder);
+                        
+                            //   console.log(result);
+                              if (result === 'success') {
+                                console.log('success');
+                              } else {
+                                await sock.sendMessage(noWa, { text: 'Terjadi kesalahan saat mengirim taksasi. Silakan Hubungi Tim D.A.' }, { quoted: message });
+                              }
+                            } else {
+                              await sock.sendMessage(noWa, { text: 'Estate yang anda masukan tidak tersedia di database. Silahkan Ulangi dan Cek Kembali' }, { quoted: message });
+                            }
+                          } catch (error) {
+                            console.error('Error fetching data:', error.message);
+                          }
                     }else if (lowerCaseMessage === "!menu") {
                         await sock.sendMessage(noWa, { text: "Perintah Bot Yang tersida \n1 = !tarik (Menarik Estate yang di pilih untuk di generate ke dalam grup yang sudah di tentukan) \n2.!getgrup (Menampilkan semua isi list group yang ada) \n3.!cast (melakukan broadcast pesan ke semua grup taksasi) \n4.!restart (Merestart Service Bot)" }, { quoted: message });
                         break;
-                    }else if (lowerCaseMessage === "!getgrup") {
+                    }else if (lowerCaseMessage &&lowerCaseMessage === "!getgrup") {
                         // console.log('ini group');
                         let getGroups = await sock.groupFetchAllParticipating();
                         let groups = Object.values(await sock.groupFetchAllParticipating());
@@ -629,11 +617,7 @@ async function connectToWhatsApp() {
                         await sock.sendMessage(noWa, { text: `List ${datagrup.join('\n')}` }, { quoted: message }); 
         
                         break;
-                    }else if (lowerCaseMessage === "!update") {
-                        await fetchDataAndSaveAsJSON();
-                        
-                        await sock.sendMessage(noWa, { text: `Cronjob Database Patched Gan`}, { quoted: message }); 
-                    }else if (lowerCaseMessage === "!cast") {
+                    }else if (lowerCaseMessage &&lowerCaseMessage === "!cast") {
                         // Send a message asking for the broadcast message
                         await sock.sendMessage(noWa, { text: "Masukan Kata kata yang ingin di broadcast ke dalam group?" }, { quoted: message });
                     
@@ -646,7 +630,7 @@ async function connectToWhatsApp() {
                                     // Get the broadcast message from the user's response
                                     const broadcastMessage = responseMessage.message.conversation;
                     
-                                    console.log(broadcastMessage);
+                                    // console.log(broadcastMessage);
                     
                                     // Get the participating groups
                                     let groups = Object.values(await sock.groupFetchAllParticipating());
@@ -697,34 +681,34 @@ async function connectToWhatsApp() {
                     
                         // Listen for the user's response to the broadcast message
                         sock.ev.on("messages.upsert", handleBroadcast);
-                    }else if (lowerCaseMessage === "!restart") {
-                        exec('pm2 restart bot_da', (error, stdout, stderr) => {
-                            if (error) {
-                                console.error(`Error restarting app: ${error.message}`);
-                                return;
-                            }
-                            if (stderr) {
-                                console.error(`Restart error: ${stderr}`);
-                                return;
-                            }
-                            console.log(`App restarted: ${stdout}`);
-                        });
                     }
-                    // console.log('Message from group:', lowerCaseMessage || 'Text is null');
+                    // else if (lowerCaseMessage === "!restart") {
+                    //     exec('pm2 restart bot_da', (error, stdout, stderr) => {
+                    //         if (error) {
+                    //             console.error(`Error restarting app: ${error.message}`);
+                    //             return;
+                    //         }
+                    //         if (stderr) {
+                    //             console.error(`Restart error: ${stderr}`);
+                    //             return;
+                    //         }
+                    //         console.log(`App restarted: ${stdout}`);
+                    //     });
+                    // }
                 } else {
-                    if (lowerCaseMessage === "!menu") {
+                    if (lowerCaseMessage && lowerCaseMessage === "!menu") {
                         await sock.sendMessage(noWa, { text: "Hanya dapat di gunakan di dalam grup!" }, { quoted: message });
                         break;
-                    }else if (lowerCaseMessage.startsWith("!tarik")) {
+                    }else if (lowerCaseMessage && lowerCaseMessage.startsWith("!tarik")) {
                         await sock.sendMessage(noWa, { text: "Hanya dapat di gunakan di dalam grup!" }, { quoted: message });
                         break;
-                    }else if (lowerCaseMessage === "!update"){
+                    }else if (lowerCaseMessage && lowerCaseMessage === "!update"){
                         await sock.sendMessage(noWa, { text: "Hanya dapat di gunakan di dalam grup!" }, { quoted: message });
                         break;
-                    }else if (lowerCaseMessage === "!cast"){
+                    }else if (lowerCaseMessage && lowerCaseMessage === "!cast"){
                         await sock.sendMessage(noWa, { text: "Hanya dapat di gunakan di dalam grup!" }, { quoted: message });
                         break;
-                    }else if (lowerCaseMessage === "!restart"){
+                    }else if (lowerCaseMessage && lowerCaseMessage === "!restart"){
                         await sock.sendMessage(noWa, { text: "Hanya dapat di gunakan di dalam grup!" }, { quoted: message });
                         break;
                     }
@@ -775,427 +759,6 @@ const updateQR = (data) => {
             break;
     }
 };
-
-
-// send text message to wa user
-app.post("/send-message", async (req, res) => {
-    //console.log(req);
-    const pesankirim = req.body.message;
-    const number = req.body.number;
-    const fileDikirim = req.files;
-
-    let numberWA;
-    try {
-        if (!req.files) {
-            if (!number) {
-                res.status(500).json({
-                    status: false,
-                    response: 'Nomor WA belum tidak disertakan!'
-                });
-            }
-            else {
-                numberWA = '62' + number.substring(1) + "@s.whatsapp.net";
-                console.log(await sock.onWhatsApp(numberWA));
-                if (isConnected) {
-                    const exists = await sock.onWhatsApp(numberWA);
-                    if (exists?.jid || (exists && exists[0]?.jid)) {
-                        sock.sendMessage(exists.jid || exists[0].jid, { text: pesankirim })
-                            .then((result) => {
-                                res.status(200).json({
-                                    status: true,
-                                    response: result,
-                                });
-                            })
-                            .catch((err) => {
-                                res.status(500).json({
-                                    status: false,
-                                    response: err,
-                                });
-                            });
-                    } else {
-                        res.status(500).json({
-                            status: false,
-                            response: `Nomor ${number} tidak terdaftar.`,
-                        });
-                    }
-                } else {
-                    res.status(500).json({
-                        status: false,
-                        response: `WhatsApp belum terhubung.`,
-                    });
-                }
-            }
-        }
-        else {
-            //console.log('Kirim document');
-            if (!number) {
-                res.status(500).json({
-                    status: false,
-                    response: 'Nomor WA belum tidak disertakan!'
-                });
-            }
-            else {
-
-                numberWA = '62' + number.substring(1) + "@s.whatsapp.net";
-                //console.log('Kirim document ke'+ numberWA);
-                let filesimpan = req.files.file_dikirim;
-                var file_ubah_nama = new Date().getTime() + '_' + filesimpan.name;
-                //pindahkan file ke dalam upload directory
-                filesimpan.mv('./uploads/' + file_ubah_nama);
-                let fileDikirim_Mime = filesimpan.mimetype;
-                //console.log('Simpan document '+fileDikirim_Mime);
-
-                //console.log(await sock.onWhatsApp(numberWA));
-
-                if (isConnected) {
-                    const exists = await sock.onWhatsApp(numberWA);
-
-                    if (exists?.jid || (exists && exists[0]?.jid)) {
-
-                        let namafiledikirim = './uploads/' + file_ubah_nama;
-                        let extensionName = path.extname(namafiledikirim);
-                        //console.log(extensionName);
-                        if (extensionName === '.jpeg' || extensionName === '.jpg' || extensionName === '.png' || extensionName === '.gif') {
-                            await sock.sendMessage(exists.jid || exists[0].jid, {
-                                image: {
-                                    url: namafiledikirim
-                                },
-                                caption: pesankirim
-                            }).then((result) => {
-                                if (fs.existsSync(namafiledikirim)) {
-                                    fs.unlink(namafiledikirim, (err) => {
-                                        if (err && err.code == "ENOENT") {
-                                            // file doens't exist
-                                            console.info("File doesn't exist, won't remove it.");
-                                        } else if (err) {
-                                            console.error("Error occurred while trying to remove file.");
-                                        }
-                                        //console.log('File deleted!');
-                                    });
-                                }
-                                res.send({
-                                    status: true,
-                                    message: 'Success',
-                                    data: {
-                                        name: filesimpan.name,
-                                        mimetype: filesimpan.mimetype,
-                                        size: filesimpan.size
-                                    }
-                                });
-                            }).catch((err) => {
-                                res.status(500).json({
-                                    status: false,
-                                    response: err,
-                                });
-                                console.log('pesan gagal terkirim');
-                            });
-                        } else if (extensionName === '.mp3' || extensionName === '.ogg') {
-                            await sock.sendMessage(exists.jid || exists[0].jid, {
-                                audio: {
-                                    url: namafiledikirim,
-                                    caption: pesankirim
-                                },
-                                mimetype: 'audio/mp4'
-                            }).then((result) => {
-                                if (fs.existsSync(namafiledikirim)) {
-                                    fs.unlink(namafiledikirim, (err) => {
-                                        if (err && err.code == "ENOENT") {
-                                            // file doens't exist
-                                            console.info("File doesn't exist, won't remove it.");
-                                        } else if (err) {
-                                            console.error("Error occurred while trying to remove file.");
-                                        }
-                                        //console.log('File deleted!');
-                                    });
-                                }
-                                res.send({
-                                    status: true,
-                                    message: 'Success',
-                                    data: {
-                                        name: filesimpan.name,
-                                        mimetype: filesimpan.mimetype,
-                                        size: filesimpan.size
-                                    }
-                                });
-                            }).catch((err) => {
-                                res.status(500).json({
-                                    status: false,
-                                    response: err,
-                                });
-                                console.log('pesan gagal terkirim');
-                            });
-                        } else {
-                            await sock.sendMessage(exists.jid || exists[0].jid, {
-                                document: {
-                                    url: namafiledikirim,
-                                    caption: pesankirim
-                                },
-                                mimetype: fileDikirim_Mime,
-                                fileName: filesimpan.name
-                            }).then((result) => {
-                                if (fs.existsSync(namafiledikirim)) {
-                                    fs.unlink(namafiledikirim, (err) => {
-                                        if (err && err.code == "ENOENT") {
-                                            // file doens't exist
-                                            console.info("File doesn't exist, won't remove it.");
-                                        } else if (err) {
-                                            console.error("Error occurred while trying to remove file.");
-                                        }
-                                        //console.log('File deleted!');
-                                    });
-                                }
-                                /*
-                                setTimeout(() => {
-                                    sock.sendMessage(exists.jid || exists[0].jid, {text: pesankirim});
-                                }, 1000);
-                                */
-                                res.send({
-                                    status: true,
-                                    message: 'Success',
-                                    data: {
-                                        name: filesimpan.name,
-                                        mimetype: filesimpan.mimetype,
-                                        size: filesimpan.size
-                                    }
-                                });
-                            }).catch((err) => {
-                                res.status(500).json({
-                                    status: false,
-                                    response: err,
-                                });
-                                console.log('pesan gagal terkirim');
-                            });
-                        }
-                    } else {
-                        res.status(500).json({
-                            status: false,
-                            response: `Nomor ${number} tidak terdaftar.`,
-                        });
-                    }
-                } else {
-                    res.status(500).json({
-                        status: false,
-                        response: `WhatsApp belum terhubung.`,
-                    });
-                }
-            }
-        }
-    } catch (err) {
-        res.status(500).send(err);
-    }
-
-});
-
-// send group message
-app.post("/send-group-message", async (req, res) => {
-    //console.log(req);
-    const pesankirim = req.body.message;
-    const id_group = req.body.id_group;
-    const fileDikirim = req.files;
-    let idgroup;
-    let exist_idgroup;
-    try {
-        if (isConnected) {
-            if (!req.files) {
-                if (!id_group) {
-                    res.status(500).json({
-                        status: false,
-                        response: 'Nomor Id Group belum disertakan!'
-                    });
-                }
-                else {
-                    let exist_idgroup = await sock.groupMetadata(id_group);
-                    console.log(exist_idgroup.id);
-                    console.log("isConnected");
-                    if (exist_idgroup?.id || (exist_idgroup && exist_idgroup[0]?.id)) {
-                        sock.sendMessage(id_group, { text: pesankirim })
-                            .then((result) => {
-                                res.status(200).json({
-                                    status: true,
-                                    response: result,
-                                });
-                                console.log("succes terkirim");
-                            })
-                            .catch((err) => {
-                                res.status(500).json({
-                                    status: false,
-                                    response: err,
-                                });
-                                console.log("error 500");
-                            });
-                    } else {
-                        res.status(500).json({
-                            status: false,
-                            response: `ID Group ${id_group} tidak terdaftar.`,
-                        });
-                        console.log(`ID Group ${id_group} tidak terdaftar.`);
-                    }
-                }
-
-            } else {
-                //console.log('Kirim document');
-                if (!id_group) {
-                    res.status(500).json({
-                        status: false,
-                        response: 'Id Group tidak disertakan!'
-                    });
-                }
-                else {
-                    exist_idgroup = await sock.groupMetadata(id_group);
-                    console.log(exist_idgroup.id);
-                    //console.log('Kirim document ke group'+ exist_idgroup.subject);
-
-                    let filesimpan = req.files.file_dikirim;
-                    var file_ubah_nama = new Date().getTime() + '_' + filesimpan.name;
-                    //pindahkan file ke dalam upload directory
-                    filesimpan.mv('./uploads/' + file_ubah_nama);
-                    let fileDikirim_Mime = filesimpan.mimetype;
-                    //console.log('Simpan document '+fileDikirim_Mime);
-                    if (isConnected) {
-                        if (exist_idgroup?.id || (exist_idgroup && exist_idgroup[0]?.id)) {
-                            let namafiledikirim = './uploads/' + file_ubah_nama;
-                            let extensionName = path.extname(namafiledikirim);
-                            //console.log(extensionName);
-                            if (extensionName === '.jpeg' || extensionName === '.jpg' || extensionName === '.png' || extensionName === '.gif') {
-                                await sock.sendMessage(exist_idgroup.id || exist_idgroup[0].id, {
-                                    image: {
-                                        url: namafiledikirim
-                                    },
-                                    caption: pesankirim
-                                }).then((result) => {
-                                    if (fs.existsSync(namafiledikirim)) {
-                                        fs.unlink(namafiledikirim, (err) => {
-                                            if (err && err.code == "ENOENT") {
-                                                // file doens't exist
-                                                console.info("File doesn't exist, won't remove it.");
-                                            } else if (err) {
-                                                console.error("Error occurred while trying to remove file.");
-                                            }
-                                            //console.log('File deleted!');
-                                        });
-                                    }
-                                    res.send({
-                                        status: true,
-                                        message: 'Success',
-                                        data: {
-                                            name: filesimpan.name,
-                                            mimetype: filesimpan.mimetype,
-                                            size: filesimpan.size
-                                        }
-                                    });
-                                }).catch((err) => {
-                                    res.status(500).json({
-                                        status: false,
-                                        response: err,
-                                    });
-                                    console.log('pesan gagal terkirim');
-                                });
-                            } else if (extensionName === '.mp3' || extensionName === '.ogg') {
-                                await sock.sendMessage(exist_idgroup.id || exist_idgroup[0].id, {
-                                    audio: {
-                                        url: namafiledikirim,
-                                        caption: pesankirim
-                                    },
-                                    mimetype: 'audio/mp4'
-                                }).then((result) => {
-                                    if (fs.existsSync(namafiledikirim)) {
-                                        fs.unlink(namafiledikirim, (err) => {
-                                            if (err && err.code == "ENOENT") {
-                                                // file doens't exist
-                                                console.info("File doesn't exist, won't remove it.");
-                                            } else if (err) {
-                                                console.error("Error occurred while trying to remove file.");
-                                            }
-                                            //console.log('File deleted!');
-                                        });
-                                    }
-                                    res.send({
-                                        status: true,
-                                        message: 'Success',
-                                        data: {
-                                            name: filesimpan.name,
-                                            mimetype: filesimpan.mimetype,
-                                            size: filesimpan.size
-                                        }
-                                    });
-                                }).catch((err) => {
-                                    res.status(500).json({
-                                        status: false,
-                                        response: err,
-                                    });
-                                    console.log('pesan gagal terkirim');
-                                });
-                            } else {
-                                await sock.sendMessage(exist_idgroup.id || exist_idgroup[0].id, {
-                                    document: {
-                                        url: namafiledikirim,
-                                        caption: pesankirim
-                                    },
-                                    mimetype: fileDikirim_Mime,
-                                    fileName: filesimpan.name
-                                }).then((result) => {
-                                    if (fs.existsSync(namafiledikirim)) {
-                                        fs.unlink(namafiledikirim, (err) => {
-                                            if (err && err.code == "ENOENT") {
-                                                // file doens't exist
-                                                console.info("File doesn't exist, won't remove it.");
-                                            } else if (err) {
-                                                console.error("Error occurred while trying to remove file.");
-                                            }
-                                            //console.log('File deleted!');
-                                        });
-                                    }
-
-                                    setTimeout(() => {
-                                        sock.sendMessage(exist_idgroup.id || exist_idgroup[0].id, { text: pesankirim });
-                                    }, 1000);
-
-                                    res.send({
-                                        status: true,
-                                        message: 'Success',
-                                        data: {
-                                            name: filesimpan.name,
-                                            mimetype: filesimpan.mimetype,
-                                            size: filesimpan.size
-                                        }
-                                    });
-                                }).catch((err) => {
-                                    res.status(500).json({
-                                        status: false,
-                                        response: err,
-                                    });
-                                    console.log('pesan gagal terkirim');
-                                });
-                            }
-                        } else {
-                            res.status(500).json({
-                                status: false,
-                                response: `Nomor ${number} tidak terdaftar.`,
-                            });
-                        }
-                    } else {
-                        res.status(500).json({
-                            status: false,
-                            response: `WhatsApp belum terhubung.`,
-                        });
-                    }
-                }
-            }
-
-            //end is connected
-        } else {
-            res.status(500).json({
-                status: false,
-                response: `WhatsApp belum terhubung.`,
-            });
-        }
-
-        //end try
-    } catch (err) {
-        res.status(500).send(err);
-    }
-
-});
 
 
 
@@ -1352,26 +915,7 @@ cron.schedule('0 * * * *', async () => {
     scheduled: true,
     timezone: 'Asia/Jakarta' // Set the timezone according to your location
 });
-// const tasks = JSON.parse(fs.readFileSync('./data.json', 'utf8'));
-// tasks.forEach(task => {
-//          const timeString = task.datetime
-//          // Split the time string into hours and minutes
-//          const [hours, minutes] = timeString.split(':');
-//          const cronTime = `${minutes} ${hours} * * *`;
-//         cron.schedule(cronTime, async () => {
-//             console.log(`Sending files at ${cronTime} (WIB)...`);
-//             // await sock.sendMessage(idgroup, { text: `Cronjob ${cronTime}`})
-//             try {
-//                 await sock.sendMessage(idgroup, { text: `Check Cronjob Fail Tidak Terkirim Sebelumnya`})
-//                 await sendfailcronjob();
-//             } catch (error) {
-//                 console.error('Error performing task in cronjob:', error);
-//             }
-//         }, {
-//             scheduled: true,
-//             timezone: 'Asia/Jakarta' // Set the timezone to Asia/Jakarta for WIB
-//         });
-// });
+
 cron.schedule('*/10 * * * *', async () => {
     await sendfailcronjob();
 }, {
