@@ -1,49 +1,22 @@
 const puppeteer = require('puppeteer');
 
-// async function generatemapstaksasi(est, datetime) {
-//     let attempts = 0;
-//     while (attempts < 5) {
-//         try {
-//             const browser = await puppeteer.launch({
-//                 headless: false,
-//                 // executablePath: '/usr/bin/chromium-browser',
-//                 ignoreHTTPSErrors: true,
-//             });
-//             const page = await browser.newPage();
-//             await page.goto(`https://srs-ssms.com/rekap_pdf/convert_taksasi_pdf_get.php?datetime=${datetime}&estate=${est}`);
-//             await page.title();
-
-//             // Delay for 15 seconds before closing the page
-//             await new Promise(resolve => setTimeout(resolve, 15000));
-
-//             await page.close();
-//             await browser.close();
-
-//             return {
-//                 body: {}, // Provide your response body here
-//                 cookies: {}, // Provide your cookies object here
-//                 response: 'success',
-//             };
-//         } catch (error) {
-//             console.error('Attempt', attempts + 1, 'failed with error:', error);
-//             attempts++;
-//             if (attempts >= 5) {
-//                 return { error: 'Internal server error after 5 attempts' };
-//             }
-//         }
-//     }
-// }
-
 
 async function generatemapstaksasi(est, datetime) {
     let attempts = 0;
     let uploadSuccess = false;
 
-    while (attempts < 3 && !uploadSuccess) {
+    while (attempts < 2 && !uploadSuccess) {
         try {
             const browser = await puppeteer.launch({
-                headless: false,
-                // executablePath: '/usr/bin/chromium-browser',
+                headless: true,
+                ignoreHTTPSErrors: true,
+                args: [
+                "--no-sandbox",
+                "--disable-setuid-sandbox",
+                "--disable-dev-shm-usage",
+                "--single-process",
+                ],
+                ignoreDefaultArgs: ["--disable-extensions"],
                 ignoreHTTPSErrors: true,
             });
             const page = await browser.newPage();
