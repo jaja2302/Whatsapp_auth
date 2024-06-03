@@ -494,7 +494,10 @@ async function statusHistory() {
 async function checkatasan(nama_atasansatu) {
     try {
         // Fetch data from the API using the provided name
-        const response = await axios.post('http://qc-apps2.test/api/getnamaatasan', {
+        // const response = await axios.post('http://qc-apps2.test/api/getnamaatasan', {
+        //     nama: nama_atasansatu
+        // });
+        const response = await axios.post('https://qc-apps.srs-ssms.com/api/getnamaatasan', {
             nama: nama_atasansatu
         });
 
@@ -513,7 +516,8 @@ async function checkatasan(nama_atasansatu) {
 async function getunitlist(nama_atasansatu) {
     try {
         // Fetch data from the API using the provided name
-        const response = await axios.get('http://qc-apps2.test/api/getunitdata');
+        // const response = await axios.get('http://qc-apps2.test/api/getunitdata');
+        const response = await axios.get('https://qc-apps.srs-ssms.com/api/getunitdata');
 
         return response.data.data;
     } catch (error) {
@@ -529,7 +533,10 @@ async function getunitlist(nama_atasansatu) {
 async function getuserinfo(user) {
     try {
         // Fetch data from the API using the provided name
-        const response = await axios.post('http://qc-apps2.test/api/getuserinfo', {
+        // const response = await axios.post('http://qc-apps2.test/api/getuserinfo', {
+        //     nama: user
+        // });
+        const response = await axios.post('https://qc-apps.srs-ssms.com/api/getuserinfo', {
             nama: user
         });
 
@@ -550,6 +557,8 @@ const botpromt = {};
 const timeoutHandles = {};
 
 const handleijinmsg = async (noWa, text) => {
+
+
     const resetUserState = async () => {
         await sock.sendMessage(noWa, { text: 'Waktu Anda telah habis. Silakan mulai kembali dengan mengetikkan !izin.' });
         delete userchoice[noWa];
@@ -565,17 +574,18 @@ const handleijinmsg = async (noWa, text) => {
             clearTimeout(timeoutHandles[noWa]);
         }
         // 10 menit timeout 
-        timeoutHandles[noWa] = setTimeout(resetUserState, 10 * 60 * 1000);
+        // timeoutHandles[noWa] = setTimeout(resetUserState, 10 * 60 * 1000);
         // 10 detik timeout 
-        // timeoutHandles[noWa] = setTimeout(resetUserState, 10 * 1000);
+        timeoutHandles[noWa] = setTimeout(resetUserState, 30 * 1000);
 
     };
 
 
     if (!userchoice[noWa]) {
         userchoice[noWa] = 'name';
-        botpromt[noWa] = { attempts: 0 }; // Initialize attempts counter
-        await sock.sendMessage(noWa, { text: 'Masukan nama lengkap anda:' });
+        botpromt[noWa] = { attempts: 0 }; 
+        await sock.sendMessage(noWa, { text: 'Silakan masukkan *nama lengkap anda* atau *nama depan Anda* untuk pencarian di database.' });
+
         setUserTimeout();
     } else {
         setUserTimeout(); // Reset timeout with every interaction
@@ -584,29 +594,33 @@ const handleijinmsg = async (noWa, text) => {
         if (step === 'name') {
             botpromt[noWa].name = text;
             userchoice[noWa] = 'check_user';
-            await sock.sendMessage(noWa, { text: 'Checking nama user di database...' });
+            await sock.sendMessage(noWa, { text: 'Memeriksa nama pengguna di database...' });
 
             const result = await getuserinfo(text);
+
+            // console.log(result);
             if (result.message && result.message === 'Nama User tidak ditemukan') {
                 botpromt[noWa].attempts += 1;
                 if (botpromt[noWa].attempts >= 3) {
-                    await sock.sendMessage(noWa, { text: 'Anda sudah melakukan percobaan 3 kali. Silahkan coba kembali nanti.' });
+                    await sock.sendMessage(noWa, { text: 'Anda telah mencoba 3 kali. Silakan coba lagi nanti.' });
                     delete userchoice[noWa];
                     delete botpromt[noWa];
                     clearTimeout(timeoutHandles[noWa]);
                     delete timeoutHandles[noWa];
                 } else {
-                    await sock.sendMessage(noWa, { text: 'User Tidak ditemukan di database. Harap input ulang:' });
+                    await sock.sendMessage(noWa, { text: 'Pengguna tidak ditemukan di database. Harap masukkan ulang:' });
                     userchoice[noWa] = 'name';
                 }
             } else if (result !== null && result.length > 0) {
                 botpromt[noWa].user_id_option = result;
 
-                let message = 'Pilih User (1/2/3..):\n';
+                let message = 'Silakan pilih pengguna dari daftar berikut ,*HARAP MASUKAN ANGKA SAJA DARI PILIHAN TERSEDIA*:\n';
                 result.forEach((item, index) => {
                     message += `${index + 1}. ${item.nama} (${item.departemen})\n`;
                 });
-                message += `${result.length + 1}. User tidak tersedia dalam list`;
+                message += `${result.length + 1}. Pengguna tidak tersedia dalam daftar.\n`;
+                message += `${result.length + 2}. Coba masukan nama kembali`;
+                
 
                 userchoice[noWa] = 'choose_name';
                 await sock.sendMessage(noWa, { text: message });
@@ -614,36 +628,77 @@ const handleijinmsg = async (noWa, text) => {
         } else if (step === 'choose_name') {
             const chosenIndex = parseInt(text) - 1;
             const options = botpromt[noWa].user_id_option;
+         
+            if (isNaN(chosenIndex) || !options || chosenIndex < 0 || chosenIndex >= options.length + 2) {
+                await sock.sendMessage(noWa, { text: 'Pilihan tidak valid. Silakan masukkan nomor yang sesuai:' });
+                return;
+            }
+        
+
             if (chosenIndex === options.length) {
-                await sock.sendMessage(noWa, { text: 'Jika Nama tidak tersedia. Silakan hubungi admin di nomor: +62-xxx-xxx-xxxx untuk keluhan.' });
+                await sock.sendMessage(noWa, { text: 'Jika nama tidak tersedia, silakan hubungi admin di nomor +62-xxx-xxx-xxxx untuk bantuan.' });
                 delete userchoice[noWa];
                 delete botpromt[noWa];
                 clearTimeout(timeoutHandles[noWa]);
                 delete timeoutHandles[noWa];
-            } else if (!isNaN(chosenIndex) && options && options[chosenIndex]) {
-                botpromt[noWa].user_nama = options[chosenIndex].nama;
-                botpromt[noWa].user_nama_id = options[chosenIndex].id;
-
-                userchoice[noWa] = 'location';
-                await sock.sendMessage(noWa, { text: 'Lokasi yang akan dituju untuk izin?' });
+            } else if (chosenIndex === options.length + 1) {
+                userchoice[noWa] = 'name';
+                await sock.sendMessage(noWa, { text: 'Silakan masukkan *nama lengkap anda* atau *nama depan Anda* untuk pencarian di database.' });
             } else {
-                await sock.sendMessage(noWa, { text: 'Pilihan tidak valid. Silakan masukkan angka yang sesuai:' });
+                try {
+                    const response = await axios.post('http://qc-apps2.test/api/formdataizin', {
+                        name: options[chosenIndex].id,
+                        type: 'check_user',
+                    });
+                    let responses = response.data;
+
+                    const responseKey = Object.keys(responses)[0];
+
+                    // console.log(responses);
+                    await sock.sendMessage(noWa, { text: 'Mohon tunggu, server sedang melakukan validasi.' });
+                    if (responseKey === "error_validasi") {
+                        await sock.sendMessage(noWa, { text: `Verifikasi data gagal karena: ${responses[responseKey]}` });
+                        delete userchoice[noWa];
+                        delete botpromt[noWa];
+                        clearTimeout(timeoutHandles[noWa]);
+                        delete timeoutHandles[noWa];
+                    } else {
+                        botpromt[noWa].user_nama = options[chosenIndex].nama;
+                        botpromt[noWa].user_nama_id = options[chosenIndex].id;
+                        userchoice[noWa] = 'location';
+                        await sock.sendMessage(noWa, { text: 'Mohon tentukan *LOKASI* yang akan Anda kunjungi untuk pengajuan izin.' });
+                    }
+                               
+                } catch (error) {
+                    if (error.response && error.response.status === 404) {
+                        await sock.sendMessage(noWa, { text: 'Terjadi error tidak terduga' });
+                        delete userchoice[noWa];
+                        delete botpromt[noWa];
+                        clearTimeout(timeoutHandles[noWa]);
+                        delete timeoutHandles[noWa];
+                    } else {
+                        await sock.sendMessage(noWa, { text: 'Terjadi kesalahan saat mengirim data. Mohon coba lagi.' });
+                        delete userchoice[noWa];
+                        delete botpromt[noWa];
+                        clearTimeout(timeoutHandles[noWa]);
+                        delete timeoutHandles[noWa];
+                    }
+                }
             }
         } else if (step === 'location') {
             botpromt[noWa].location = text;
          
             const result = await getunitlist(text);
             if (result.message && result.message === 'Unit Kerja tidak ditemukan') {
-                await sock.sendMessage(noWa, { text: 'Unit Kerja Tidak ditemukan di database. Harap input ulang:' });
+                await sock.sendMessage(noWa, { text: 'Unit kerja tidak ditemukan di database. Harap masukkan kembali:' });
             } else if (result !== null && result.length > 0) {
                 botpromt[noWa].unit_kerja_option = result;
 
-                let message = 'Pilih Unit Kerja (1/2/3..):\n';
+                let message = 'Silakan pilih unit kerja dari opsi berikut *HARAP MASUKAN ANGKA SAJA DARI PILIHAN TERSEDIA*:\n ';
                 result.forEach((item, index) => {
                     message += `${index + 1}. ${item.nama_unit}\n`;
                 });
-                message += `${result.length + 1}. Unit tidak tersedia dalam list`;
-
+                message += `${result.length + 1}. Unit tidak tersedia dalam daftar`;
                 userchoice[noWa] = 'unit_kerja';
           
                 await sock.sendMessage(noWa, { text: message });
@@ -653,7 +708,8 @@ const handleijinmsg = async (noWa, text) => {
                 const chosenIndex = parseInt(text) - 1;
                 const options = botpromt[noWa].unit_kerja_option;
             if (chosenIndex === options.length) {
-                await sock.sendMessage(noWa, { text: 'Jika Nama Unit tidak tersedia. Silakan hubungi admin di nomor: +62-xxx-xxx-xxxx untuk keluhan.' });
+                await sock.sendMessage(noWa, { text: 'Jika nama unit tidak tersedia, hubungi admin di nomor +62-xxx-xxx-xxxx untuk keluhan.' });
+
                 delete userchoice[noWa];
                 delete botpromt[noWa];
                 clearTimeout(timeoutHandles[noWa]);
@@ -664,7 +720,7 @@ const handleijinmsg = async (noWa, text) => {
                 delete botpromt[noWa].atasan_options_satu;
 
                 userchoice[noWa] = 'date';
-                await sock.sendMessage(noWa, { text: 'Tanggal keluar (23-02-2024)/Hari-Bulan-Tahun. Pastikan Format Tanggal sesuai!:' });
+                await sock.sendMessage(noWa, { text: 'Harap masukkan tanggal *UNTUK KELUAR KEBUN* dengan format (DD-MM-YYYY)(23-02-2024) yang benar:' });
             } else {
                 await sock.sendMessage(noWa, { text: 'Pilihan tidak valid. Silakan masukkan angka yang sesuai:' });
             }
@@ -699,7 +755,7 @@ const handleijinmsg = async (noWa, text) => {
 
             botpromt[noWa].date = text;
             userchoice[noWa] = 'date_2';
-            await sock.sendMessage(noWa, { text: 'Tanggal kembali (23-02-2024)/DD-MM-YYYY. Pastikan Format Tanggal sesuai!:' });
+            await sock.sendMessage(noWa, { text: 'Harap masukkan tanggal *UNTUK KEMBALI* dengan format (DD-MM-YYYY)(23-02-2024) yang benar:' });
         } else if (step === 'date_2') {
             const dateRegex = /^\d{2}-\d{2}-\d{4}$/;
             if (!dateRegex.test(text)) {
@@ -730,17 +786,20 @@ const handleijinmsg = async (noWa, text) => {
 
             botpromt[noWa].date_2 = text;
             userchoice[noWa] = 'needs';
-            await sock.sendMessage(noWa, { text: 'Keperluan Keluar Kebun?' });
-        } else if (step === 'needs') {
+            await sock.sendMessage(noWa, { text: 'Mohon jelaskan keperluan Anda untuk keluar dari kebun:' });
+
+        }else if (step === 'needs') {
             botpromt[noWa].needs = text;
             userchoice[noWa] = 'atasan_satu';
-            await sock.sendMessage(noWa, { text: 'Masukan Atasan Satu?' });
-        }else if (step === 'atasan_satu') {
+            await sock.sendMessage(noWa, { text: 'Silakan masukkan nama lengkap *ATASAN PERTAMA* atau nama depan untuk pencarian didatabase' });
+
+        } else if (step === 'atasan_satu') {
             botpromt[noWa].atasan_satu = text;
             const nama_atasansatu = text;
             const result = await checkatasan(nama_atasansatu);
+        
             if (result.message && result.message === 'Nama Atasan tidak ditemukan') {
-                botpromt[noWa].attempts += 1;
+                botpromt[noWa].attempts = (botpromt[noWa].attempts || 0) + 1;
                 if (botpromt[noWa].attempts >= 3) {
                     await sock.sendMessage(noWa, { text: 'Anda sudah melakukan percobaan 3 kali. Silahkan coba kembali nanti.' });
                     delete userchoice[noWa];
@@ -749,19 +808,17 @@ const handleijinmsg = async (noWa, text) => {
                     delete timeoutHandles[noWa];
                 } else {
                     await sock.sendMessage(noWa, { text: 'Nama Atasan Tidak ditemukan di database. Harap input ulang:' });
-                 
                 }
-
-               
-            } else if (result !== null && result.length > 0) {
+            } else if (result && result.length > 0) {
                 botpromt[noWa].atasan_options_satu = result;
-
-                let message = 'Pilih Nama Atasan Satu:\n';
+        
+                let message = 'Pilih Nama Atasan Pertama.*HARAP MASUKAN ANGKA SAJA DARI PILIHAN TERSEDIA*:\n';
                 result.forEach((item, index) => {
                     message += `${index + 1}. ${item.nama} (${item.departemen})\n`;
                 });
-                message += `${result.length + 1}. Nama tidak tersedia`;
-
+                message += `${result.length + 1}. Nama tidak tersedia di dalam pilihan\n`;
+                message += `${result.length + 2}. Coba masukan nama kembali`;
+        
                 userchoice[noWa] = 'choose_atasan_satu';
                 await sock.sendMessage(noWa, { text: message });
             } else {
@@ -770,31 +827,49 @@ const handleijinmsg = async (noWa, text) => {
         } else if (step === 'choose_atasan_satu') {
             const chosenIndex = parseInt(text) - 1;
             const options = botpromt[noWa].atasan_options_satu;
-
+        
+            if (isNaN(chosenIndex) || !options || chosenIndex < 0 || chosenIndex >= options.length + 2) {
+                botpromt[noWa].attempts = (botpromt[noWa].attempts || 0) + 1;
+                if (botpromt[noWa].attempts >= 3) {
+                    await sock.sendMessage(noWa, { text: 'Anda sudah melakukan percobaan 3 kali. Silahkan coba kembali nanti.' });
+                    delete userchoice[noWa];
+                    delete botpromt[noWa];
+                    clearTimeout(timeoutHandles[noWa]);
+                    delete timeoutHandles[noWa];
+                    return;
+                } else {
+                    await sock.sendMessage(noWa, { text: 'Pilihan tidak valid. Silakan masukkan nomor yang sesuai:' });
+                    return;
+                }
+            }
+        
             if (chosenIndex === options.length) {
                 await sock.sendMessage(noWa, { text: 'Nama Atasan tidak tersedia. Silakan hubungi admin di nomor: +62-xxx-xxx-xxxx untuk keluhan.' });
                 delete userchoice[noWa];
                 delete botpromt[noWa];
                 clearTimeout(timeoutHandles[noWa]);
                 delete timeoutHandles[noWa];
-            } else if (!isNaN(chosenIndex) && options && options[chosenIndex]) {
+            } else if (chosenIndex === options.length + 1) {
+                userchoice[noWa] = 'atasan_satu';
+                await sock.sendMessage(noWa, { text: 'Silakan masukkan nama lengkap atasan *PERTAMA* atau nama depan untuk pencarian didatabase' });
+            } else {
                 botpromt[noWa].atasan_satu = options[chosenIndex].nama;
                 botpromt[noWa].atasan_satu_id = options[chosenIndex].id;
                 delete botpromt[noWa].atasan_options_satu;
-
+        
                 userchoice[noWa] = 'atasan_dua';
-                await sock.sendMessage(noWa, { text: 'Masukan Nama Atasan Dua?' });
-            } else {
-                await sock.sendMessage(noWa, { text: 'Pilihan tidak valid. Silakan masukkan nomor yang sesuai:' });
+                // botpromt[noWa] = { attempts: 0 };
+                await sock.sendMessage(noWa, { text: 'Silakan masukkan nama lengkap *ATASAN KEDUA* atau nama depan untuk pencarian didatabase' });
             }
-        } else if (step === 'atasan_dua') {
+        }
+        else if (step === 'atasan_dua') {
             botpromt[noWa].atasan_dua = text;
             const nama_atasandua = text;
             const result = await checkatasan(nama_atasandua);
             if (result.message && result.message === 'Nama Atasan tidak ditemukan') {
                 botpromt[noWa].attempts += 1;
                 if (botpromt[noWa].attempts >= 3) {
-                    await sock.sendMessage(noWa, { text: 'Anda sudah melakukan percobaan 3 kali. Silahkan coba kembali nanti.' });
+                    await sock.sendMessage(noWa, { text: 'Anda sudah melakukan percobaan *3 kali*. Silahkan coba kembali nanti.' });
                     delete userchoice[noWa];
                     delete botpromt[noWa];
                     clearTimeout(timeoutHandles[noWa]);
@@ -806,11 +881,13 @@ const handleijinmsg = async (noWa, text) => {
             } else if (result !== null && result.length > 0) {
                 botpromt[noWa].atasan_options_dua = result;
 
-                let message = 'Pilih Nama Atasan Dua:\n';
+                let message = 'Pilih Nama Atasan kedua , *HARAP MASUKAN ANGKA SAJA DARI PILIHAN TERSEDIA*:\n';
                 result.forEach((item, index) => {
                     message += `${index + 1}. ${item.nama} (${item.departemen})\n`;
                 });
-                message += `${result.length + 1}. Nama tidak tersedia`;
+                message += `${result.length + 1}. Nama tidak tersedia di dalam pilihan\n`;
+                message += `${result.length + 2}. Coba masukan nama kembali`;
+        
 
                 userchoice[noWa] = 'choose_atasan_dua';
                 await sock.sendMessage(noWa, { text: message });
@@ -821,20 +898,38 @@ const handleijinmsg = async (noWa, text) => {
             const chosenIndex = parseInt(text) - 1;
             const options = botpromt[noWa].atasan_options_dua;
 
+            if (isNaN(chosenIndex) || !options || chosenIndex < 0 || chosenIndex >= options.length + 2) {
+                botpromt[noWa].attempts = (botpromt[noWa].attempts || 0) + 1;
+                if (botpromt[noWa].attempts >= 3) {
+                    await sock.sendMessage(noWa, { text: 'Anda sudah melakukan percobaan 3 kali. Silahkan coba kembali nanti.' });
+                    delete userchoice[noWa];
+                    delete botpromt[noWa];
+                    clearTimeout(timeoutHandles[noWa]);
+                    delete timeoutHandles[noWa];
+                    return;
+                } else {
+                    await sock.sendMessage(noWa, { text: 'Pilihan tidak valid. Silakan masukkan nomor yang sesuai:' });
+                    return;
+                }  
+            }
+
             if (chosenIndex === options.length) {
                 await sock.sendMessage(noWa, { text: 'Nama Atasan tidak tersedia. Silakan hubungi admin di nomor: +62-xxx-xxx-xxxx untuk keluhan.' });
                 delete userchoice[noWa];
                 delete botpromt[noWa];
                 clearTimeout(timeoutHandles[noWa]);
-                    delete timeoutHandles[noWa];
+                delete timeoutHandles[noWa];
+            }else if (chosenIndex === options.length + 1) {
+                userchoice[noWa] = 'atasan_dua';
+                await sock.sendMessage(noWa, { text: 'Silakan masukkan nama lengkap atasan *KEDUA* atau nama depan untuk pencarian didatabase' });
             } else if (!isNaN(chosenIndex) && options && options[chosenIndex]) {
                 botpromt[noWa].atasan_dua = options[chosenIndex].nama;
                 botpromt[noWa].atasan_dua_id = options[chosenIndex].id;
                 delete botpromt[noWa].atasan_options_dua;
 
                 userchoice[noWa] = 'confirm';
-                await sock.sendMessage(noWa, { text: `Please confirm the following information:
-                \nNama: ${botpromt[noWa].name}
+                await sock.sendMessage(noWa, { text: `*HARAP CROSSCHECK DATA ANDA TERLEBIH DAHULU*:
+                \nNama: ${botpromt[noWa].user_nama}
                 \nTujuan: ${botpromt[noWa].location}
                 \nUnit Kerja: ${botpromt[noWa].unit_kerja}
                 \nTanggal Izin Keluar: ${botpromt[noWa].date}
@@ -843,14 +938,12 @@ const handleijinmsg = async (noWa, text) => {
                 \nAtasan Satu: ${botpromt[noWa].atasan_satu}
                 \nAtasan Dua: ${botpromt[noWa].atasan_dua}
                 \nApakah semua data sudah sesuai? (ya/tidak)` });
-            } else {
-                await sock.sendMessage(noWa, { text: 'Pilihan tidak valid. Silakan masukkan nomor yang sesuai:' });
             }
         } else if (step === 'confirm') {
             if (text.toLowerCase() === 'ya') {
                 try {
-                    const response = await axios.post('http://qc-apps2.test/api/senddata', {
-                        name: botpromt[noWa].name,
+                    const response = await axios.post('http://qc-apps2.test/api/formdataizin', {
+                        name: botpromt[noWa].user_nama_id,
                         tujuan: botpromt[noWa].location,
                         unit_kerja: botpromt[noWa].unit_kerja_id,
                         pergi: botpromt[noWa].date,
@@ -858,9 +951,23 @@ const handleijinmsg = async (noWa, text) => {
                         keperluan: botpromt[noWa].needs,
                         atasan_satu: botpromt[noWa].atasan_satu_id,
                         atasan_dua: botpromt[noWa].atasan_dua_id,
+                        no_hp: noWa,
                     });
-        
-                    await sock.sendMessage(noWa, { text: 'Data berhasil dikirim!' });
+
+                    let responses = response.data;
+
+                    const responseKey = Object.keys(responses)[0];
+
+                    console.log(responses);
+                    await sock.sendMessage(noWa, { text: 'Mohon Tunggu server melakukan validasi.....' });
+                    if (responseKey === "error_validasi") {
+                        await sock.sendMessage(noWa, { text: `Data gagal diverifikasi, Karena: ${responses[responseKey]}` });
+                    } else {
+                        await sock.sendMessage(noWa, { text: 'Permohonan izin berhasil dikirim dan sedang menunggu persetujuan dari atasan. Harap tunggu notifikasi selanjutnya atau cek perkembangan di website: https://srs-ssms.com.' });
+                    }
+                    
+
+                   
                 } catch (error) {
                     if (error.response && error.response.status === 404) {
                         await sock.sendMessage(noWa, { text: 'Nama Atasan tidak ditemukan di database. Harap input ulang.' });
@@ -879,7 +986,7 @@ const handleijinmsg = async (noWa, text) => {
             delete userchoice[noWa];
             delete botpromt[noWa];
             clearTimeout(timeoutHandles[noWa]);
-                    delete timeoutHandles[noWa];
+            delete timeoutHandles[noWa];
         } else {
             await sock.sendMessage(noWa, { text: 'Pilihan tidak valid. Silakan masukkan nomor yang sesuai:' });
         }
@@ -956,127 +1063,127 @@ async function connectToWhatsApp() {
                 const lowerCaseMessage = text ? text.toLowerCase() : null;
 
                 if (message.key.remoteJid.endsWith('@g.us')) {
-                    if (lowerCaseMessage && lowerCaseMessage.startsWith("!tarik")) {
-                        // Extract the estate name from the command
-                        const estateCommand = lowerCaseMessage.replace("!tarik", "").trim();
-                        const estate = estateCommand.toUpperCase(); // Convert to uppercase for consistency
+                    // if (lowerCaseMessage && lowerCaseMessage.startsWith("!tarik")) {
+                    //     // Extract the estate name from the command
+                    //     const estateCommand = lowerCaseMessage.replace("!tarik", "").trim();
+                    //     const estate = estateCommand.toUpperCase(); // Convert to uppercase for consistency
                         
-                        // Check if the estate name is valid
-                        if (!estate) {
-                            await sock.sendMessage(noWa, { text: 'Mohon masukkan nama estate setelah perintah !tarik dilanjutkan dengan singkatan nama Estate.\n-Contoh !tarikkne = Untuk Estate KNE dan seterusnya' }, { quoted: message });
-                            return;
-                          }
+                    //     // Check if the estate name is valid
+                    //     if (!estate) {
+                    //         await sock.sendMessage(noWa, { text: 'Mohon masukkan nama estate setelah perintah !tarik dilanjutkan dengan singkatan nama Estate.\n-Contoh !tarikkne = Untuk Estate KNE dan seterusnya' }, { quoted: message });
+                    //         return;
+                    //       }
                         
-                          const apiUrl = 'https://qc-apps.srs-ssms.com/api/getdatacron';
-                          try {
-                            const response = await axios.get(apiUrl);
-                            const dataestate = response.data;
-                            const matchingTasks = dataestate.filter(task => task.estate === estate);
+                    //       const apiUrl = 'https://qc-apps.srs-ssms.com/api/getdatacron';
+                    //       try {
+                    //         const response = await axios.get(apiUrl);
+                    //         const dataestate = response.data;
+                    //         const matchingTasks = dataestate.filter(task => task.estate === estate);
                         
-                            if (matchingTasks.length > 0) {
-                              const { estate: estateFromMatchingTask, group_id, wilayah: folder } = matchingTasks[0];
-                              await sock.sendMessage(noWa, { text: 'Mohon tunggu laporan sedang di proses' }, { quoted: message });
-                              const result = await sendtaksasiest(estateFromMatchingTask, group_id, folder);
+                    //         if (matchingTasks.length > 0) {
+                    //           const { estate: estateFromMatchingTask, group_id, wilayah: folder } = matchingTasks[0];
+                    //           await sock.sendMessage(noWa, { text: 'Mohon tunggu laporan sedang di proses' }, { quoted: message });
+                    //           const result = await sendtaksasiest(estateFromMatchingTask, group_id, folder);
                         
-                            //   console.log(result);
-                              if (result === 'success') {
-                                console.log('success');
-                                break;
-                              } else {
-                                await sock.sendMessage(noWa, { text: 'Terjadi kesalahan saat mengirim taksasi. Silakan Hubungi Tim D.A.' }, { quoted: message });
-                                break;
-                              }
-                            } else {
-                              await sock.sendMessage(noWa, { text: 'Estate yang anda masukan tidak tersedia di database. Silahkan Ulangi dan Cek Kembali' }, { quoted: message });
-                              break;
-                            }
-                          } catch (error) {
-                            console.error('Error fetching data:', error.message);
-                            break;
-                          }
-                          break;
+                    //         //   console.log(result);
+                    //           if (result === 'success') {
+                    //             console.log('success');
+                    //             break;
+                    //           } else {
+                    //             await sock.sendMessage(noWa, { text: 'Terjadi kesalahan saat mengirim taksasi. Silakan Hubungi Tim D.A.' }, { quoted: message });
+                    //             break;
+                    //           }
+                    //         } else {
+                    //           await sock.sendMessage(noWa, { text: 'Estate yang anda masukan tidak tersedia di database. Silahkan Ulangi dan Cek Kembali' }, { quoted: message });
+                    //           break;
+                    //         }
+                    //       } catch (error) {
+                    //         console.error('Error fetching data:', error.message);
+                    //         break;
+                    //       }
+                    //       break;
                      
-                    }else if (lowerCaseMessage === "!menu") {
-                        await sock.sendMessage(noWa, { text: "Perintah Bot Yang tersida \n1 = !tarik (Menarik Estate yang di pilih untuk di generate ke dalam grup yang sudah di tentukan) \n2.!getgrup (Menampilkan semua isi list group yang ada) \n3.!cast (melakukan broadcast pesan ke semua grup taksasi) \n4.!restart (Merestart Service Bot)" }, { quoted: message });
-                        break;
-                    }else if (lowerCaseMessage &&lowerCaseMessage === "!getgrup") {
-                        // console.log('ini group');
-                        let getGroups = await sock.groupFetchAllParticipating();
-                        let groups = Object.values(await sock.groupFetchAllParticipating());
-                        let datagrup = []; // Initialize an empty array to store group information
+                    // }else if (lowerCaseMessage === "!menu") {
+                    //     await sock.sendMessage(noWa, { text: "Perintah Bot Yang tersida \n1 = !tarik (Menarik Estate yang di pilih untuk di generate ke dalam grup yang sudah di tentukan) \n2.!getgrup (Menampilkan semua isi list group yang ada) \n3.!cast (melakukan broadcast pesan ke semua grup taksasi) \n4.!restart (Merestart Service Bot)" }, { quoted: message });
+                    //     break;
+                    // }else if (lowerCaseMessage &&lowerCaseMessage === "!getgrup") {
+                    //     // console.log('ini group');
+                    //     let getGroups = await sock.groupFetchAllParticipating();
+                    //     let groups = Object.values(await sock.groupFetchAllParticipating());
+                    //     let datagrup = []; // Initialize an empty array to store group information
                         
-                        for (let group of groups) {
-                            datagrup.push(`id_group: ${group.id} || Nama Group: ${group.subject}`);
-                        }
+                    //     for (let group of groups) {
+                    //         datagrup.push(`id_group: ${group.id} || Nama Group: ${group.subject}`);
+                    //     }
                         
-                        await sock.sendMessage(noWa, { text: `List ${datagrup.join('\n')}` }, { quoted: message }); 
+                    //     await sock.sendMessage(noWa, { text: `List ${datagrup.join('\n')}` }, { quoted: message }); 
         
-                        break;
-                    }else if (lowerCaseMessage &&lowerCaseMessage === "!cast") {
-                        // Send a message asking for the broadcast message
-                        await sock.sendMessage(noWa, { text: "Masukan Kata kata yang ingin di broadcast ke dalam group?" }, { quoted: message });
+                    //     break;
+                    // }else if (lowerCaseMessage &&lowerCaseMessage === "!cast") {
+                    //     // Send a message asking for the broadcast message
+                    //     await sock.sendMessage(noWa, { text: "Masukan Kata kata yang ingin di broadcast ke dalam group?" }, { quoted: message });
                     
-                        // Define a function to handle the response
-                        async function handleBroadcast({ messages: responseMessages }) {
-                            let messageSent = false; // Flag to track if the message has been sent
+                    //     // Define a function to handle the response
+                    //     async function handleBroadcast({ messages: responseMessages }) {
+                    //         let messageSent = false; // Flag to track if the message has been sent
                     
-                            for (const responseMessage of responseMessages) {
-                                if (!responseMessage.key.fromMe && responseMessage.key.remoteJid === noWa) {
-                                    // Get the broadcast message from the user's response
-                                    const broadcastMessage = responseMessage.message.conversation;
+                    //         for (const responseMessage of responseMessages) {
+                    //             if (!responseMessage.key.fromMe && responseMessage.key.remoteJid === noWa) {
+                    //                 // Get the broadcast message from the user's response
+                    //                 const broadcastMessage = responseMessage.message.conversation;
                     
-                                    // console.log(broadcastMessage);
+                    //                 // console.log(broadcastMessage);
                     
-                                    // Get the participating groups
-                                    let groups = Object.values(await sock.groupFetchAllParticipating());
-                                    let datagrup = groups.map((group) => ({
-                                        id_group: group.id,
-                                        nama: group.subject,
-                                    }));
+                    //                 // Get the participating groups
+                    //                 let groups = Object.values(await sock.groupFetchAllParticipating());
+                    //                 let datagrup = groups.map((group) => ({
+                    //                     id_group: group.id,
+                    //                     nama: group.subject,
+                    //                 }));
                     
-                                    let groupdont = [
-                                        '120363200959267322@g.us',
-                                        '120363164661400702@g.us',
-                                        '120363214741096436@g.us',
-                                        '120363158376501304@g.us',
-                                    ];
+                    //                 let groupdont = [
+                    //                     '120363200959267322@g.us',
+                    //                     '120363164661400702@g.us',
+                    //                     '120363214741096436@g.us',
+                    //                     '120363158376501304@g.us',
+                    //                 ];
                     
-                                    // Send a message indicating that the broadcast is being processed
-                                    await sock.sendMessage(noWa, { text: 'Mohon Tunggu, Broadcast Sedang Di Proses' }, { quoted: message });
+                    //                 // Send a message indicating that the broadcast is being processed
+                    //                 await sock.sendMessage(noWa, { text: 'Mohon Tunggu, Broadcast Sedang Di Proses' }, { quoted: message });
                     
-                                    // Set a timer for 60 seconds (1 minute)
-                                    const timer = setTimeout(async () => {
-                                        if (!messageSent) {
-                                            // If the message hasn't been sent within the time limit, notify the user
-                                            await sock.sendMessage(noWa, { text: 'Waktu habis! Silahkan coba kembali.' }, { quoted: message });
-                                        }
-                                    }, 60000); // 60 seconds in milliseconds
+                    //                 // Set a timer for 60 seconds (1 minute)
+                    //                 const timer = setTimeout(async () => {
+                    //                     if (!messageSent) {
+                    //                         // If the message hasn't been sent within the time limit, notify the user
+                    //                         await sock.sendMessage(noWa, { text: 'Waktu habis! Silahkan coba kembali.' }, { quoted: message });
+                    //                     }
+                    //                 }, 60000); // 60 seconds in milliseconds
                     
-                                    // Send the broadcast message to groups
-                                    for (const group of datagrup) {
-                                        if (!groupdont.includes(group.id_group)) {
-                                            await sock.sendMessage(group.id_group, { text: broadcastMessage });
-                                            console.log(group.id_group, { text: broadcastMessage });
-                                            messageSent = true; // Update the flag since the message has been sent
-                                        }
-                                    }
+                    //                 // Send the broadcast message to groups
+                    //                 for (const group of datagrup) {
+                    //                     if (!groupdont.includes(group.id_group)) {
+                    //                         await sock.sendMessage(group.id_group, { text: broadcastMessage });
+                    //                         console.log(group.id_group, { text: broadcastMessage });
+                    //                         messageSent = true; // Update the flag since the message has been sent
+                    //                     }
+                    //                 }
                     
-                                    // Clear the timer since the message has been sent or the timer has expired
-                                    clearTimeout(timer);
+                    //                 // Clear the timer since the message has been sent or the timer has expired
+                    //                 clearTimeout(timer);
                     
-                                    // Send a message indicating that the broadcast message has been sent to all groups
-                                    await sock.sendMessage(noWa, { text: 'Broadcast Pesan sudah di kirim Kesemua Grup' }, { quoted: message });
+                    //                 // Send a message indicating that the broadcast message has been sent to all groups
+                    //                 await sock.sendMessage(noWa, { text: 'Broadcast Pesan sudah di kirim Kesemua Grup' }, { quoted: message });
                     
-                                    // Turn off the event listener for handling broadcast messages
-                                    sock.ev.off("messages.upsert", handleBroadcast);
-                                    break;
-                                }
-                            }
-                        }
+                    //                 // Turn off the event listener for handling broadcast messages
+                    //                 sock.ev.off("messages.upsert", handleBroadcast);
+                    //                 break;
+                    //             }
+                    //         }
+                    //     }
                     
-                        // Listen for the user's response to the broadcast message
-                        sock.ev.on("messages.upsert", handleBroadcast);
-                    }
+                    //     // Listen for the user's response to the broadcast message
+                    //     sock.ev.on("messages.upsert", handleBroadcast);
+                    // }
                 } else {
                     if (lowerCaseMessage && lowerCaseMessage === "!menu") {
                         await sock.sendMessage(noWa, { text: "Hanya dapat di gunakan di dalam grup!" }, { quoted: message });
@@ -1337,63 +1444,63 @@ async function maintencweget() {
 
 // all cron 
 
-cron.schedule('0 * * * *', async () => {
-    try {
-        // console.log('Running message history');
-        await statusHistory(); // Call the function to check history and send message
-    } catch (error) {
-        console.error('Error in cron job:', error);
-    }
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone according to your location
-});
+// cron.schedule('0 * * * *', async () => {
+//     try {
+//         // console.log('Running message history');
+//         await statusHistory(); // Call the function to check history and send message
+//     } catch (error) {
+//         console.error('Error in cron job:', error);
+//     }
+// }, {
+//     scheduled: true,
+//     timezone: 'Asia/Jakarta' // Set the timezone according to your location
+// });
 
-cron.schedule('*/1 * * * *', async () => {
-    await sendMessagesBasedOnData();
-    await maintencweget();
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta'
-});
+// cron.schedule('*/1 * * * *', async () => {
+//     await sendMessagesBasedOnData();
+//     await maintencweget();
+// }, {
+//     scheduled: true,
+//     timezone: 'Asia/Jakarta'
+// });
 
-cron.schedule('0 * * * *', async () => {
-    try {
-        await statusAWS(); // Call the function to check AWS status and send message
-    } catch (error) {
-        console.error('Error in cron job:', error);
-    }
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta' // Set the timezone according to your location
-});
+// cron.schedule('0 * * * *', async () => {
+//     try {
+//         await statusAWS(); // Call the function to check AWS status and send message
+//     } catch (error) {
+//         console.error('Error in cron job:', error);
+//     }
+// }, {
+//     scheduled: true,
+//     timezone: 'Asia/Jakarta' // Set the timezone according to your location
+// });
 
-cron.schedule('*/10 * * * *', async () => {
-    await sendfailcronjob();
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta'
-});
-cron.schedule('0 7 * * *', async () => {
-    exec('pm2 restart bot_da', (error, stdout, stderr) => {
-        if (error) {
-            console.error(`Error restarting app: ${error.message}`);
-            return;
-        }
-        if (stderr) {
-            console.error(`Restart error: ${stderr}`);
-            return;
-        }
-        console.log(`App restarted: ${stdout}`);
-    });
-}, {
-    scheduled: true,
-    timezone: 'Asia/Jakarta'
-});
+// cron.schedule('*/10 * * * *', async () => {
+//     await sendfailcronjob();
+// }, {
+//     scheduled: true,
+//     timezone: 'Asia/Jakarta'
+// });
+// cron.schedule('0 7 * * *', async () => {
+//     exec('pm2 restart bot_da', (error, stdout, stderr) => {
+//         if (error) {
+//             console.error(`Error restarting app: ${error.message}`);
+//             return;
+//         }
+//         if (stderr) {
+//             console.error(`Restart error: ${stderr}`);
+//             return;
+//         }
+//         console.log(`App restarted: ${stdout}`);
+//     });
+// }, {
+//     scheduled: true,
+//     timezone: 'Asia/Jakarta'
+// });
 
 
 connectToWhatsApp()
-    .catch(err => console.log("unexpected error: " + err)) // catch any errors
+    .catch(err => console.log("unexpected error: " + err))
 server.listen(port, () => {
     console.log("Server Berjalan pada Port : " + port);
 });
