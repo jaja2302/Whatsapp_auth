@@ -493,7 +493,7 @@ async function statusHistory() {
 
 async function checkatasan(nama_atasansatu) {
     try {
-        // Fetch data from the API using the provided name
+  
         // const response = await axios.post('http://qc-apps2.test/api/getnamaatasan', {
         //     nama: nama_atasansatu
         // });
@@ -576,7 +576,7 @@ const handleijinmsg = async (noWa, text) => {
         // 10 menit timeout 
         // timeoutHandles[noWa] = setTimeout(resetUserState, 10 * 60 * 1000);
         // 10 detik timeout 
-        timeoutHandles[noWa] = setTimeout(resetUserState, 30 * 1000);
+        timeoutHandles[noWa] = setTimeout(resetUserState, 60 * 1000);
 
     };
 
@@ -646,9 +646,10 @@ const handleijinmsg = async (noWa, text) => {
                 await sock.sendMessage(noWa, { text: 'Silakan masukkan *nama lengkap anda* atau *nama depan Anda* untuk pencarian di database.' });
             } else {
                 try {
-                    const response = await axios.post('http://qc-apps2.test/api/formdataizin', {
+                    const response = await axios.post('https://qc-apps.srs-ssms.com/api/formdataizin', {
                         name: options[chosenIndex].id,
                         type: 'check_user',
+                        no_hp: noWa,
                     });
                     let responses = response.data;
 
@@ -658,6 +659,7 @@ const handleijinmsg = async (noWa, text) => {
                     await sock.sendMessage(noWa, { text: 'Mohon tunggu, server sedang melakukan validasi.' });
                     if (responseKey === "error_validasi") {
                         await sock.sendMessage(noWa, { text: `Verifikasi data gagal karena: ${responses[responseKey]}` });
+                        await sock.sendMessage(noWa, { text: `Session Berakhir, Silahkan Izin Ulang dengan perintah !izin` });
                         delete userchoice[noWa];
                         delete botpromt[noWa];
                         clearTimeout(timeoutHandles[noWa]);
@@ -942,7 +944,7 @@ const handleijinmsg = async (noWa, text) => {
         } else if (step === 'confirm') {
             if (text.toLowerCase() === 'ya') {
                 try {
-                    const response = await axios.post('http://qc-apps2.test/api/formdataizin', {
+                    const response = await axios.post('https://qc-apps.srs-ssms.com/api/formdataizin', {
                         name: botpromt[noWa].user_nama_id,
                         tujuan: botpromt[noWa].location,
                         unit_kerja: botpromt[noWa].unit_kerja_id,
@@ -992,6 +994,97 @@ const handleijinmsg = async (noWa, text) => {
         }
     }
 };
+
+// end surat izin 
+async function downloadFile(fileUrl, destinationPath) {
+    const file = fs.createWriteStream(destinationPath);
+
+    return new Promise((resolve, reject) => {
+        https.get(fileUrl, function(response) {
+            response.pipe(file);
+            file.on('finish', function() {
+                file.close(() => {
+                    console.log(`File downloaded successfully: ${destinationPath}`);
+                    resolve();
+                });
+            });
+        }).on('error', function(err) {
+            fs.unlink(destinationPath, () => {}); // Delete the file if there is an error
+            console.error('Error downloading the file:', err);
+            reject(err);
+        });
+    });
+}
+
+async function get_mill_data() {
+    try {
+        const response = await axios.get('http://qc-apps2.test/api/getdatamill');
+        const data = response.data;
+
+        if (data.status === '200' && data.data && data.data.length > 0) {
+            const result = data.data;
+
+            for (const itemdata of result) {
+                for (const fileName of itemdata.foto) {
+                    const trimmedFileName = fileName.trim(); // Ensure no leading/trailing spaces
+                    const fileUrl = `https://mobilepro.srs-ssms.com/storage/app/public/qc/grading_mill/${trimmedFileName}`;
+                    const destinationPath = path.join(__dirname, 'uploads', trimmedFileName);
+
+                    // Download the file
+                    await new Promise((resolve, reject) => {
+                        const file = fs.createWriteStream(destinationPath);
+                        https.get(fileUrl, function(response) {
+                            response.pipe(file);
+                            file.on('finish', function() {
+                                file.close(() => {
+                                    console.log('File downloaded successfully:', destinationPath);
+                                    resolve(); // Resolve the promise after the file is downloaded
+                                });
+                            });
+                        }).on('error', function(err) {
+                            fs.unlink(destinationPath, () => {}); // Delete the file if there is an error
+                            console.error('Error downloading the file:', err);
+                            reject(err); // Reject the promise if there is an error
+                        });
+                    });
+
+                    const messageOptions = {
+                        image: {
+                            url: destinationPath
+                        },
+                    };
+
+                    await sock.sendMessage('6287777909185@s.whatsapp.net', messageOptions);
+
+                    // Remove the image file after sending
+                    fs.unlink(destinationPath, (err) => {
+                        if (err) {
+                            console.error('Error unlinking the file:', err);
+                        } else {
+                            console.log('File removed successfully:', destinationPath);
+                        }
+                    });
+                }
+
+                // Update the data mill after processing each itemdata
+                await axios.post('http://qc-apps2.test/api/updatedatamill', { id: itemdata.id });
+
+                // Send the summary message
+                await sock.sendMessage('6287777909185@s.whatsapp.net', {
+                    text: `*Berikut Hasil Grading Total ${itemdata.estate} ${itemdata.afdeling}*:\n*Ripeness*: ${itemdata.Ripeness} jjg (${itemdata.percentase_ripenes}%)\n*Unripe*: ${itemdata.Unripe} jjg (${itemdata.persenstase_unripe}%)\n• 0 brondol: ${itemdata.nol_brondol} jjg (${itemdata.persentase_nol_brondol}%)\n•< brondol: ${itemdata.kurang_brondol} jjg (${itemdata.persentase_brondol}%)\n-Nomor Pemanen: ${itemdata.nomor_pemanen}\n-Unripe tanda X: ${itemdata.unripe_tanda_x} jjg\n*Overripe*:  ${itemdata.Overripe} jjg ( ${itemdata.persentase_overripe}%)\n*Empty bunch*: ${itemdata.empty_bunch} jjg (${itemdata.persentase_empty_bunch}%)\n*Rotten bunch*: ${itemdata.rotten_bunch} jjg (${itemdata.persentase_rotten_bunce}%)\n*Abnormal*: ${itemdata.Abnormal} jjg (${itemdata.persentase_abnormal}%)\n*Loose Fruit*: ${itemdata.loose_fruit} Kg (${itemdata.persentase_lose_fruit}%)\n*Dirt*: ${itemdata.Dirt} Kg ( ${itemdata.persentase}%)\n\nJumlah janjang di Grading: ${itemdata.jjg_grading} jjg\nJumlah janjang di SPB:  ${itemdata.jjg_spb} jjg\nJumlah Selisih janjang: ${itemdata.jjg_selisih} jjg ( ${itemdata.persentase_selisih})\nTerimakasih`
+                });
+            }
+        } else {
+            console.log('data kosong');
+        }
+        return response;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+
+// end grading mill 
+
 
 async function connectToWhatsApp() {
 
@@ -1267,7 +1360,7 @@ const updateQR = (data) => {
 
 app.get("/testing", async (req, res) => {
     try {
-        await statusHistory();
+        await get_mill_data();
         // Send a response back to the client indicating success
         res.status(200).json({
             status: true,
@@ -1395,7 +1488,7 @@ app.get("/getdataapi", async (req, res) => {
 // untuk aplikasi web maintence 
 async function maintencweget() {
     try {
-        const getStatus = await axios.get('http://qc-apps2.test/api/sendwamaintence');
+        const getStatus = await axios.get('https://qc-apps.srs-ssms.com/api/sendwamaintence');
         const dataress = getStatus.data;
 
         if (!Array.isArray(dataress)) {
@@ -1421,7 +1514,7 @@ async function maintencweget() {
                     // console.log(`Failed to send message to ${numberWA}:`, error);
                 }
                
-                await axios.post('http://qc-apps2.test/api/changestatusmaintence', { id: id[0] });
+                await axios.post('https://qc-apps.srs-ssms.com/api/changestatusmaintence', { id: id[0] });
                 await delay(15000)
             } else {
                 console.log('WhatsApp is not connected.');

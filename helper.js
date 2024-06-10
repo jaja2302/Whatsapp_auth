@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer');
-
+const axios = require('axios');
 
 async function generatemapstaksasi(est, datetime) {
     let attempts = 0;
@@ -60,7 +60,6 @@ async function generatemapstaksasi(est, datetime) {
         return { error: 'Upload failed after maximum attempts' };
     }
 }
-
 
 
 module.exports = { generatemapstaksasi };
