@@ -1054,7 +1054,7 @@ async function get_mill_data() {
                         },
                     };
 
-                    await sock.sendMessage('6287777909185@s.whatsapp.net', messageOptions);
+                    await sock.sendMessage('120363164751475851@g.us', messageOptions);
 
                     // Remove the image file after sending
                     fs.unlink(destinationPath, (err) => {
@@ -1130,7 +1130,11 @@ async function connectToWhatsApp() {
             }
         } else if (connection === 'open') {
             console.log('opened connection');
-          
+            let groups = Object.values(await sock.groupFetchAllParticipating())
+            //console.log(groups);
+            for (let group of groups) {
+                console.log("id_group: " + group.id + " || Nama Group: " + group.subject);
+            }
             return;
         }
         if (update.qr) {
