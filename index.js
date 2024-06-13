@@ -497,7 +497,7 @@ async function checkatasan(nama_atasansatu) {
         // const response = await axios.post('http://qc-apps2.test/api/getnamaatasan', {
         //     nama: nama_atasansatu
         // });
-        const response = await axios.post('https://qc-apps.srs-ssms.com/api/getnamaatasan', {
+        const response = await axios.post('http://qc-apps2.test/api/getnamaatasan', {
             nama: nama_atasansatu
         });
 
@@ -517,7 +517,7 @@ async function getunitlist(nama_atasansatu) {
     try {
         // Fetch data from the API using the provided name
         // const response = await axios.get('http://qc-apps2.test/api/getunitdata');
-        const response = await axios.get('https://qc-apps.srs-ssms.com/api/getunitdata');
+        const response = await axios.get('http://qc-apps2.test/api/getunitdata');
 
         return response.data.data;
     } catch (error) {
@@ -536,7 +536,7 @@ async function getuserinfo(user) {
         // const response = await axios.post('http://qc-apps2.test/api/getuserinfo', {
         //     nama: user
         // });
-        const response = await axios.post('https://qc-apps.srs-ssms.com/api/getuserinfo', {
+        const response = await axios.post('http://qc-apps2.test/api/getuserinfo', {
             nama: user
         });
 
@@ -646,7 +646,7 @@ const handleijinmsg = async (noWa, text) => {
                 await sock.sendMessage(noWa, { text: 'Silakan masukkan *nama lengkap anda* atau *nama depan Anda* untuk pencarian di database.' });
             } else {
                 try {
-                    const response = await axios.post('https://qc-apps.srs-ssms.com/api/formdataizin', {
+                    const response = await axios.post('http://qc-apps2.test/api/formdataizin', {
                         name: options[chosenIndex].id,
                         type: 'check_user',
                         no_hp: noWa,
@@ -944,7 +944,7 @@ const handleijinmsg = async (noWa, text) => {
         } else if (step === 'confirm') {
             if (text.toLowerCase() === 'ya') {
                 try {
-                    const response = await axios.post('https://qc-apps.srs-ssms.com/api/formdataizin', {
+                    const response = await axios.post('http://qc-apps2.test/api/formdataizin', {
                         name: botpromt[noWa].user_nama_id,
                         tujuan: botpromt[noWa].location,
                         unit_kerja: botpromt[noWa].unit_kerja_id,
@@ -1192,7 +1192,7 @@ async function connectToWhatsApp() {
                     //         return;
                     //       }
                         
-                    //       const apiUrl = 'https://qc-apps.srs-ssms.com/api/getdatacron';
+                    //       const apiUrl = 'http://qc-apps2.test//api/getdatacron';
                     //       try {
                     //         const response = await axios.get(apiUrl);
                     //         const dataestate = response.data;
