@@ -1309,11 +1309,25 @@ const handleIotInput = async (noWa, text) => {
                         await sock.sendMessage(noWa, { text: 'Data berhasil dimasukan ke dalam database' });
                     }
                 } catch (error) {
+                    // Log the entire error object for more details
                     console.log(error);
+                
+                    // Log specific properties of the error object
+                    console.log('Error message:', error.message);
+                    console.log('Error stack:', error.stack);
+                    
+                    if (error.response) {
+                        console.log('Error response data:', error.response.data);
+                        console.log('Error response status:', error.response.status);
+                        console.log('Error response headers:', error.response.headers);
+                    }
+                
+                    // Handle the 404 status code specifically
                     if (error.response && error.response.status === 404) {
-                        await sock.sendMessage(noWa, { text: 'Terjadi kesalahan saat mengirim data. Silakan coba lagi.' });  
+                        await sock.sendMessage(noWa, { text: 'Terjadi kesalahan saat mengirim data. Silakan coba lagi.' });
                     }
                 }
+                
             } else if (text.toLowerCase() === 'tidak') {
                 await sock.sendMessage(noWa, { text: 'Silakan coba lagi untuk input dengan mengetikkan !iot.' });
             } else {
