@@ -1016,84 +1016,126 @@ async function downloadFile(fileUrl, destinationPath) {
     });
 }
 
+
 async function get_mill_data() {
     try {
-        const response = await axios.get('http://qc-apps2.test/api/getdatamill');
+        // const response = await axios.get('http://qc-apps2.test/api/getdatamill');
+        const response = await axios.get('https://qc-apps.srs-ssms.com/api/getdatamill');
         const data = response.data;
-        const noWa_grading = '120363204285862734@g.us'
+        const noWa_grading = '120363204285862734@g.us' 
+        // const noWa_grading = '120363164751475851@g.us'
 
         if (data.status === '200' && data.data && data.data.length > 0) {
             const result = data.data;
 
             for (const itemdata of result) {
-                for (const fileName of itemdata.foto) {
-                    const trimmedFileName = fileName.trim(); // Ensure no leading/trailing spaces
-                    const fileUrl = `https://mobilepro.srs-ssms.com/storage/app/public/qc/grading_mill/${trimmedFileName}`;
-                    const destinationPath = path.join(__dirname, 'uploads', trimmedFileName);
+                // for (const fileName of itemdata.foto) {
+                //     const trimmedFileName = fileName.trim(); // Ensure no leading/trailing spaces
+                //     const fileUrl = `https://mobilepro.srs-ssms.com/storage/app/public/qc/grading_mill/${trimmedFileName}`;
+                //     const destinationPath = path.join(__dirname, 'uploads', trimmedFileName);
 
-                    // Download the file
-                    await new Promise((resolve, reject) => {
-                        const file = fs.createWriteStream(destinationPath);
-                        https.get(fileUrl, function(response) {
-                            response.pipe(file);
-                            file.on('finish', function() {
-                                file.close(() => {
-                                    console.log('File downloaded successfully:', destinationPath);
-                                    resolve(); // Resolve the promise after the file is downloaded
-                                });
-                            });
-                        }).on('error', function(err) {
-                            fs.unlink(destinationPath, () => {}); // Delete the file if there is an error
-                            console.error('Error downloading the file:', err);
-                            reject(err); // Reject the promise if there is an error
-                        });
-                    });
+                //     // Download the file
+                //     await new Promise((resolve, reject) => {
+                //         const file = fs.createWriteStream(destinationPath);
+                //         https.get(fileUrl, function(response) {
+                //             response.pipe(file);
+                //             file.on('finish', function() {
+                //                 file.close(() => {
+                //                     console.log('File downloaded successfully:', destinationPath);
+                //                     resolve(); // Resolve the promise after the file is downloaded
+                //                 });
+                //             });
+                //         }).on('error', function(err) {
+                //             fs.unlink(destinationPath, () => {}); // Delete the file if there is an error
+                //             console.error('Error downloading the file:', err);
+                //             reject(err); // Reject the promise if there is an error
+                //         });
+                //     });
 
-                    const messageOptions = {
-                        image: {
-                            url: destinationPath
-                        },
-                    };
+                //     const messageOptions = {
+                //         image: {
+                //             url: destinationPath
+                //         },
+                //     };
 
-                    await sock.sendMessage(noWa_grading, messageOptions);
+                //     await sock.sendMessage(noWa_grading, messageOptions);
 
-                    // Remove the image file after sending
-                    fs.unlink(destinationPath, (err) => {
-                        if (err) {
-                            console.error('Error unlinking the file:', err);
-                        } else {
-                            console.log('File removed successfully:', destinationPath);
-                        }
-                    });
-                }
-
+                //     // Remove the image file after sending
+                //     fs.unlink(destinationPath, (err) => {
+                //         if (err) {
+                //             console.error('Error unlinking the file:', err);
+                //         } else {
+                //             console.log('File removed successfully:', destinationPath);
+                //         }
+                //     });
+                // }
                 // Update the data mill after processing each itemdata
-                // await axios.post('http://qc-apps2.test/api/updatedatamill', { id: itemdata.id });
-                let pemanen_tanpabrondol = itemdata.pemanen_list_tanpabrondol.tanpaBrondol_list
-                let pemanen_kurangbrondol = itemdata.pemanen_list_kurangbrondol.kurangBrondol_list
-
+                await axios.post('https://qc-apps.srs-ssms.com/api/updatedatamill', { id: itemdata.id });
+                let pemanen_tanpabrondol = itemdata.pemanen_list_tanpabrondol?.tanpaBrondol_list || [];
+                let pemanen_kurangbrondol = itemdata.pemanen_list_kurangbrondol?.kurangBrondol_list || [];
+                
                 let message = `*Berikut Hasil Grading Total ${itemdata.estate} ${itemdata.afdeling}*:\n`;
                 message += `*Ripeness*: ${itemdata.Ripeness} jjg (${itemdata.percentase_ripenes}%)\n`;
                 message += `*Unripe*: ${itemdata.Unripe} jjg (${itemdata.persenstase_unripe}%)\n`;
                 message += `•0 brondol: ${itemdata.nol_brondol} jjg (${itemdata.persentase_nol_brondol}%)\n`;
                 pemanen_tanpabrondol.forEach((item, index) => {
-                    message += `${index + 1}. Nomor Pemanen : ${item.no_pemanen} = (${item.tanpaBrondol}) jjg\n`;
+                    message += `${index + 1}. No. Pemanen : ${item.no_pemanen} = ${item.tanpaBrondol} jjg\n`;
                 });
                 message += `•< brondol: ${itemdata.kurang_brondol} jjg (${itemdata.persentase_brondol}%)\n`;
                 pemanen_kurangbrondol.forEach((item, index) => {
-                    message += `${index + 1}. Nomor Pemanen : ${item.no_pemanen} = (${item.kurangBrondol}) jjg\n`;
+                    message += `${index + 1}. No. Pemanen : ${item.no_pemanen} = ${item.kurangBrondol} jjg\n`;
                 });
                 message += `*Overripe*:  ${itemdata.Overripe} jjg ( ${itemdata.persentase_overripe}%)\n`;
                 message += `*Empty bunch*: ${itemdata.empty_bunch} jjg (${itemdata.persentase_empty_bunch}%)\n`;
                 message += `*Rotten bunch*: ${itemdata.rotten_bunch} jjg (${itemdata.persentase_rotten_bunce}%)\n`;
                 message += `*Abnormal*: ${itemdata.Abnormal} jjg (${itemdata.persentase_abnormal}%)\n`;
-                message += `*Loose Fruit*: ${itemdata.loose_fruit} Kg (${itemdata.persentase_lose_fruit}%)\n`;
-                message += `*Dirt*: ${itemdata.Dirt} Kg ( ${itemdata.persentase}%)\n\nJumlah janjang di Grading: ${itemdata.jjg_grading} jjg\n`;
-                message += `*Loose Fruit*: ${itemdata.loose_fruit} Kg (${itemdata.persentase_lose_fruit}%)\n`;
+                message += `*Dirt*: ${itemdata.Dirt} Kg ( ${itemdata.persentase}%)\n`
+                message += `*Loose Fruit*: ${itemdata.loose_fruit} Kg (${itemdata.persentase_lose_fruit}%)\n\n`;
+                message += `Jumlah janjang di Grading: ${itemdata.jjg_grading} jjg\n`;
                 message += `Jumlah janjang di SPB:  ${itemdata.jjg_spb} jjg\n`;
                 message += `Jumlah Selisih janjang: ${itemdata.jjg_selisih} jjg ( ${itemdata.persentase_selisih}%)\n`;
-                message += `Terimakasih  Generated by Digital Architech SRS bot`;
+                message += `Generated by Digital Architech SRS bot`;
+                // await sock.sendMessage(noWa_grading, { text: message });
+              
+                const fileUrl = `https://qc-apps.srs-ssms.com/storage/${itemdata.filename_pdf}`;
+                const destinationPath = `./uploads/${itemdata.filename_pdf}`;
+    
+                const file = fs.createWriteStream(destinationPath);
+    
+                await new Promise((resolve, reject) => {
+                    https.get(fileUrl, function(response) {
+                        response.pipe(file);
+                        file.on('finish', function() {
+                            file.close(() => {
+                                console.log('File downloaded successfully.');
+                                resolve(); // Resolve the promise after the file is downloaded
+                            });
+                        });
+                    }).on('error', function(err) {
+                        fs.unlink(destinationPath, () => {}); // Delete the file if there is an error
+                        console.error('Error downloading the file:', err);
+                        reject(err); // Reject the promise if there is an error
+                    });
+                });
+                const messageOptions = {
+                    document: {
+                        url: destinationPath,
+                        caption: 'ini caption'
+                    },
+                    fileName: 'Laporan Grading Mill'
+                };
+            
+                // Send the PDF file
+                await sock.sendMessage(noWa_grading, messageOptions);
                 await sock.sendMessage(noWa_grading, { text: message });
+
+                // Unlink the file after sending
+                fs.unlink(destinationPath, (err) => {
+                    if (err) {
+                        console.error('Error unlinking the file:', err);
+                        
+                    }
+                });
             }
         } else {
             console.log('data kosong');
