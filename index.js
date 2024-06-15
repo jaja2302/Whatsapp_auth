@@ -1179,6 +1179,158 @@ async function getNotifications() {
 
 //end bot notifikasi surat ijin
 
+const userIotChoice = {};
+const botIotPrompt = {};
+const handleIotInput = async (noWa, text) => {
+    const resetUserState = async () => {
+        await sock.sendMessage(noWa, { text: 'Waktu Anda telah habis. Silakan mulai kembali dengan mengetikkan !iot.' });
+        delete userIotChoice[noWa];
+        delete botIotPrompt[noWa];
+        if (timeoutHandles[noWa]) {
+            clearTimeout(timeoutHandles[noWa]);
+            delete timeoutHandles[noWa];
+        }
+    };
+
+    const setUserTimeout = () => {
+        if (timeoutHandles[noWa]) {
+            clearTimeout(timeoutHandles[noWa]);
+        }
+        timeoutHandles[noWa] = setTimeout(resetUserState, 60 * 1000);
+    };
+
+    if (!userIotChoice[noWa]) {
+        userIotChoice[noWa] = 'estate';
+        botIotPrompt[noWa] = { attempts: 0 };
+        await sock.sendMessage(noWa, { text: 'Masukkan estate' });
+        setUserTimeout();
+    } else {
+        setUserTimeout(); // Reset timeout with every interaction
+        const step = userIotChoice[noWa];
+
+        if (step === 'estate') {
+            botIotPrompt[noWa].estate = text;
+            try {
+                const response = await axios.post('https://qc-apps.srs-ssms.com/api/inputiotdata', {
+                    estate: botIotPrompt[noWa].estate,
+                    type: 'check_estate',
+                });
+                let responses = response.data.data;
+
+                // console.log(responses);
+                await sock.sendMessage(noWa, { text: 'Mohon tunggu, server sedang melakukan validasi.' });
+                
+                let message = 'Pilih list afdeling, Masukan angka saja\n';
+                let options = [];
+
+                Object.keys(responses).forEach((key, index) => {
+                    responses[key].forEach((item) => {
+                        options.push(item);
+                        message += `${options.length}. ${item.nama}\n`;
+                    });
+                });
+
+                message += `${options.length + 1}. Afd tidak tersedia dalam daftar.\n`;
+                message += `${options.length + 2}. Coba masukan afd kembali\n`;
+
+                botIotPrompt[noWa].afdelingOptions = options;
+                userIotChoice[noWa] = 'afdeling';
+                await sock.sendMessage(noWa, { text: message });
+                           
+            } catch (error) {
+                if (error.response && error.response.status === 404) {
+                    await sock.sendMessage(noWa, { text: 'Terjadi error tidak terduga' });
+                    delete userIotChoice[noWa];
+                    delete botIotPrompt[noWa];
+                    clearTimeout(timeoutHandles[noWa]);
+                    delete timeoutHandles[noWa];
+                } else {
+                    await sock.sendMessage(noWa, { text: 'Terjadi kesalahan saat mengirim data. Mohon coba lagi.' });
+                    delete userIotChoice[noWa];
+                    delete botIotPrompt[noWa];
+                    clearTimeout(timeoutHandles[noWa]);
+                    delete timeoutHandles[noWa];
+                }
+            }
+
+          
+        } else if (step === 'afdeling') {
+            const chosenIndex = parseInt(text) - 1;
+            const options = botIotPrompt[noWa].afdelingOptions;
+         
+            if (isNaN(chosenIndex) || !options || chosenIndex < 0 || chosenIndex >= options.length + 2) {
+                await sock.sendMessage(noWa, { text: 'Pilihan tidak valid. Silakan masukkan nomor yang sesuai:' });
+                return;
+            } else {
+                botIotPrompt[noWa].afdeling = chosenIndex < options.length ? options[chosenIndex].nama : null;
+                botIotPrompt[noWa].afdeling_id = chosenIndex < options.length ? options[chosenIndex].afdeling_id : null;
+                botIotPrompt[noWa].estate_id = chosenIndex < options.length ? options[chosenIndex].est_id : null;
+                botIotPrompt[noWa].estate_nama = chosenIndex < options.length ? options[chosenIndex].est : null;
+                userIotChoice[noWa] = 'curah_hujan';
+                await sock.sendMessage(noWa, { text: 'Masukkan curah hujan (harap angka saja)' });
+            }
+               
+       
+        } else if (step === 'curah_hujan') {
+            const curahHujan = parseFloat(text);
+            if (isNaN(curahHujan)) {
+                await sock.sendMessage(noWa, { text: 'Curah hujan tidak valid. Masukkan angka saja.' });
+                return;
+            }
+            botIotPrompt[noWa].curahHujan = curahHujan;
+            userIotChoice[noWa] = 'confirm';
+            await sock.sendMessage(noWa, {
+                text: `*HARAP CROSSCHECK DATA ANDA TERLEBIH DAHULU*:
+                \nAfdeling ID: ${botIotPrompt[noWa].afdeling_id}
+                \nEstate: ${botIotPrompt[noWa].estate_nama}
+                \nCurah Hujan: ${botIotPrompt[noWa].curahHujan}
+                \nApakah semua data sudah sesuai? (ya/tidak)`
+            });
+        } else if (step === 'confirm') {
+            if (text.toLowerCase() === 'ya') {
+                try {
+                    const response = await axios.post('https://qc-apps.srs-ssms.com/api/inputiotdata', {
+                        afdeling_id: botIotPrompt[noWa].afdeling_id,
+                        estate_id: botIotPrompt[noWa].estate_id,
+                        curahHujan: botIotPrompt[noWa].curahHujan,
+                        estate: botIotPrompt[noWa].estate_nama,
+                        afdeling: botIotPrompt[noWa].afdeling,
+                        type: 'input',
+                    });
+
+                    const responses = response.data;
+                    const responseKey = Object.keys(responses)[0];
+
+                  
+                    await sock.sendMessage(noWa, { text: 'Mohon tunggu, server sedang melakukan validasi...' });
+                    if (responseKey === "error_validasi") {
+                        await sock.sendMessage(noWa, { text: `Data gagal diverifikasi, karena: ${responses[responseKey]}` });
+                    } else {
+                        await sock.sendMessage(noWa, { text: 'Data berhasil dimasukan ke dalam database' });
+                    }
+                } catch (error) {
+                    console.log(error);
+                    if (error.response && error.response.status === 404) {
+                        await sock.sendMessage(noWa, { text: 'Terjadi kesalahan saat mengirim data. Silakan coba lagi.' });  
+                    }
+                }
+            } else if (text.toLowerCase() === 'tidak') {
+                await sock.sendMessage(noWa, { text: 'Silakan coba lagi untuk input dengan mengetikkan !iot.' });
+            } else {
+                await sock.sendMessage(noWa, { text: 'Pilihan tidak valid. Silakan jawab dengan "ya" atau "tidak":' });
+                return;
+            }
+
+            delete userIotChoice[noWa];
+            delete botIotPrompt[noWa];
+            clearTimeout(timeoutHandles[noWa]);
+            delete timeoutHandles[noWa];
+        } else {
+            await sock.sendMessage(noWa, { text: 'Pilihan tidak valid. Silakan masukkan nomor yang sesuai:' });
+        }
+    }
+};
+
 async function connectToWhatsApp() {
 
     const { state, saveCreds } = await useMultiFileAuthState('baileys_auth_info')
@@ -1398,7 +1550,15 @@ async function connectToWhatsApp() {
                     } else if (userchoice[noWa]) {
                         // Continue the ijin process if it has already started
                         await handleijinmsg(noWa, text);
-                    } else {
+                    }else if (lowerCaseMessage && lowerCaseMessage === "!iot") {
+                        if (!userIotChoice[noWa]) {
+                            await handleIotInput(noWa, lowerCaseMessage);
+                        }
+                    } else if (userIotChoice[noWa]) {
+                        // Continue the input process if it has already started
+                        await handleIotInput(noWa, text);
+                    }
+                    else {
                         // Handle other messages
                         console.log('message comming to number');
                         // await handleMessage(noWa, lowerCaseMessage, messages);
