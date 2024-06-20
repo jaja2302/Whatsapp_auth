@@ -584,7 +584,9 @@ const handleijinmsg = async (noWa, text) => {
     if (!userchoice[noWa]) {
         userchoice[noWa] = 'name';
         botpromt[noWa] = { attempts: 0 }; 
-        await sock.sendMessage(noWa, { text: 'Silakan masukkan *nama lengkap anda* atau *nama depan Anda* untuk pencarian di database.' });
+        await sock.sendMessage(noWa, { text: 'Anda dapat membatalkan kapan saja permintaan izin dengan menjawab batal pada pertanyaan.' });
+
+        await sock.sendMessage(noWa, { text: 'Silakan masukkan *nama lengkap anda* atau *nama depan Anda* untuk pencarian di database.Balas batal untuk membatalkan.' });
 
         setUserTimeout();
     } else {
@@ -592,6 +594,14 @@ const handleijinmsg = async (noWa, text) => {
         const step = userchoice[noWa];
 
         if (step === 'name') {
+            if (text.toLowerCase() === 'batal') {
+                await sock.sendMessage(noWa, { text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.' });
+                delete userchoice[noWa];
+                delete botpromt[noWa];
+                clearTimeout(timeoutHandles[noWa]);
+                delete timeoutHandles[noWa];
+                return
+            }
             botpromt[noWa].name = text;
             userchoice[noWa] = 'check_user';
             await sock.sendMessage(noWa, { text: 'Memeriksa nama pengguna di database...' });
@@ -626,6 +636,14 @@ const handleijinmsg = async (noWa, text) => {
                 await sock.sendMessage(noWa, { text: message });
             }
         } else if (step === 'choose_name') {
+            if (text.toLowerCase() === 'batal') {
+                await sock.sendMessage(noWa, { text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.' });
+                delete userchoice[noWa];
+                delete botpromt[noWa];
+                clearTimeout(timeoutHandles[noWa]);
+                delete timeoutHandles[noWa];
+                return
+            }
             const chosenIndex = parseInt(text) - 1;
             const options = botpromt[noWa].user_id_option;
          
@@ -688,11 +706,27 @@ const handleijinmsg = async (noWa, text) => {
                 }
             }
         } else if (step === 'location') {
+            if (text.toLowerCase() === 'batal') {
+                await sock.sendMessage(noWa, { text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.' });
+                delete userchoice[noWa];
+                delete botpromt[noWa];
+                clearTimeout(timeoutHandles[noWa]);
+                delete timeoutHandles[noWa];
+                return
+            }
             botpromt[noWa].location = text;
             userchoice[noWa] = 'date';
             await sock.sendMessage(noWa, { text: 'Harap masukkan tanggal *UNTUK KELUAR KEBUN* dengan format (DD-MM-YYYY)(23-02-2024) yang benar:' });
 
         } else if (step === 'date') {
+            if (text.toLowerCase() === 'batal') {
+                await sock.sendMessage(noWa, { text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.' });
+                delete userchoice[noWa];
+                delete botpromt[noWa];
+                clearTimeout(timeoutHandles[noWa]);
+                delete timeoutHandles[noWa];
+                return
+            }
             const dateRegex = /^\d{2}-\d{2}-\d{4}$/;
             if (!dateRegex.test(text)) {
                 await sock.sendMessage(noWa, { text: 'Tanggal Tidak sesuai harap masukkan kembali (Format:Hari-Bulan-Tahun):' });
@@ -724,6 +758,14 @@ const handleijinmsg = async (noWa, text) => {
             userchoice[noWa] = 'date_2';
             await sock.sendMessage(noWa, { text: 'Harap masukkan tanggal *UNTUK KEMBALI* dengan format (DD-MM-YYYY)(23-02-2024) yang benar:' });
         } else if (step === 'date_2') {
+            if (text.toLowerCase() === 'batal') {
+                await sock.sendMessage(noWa, { text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.' });
+                delete userchoice[noWa];
+                delete botpromt[noWa];
+                clearTimeout(timeoutHandles[noWa]);
+                delete timeoutHandles[noWa];
+                return
+            }
             const dateRegex = /^\d{2}-\d{2}-\d{4}$/;
             if (!dateRegex.test(text)) {
                 await sock.sendMessage(noWa, { text: 'Tanggal Tidak sesuai harap masukkan kembali (Format:Hari-Bulan-Tahun):' });
@@ -756,11 +798,27 @@ const handleijinmsg = async (noWa, text) => {
             await sock.sendMessage(noWa, { text: 'Mohon jelaskan keperluan Anda untuk keluar dari kebun:' });
 
         }else if (step === 'needs') {
+            if (text.toLowerCase() === 'batal') {
+                await sock.sendMessage(noWa, { text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.' });
+                delete userchoice[noWa];
+                delete botpromt[noWa];
+                clearTimeout(timeoutHandles[noWa]);
+                delete timeoutHandles[noWa];
+                return
+            }
             botpromt[noWa].needs = text;
             userchoice[noWa] = 'atasan_satu';
             await sock.sendMessage(noWa, { text: 'Silakan masukkan nama lengkap *ATASAN PERTAMA* atau nama depan untuk pencarian didatabase' });
 
         } else if (step === 'atasan_satu') {
+            if (text.toLowerCase() === 'batal') {
+                await sock.sendMessage(noWa, { text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.' });
+                delete userchoice[noWa];
+                delete botpromt[noWa];
+                clearTimeout(timeoutHandles[noWa]);
+                delete timeoutHandles[noWa];
+                return
+            }
             botpromt[noWa].atasan_satu = text;
             const nama_atasansatu = text;
             const result = await checkatasan(nama_atasansatu);
@@ -792,6 +850,14 @@ const handleijinmsg = async (noWa, text) => {
                 await sock.sendMessage(noWa, { text: 'Nama Atasan Tidak ditemukan di database. Harap input ulang:' });
             }
         } else if (step === 'choose_atasan_satu') {
+            if (text.toLowerCase() === 'batal') {
+                await sock.sendMessage(noWa, { text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.' });
+                delete userchoice[noWa];
+                delete botpromt[noWa];
+                clearTimeout(timeoutHandles[noWa]);
+                delete timeoutHandles[noWa];
+                return
+            }
             const chosenIndex = parseInt(text) - 1;
             const options = botpromt[noWa].atasan_options_satu;
         
@@ -828,8 +894,15 @@ const handleijinmsg = async (noWa, text) => {
                 // botpromt[noWa] = { attempts: 0 };
                 await sock.sendMessage(noWa, { text: 'Silakan masukkan nama lengkap *ATASAN KEDUA* atau nama depan untuk pencarian didatabase' });
             }
-        }
-        else if (step === 'atasan_dua') {
+        }else if (step === 'atasan_dua') {
+            if (text.toLowerCase() === 'batal') {
+                await sock.sendMessage(noWa, { text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.' });
+                delete userchoice[noWa];
+                delete botpromt[noWa];
+                clearTimeout(timeoutHandles[noWa]);
+                delete timeoutHandles[noWa];
+                return
+            }
             botpromt[noWa].atasan_dua = text;
             const nama_atasandua = text;
             const result = await checkatasan(nama_atasandua);
@@ -862,6 +935,14 @@ const handleijinmsg = async (noWa, text) => {
                 await sock.sendMessage(noWa, { text: 'Nama Atasan Tidak ditemukan di database. Harap input ulang:' });
             }
         } else if (step === 'choose_atasan_dua') {
+            if (text.toLowerCase() === 'batal') {
+                await sock.sendMessage(noWa, { text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.' });
+                delete userchoice[noWa];
+                delete botpromt[noWa];
+                clearTimeout(timeoutHandles[noWa]);
+                delete timeoutHandles[noWa];
+                return
+            }
             const chosenIndex = parseInt(text) - 1;
             const options = botpromt[noWa].atasan_options_dua;
 
@@ -961,7 +1042,7 @@ const handleijinmsg = async (noWa, text) => {
 
 async function getNotifications() {
     try {
-        const response = await axios.get('http://qc-apps2.test/api/getnotifijin');
+        const response = await axios.get('https://qc-apps.srs-ssms.com/api/getnotifijin');
         const data = response.data;
 
         if (data.status === '200' && data.data && data.data.length > 0) {
@@ -969,7 +1050,7 @@ async function getNotifications() {
             for (const itemdata of result) {
                 if (itemdata.no_hp) {
                     if (itemdata.status === 'approved') {
-                        let message = `*Ijin baru perlu di approved*:\n`;
+                        let message = `*Izin baru perlu di approved*:\n`;
                         message += `Hallo Selamat Siang Pak/Ibu ${itemdata.atasan_nama}\n`;
                         message += `Anda memiliki request baru untuk izin keluar kebun dengan detail sebagai berikut:\n`;
                         message += `*ID Pemohon* : ${itemdata.id}\n`;
@@ -993,12 +1074,70 @@ async function getNotifications() {
                         message += `*Lokasi Tujuan*: ${itemdata.lokasi_tujuan}\n\n`;
                         message += `Harap selalu berhati-hati selama perjalanan dan pastikan untuk mengikuti protokol keamanan yang berlaku. Kami mendoakan agar Anda tiba dengan selamat di tujuan dan kembali ke kebun dengan kondisi sehat dan aman.\n\n`;
                         message += `Jika ada pertanyaan lebih lanjut, jangan ragu untuk menghubungi kami.\n\n`;
+                        message += `Atau kunjungi web kami di :https://izin-kebun.srs-ssms.com \n\n`;
                         message += `Terima kasih,\n`;
                         message += `Tim Digital Architect SRS Bot`;
+
+                        try {
+                            const genpdf = await axios.get('https://izin-kebun.srs-ssms.com/api/generatePdfIzinKebun', {
+                                params: {
+                                    user: 'j',
+                                    pw: 'j',
+                                    id: itemdata.id,
+                                }
+                            });
+                            // console.log(genpdf.data.filename);
+
+                            const fileUrl = `https://izin-kebun.srs-ssms.com/public/storage/files/${genpdf.data.filename}`;
+                            const destinationPath = `./uploads/${itemdata.filename_pdf}`;
+                
+                            const file = fs.createWriteStream(destinationPath);
+                
+                            await new Promise((resolve, reject) => {
+                                https.get(fileUrl, function(response) {
+                                    response.pipe(file);
+                                    file.on('finish', function() {
+                                        file.close(() => {
+                                            console.log('File downloaded successfully.');
+                                            resolve(); // Resolve the promise after the file is downloaded
+                                        });
+                                    });
+                                }).on('error', function(err) {
+                                    fs.unlink(destinationPath, () => {}); // Delete the file if there is an error
+                                    console.error('Error downloading the file:', err);
+                                    reject(err); // Reject the promise if there is an error
+                                });
+                            });
+                            const messageOptions = {
+                                document: {
+                                    url: destinationPath,
+                                    caption: 'ini caption'
+                                },
+                                fileName: 'Surat Izin Kebun'
+                            };
+                            await sock.sendMessage(itemdata.no_hp + "@s.whatsapp.net", messageOptions);
+
+                            try {
+                                const unlinkpdf = await axios.get('https://izin-kebun.srs-ssms.com/api/deletePdfIzinKebun', {
+                                    params: {
+                                        user: 'j',
+                                        pw: 'j',
+                                        filename: genpdf.data.filename,
+                                    }
+                                });    
+                            } catch (error) {
+                                console.log("Error unlinkpdf PDF:", error);
+                            }
+                        } catch (error) {
+                            console.log("Error generating PDF:", error);
+                        }
+                        
+
+
                         await sock.sendMessage(itemdata.no_hp + "@s.whatsapp.net", { text: message });
 
                         try {
-                            const response = await axios.post('http://qc-apps2.test/api/updatenotifijin', {
+                            const response = await axios.post('https://qc-apps.srs-ssms.com/api/updatenotifijin', {
                                 id_data: itemdata.id,
                                 id_atasan: itemdata.id_atasan,
                                 answer: 'ya',
@@ -1018,7 +1157,7 @@ async function getNotifications() {
 
                         try {
                         
-                            const response = await axios.post('http://qc-apps2.test/api/updatenotifijin', {
+                            const response = await axios.post('https://qc-apps.srs-ssms.com/api/updatenotifijin', {
                                 id_data: itemdata.id,
                                 id_atasan: '3',
                                 answer: 'tidak',
@@ -1029,13 +1168,14 @@ async function getNotifications() {
                         }
                     }
                 } else {
-                    let message = `Aplikasi Surat ijin kebun Nomor HP kosong untuk : ${itemdata.id}\n`;
+                    let message = `Aplikasi Surat izin kebun Nomor HP kosong untuk : ${itemdata.id}\n`;
                     message += `Haraf di update nama atasan ${itemdata.atasan_nama}\n`;
                     await sock.sendMessage('120363205553012899'  + "@g.us", { text: message });
                 }
             }
         } else {
             console.log('Data kosong');
+            console.log(data);
         }
         return response;
     } catch (error) {
