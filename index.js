@@ -1621,131 +1621,132 @@ async function connectToWhatsApp() {
                 const lowerCaseMessage = text ? text.toLowerCase() : null;
     
                 
-                if (message.message?.extendedTextMessage?.contextInfo) {
-                    const contextInfo = message.message.extendedTextMessage.contextInfo;
-                    const text_repply = message.message.extendedTextMessage.text;
-                    const quotedMessageSender = contextInfo.participant;
-                    const respon_atasan = text_repply;
+                // if (message.message?.extendedTextMessage?.contextInfo) {
+                //     const contextInfo = message.message.extendedTextMessage.contextInfo;
+                //     const text_repply = message.message.extendedTextMessage.text;
+                //     const quotedMessageSender = contextInfo.participant;
+                //     const respon_atasan = text_repply;
     
-                    if (contextInfo.quotedMessage && contextInfo.quotedMessage.conversation) {
-                        const conversation = contextInfo.quotedMessage.conversation;
+                //     if (contextInfo.quotedMessage && contextInfo.quotedMessage.conversation) {
+                //         const conversation = contextInfo.quotedMessage.conversation;
     
-                        if (conversation.includes('Izin baru perlu di approved')) {
-                            const idPemohonStartIndex = conversation.indexOf('*ID Pemohon* : ') + '*ID Pemohon* : '.length;
-                            const idPemohonEndIndex = conversation.indexOf('\n', idPemohonStartIndex);
-                            const idPemohon = conversation.substring(idPemohonStartIndex, idPemohonEndIndex).trim();
-                            const [id, idAtasan] = idPemohon.split('/').map(part => part.trim());
-                            const namaStartIndex = conversation.indexOf('*Nama* : ') + '*Nama* : '.length;
-                            const namaEndIndex = conversation.indexOf('\n', namaStartIndex);
-                            const nama = conversation.substring(namaStartIndex, namaEndIndex).trim();
+                //         if (conversation.includes('Izin baru perlu di approved')) {
+                //             const idPemohonStartIndex = conversation.indexOf('*ID Pemohon* : ') + '*ID Pemohon* : '.length;
+                //             const idPemohonEndIndex = conversation.indexOf('\n', idPemohonStartIndex);
+                //             const idPemohon = conversation.substring(idPemohonStartIndex, idPemohonEndIndex).trim();
+                //             const [id, idAtasan] = idPemohon.split('/').map(part => part.trim());
+                //             const namaStartIndex = conversation.indexOf('*Nama* : ') + '*Nama* : '.length;
+                //             const namaEndIndex = conversation.indexOf('\n', namaStartIndex);
+                //             const nama = conversation.substring(namaStartIndex, namaEndIndex).trim();
                             
-                            // console.log(nama);
-                            if (respon_atasan.toLowerCase() !== 'ya' && respon_atasan.toLowerCase() !== 'tidak') {
-                                await sock.sendMessage(noWa, { text: "Harap hanya balas ya atau tidak" }, { quoted: message });
-                            } else if (respon_atasan.toLowerCase() === 'ya') {
-                                try {
-                                    const response = await axios.post('https://qc-apps.srs-ssms.com/api/updatenotifijin', {
-                                        id_data: id,
-                                        id_atasan: idAtasan,
-                                        answer: 'ya',
-                                    });
-                                    let responses = response.data;
+                //             // console.log(nama);
+                //             if (respon_atasan.toLowerCase() !== 'ya' && respon_atasan.toLowerCase() !== 'tidak') {
+                //                 await sock.sendMessage(noWa, { text: "Harap hanya balas ya atau tidak" }, { quoted: message });
+                //             } else if (respon_atasan.toLowerCase() === 'ya') {
+                //                 try {
+                //                     const response = await axios.post('https://qc-apps.srs-ssms.com/api/updatenotifijin', {
+                //                         id_data: id,
+                //                         id_atasan: idAtasan,
+                //                         answer: 'ya',
+                //                     });
+                //                     let responses = response.data;
                             
-                                    const responseKey = Object.keys(responses)[0];
+                //                     const responseKey = Object.keys(responses)[0];
                             
-                                    await sock.sendMessage(noWa, { text: 'Mohon Tunggu server melakukan validasi.....' });
-                                    if (responseKey === "error_validasi") {
-                                        await sock.sendMessage(noWa, { text: `Data gagal diverifikasi, Karena: ${responses[responseKey]}` });
-                                    } else {
-                                        await sock.sendMessage(noWa, { text: "Izin Berhasil di approved" }, { quoted: message });
-                                    }
+                //                     await sock.sendMessage(noWa, { text: 'Mohon Tunggu server melakukan validasi.....' });
+                //                     if (responseKey === "error_validasi") {
+                //                         await sock.sendMessage(noWa, { text: `Data gagal diverifikasi, Karena: ${responses[responseKey]}` });
+                //                     } else {
+                //                         await sock.sendMessage(noWa, { text: "Izin Berhasil di approved" }, { quoted: message });
+                //                     }
                             
-                                } catch (error) {
-                                    console.log("Error approving:", error);
-                                }
-                            } else if (respon_atasan.toLowerCase() === 'tidak') {
-                                let message = `*Alasan izin di tolak?*:\n`;
-                                message += `*ID Pemohon* : ${id}/${idAtasan}\n`;
-                                message += `*Nama* : ${nama}\n`;
-                                message += `Silahkan Repply Pesan ini untuk memberikan alasan izin di tolak\n`;
-                                await sock.sendMessage(noWa, { text: message });  
-                            }
+                //                 } catch (error) {
+                //                     console.log("Error approving:", error);
+                //                 }
+                //             } else if (respon_atasan.toLowerCase() === 'tidak') {
+                //                 let message = `*Alasan izin di tolak?*:\n`;
+                //                 message += `*ID Pemohon* : ${id}/${idAtasan}\n`;
+                //                 message += `*Nama* : ${nama}\n`;
+                //                 message += `Silahkan Repply Pesan ini untuk memberikan alasan izin di tolak\n`;
+                //                 await sock.sendMessage(noWa, { text: message });  
+                //             }
                             
-                        }else if (conversation.includes('Alasan izin di tolak')) {
-                            const idPemohonStartIndex = conversation.indexOf('*ID Pemohon* : ') + '*ID Pemohon* : '.length;
-                            const idPemohonEndIndex = conversation.indexOf('\n', idPemohonStartIndex);
-                            const idPemohon = conversation.substring(idPemohonStartIndex, idPemohonEndIndex).trim();
-                            const [id, idAtasan] = idPemohon.split('/').map(part => part.trim());
-                            try {
-                                const response = await axios.post('https://qc-apps.srs-ssms.com/api/updatenotifijin', {
-                                    id_data: id,
-                                    id_atasan: idAtasan,
-                                    answer: respon_atasan,
-                                });
-                                let responses = response.data;
+                //         }else if (conversation.includes('Alasan izin di tolak')) {
+                //             const idPemohonStartIndex = conversation.indexOf('*ID Pemohon* : ') + '*ID Pemohon* : '.length;
+                //             const idPemohonEndIndex = conversation.indexOf('\n', idPemohonStartIndex);
+                //             const idPemohon = conversation.substring(idPemohonStartIndex, idPemohonEndIndex).trim();
+                //             const [id, idAtasan] = idPemohon.split('/').map(part => part.trim());
+                //             try {
+                //                 const response = await axios.post('https://qc-apps.srs-ssms.com/api/updatenotifijin', {
+                //                     id_data: id,
+                //                     id_atasan: idAtasan,
+                //                     answer: respon_atasan,
+                //                 });
+                //                 let responses = response.data;
                         
-                                const responseKey = Object.keys(responses)[0];
+                //                 const responseKey = Object.keys(responses)[0];
                         
-                                await sock.sendMessage(noWa, { text: 'Mohon Tunggu server melakukan validasi.....' });
-                                if (responseKey === "error_validasi") {
-                                    await sock.sendMessage(noWa, { text: `Data gagal diverifikasi, Karena: ${responses[responseKey]}` });
-                                } else {
-                                    await sock.sendMessage(noWa, { text: "Izin Berhasil di tolak" }, { quoted: message });
-                                }
+                //                 await sock.sendMessage(noWa, { text: 'Mohon Tunggu server melakukan validasi.....' });
+                //                 if (responseKey === "error_validasi") {
+                //                     await sock.sendMessage(noWa, { text: `Data gagal diverifikasi, Karena: ${responses[responseKey]}` });
+                //                 } else {
+                //                     await sock.sendMessage(noWa, { text: "Izin Berhasil di tolak" }, { quoted: message });
+                //                 }
                         
-                            } catch (error) {
-                                console.log("Error approving:", error);
-                            }
-                        } 
-                        else {
-                            console.log('pesan lainnya');
-                        }
-                    }
-                }
+                //             } catch (error) {
+                //                 console.log("Error approving:", error);
+                //             }
+                //         } 
+                //         else {
+                //             console.log('pesan lainnya');
+                //         }
+                //     }
+                // }
     
           
                 if (message.key.remoteJid.endsWith('@g.us')) {
-                    // if (lowerCaseMessage && lowerCaseMessage.startsWith("!tarik")) {
-                    //     // Extract the estate name from the command
-                    //     const estateCommand = lowerCaseMessage.replace("!tarik", "").trim();
-                    //     const estate = estateCommand.toUpperCase(); // Convert to uppercase for consistency
+                    if (lowerCaseMessage && lowerCaseMessage.startsWith("!tarik")) {
+                        // Extract the estate name from the command
+                        const estateCommand = lowerCaseMessage.replace("!tarik", "").trim();
+                        const estate = estateCommand.toUpperCase(); // Convert to uppercase for consistency
     
-                    //     // Check if the estate name is valid
-                    //     if (!estate) {
-                    //         await sock.sendMessage(noWa, { text: 'Mohon masukkan nama estate setelah perintah !tarik dilanjutkan dengan singkatan nama Estate.\n-Contoh !tarikkne = Untuk Estate KNE dan seterusnya' }, { quoted: message });
-                    //         return;
-                    //     }
+                        // Check if the estate name is valid
+                        if (!estate) {
+                            await sock.sendMessage(noWa, { text: 'Mohon masukkan nama estate setelah perintah !tarik dilanjutkan dengan singkatan nama Estate.\n-Contoh !tarikkne = Untuk Estate KNE dan seterusnya' }, { quoted: message });
+                            return;
+                        }
     
-                    //     const apiUrl = 'http://qc-apps2.test//api/getdatacron';
-                    //     try {
-                    //         const response = await axios.get(apiUrl);
-                    //         const dataestate = response.data;
-                    //         const matchingTasks = dataestate.filter(task => task.estate === estate);
+                        const apiUrl = 'http://qc-apps2.test//api/getdatacron';
+                        try {
+                            const response = await axios.get(apiUrl);
+                            const dataestate = response.data;
+                            const matchingTasks = dataestate.filter(task => task.estate === estate);
     
-                    //         if (matchingTasks.length > 0) {
-                    //             const { estate: estateFromMatchingTask, group_id, wilayah: folder } = matchingTasks[0];
-                    //             await sock.sendMessage(noWa, { text: 'Mohon tunggu laporan sedang di proses' }, { quoted: message });
-                    //             const result = await sendtaksasiest(estateFromMatchingTask, group_id, folder);
+                            if (matchingTasks.length > 0) {
+                                const { estate: estateFromMatchingTask, group_id, wilayah: folder } = matchingTasks[0];
+                                await sock.sendMessage(noWa, { text: 'Mohon tunggu laporan sedang di proses' }, { quoted: message });
+                                const result = await sendtaksasiest(estateFromMatchingTask, group_id, folder);
     
-                    //             if (result === 'success') {
-                    //                 console.log('success');
-                    //                 break;
-                    //             } else {
-                    //                 await sock.sendMessage(noWa, { text: 'Terjadi kesalahan saat mengirim taksasi. Silakan Hubungi Tim D.A.' }, { quoted: message });
-                    //                 break;
-                    //             }
-                    //         } else {
-                    //             await sock.sendMessage(noWa, { text: 'Estate yang anda masukan tidak tersedia di database. Silahkan Ulangi dan Cek Kembali' }, { quoted: message });
-                    //             break;
-                    //         }
-                    //     } catch (error) {
-                    //         console.error('Error fetching data:', error.message);
-                    //         break;
-                    //     }
-                    // } else if (lowerCaseMessage === "!menu") {
-                    //     await sock.sendMessage(noWa, { text: "Perintah Bot Yang tersida \n1 = !tarik (Menarik Estate yang di pilih untuk di generate ke dalam grup yang sudah di tentukan) \n2.!getgrup (Menampilkan semua isi list group yang ada) \n3.!cast (melakukan broadcast pesan ke semua grup taksasi) \n4.!restart (Merestart Service Bot)" }, { quoted: message });
-                    //     break;
-                    // } else if (lowerCaseMessage === "!getgrup") {
+                                if (result === 'success') {
+                                    console.log('success');
+                                    break;
+                                } else {
+                                    await sock.sendMessage(noWa, { text: 'Terjadi kesalahan saat mengirim taksasi. Silakan Hubungi Tim D.A.' }, { quoted: message });
+                                    break;
+                                }
+                            } else {
+                                await sock.sendMessage(noWa, { text: 'Estate yang anda masukan tidak tersedia di database. Silahkan Ulangi dan Cek Kembali' }, { quoted: message });
+                                break;
+                            }
+                        } catch (error) {
+                            console.error('Error fetching data:', error.message);
+                            break;
+                        }
+                    } else if (lowerCaseMessage === "!menu") {
+                        await sock.sendMessage(noWa, { text: "Perintah Bot Yang tersida \n1 = !tarik (Menarik Estate yang di pilih untuk di generate ke dalam grup yang sudah di tentukan) \n2.!getgrup (Menampilkan semua isi list group yang ada) \n3.!cast (melakukan broadcast pesan ke semua grup taksasi) \n4.!restart (Merestart Service Bot)" }, { quoted: message });
+                        break;
+                    } 
+                    // else if (lowerCaseMessage === "!getgrup") {
                     //     let getGroups = await sock.groupFetchAllParticipating();
                     //     let groups = Object.values(await sock.groupFetchAllParticipating());
                     //     let datagrup = []; // Initialize an empty array to store group information
@@ -1836,23 +1837,24 @@ async function connectToWhatsApp() {
                     } else if (lowerCaseMessage === "!restart") {
                         await sock.sendMessage(noWa, { text: "Hanya dapat di gunakan di dalam grup!" }, { quoted: message });
                         break;
-                    } else if (lowerCaseMessage === "!izin") {
-                        // Start the ijin process only if it's not already started
-                        if (!userchoice[noWa]) {
-                            await handleijinmsg(noWa, lowerCaseMessage);
-                        }
-                    } else if (userchoice[noWa]) {
-                        // Continue the ijin process if it has already started
-                        await handleijinmsg(noWa, text);
-                    }
-                    // else if (lowerCaseMessage === "!iot") {
-                    //     if (!userIotChoice[noWa]) {
-                    //         await handleIotInput(noWa, lowerCaseMessage);
+                    } 
+                    // else if (lowerCaseMessage === "!izin") {
+                    //     // Start the ijin process only if it's not already started
+                    //     if (!userchoice[noWa]) {
+                    //         await handleijinmsg(noWa, lowerCaseMessage);
                     //     }
-                    // } else if (userIotChoice[noWa]) {
-                    //     // Continue the input process if it has already started
-                    //     await handleIotInput(noWa, text);
+                    // } else if (userchoice[noWa]) {
+                    //     // Continue the ijin process if it has already started
+                    //     await handleijinmsg(noWa, text);
                     // }
+                    // // else if (lowerCaseMessage === "!iot") {
+                    // //     if (!userIotChoice[noWa]) {
+                    // //         await handleIotInput(noWa, lowerCaseMessage);
+                    // //     }
+                    // // } else if (userIotChoice[noWa]) {
+                    // //     // Continue the input process if it has already started
+                    // //     await handleIotInput(noWa, text);
+                    // // }
                     else {
                         // Handle other messages
                         console.log('message comming to number');
