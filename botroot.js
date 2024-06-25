@@ -1,7 +1,7 @@
 // Import required modules
 const makeWASocket = require("@whiskeysockets/baileys").default;
 const { fetchLatestBaileysVersion, useMultiFileAuthState, isJidBroadcast, makeInMemoryStore } = require("@whiskeysockets/baileys");
-const { Boom } = require("@hapi/boom");
+const { Boom, DisconnectReason } = require("@hapi/boom");
 const pino = require("pino");
 const path = require('path');
 const fs = require('fs');
@@ -15,6 +15,7 @@ const qrcode = require("qrcode");
 const { sendtaksasiest, setupCronJobs ,handleijinmsg ,getNotifications ,handleIotInput} = require('./helper.js');
 const axios = require('axios');
 const { userchoice,userIotChoice  } = require('./state.js');
+const detect = require('detect-port');
 
 // Initialize Express app
 const app = express();
@@ -30,11 +31,6 @@ app.use("/assets", express.static(path.join(__dirname, "/client/assets")));
 app.get("/scan", (req, res) => res.sendFile("./client/server.html", { root: __dirname }));
 app.get("/", (req, res) => res.sendFile("./client/index.html", { root: __dirname }));
 
-// Create HTTP server and Socket.IO instance
-const server = http.createServer(app);
-const io = socketIO(server);
-const port = process.env.PORT || 8000;
-
 // Initialize in-memory store
 const store = makeInMemoryStore({ logger: pino().child({ level: "silent", stream: "store" }) });
 
@@ -45,6 +41,36 @@ let soket;
 // Capitalize function
 function capital(textSound) {
     return textSound.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
+}
+
+// Function to find an available port
+async function findAvailablePort(preferredPorts) {
+    for (let port of preferredPorts) {
+        const availablePort = await detect(port);
+        if (availablePort === port) {
+            return port;
+        }
+    }
+    return await detect(); // Return any available port if preferred ports are not available
+}
+
+// Main function to start the server
+async function startServer() {
+    const preferredPorts = [3000, 4000, 8000, 8080];
+    const port = await findAvailablePort(preferredPorts);
+
+    // Create HTTP server and Socket.IO instance
+    const server = http.createServer(app);
+    const io = socketIO(server);
+
+    // Connect to WhatsApp and setup cron jobs
+    connectToWhatsApp().catch(err => console.log("Unexpected error: " + err));
+    setupCronJobs(sock);
+
+    // Start server
+    server.listen(port, () => {
+        console.log("Server running on port: " + port);
+    });
 }
 
 // Connect to WhatsApp
@@ -59,8 +85,7 @@ async function connectToWhatsApp() {
         version,
         shouldIgnoreJid: isJidBroadcast,
     });
- 
-   
+
     store.bind(sock.ev);
     sock.ev.on('connection.update', handleConnectionUpdate);
     sock.ev.on("creds.update", saveCreds);
@@ -133,10 +158,7 @@ async function fetchGroups() {
     // });
 }
 
-
-
 async function handleMessagesUpsert({ messages, type }) {
-
     for (const message of messages) {
         if (!message.key.fromMe) {
             const noWa = message.key.remoteJid;
@@ -144,88 +166,85 @@ async function handleMessagesUpsert({ messages, type }) {
             const lowerCaseMessage = text ? text.toLowerCase() : null;
 
             if (message.message?.extendedTextMessage?.contextInfo) {
-                    const contextInfo = message.message.extendedTextMessage.contextInfo;
-                    const text_repply = message.message.extendedTextMessage.text;
-                    const quotedMessageSender = contextInfo.participant;
-                    const respon_atasan = text_repply;
-    
-                    if (contextInfo.quotedMessage && contextInfo.quotedMessage.conversation) {
-                        const conversation = contextInfo.quotedMessage.conversation;
-    
-                        if (conversation.includes('Izin baru perlu di approved')) {
-                            const idPemohonStartIndex = conversation.indexOf('*ID Pemohon* : ') + '*ID Pemohon* : '.length;
-                            const idPemohonEndIndex = conversation.indexOf('\n', idPemohonStartIndex);
-                            const idPemohon = conversation.substring(idPemohonStartIndex, idPemohonEndIndex).trim();
-                            const [id, idAtasan] = idPemohon.split('/').map(part => part.trim());
-                            const namaStartIndex = conversation.indexOf('*Nama* : ') + '*Nama* : '.length;
-                            const namaEndIndex = conversation.indexOf('\n', namaStartIndex);
-                            const nama = conversation.substring(namaStartIndex, namaEndIndex).trim();
-                            
-                            // console.log(nama);
-                            if (respon_atasan.toLowerCase() !== 'ya' && respon_atasan.toLowerCase() !== 'tidak') {
-                                await sock.sendMessage(noWa, { text: "Harap hanya balas ya atau tidak" }, { quoted: message });
-                            } else if (respon_atasan.toLowerCase() === 'ya') {
-                                try {
-                                    const response = await axios.post('https://qc-apps.srs-ssms.com/api/updatenotifijin', {
-                                        id_data: id,
-                                        id_atasan: idAtasan,
-                                        answer: 'ya',
-                                    });
-                                    let responses = response.data;
-                            
-                                    const responseKey = Object.keys(responses)[0];
-                            
-                                    await sock.sendMessage(noWa, { text: 'Mohon Tunggu server melakukan validasi.....' });
-                                    if (responseKey === "error_validasi") {
-                                        await sock.sendMessage(noWa, { text: `Data gagal diverifikasi, Karena: ${responses[responseKey]}` });
-                                    } else {
-                                        await sock.sendMessage(noWa, { text: "Izin Berhasil di approved" }, { quoted: message });
-                                    }
-                            
-                                } catch (error) {
-                                    console.log("Error approving:", error);
-                                }
-                            } else if (respon_atasan.toLowerCase() === 'tidak') {
-                                let message = `*Alasan izin di tolak?*:\n`;
-                                message += `*ID Pemohon* : ${id}/${idAtasan}\n`;
-                                message += `*Nama* : ${nama}\n`;
-                                message += `Silahkan Repply Pesan ini untuk memberikan alasan izin di tolak\n`;
-                                await sock.sendMessage(noWa, { text: message });  
-                            }
-                            
-                        }else if (conversation.includes('Alasan izin di tolak')) {
-                            const idPemohonStartIndex = conversation.indexOf('*ID Pemohon* : ') + '*ID Pemohon* : '.length;
-                            const idPemohonEndIndex = conversation.indexOf('\n', idPemohonStartIndex);
-                            const idPemohon = conversation.substring(idPemohonStartIndex, idPemohonEndIndex).trim();
-                            const [id, idAtasan] = idPemohon.split('/').map(part => part.trim());
+                const contextInfo = message.message.extendedTextMessage.contextInfo;
+                const text_repply = message.message.extendedTextMessage.text;
+                const quotedMessageSender = contextInfo.participant;
+                const respon_atasan = text_repply;
+
+                if (contextInfo.quotedMessage && contextInfo.quotedMessage.conversation) {
+                    const conversation = contextInfo.quotedMessage.conversation;
+
+                    if (conversation.includes('Izin baru perlu di approved')) {
+                        const idPemohonStartIndex = conversation.indexOf('*ID Pemohon* : ') + '*ID Pemohon* : '.length;
+                        const idPemohonEndIndex = conversation.indexOf('\n', idPemohonStartIndex);
+                        const idPemohon = conversation.substring(idPemohonStartIndex, idPemohonEndIndex).trim();
+                        const [id, idAtasan] = idPemohon.split('/').map(part => part.trim());
+                        const namaStartIndex = conversation.indexOf('*Nama* : ') + '*Nama* : '.length;
+                        const namaEndIndex = conversation.indexOf('\n', namaStartIndex);
+                        const nama = conversation.substring(namaStartIndex, namaEndIndex).trim();
+
+                        if (respon_atasan.toLowerCase() !== 'ya' && respon_atasan.toLowerCase() !== 'tidak') {
+                            await sock.sendMessage(noWa, { text: "Harap hanya balas ya atau tidak" }, { quoted: message });
+                        } else if (respon_atasan.toLowerCase() === 'ya') {
                             try {
                                 const response = await axios.post('https://qc-apps.srs-ssms.com/api/updatenotifijin', {
                                     id_data: id,
                                     id_atasan: idAtasan,
-                                    answer: respon_atasan,
+                                    answer: 'ya',
                                 });
                                 let responses = response.data;
-                        
+
                                 const responseKey = Object.keys(responses)[0];
-                        
+
                                 await sock.sendMessage(noWa, { text: 'Mohon Tunggu server melakukan validasi.....' });
                                 if (responseKey === "error_validasi") {
                                     await sock.sendMessage(noWa, { text: `Data gagal diverifikasi, Karena: ${responses[responseKey]}` });
                                 } else {
-                                    await sock.sendMessage(noWa, { text: "Izin Berhasil di tolak" }, { quoted: message });
+                                    await sock.sendMessage(noWa, { text: "Izin Berhasil di approved" }, { quoted: message });
                                 }
-                        
+
                             } catch (error) {
                                 console.log("Error approving:", error);
                             }
-                        } 
-                        else {
-                            console.log('pesan lainnya');
+                        } else if (respon_atasan.toLowerCase() === 'tidak') {
+                            let message = `*Alasan izin di tolak?*:\n`;
+                            message += `*ID Pemohon* : ${id}/${idAtasan}\n`;
+                            message += `*Nama* : ${nama}\n`;
+                            message += `Silahkan Repply Pesan ini untuk memberikan alasan izin di tolak\n`;
+                            await sock.sendMessage(noWa, { text: message });  
                         }
+
+                    } else if (conversation.includes('Alasan izin di tolak')) {
+                        const idPemohonStartIndex = conversation.indexOf('*ID Pemohon* : ') + '*ID Pemohon* : '.length;
+                        const idPemohonEndIndex = conversation.indexOf('\n', idPemohonStartIndex);
+                        const idPemohon = conversation.substring(idPemohonStartIndex, idPemohonEndIndex).trim();
+                        const [id, idAtasan] = idPemohon.split('/').map(part => part.trim());
+                        try {
+                            const response = await axios.post('https://qc-apps.srs-ssms.com/api/updatenotifijin', {
+                                id_data: id,
+                                id_atasan: idAtasan,
+                                answer: respon_atasan,
+                            });
+                            let responses = response.data;
+
+                            const responseKey = Object.keys(responses)[0];
+
+                            await sock.sendMessage(noWa, { text: 'Mohon Tunggu server melakukan validasi.....' });
+                            if (responseKey === "error_validasi") {
+                                await sock.sendMessage(noWa, { text: `Data gagal diverifikasi, Karena: ${responses[responseKey]}` });
+                            } else {
+                                await sock.sendMessage(noWa, { text: "Izin Berhasil di tolak" }, { quoted: message });
+                            }
+
+                        } catch (error) {
+                            console.log("Error approving:", error);
+                        }
+                    } else {
+                        console.log('pesan lainnya');
                     }
+                }
             }
-    
-          
+
             if (message.key.remoteJid.endsWith('@g.us')) {
                 if (lowerCaseMessage && lowerCaseMessage.startsWith("!tarik")) {
                     // Extract the estate name from the command
@@ -358,8 +377,7 @@ async function handleMessagesUpsert({ messages, type }) {
                 } else if (lowerCaseMessage === "!restart") {
                     await sock.sendMessage(noWa, { text: "Hanya dapat di gunakan di dalam grup!" }, { quoted: message });
                     break;
-                } 
-                else if (lowerCaseMessage === "!izin") {
+                } else if (lowerCaseMessage === "!izin") {
                     // Start the ijin process only if it's not already started
                     if (!userchoice[noWa]) {
                         await handleijinmsg(noWa, lowerCaseMessage,sock);
@@ -367,16 +385,14 @@ async function handleMessagesUpsert({ messages, type }) {
                 } else if (userchoice[noWa]) {
                     // Continue the ijin process if it has already started
                     await handleijinmsg(noWa, text,sock);
-                }
-                else if (lowerCaseMessage === "!iot") {
+                } else if (lowerCaseMessage === "!iot") {
                     if (!userIotChoice[noWa]) {
                         await handleIotInput(noWa, lowerCaseMessage,sock);
                     }
                 } else if (userIotChoice[noWa]) {
                     // Continue the input process if it has already started
                     await handleIotInput(noWa, text,sock);
-                }
-                else {
+                } else {
                     // Handle other messages
                     console.log('message comming to number');
                     // await handleMessage(noWa, lowerCaseMessage, messages);
@@ -423,28 +439,6 @@ function updateQRCode(status) {
         qrStatus[status]();
     }
 }
-// app.get("/testing", async (req, res) => {
-//     try {
-//         await getNotifications(sock);
-//         // Send a response back to the client indicating success
-//         res.status(200).json({
-//             status: true,
-//             message: "Messages sent successfully"
-//         });
-//     } catch (error) {
-//         console.error("Error sending files:", error);
-//         // Send an error response back to the client
-//         res.status(500).json({
-//             status: false,
-//             response: error.message || "Internal Server Error"
-//         });
-//     }
-// });
 
-// Connect to WhatsApp
-connectToWhatsApp().catch(err => console.log("Unexpected error: " + err));
-setupCronJobs(sock);
-// Start server
-server.listen(port, () => {
-    console.log("Server running on port: " + port);
-});
+// Start the server
+startServer();
