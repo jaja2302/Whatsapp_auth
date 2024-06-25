@@ -1565,66 +1565,66 @@ const handleIotInput = async (noWa, text,sock) => {
 
 const setupCronJobs = (sock) => {
     //  taksasi cronjob 
-    // cron.schedule('*/10 * * * *', async () => {
-    //     await sendfailcronjob(sock);
-    // }, {
-    //     scheduled: true,
-    //     timezone: 'Asia/Jakarta'
-    // });
-    // cron.schedule('0 * * * *', async () => {
-    //         try {
-    //             // console.log('Running message history');
-    //             await statusHistory(sock); // Call the function to check history and send message
-    //         } catch (error) {
-    //             console.error('Error in cron job:', error);
-    //         }
-    // }, {
-    //         scheduled: true,
-    //         timezone: 'Asia/Jakarta' // Set the timezone according to your location
-    // });
+    cron.schedule('*/10 * * * *', async () => {
+        await sendfailcronjob(sock);
+    }, {
+        scheduled: true,
+        timezone: 'Asia/Jakarta'
+    });
+    cron.schedule('0 * * * *', async () => {
+            try {
+                // console.log('Running message history');
+                await statusHistory(sock); // Call the function to check history and send message
+            } catch (error) {
+                console.error('Error in cron job:', error);
+            }
+    }, {
+            scheduled: true,
+            timezone: 'Asia/Jakarta' // Set the timezone according to your location
+    });
         
-    // cron.schedule('*/1 * * * *', async () => {
-    //         await sendMessagesBasedOnData(sock);
-    //         await maintencweget(sock);
-    //     }, {
-    //         scheduled: true,
-    //         timezone: 'Asia/Jakarta'
-    // });
+    cron.schedule('*/1 * * * *', async () => {
+            await sendMessagesBasedOnData(sock);
+            await maintencweget(sock);
+        }, {
+            scheduled: true,
+            timezone: 'Asia/Jakarta'
+    });
         
-    // cron.schedule('0 * * * *', async () => {
-    //         try {
-    //             await statusAWS(sock); // Call the function to check AWS status and send message
-    //         } catch (error) {
-    //             console.error('Error in cron job:', error);
-    //         }
-    //     }, {
-    //         scheduled: true,
-    //         timezone: 'Asia/Jakarta' // Set the timezone according to your location
-    // });
+    cron.schedule('0 * * * *', async () => {
+            try {
+                await statusAWS(sock); // Call the function to check AWS status and send message
+            } catch (error) {
+                console.error('Error in cron job:', error);
+            }
+        }, {
+            scheduled: true,
+            timezone: 'Asia/Jakarta' // Set the timezone according to your location
+    });
         
       
-    // cron.schedule('0 7 * * *', async () => {
-    //         exec('pm2 restart bot_da', (error, stdout, stderr) => {
-    //             if (error) {
-    //                 console.error(`Error restarting app: ${error.message}`);
-    //                 return;
-    //             }
-    //             if (stderr) {
-    //                 console.error(`Restart error: ${stderr}`);
-    //                 return;
-    //             }
-    //             console.log(`App restarted: ${stdout}`);
-    //         });
-    //     }, {
-    //         scheduled: true,
-    //         timezone: 'Asia/Jakarta'
-    // });
-    // cron.schedule('*/5 * * * *', async () => {
-    //         await getNotifications(sock);
-    //     }, {
-    //         scheduled: true,
-    //         timezone: 'Asia/Jakarta'
-    // });
+    cron.schedule('0 7 * * *', async () => {
+            exec('pm2 restart bot_da', (error, stdout, stderr) => {
+                if (error) {
+                    console.error(`Error restarting app: ${error.message}`);
+                    return;
+                }
+                if (stderr) {
+                    console.error(`Restart error: ${stderr}`);
+                    return;
+                }
+                console.log(`App restarted: ${stdout}`);
+            });
+        }, {
+            scheduled: true,
+            timezone: 'Asia/Jakarta'
+    });
+    cron.schedule('*/5 * * * *', async () => {
+            await getNotifications(sock);
+        }, {
+            scheduled: true,
+            timezone: 'Asia/Jakarta'
+    });
 };
 
 module.exports = { sendtaksasiest, setupCronJobs ,handleijinmsg , getNotifications ,handleIotInput};
