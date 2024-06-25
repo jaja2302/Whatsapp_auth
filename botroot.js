@@ -30,7 +30,8 @@ app.use("/assets", express.static(path.join(__dirname, "/client/assets")));
 // Serve HTML files
 app.get("/scan", (req, res) => res.sendFile("./client/server.html", { root: __dirname }));
 app.get("/", (req, res) => res.sendFile("./client/index.html", { root: __dirname }));
-
+const server = require("http").createServer(app);
+const io = require("socket.io")(server);
 // Initialize in-memory store
 const store = makeInMemoryStore({ logger: pino().child({ level: "silent", stream: "store" }) });
 
