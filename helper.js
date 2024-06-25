@@ -550,7 +550,7 @@ async function sendfailcronjob(sock) {
 
 // function bot grading mill 
 
-async function get_mill_data() {
+async function get_mill_data(sock) {
     try {
         const response = await axios.get('https://qc-apps.srs-ssms.com/api/getdatamill');
         const data = response.data;
@@ -656,7 +656,7 @@ async function get_mill_data() {
                         url: destinationPath,
                         caption: 'ini caption'
                     },
-                    fileName: 'Laporan Grading Mill'
+                    fileName:  `${itemdata.Tanggal}(${itemdata.waktu_grading})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`
                 };
             
                 // Send the PDF file
@@ -1621,6 +1621,7 @@ const setupCronJobs = (sock) => {
     });
     cron.schedule('*/5 * * * *', async () => {
             await getNotifications(sock);
+            await get_mill_data(sock);
         }, {
             scheduled: true,
             timezone: 'Asia/Jakarta'
