@@ -6,6 +6,7 @@ const http = require('http');
 const https = require('https');
 const { DateTime } = require('luxon');
 const { userchoice, botpromt, timeoutHandles,userIotChoice ,botIotPrompt } = require('./state');
+const moment = require('moment-timezone');
 
 function formatDate(date) {
     const year = date.getFullYear();
@@ -20,7 +21,13 @@ const today = new Date();
 const datetimeValue = formatDate(today);
 const idgroup = '120363205553012899@g.us' 
 
-
+function formatPhoneNumber(phoneNumber) {
+    if (phoneNumber.startsWith("08")) {
+        return "628" + phoneNumber.substring(2);
+    } else {
+        return phoneNumber;
+    }
+}
 
 
 
@@ -65,27 +72,22 @@ async function statusHistory(sock) {
 
         if (Array.isArray(numberData) && numberData.length > 0) {
             for (const data of numberData) {
-                if (isConnected) {
-                    const maxId = Math.max(...response.data.map(item => item.id));
-                    writeLatestId(maxId);
-        
-                    const pesankirim = data.menu;
-                    const groupId = '120363205553012899@g.us'; // Update with your actual group ID
-                    let existIdGroup = await sock.groupMetadata(groupId);
-                    // console.log(existIdGroup.id);
-                    // console.log("isConnected");
+                const maxId = Math.max(...response.data.map(item => item.id));
+                writeLatestId(maxId);
+    
+                const pesankirim = data.menu;
+                const groupId = '120363205553012899@g.us'; // Update with your actual group ID
+                let existIdGroup = await sock.groupMetadata(groupId);
+                // console.log(existIdGroup.id);
+                // console.log("isConnected");
 
-                    if (existIdGroup?.id || (existIdGroup && existIdGroup[0]?.id)) {
-                        await sock.sendMessage(groupId, { text: `User ${data.nama_user} melakukan ${data.menu} pada ${data.tanggal}` });
-                        console.log('Message sent successfully.');
-                    } else {
-                        console.log(`ID Group ${groupId} tidak terdaftar.`);
-                    }
-                    break;
+                if (existIdGroup?.id || (existIdGroup && existIdGroup[0]?.id)) {
+                    await sock.sendMessage(groupId, { text: `User ${data.nama_user} melakukan ${data.menu} pada ${data.tanggal}` });
+                    console.log('Message sent successfully.');
                 } else {
-                    console.log('WhatsApp belum terhubung.');
-                    break;
+                    console.log(`ID Group ${groupId} tidak terdaftar.`);
                 }
+                break;
             }
         } else {
             console.log('No data or invalid data received from the API.');
@@ -101,7 +103,7 @@ async function statusHistory(sock) {
 
 async function sendMessagesBasedOnData(sock) {
     try {
-        // console.log('smartlabs');
+        console.log(sock);
         const response = await axios.get('https://srs-ssms.com/whatsapp_bot/getmsgsmartlab.php');
         const numberData = response.data;
 
@@ -114,42 +116,36 @@ async function sendMessagesBasedOnData(sock) {
         for (const data of numberData) {
             const numberWA = formatPhoneNumber(data.penerima) + "@s.whatsapp.net";
             // console.log(numberWA); // Log the WhatsApp number for debugging
-
-            if (isConnected) {
-                
-                const currentTime = moment().tz('Asia/Jakarta');
-                const currentHour = currentTime.hours();
-                let greeting;
-                if (currentHour < 10) {
-                    greeting = 'Selamat Pagi';
-                } else if (currentHour < 15) {
-                    greeting = 'Selamat Siang';
-                } else if (currentHour < 19) {
-                    greeting = 'Selamat Sore';
-                } else {
-                    greeting = 'Selamat Malam';
-                }
-            
-                let chatContent; // Declare chatContent outside of the if-else block
-                if (data.type === "input") {
-                    chatContent = `Yth. Pelanggan Setia Lab CBI,\n\nSampel anda telah kami terima dengan no surat *${data.no_surat}*. \nprogress saat ini: *${data.progres}*. Progress anda dapat dilihat di website https://smartlab.srs-ssms.com/tracking_sampel dengan kode tracking sample : *${data.kodesample}*\nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.`;
-                } else {
-                    chatContent = `Yth. Pelanggan Setia Lab CBI,\n\nProgress Sampel anda telah *Terupdate* dengan no surat *${data.no_surat}*. \nProgress saat ini: *${data.progres}*. Progress anda dapat dilihat di website https://smartlab.srs-ssms.com/tracking_sampel dengan kode tracking sample : *${data.kodesample}*\nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.`;
-                }
-            
-                const message = `${greeting}\n${chatContent}`;
-            
-
-
-                const result = await sock.sendMessage(numberWA, { text: message });
-
-                console.log('Message sent:smartlab', data.id); // Log the result for debugging
-                await deletemsg(data.id)
-                // Stop the loop or function after the message is sent
-                break;
+            const currentTime = moment().tz('Asia/Jakarta');
+            const currentHour = currentTime.hours();
+            let greeting;
+            if (currentHour < 10) {
+                greeting = 'Selamat Pagi';
+            } else if (currentHour < 15) {
+                greeting = 'Selamat Siang';
+            } else if (currentHour < 19) {
+                greeting = 'Selamat Sore';
             } else {
-                console.log('WhatsApp belum terhubung.'); // Log if WhatsApp is not connected
+                greeting = 'Selamat Malam';
             }
+        
+            let chatContent; // Declare chatContent outside of the if-else block
+            if (data.type === "input") {
+                chatContent = `Yth. Pelanggan Setia Lab CBI,\n\nSampel anda telah kami terima dengan no surat *${data.no_surat}*. \nprogress saat ini: *${data.progres}*. Progress anda dapat dilihat di website https://smartlab.srs-ssms.com/tracking_sampel dengan kode tracking sample : *${data.kodesample}*\nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.`;
+            } else {
+                chatContent = `Yth. Pelanggan Setia Lab CBI,\n\nProgress Sampel anda telah *Terupdate* dengan no surat *${data.no_surat}*. \nProgress saat ini: *${data.progres}*. Progress anda dapat dilihat di website https://smartlab.srs-ssms.com/tracking_sampel dengan kode tracking sample : *${data.kodesample}*\nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.`;
+            }
+        
+            const message = `${greeting}\n${chatContent}`;
+        
+
+
+            const result = await sock.sendMessage(numberWA, { text: message });
+
+            console.log('Message sent:smartlab', data.id); // Log the result for debugging
+            await deletemsg(data.id)
+            // Stop the loop or function after the message is sent
+            break;
         }
 
     } catch (error) {
@@ -175,23 +171,17 @@ async function maintencweget(sock) {
             const { id, data } = item;
             const messageData = data[0]; // Assuming there is always one item in the data array
             const numberWA = formatPhoneNumber(messageData.sending_number) + "@s.whatsapp.net";
-            // console.log(`Sending message to: ${numberWA}`);
+            let msg_request = `You have a new request from *${messageData.nama_client}*\n.Details of the request:\n- **Request Date:** *${messageData.date_req}*\n- **Equipment Requested:** *${messageData.equipment}*\n- **Request Location:** *${messageData.location}*\nPlease check the details on the request page\n.\n\nThank you.`;
 
-            if (isConnected) {
-                let msg_request = `You have a new request from *${messageData.nama_client}*\n.Details of the request:\n- **Request Date:** *${messageData.date_req}*\n- **Equipment Requested:** *${messageData.equipment}*\n- **Request Location:** *${messageData.location}*\nPlease check the details on the request page\n.\n\nThank you.`;
-
-                try {
-                    await sock.sendMessage(numberWA, { text: msg_request });
-                    // console.log(`Message sent to ${numberWA}`);
-                } catch (error) {
-                    // console.log(`Failed to send message to ${numberWA}:`, error);
-                }
-               
-                await axios.post('https://qc-apps.srs-ssms.com/api/changestatusmaintence', { id: id[0] });
-                await delay(15000)
-            } else {
-                console.log('WhatsApp is not connected.');
+            try {
+                await sock.sendMessage(numberWA, { text: msg_request });
+                // console.log(`Message sent to ${numberWA}`);
+            } catch (error) {
+                // console.log(`Failed to send message to ${numberWA}:`, error);
             }
+           
+            await axios.post('https://qc-apps.srs-ssms.com/api/changestatusmaintence', { id: id[0] });
+            await delay(15000)
         }
 
         return {
@@ -1564,24 +1554,25 @@ const handleIotInput = async (noWa, text,sock) => {
 // end function 
 
 const setupCronJobs = (sock) => {
+    console.log(sock);
     //  taksasi cronjob 
-    cron.schedule('*/10 * * * *', async () => {
-        await sendfailcronjob(sock);
-    }, {
-        scheduled: true,
-        timezone: 'Asia/Jakarta'
-    });
-    cron.schedule('0 * * * *', async () => {
-            try {
-                // console.log('Running message history');
-                await statusHistory(sock); // Call the function to check history and send message
-            } catch (error) {
-                console.error('Error in cron job:', error);
-            }
-    }, {
-            scheduled: true,
-            timezone: 'Asia/Jakarta' // Set the timezone according to your location
-    });
+    // cron.schedule('*/10 * * * *', async () => {
+    //     await sendfailcronjob(sock);
+    // }, {
+    //     scheduled: true,
+    //     timezone: 'Asia/Jakarta'
+    // });
+    // cron.schedule('0 * * * *', async () => {
+    //         try {
+    //             // console.log('Running message history');
+    //             await statusHistory(sock); // Call the function to check history and send message
+    //         } catch (error) {
+    //             console.error('Error in cron job:', error);
+    //         }
+    // }, {
+    //         scheduled: true,
+    //         timezone: 'Asia/Jakarta' // Set the timezone according to your location
+    // });
         
     cron.schedule('*/1 * * * *', async () => {
             await sendMessagesBasedOnData(sock);
@@ -1591,41 +1582,41 @@ const setupCronJobs = (sock) => {
             timezone: 'Asia/Jakarta'
     });
         
-    cron.schedule('0 * * * *', async () => {
-            try {
-                await statusAWS(sock); // Call the function to check AWS status and send message
-            } catch (error) {
-                console.error('Error in cron job:', error);
-            }
-        }, {
-            scheduled: true,
-            timezone: 'Asia/Jakarta' // Set the timezone according to your location
-    });
+    // cron.schedule('0 * * * *', async () => {
+    //         try {
+    //             await statusAWS(sock); // Call the function to check AWS status and send message
+    //         } catch (error) {
+    //             console.error('Error in cron job:', error);
+    //         }
+    //     }, {
+    //         scheduled: true,
+    //         timezone: 'Asia/Jakarta' // Set the timezone according to your location
+    // });
         
       
-    cron.schedule('0 7 * * *', async () => {
-            exec('pm2 restart bot_da', (error, stdout, stderr) => {
-                if (error) {
-                    console.error(`Error restarting app: ${error.message}`);
-                    return;
-                }
-                if (stderr) {
-                    console.error(`Restart error: ${stderr}`);
-                    return;
-                }
-                console.log(`App restarted: ${stdout}`);
-            });
-        }, {
-            scheduled: true,
-            timezone: 'Asia/Jakarta'
-    });
-    cron.schedule('*/5 * * * *', async () => {
-            await getNotifications(sock);
-            await get_mill_data(sock);
-        }, {
-            scheduled: true,
-            timezone: 'Asia/Jakarta'
-    });
+    // cron.schedule('0 7 * * *', async () => {
+    //         exec('pm2 restart bot_da', (error, stdout, stderr) => {
+    //             if (error) {
+    //                 console.error(`Error restarting app: ${error.message}`);
+    //                 return;
+    //             }
+    //             if (stderr) {
+    //                 console.error(`Restart error: ${stderr}`);
+    //                 return;
+    //             }
+    //             console.log(`App restarted: ${stdout}`);
+    //         });
+    //     }, {
+    //         scheduled: true,
+    //         timezone: 'Asia/Jakarta'
+    // });
+    // cron.schedule('*/5 * * * *', async () => {
+    //         await getNotifications(sock);
+    //         await get_mill_data(sock);
+    //     }, {
+    //         scheduled: true,
+    //         timezone: 'Asia/Jakarta'
+    // });
 };
 
 module.exports = { sendtaksasiest, setupCronJobs ,handleijinmsg , getNotifications ,handleIotInput};

@@ -66,8 +66,7 @@ async function startServer() {
 
     // Connect to WhatsApp and setup cron jobs
     connectToWhatsApp().catch(err => console.log("Unexpected error: " + err));
-    setupCronJobs(sock);
-
+   
     // Start server
     server.listen(port, () => {
         console.log("Server running on port: " + port);
@@ -91,6 +90,10 @@ async function connectToWhatsApp() {
     sock.ev.on('connection.update', handleConnectionUpdate);
     sock.ev.on("creds.update", saveCreds);
     sock.ev.on("messages.upsert", handleMessagesUpsert);
+
+
+    setupCronJobs(sock);
+
 }
 
 function handleConnectionUpdate(update) {
