@@ -4,10 +4,14 @@ const botpromt = {};
 const timeoutHandles = {};
 const userIotChoice = {};
 const botIotPrompt = {};
+const botTaksasi = {};
+const userTalsasiChoice = {};
 module.exports = {
     userchoice,
     botpromt,
     timeoutHandles,
     userIotChoice,
-    botIotPrompt
+    botIotPrompt,
+    botTaksasi,
+    userTalsasiChoice,
 };

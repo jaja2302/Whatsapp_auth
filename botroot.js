@@ -12,9 +12,9 @@ const cors = require('cors');
 const bodyParser = require("body-parser");
 const socketIO = require("socket.io");
 const qrcode = require("qrcode");
-const { sendtaksasiest, setupCronJobs ,handleijinmsg ,getNotifications ,handleIotInput} = require('./helper.js');
+const { sendtaksasiest, setupCronJobs ,handleijinmsg ,getNotifications ,handleIotInput ,handleTaksasi} = require('./helper.js');
 const axios = require('axios');
-const { userchoice,userIotChoice  } = require('./state.js');
+const { userchoice,userIotChoice ,userTalsasiChoice } = require('./state.js');
 const detect = require('detect-port');
 
 // Initialize Express app
@@ -287,6 +287,14 @@ async function handleMessagesUpsert({ messages, type }) {
                         console.log('Error fetching data:', error.message);
                         break;
                     }
+                }else if (lowerCaseMessage === '!taksasi') {
+                    if (!userTalsasiChoice[noWa]) {
+                        await handleTaksasi(noWa, lowerCaseMessage,sock);
+                    }
+                }
+                else if (userTalsasiChoice[noWa]) {
+                    // Continue the ijin process if it has already started
+                    await handleTaksasi(noWa, text,sock);
                 } else if (lowerCaseMessage === "!menu") {
                     await sock.sendMessage(noWa, { text: "Perintah Bot Yang tersida \n1 = !tarik (Menarik Estate yang di pilih untuk di generate ke dalam grup yang sudah di tentukan) \n2.!getgrup (Menampilkan semua isi list group yang ada) \n3.!cast (melakukan broadcast pesan ke semua grup taksasi) \n4.!restart (Merestart Service Bot)" }, { quoted: message });
                     break;

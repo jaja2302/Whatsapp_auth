@@ -5,8 +5,9 @@ const fs = require('fs');
 const http = require('http');
 const https = require('https');
 const { DateTime } = require('luxon');
-const { userchoice, botpromt, timeoutHandles,userIotChoice ,botIotPrompt } = require('./state');
+const { userchoice, botpromt, timeoutHandles,userIotChoice ,botIotPrompt ,userTalsasiChoice ,botTaksasi} = require('./state');
 const moment = require('moment-timezone');
+const { text } = require('express');
 
 function formatDate(date) {
     const year = date.getFullYear();
@@ -407,6 +408,31 @@ async function GenDefaultTaksasi(est,sock) {
         }
     }
 }
+
+async function GenDefaultTaksasinew(est,datetime,sock) {
+    let attempts = 0;
+    const maxAttempts = 5;
+    const retryDelay = 3000; // 3 seconds in milliseconds
+
+    while (attempts < maxAttempts) {
+        try {
+            const response = await axios.get(`https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder.php?est=${est.toLowerCase()}&datetime=${datetime}`);
+            await sock.sendMessage(idgroup, { text: `Pdf berhasil di generate ${est}` })
+            return response;
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            attempts++;
+            if (attempts < maxAttempts) {
+                console.log(`Retrying attempt ${attempts} for ${est}`);
+                await sock.sendMessage(idgroup, { text: `Mengulang Generate PDF ${est}` })
+                await new Promise(resolve => setTimeout(resolve, retryDelay));
+            } else {
+                await sock.sendMessage(idgroup, { text: `Sudah Max Generate PDF ${est} Gagal` })
+                throw error; // Throw the error after max attempts are reached
+            }
+        }
+    }
+}
   
 
 async function senddata(groupID, destinationPath,fileName,sock) {
@@ -417,12 +443,13 @@ async function senddata(groupID, destinationPath,fileName,sock) {
             url: destinationPath,
             caption: pesankirim
         },
-        fileName: fileName
+        fileName: fileName,
+        caption: "Dikirim oleh *ROBOT*,jangan balas pesan"
     };
 
     // Send the PDF file
     await sock.sendMessage(groupID, messageOptions);
-
+    // await sock.sendMessage(groupID, { text: 'Ini pesan dari robot' })
     // Unlink the file after sending
     fs.unlink(destinationPath, (err) => {
         if (err) {
@@ -535,6 +562,122 @@ async function sendfailcronjob(sock) {
     }
 }
 
+const handleTaksasi = async (noWa, text, sock) => {
+    const resetUserState = async () => {
+        await sock.sendMessage(noWa, { text: 'Waktu Anda telah habis. Silakan mulai kembali dengan mengetikkan !iot.' });
+        delete userTalsasiChoice[noWa];
+        delete botTaksasi[noWa];
+        if (timeoutHandles[noWa]) {
+            clearTimeout(timeoutHandles[noWa]);
+            delete timeoutHandles[noWa];
+        }
+    };
+
+    const setUserTimeout = () => {
+        if (timeoutHandles[noWa]) {
+            clearTimeout(timeoutHandles[noWa]);
+        }
+        timeoutHandles[noWa] = setTimeout(resetUserState, 60 * 1000);
+    };
+
+    if (!userTalsasiChoice[noWa]) {
+        userTalsasiChoice[noWa] = 'tanggal';
+        botTaksasi[noWa] = { attempts: 0 };
+        await sock.sendMessage(noWa, { text: 'Masukkan Tanggal' });
+        setUserTimeout();
+    } else {
+        setUserTimeout(); // Reset timeout with every interaction
+        const step = userTalsasiChoice[noWa];
+
+        if (step === 'tanggal') {
+            botTaksasi[noWa].tanggal = text;
+            const dateRegex = /^\d{2}-\d{2}-\d{4}$/;
+            if (!dateRegex.test(text)) {
+                await sock.sendMessage(noWa, { text: 'Tanggal tidak sesuai, harap masukkan kembali (Format: Hari-Bulan-Tahun):' });
+                return;
+            }
+
+            const [day, month, year] = text.split('-').map(Number);
+            if (month < 1 || month > 12 || day < 1 || day > 31) {
+                await sock.sendMessage(noWa, { text: 'Tanggal atau bulan tidak valid. Harap masukkan kembali (Format: Hari-Bulan-Tahun):' });
+                return;
+            }
+
+            const inputDate = new Date(year, month - 1, day);
+            if (inputDate.getDate() !== day || inputDate.getMonth() !== (month - 1) || inputDate.getFullYear() !== year) {
+                await sock.sendMessage(noWa, { text: 'Tanggal tidak valid. Harap masukkan kembali (Format: Hari-Bulan-Tahun):' });
+                return;
+            }
+
+            botTaksasi[noWa].date = text;
+            userTalsasiChoice[noWa] = 'estate';
+            await sock.sendMessage(noWa, { text: 'Harap masukkan Estate apa saja dengan format setiap estate diakhiri dengan (/) contoh: kne/sce/nbe' });
+          
+        }
+        else if (step === 'estate') {
+            const estates = text.split('/').filter(Boolean); // Split input by '/' and filter out empty strings
+            botTaksasi[noWa].estates = estates;
+        
+            // Validate the input format
+            if (!text.includes('/')) {
+                await sock.sendMessage(noWa, { text: 'Format tidak sesuai. Harap masukkan estate dengan pemisah / contoh: kne/sce/nbe' });
+                return;
+            }
+        
+            try {
+                const apiUrl = 'https://qc-apps.srs-ssms.com/api/getdatacron';
+                const response = await axios.get(apiUrl);
+        
+                if (Array.isArray(response.data)) {
+                    const apiEstates = response.data.map(item => item.estate.toLowerCase()); // Extract estate values from API response and convert to lowercase
+        
+                    // Find available estates
+                    const availableEstates = estates.filter(estate => apiEstates.includes(estate.toLowerCase())); // Convert user input to lowercase before comparing
+        
+                    if (availableEstates.length === 0) {
+                        await sock.sendMessage(noWa, { text: 'Masukan nama estate yang benar!' });
+                    } else {
+                        const dataestate = response.data;
+        
+                        for (const estate of availableEstates) {
+                            const matchingTasks = dataestate.filter(task => task.estate.toLowerCase() === estate.toLowerCase());
+        
+                            if (matchingTasks.length > 0) {
+                                const { estate: estateFromMatchingTask, group_id, wilayah: folder } = matchingTasks[0];
+                                await sock.sendMessage(noWa, { text: `Estate ${estateFromMatchingTask} sedang di proses` });
+                                await checkAndDeleteFiles();
+                                await generatemapstaksasi(estateFromMatchingTask,botTaksasi[noWa].tanggal) 
+                                await GenDefaultTaksasinew(estateFromMatchingTask,botTaksasi[noWa].tanggal,sock);
+                                await sendPdfToGroups(folder, group_id,sock);
+                            }
+                        }
+                    }
+                } else {
+                    throw new Error('Invalid API response structure');
+                }
+            } catch (error) {
+                console.log('Error fetching data:', error.message);
+                await sock.sendMessage(noWa, { text: 'There was an error checking the estate availability. Please try again later.' });
+            }
+        
+            // Send a thank you message with the estates entered
+            await sock.sendMessage(noWa, { text: `Terima kasih. Estate yang Anda masukkan adalah: ${estates.join(', ')}` });
+        
+            // Reset all states
+            delete userTalsasiChoice[noWa];
+            delete botTaksasi[noWa];
+            if (timeoutHandles[noWa]) {
+                clearTimeout(timeoutHandles[noWa]);
+                delete timeoutHandles[noWa];
+            }
+        }
+        
+        else {
+            await sock.sendMessage(noWa, { text: 'Pilihan tidak valid. Silakan masukkan nomor yang sesuai:' });
+        }
+    }
+};
+
 // endfunction 
 
 
@@ -544,8 +687,8 @@ async function get_mill_data(sock) {
     try {
         const response = await axios.get('https://qc-apps.srs-ssms.com/api/getdatamill');
         const data = response.data;
-        const noWa_grading = '120363204285862734@g.us' 
-        // const noWa_grading = '120363164751475851@g.us'
+        // const noWa_grading = '120363204285862734@g.us'  grup testing 
+        const noWa_grading = '120363164751475851@g.us'
 
         if (data.status === '200' && data.data && data.data.length > 0) {
             const result = data.data;
@@ -646,7 +789,7 @@ async function get_mill_data(sock) {
                         url: destinationPath,
                         caption: 'ini caption'
                     },
-                    fileName:  `${itemdata.Tanggal}(${itemdata.waktu_grading})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`
+                    fileName:  `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`
                 };
             
                 // Send the PDF file
@@ -669,6 +812,7 @@ async function get_mill_data(sock) {
         console.error('Error fetching data:', error);
     }
 }
+
 
 // end function 
 
@@ -1231,6 +1375,7 @@ const handleijinmsg = async (noWa, text,sock) => {
         }
     }
 };
+
 async function getNotifications(sock) {
     try {
         // const response = await axios.get('https://qc-apps.srs-ssms.com/api/getnotifijin');
@@ -1554,7 +1699,7 @@ const handleIotInput = async (noWa, text,sock) => {
 // end function 
 
 const setupCronJobs = (sock) => {
-    console.log(sock);
+    // console.log(sock);
     //  taksasi cronjob 
     // cron.schedule('*/10 * * * *', async () => {
     //     await sendfailcronjob(sock);
@@ -1574,13 +1719,13 @@ const setupCronJobs = (sock) => {
     //         timezone: 'Asia/Jakarta' // Set the timezone according to your location
     // });
         
-    cron.schedule('*/1 * * * *', async () => {
-            await sendMessagesBasedOnData(sock);
-            await maintencweget(sock);
-        }, {
-            scheduled: true,
-            timezone: 'Asia/Jakarta'
-    });
+    // cron.schedule('*/1 * * * *', async () => {
+    //         await sendMessagesBasedOnData(sock);
+    //         await maintencweget(sock);
+    //     }, {
+    //         scheduled: true,
+    //         timezone: 'Asia/Jakarta'
+    // });
         
     // cron.schedule('0 * * * *', async () => {
     //         try {
@@ -1595,7 +1740,7 @@ const setupCronJobs = (sock) => {
         
       
     // cron.schedule('0 7 * * *', async () => {
-    //         exec('pm2 restart bot_da', (error, stdout, stderr) => {
+    //         exec('pm2 restart bot_grading', (error, stdout, stderr) => {
     //             if (error) {
     //                 console.error(`Error restarting app: ${error.message}`);
     //                 return;
@@ -1619,4 +1764,4 @@ const setupCronJobs = (sock) => {
     // });
 };
 
-module.exports = { sendtaksasiest, setupCronJobs ,handleijinmsg , getNotifications ,handleIotInput};
+module.exports = { sendtaksasiest, setupCronJobs ,handleijinmsg , getNotifications ,handleIotInput,handleTaksasi};
