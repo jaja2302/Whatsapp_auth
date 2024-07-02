@@ -104,53 +104,62 @@ async function statusHistory(sock) {
 
 async function sendMessagesBasedOnData(sock) {
     try {
-        console.log(sock);
-        const response = await axios.get('https://srs-ssms.com/whatsapp_bot/getmsgsmartlab.php');
+        const response = await axios.get('http://qc-apps2.test/api/getmsgsmartlabs');
         const numberData = response.data;
 
-        if (!Array.isArray(numberData) || numberData.length === 0) {
-            // console.log('Invalid or empty data.'); // Log the error
-            return;
-        }
+        if (numberData.data === "kosong") {
+            // Send a specific message when data is "kosong"
+         
+            console.log('Smartlabs Kosong'); // Log the result for debugging
+        } else {
+            // Process the data array as usual
+            for (const data of numberData.data) {
+                const numberWA = data.penerima + "@s.whatsapp.net";
+                const currentTime = moment().tz('Asia/Jakarta');
+                const currentHour = currentTime.hours();
+                let greeting;
 
-            // Assuming this is inside a loop or function
-        for (const data of numberData) {
-            const numberWA = formatPhoneNumber(data.penerima) + "@s.whatsapp.net";
-            // console.log(numberWA); // Log the WhatsApp number for debugging
-            const currentTime = moment().tz('Asia/Jakarta');
-            const currentHour = currentTime.hours();
-            let greeting;
-            if (currentHour < 10) {
-                greeting = 'Selamat Pagi';
-            } else if (currentHour < 15) {
-                greeting = 'Selamat Siang';
-            } else if (currentHour < 19) {
-                greeting = 'Selamat Sore';
-            } else {
-                greeting = 'Selamat Malam';
+                if (currentHour < 10) {
+                    greeting = 'Selamat Pagi';
+                } else if (currentHour < 15) {
+                    greeting = 'Selamat Siang';
+                } else if (currentHour < 19) {
+                    greeting = 'Selamat Sore';
+                } else {
+                    greeting = 'Selamat Malam';
+                }
+
+                let chatContent;
+                if (data.type === "input") {
+                    chatContent = `Yth. Pelanggan Setia Lab CBI,\n\nSampel anda telah kami terima dengan no surat *${data.no_surat}*. \nprogress saat ini: *${data.progres}*. Progress anda dapat dilihat di website https://smartlab.srs-ssms.com/tracking_sampel dengan kode tracking sample : *${data.kodesample}*\nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.`;
+                } else {
+                    chatContent = `Yth. Pelanggan Setia Lab CBI,\n\nProgress Sampel anda telah *Terupdate* dengan no surat *${data.no_surat}*. \nProgress saat ini: *${data.progres}*. Progress anda dapat dilihat di website https://smartlab.srs-ssms.com/tracking_sampel dengan kode tracking sample : *${data.kodesample}*\nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.`;
+                }
+
+                const message = `${greeting}\n${chatContent}`;
+                const result = await sock.sendMessage(numberWA, { text: message });
+
+                console.log('Message sent: smartlab', data.id); // Log the result for debugging
+                await deletemsg(data.id); // Ensure this function is defined elsewhere in your code
             }
-        
-            let chatContent; // Declare chatContent outside of the if-else block
-            if (data.type === "input") {
-                chatContent = `Yth. Pelanggan Setia Lab CBI,\n\nSampel anda telah kami terima dengan no surat *${data.no_surat}*. \nprogress saat ini: *${data.progres}*. Progress anda dapat dilihat di website https://smartlab.srs-ssms.com/tracking_sampel dengan kode tracking sample : *${data.kodesample}*\nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.`;
-            } else {
-                chatContent = `Yth. Pelanggan Setia Lab CBI,\n\nProgress Sampel anda telah *Terupdate* dengan no surat *${data.no_surat}*. \nProgress saat ini: *${data.progres}*. Progress anda dapat dilihat di website https://smartlab.srs-ssms.com/tracking_sampel dengan kode tracking sample : *${data.kodesample}*\nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.`;
-            }
-        
-            const message = `${greeting}\n${chatContent}`;
-        
-
-
-            const result = await sock.sendMessage(numberWA, { text: message });
-
-            console.log('Message sent:smartlab', data.id); // Log the result for debugging
-            await deletemsg(data.id)
-            // Stop the loop or function after the message is sent
-            break;
         }
 
     } catch (error) {
         console.error('Error fetching data or sending messages:', error); // Log the error if any occurs
+    }
+}
+
+
+async function deletemsg(idmsg) {
+    try {
+        const response = await axios.post('http://qc-apps2.test/api/deletemsgsmartlabs', {
+            id: idmsg,
+        });
+
+        let responses = response.data;
+        console.log(`Message ID '${idmsg}' deleted successfully.`);
+    } catch (error) {
+        console.log(`Error deleting message ID '${idmsg}':`, error);
     }
 }
 //end func
@@ -661,7 +670,7 @@ const handleTaksasi = async (noWa, text, sock) => {
             }
         
             // Send a thank you message with the estates entered
-            await sock.sendMessage(noWa, { text: `Terima kasih. Estate yang Anda masukkan adalah: ${estates.join(', ')}` });
+            // await sock.sendMessage(noWa, { text: `Terima kasih. Estate yang Anda masukkan adalah: ${estates.join(', ')}` });
         
             // Reset all states
             delete userTalsasiChoice[noWa];
@@ -1718,14 +1727,15 @@ const setupCronJobs = (sock) => {
     //         scheduled: true,
     //         timezone: 'Asia/Jakarta' // Set the timezone according to your location
     // });
-        
-    // cron.schedule('*/1 * * * *', async () => {
-    //         await sendMessagesBasedOnData(sock);
-    //         await maintencweget(sock);
-    //     }, {
-    //         scheduled: true,
-    //         timezone: 'Asia/Jakarta'
-    // });
+    // console.log('cronjob');
+    cron.schedule('*/1 * * * *', async () => {
+            await sendMessagesBasedOnData(sock);
+            console.log('cronjob');
+            // await maintencweget(sock);
+        }, {
+            scheduled: true,
+            timezone: 'Asia/Jakarta'
+    });
         
     // cron.schedule('0 * * * *', async () => {
     //         try {
