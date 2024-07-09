@@ -1797,6 +1797,25 @@ const setupCronJobs = (sock) => {
     //     timezone: 'Asia/Jakarta'
     // });
     
+    cron.schedule('0 */30 * * * *', async () => {
+        try {
+          let response = await axios.get('https://qc-apps.srs-ssms.com/api/checkPcStatus');
+          
+          // Assuming the response data has the structure { message: "All PCs are online" }
+          if (response.data.message === "All PCs are online") {
+            console.log("All PCs are online");
+          } else {
+            await sendfailcronjob(sock);
+            await get_mill_data(sock);
+          }
+        } catch (error) {
+          console.error("Error fetching the status:", error);
+        }
+      }, {
+        scheduled: true,
+        timezone: 'Asia/Jakarta'
+    });
+
 };
 
 module.exports = { sendtaksasiest, setupCronJobs ,handleijinmsg , getNotifications ,handleIotInput,handleTaksasi};
