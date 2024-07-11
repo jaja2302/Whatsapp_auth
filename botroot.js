@@ -75,15 +75,17 @@ async function startServer() {
 
 // Connect to WhatsApp
 async function connectToWhatsApp() {
-    const { state, saveCreds } = await useMultiFileAuthState('baileys_auth_info')
-    let { version, isLatest } = await fetchLatestBaileysVersion();
+    const { state, saveCreds } = await useMultiFileAuthState('baileys_auth_info');
+    const { version } = await fetchLatestBaileysVersion();
+
     sock = makeWASocket({
         printQRInTerminal: true,
         auth: state,
-        logger: log({ level: "silent" }),
+        logger: pino({ level: "silent" }),
         version,
-        shouldIgnoreJid: jid => isJidBroadcast(jid),
+        shouldIgnoreJid: isJidBroadcast,
     });
+
     store.bind(sock.ev);
     sock.multi = true
     sock.ev.on('connection.update', async (update) => {
