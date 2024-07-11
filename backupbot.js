@@ -149,6 +149,8 @@ async function connectToWhatsApp() {
     sock.ev.on("messages.upsert", handleMessagesUpsert);
     setupCronJobs(sock);
 }
+
+
 async function handleMessagesUpsert({ messages, type }) {
     for (const message of messages) {
         if (!message.key.fromMe) {
