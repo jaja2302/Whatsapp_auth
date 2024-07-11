@@ -104,7 +104,7 @@ async function statusHistory(sock) {
 
 async function sendMessagesBasedOnData(sock) {
     try {
-        const response = await axios.get('http://qc-apps2.test/api/getmsgsmartlabs');
+        const response = await axios.get('https://qc-apps.srs-ssms.com/api/getmsgsmartlabs');
         const numberData = response.data;
 
         if (numberData.data === "kosong") {
@@ -152,7 +152,7 @@ async function sendMessagesBasedOnData(sock) {
 
 async function deletemsg(idmsg) {
     try {
-        const response = await axios.post('http://qc-apps2.test/api/deletemsgsmartlabs', {
+        const response = await axios.post('https://qc-apps.srs-ssms.com/api/deletemsgsmartlabs', {
             id: idmsg,
         });
 
