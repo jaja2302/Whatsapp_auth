@@ -2,7 +2,7 @@
 const makeWASocket = require("@whiskeysockets/baileys").default;
 const { fetchLatestBaileysVersion, useMultiFileAuthState, isJidBroadcast, makeInMemoryStore } = require("@whiskeysockets/baileys");
 const { Boom, DisconnectReason } = require("@hapi/boom");
-const pino = require("pino");
+const log = (pino = require("pino"));
 const path = require('path');
 const fs = require('fs');
 const http = require('http');
@@ -75,17 +75,16 @@ async function startServer() {
 
 // Connect to WhatsApp
 async function connectToWhatsApp() {
-    const { state, saveCreds } = await useMultiFileAuthState('baileys_auth_info');
-    const { version } = await fetchLatestBaileysVersion();
 
+    const { state, saveCreds } = await useMultiFileAuthState('baileys_auth_info')
+    let { version, isLatest } = await fetchLatestBaileysVersion();
     sock = makeWASocket({
         printQRInTerminal: true,
         auth: state,
-        logger: pino({ level: "silent" }),
+        logger: log({ level: "silent" }),
         version,
-        shouldIgnoreJid: isJidBroadcast,
+        shouldIgnoreJid: jid => isJidBroadcast(jid),
     });
-
     store.bind(sock.ev);
     sock.multi = true
     sock.ev.on('connection.update', async (update) => {
@@ -143,8 +142,8 @@ async function connectToWhatsApp() {
     sock.ev.on("creds.update", saveCreds);
     sock.ev.on("messages.upsert", handleMessagesUpsert);
     setupCronJobs(sock);
-
 }
+
 
 function handleConnectionUpdate(update) {
     const { connection, lastDisconnect, qr: updateQR } = update;
