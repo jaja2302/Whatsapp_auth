@@ -1727,12 +1727,7 @@ const updatePCStatus = async () => {
 const setupCronJobs = (sock) => {
     // console.log(sock);
     //  taksasi cronjob 
-    // cron.schedule('*/10 * * * *', async () => {
-    //     await sendfailcronjob(sock);
-    // }, {
-    //     scheduled: true,
-    //     timezone: 'Asia/Jakarta'
-    // });
+   
     // cron.schedule('0 * * * *', async () => {
     //         try {
     //             // console.log('Running message history');
@@ -1765,56 +1760,65 @@ const setupCronJobs = (sock) => {
     //         timezone: 'Asia/Jakarta' // Set the timezone according to your location
     // });
         
-      
-    // cron.schedule('0 7 * * *', async () => {
-    //         exec('pm2 restart bot_grading', (error, stdout, stderr) => {
-    //             if (error) {
-    //                 console.error(`Error restarting app: ${error.message}`);
-    //                 return;
-    //             }
-    //             if (stderr) {
-    //                 console.error(`Restart error: ${stderr}`);
-    //                 return;
-    //             }
-    //             console.log(`App restarted: ${stdout}`);
-    //         });
-    //     }, {
-    //         scheduled: true,
-    //         timezone: 'Asia/Jakarta'
-    // });
-    // cron.schedule('*/5 * * * *', async () => {
-    //         await getNotifications(sock);
-    //         await get_mill_data(sock);
-    //     }, {
-    //         scheduled: true,
-    //         timezone: 'Asia/Jakarta'
-    // });
-
-    // cron.schedule('*/15 * * * *', async () => {
-    //     await updatePCStatus();
-    // }, {
-    //     scheduled: true,
-    //     timezone: 'Asia/Jakarta'
-    // });
     
-    cron.schedule('0 */30 * * * *', async () => {
-        try {
-          let response = await axios.get('https://qc-apps.srs-ssms.com/api/checkPcStatus');
-          
-          // Assuming the response data has the structure { message: "All PCs are online" }
-          if (response.data.message === "All PCs are online") {
-            console.log("All PCs are online");
-          } else {
-            await sendfailcronjob(sock);
-            await get_mill_data(sock);
-          }
-        } catch (error) {
-          console.error("Error fetching the status:", error);
-        }
-      }, {
+    // untuk pc di ho 
+
+    cron.schedule('*/10 * * * *', async () => {
+        await sendfailcronjob(sock);
+    }, {
         scheduled: true,
         timezone: 'Asia/Jakarta'
     });
+    cron.schedule('0 7 * * *', async () => {
+            exec('pm2 restart bot_grading', (error, stdout, stderr) => {
+                if (error) {
+                    console.error(`Error restarting app: ${error.message}`);
+                    return;
+                }
+                if (stderr) {
+                    console.error(`Restart error: ${stderr}`);
+                    return;
+                }
+                console.log(`App restarted: ${stdout}`);
+            });
+        }, {
+            scheduled: true,
+            timezone: 'Asia/Jakarta'
+    });
+    cron.schedule('*/5 * * * *', async () => {
+            await getNotifications(sock);
+            await get_mill_data(sock);
+        }, {
+            scheduled: true,
+            timezone: 'Asia/Jakarta'
+    });
+
+    cron.schedule('*/15 * * * *', async () => {
+        await updatePCStatus();
+    }, {
+        scheduled: true,
+        timezone: 'Asia/Jakarta'
+    });
+    
+    // untuk  pc ardiono 
+    // cron.schedule('0 */30 * * * *', async () => {
+    //     try {
+    //       let response = await axios.get('https://qc-apps.srs-ssms.com/api/checkPcStatus');
+          
+    //       // Assuming the response data has the structure { message: "All PCs are online" }
+    //       if (response.data.message === "All PCs are online") {
+    //         console.log("All PCs are online");
+    //       } else {
+    //         await sendfailcronjob(sock);
+    //         await get_mill_data(sock);
+    //       }
+    //     } catch (error) {
+    //       console.error("Error fetching the status:", error);
+    //     }
+    //   }, {
+    //     scheduled: true,
+    //     timezone: 'Asia/Jakarta'
+    // });
 
 };
 
