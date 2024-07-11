@@ -1,102 +1,85 @@
-// Import required modules
-const makeWASocket = require("@whiskeysockets/baileys").default;
-const { fetchLatestBaileysVersion, useMultiFileAuthState, isJidBroadcast, makeInMemoryStore } = require("@whiskeysockets/baileys");
-const { Boom, DisconnectReason } = require("@hapi/boom");
+const {
+    default: makeWASocket,
+    MessageType,
+    MessageOptions,
+    Mimetype,
+    DisconnectReason,
+    BufferJSON,
+    AnyMessageContent,
+    delay,
+    fetchLatestBaileysVersion,
+    isJidBroadcast,
+    makeCacheableSignalKeyStore,
+    makeInMemoryStore,
+    MessageRetryMap,
+    useMultiFileAuthState,
+    msgRetryCounterMap
+} = require("@whiskeysockets/baileys");
+const simpleGit = require('simple-git');
+const git = simpleGit();
 const log = (pino = require("pino"));
+const { session } = { "session": "baileys_auth_info" };
+const { Boom } = require("@hapi/boom");
 const path = require('path');
 const fs = require('fs');
 const http = require('http');
+const https = require('https');
 const express = require("express");
 const fileUpload = require('express-fileupload');
 const cors = require('cors');
 const bodyParser = require("body-parser");
-const socketIO = require("socket.io");
-const qrcode = require("qrcode");
-const { sendtaksasiest, setupCronJobs ,handleijinmsg ,getNotifications ,handleIotInput ,handleTaksasi} = require('./helper.js');
+const app = require("express")()
+const cron = require('node-cron');
 const axios = require('axios');
+const { DateTime } = require('luxon');
+const util = require('util');
+const exec = util.promisify(require('child_process').exec);
+const { generatemapstaksasi } = require('./helper.js');
+const moment = require('moment-timezone');
 const { userchoice,userIotChoice ,userTalsasiChoice } = require('./state.js');
-const detect = require('detect-port');
+const { sendtaksasiest, setupCronJobs ,handleijinmsg ,getNotifications ,handleIotInput ,handleTaksasi} = require('./helper.js');
+// enable files upload
+app.use(fileUpload({
+    createParentPath: true
+}));
 
-// Initialize Express app
-const app = express();
-app.use(fileUpload({ createParentPath: true }));
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-// Serve static files
-app.use("/assets", express.static(path.join(__dirname, "/client/assets")));
-
-// Serve HTML files
-app.get("/scan", (req, res) => res.sendFile("./client/server.html", { root: __dirname }));
-app.get("/", (req, res) => res.sendFile("./client/index.html", { root: __dirname }));
 const server = require("http").createServer(app);
 const io = require("socket.io")(server);
-// Initialize in-memory store
+const port = process.env.PORT || 3000;
+const qrcode = require("qrcode");
+const { Console } = require("console");
+
+app.use("/assets", express.static(__dirname + "/client/assets"));
+
+app.get("/scan", (req, res) => {
+    res.sendFile("./client/server.html", {
+        root: __dirname,
+    });
+});
+
+app.get("/", (req, res) => {
+    res.sendFile("./client/index.html", {
+        root: __dirname,
+    });
+});
+//fungsi suara capital 
+function capital(textSound) {
+    const arr = textSound.split(" ");
+    for (var i = 0; i < arr.length; i++) {
+        arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+    }
+    const str = arr.join(" ");
+    return str;
+}
 const store = makeInMemoryStore({ logger: pino().child({ level: "silent", stream: "store" }) });
 
 let sock;
 let qr;
 let soket;
 
-// Capitalize function
-function capital(textSound) {
-    return textSound.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
-}
-
-// Function to find an available port
-async function findAvailablePort(preferredPorts) {
-    for (let port of preferredPorts) {
-        const availablePort = await detect(port);
-        if (availablePort === port) {
-            return port;
-        }
-    }
-    return await detect(); // Return any available port if preferred ports are not available
-}
-
-// Main function to start the server
-async function startServer() {
-    const preferredPorts = [3000, 4000, 8000, 8080];
-    const port = await findAvailablePort(preferredPorts);
-
-    // Create HTTP server and Socket.IO instance
-    const server = http.createServer(app);
-    const io = socketIO(server);
-
-    // Connect to WhatsApp and setup cron jobs
-    connectToWhatsApp().catch(err => console.log("Unexpected error: " + err));
-   
-    // Start server
-    server.listen(port, () => {
-        console.log("Server running on port: " + port);
-    });
-}
-const updateQR = (data) => {
-    switch (data) {
-        case "qr":
-            qrcode.toDataURL(qr, (err, url) => {
-                soket?.emit("qr", url);
-                soket?.emit("log", "QR Code received, please scan!");
-            });
-            break;
-        case "connected":
-            soket?.emit("qrstatus", "./assets/check.svg");
-            soket?.emit("log", "WhatsApp terhubung!");
-            break;
-        case "qrscanned":
-            soket?.emit("qrstatus", "./assets/check.svg");
-            soket?.emit("log", "QR Code Telah discan!");
-            break;
-        case "loading":
-            soket?.emit("qrstatus", "./assets/loader.gif");
-            soket?.emit("log", "Registering QR Code , please wait!");
-            break;
-        default:
-            break;
-    }
-};
-// Connect to WhatsApp
 async function connectToWhatsApp() {
 
     const { state, saveCreds } = await useMultiFileAuthState('baileys_auth_info')
@@ -167,53 +150,6 @@ async function connectToWhatsApp() {
     setupCronJobs(sock);
 }
 
-
-
-
-function handleDisconnection(reason) {
-    const session = 'baileys_auth_info';
-
-    switch (reason) {
-        case DisconnectReason.badSession:
-            console.log(`Bad Session File, Please Delete ${session} and Scan Again`);
-            sock.logout();
-            break;
-        case DisconnectReason.connectionClosed:
-            console.log("Connection closed, reconnecting....");
-            connectToWhatsApp();
-            break;
-        case DisconnectReason.connectionLost:
-            console.log("Connection Lost from Server, reconnecting...");
-            connectToWhatsApp();
-            break;
-        case DisconnectReason.connectionReplaced:
-            console.log("Connection Replaced, Another New Session Opened, Please Close Current Session First");
-            sock.logout();
-            break;
-        case DisconnectReason.loggedOut:
-            console.log(`Device Logged Out, Please Delete ${session} and Scan Again.`);
-            sock.logout();
-            break;
-        case DisconnectReason.restartRequired:
-            console.log("Restart Required, Restarting...");
-            connectToWhatsApp();
-            break;
-        case DisconnectReason.timedOut:
-            console.log("Connection TimedOut, Reconnecting...");
-            connectToWhatsApp();
-            break;
-        default:
-            sock.end(`Unknown DisconnectReason: ${reason}|${lastDisconnect.error}`);
-            break;
-    }
-}
-
-async function fetchGroups() {
-    // const groups = Object.values(await sock.groupFetchAllParticipating());
-    // groups.forEach(group => {
-    //     console.log(`id_group: ${group.id} || Nama Group: ${group.subject}`);
-    // });
-}
 
 async function handleMessagesUpsert({ messages, type }) {
     for (const message of messages) {
@@ -467,43 +403,71 @@ async function handleMessagesUpsert({ messages, type }) {
     }
 }
 
-io.on("connection", (socket) => {
+
+
+io.on("connection", async (socket) => {
     soket = socket;
-    if (isConnected()) {
-        updateQRCode("connected");
+    // console.log(sock)
+    if (isConnected) {
+        updateQR("connected");
     } else if (qr) {
-        updateQRCode("qr");
+        updateQR("qr");
     }
 });
 
-function isConnected() {
-    return !!sock?.user;
-}
+// functions
+const isConnected = () => {
+    return (sock.user);
+};
 
-function updateQRCode(status) {
-    const qrStatus = {
-        "qr": () => qrcode.toDataURL(qr, (err, url) => {
-            soket?.emit("qr", url);
-            soket?.emit("log", "QR Code received, please scan!");
-        }),
-        "connected": () => {
+const updateQR = (data) => {
+    switch (data) {
+        case "qr":
+            qrcode.toDataURL(qr, (err, url) => {
+                soket?.emit("qr", url);
+                soket?.emit("log", "QR Code received, please scan!");
+            });
+            break;
+        case "connected":
             soket?.emit("qrstatus", "./assets/check.svg");
-            soket?.emit("log", "WhatsApp connected!");
-        },
-        "qrscanned": () => {
+            soket?.emit("log", "WhatsApp terhubung!");
+            break;
+        case "qrscanned":
             soket?.emit("qrstatus", "./assets/check.svg");
-            soket?.emit("log", "QR Code scanned!");
-        },
-        "loading": () => {
+            soket?.emit("log", "QR Code Telah discan!");
+            break;
+        case "loading":
             soket?.emit("qrstatus", "./assets/loader.gif");
-            soket?.emit("log", "Registering QR Code, please wait!");
-        }
-    };
-
-    if (qrStatus[status]) {
-        qrStatus[status]();
+            soket?.emit("log", "Registering QR Code , please wait!");
+            break;
+        default:
+            break;
     }
-}
+};
 
-// Start the server
-startServer();
+
+
+app.get("/testing", async (req, res) => {
+    try {
+        await getNotifications();
+        // Send a response back to the client indicating success
+        res.status(200).json({
+            status: true,
+            message: "Messages sent successfully"
+        });
+    } catch (error) {
+        console.error("Error sending files:", error);
+        // Send an error response back to the client
+        res.status(500).json({
+            status: false,
+            response: error.message || "Internal Server Error"
+        });
+    }
+});
+
+
+connectToWhatsApp()
+    .catch(err => console.log("unexpected error: " + err))
+server.listen(port, () => {
+    console.log("Server Berjalan pada Port : " + port);
+});
