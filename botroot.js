@@ -75,23 +75,71 @@ async function startServer() {
 
 // Connect to WhatsApp
 async function connectToWhatsApp() {
-    const { state, saveCreds } = await useMultiFileAuthState('baileys_auth_info');
-    const { version } = await fetchLatestBaileysVersion();
-
+    const { state, saveCreds } = await useMultiFileAuthState('baileys_auth_info')
+    let { version, isLatest } = await fetchLatestBaileysVersion();
     sock = makeWASocket({
         printQRInTerminal: true,
         auth: state,
-        logger: pino({ level: "silent" }),
+        logger: log({ level: "silent" }),
         version,
-        shouldIgnoreJid: isJidBroadcast,
+        shouldIgnoreJid: jid => isJidBroadcast(jid),
     });
-
     store.bind(sock.ev);
-    sock.ev.on('connection.update', handleConnectionUpdate);
+    sock.multi = true
+    sock.ev.on('connection.update', async (update) => {
+        //console.log(update);
+        const { connection, lastDisconnect } = update;
+        if (connection === 'close') {
+            let reason = new Boom(lastDisconnect.error).output.statusCode;
+            if (reason === DisconnectReason.badSession) {
+                console.log(`Bad Session File, Please Delete ${session} and Scan Again`);
+                sock.logout();
+            } else if (reason === DisconnectReason.connectionClosed) {
+                console.log("Connection closed, reconnecting....");
+                connectToWhatsApp();
+            } else if (reason === DisconnectReason.connectionLost) {
+                console.log("Connection Lost from Server, reconnecting...");
+                connectToWhatsApp();
+            } else if (reason === DisconnectReason.connectionReplaced) {
+                console.log("Connection Replaced, Another New Session Opened, Please Close Current Session First");
+                sock.logout();
+            } else if (reason === DisconnectReason.loggedOut) {
+                console.log(`Device Logged Out, Please Delete ${session} and Scan Again.`);
+                sock.logout();
+            } else if (reason === DisconnectReason.restartRequired) {
+                console.log("Restart Required, Restarting...");
+                connectToWhatsApp();
+            } else if (reason === DisconnectReason.timedOut) {
+                console.log("Connection TimedOut, Reconnecting...");
+                connectToWhatsApp();
+            } else {
+                sock.end(`Unknown DisconnectReason: ${reason}|${lastDisconnect.error}`);
+            }
+        } else if (connection === 'open') {
+            console.log('opened connection');
+            // let groups = Object.values(await sock.groupFetchAllParticipating())
+            // //console.log(groups);
+            // for (let group of groups) {
+            //     console.log("id_group: " + group.id + " || Nama Group: " + group.subject);
+            // }
+            // return;
+        }
+        if (update.qr) {
+            qr = update.qr;
+            updateQR("qr");
+        }
+        else if (qr = undefined) {
+            updateQR("loading");
+        }
+        else {
+            if (update.connection === "open") {
+                updateQR("qrscanned");
+                return;
+            }
+        }
+    });
     sock.ev.on("creds.update", saveCreds);
     sock.ev.on("messages.upsert", handleMessagesUpsert);
-
-
     setupCronJobs(sock);
 
 }
