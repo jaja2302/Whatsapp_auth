@@ -72,7 +72,30 @@ async function startServer() {
         console.log("Server running on port: " + port);
     });
 }
-
+const updateQR = (data) => {
+    switch (data) {
+        case "qr":
+            qrcode.toDataURL(qr, (err, url) => {
+                soket?.emit("qr", url);
+                soket?.emit("log", "QR Code received, please scan!");
+            });
+            break;
+        case "connected":
+            soket?.emit("qrstatus", "./assets/check.svg");
+            soket?.emit("log", "WhatsApp terhubung!");
+            break;
+        case "qrscanned":
+            soket?.emit("qrstatus", "./assets/check.svg");
+            soket?.emit("log", "QR Code Telah discan!");
+            break;
+        case "loading":
+            soket?.emit("qrstatus", "./assets/loader.gif");
+            soket?.emit("log", "Registering QR Code , please wait!");
+            break;
+        default:
+            break;
+    }
+};
 // Connect to WhatsApp
 async function connectToWhatsApp() {
 
@@ -145,26 +168,7 @@ async function connectToWhatsApp() {
 }
 
 
-function handleConnectionUpdate(update) {
-    const { connection, lastDisconnect, qr: updateQR } = update;
-    const reason = lastDisconnect ? new Boom(lastDisconnect.error).output.statusCode : null;
 
-    if (connection === 'close') {
-        handleDisconnection(reason);
-    } else if (connection === 'open') {
-        console.log('Opened connection');
-        fetchGroups();
-    }
-
-    if (updateQR) {
-        qr = updateQR;
-        updateQRCode("qr");
-    } else if (!updateQR) {
-        updateQRCode("loading");
-    } else if (connection === "open") {
-        updateQRCode("qrscanned");
-    }
-}
 
 function handleDisconnection(reason) {
     const session = 'baileys_auth_info';
