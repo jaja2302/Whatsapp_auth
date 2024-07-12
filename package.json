@@ -22,6 +22,7 @@
     "node-windows": "^1.0.0-beta.8",
     "ping": "^0.4.4",
     "pino": "^8.20.0",
+    "pm2": "^5.4.2",
     "puppeteer": "^22.7.1",
     "puppeteer-core": "^22.8.0",
     "qrcode": "^1.5.3",
