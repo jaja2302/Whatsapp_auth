@@ -180,7 +180,8 @@ async function handleMessagesUpsert({ messages, type }) {
                             await sock.sendMessage(noWa, { text: "Harap hanya balas ya atau tidak" }, { quoted: message });
                         } else if (respon_atasan.toLowerCase() === 'ya') {
                             try {
-                                const response = await axios.post('https://qc-apps.srs-ssms.com/api/updatenotifijin', {
+                                const response = await axios.post('http://qc-apps2.test/api/updatenotifijin', {
+                                // const response = await axios.post('https://qc-apps.srs-ssms.com/api/updatenotifijin', {
                                     id_data: id,
                                     id_atasan: idAtasan,
                                     answer: 'ya',
@@ -213,7 +214,8 @@ async function handleMessagesUpsert({ messages, type }) {
                         const idPemohon = conversation.substring(idPemohonStartIndex, idPemohonEndIndex).trim();
                         const [id, idAtasan] = idPemohon.split('/').map(part => part.trim());
                         try {
-                            const response = await axios.post('https://qc-apps.srs-ssms.com/api/updatenotifijin', {
+                            const response = await axios.post('http://qc-apps2.test/api/updatenotifijin', {
+                            // const response = await axios.post('https://qc-apps.srs-ssms.com/api/updatenotifijin', {
                                 id_data: id,
                                 id_atasan: idAtasan,
                                 answer: respon_atasan,
@@ -241,41 +243,41 @@ async function handleMessagesUpsert({ messages, type }) {
             if (message.key.remoteJid.endsWith('@g.us')) {
                 if (lowerCaseMessage && lowerCaseMessage.startsWith("!tarik")) {
                     // Extract the estate name from the command
-                    const estateCommand = lowerCaseMessage.replace("!tarik", "").trim();
-                    const estate = estateCommand.toUpperCase(); // Convert to uppercase for consistency
+                    // const estateCommand = lowerCaseMessage.replace("!tarik", "").trim();
+                    // const estate = estateCommand.toUpperCase(); // Convert to uppercase for consistency
 
-                    // Check if the estate name is valid
-                    if (!estate) {
-                        await sock.sendMessage(noWa, { text: 'Mohon masukkan nama estate setelah perintah !tarik dilanjutkan dengan singkatan nama Estate.\n-Contoh !tarikkne = Untuk Estate KNE dan seterusnya' }, { quoted: message });
-                        return;
-                    }
+                    // // Check if the estate name is valid
+                    // if (!estate) {
+                    //     await sock.sendMessage(noWa, { text: 'Mohon masukkan nama estate setelah perintah !tarik dilanjutkan dengan singkatan nama Estate.\n-Contoh !tarikkne = Untuk Estate KNE dan seterusnya' }, { quoted: message });
+                    //     return;
+                    // }
 
-                    const apiUrl = 'https://qc-apps.srs-ssms.com/api/getdatacron';
-                    try {
-                        const response = await axios.get(apiUrl);
-                        const dataestate = response.data;
-                        const matchingTasks = dataestate.filter(task => task.estate === estate);
+                    // const apiUrl = 'https://qc-apps.srs-ssms.com/api/getdatacron';
+                    // try {
+                    //     const response = await axios.get(apiUrl);
+                    //     const dataestate = response.data;
+                    //     const matchingTasks = dataestate.filter(task => task.estate === estate);
 
-                        if (matchingTasks.length > 0) {
-                            const { estate: estateFromMatchingTask, group_id, wilayah: folder } = matchingTasks[0];
-                            await sock.sendMessage(noWa, { text: 'Mohon tunggu laporan sedang di proses' }, { quoted: message });
-                            const result = await sendtaksasiest(estateFromMatchingTask, group_id, folder,sock);
-                            console.log(result);
-                            if (result === 'success') {
-                                console.log('success');
-                                break;
-                            } else {
-                                await sock.sendMessage(noWa, { text: 'Terjadi kesalahan saat mengirim taksasi. Silakan Hubungi Tim D.A.' }, { quoted: message });
-                                break;
-                            }
-                        } else {
-                            await sock.sendMessage(noWa, { text: 'Estate yang anda masukan tidak tersedia di database. Silahkan Ulangi dan Cek Kembali' }, { quoted: message });
-                            break;
-                        }
-                    } catch (error) {
-                        console.log('Error fetching data:', error.message);
-                        break;
-                    }
+                    //     if (matchingTasks.length > 0) {
+                    //         const { estate: estateFromMatchingTask, group_id, wilayah: folder } = matchingTasks[0];
+                    //         await sock.sendMessage(noWa, { text: 'Mohon tunggu laporan sedang di proses' }, { quoted: message });
+                    //         const result = await sendtaksasiest(estateFromMatchingTask, group_id, folder,sock);
+                    //         console.log(result);
+                    //         if (result === 'success') {
+                    //             console.log('success');
+                    //             break;
+                    //         } else {
+                    //             await sock.sendMessage(noWa, { text: 'Terjadi kesalahan saat mengirim taksasi. Silakan Hubungi Tim D.A.' }, { quoted: message });
+                    //             break;
+                    //         }
+                    //     } else {
+                    //         await sock.sendMessage(noWa, { text: 'Estate yang anda masukan tidak tersedia di database. Silahkan Ulangi dan Cek Kembali' }, { quoted: message });
+                    //         break;
+                    //     }
+                    // } catch (error) {
+                    //     console.log('Error fetching data:', error.message);
+                    //     break;
+                    // }
                 }else if (lowerCaseMessage === '!taksasi') {
                     if (!userTalsasiChoice[noWa]) {
                         await handleTaksasi(noWa, lowerCaseMessage,sock);
@@ -449,7 +451,7 @@ const updateQR = (data) => {
 
 app.get("/testing", async (req, res) => {
     try {
-        await getNotifications();
+        await getNotifications(sock);
         // Send a response back to the client indicating success
         res.status(200).json({
             status: true,

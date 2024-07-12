@@ -1,118 +1,70 @@
-const axios = require('axios');
+// index.js
 const { exec } = require('child_process');
-const cron = require('node-cron');
-const fs = require('fs');
 const ping = require('ping');
-
+const { loginwifi } = require('./loginwifi.js');
 
 let isFirstRun = true;
-async function activeBot() {
-    exec('pm2 list', (error, stdout, stderr) => {
-        if (error) {
-            console.error(`Error checking PM2 status: ${error}`);
-            return;
-        }
-  
-        const processes = stdout.split('\n');
-        let botStatus = 'offline';
-  
-        processes.forEach((process) => {
-            if (process.includes('bot_da') && process.includes('online')) {
-                botStatus = 'online';
-            }
-        });
-  
-        if (botStatus === 'online') {
-            console.log('Bot already online');
-        } else {
-            // Bot is offline, start it
-            exec('pm2 start index.js --name bot_da -o bot-da-out.log -e bot-da-error.log', (error, stdout, stderr) => {
-                if (error) {
-                    console.error(`Error starting the PM2 process: ${error}`);
-                    return;
-                }
-                console.log(`PM2 process started: ${stdout}`);
-            });
-        }
-    });
+
+async function login() {
+    let result = await loginwifi();
+
+    if (result) {
+        console.log('Login successful');
+    } else {
+        console.log('Login failed');
+    }
 }
 
-async function offBot() {
-    exec('pm2 list', (error, stdout, stderr) => {
-        if (error) {
-            console.error(`Error checking PM2 status: ${error}`);
-            return;
-        }
-  
-        const processes = stdout.split('\n');
-        let botStatus = 'offline';
-  
-        processes.forEach((process) => {
-            if (process.includes('bot_da') && process.includes('online')) {
-                botStatus = 'online';
-            }
-        });
-  
-        if (botStatus === 'offline') {
-            console.error('Bot offline');
-        } else {
-            // Bot is online, stop it
-            exec('pm2 stop bot_da', (error, stdout, stderr) => {
-                if (error) {
-                    console.error(`Error stopping the PM2 process: ${error}`);
-                    return;
-                }
-                console.log(`PM2 process stopped: ${stdout}`);
-            });
-        }
-    });
-}
-// Check if it's the first run before scheduling the ping function
-if (isFirstRun) {
-    activeBot(); // Start the bot on the first run
-    isFirstRun = false; // Update the flag after the first run
-}
-let isInternetAvailable = false;
-let offlineDuration = 0;
-const offlineThreshold = 60; // Threshold in seconds
-let botStopped = false; // Flag to track if the bot has been stopped
-
-// Function to stop counting and log a waiting message
-function stopCounting() {
-    offlineDuration = 0;
-    botStopped = true;
-    console.log('Internet is currently unavailable. Bot is waiting for the internet to become available...');
-}
-
-// Function to check internet connection
 async function checkInternetConnection() {
     const host = 'www.whatsapp.com';
-    ping.sys.probe(host, (isAlive) => {
-        if (isAlive && !isInternetAvailable) {
-            console.log(`Internet is available`);
-            isInternetAvailable = true;
-            offlineDuration = 0;
-            if (botStopped) {
-                botStopped = false;
-                activeBot(); // Restart the bot when internet becomes available
-            }
-        } else if (!isAlive && isInternetAvailable) {
-            console.log(`Internet is unavailable`);
-            isInternetAvailable = false;
-        } else if (!isAlive && !isInternetAvailable) {
-            offlineDuration++;
-            console.log(`Internet has been unavailable for ${offlineDuration} seconds`);
+    let attempts = 0;
 
-            if (offlineDuration >= offlineThreshold && !botStopped) {
-                // console.log(`Internet has been offline for more than ${offlineThreshold} seconds. Stopping the bot.`);
-                offBot(); // Stop the bot when the internet has been offline for more than the threshold
-                stopCounting(); // Stop counting once the bot is stopped and log waiting message
-            }
+    const retryLogin = async () => {
+        let isAlive = false;
+        let timeoutReached = false;
+
+        while (!isAlive && attempts < 3 && !timeoutReached) {
+            ping.sys.probe(host, async (isAliveResult) => {
+                isAlive = isAliveResult;
+
+                if (!isAlive) {
+                    attempts++;
+                    console.log(`Attempt ${attempts}: Internet connection not available. Trying to login...`);
+                    await login();
+
+                    // Check the internet connection status again
+                    ping.sys.probe(host, async (newIsAlive) => {
+                        isAlive = newIsAlive;
+                        if (isAlive) {
+                            console.log('Internet connection established.');
+                        }
+                    });
+
+                    if (!isAlive) {
+                        // Wait for the result of loginwifi or timeout
+                        const loginStatus = await loginwifi();
+                        if (loginStatus) {
+                            console.log('Reconnected successfully.');
+                            isAlive = true;
+                        } else {
+                            console.log('Reconnection failed.');
+                        }
+                    }
+                } else {
+                    console.log('Internet connection available.');
+                }
+            }, { timeout: 30 });
+
+            await new Promise(resolve => setTimeout(resolve, 1000)); // wait for 1 second between attempts
         }
-    }, { timeout: 10 });
+    };
+
+    await retryLogin();
 }
 
-// Check internet connection status initially
-checkInternetConnection();
+if (isFirstRun) {
+    isFirstRun = false;
+    checkInternetConnection();
+}
 
 setInterval(checkInternetConnection, 1000);

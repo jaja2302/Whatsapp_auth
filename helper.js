@@ -1389,8 +1389,8 @@ const handleijinmsg = async (noWa, text,sock) => {
 
 async function getNotifications(sock) {
     try {
+        const response = await axios.get('http://qc-apps2.test/api/getnotifijin');
         // const response = await axios.get('https://qc-apps.srs-ssms.com/api/getnotifijin');
-        const response = await axios.get('https://qc-apps.srs-ssms.com/api/getnotifijin');
         const data = response.data;
 
         if (data.status === '200' && data.data && data.data.length > 0) {
@@ -1438,63 +1438,68 @@ async function getNotifications(sock) {
                         message += `Terima kasih,\n`;
                         message += `Tim Digital Architect SRS Bot`;
 
-                        try {
-                            const genpdf = await axios.get('https://izin-kebun.srs-ssms.com/api/generatePdfIzinKebun', {
-                                params: {
-                                    user: 'j',
-                                    pw: 'j',
-                                    id: itemdata.id,
-                                }
-                            });
-                            // console.log(genpdf.data.filename);
+                        // kirim pdf 
+                        // try {
+                        //     const genpdf = await axios.get('http://qc-apps2.test/api/generatePdfIzinKebun', {
+                        //     // const genpdf = await axios.get('https://izin-kebun.srs-ssms.com/api/generatePdfIzinKebun', {
+                        //         params: {
+                        //             user: 'j',
+                        //             pw: 'j',
+                        //             id: itemdata.id,
+                        //         }
+                        //     });
+                        //     // console.log(genpdf.data.filename);
 
-                            const fileUrl = `https://izin-kebun.srs-ssms.com/public/storage/files/${genpdf.data.filename}`;
-                            const destinationPath = `./uploads/${itemdata.filename_pdf}`;
+                        //     const fileUrl = `https://izin-kebun.srs-ssms.com/public/storage/files/${genpdf.data.filename}`;
+                        //     const destinationPath = `./uploads/${itemdata.filename_pdf}`;
                 
-                            const file = fs.createWriteStream(destinationPath);
+                        //     const file = fs.createWriteStream(destinationPath);
                 
-                            await new Promise((resolve, reject) => {
-                                https.get(fileUrl, function(response) {
-                                    response.pipe(file);
-                                    file.on('finish', function() {
-                                        file.close(() => {
-                                            console.log('File downloaded successfully.');
-                                            resolve(); // Resolve the promise after the file is downloaded
-                                        });
-                                    });
-                                }).on('error', function(err) {
-                                    fs.unlink(destinationPath, () => {}); // Delete the file if there is an error
-                                    console.error('Error downloading the file:', err);
-                                    reject(err); // Reject the promise if there is an error
-                                });
-                            });
-                            const messageOptions = {
-                                document: {
-                                    url: destinationPath,
-                                    caption: 'ini caption'
-                                },
-                                fileName: 'Surat Izin Kebun'
-                            };
-                            await sock.sendMessage(itemdata.no_hp + "@s.whatsapp.net", messageOptions);
+                        //     await new Promise((resolve, reject) => {
+                        //         https.get(fileUrl, function(response) {
+                        //             response.pipe(file);
+                        //             file.on('finish', function() {
+                        //                 file.close(() => {
+                        //                     console.log('File downloaded successfully.');
+                        //                     resolve(); // Resolve the promise after the file is downloaded
+                        //                 });
+                        //             });
+                        //         }).on('error', function(err) {
+                        //             fs.unlink(destinationPath, () => {}); // Delete the file if there is an error
+                        //             console.error('Error downloading the file:', err);
+                        //             reject(err); // Reject the promise if there is an error
+                        //         });
+                        //     });
+                        //     const messageOptions = {
+                        //         document: {
+                        //             url: destinationPath,
+                        //             caption: 'ini caption'
+                        //         },
+                        //         fileName: 'Surat Izin Kebun'
+                        //     };
+                        //     await sock.sendMessage(itemdata.no_hp + "@s.whatsapp.net", messageOptions);
 
-                            try {
-                                const unlinkpdf = await axios.get('https://izin-kebun.srs-ssms.com/api/deletePdfIzinKebun', {
-                                    params: {
-                                        user: 'j',
-                                        pw: 'j',
-                                        filename: genpdf.data.filename,
-                                    }
-                                });    
-                            } catch (error) {
-                                console.log("Error unlinkpdf PDF:", error);
-                            }
-                        } catch (error) {
-                            console.log("Error generating PDF:", error);
-                        }
+                        //     try {
+                        //         const unlinkpdf = await axios.get('https://izin-kebun.srs-ssms.com/api/deletePdfIzinKebun', {
+                        //             params: {
+                        //                 user: 'j',
+                        //                 pw: 'j',
+                        //                 filename: genpdf.data.filename,
+                        //             }
+                        //         });    
+                        //     } catch (error) {
+                        //         console.log("Error unlinkpdf PDF:", error);
+                        //     }
+                        // } catch (error) {
+                        //     console.log("Error generating PDF:", error);
+                        // }
+
+
                         await sock.sendMessage(itemdata.no_hp + "@s.whatsapp.net", { text: message });
 
                         try {
-                            const response = await axios.post('https://qc-apps.srs-ssms.com/api/updatenotifijin', {
+                            const response = await axios.post('http://qc-apps2.test/api/updatenotifijin', {
+                            // const response = await axios.post('https://qc-apps.srs-ssms.com/api/updatenotifijin', {
                                 id_data: itemdata.id,
                                 id_atasan: itemdata.id_atasan,
                                 answer: 'ya',
@@ -1514,7 +1519,8 @@ async function getNotifications(sock) {
 
                         try {
                         
-                            const response = await axios.post('https://qc-apps.srs-ssms.com/api/updatenotifijin', {
+                            const response = await axios.post('http://qc-apps2.test/api/updatenotifijin', {
+                            // const response = await axios.post('https://qc-apps.srs-ssms.com/api/updatenotifijin', {
                                 id_data: itemdata.id,
                                 id_atasan: '3',
                                 answer: 'tidak',
@@ -1763,42 +1769,42 @@ const setupCronJobs = (sock) => {
     
     // untuk pc di ho 
 
-    cron.schedule('*/10 * * * *', async () => {
-        await sendfailcronjob(sock);
-    }, {
-        scheduled: true,
-        timezone: 'Asia/Jakarta'
-    });
-    cron.schedule('0 7 * * *', async () => {
-            exec('pm2 restart bot_grading', (error, stdout, stderr) => {
-                if (error) {
-                    console.error(`Error restarting app: ${error.message}`);
-                    return;
-                }
-                if (stderr) {
-                    console.error(`Restart error: ${stderr}`);
-                    return;
-                }
-                console.log(`App restarted: ${stdout}`);
-            });
-        }, {
-            scheduled: true,
-            timezone: 'Asia/Jakarta'
-    });
-    cron.schedule('*/5 * * * *', async () => {
-            await getNotifications(sock);
-            await get_mill_data(sock);
-        }, {
-            scheduled: true,
-            timezone: 'Asia/Jakarta'
-    });
+    // cron.schedule('*/10 * * * *', async () => {
+    //     await sendfailcronjob(sock);
+    // }, {
+    //     scheduled: true,
+    //     timezone: 'Asia/Jakarta'
+    // });
+    // cron.schedule('0 7 * * *', async () => {
+    //         exec('pm2 restart bot_grading', (error, stdout, stderr) => {
+    //             if (error) {
+    //                 console.error(`Error restarting app: ${error.message}`);
+    //                 return;
+    //             }
+    //             if (stderr) {
+    //                 console.error(`Restart error: ${stderr}`);
+    //                 return;
+    //             }
+    //             console.log(`App restarted: ${stdout}`);
+    //         });
+    //     }, {
+    //         scheduled: true,
+    //         timezone: 'Asia/Jakarta'
+    // });
+    // cron.schedule('*/5 * * * *', async () => {
+    //         await getNotifications(sock);
+    //         await get_mill_data(sock);
+    //     }, {
+    //         scheduled: true,
+    //         timezone: 'Asia/Jakarta'
+    // });
 
-    cron.schedule('*/15 * * * *', async () => {
-        await updatePCStatus();
-    }, {
-        scheduled: true,
-        timezone: 'Asia/Jakarta'
-    });
+    // cron.schedule('*/15 * * * *', async () => {
+    //     await updatePCStatus();
+    // }, {
+    //     scheduled: true,
+    //     timezone: 'Asia/Jakarta'
+    // });
     
     // untuk  pc ardiono 
     // cron.schedule('0 */30 * * * *', async () => {

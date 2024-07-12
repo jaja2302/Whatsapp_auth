@@ -331,7 +331,7 @@ const updateQR = (data) => {
 
 app.get("/testing", async (req, res) => {
     try {
-        await getNotifications();
+        await getNotifications(sock);
         // Send a response back to the client indicating success
         res.status(200).json({
             status: true,
