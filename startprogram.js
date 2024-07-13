@@ -4,9 +4,6 @@ const { exec } = require('child_process');
 
 const USERNAME = 'jaja.valentino';
 const PASSWORD = 'J@ja1212';
-
-// const USERNAME = 'testing';
-// const PASSWORD = 'dada';
 const URL = 'https://10.6.1.1/connect/PortalMain';
 const CHROME_PATH = '/usr/bin/chromium-browser'; // Optional Chrome path
 
@@ -27,7 +24,7 @@ async function loginWifi() {
   let loginSuccess = false;
   const browser = await puppeteer.launch({
     headless: false,
-    // executablePath: CHROME_PATH, // Uncomment if using a specific Chrome path
+    executablePath: CHROME_PATH, // Uncomment if using a specific Chrome path
     args: ['--no-sandbox', '--disable-setuid-sandbox', '--ignore-certificate-errors'],
   });
 
@@ -49,6 +46,9 @@ async function loginWifi() {
       });
     }
 
+    // Reload the page to avoid session expiry
+    await page.reload({ waitUntil: 'networkidle2' });
+
     await page.waitForSelector('#LoginUserPassword_auth_username');
     await page.waitForSelector('#LoginUserPassword_auth_password');
 
@@ -57,7 +57,6 @@ async function loginWifi() {
 
     await Promise.all([
       page.click('#UserCheck_Login_Button'),
-    //   page.waitForNavigation({ waitUntil: 'networkidle2' }),
     ]);
 
     // Wait for 10 seconds after login to ensure it is successful
