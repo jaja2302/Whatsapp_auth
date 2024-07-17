@@ -1806,24 +1806,24 @@ const setupCronJobs = (sock) => {
     // });
     
     // untuk  pc ardiono 
-    // cron.schedule('0 */30 * * * *', async () => {
-    //     try {
-    //       let response = await axios.get('https://qc-apps.srs-ssms.com/api/checkPcStatus');
+    cron.schedule('0 */30 * * * *', async () => {
+        try {
+          let response = await axios.get('https://qc-apps.srs-ssms.com/api/checkPcStatus');
           
-    //       // Assuming the response data has the structure { message: "All PCs are online" }
-    //       if (response.data.message === "All PCs are online") {
-    //         console.log("All PCs are online");
-    //       } else {
-    //         await sendfailcronjob(sock);
-    //         await get_mill_data(sock);
-    //       }
-    //     } catch (error) {
-    //       console.error("Error fetching the status:", error);
-    //     }
-    //   }, {
-    //     scheduled: true,
-    //     timezone: 'Asia/Jakarta'
-    // });
+          // Assuming the response data has the structure { message: "All PCs are online" }
+          if (response.data.message === "All PCs are online") {
+            console.log("All PCs are online");
+          } else {
+            await sendfailcronjob(sock);
+            await get_mill_data(sock);
+          }
+        } catch (error) {
+          console.error("Error fetching the status:", error);
+        }
+      }, {
+        scheduled: true,
+        timezone: 'Asia/Jakarta'
+    });
 
     cron.schedule('0 */3 * * *', async () => {
         exec('pm2 restart bot_da', (error, stdout, stderr) => {
