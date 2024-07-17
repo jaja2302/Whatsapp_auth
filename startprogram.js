@@ -24,7 +24,7 @@ async function loginWifi() {
   let loginSuccess = false;
   const browser = await puppeteer.launch({
     headless: false,
-    executablePath: CHROME_PATH, // Uncomment if using a specific Chrome path
+    executablePath: CHROME_PATH, 
     args: ['--no-sandbox', '--disable-setuid-sandbox', '--ignore-certificate-errors'],
   });
 
@@ -37,7 +37,7 @@ async function loginWifi() {
     });
 
     for (let i = 0; i < 3; i++) {
-      await page.goto(URL, { waitUntil: 'networkidle2' });
+      await page.goto(URL);
 
       if (page.url().includes('net::ERR_CERT_AUTHORITY_INVALID')) {
         await page.goto('chrome-error://chromewebdata/');
@@ -47,10 +47,10 @@ async function loginWifi() {
         });
       }
 
-      await page.waitForTimeout(2000); // Wait for 2 seconds between refreshes
+      await new Promise(resolve => setTimeout(resolve, 2000)); // Wait for 2 seconds between refreshes
     }
 
-    await page.goto(URL, { waitUntil: 'networkidle2' });
+    await page.goto(URL);
 
     await page.waitForSelector('#LoginUserPassword_auth_username');
     await page.waitForSelector('#LoginUserPassword_auth_password');
@@ -60,6 +60,7 @@ async function loginWifi() {
 
     await Promise.all([
       page.click('#UserCheck_Login_Button'),
+      page.waitForNavigation(),
     ]);
 
     // Wait for 10 seconds after login to ensure it is successful
