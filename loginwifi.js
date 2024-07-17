@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const ping = require('ping');
 
 const USERNAME = 'jaja.valentino';
-const PASSWORD = 'J@ja1212';
+const PASSWORD = 'Els@1212';
 const URL = 'https://10.6.1.1/connect/PortalMain';
 const CHROME_PATH = '/usr/bin/chromium-browser';
 

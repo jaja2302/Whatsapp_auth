@@ -146,93 +146,137 @@ async function connectToWhatsApp() {
                 const text = (message.message?.conversation || message.message?.extendedTextMessage?.text) ?? 'No message text available';
                 const lowerCaseMessage = text ? text.toLowerCase() : null;
     
-                // if (message.message?.extendedTextMessage?.contextInfo) {
-                //     const contextInfo = message.message.extendedTextMessage.contextInfo;
-                //     const text_repply = message.message.extendedTextMessage.text;
-                //     const quotedMessageSender = contextInfo.participant;
-                //     const respon_atasan = text_repply;
+                if (message.message?.extendedTextMessage?.contextInfo) {
+                    const contextInfo = message.message.extendedTextMessage.contextInfo;
+                    const text_repply = message.message.extendedTextMessage.text;
+                    const quotedMessageSender = contextInfo.participant;
+                    const respon_atasan = text_repply;
     
-                //     if (contextInfo.quotedMessage && contextInfo.quotedMessage.conversation) {
-                //         const conversation = contextInfo.quotedMessage.conversation;
+                    if (contextInfo.quotedMessage && contextInfo.quotedMessage.conversation) {
+                        const conversation = contextInfo.quotedMessage.conversation;
     
-                //         if (conversation.includes('Izin baru perlu di approved')) {
-                //             const idPemohonStartIndex = conversation.indexOf('*ID Pemohon* : ') + '*ID Pemohon* : '.length;
-                //             const idPemohonEndIndex = conversation.indexOf('\n', idPemohonStartIndex);
-                //             const idPemohon = conversation.substring(idPemohonStartIndex, idPemohonEndIndex).trim();
-                //             const [id, idAtasan] = idPemohon.split('/').map(part => part.trim());
-                //             const namaStartIndex = conversation.indexOf('*Nama* : ') + '*Nama* : '.length;
-                //             const namaEndIndex = conversation.indexOf('\n', namaStartIndex);
-                //             const nama = conversation.substring(namaStartIndex, namaEndIndex).trim();
+                        if (conversation.includes('Izin baru perlu di approved')) {
+                            const idPemohonStartIndex = conversation.indexOf('*ID Pemohon* : ') + '*ID Pemohon* : '.length;
+                            const idPemohonEndIndex = conversation.indexOf('\n', idPemohonStartIndex);
+                            const idPemohon = conversation.substring(idPemohonStartIndex, idPemohonEndIndex).trim();
+                            const [id, idAtasan] = idPemohon.split('/').map(part => part.trim());
+                            const namaStartIndex = conversation.indexOf('*Nama* : ') + '*Nama* : '.length;
+                            const namaEndIndex = conversation.indexOf('\n', namaStartIndex);
+                            const nama = conversation.substring(namaStartIndex, namaEndIndex).trim();
     
-                //             if (respon_atasan.toLowerCase() !== 'ya' && respon_atasan.toLowerCase() !== 'tidak') {
-                //                 await sock.sendMessage(noWa, { text: "Harap hanya balas ya atau tidak" }, { quoted: message });
-                //             } else if (respon_atasan.toLowerCase() === 'ya') {
-                //                 try {
-                //                     // const response = await axios.post('http://qc-apps2.test/api/updatenotifijin', {
-                //                     const response = await axios.post('https://qc-apps.srs-ssms.com/api/updatenotifijin', {
-                //                         id_data: id,
-                //                         id_atasan: idAtasan,
-                //                         answer: 'ya',
-                //                     });
-                //                     let responses = response.data;
+                            if (respon_atasan.toLowerCase() !== 'ya' && respon_atasan.toLowerCase() !== 'tidak') {
+                                await sock.sendMessage(noWa, { text: "Harap hanya balas ya atau tidak" }, { quoted: message });
+                            } else if (respon_atasan.toLowerCase() === 'ya') {
+                                try {
+                                    // const response = await axios.post('http://qc-apps2.test/api/updatenotifijin', {
+                                    const response = await axios.post('https://qc-apps.srs-ssms.com/api/updatenotifijin', {
+                                        id_data: id,
+                                        id_atasan: idAtasan,
+                                        answer: 'ya',
+                                    });
+                                    let responses = response.data;
     
-                //                     const responseKey = Object.keys(responses)[0];
+                                    const responseKey = Object.keys(responses)[0];
     
-                //                     await sock.sendMessage(noWa, { text: 'Mohon Tunggu server melakukan validasi.....' });
-                //                     if (responseKey === "error_validasi") {
-                //                         await sock.sendMessage(noWa, { text: `Data gagal diverifikasi, Karena: ${responses[responseKey]}` });
-                //                     } else {
-                //                         await sock.sendMessage(noWa, { text: "Izin Berhasil di approved" }, { quoted: message });
-                //                     }
+                                    await sock.sendMessage(noWa, { text: 'Mohon Tunggu server melakukan validasi.....' });
+                                    if (responseKey === "error_validasi") {
+                                        await sock.sendMessage(noWa, { text: `Data gagal diverifikasi, Karena: ${responses[responseKey]}` });
+                                    } else {
+                                        await sock.sendMessage(noWa, { text: "Izin Berhasil di approved" }, { quoted: message });
+                                    }
     
-                //                 } catch (error) {
-                //                     console.log("Error approving:", error);
-                //                 }
-                //             } else if (respon_atasan.toLowerCase() === 'tidak') {
-                //                 let message = `*Alasan izin di tolak?*:\n`;
-                //                 message += `*ID Pemohon* : ${id}/${idAtasan}\n`;
-                //                 message += `*Nama* : ${nama}\n`;
-                //                 message += `Silahkan Repply Pesan ini untuk memberikan alasan izin di tolak\n`;
-                //                 await sock.sendMessage(noWa, { text: message });  
-                //             }
+                                } catch (error) {
+                                    console.log("Error approving:", error);
+                                }
+                            } else if (respon_atasan.toLowerCase() === 'tidak') {
+                                let message = `*Alasan izin di tolak?*:\n`;
+                                message += `*ID Pemohon* : ${id}/${idAtasan}\n`;
+                                message += `*Nama* : ${nama}\n`;
+                                message += `Silahkan Repply Pesan ini untuk memberikan alasan izin di tolak\n`;
+                                await sock.sendMessage(noWa, { text: message });  
+                            }
     
-                //         } else if (conversation.includes('Alasan izin di tolak')) {
-                //             const idPemohonStartIndex = conversation.indexOf('*ID Pemohon* : ') + '*ID Pemohon* : '.length;
-                //             const idPemohonEndIndex = conversation.indexOf('\n', idPemohonStartIndex);
-                //             const idPemohon = conversation.substring(idPemohonStartIndex, idPemohonEndIndex).trim();
-                //             const [id, idAtasan] = idPemohon.split('/').map(part => part.trim());
-                //             try {
-                //                 // const response = await axios.post('http://qc-apps2.test/api/updatenotifijin', {
-                //                 const response = await axios.post('https://qc-apps.srs-ssms.com/api/updatenotifijin', {
-                //                     id_data: id,
-                //                     id_atasan: idAtasan,
-                //                     answer: respon_atasan,
-                //                 });
-                //                 let responses = response.data;
+                        } else if (conversation.includes('Alasan izin di tolak')) {
+                            const idPemohonStartIndex = conversation.indexOf('*ID Pemohon* : ') + '*ID Pemohon* : '.length;
+                            const idPemohonEndIndex = conversation.indexOf('\n', idPemohonStartIndex);
+                            const idPemohon = conversation.substring(idPemohonStartIndex, idPemohonEndIndex).trim();
+                            const [id, idAtasan] = idPemohon.split('/').map(part => part.trim());
+                            try {
+                                // const response = await axios.post('http://qc-apps2.test/api/updatenotifijin', {
+                                const response = await axios.post('https://qc-apps.srs-ssms.com/api/updatenotifijin', {
+                                    id_data: id,
+                                    id_atasan: idAtasan,
+                                    answer: respon_atasan,
+                                });
+                                let responses = response.data;
     
-                //                 const responseKey = Object.keys(responses)[0];
+                                const responseKey = Object.keys(responses)[0];
     
-                //                 await sock.sendMessage(noWa, { text: 'Mohon Tunggu server melakukan validasi.....' });
-                //                 if (responseKey === "error_validasi") {
-                //                     await sock.sendMessage(noWa, { text: `Data gagal diverifikasi, Karena: ${responses[responseKey]}` });
-                //                 } else {
-                //                     await sock.sendMessage(noWa, { text: "Izin Berhasil di tolak" }, { quoted: message });
-                //                 }
+                                await sock.sendMessage(noWa, { text: 'Mohon Tunggu server melakukan validasi.....' });
+                                if (responseKey === "error_validasi") {
+                                    await sock.sendMessage(noWa, { text: `Data gagal diverifikasi, Karena: ${responses[responseKey]}` });
+                                } else {
+                                    await sock.sendMessage(noWa, { text: "Izin Berhasil di tolak" }, { quoted: message });
+                                }
     
-                //             } catch (error) {
-                //                 console.log("Error approving:", error);
-                //             }
-                //         } else {
-                //             console.log('pesan lainnya');
-                //         }
-                //     }
-                // }
+                            } catch (error) {
+                                console.log("Error approving:", error);
+                            }
+                        } else {
+                            console.log('pesan lainnya');
+                        }
+                    }
+                }
     
                 if (message.key.remoteJid.endsWith('@g.us')) {
-                    if (lowerCaseMessage === "!menu") {
-                        await sock.sendMessage(noWa, { text: "Bot Back Up Aktive" }, { quoted: message });
+                    if (lowerCaseMessage && lowerCaseMessage.startsWith("!backuptarik")) {
+                        const estateCommand = lowerCaseMessage.replace("!backuptarik", "").trim();
+                        const estate = estateCommand.toUpperCase(); // Convert to uppercase for consistency
+    
+                        // Check if the estate name is valid
+                        if (!estate) {
+                            await sock.sendMessage(noWa, { text: 'Mohon masukkan nama estate setelah perintah !tarik dilanjutkan dengan singkatan nama Estate.\n-Contoh !tarikkne = Untuk Estate KNE dan seterusnya' }, { quoted: message });
+                            return;
+                        }
+    
+                        const apiUrl = 'https://qc-apps.srs-ssms.com/api/getdatacron';
+                        try {
+                            const response = await axios.get(apiUrl);
+                            const dataestate = response.data;
+                            const matchingTasks = dataestate.filter(task => task.estate === estate);
+    
+                            if (matchingTasks.length > 0) {
+                                const { estate: estateFromMatchingTask, group_id, wilayah: folder } = matchingTasks[0];
+                                await sock.sendMessage(noWa, { text: 'Mohon tunggu laporan sedang di proses' }, { quoted: message });
+                                const result = await sendtaksasiest(estateFromMatchingTask, group_id, folder,sock);
+                                console.log(result);
+                                if (result === 'success') {
+                                    console.log('success');
+                                    break;
+                                } else {
+                                    await sock.sendMessage(noWa, { text: 'Terjadi kesalahan saat mengirim taksasi. Silakan Hubungi Tim D.A.' }, { quoted: message });
+                                    break;
+                                }
+                            } else {
+                                await sock.sendMessage(noWa, { text: 'Estate yang anda masukan tidak tersedia di database. Silahkan Ulangi dan Cek Kembali' }, { quoted: message });
+                                break;
+                            }
+                        } catch (error) {
+                            console.log('Error fetching data:', error.message);
+                            break;
+                        }
+                    }else if (lowerCaseMessage === '!backuptaksasi') {
+                        if (!userTalsasiChoice[noWa]) {
+                            await handleTaksasi(noWa, lowerCaseMessage,sock);
+                        }
+                    }
+                    else if (userTalsasiChoice[noWa]) {
+                        // Continue the ijin process if it has already started
+                        await handleTaksasi(noWa, text,sock);
+                    } else if (lowerCaseMessage === "!menu") {
+                        await sock.sendMessage(noWa, { text: "Back Up bot Aktive, Command = !tarik => !backuptarik / !backuptaksasi / !backupcast . Gunakan backup di depan untuk menggantikan semua command yang lain" }, { quoted: message });
                         break;
-                    } else if (lowerCaseMessage === "!getgrupbackup") {
+                    } else if (lowerCaseMessage === "!backupgetgrup") {
                         let getGroups = await sock.groupFetchAllParticipating();
                         let groups = Object.values(await sock.groupFetchAllParticipating());
                         let datagrup = []; // Initialize an empty array to store group information
@@ -244,7 +288,7 @@ async function connectToWhatsApp() {
                         await sock.sendMessage(noWa, { text: `List ${datagrup.join('\n')}` }, { quoted: message });
     
                         break;
-                    } else if (lowerCaseMessage === "!castbackup") {
+                    } else if (lowerCaseMessage === "!backupcast") {
                         // Send a message asking for the broadcast message
                         await sock.sendMessage(noWa, { text: "Masukan Kata kata yang ingin di broadcast ke dalam group?" }, { quoted: message });
     
@@ -311,19 +355,19 @@ async function connectToWhatsApp() {
                     if (lowerCaseMessage === "!menu") {
                         await sock.sendMessage(noWa, { text: "Hanya dapat di gunakan di dalam grup!" }, { quoted: message });
                         break;
-                    } else if (lowerCaseMessage.startsWith("!tarikbackup")) {
+                    } else if (lowerCaseMessage.startsWith("!backuptarik")) {
                         await sock.sendMessage(noWa, { text: "Hanya dapat di gunakan di dalam grup!" }, { quoted: message });
                         break;
-                    } else if (lowerCaseMessage === "!updatebackup") {
+                    } else if (lowerCaseMessage === "!backupupdate") {
                         await sock.sendMessage(noWa, { text: "Hanya dapat di gunakan di dalam grup!" }, { quoted: message });
                         break;
-                    } else if (lowerCaseMessage === "!castbackup") {
+                    } else if (lowerCaseMessage === "!backupcast") {
                         await sock.sendMessage(noWa, { text: "Hanya dapat di gunakan di dalam grup!" }, { quoted: message });
                         break;
-                    } else if (lowerCaseMessage === "!restartbackup") {
+                    } else if (lowerCaseMessage === "!backuprestart") {
                         await sock.sendMessage(noWa, { text: "Hanya dapat di gunakan di dalam grup!" }, { quoted: message });
                         break;
-                    } else if (lowerCaseMessage === "!izinbackup") {
+                    } else if (lowerCaseMessage === "!backupizin") {
                         // Start the ijin process only if it's not already started
                         if (!userchoice[noWa]) {
                             await handleijinmsg(noWa, lowerCaseMessage,sock);
@@ -331,7 +375,7 @@ async function connectToWhatsApp() {
                     } else if (userchoice[noWa]) {
                         // Continue the ijin process if it has already started
                         await handleijinmsg(noWa, text,sock);
-                    } else if (lowerCaseMessage === "!iotbackup") {
+                    } else if (lowerCaseMessage === "backup!iot") {
                         if (!userIotChoice[noWa]) {
                             await handleIotInput(noWa, lowerCaseMessage,sock);
                         }

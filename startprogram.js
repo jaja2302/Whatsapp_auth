@@ -36,18 +36,21 @@ async function loginWifi() {
       await dialog.accept();
     });
 
-    await page.goto(URL, { waitUntil: 'networkidle2' });
+    for (let i = 0; i < 3; i++) {
+      await page.goto(URL, { waitUntil: 'networkidle2' });
 
-    if (page.url().includes('net::ERR_CERT_AUTHORITY_INVALID')) {
-      await page.goto('chrome-error://chromewebdata/');
-      await page.evaluate(() => {
-        document.querySelector('#details-button').click();
-        document.querySelector('#proceed-link').click();
-      });
+      if (page.url().includes('net::ERR_CERT_AUTHORITY_INVALID')) {
+        await page.goto('chrome-error://chromewebdata/');
+        await page.evaluate(() => {
+          document.querySelector('#details-button').click();
+          document.querySelector('#proceed-link').click();
+        });
+      }
+
+      await page.waitForTimeout(2000); // Wait for 2 seconds between refreshes
     }
 
-    // Reload the page to avoid session expiry
-    await page.reload({ waitUntil: 'networkidle2' });
+    await page.goto(URL, { waitUntil: 'networkidle2' });
 
     await page.waitForSelector('#LoginUserPassword_auth_username');
     await page.waitForSelector('#LoginUserPassword_auth_password');
