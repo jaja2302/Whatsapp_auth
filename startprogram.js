@@ -5,12 +5,12 @@ const { exec } = require('child_process');
 const USERNAME = 'jaja.valentino';
 const PASSWORD = 'Els@1212';
 const URL = 'https://10.6.1.1/connect/PortalMain';
-const CHROME_PATH = '/usr/bin/chromium-browser'; // Optional Chrome path
+const CHROME_PATH = '/usr/bin/chromium-browser';
 
-let noInternetStartTime = null;
 const INTERNET_OUTAGE_THRESHOLD = 60000; // 1 minute
 const CHECK_INTERVAL = 30000; // 30 seconds
 const MAX_RELOGIN_ATTEMPTS = 3;
+let noInternetStartTime = null;
 
 async function checkInternet(host = 'www.whatsapp.com') {
   return new Promise(resolve => {
@@ -24,7 +24,7 @@ async function loginWifi() {
   let loginSuccess = false;
   const browser = await puppeteer.launch({
     headless: false,
-    executablePath: CHROME_PATH, 
+    executablePath: CHROME_PATH,
     args: ['--no-sandbox', '--disable-setuid-sandbox', '--ignore-certificate-errors'],
   });
 
@@ -36,21 +36,17 @@ async function loginWifi() {
       await dialog.accept();
     });
 
-    for (let i = 0; i < 3; i++) {
-      await page.goto(URL);
-
-      if (page.url().includes('net::ERR_CERT_AUTHORITY_INVALID')) {
-        await page.goto('chrome-error://chromewebdata/');
-        await page.evaluate(() => {
-          document.querySelector('#details-button').click();
-          document.querySelector('#proceed-link').click();
-        });
-      }
-
-      await new Promise(resolve => setTimeout(resolve, 2000)); // Wait for 2 seconds between refreshes
-    }
-
     await page.goto(URL);
+    await new Promise(resolve => setTimeout(resolve, 5000)); // Wait for 5 seconds
+
+    const errorMessageElement = await page.$('#LoginUserPassword_error_message');
+    if (errorMessageElement) {
+      const errorMessage = await page.evaluate(el => el.textContent, errorMessageElement);
+      if (errorMessage.includes('Your session has expired. Please try again')) {
+        await page.reload();
+        await new Promise(resolve => setTimeout(resolve, 5000)); // Wait for 5 seconds after reload
+      }
+    }
 
     await page.waitForSelector('#LoginUserPassword_auth_username');
     await page.waitForSelector('#LoginUserPassword_auth_password');
@@ -60,13 +56,10 @@ async function loginWifi() {
 
     await Promise.all([
       page.click('#UserCheck_Login_Button'),
-      page.waitForNavigation(),
+      new Promise(resolve => setTimeout(resolve, 5000)), // Wait for 5 seconds after clicking login
     ]);
 
-    // Wait for 10 seconds after login to ensure it is successful
-    await new Promise(resolve => setTimeout(resolve, 10000));
-
-    // Check internet connection after 10 seconds
+    await new Promise(resolve => setTimeout(resolve, 10000)); // Wait for 10 seconds after login to ensure it is successful
     loginSuccess = await checkInternet();
   } catch (err) {
     console.error('Error:', err);
@@ -78,34 +71,25 @@ async function loginWifi() {
 }
 
 async function restartPm2Process(processName) {
-  return new Promise((resolve, reject) => {
-    exec(`pm2 restart ${processName}`, (error, stdout, stderr) => {
-      if (error) {
-        console.error(`Error restarting PM2 process: ${error.message}`);
-        return reject(error);
-      }
-      if (stderr) {
-        console.error(`stderr: ${stderr}`);
-      }
-      console.log(`stdout: ${stdout}`);
-      console.log(`Restarted PM2 process: ${processName}`);
-      resolve();
-    });
-  });
+  return execPromise(`pm2 restart ${processName}`, `Restarted PM2 process: ${processName}`);
 }
 
 async function stopPm2Process(processName) {
+  return execPromise(`pm2 stop ${processName}`, `Stopped PM2 process: ${processName}`);
+}
+
+function execPromise(command, successMessage) {
   return new Promise((resolve, reject) => {
-    exec(`pm2 stop ${processName}`, (error, stdout, stderr) => {
+    exec(command, (error, stdout, stderr) => {
       if (error) {
-        console.error(`Error stopping PM2 process: ${error.message}`);
+        console.error(`Error: ${error.message}`);
         return reject(error);
       }
       if (stderr) {
         console.error(`stderr: ${stderr}`);
       }
       console.log(`stdout: ${stdout}`);
-      console.log(`Stopped PM2 process: ${processName}`);
+      console.log(successMessage);
       resolve();
     });
   });
@@ -119,11 +103,11 @@ async function reconnectWithRetries() {
     if (loginResult) {
       console.log('Reconnected successfully.');
       await restartPm2Process('bot_da');
-      return true; // Exit if reconnection is successful
+      return true;
     } else {
       console.log('Reconnection failed.');
       if (attempt < MAX_RELOGIN_ATTEMPTS) {
-        await new Promise(resolve => setTimeout(resolve, 10000)); // Wait 10 seconds before next attempt
+        await new Promise(resolve => setTimeout(resolve, 10000));
       }
     }
   }
@@ -131,9 +115,8 @@ async function reconnectWithRetries() {
   console.log('Reached maximum reconnection attempts. Stopping PM2 process bot_da.');
   await stopPm2Process('bot_da');
 
-  // Schedule a retry after 1 hour (3600 seconds)
   setTimeout(async () => {
-    await reconnectWithRetries(); // Recursively call to retry after 1 hour
+    await reconnectWithRetries();
   }, 3600000);
 
   return false;
@@ -144,15 +127,15 @@ async function monitorInternet() {
 
   if (isConnected) {
     console.log('Internet connection available.');
-    noInternetStartTime = null; // Reset the timer
+    noInternetStartTime = null;
   } else {
     console.log('No Internet connection detected.');
     if (!noInternetStartTime) {
-      noInternetStartTime = Date.now(); // Start the timer
+      noInternetStartTime = Date.now();
     } else if (Date.now() - noInternetStartTime >= INTERNET_OUTAGE_THRESHOLD) {
       console.log('Internet connection lost for 1 minute. Attempting to reconnect...');
       await reconnectWithRetries();
-      noInternetStartTime = null; // Reset the timer after attempting to reconnect
+      noInternetStartTime = null;
     }
   }
 }
@@ -162,7 +145,6 @@ async function checkInternetConnection() {
   setInterval(monitorInternet, CHECK_INTERVAL);
 }
 
-// Initial check
 (async () => {
   await checkInternetConnection();
 })();
