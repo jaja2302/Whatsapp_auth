@@ -873,30 +873,24 @@ async function checkatasan(nama_atasansatu) {
     }
 }
 
-const handleijinmsg = async (noWa, text,sock) => {
 
+const handleTimeout = (noWa, sock) => {
+    if (timeoutHandles[noWa]) {
+        clearTimeout(timeoutHandles[noWa]);
+    }
 
-    const resetUserState = async () => {
+    timeoutHandles[noWa] = setTimeout(async () => {
+        console.log(`Timeout triggered for ${noWa}`);
         await sock.sendMessage(noWa, { text: 'Waktu Anda telah habis. Silakan mulai kembali dengan mengetikkan !izin.' });
         delete userchoice[noWa];
         delete botpromt[noWa];
-        if (timeoutHandles[noWa]) {
-            clearTimeout(timeoutHandles[noWa]);
-            delete timeoutHandles[noWa];
-        }
-    };
+        delete timeoutHandles[noWa];
+    },  5 * 60 * 1000);
 
-    const setUserTimeout = () => {
-        if (timeoutHandles[noWa]) {
-            clearTimeout(timeoutHandles[noWa]);
-        }
-        // 10 menit timeout 
-        // timeoutHandles[noWa] = setTimeout(resetUserState, 10 * 60 * 1000);
-        // 10 detik timeout 
-        timeoutHandles[noWa] = setTimeout(resetUserState, 60 * 1000);
+    console.log(`Timeout set for ${noWa}`);
+};
 
-    };
-
+const handleijinmsg = async (noWa, text,sock) => {
 
     if (!userchoice[noWa]) {
         userchoice[noWa] = 'name';
@@ -905,9 +899,9 @@ const handleijinmsg = async (noWa, text,sock) => {
 
         await sock.sendMessage(noWa, { text: 'Silakan masukkan *nama lengkap anda* atau *nama depan Anda* untuk pencarian di database.Balas batal untuk membatalkan.' });
 
-        setUserTimeout();
+        handleTimeout(noWa, sock);
     } else {
-        setUserTimeout(); // Reset timeout with every interaction
+        handleTimeout(noWa, sock); // Reset timeout with every interaction
         const step = userchoice[noWa];
 
         if (step === 'name') {
@@ -1560,30 +1554,14 @@ async function getNotifications(sock) {
 // function crud input iot 
 
 const handleIotInput = async (noWa, text,sock) => {
-    const resetUserState = async () => {
-        await sock.sendMessage(noWa, { text: 'Waktu Anda telah habis. Silakan mulai kembali dengan mengetikkan !iot.' });
-        delete userIotChoice[noWa];
-        delete botIotPrompt[noWa];
-        if (timeoutHandles[noWa]) {
-            clearTimeout(timeoutHandles[noWa]);
-            delete timeoutHandles[noWa];
-        }
-    };
-
-    const setUserTimeout = () => {
-        if (timeoutHandles[noWa]) {
-            clearTimeout(timeoutHandles[noWa]);
-        }
-        timeoutHandles[noWa] = setTimeout(resetUserState, 60 * 1000);
-    };
-
+   
     if (!userIotChoice[noWa]) {
         userIotChoice[noWa] = 'estate';
         botIotPrompt[noWa] = { attempts: 0 };
         await sock.sendMessage(noWa, { text: 'Masukkan estate' });
-        setUserTimeout();
+        handleTimeout(noWa, sock);
     } else {
-        setUserTimeout(); // Reset timeout with every interaction
+        handleTimeout(noWa, sock);
         const step = userIotChoice[noWa];
 
         if (step === 'estate') {
