@@ -91,35 +91,43 @@ async function connectToWhatsApp() {
             let reason = new Boom(lastDisconnect.error).output.statusCode;
             if (reason === DisconnectReason.badSession) {
                 console.log(`Bad Session File, Please Delete ${session} and Scan Again`);
-                sock.logout();
                 await restartbot(botname);
+                sock.logout();
+               
             } else if (reason === DisconnectReason.connectionClosed) {
                 console.log("Connection closed, reconnecting....");
-                connectToWhatsApp();
                 await restartbot(botname);
+                connectToWhatsApp();
+              
             } else if (reason === DisconnectReason.connectionLost) {
                 console.log("Connection Lost from Server, reconnecting...");
-                connectToWhatsApp();
                 await restartbot(botname);
+                connectToWhatsApp();
+                
             } else if (reason === DisconnectReason.connectionReplaced) {
                 console.log("Connection Replaced, Another New Session Opened, Please Close Current Session First");
+                // await restartbot(botname);
                 sock.logout();
-                await restartbot(botname);
+            
             } else if (reason === DisconnectReason.loggedOut) {
                 console.log(`Device Logged Out, Please Delete ${session} and Scan Again.`);
+                // await restartbot(botname);
                 sock.logout();
-                await restartbot(botname);
+             
             } else if (reason === DisconnectReason.restartRequired) {
                 console.log("Restart Required, Restarting...");
-                connectToWhatsApp();
                 await restartbot(botname);
+                connectToWhatsApp();
+             
             } else if (reason === DisconnectReason.timedOut) {
                 console.log("Connection TimedOut, Reconnecting...");
+                await restartbot(botname);
                 connectToWhatsApp();
-                await restartbot(botname);
+               
             } else {
-                sock.end(`Unknown DisconnectReason: ${reason}|${lastDisconnect.error}`);
                 await restartbot(botname);
+                sock.end(`Unknown DisconnectReason: ${reason}|${lastDisconnect.error}`);
+                
             }
         } else if (connection === 'open') {
             console.log('opened connection');
