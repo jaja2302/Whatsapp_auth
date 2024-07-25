@@ -1801,8 +1801,9 @@ async function restartbot(namabot) {
 
 const setupCronJobs = (sock) => {
     // console.log(sock);
-    //  taksasi cronjob 
-   
+
+    // untuk wasecond 
+
     // cron.schedule('0 * * * *', async () => {
     //         try {
     //             // console.log('Running message history');
@@ -1836,7 +1837,7 @@ const setupCronJobs = (sock) => {
     // });
         
     
-    // untuk pc di ho 
+    // untuk pc di ho boootroot
 
     // cron.schedule('*/10 * * * *', async () => {
     //     await sendfailcronjob(sock);
@@ -1901,6 +1902,11 @@ const setupCronJobs = (sock) => {
     //     scheduled: true,
     //     timezone: 'Asia/Jakarta'
     // });
+
+
+
+    // etc untuk restart bot 
+
     // cron.schedule('0 6 * * *', async () => {
     //     exec('pm2 restart bot_grading', (error, stdout, stderr) => {
     //         if (error) {
