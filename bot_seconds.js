@@ -92,34 +92,32 @@ async function connectToWhatsApp() {
             if (reason === DisconnectReason.badSession) {
                 console.log(`Bad Session File, Please Delete ${session} and Scan Again`);
                 sock.logout();
-                await restartbot(botname);
             } else if (reason === DisconnectReason.connectionClosed) {
                 console.log("Connection closed, reconnecting....");
                 connectToWhatsApp();
-                await restartbot(botname);
             } else if (reason === DisconnectReason.connectionLost) {
                 console.log("Connection Lost from Server, reconnecting...");
                 connectToWhatsApp();
-                await restartbot(botname);
+              
             } else if (reason === DisconnectReason.connectionReplaced) {
                 console.log("Connection Replaced, Another New Session Opened, Please Close Current Session First");
                 sock.logout();
-                await restartbot(botname);
+              
             } else if (reason === DisconnectReason.loggedOut) {
                 console.log(`Device Logged Out, Please Delete ${session} and Scan Again.`);
                 sock.logout();
-                await restartbot(botname);
+              
             } else if (reason === DisconnectReason.restartRequired) {
                 console.log("Restart Required, Restarting...");
                 connectToWhatsApp();
-                await restartbot(botname);
+              
             } else if (reason === DisconnectReason.timedOut) {
                 console.log("Connection TimedOut, Reconnecting...");
                 connectToWhatsApp();
-                await restartbot(botname);
+              
             } else {
                 sock.end(`Unknown DisconnectReason: ${reason}|${lastDisconnect.error}`);
-                await restartbot(botname);
+              
             }
         } else if (connection === 'open') {
             console.log('opened connection');
