@@ -1839,35 +1839,26 @@ const setupCronJobs = (sock) => {
     
     // untuk pc di ho boootroot
 
-    // cron.schedule('*/10 * * * *', async () => {
-    //     await sendfailcronjob(sock);
-    // }, {
-    //     scheduled: true,
-    //     timezone: 'Asia/Jakarta'
-    // });
-    // cron.schedule('0 7 * * *', async () => {
-    //         exec('pm2 restart bot_grading', (error, stdout, stderr) => {
-    //             if (error) {
-    //                 console.error(`Error restarting app: ${error.message}`);
-    //                 return;
-    //             }
-    //             if (stderr) {
-    //                 console.error(`Restart error: ${stderr}`);
-    //                 return;
-    //             }
-    //             console.log(`App restarted: ${stdout}`);
-    //         });
-    //     }, {
-    //         scheduled: true,
-    //         timezone: 'Asia/Jakarta'
-    // });
-    // cron.schedule('*/5 * * * *', async () => {
-    //         await getNotifications(sock);
-    //         await get_mill_data(sock);
-    //     }, {
-    //         scheduled: true,
-    //         timezone: 'Asia/Jakarta'
-    // });
+    cron.schedule('*/10 * * * *', async () => {
+        await sendfailcronjob(sock);
+    }, {
+        scheduled: true,
+        timezone: 'Asia/Jakarta'
+    });
+    cron.schedule('*/5 * * * *', async () => {
+            await getNotifications(sock);
+            await get_mill_data(sock);
+        }, {
+            scheduled: true,
+            timezone: 'Asia/Jakarta'
+    });
+
+    cron.schedule('*/15 * * * *', async () => {
+        await updatePCStatus();
+    }, {
+        scheduled: true,
+        timezone: 'Asia/Jakarta'
+    });
 
     // testing 30 detik 
     // cron.schedule('*/30 * * * * *', async () => {
@@ -1876,12 +1867,7 @@ const setupCronJobs = (sock) => {
     //     scheduled: true,
     //     timezone: 'Asia/Jakarta'
     // });
-    // cron.schedule('*/15 * * * *', async () => {
-    //     await updatePCStatus();
-    // }, {
-    //     scheduled: true,
-    //     timezone: 'Asia/Jakarta'
-    // });
+
     
     // untuk  pc ardiono 
     // cron.schedule('0 */30 * * * *', async () => {
@@ -1899,66 +1885,6 @@ const setupCronJobs = (sock) => {
     //       console.error("Error fetching the status:", error);
     //     }
     //   }, {
-    //     scheduled: true,
-    //     timezone: 'Asia/Jakarta'
-    // });
-
-
-
-    // etc untuk restart bot 
-
-    // cron.schedule('0 6 * * *', async () => {
-    //     exec('pm2 restart bot_grading', (error, stdout, stderr) => {
-    //         if (error) {
-    //             console.error(`Error restarting app: ${error.message}`);
-    //             return;
-    //         }
-    //         if (stderr) {
-    //             console.error(`Restart error: ${stderr}`);
-    //             return;
-    //         }
-    //         console.log(`App restarted: ${stdout}`);
-    //     });
-    //     exec('pm2 restart bot_da', (error, stdout, stderr) => {
-    //         if (error) {
-    //             console.error(`Error restarting app: ${error.message}`);
-    //             return;
-    //         }
-    //         if (stderr) {
-    //             console.error(`Restart error: ${stderr}`);
-    //             return;
-    //         }
-    //         console.log(`App restarted: ${stdout}`);
-    //     });
-    // }, {
-    //     scheduled: true,
-    //     timezone: 'Asia/Jakarta'
-    // });
-    
-    // cron.schedule('0 */3 * * *', async () => {
-    //     exec('pm2 restart bot_grading', (error, stdout, stderr) => {
-    //         if (error) {
-    //             console.error(`Error restarting app: ${error.message}`);
-    //             return;
-    //         }
-    //         if (stderr) {
-    //             console.error(`Restart error: ${stderr}`);
-    //             return;
-    //         }
-    //         console.log(`App restarted: ${stdout}`);
-    //     });
-    //     exec('pm2 restart bot_da', (error, stdout, stderr) => {
-    //         if (error) {
-    //             console.error(`Error restarting app: ${error.message}`);
-    //             return;
-    //         }
-    //         if (stderr) {
-    //             console.error(`Restart error: ${stderr}`);
-    //             return;
-    //         }
-    //         console.log(`App restarted: ${stdout}`);
-    //     });
-    // }, {
     //     scheduled: true,
     //     timezone: 'Asia/Jakarta'
     // });
