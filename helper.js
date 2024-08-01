@@ -5,6 +5,7 @@ const fs = require("fs");
 const http = require("http");
 const https = require("https");
 const { DateTime } = require("luxon");
+const Pusher = require('pusher-js/node');
 const {
   userchoice,
   botpromt,
@@ -17,6 +18,7 @@ const {
 const moment = require("moment-timezone");
 const { text } = require("express");
 const { exec } = require("child_process");
+const { type } = require("os");
 function formatDate(date) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0"); // Adding 1 because getMonth() returns zero-based index
@@ -1790,11 +1792,11 @@ async function getNotifications(sock) {
       "https://qc-apps.srs-ssms.com/api/getnotifijin"
     );
     const data = response.data;
-    console.log(data);
+    // console.log(data);
     if (data.status === "200" && data.data && data.data.length > 0) {
       const result = data.data;
-      console.log("Data ada");
-      console.log(data);
+      // console.log("Data ada");
+      // console.log(data);
       for (const itemdata of result) {
         if (itemdata.no_hp) {
           const exists = await sock.onWhatsApp(itemdata.no_hp);
@@ -2198,143 +2200,366 @@ async function restartbot(namabot) {
   });
 }
 
-const setupCronJobs = (sock) => {
-  console.log(sock);
-  //   untuk wasecond
-  cron.schedule(
-    "0 * * * *",
-    async () => {
-      try {
-        // console.log('Running message history');
-        await statusHistory(sock); // Call the function to check history and send message
-      } catch (error) {
-        console.error("Error in cron job:", error);
+// bot management gudang 
+async function botmanagementgudang(sock, msg) {
+  try {
+    const response = await axios.get("http://127.0.0.1:8000/api/getorder_gudang", {
+      params: {
+        email: 'j',
+        password: 'j',
       }
-    },
-    {
-      scheduled: true,
-      timezone: "Asia/Jakarta", // Set the timezone according to your location
-    }
-  );
-  console.log("cronjob");
-  cron.schedule(
-    "*/1 * * * *",
-    async () => {
-      await sendMessagesBasedOnData(sock);
-      console.log("cronjob");
-      // await maintencweget(sock);
-    },
-    {
-      scheduled: true,
-      timezone: "Asia/Jakarta",
-    }
-  );
-  cron.schedule(
-    "0 * * * *",
-    async () => {
-      try {
-        await statusAWS(sock); // Call the function to check AWS status and send message
-      } catch (error) {
-        console.error("Error in cron job:", error);
-      }
-    },
-    {
-      scheduled: true,
-      timezone: "Asia/Jakarta", // Set the timezone according to your location
-    }
-  );
-  cron.schedule(
-    "0 9 * * *",
-    async () => {
-      try {
-        await statusAWS(sock); // Call the function to check AWS status and send message
-      } catch (error) {
-        console.error("Error in cron job:", error);
-      }
-    },
-    {
-      scheduled: true,
-      timezone: "Asia/Jakarta", // Set the timezone according to your location
-    }
-  );
-  // untuk pc di ho boootroot
-  cron.schedule(
-    "*/10 * * * *",
-    async () => {
-      await sendfailcronjob(sock);
-    },
-    {
-      scheduled: true,
-      timezone: "Asia/Jakarta",
-    }
-  );
-  cron.schedule(
-    "*/5 * * * *",
-    async () => {
-      await getNotifications(sock);
-      await get_mill_data(sock);
-    },
-    {
-      scheduled: true,
-      timezone: "Asia/Jakarta",
-    }
-  );
-  cron.schedule(
-    "*/15 * * * *",
-    async () => {
-      await updatePCStatus();
-    },
-    {
-      scheduled: true,
-      timezone: "Asia/Jakarta",
-    }
-  );
-  // testing 30 detik
-  cron.schedule(
-    "*/30 * * * * *",
-    async () => {
-      await getNotifications(sock);
-    },
-    {
-      scheduled: true,
-      timezone: "Asia/Jakarta",
-    }
-  );
+    });
 
-  cron.schedule(
-    "*0 9 * * * *",
-    async () => {
-      await handleBotDailyPengawasanOperatorAI(sock);
-    },
-    {
-      scheduled: true,
-      timezone: "Asia/Jakarta",
-    }
-  );
-  // untuk  pc ardiono
-  cron.schedule(
-    "0 */30 * * * *",
-    async () => {
-      try {
-        let response = await axios.get(
-          "https://qc-apps.srs-ssms.com/api/checkPcStatus"
-        );
-        // Assuming the response data has the structure { message: "All PCs are online" }
-        if (response.data.message === "All PCs are online") {
-          console.log("All PCs are online");
-        } else {
-          await sendfailcronjob(sock);
-          await get_mill_data(sock);
+    const data = response.data;
+    // console.log(data);
+
+    if (data.length > 0) { // Assuming data is the array directly
+      for (const itemdata of data) {
+        if (itemdata.status === "notif_atasan_pemilik") {
+          let message = `*Permintaan barang perlu di review*:\n`;
+          message += `Hallo Selamat Siang Bapak/Ibu ${itemdata.nama_atasan_pemilik}\n`;
+          message += `Anda memiliki request baru untuk permintaan barang dengan detail sebagai berikut:\n`;
+          message += `*ID* : ${itemdata.id_data}\n`;
+          message += `*Nama pemohon* : ${itemdata.id_pemohon}\n`;
+          message += `*Departement pemohon* : ${itemdata.nama_departement_pemohon}\n`;
+          message += `*Barang diminta* : ${itemdata.nama_barang} (${itemdata.nama_lain})\n`;
+          message += `*Jumlah diminta* : ${itemdata.jumlah}\n`;
+          message += `*tanggal_pengajuan* : ${itemdata.tanggal_pengajuan}\n`;
+          message += `Silahkan Reply Pesan ini kemudian balas ya/tidak untuk approval\n`;
+          message += `Generated by Digital Architect SRS Bot`;
+          await sock.sendMessage(itemdata.nomor_hp_atasan_pemilik + "@s.whatsapp.net", {
+            text: message,
+          });
+        } else if (itemdata.status === "notif_pemohon_success") {
+          let message = `*Permintaan barang disetujui*:\n`;
+          message += `Hallo Selamat Siang Bapak/Ibu ${itemdata.id_pemohon}\n`;
+          message += `Permintaan barang dengan detail sebagai berikut telah disetujui:\n`;
+          message += `*ID* : ${itemdata.id_data}\n`;
+          message += `*Nama atasan departement* : ${itemdata.nama_atasan_pemilik}\n`;
+          message += `*Departement pengajuan* : ${itemdata.nama_departement_pemilik}\n`;
+          message += `*Barang diminta* : ${itemdata.nama_barang} (${itemdata.nama_lain})\n`;
+          message += `*Jumlah diminta* : ${itemdata.jumlah}\n`;
+          message += `*tanggal_pengajuan* : ${itemdata.tanggal_pengajuan}\n`;
+          message += `Generated by Digital Architect SRS Bot`;
+          await sock.sendMessage(itemdata.nomor_hp_atasan_pemilik + "@s.whatsapp.net", {
+            text: message,
+          });
+        }else if (itemdata.status === "notif_pemohon_failed") {
+          let message = `*Permintaan barang ditolak*:\n`;
+          message += `Hallo Selamat Siang Bapak/Ibu ${itemdata.id_pemohon}\n`;
+          message += `Permintaan barang dengan detail sebagai berikut telah disetujui:\n`;
+          message += `*ID* : ${itemdata.id_data}\n`;
+          message += `*Nama atasan departement* : ${itemdata.nama_atasan_pemilik}\n`;
+          message += `*Departement pengajuan* : ${itemdata.nama_departement_pemilik}\n`;
+          message += `*Barang diminta* : ${itemdata.nama_barang} (${itemdata.nama_lain})\n`;
+          message += `*Jumlah diminta* : ${itemdata.jumlah}\n`;
+          message += `*tanggal_pengajuan* : ${itemdata.tanggal_pengajuan}\n`;
+          message += `Generated by Digital Architect SRS Bot`;
+          await sock.sendMessage(itemdata.nomor_hp_atasan_pemilik + "@s.whatsapp.net", {
+            text: message,
+          });
+        }else {
+          console.log("tidak ada data");
         }
-      } catch (error) {
-        console.error("Error fetching the status:", error);
       }
-    },
-    {
-      scheduled: true,
-      timezone: "Asia/Jakarta",
+    } else {
+      console.log("Data kosong management gudang");
     }
-  );
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+// websocket 
+const pusher = new Pusher('b193dcd8922273835547', {
+  cluster: 'ap1',
+  encrypted: true
+});
+
+// app_id = "1841216"
+// key = "b193dcd8922273835547"
+// secret = "5e39e309c9ee6a995b84"
+// cluster = "ap1"
+
+const channel = pusher.subscribe('my-channel');
+
+const setupCronJobs = (sock) => {
+//   console.log(sock); 
+  //   untuk wasecond
+  // cron.schedule(
+  //   "0 * * * *",
+  //   async () => {
+  //     try {
+  //       // console.log('Running message history');
+  //       await statusHistory(sock); // Call the function to check history and send message
+  //     } catch (error) {
+  //       console.error("Error in cron job:", error);
+  //     }
+  //   },
+  //   {
+  //     scheduled: true,
+  //     timezone: "Asia/Jakarta", // Set the timezone according to your location
+  //   }
+  // );
+  // console.log("cronjob");
+  // cron.schedule(
+  //   "*/1 * * * *",
+  //   async () => {
+  //     await sendMessagesBasedOnData(sock);
+  //     console.log("cronjob");
+  //     // await maintencweget(sock);
+  //   },
+  //   {
+  //     scheduled: true,
+  //     timezone: "Asia/Jakarta",
+  //   }
+  // );
+  // cron.schedule(
+  //   "0 * * * *",
+  //   async () => {
+  //     try {
+  //       await statusAWS(sock); // Call the function to check AWS status and send message
+  //     } catch (error) {
+  //       console.error("Error in cron job:", error);
+  //     }
+  //   },
+  //   {
+  //     scheduled: true,
+  //     timezone: "Asia/Jakarta", // Set the timezone according to your location
+  //   }
+  // );
+  // cron.schedule(
+  //   "0 9 * * *",
+  //   async () => {
+  //     try {
+  //       await statusAWS(sock); // Call the function to check AWS status and send message
+  //     } catch (error) {
+  //       console.error("Error in cron job:", error);
+  //     }
+  //   },
+  //   {
+  //     scheduled: true,
+  //     timezone: "Asia/Jakarta", // Set the timezone according to your location
+  //   }
+  // );
+  // // untuk pc di ho boootroot
+  // cron.schedule(
+  //   "*/10 * * * *",
+  //   async () => {
+  //     await sendfailcronjob(sock);
+  //   },
+  //   {
+  //     scheduled: true,
+  //     timezone: "Asia/Jakarta",
+  //   }
+  // );
+  // cron.schedule(
+  //   "*/5 * * * *",
+  //   async () => {
+  //     await getNotifications(sock);
+  //     await get_mill_data(sock);
+  //   },
+  //   {
+  //     scheduled: true,
+  //     timezone: "Asia/Jakarta",
+  //   }
+  // );
+  // cron.schedule(
+  //   "*/15 * * * *",
+  //   async () => {
+  //     await updatePCStatus();
+  //   },
+  //   {
+  //     scheduled: true,
+  //     timezone: "Asia/Jakarta",
+  //   }
+  // );
+  // // testing 30 detik
+  // cron.schedule(
+  //   "*/30 * * * * *",
+  //   async () => {
+  //     await getNotifications(sock);
+  //   },
+  //   {
+  //     scheduled: true,
+  //     timezone: "Asia/Jakarta",
+  //   }
+  // );
+
+  // cron.schedule(
+  //   "0 9 * * * *",
+  //   async () => {
+  //     await handleBotDailyPengawasanOperatorAI(sock);
+  //   },
+  //   {
+  //     scheduled: true,
+  //     timezone: "Asia/Jakarta",
+  //   }
+  // );
+  // // untuk  pc ardiono
+  // cron.schedule(
+  //   "0 */30 * * * *",
+  //   async () => {
+  //     try {
+  //       let response = await axios.get(
+  //         "https://qc-apps.srs-ssms.com/api/checkPcStatus"
+  //       );
+  //       // Assuming the response data has the structure { message: "All PCs are online" }
+  //       if (response.data.message === "All PCs are online") {
+  //         console.log("All PCs are online");
+  //       } else {
+  //         await sendfailcronjob(sock);
+  //         await get_mill_data(sock);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching the status:", error);
+  //     }
+  //   },
+  //   {
+  //     scheduled: true,
+  //     timezone: "Asia/Jakarta",
+  //   }
+  // );
+
+  // WebSocket pusher untuk bot grading
+  // channel.bind('item-requested', async (eventData) => {
+  //   // Log the full event data to debug the structure
+  //   // console.log(eventData);
+
+  //   if (!eventData || !eventData.data || !eventData.data.bot_data) {
+  //       console.log('Event data, data, or bot_data is undefined.');
+  //       return;
+  //   }
+
+  //   const dataitem = eventData.data.bot_data;
+
+  //   if (!dataitem.nama_atasan_pemilik) {
+  //       console.log('nama_atasan_pemilik is undefined.');
+  //       return;
+  //   }
+
+  //   let message = `*Permintaan barang perlu di review*:\n`;
+  //   message += `Hallo Selamat Siang Bapak/Ibu ${dataitem.nama_atasan_pemilik}\n`;
+  //   message += `Anda memiliki request baru untuk permintaan barang dengan detail sebagai berikut:\n`;
+  //   message += `*ID* : ${dataitem.id_data}\n`;
+  //   message += `*Nama pemohon* : ${dataitem.id_pemohon}\n`;
+  //   message += `*Departement pemohon* : ${dataitem.nama_departement_pemohon}\n`;
+  //   message += `*Barang diminta* : ${dataitem.nama_barang} (${dataitem.nama_lain})\n`;
+  //   message += `*Jumlah diminta* : ${dataitem.jumlah}\n`;
+  //   message += `*tanggal_pengajuan* : ${dataitem.tanggal_pengajuan}\n`;
+  //   message += `Silahkan Reply Pesan ini kemudian balas ya/tidak untuk approval\n`;
+  //   message += `Generated by Digital Architect SRS Bot`;
+
+  //   await sock.sendMessage(dataitem.send_to + "@s.whatsapp.net", {
+  //     text: message,
+  //   });
+
+  //   try {
+  //     const response = await axios.post(
+  //       "http://127.0.0.1:8000/api/changestatusbot",
+  //       {
+  //         id: dataitem.id_data,
+  //         type: 'send_to_pemilik',
+  //         email: 'j',
+  //         password: 'j',
+  //       }
+  //     );
+  //     let responses = response.data;
+  //   } catch (error) {
+  //     console.log("Error approving:", error);
+  //   }
+  // });
+
+  // channel.bind('item-approved', async (eventData) => {
+  //   // Log the full event data to debug the structure
+  //   console.log(eventData);
+
+  //   if (!eventData || !eventData.data || !eventData.data.bot_data) {
+  //       console.log('Event data, data, or bot_data is undefined.');
+  //       return;
+  //   }
+
+  //   const dataitem = eventData.data.bot_data;
+
+  //   if (!dataitem.nama_atasan_pemilik) {
+  //       console.log('nama_atasan_pemilik is undefined.');
+  //       return;
+  //   }
+  //   let message = `*Permintaan barang disetujui*:\n`;
+  //   message += `Hallo Selamat Siang Bapak/Ibu ${dataitem.id_pemohon}\n`;
+  //   message += `Permintaan barang dengan detail sebagai berikut telah disetujui:\n`;
+  //   message += `*ID* : ${dataitem.id_data}\n`;
+  //   message += `*Nama atasan departement* : ${dataitem.nama_atasan_pemilik}\n`;
+  //   message += `*Departement pengajuan* : ${dataitem.nama_departement_pemilik}\n`;
+  //   message += `*Barang diminta* : ${dataitem.nama_barang} (${dataitem.nama_lain})\n`;
+  //   message += `*Jumlah diminta* : ${dataitem.jumlah}\n`;
+  //   message += `*tanggal_pengajuan* : ${dataitem.tanggal_pengajuan}\n`;
+  //   message += `Generated by Digital Architect SRS Bot`;
+  //   await sock.sendMessage(dataitem.send_to + "@s.whatsapp.net", {
+  //     text: message,
+  //   });
+
+
+  //   try {
+  //     const response = await axios.post(
+  //       "http://127.0.0.1:8000/api/changestatusbot",
+  //       {
+  //         email: 'j',
+  //         password: 'j',
+  //         id: dataitem.id_data,
+  //         type: 'else',
+  //       }
+  //     );
+  //     let responses = response.data;
+  //   } catch (error) {
+  //     console.log("Error approving:", error);
+  //   }
+  // });
+ 
+  // channel.bind('item-rejected', async (eventData) => {
+  //   // Log the full event data to debug the structure
+  //   // console.log(eventData);
+
+  //   if (!eventData || !eventData.data || !eventData.data.bot_data) {
+  //       console.log('Event data, data, or bot_data is undefined.');
+  //       return;
+  //   }
+
+  //   const dataitem = eventData.data.bot_data;
+
+  //   if (!dataitem.nama_atasan_pemilik) {
+  //       console.log('nama_atasan_pemilik is undefined.');
+  //       return;
+  //   }
+
+  //   let message = `*Permintaan barang ditolak*:\n`;
+  //   message += `Hallo Selamat Siang Bapak/Ibu ${dataitem.id_pemohon}\n`;
+  //   message += `Permintaan barang dengan detail sebagai berikut telah ditolak:\n`;
+  //   message += `*ID* : ${dataitem.id_data}\n`;
+  //   message += `*Nama atasan departement* : ${dataitem.nama_atasan_pemilik}\n`;
+  //   message += `*Departement pengajuan* : ${dataitem.nama_departement_pemilik}\n`;
+  //   message += `*Barang diminta* : ${dataitem.nama_barang} (${dataitem.nama_lain})\n`;
+  //   message += `*Jumlah diminta* : ${dataitem.jumlah}\n`;
+  //   message += `*tanggal_pengajuan* : ${dataitem.tanggal_pengajuan}\n`;
+  //   message += `Generated by Digital Architect SRS Bot`;
+  //   await sock.sendMessage(dataitem.send_to + "@s.whatsapp.net", {
+  //     text: message,
+  //   });
+  //   try {
+  //     const response = await axios.post(
+  //       "http://127.0.0.1:8000/api/changestatusbot",
+  //       {
+  //         email: 'j',
+  //         password: 'j',
+  //         id: dataitem.id_data,
+  //         type: 'else',
+  //       }
+  //     );
+  //     let responses = response.data;
+  //   } catch (error) {
+  //     console.log("Error approving:", error);
+  //   }
+  // });
 };
 
 module.exports = {
@@ -2346,5 +2571,6 @@ module.exports = {
   handleTaksasi,
   restartbot,
   get_mill_data,
-  handleBotPengawasanOperatorAI,
+  handleBotDailyPengawasanOperatorAI,
+  botmanagementgudang,
 };
