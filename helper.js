@@ -2556,8 +2556,8 @@ const setupCronJobs = (sock) => {
 
     try {
       const response = await axios.post(
-        // 'https://management.srs-ssms.com/api/changestatusbot',
-        'http://127.0.0.1:8000/api/changestatusbot',
+        'https://management.srs-ssms.com/api/changestatusbot',
+        // 'http://127.0.0.1:8000/api/changestatusbot',
         {
           id: dataitem.id_data,
           type: "send_to_pemilik",
@@ -2602,8 +2602,8 @@ const setupCronJobs = (sock) => {
 
     try {
       const response = await axios.post(
-        // 'https://management.srs-ssms.com/api/changestatusbot',
-        'http://127.0.0.1:8000/api/changestatusbot',
+        'https://management.srs-ssms.com/api/changestatusbot',
+        // 'http://127.0.0.1:8000/api/changestatusbot',
         {
           email: "j",
           password: "j",
@@ -2649,8 +2649,8 @@ const setupCronJobs = (sock) => {
     });
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/changestatusbot",
-        // 'https://management.srs-ssms.com/api/changestatusbot',
+        // "http://127.0.0.1:8000/api/changestatusbot",
+        'https://management.srs-ssms.com/api/changestatusbot',
         {
           email: "j",
           password: "j",
