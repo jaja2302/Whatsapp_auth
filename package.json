@@ -32,5 +32,8 @@
     "simple-git": "^3.24.0",
     "socket.io": "^4.7.5",
     "uuid": "^7.0.3"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3"
   }
 }
