@@ -340,7 +340,7 @@ async function connectToWhatsApp() {
               } else if (respon_atasan.toLowerCase() === 'tidak') {
                 let message = `*Alasan request barang di tolak?*:\n`;
                 message += `*ID* : ${id}\n`;
-                message += `Silahkan Reply Pesan ini untuk memberikan alasan request barang di tolak\n`;
+                message += `Silahkan *wajib* Reply Pesan ini dengan membalas *skip* untuk menolak tanpa alasan. Atau berikan alasan menolak request ini?\n`;
                 await sock.sendMessage(noWa, { text: message });
               }
             } else if (
