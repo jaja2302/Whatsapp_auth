@@ -2372,6 +2372,7 @@ const pusher = new Pusher('b193dcd8922273835547', {
 // cluster = "ap1"
 
 const channel = pusher.subscribe('my-channel');
+const channelPython = pusher.subscribe('operator-missing');
 
 const setupCronJobs = (sock) => {
   const isConnected = () => {
@@ -2638,6 +2639,59 @@ const setupCronJobs = (sock) => {
         let responses = response.data;
       } catch (error) {
         console.log('Error approving:', error);
+      }
+    });
+    channelPython.bind('python', async (eventData) => {
+      group_id = '120363319226261372@g.us';
+
+      hourMissing = eventData.date;
+      lokasiCCTV = eventData.location;
+      fileName = eventData.fileName;
+
+      const fs = require('fs');
+      const axios = require('axios');
+      let message = `Tidak ada aktivitas id *${lokasiCCTV}* pada  *${hourMissing}*`;
+      try {
+        const response = await axios.get(
+          `https://srs-ssms.com/op_monitoring/get_screenshot_file.php?filename=${fileName}`
+        );
+        const base64Image = response.data;
+
+        const buffer = Buffer.from(base64Image, 'base64');
+
+        const filePath = `./uploads/${fileName}`;
+        fs.writeFileSync(filePath, buffer);
+
+        const messageOptions = {
+          image: {
+            url: filePath,
+          },
+          caption: message,
+        };
+
+        await sock
+          .sendMessage(group_id, messageOptions)
+          .then((result) => {
+            if (fs.existsSync(filePath)) {
+              fs.unlink(filePath, (err) => {
+                if (err && err.code == 'ENOENT') {
+                  // file doens't exist
+                  console.info("File doesn't exist, won't remove it.");
+                } else if (err) {
+                  console.error('Error occurred while trying to remove file.');
+                }
+              });
+            }
+          })
+          .catch((err) => {
+            res.status(500).json({
+              status: false,
+              response: err,
+            });
+            console.log('pesan gagal terkirim');
+          });
+      } catch (error) {
+        console.error('Error fetching base64 image:', error);
       }
     });
   } else {
