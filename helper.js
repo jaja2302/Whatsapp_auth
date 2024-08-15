@@ -940,6 +940,46 @@ async function get_mill_data(sock) {
       const result = data.data;
 
       for (const itemdata of result) {
+        // for (const fileName of itemdata.foto) {
+        //     const trimmedFileName = fileName.trim(); // Ensure no leading/trailing spaces
+        //     const fileUrl = `https://mobilepro.srs-ssms.com/storage/app/public/qc/grading_mill/${trimmedFileName}`;
+        //     const destinationPath = path.join(__dirname, 'uploads', trimmedFileName);
+
+        //     // Download the file
+        //     await new Promise((resolve, reject) => {
+        //         const file = fs.createWriteStream(destinationPath);
+        //         https.get(fileUrl, function(response) {
+        //             response.pipe(file);
+        //             file.on('finish', function() {
+        //                 file.close(() => {
+        //                     console.log('File downloaded successfully:', destinationPath);
+        //                     resolve(); // Resolve the promise after the file is downloaded
+        //                 });
+        //             });
+        //         }).on('error', function(err) {
+        //             fs.unlink(destinationPath, () => {}); // Delete the file if there is an error
+        //             console.error('Error downloading the file:', err);
+        //             reject(err); // Reject the promise if there is an error
+        //         });
+        //     });
+
+        //     const messageOptions = {
+        //         image: {
+        //             url: destinationPath
+        //         },
+        //     };
+
+        //     await sock.sendMessage(noWa_grading, messageOptions);
+
+        //     // Remove the image file after sending
+        //     fs.unlink(destinationPath, (err) => {
+        //         if (err) {
+        //             console.error('Error unlinking the file:', err);
+        //         } else {
+        //             console.log('File removed successfully:', destinationPath);
+        //         }
+        //     });
+        // }
         // Update the data mill after processing each itemdata
         await axios.post('https://qc-apps.srs-ssms.com/api/updatedatamill', {
           id: itemdata.id,
@@ -1044,9 +1084,6 @@ async function getuserinfo(user) {
         nama: user,
       }
     );
-
-    // console.log(response);
-
     // const response = await axios.post('https://qc-apps.srs-ssms.com/api/getuserinfo', {
     //     nama: user
     // });
@@ -1218,19 +1255,14 @@ const handleijinmsg = async (noWa, text, sock) => {
       } else {
         try {
           const response = await axios.post(
-            // 'https://qc-apps.srs-ssms.com/api/formdataizin',
-            'http://127.0.0.1:8000/api/formdataizin',
+            'https://qc-apps.srs-ssms.com/api/formdataizin',
             {
               name: options[chosenIndex].id,
               type: 'check_user',
               no_hp: noWa,
-              email: 'j',
-              password: 'j',
             }
           );
           let responses = response.data;
-
-          console.log(responses);
 
           const responseKey = Object.keys(responses)[0];
 
@@ -1258,8 +1290,6 @@ const handleijinmsg = async (noWa, text, sock) => {
             });
           }
         } catch (error) {
-          // console.log(error);
-
           if (error.response && error.response.status === 404) {
             await sock.sendMessage(noWa, {
               text: 'Terjadi error tidak terduga',
@@ -1755,8 +1785,7 @@ const handleijinmsg = async (noWa, text, sock) => {
       if (text.toLowerCase() === 'ya') {
         try {
           const response = await axios.post(
-            // 'https://qc-apps.srs-ssms.com/api/formdataizin',
-            'http://127.0.0.1:8000/api/formdataizin',
+            'https://qc-apps.srs-ssms.com/api/formdataizin',
             {
               name: botpromt[noWa].user_nama_id,
               tujuan: botpromt[noWa].location,
@@ -1770,8 +1799,6 @@ const handleijinmsg = async (noWa, text, sock) => {
               jam_keluar: botpromt[noWa].jam_keluar,
               jam_kembali: botpromt[noWa].jam_kembali,
               no_hp: noWa,
-              email: 'j',
-              password: 'j',
             }
           );
 
@@ -1779,7 +1806,7 @@ const handleijinmsg = async (noWa, text, sock) => {
 
           const responseKey = Object.keys(responses)[0];
 
-          console.log(responses);
+          // console.log(responses);
           await sock.sendMessage(noWa, {
             text: 'Mohon Tunggu server melakukan validasi.....',
           });
@@ -2254,7 +2281,7 @@ async function restartbot(namabot) {
 async function botmanagementgudang(sock, msg) {
   try {
     const response = await axios.get(
-      'http://127.0.0.1:8000/api/getorder_gudang',
+      'https://management.srs-ssms.com/api/getorder_gudang',
       {
         params: {
           email: 'j',
@@ -2353,6 +2380,7 @@ const setupCronJobs = (sock) => {
   };
   if (isConnected) {
     //   untuk wasecond
+
     // cron.schedule(
     //   '0 * * * *',
     //   async () => {
@@ -2408,58 +2436,60 @@ const setupCronJobs = (sock) => {
     //     timezone: 'Asia/Jakarta', // Set the timezone according to your location
     //   }
     // );
-    // // untuk pc di ho boootroot
-    // cron.schedule(
-    //   '0 9 * * *',
-    //   async () => {
-    //     await handleBotLaporanHarianFleetManagement(sock);
-    //   },
-    //   {
-    //     scheduled: true,
-    //     timezone: 'Asia/Jakarta',
-    //   }
-    // );
-    // cron.schedule(
-    //   '*/10 * * * *',
-    //   async () => {
-    //     await sendfailcronjob(sock);
-    //   },
-    //   {
-    //     scheduled: true,
-    //     timezone: 'Asia/Jakarta',
-    //   }
-    // );
-    // cron.schedule(
-    //   '*/5 * * * *',
-    //   async () => {
-    //     await getNotifications(sock);
-    //     await get_mill_data(sock);
-    //   },
-    //   {
-    //     scheduled: true,
-    //     timezone: 'Asia/Jakarta',
-    //   }
-    // );
-    // cron.schedule(
-    //   '*/15 * * * *',
-    //   async () => {
-    //     await updatePCStatus();
-    //   },
-    //   {
-    //     scheduled: true,
-    //     timezone: 'Asia/Jakarta',
-    //   }
-    // );
-    // cron.schedule(
-    //   '0 9 * * * *',
-    //   async () => {
-    //     await handleBotDailyPengawasanOperatorAI(sock);
-    //   },
-    //   {
-    //     scheduled: true,
-    //     timezone: 'Asia/Jakarta',
-    //   }
-    // );
+
+    // untuk pc di ho boootroot
+    cron.schedule(
+      '0 9 * * *',
+      async () => {
+        await handleBotLaporanHarianFleetManagement(sock);
+      },
+      {
+        scheduled: true,
+        timezone: 'Asia/Jakarta',
+      }
+    );
+    cron.schedule(
+      '*/10 * * * *',
+      async () => {
+        await sendfailcronjob(sock);
+      },
+      {
+        scheduled: true,
+        timezone: 'Asia/Jakarta',
+      }
+    );
+    cron.schedule(
+      '*/5 * * * *',
+      async () => {
+        // await getNotifications(sock);
+        await get_mill_data(sock);
+      },
+      {
+        scheduled: true,
+        timezone: 'Asia/Jakarta',
+      }
+    );
+    cron.schedule(
+      '*/15 * * * *',
+      async () => {
+        await updatePCStatus();
+      },
+      {
+        scheduled: true,
+        timezone: 'Asia/Jakarta',
+      }
+    );
+    cron.schedule(
+      '0 9 * * * *',
+      async () => {
+        await handleBotDailyPengawasanOperatorAI(sock);
+      },
+      {
+        scheduled: true,
+        timezone: 'Asia/Jakarta',
+      }
+    );
+
     // untuk  pc ardiono
     // cron.schedule(
     //   '0 */30 * * * *',
@@ -2484,179 +2514,186 @@ const setupCronJobs = (sock) => {
     //     timezone: 'Asia/Jakarta',
     //   }
     // );
+
     // WebSocket pusher untuk bot grading
-    // channel.bind('item-requested', async (eventData) => {
-    //   // Log the full event data to debug the structure
-    //   // console.log(eventData);
-    //   if (!eventData || !eventData.data || !eventData.data.bot_data) {
-    //     console.log('Event data, data, or bot_data is undefined.');
-    //     return;
-    //   }
-    //   const dataitem = eventData.data.bot_data;
-    //   if (!dataitem.nama_atasan_pemilik) {
-    //     console.log('nama_atasan_pemilik is undefined.');
-    //     return;
-    //   }
-    //   let message = `*Permintaan barang perlu di review*:\n`;
-    //   message += `Hallo Selamat Siang Bapak/Ibu ${dataitem.nama_atasan_pemilik}\n`;
-    //   message += `Anda memiliki request baru dengan detail sebagai berikut:\n`;
-    //   message += `*ID* : ${dataitem.id_data}\n`;
-    //   message += `*Nama pemohon* : ${dataitem.id_pemohon}\n`;
-    //   message += `*Departement pemohon* : ${dataitem.nama_departement_pemohon}\n`;
-    //   message += `*Nama barang* : ${dataitem.nama_barang} (${dataitem.nama_lain})\n`;
-    //   message += `*Jumlah* : ${dataitem.jumlah}\n`;
-    //   message += `*Tanggal pengajuan* : ${dataitem.tanggal_pengajuan}\n`;
-    //   message += `Silahkan Reply Pesan ini kemudian balas ya/tidak untuk approval\n`;
-    //   message += `Generated by Digital Architect SRS Bot`;
-    //   await sock.sendMessage(dataitem.send_to + '@s.whatsapp.net', {
-    //     text: message,
-    //   });
-    //   try {
-    //     const response = await axios.post(
-    //       'https://management.srs-ssms.com/api/changestatusbot',
-    //       // 'http://127.0.0.1:8000/api/changestatusbot',
-    //       {
-    //         id: dataitem.id_data,
-    //         type: 'send_to_pemilik',
-    //         email: 'j',
-    //         password: 'j',
-    //       }
-    //     );
-    //     let responses = response.data;
-    //   } catch (error) {
-    //     console.log('Error approving:', error);
-    //   }
-    // });
-    // channel.bind('item-approved', async (eventData) => {
-    //   // Log the full event data to debug the structure
-    //   console.log(eventData);
-    //   if (!eventData || !eventData.data || !eventData.data.bot_data) {
-    //     console.log('Event data, data, or bot_data is undefined.');
-    //     return;
-    //   }
-    //   const dataitem = eventData.data.bot_data;
-    //   if (!dataitem.nama_atasan_pemilik) {
-    //     console.log('nama_atasan_pemilik is undefined.');
-    //     return;
-    //   }
-    //   let message = `*Permintaan barang disetujui*:\n`;
-    //   message += `Hallo Selamat Siang Bapak/Ibu ${dataitem.id_pemohon}\n`;
-    //   message += `Permintaan barang dengan detail sebagai berikut telah disetujui:\n`;
-    //   message += `*ID* : ${dataitem.id_data}\n`;
-    //   message += `*Nama atasan departement* : ${dataitem.nama_atasan_pemilik}\n`;
-    //   message += `*Departement pengajuan* : ${dataitem.nama_departement_pemilik}\n`;
-    //   message += `*Nama barang* : ${dataitem.nama_barang} (${dataitem.nama_lain})\n`;
-    //   message += `*Jumlah* : ${dataitem.jumlah}\n`;
-    //   message += `*Tanggal pengajuan* : ${dataitem.tanggal_pengajuan}\n`;
-    //   message += `Generated by Digital Architect SRS Bot`;
-    //   await sock.sendMessage(dataitem.send_to + '@s.whatsapp.net', {
-    //     text: message,
-    //   });
-    //   try {
-    //     const response = await axios.post(
-    //       'https://management.srs-ssms.com/api/changestatusbot',
-    //       // 'http://127.0.0.1:8000/api/changestatusbot',
-    //       {
-    //         email: 'j',
-    //         password: 'j',
-    //         id: dataitem.id_data,
-    //         type: 'else',
-    //       }
-    //     );
-    //     let responses = response.data;
-    //   } catch (error) {
-    //     console.log('Error approving:', error);
-    //   }
-    // });
-    // channel.bind('item-rejected', async (eventData) => {
-    //   // Log the full event data to debug the structure
-    //   // console.log(eventData);
-    //   if (!eventData || !eventData.data || !eventData.data.bot_data) {
-    //     console.log('Event data, data, or bot_data is undefined.');
-    //     return;
-    //   }
-    //   const dataitem = eventData.data.bot_data;
-    //   if (!dataitem.nama_atasan_pemilik) {
-    //     console.log('nama_atasan_pemilik is undefined.');
-    //     return;
-    //   }
-    //   let message = `*Permintaan barang ditolak*:\n`;
-    //   message += `Hallo Selamat Siang Bapak/Ibu ${dataitem.id_pemohon}\n`;
-    //   message += `Permintaan barang dengan detail sebagai berikut telah ditolak:\n`;
-    //   message += `*ID* : ${dataitem.id_data}\n`;
-    //   message += `*Nama atasan departement* : ${dataitem.nama_atasan_pemilik}\n`;
-    //   message += `*Departement pengajuan* : ${dataitem.nama_departement_pemilik}\n`;
-    //   message += `*Nama barang* : ${dataitem.nama_barang} (${dataitem.nama_lain})\n`;
-    //   message += `*Jumlah* : ${dataitem.jumlah}\n`;
-    //   message += `*Tanggal pengajuan* : ${dataitem.tanggal_pengajuan}\n`;
-    //   message += `*Alasan di tolak* : ${dataitem.alasan}\n`;
-    //   message += `Generated by Digital Architect SRS Bot`;
-    //   await sock.sendMessage(dataitem.send_to + '@s.whatsapp.net', {
-    //     text: message,
-    //   });
-    //   try {
-    //     const response = await axios.post(
-    //       // "http://127.0.0.1:8000/api/changestatusbot",
-    //       'https://management.srs-ssms.com/api/changestatusbot',
-    //       {
-    //         email: 'j',
-    //         password: 'j',
-    //         id: dataitem.id_data,
-    //         type: 'else',
-    //       }
-    //     );
-    //     let responses = response.data;
-    //   } catch (error) {
-    //     console.log('Error approving:', error);
-    //   }
-    // });
-    // channelPython.bind('python', async (eventData) => {
-    //   group_id = '120363319226261372@g.us';
-    //   hourMissing = eventData.date;
-    //   lokasiCCTV = eventData.location;
-    //   fileName = eventData.fileName;
-    //   const fs = require('fs');
-    //   const axios = require('axios');
-    //   let message = `Tidak ada aktivitas id *${lokasiCCTV}* pada  *${hourMissing}*`;
-    //   try {
-    //     const response = await axios.get(
-    //       `https://srs-ssms.com/op_monitoring/get_screenshot_file.php?filename=${fileName}`
-    //     );
-    //     const base64Image = response.data;
-    //     const buffer = Buffer.from(base64Image, 'base64');
-    //     const filePath = `./uploads/${fileName}`;
-    //     fs.writeFileSync(filePath, buffer);
-    //     const messageOptions = {
-    //       image: {
-    //         url: filePath,
-    //       },
-    //       caption: message,
-    //     };
-    //     await sock
-    //       .sendMessage(group_id, messageOptions)
-    //       .then((result) => {
-    //         if (fs.existsSync(filePath)) {
-    //           fs.unlink(filePath, (err) => {
-    //             if (err && err.code == 'ENOENT') {
-    //               // file doens't exist
-    //               console.info("File doesn't exist, won't remove it.");
-    //             } else if (err) {
-    //               console.error('Error occurred while trying to remove file.');
-    //             }
-    //           });
-    //         }
-    //       })
-    //       .catch((err) => {
-    //         res.status(500).json({
-    //           status: false,
-    //           response: err,
-    //         });
-    //         console.log('pesan gagal terkirim');
-    //       });
-    //   } catch (error) {
-    //     console.error('Error fetching base64 image:', error);
-    //   }
-    // });
+    channel.bind('item-requested', async (eventData) => {
+      // Log the full event data to debug the structure
+      // console.log(eventData);
+      if (!eventData || !eventData.data || !eventData.data.bot_data) {
+        console.log('Event data, data, or bot_data is undefined.');
+        return;
+      }
+      const dataitem = eventData.data.bot_data;
+      if (!dataitem.nama_atasan_pemilik) {
+        console.log('nama_atasan_pemilik is undefined.');
+        return;
+      }
+      let message = `*Permintaan barang perlu di review*:\n`;
+      message += `Hallo Selamat Siang Bapak/Ibu ${dataitem.nama_atasan_pemilik}\n`;
+      message += `Anda memiliki request baru dengan detail sebagai berikut:\n`;
+      message += `*ID* : ${dataitem.id_data}\n`;
+      message += `*Nama pemohon* : ${dataitem.id_pemohon}\n`;
+      message += `*Departement pemohon* : ${dataitem.nama_departement_pemohon}\n`;
+      message += `*Nama barang* : ${dataitem.nama_barang} (${dataitem.nama_lain})\n`;
+      message += `*Jumlah* : ${dataitem.jumlah}\n`;
+      message += `*Tanggal pengajuan* : ${dataitem.tanggal_pengajuan}\n`;
+      message += `Silahkan Reply Pesan ini kemudian balas ya/tidak untuk approval\n`;
+      message += `Generated by Digital Architect SRS Bot`;
+      await sock.sendMessage(dataitem.send_to + '@s.whatsapp.net', {
+        text: message,
+      });
+      try {
+        const response = await axios.post(
+          'https://management.srs-ssms.com/api/changestatusbot',
+          // 'http://127.0.0.1:8000/api/changestatusbot',
+          {
+            id: dataitem.id_data,
+            type: 'send_to_pemilik',
+            email: 'j',
+            password: 'j',
+          }
+        );
+        let responses = response.data;
+      } catch (error) {
+        console.log('Error approving:', error);
+      }
+    });
+    channel.bind('item-approved', async (eventData) => {
+      // Log the full event data to debug the structure
+      console.log(eventData);
+      if (!eventData || !eventData.data || !eventData.data.bot_data) {
+        console.log('Event data, data, or bot_data is undefined.');
+        return;
+      }
+      const dataitem = eventData.data.bot_data;
+      if (!dataitem.nama_atasan_pemilik) {
+        console.log('nama_atasan_pemilik is undefined.');
+        return;
+      }
+      let message = `*Permintaan barang disetujui*:\n`;
+      message += `Hallo Selamat Siang Bapak/Ibu ${dataitem.id_pemohon}\n`;
+      message += `Permintaan barang dengan detail sebagai berikut telah disetujui:\n`;
+      message += `*ID* : ${dataitem.id_data}\n`;
+      message += `*Nama atasan departement* : ${dataitem.nama_atasan_pemilik}\n`;
+      message += `*Departement pengajuan* : ${dataitem.nama_departement_pemilik}\n`;
+      message += `*Nama barang* : ${dataitem.nama_barang} (${dataitem.nama_lain})\n`;
+      message += `*Jumlah* : ${dataitem.jumlah}\n`;
+      message += `*Tanggal pengajuan* : ${dataitem.tanggal_pengajuan}\n`;
+      message += `Generated by Digital Architect SRS Bot`;
+      await sock.sendMessage(dataitem.send_to + '@s.whatsapp.net', {
+        text: message,
+      });
+      try {
+        const response = await axios.post(
+          'https://management.srs-ssms.com/api/changestatusbot',
+          // 'http://127.0.0.1:8000/api/changestatusbot',
+          {
+            email: 'j',
+            password: 'j',
+            id: dataitem.id_data,
+            type: 'else',
+          }
+        );
+        let responses = response.data;
+      } catch (error) {
+        console.log('Error approving:', error);
+      }
+    });
+    channel.bind('item-rejected', async (eventData) => {
+      // Log the full event data to debug the structure
+      // console.log(eventData);
+      if (!eventData || !eventData.data || !eventData.data.bot_data) {
+        console.log('Event data, data, or bot_data is undefined.');
+        return;
+      }
+      const dataitem = eventData.data.bot_data;
+      if (!dataitem.nama_atasan_pemilik) {
+        console.log('nama_atasan_pemilik is undefined.');
+        return;
+      }
+      let message = `*Permintaan barang ditolak*:\n`;
+      message += `Hallo Selamat Siang Bapak/Ibu ${dataitem.id_pemohon}\n`;
+      message += `Permintaan barang dengan detail sebagai berikut telah ditolak:\n`;
+      message += `*ID* : ${dataitem.id_data}\n`;
+      message += `*Nama atasan departement* : ${dataitem.nama_atasan_pemilik}\n`;
+      message += `*Departement pengajuan* : ${dataitem.nama_departement_pemilik}\n`;
+      message += `*Nama barang* : ${dataitem.nama_barang} (${dataitem.nama_lain})\n`;
+      message += `*Jumlah* : ${dataitem.jumlah}\n`;
+      message += `*Tanggal pengajuan* : ${dataitem.tanggal_pengajuan}\n`;
+      message += `*Alasan di tolak* : ${dataitem.alasan}\n`;
+      message += `Generated by Digital Architect SRS Bot`;
+      await sock.sendMessage(dataitem.send_to + '@s.whatsapp.net', {
+        text: message,
+      });
+      try {
+        const response = await axios.post(
+          // "http://127.0.0.1:8000/api/changestatusbot",
+          'https://management.srs-ssms.com/api/changestatusbot',
+          {
+            email: 'j',
+            password: 'j',
+            id: dataitem.id_data,
+            type: 'else',
+          }
+        );
+        let responses = response.data;
+      } catch (error) {
+        console.log('Error approving:', error);
+      }
+    });
+    channelPython.bind('python', async (eventData) => {
+      group_id = '120363321959291717@g.us';
+
+      hourMissing = eventData.date;
+      lokasiCCTV = eventData.location;
+      fileName = eventData.fileName;
+
+      const fs = require('fs');
+      const axios = require('axios');
+      let message = `Tidak ada aktivitas id *${lokasiCCTV}* pada  *${hourMissing}*`;
+      try {
+        const response = await axios.get(
+          `https://srs-ssms.com/op_monitoring/get_screenshot_file.php?filename=${fileName}`
+        );
+        const base64Image = response.data;
+
+        const buffer = Buffer.from(base64Image, 'base64');
+
+        const filePath = `./uploads/${fileName}`;
+        fs.writeFileSync(filePath, buffer);
+
+        const messageOptions = {
+          image: {
+            url: filePath,
+          },
+          caption: message,
+        };
+
+        await sock
+          .sendMessage(group_id, messageOptions)
+          .then((result) => {
+            if (fs.existsSync(filePath)) {
+              fs.unlink(filePath, (err) => {
+                if (err && err.code == 'ENOENT') {
+                  // file doens't exist
+                  console.info("File doesn't exist, won't remove it.");
+                } else if (err) {
+                  console.error('Error occurred while trying to remove file.');
+                }
+              });
+            }
+          })
+          .catch((err) => {
+            res.status(500).json({
+              status: false,
+              response: err,
+            });
+            console.log('pesan gagal terkirim');
+          });
+      } catch (error) {
+        console.error('Error fetching base64 image:', error);
+      }
+    });
 
     channel.bind('izinkebunnotif', async (itemdata) => {
       try {
@@ -2683,7 +2720,7 @@ const setupCronJobs = (sock) => {
           message += `Generated by Digital Architect SRS Bot`;
 
           try {
-            await axios.post('http://127.0.0.1:8000/api/addons', {
+            await axios.post('https://management.srs-ssms.com/api/addons', {
               id: data.id_db,
               type: 'atasan1',
               email: 'j',
@@ -2701,12 +2738,15 @@ const setupCronJobs = (sock) => {
               // Implement retry logic here, with a maximum of 5 attempts
               for (let attempt = 1; attempt <= 5; attempt++) {
                 try {
-                  await axios.post('http://127.0.0.1:8000/api/addons', {
-                    id: data.id_db,
-                    type: 'atasan1',
-                    email: 'j',
-                    password: 'j',
-                  });
+                  await axios.post(
+                    'https://management.srs-ssms.com/api/addons',
+                    {
+                      id: data.id_db,
+                      type: 'atasan1',
+                      email: 'j',
+                      password: 'j',
+                    }
+                  );
                   console.log('Retry successful');
                   break;
                 } catch (retryError) {
@@ -2749,7 +2789,7 @@ const setupCronJobs = (sock) => {
           userMessage += `Tim Digital Architect SRS Bot`;
 
           try {
-            await axios.post('http://127.0.0.1:8000/api/addons', {
+            await axios.post('https://management.srs-ssms.com/api/addons', {
               id: data.id_db,
               type: 'atasan2',
               email: 'j',
@@ -2770,12 +2810,15 @@ const setupCronJobs = (sock) => {
               // Implement retry logic here, with a maximum of 5 attempts
               for (let attempt = 1; attempt <= 5; attempt++) {
                 try {
-                  await axios.post('http://127.0.0.1:8000/api/addons', {
-                    id: data.id_db,
-                    type: 'atasan2',
-                    email: 'j',
-                    password: 'j',
-                  });
+                  await axios.post(
+                    'https://management.srs-ssms.com/api/addons',
+                    {
+                      id: data.id_db,
+                      type: 'atasan2',
+                      email: 'j',
+                      password: 'j',
+                    }
+                  );
                   console.log('Retry successful');
                   break;
                 } catch (retryError) {
@@ -2899,7 +2942,7 @@ const setupCronJobs = (sock) => {
           console.log('send_user');
 
           try {
-            await axios.post('http://127.0.0.1:8000/api/addons', {
+            await axios.post('https://management.srs-ssms.com/api/addons', {
               id: data.id_db,
               type: 'user',
               email: 'j',
@@ -2919,12 +2962,15 @@ const setupCronJobs = (sock) => {
               // Implement retry logic here, with a maximum of 5 attempts
               for (let attempt = 1; attempt <= 5; attempt++) {
                 try {
-                  await axios.post('http://127.0.0.1:8000/api/addons', {
-                    id: data.id_db,
-                    type: 'user',
-                    email: 'j',
-                    password: 'j',
-                  });
+                  await axios.post(
+                    'https://management.srs-ssms.com/api/addons',
+                    {
+                      id: data.id_db,
+                      type: 'user',
+                      email: 'j',
+                      password: 'j',
+                    }
+                  );
                   console.log('Retry successful');
                   break;
                 } catch (retryError) {
