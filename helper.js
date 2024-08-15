@@ -1785,7 +1785,7 @@ const handleijinmsg = async (noWa, text, sock) => {
       if (text.toLowerCase() === 'ya') {
         try {
           const response = await axios.post(
-            'https://qc-apps.srs-ssms.com/api/formdataizin',
+            'https://management.srs-ssms.com/api/formdataizin',
             {
               name: botpromt[noWa].user_nama_id,
               tujuan: botpromt[noWa].location,
