@@ -1799,6 +1799,8 @@ const handleijinmsg = async (noWa, text, sock) => {
               jam_keluar: botpromt[noWa].jam_keluar,
               jam_kembali: botpromt[noWa].jam_kembali,
               no_hp: noWa,
+              email: 'j',
+              password: 'j',
             }
           );
 
