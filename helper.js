@@ -807,7 +807,7 @@ async function handleBotDailyPengawasanOperatorAI(sock) {
     );
 
     const data = response.data;
-    const group_id_bot_pengawasan = '120363319226261372@g.us';
+    const group_id_bot_pengawasan = '120363321959291717@g.us';
 
     const options = {
       weekday: 'long',
@@ -2381,61 +2381,61 @@ const setupCronJobs = (sock) => {
   if (isConnected) {
     //   untuk wasecond
 
-    cron.schedule(
-      '0 * * * *',
-      async () => {
-        try {
-          // console.log('Running message history');
-          await statusHistory(sock); // Call the function to check history and send message
-        } catch (error) {
-          console.error('Error in cron job:', error);
-        }
-      },
-      {
-        scheduled: true,
-        timezone: 'Asia/Jakarta', // Set the timezone according to your location
-      }
-    );
-    cron.schedule(
-      '*/1 * * * *',
-      async () => {
-        await sendMessagesBasedOnData(sock);
-        console.log('cronjob');
-        // await maintencweget(sock);
-      },
-      {
-        scheduled: true,
-        timezone: 'Asia/Jakarta',
-      }
-    );
-    cron.schedule(
-      '0 * * * *',
-      async () => {
-        try {
-          await statusAWS(sock); // Call the function to check AWS status and send message
-        } catch (error) {
-          console.error('Error in cron job:', error);
-        }
-      },
-      {
-        scheduled: true,
-        timezone: 'Asia/Jakarta', // Set the timezone according to your location
-      }
-    );
-    cron.schedule(
-      '0 9 * * *',
-      async () => {
-        try {
-          await statusAWS(sock); // Call the function to check AWS status and send message
-        } catch (error) {
-          console.error('Error in cron job:', error);
-        }
-      },
-      {
-        scheduled: true,
-        timezone: 'Asia/Jakarta', // Set the timezone according to your location
-      }
-    );
+    // cron.schedule(
+    //   '0 * * * *',
+    //   async () => {
+    //     try {
+    //       // console.log('Running message history');
+    //       await statusHistory(sock); // Call the function to check history and send message
+    //     } catch (error) {
+    //       console.error('Error in cron job:', error);
+    //     }
+    //   },
+    //   {
+    //     scheduled: true,
+    //     timezone: 'Asia/Jakarta', // Set the timezone according to your location
+    //   }
+    // );
+    // cron.schedule(
+    //   '*/1 * * * *',
+    //   async () => {
+    //     await sendMessagesBasedOnData(sock);
+    //     console.log('cronjob');
+    //     // await maintencweget(sock);
+    //   },
+    //   {
+    //     scheduled: true,
+    //     timezone: 'Asia/Jakarta',
+    //   }
+    // );
+    // cron.schedule(
+    //   '0 * * * *',
+    //   async () => {
+    //     try {
+    //       await statusAWS(sock); // Call the function to check AWS status and send message
+    //     } catch (error) {
+    //       console.error('Error in cron job:', error);
+    //     }
+    //   },
+    //   {
+    //     scheduled: true,
+    //     timezone: 'Asia/Jakarta', // Set the timezone according to your location
+    //   }
+    // );
+    // cron.schedule(
+    //   '0 9 * * *',
+    //   async () => {
+    //     try {
+    //       await statusAWS(sock); // Call the function to check AWS status and send message
+    //     } catch (error) {
+    //       console.error('Error in cron job:', error);
+    //     }
+    //   },
+    //   {
+    //     scheduled: true,
+    //     timezone: 'Asia/Jakarta', // Set the timezone according to your location
+    //   }
+    // );
 
     // untuk pc di ho boootroot
     cron.schedule(
@@ -2491,29 +2491,29 @@ const setupCronJobs = (sock) => {
     );
 
     // untuk  pc ardiono
-    cron.schedule(
-      '0 */30 * * * *',
-      async () => {
-        try {
-          let response = await axios.get(
-            'https://qc-apps.srs-ssms.com/api/checkPcStatus'
-          );
-          // Assuming the response data has the structure { message: "All PCs are online" }
-          if (response.data.message === 'All PCs are online') {
-            console.log('All PCs are online');
-          } else {
-            await sendfailcronjob(sock);
-            await get_mill_data(sock);
-          }
-        } catch (error) {
-          console.error('Error fetching the status:', error);
-        }
-      },
-      {
-        scheduled: true,
-        timezone: 'Asia/Jakarta',
-      }
-    );
+    // cron.schedule(
+    //   '0 */30 * * * *',
+    //   async () => {
+    //     try {
+    //       let response = await axios.get(
+    //         'https://qc-apps.srs-ssms.com/api/checkPcStatus'
+    //       );
+    //       // Assuming the response data has the structure { message: "All PCs are online" }
+    //       if (response.data.message === 'All PCs are online') {
+    //         console.log('All PCs are online');
+    //       } else {
+    //         await sendfailcronjob(sock);
+    //         await get_mill_data(sock);
+    //       }
+    //     } catch (error) {
+    //       console.error('Error fetching the status:', error);
+    //     }
+    //   },
+    //   {
+    //     scheduled: true,
+    //     timezone: 'Asia/Jakarta',
+    //   }
+    // );
 
     // WebSocket pusher untuk bot grading
     channel.bind('item-requested', async (eventData) => {
@@ -2642,7 +2642,7 @@ const setupCronJobs = (sock) => {
       }
     });
     channelPython.bind('python', async (eventData) => {
-      group_id = '120363319226261372@g.us';
+      group_id = '120363321959291717@g.us';
 
       hourMissing = eventData.date;
       lokasiCCTV = eventData.location;
