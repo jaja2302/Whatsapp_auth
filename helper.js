@@ -2848,12 +2848,12 @@ const setupCronJobs = (sock) => {
 
           if (data.status === 'approved') {
             message += `*Izin Keluar Kebun Anda Telah Disetujui Atasan Kedua*\n\n`;
-            message += `Hallo Selamat Siang Bapak/Ibu ${data.user_request},\n\n`;
+            message += `Hallo Selamat Siang Bapak/Ibu ${data.nama_user},\n\n`;
             message += `Kami ingin menginformasikan bahwa permintaan izin keluar kebun Anda telah disetujui.\n\n`;
             message += `Berikut adalah detail izin Anda:\n`;
-            message += `*Nama Pemohon*: ${data.user_request}\n`;
-            message += `*Tanggal keluar izin* : ${data.tanggal_keluar} ${data.jam_keluar}\n`;
-            message += `*Tanggal kembali izin* : ${data.tanggal_kembali} ${data.jam_kembali}\n`;
+            message += `*Nama Pemohon*: ${data.nama_user}\n`;
+            message += `*Tanggal keluar izin* : ${data.tanggal_keluar}\n`;
+            message += `*Tanggal kembali izin* : ${data.tanggal_kembali}\n`;
             message += `*Keperluan*: ${data.keperluan}\n`;
             message += `*Lokasi Tujuan*: ${data.lokasi_tujuan}\n\n`;
             message += `Harap selalu berhati-hati selama perjalanan dan pastikan untuk mengikuti protokol keamanan yang berlaku. Kami mendoakan agar Anda tiba dengan selamat di tujuan dan kembali ke kebun dengan kondisi sehat dan aman.\n\n`;
