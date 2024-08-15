@@ -807,7 +807,7 @@ async function handleBotDailyPengawasanOperatorAI(sock) {
     );
 
     const data = response.data;
-    const group_id_bot_pengawasan = '120363319226261372@g.us';
+    const group_id_bot_pengawasan = '120363321959291717@g.us';
 
     const options = {
       weekday: 'long',
