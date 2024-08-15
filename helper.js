@@ -1911,10 +1911,10 @@ async function getNotifications(sock) {
               }
             } else if (itemdata.status === 'send_approved') {
               let message = `*Izin Keluar Kebun Anda Telah Disetujui Atasan Kedua*\n\n`;
-              message += `Hallo Selamat Siang Bapak/Ibu ${itemdata.user_request},\n\n`;
+              message += `Hallo Selamat Siang Bapak/Ibu ${itemdata.nama_user},\n\n`;
               message += `Kami ingin menginformasikan bahwa permintaan izin keluar kebun Anda telah disetujui.\n\n`;
               message += `Berikut adalah detail izin Anda:\n`;
-              message += `*Nama Pemohon*: ${itemdata.user_request}\n`;
+              message += `*Nama Pemohon*: ${itemdata.nama_user}\n`;
               message += `*Tanggal keluar izin* : ${itemdata.tanggal_keluar} ${itemdata.jam_keluar}\n`;
               message += `*Tanggal kembali izin* : ${itemdata.tanggal_kembali} ${itemdata.jam_kembali}\n`;
               message += `*Keperluan*: ${itemdata.keperluan}\n`;
