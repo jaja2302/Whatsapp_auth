@@ -827,15 +827,31 @@ async function handleBotDailyPengawasanOperatorAI(sock) {
           'https://srs-ssms.com/op_monitoring/change_status_bot_daily.php',
           new URLSearchParams({ id: machine_id })
         );
-        //   console.log(res.data);
-        let message = `*Berikut Rekap Durasi Pengawasan Operator di ${location}  ${formattedDate}*:\n`;
+
+        let message = `*Berikut Rekap Durasi Pengawasan Operator di ${location} ${formattedDate}*:\n`;
+        let totalSeconds = 0;
+
         if (uptime.length > 0) {
           for (const uptimeObj of uptime) {
             const { area, time } = uptimeObj;
-            const [hours, minutes, seconds] = time.split(':');
-            const formattedTime = `${hours}:${minutes}`;
+            const [hours, minutes, seconds] = time.split(':').map(Number);
+            // Ensure each part is two digits
+            const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
             message += `- ${area}: ${formattedTime}\n`;
+
+            // Only add to the total if the area is not "No Person"
+            if (area !== 'No Person') {
+              totalSeconds += hours * 3600 + minutes * 60 + seconds;
+            }
           }
+
+          // Convert total seconds back to hours, minutes, and seconds
+          const totalHours = Math.floor(totalSeconds / 3600);
+          const totalMinutes = Math.floor((totalSeconds % 3600) / 60);
+          const totalFinalSeconds = totalSeconds % 60;
+          const totalFormattedTime = `${String(totalHours).padStart(2, '0')}:${String(totalMinutes).padStart(2, '0')}:${String(totalFinalSeconds).padStart(2, '0')}`;
+
+          message += `*Total Waktu Semua Area ${totalFormattedTime}\n*`;
         } else {
           message += `_Tidak ada record durasi pengawasan pada hari tersebut_\n`;
         }
