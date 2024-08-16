@@ -2460,6 +2460,7 @@ const setupCronJobs = (sock) => {
       '0 9 * * *',
       async () => {
         await handleBotLaporanHarianFleetManagement(sock);
+        await handleBotDailyPengawasanOperatorAI(sock);
       },
       {
         scheduled: true,
@@ -2497,16 +2498,16 @@ const setupCronJobs = (sock) => {
         timezone: 'Asia/Jakarta',
       }
     );
-    cron.schedule(
-      '0 9 * * * *',
-      async () => {
-        await handleBotDailyPengawasanOperatorAI(sock);
-      },
-      {
-        scheduled: true,
-        timezone: 'Asia/Jakarta',
-      }
-    );
+    // cron.schedule(
+    //   '0 9 * * * *',
+    //   async () => {
+    //     await handleBotDailyPengawasanOperatorAI(sock);
+    //   },
+    //   {
+    //     scheduled: true,
+    //     timezone: 'Asia/Jakarta',
+    //   }
+    // );
 
     // untuk  pc ardiono
     // cron.schedule(
