@@ -132,3 +132,2638 @@ data kosong
 Server Berjalan pada Port : 8000
 opened connection
 data kosong
+Server Berjalan pada Port : 8000
+opened connection
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+data kosong
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Rangda_Jumat, 16 Agustus 2024.pdf' in folder 'Wilayah_1' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload successful after 1 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Sulung_Jumat, 16 Agustus 2024.pdf' in folder 'Wilayah_1' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Kenambui_Jumat, 16 Agustus 2024.pdf' in folder 'Wilayah_1' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Pulau_Jumat, 16 Agustus 2024.pdf' in folder 'Wilayah_1' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Selangkun_Jumat, 16 Agustus 2024.pdf' in folder 'Wilayah_2' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Rungun_Jumat, 16 Agustus 2024.pdf' in folder 'Wilayah_2' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Kondang_Jumat, 16 Agustus 2024.pdf' in folder 'Wilayah_2' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Natai Baru_Jumat, 16 Agustus 2024.pdf' in folder 'Wilayah_3' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Suayap_Jumat, 16 Agustus 2024.pdf' in folder 'Wilayah_3' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Bengaris_Jumat, 16 Agustus 2024.pdf' in folder 'Wilayah_3' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Batu Kotam_Jumat, 16 Agustus 2024.pdf' in folder 'Wilayah_2' deleted successfully.
+Response: { success: true }
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+send_user
+data kosong
+data kosong
+nodata
+send_user
+Connection reset. Retrying up to 5 times...
+Retry successful
+send_user
+Closing stale open session for new outgoing prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    'BaNodFbvMOKtv11c5KdjCU/+F8ma15KnBnzA+VcPQlot': { chainKey: [Object], chainType: 2, messageKeys: {} },
+    'BWjMPV/GW28uGXuFRGcE2tRxWFMvX1sr/lsA4L4dJs1o': { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 211,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 68 cc 3d 5f c6 5b 6f 2e 19 7b 85 44 67 04 da d4 71 58 53 2f 5f 5b 2b fe 5b 00 e0 be 1d 26 cd 68>,
+      privKey: <Buffer 30 51 5a 02 76 fe b8 15 03 f8 c5 31 a2 5d 66 85 6d 21 90 53 82 7b 5a 2d de b2 d0 f1 7c 8a aa 56>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 a3 68 74 56 ef 30 e2 ad bf 5d 5c e4 a7 63 09 4f fe 17 c9 9a d7 92 a7 06 7c c0 f9 57 0f 42 5a 2d>,
+    previousCounter: 23,
+    rootKey: <Buffer ab 7a dc 82 83 d5 f4 f1 d0 9b 92 b7 0c 28 66 98 e8 ea 7e ad d6 5e 5f db 9d 41 9f b6 41 63 4f 19>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 d4 d5 d0 3a fe 81 42 85 b1 ac c9 8b a8 9b 9b 74 16 64 54 3f b0 83 3f b6 02 15 23 1f 2f c5 9c 51>,
+    baseKeyType: 1,
+    closed: -1,
+    used: 1722657602361,
+    created: 1722593373374,
+    remoteIdentityKey: <Buffer 05 b3 e4 e6 97 69 0b 01 b2 52 86 b4 b1 4f b9 5e 9a 8e ce 73 7c 7b 65 b6 b2 7f 7f 6a 47 99 9d ce 02>
+  }
+}
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+send_user
+Connection reset. Retrying up to 5 times...
+Retry successful
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Umpang_Jumat, 16 Agustus 2024.pdf' in folder 'Wilayah_3' deleted successfully.
+Response: { success: true }
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+File downloaded successfully.
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+data kosong
+nodata
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+data kosong
+nodata
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+Error fetching data: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+Error fetching data: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:290:47\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:293:23\n' +
+      '    at Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n' +
+      '    at relayMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:279:30)\n' +
+      '    at Object.sendMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:652:23)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:290:47\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:293:23\n' +
+      '    at Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n' +
+      '    at relayMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:279:30)\n' +
+      '    at Object.sendMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:652:23)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+data kosong
+data kosong
+No files found or empty folder. Nothing to delete.
+Upload successful after 1 attempts
+Error fetching data: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+Retrying attempt 1 for BDE
+Error performing task in cronjob: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32
+    at runNextTicks (node:internal/process/task_queues:60:5)
+    at listOnTimeout (node:internal/timers:540:9)
+    at process.processTimers (node:internal/timers:514:7) {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:290:47\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:293:23\n' +
+      '    at Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n' +
+      '    at relayMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:279:30)\n' +
+      '    at Object.sendMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:652:23)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:290:47\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:293:23\n' +
+      '    at Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n' +
+      '    at relayMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:279:30)\n' +
+      '    at Object.sendMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:652:23)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+Status updated: { message: 'Record updated successfully' }
+data kosong
+File 'Rekap_Taksasi_Badirih_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_7' deleted successfully.
+data kosong
+Upload successful after 1 attempts
+Error fetching data: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+Retrying attempt 1 for BDE
+Error performing task in cronjob: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32
+    at runNextTicks (node:internal/process/task_queues:60:5)
+    at listOnTimeout (node:internal/timers:540:9)
+    at process.processTimers (node:internal/timers:514:7) {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:290:47\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:293:23\n' +
+      '    at Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n' +
+      '    at relayMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:279:30)\n' +
+      '    at Object.sendMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:652:23)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:290:47\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:293:23\n' +
+      '    at Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n' +
+      '    at relayMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:279:30)\n' +
+      '    at Object.sendMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:652:23)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+File 'Rekap_Taksasi_Badirih_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_7' deleted successfully.
+Upload successful after 1 attempts
+Error fetching data: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+Retrying attempt 1 for BDE
+Error performing task in cronjob: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32
+    at runNextTicks (node:internal/process/task_queues:60:5)
+    at listOnTimeout (node:internal/timers:540:9)
+    at process.processTimers (node:internal/timers:514:7) {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:290:47\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:293:23\n' +
+      '    at Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n' +
+      '    at relayMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:279:30)\n' +
+      '    at Object.sendMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:652:23)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:290:47\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:293:23\n' +
+      '    at Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n' +
+      '    at relayMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:279:30)\n' +
+      '    at Object.sendMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:652:23)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+data kosong
+data kosong
+File 'Rekap_Taksasi_Badirih_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_7' deleted successfully.
+Upload successful after 1 attempts
+Error fetching data: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+Retrying attempt 1 for BDE
+Error performing task in cronjob: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32
+    at runNextTicks (node:internal/process/task_queues:60:5)
+    at listOnTimeout (node:internal/timers:540:9)
+    at process.processTimers (node:internal/timers:514:7) {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:290:47\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:293:23\n' +
+      '    at Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n' +
+      '    at relayMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:279:30)\n' +
+      '    at Object.sendMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:652:23)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:290:47\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:293:23\n' +
+      '    at Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n' +
+      '    at relayMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:279:30)\n' +
+      '    at Object.sendMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:652:23)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+File 'Rekap_Taksasi_Badirih_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_7' deleted successfully.
+Upload successful after 1 attempts
+Error fetching data: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+Retrying attempt 1 for BDE
+Error performing task in cronjob: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32
+    at runNextTicks (node:internal/process/task_queues:60:5)
+    at listOnTimeout (node:internal/timers:540:9)
+    at process.processTimers (node:internal/timers:514:7) {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:290:47\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:293:23\n' +
+      '    at Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n' +
+      '    at relayMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:279:30)\n' +
+      '    at Object.sendMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:652:23)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:290:47\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:293:23\n' +
+      '    at Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n' +
+      '    at relayMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:279:30)\n' +
+      '    at Object.sendMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:652:23)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+data kosong
+Server Berjalan pada Port : 8000
+opened connection
+Server Berjalan pada Port : 8000
+opened connection
+Status updated: { message: 'Record updated successfully' }
+data kosong
+File 'Rekap_Taksasi_Badirih_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_7' deleted successfully.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Badirih_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_7' deleted successfully.
+Response: { success: true }
+data kosong
+data kosong
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Nanuah_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_5' deleted successfully.
+Response: { success: true }
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Nanga Kiu_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_4' deleted successfully.
+Response: { success: true }
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Kanamit_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_7' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Sepondam_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_4' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Limau 1_Sabtu, 17 Agustus 2024.pdf' in folder 'Plasma' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Pedongatan_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_4' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Sungai Bulik_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_5' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Batu Tunggal_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_5' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+Closing stale open session for new outgoing prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    'BYjxqM7Yjm65O0tYDtZqMS2kd+uw3JEBSctr/TaZWlJA': { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 1390338244,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 88 f1 a8 ce d8 8e 6e b9 3b 4b 58 0e d6 6a 31 2d a4 77 eb b0 dc 91 01 49 cb 6b fd 36 99 5a 52 40>,
+      privKey: <Buffer e8 1f 30 40 d4 e1 50 ad da aa b9 64 60 a9 60 6d bd ef 27 5c 80 ec 81 d9 57 c8 8e 65 01 53 92 67>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 ff 43 c7 77 ff ba 70 ef 72 d6 a7 6d b9 c1 b4 8b da dd f9 f8 77 1d e0 eb 20 17 d5 1e 7e 58 ad 67>,
+    previousCounter: 0,
+    rootKey: <Buffer 2d 32 b3 bd 64 53 81 6f a6 77 78 ad b8 3b 59 bb 34 a4 31 9b 79 be 0f 56 3a cd 6d f6 f1 03 41 89>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 66 4a ee 5d 97 23 15 6a a2 4e 62 0e 1c 04 73 6d e8 07 b0 23 e0 b5 32 18 ad 3b 33 e9 56 67 e9 28>,
+    baseKeyType: 1,
+    closed: -1,
+    used: 1722661817079,
+    created: 1722661817079,
+    remoteIdentityKey: <Buffer 05 b5 2c 30 1b be 37 3c 84 64 ba b2 bc 66 07 76 fd 59 7e e5 aa 9f 07 1b 03 6a 10 b3 10 5e e2 94 34>
+  },
+  pendingPreKey: {
+    signedKeyId: 0,
+    baseKey: <Buffer 05 66 4a ee 5d 97 23 15 6a a2 4e 62 0e 1c 04 73 6d e8 07 b0 23 e0 b5 32 18 ad 3b 33 e9 56 67 e9 28>,
+    preKeyId: 10547094
+  }
+}
+File downloaded successfully.
+Server Berjalan pada Port : 8000
+opened connection
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+File 'Rekap_Taksasi_Malata_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_6' deleted successfully.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Malata_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_6' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Merambang_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_4' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Limau 2_Sabtu, 17 Agustus 2024.pdf' in folder 'Plasma' deleted successfully.
+Response: { success: true }
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Sumber Cahaya_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_6' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Closing stale open session for new outgoing prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    'BfhDfJYk4ItHAwqhjmLDKL5LY9BuKwPxne/XGJTvtDlT': { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 237167601,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 f8 43 7c 96 24 e0 8b 47 03 0a a1 8e 62 c3 28 be 4b 63 d0 6e 2b 03 f1 9d ef d7 18 94 ef b4 39 53>,
+      privKey: <Buffer 90 04 58 a3 f5 9c 99 25 e3 54 71 e3 27 17 af cb b3 82 c0 f0 a2 4b fe eb 83 19 04 52 7e ba f1 78>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 6e 2c a6 20 dd 2e 8e 3f bd 1c 02 bf c0 42 06 80 8b 5b a9 8d 2a d1 c7 82 02 cb 1e d4 0f 58 27 6a>,
+    previousCounter: 0,
+    rootKey: <Buffer a4 13 f1 53 d4 c8 b0 52 f1 bb 3d af 06 80 6f 3f 17 79 33 1d 4f 83 66 0a f2 c3 9f 7c f5 9e 78 5a>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 1b 48 42 d3 08 13 9d e1 44 e0 46 6b b3 db 65 4a ad 46 86 d1 f1 ba e3 99 ab 74 8c d5 f6 47 0c 3b>,
+    baseKeyType: 1,
+    closed: -1,
+    used: 1722594388380,
+    created: 1722594388380,
+    remoteIdentityKey: <Buffer 05 52 5f 53 5a 09 92 2e fb 85 92 55 1e 25 89 42 96 f2 a5 ca 40 c6 2c 61 27 82 4f cc 20 10 67 87 15>
+  },
+  pendingPreKey: {
+    signedKeyId: 3,
+    baseKey: <Buffer 05 1b 48 42 d3 08 13 9d e1 44 e0 46 6b b3 db 65 4a ad 46 86 d1 f1 ba e3 99 ab 74 8c d5 f6 47 0c 3b>,
+    preKeyId: 2887354
+  }
+}
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Tanjung Beringin_Sabtu, 17 Agustus 2024.pdf' in folder 'Inti' deleted successfully.
+Response: { success: true }
+data kosong
+nodata
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Bahaur_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_8' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Suja_Sabtu, 17 Agustus 2024.pdf' in folder 'Inti' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Karang Taba_Sabtu, 17 Agustus 2024.pdf' in folder 'Inti' deleted successfully.
+Response: { success: true }
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+data kosong
+nodata
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+nodata
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+data kosong
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Rangda_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_1' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Sulung_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_1' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Kenambui_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_1' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Pulau_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_1' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Selangkun_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_2' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Rungun_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_2' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Kondang_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_2' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Natai Baru_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_3' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Suayap_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_3' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Bengaris_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_3' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Batu Kotam_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_2' deleted successfully.
+Response: { success: true }
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+Closing stale open session for new outgoing prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    'BdxgAEMh99g3SSJnPlL+v72HmIbbiezEhGbmEqZyNnRJ': { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 1536564154,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 dc 60 00 43 21 f7 d8 37 49 22 67 3e 52 fe bf bd 87 98 86 db 89 ec c4 84 66 e6 12 a6 72 36 74 49>,
+      privKey: <Buffer 50 0b 28 f0 89 7f 3c 91 70 89 13 95 d6 c9 e9 14 66 7f a8 bb 48 17 e1 1f 10 0a 77 be a0 a8 b8 61>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 cd 01 80 c3 4c ab a7 4f d3 9a 41 ad e7 8e 2c 65 2a 1f 40 cf 75 f1 4d f2 89 75 94 f1 3a 96 bb 51>,
+    previousCounter: 0,
+    rootKey: <Buffer 94 38 68 1c fd c0 ad a0 f3 3a dc 93 14 91 3d 11 c7 ed 92 46 e1 8d e9 c1 5b 9a fa 51 a0 56 7d 46>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 fb ac 33 fd 1e 5a d6 68 8d 5d 3a dc a1 d9 88 f6 7e 46 c7 5b 2d ef 9d d5 cd e5 f2 7e 16 05 46 05>,
+    baseKeyType: 1,
+    closed: -1,
+    used: 1722594307887,
+    created: 1722594307887,
+    remoteIdentityKey: <Buffer 05 58 01 6b b5 eb 88 d1 f6 42 20 ec e3 36 4c 90 5a ba 3d fd c3 bf 4a 76 90 c3 8f ac 73 52 f1 74 41>
+  },
+  pendingPreKey: {
+    signedKeyId: 26,
+    baseKey: <Buffer 05 fb ac 33 fd 1e 5a d6 68 8d 5d 3a dc a1 d9 88 f6 7e 46 c7 5b 2d ef 9d d5 cd e5 f2 7e 16 05 46 05>,
+    preKeyId: 349004
+  }
+}
+Server Berjalan pada Port : 8000
+opened connection
+Closing stale open session for new outgoing prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    BTPWHFQPLSlT6AL4iswoH4KMJrxsX8rkVQhC3R6sFfR5: { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 1536564154,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 33 d6 1c 54 0f 2d 29 53 e8 02 f8 8a cc 28 1f 82 8c 26 bc 6c 5f ca e4 55 08 42 dd 1e ac 15 f4 79>,
+      privKey: <Buffer d8 03 97 c5 aa ab 14 a8 d4 c8 e3 ef fd 64 52 64 dc 73 cd fd 66 cc 87 3d 11 f8 5a 2b e1 14 ec 56>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 cd 01 80 c3 4c ab a7 4f d3 9a 41 ad e7 8e 2c 65 2a 1f 40 cf 75 f1 4d f2 89 75 94 f1 3a 96 bb 51>,
+    previousCounter: 0,
+    rootKey: <Buffer 49 af bf a9 90 e9 93 c1 fa 64 0a 85 26 27 8f 2f 98 76 be 83 31 b1 ee e3 c1 88 22 2d 4c 01 dc a1>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 46 f1 bd 74 b0 5a f0 5a 31 9a 6f 3a cd 89 6d 2f fd 43 15 36 fc 6e 5d 68 ca be c2 42 5c f3 e8 4f>,
+    baseKeyType: 1,
+    closed: -1,
+    used: 1723886421822,
+    created: 1723886421822,
+    remoteIdentityKey: <Buffer 05 58 01 6b b5 eb 88 d1 f6 42 20 ec e3 36 4c 90 5a ba 3d fd c3 bf 4a 76 90 c3 8f ac 73 52 f1 74 41>
+  },
+  pendingPreKey: {
+    signedKeyId: 26,
+    baseKey: <Buffer 05 46 f1 bd 74 b0 5a f0 5a 31 9a 6f 3a cd 89 6d 2f fd 43 15 36 fc 6e 5d 68 ca be c2 42 5c f3 e8 4f>,
+    preKeyId: 349111
+  }
+}
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+data kosong
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+File 'Rekap_Taksasi_Umpang_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_3' deleted successfully.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Umpang_Sabtu, 17 Agustus 2024.pdf' in folder 'Wilayah_3' deleted successfully.
+Response: { success: true }
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+data kosong
+nodata
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+data kosong
+nodata
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+Connection closed, reconnecting....
+opened connection
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+nodata
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+data kosong
+data kosong
+nodata
+data kosong
+nodata
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+nodata
+data kosong
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+nodata
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+nodata
+data kosong
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+nodata
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+data kosong
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+nodata
+data kosong
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+data kosong
+nodata
+data kosong
+nodata
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+data kosong
+nodata
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+nodata
+data kosong
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+nodata
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+nodata
+data kosong
+data kosong
+data kosong
+nodata
+nodata
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+data kosong
+nodata
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+data kosong
+nodata
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+nodata
+data kosong
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+data kosong
+nodata
+data kosong
+nodata
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+nodata
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+nodata
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+data kosong
+nodata
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+nodata
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+data kosong
+nodata
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+data kosong
+nodata
+Connection closed, reconnecting....
+opened connection
+Status updated: { message: 'Record updated successfully' }
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+nodata
+data kosong
+nodata
+data kosong
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+data kosong
+data kosong
+nodata
+nodata
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+data kosong
+data kosong
+nodata
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+data kosong
+nodata
+data kosong
+data kosong
+nodata
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+data kosong
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+data kosong
+data kosong
+data kosong
+nodata
+nodata
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+nodata
+nodata
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+data kosong
+data kosong
+data kosong
+nodata
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+nodata
+data kosong
+nodata
+data kosong
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+data kosong
+nodata
+data kosong
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Server Berjalan pada Port : 8000
+opened connection
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+data kosong
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Badirih_Minggu, 18 Agustus 2024.pdf' in folder 'Wilayah_7' deleted successfully.
+Response: { success: true }
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Nanuah_Minggu, 18 Agustus 2024.pdf' in folder 'Wilayah_5' deleted successfully.
+Response: { success: true }
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+Error fetching data: AxiosError: read ECONNRESET
+    at AxiosError.from (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:836:14)
+    at RedirectableRequest.handleRequestError (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:3086:25)
+    at RedirectableRequest.emit (node:events:518:28)
+    at eventHandlers.<computed> (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\follow-redirects\index.js:38:24)
+    at ClientRequest.emit (node:events:518:28)
+    at TLSSocket.socketErrorListener (node:_http_client:500:9)
+    at TLSSocket.emit (node:events:518:28)
+    at emitErrorNT (node:internal/streams/destroy:169:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:128:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+    at Axios.request (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:3876:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async get_mill_data (C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:948:22)
+    at async cron.schedule.scheduled [as _execution] (C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:2484:9) {
+  syscall: 'read',
+  code: 'ECONNRESET',
+  errno: -4077,
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false
+    },
+    adapter: [ 'xhr', 'http' ],
+    transformRequest: [ [Function: transformRequest] ],
+    transformResponse: [ [Function: transformResponse] ],
+    timeout: 0,
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    env: { FormData: [Function], Blob: [class Blob] },
+    validateStatus: [Function: validateStatus],
+    headers: Object [AxiosHeaders] {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': undefined,
+      'User-Agent': 'axios/1.6.8',
+      'Accept-Encoding': 'gzip, compress, deflate, br'
+    },
+    method: 'get',
+    url: 'https://qc-apps.srs-ssms.com/api/getdatamill',
+    data: undefined
+  },
+  request: <ref *1> Writable {
+    _events: {
+      close: undefined,
+      error: [Function: handleRequestError],
+      prefinish: undefined,
+      finish: undefined,
+      drain: undefined,
+      response: [Function: handleResponse],
+      socket: [Function: handleRequestSocket]
+    },
+    _writableState: WritableState {
+      highWaterMark: 16384,
+      length: 0,
+      corked: 0,
+      onwrite: [Function: bound onwrite],
+      writelen: 0,
+      bufferedIndex: 0,
+      pendingcb: 0,
+      [Symbol(kState)]: 17580812,
+      [Symbol(kBufferedValue)]: null
+    },
+    _maxListeners: undefined,
+    _options: {
+      maxRedirects: 21,
+      maxBodyLength: Infinity,
+      protocol: 'https:',
+      path: '/api/getdatamill',
+      method: 'GET',
+      headers: [Object: null prototype],
+      agents: [Object],
+      auth: undefined,
+      family: undefined,
+      beforeRedirect: [Function: dispatchBeforeRedirect],
+      beforeRedirects: [Object],
+      hostname: 'qc-apps.srs-ssms.com',
+      port: '',
+      agent: undefined,
+      nativeProtocols: [Object],
+      pathname: '/api/getdatamill'
+    },
+    _ended: true,
+    _ending: true,
+    _redirectCount: 0,
+    _redirects: [],
+    _requestBodyLength: 0,
+    _requestBodyBuffers: [],
+    _eventsCount: 3,
+    _onNativeResponse: [Function (anonymous)],
+    _currentRequest: ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 7,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: false,
+      _last: true,
+      chunkedEncoding: false,
+      shouldKeepAlive: true,
+      maxRequestsOnConnectionReached: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: false,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      strictContentLength: false,
+      _contentLength: 0,
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      _closed: false,
+      socket: [TLSSocket],
+      _header: 'GET /api/getdatamill HTTP/1.1\r\n' +
+        'Accept: application/json, text/plain, */*\r\n' +
+        'User-Agent: axios/1.6.8\r\n' +
+        'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+        'Host: qc-apps.srs-ssms.com\r\n' +
+        'Connection: keep-alive\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: nop],
+      agent: [Agent],
+      socketPath: undefined,
+      method: 'GET',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      joinDuplicateHeaders: undefined,
+      path: '/api/getdatamill',
+      _ended: false,
+      res: null,
+      aborted: false,
+      timeoutCb: [Function: emitRequestTimeout],
+      upgradeOrConnect: false,
+      parser: null,
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: 'qc-apps.srs-ssms.com',
+      protocol: 'https:',
+      _redirectable: [Circular *1],
+      [Symbol(shapeMode)]: false,
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(kNeedDrain)]: false,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype],
+      [Symbol(errored)]: null,
+      [Symbol(kHighWaterMark)]: 16384,
+      [Symbol(kRejectNonStandardBodyWrites)]: false,
+      [Symbol(kUniqueHeaders)]: null
+    },
+    _currentUrl: 'https://qc-apps.srs-ssms.com/api/getdatamill',
+    [Symbol(shapeMode)]: true,
+    [Symbol(kCapture)]: false
+  },
+  cause: Error: read ECONNRESET
+      at TLSWrap.onStreamRead (node:internal/stream_base_commons:217:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  }
+}
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+data kosong
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Nanga Kiu_Minggu, 18 Agustus 2024.pdf' in folder 'Wilayah_4' deleted successfully.
+Response: { success: true }
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+data kosong
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Kanamit_Minggu, 18 Agustus 2024.pdf' in folder 'Wilayah_7' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Sepondam_Minggu, 18 Agustus 2024.pdf' in folder 'Wilayah_4' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Limau 1_Minggu, 18 Agustus 2024.pdf' in folder 'Plasma' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Pedongatan_Minggu, 18 Agustus 2024.pdf' in folder 'Wilayah_4' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Sungai Bulik_Minggu, 18 Agustus 2024.pdf' in folder 'Wilayah_5' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Batu Tunggal_Minggu, 18 Agustus 2024.pdf' in folder 'Wilayah_5' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Attempt 2 failed with error: TimeoutError: Navigation timeout of 30000 ms exceeded
+    at new Deferred (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\puppeteer-core\lib\cjs\puppeteer\util\Deferred.js:59:34)
+    at Deferred.create (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\puppeteer-core\lib\cjs\puppeteer\util\Deferred.js:21:16)
+    at new LifecycleWatcher (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\puppeteer-core\lib\cjs\puppeteer\cdp\LifecycleWatcher.js:66:60)
+    at CdpFrame.goto (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\puppeteer-core\lib\cjs\puppeteer\cdp\Frame.js:143:29)
+    at CdpFrame.<anonymous> (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\puppeteer-core\lib\cjs\puppeteer\util\decorators.js:98:27)
+    at CdpPage.goto (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\puppeteer-core\lib\cjs\puppeteer\api\Page.js:588:43)
+    at generatemapstaksasi (C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:356:18)
+    at async sendfailcronjob (C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:631:11)
+    at async cron.schedule.scheduled [as _execution] (C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:2473:9)
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Malata_Minggu, 18 Agustus 2024.pdf' in folder 'Wilayah_6' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Merambang_Minggu, 18 Agustus 2024.pdf' in folder 'Wilayah_4' deleted successfully.
+Response: { success: true }
+No files found or empty folder. Nothing to delete.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 5 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Limau 2_Minggu, 18 Agustus 2024.pdf' in folder 'Plasma' deleted successfully.
+Response: { success: true }
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Closing stale open session for new outgoing prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    'BRoVwPzCPUerfwM86b/Nk1ImXQpMeC7bbxBEbg0irmgA': { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 1722049985,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 1a 15 c0 fc c2 3d 47 ab 7f 03 3c e9 bf cd 93 52 26 5d 0a 4c 78 2e db 6f 10 44 6e 0d 22 ae 68 00>,
+      privKey: <Buffer 40 f1 d9 cc 9c 1f df 2c b5 9e b6 64 0b c5 91 34 e8 fd 75 83 ae 87 38 3f 8b b1 f8 21 ad d9 6d 44>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 9d 16 86 76 d8 6e 15 30 2e 5f 71 44 da 36 d7 c6 4c 1e 74 5a 29 6b f0 74 74 eb b6 7d 43 a8 e2 79>,
+    previousCounter: 0,
+    rootKey: <Buffer 44 1f f5 58 3c 02 9e 87 5c 95 32 8a a0 54 b4 13 27 a5 d5 49 3c 3f 6c 8e 39 7e 11 5e 53 16 3b 3c>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 45 78 2b 7f 70 a2 41 b4 b6 d8 39 15 ab e1 bc d0 e6 9c ef ad de 3b c5 e9 5c f5 fe 43 ee d1 29 2f>,
+    baseKeyType: 1,
+    closed: -1,
+    used: 1722594061030,
+    created: 1722594061030,
+    remoteIdentityKey: <Buffer 05 67 3c b6 14 65 7a 44 aa 62 0e d6 b8 7f c0 96 32 84 a4 82 02 2f 63 70 f3 03 5c a1 cd 87 05 ba 7f>
+  },
+  pendingPreKey: {
+    signedKeyId: 1,
+    baseKey: <Buffer 05 45 78 2b 7f 70 a2 41 b4 b6 d8 39 15 ab e1 bc d0 e6 9c ef ad de 3b c5 e9 5c f5 fe 43 ee d1 29 2f>,
+    preKeyId: 6195367
+  }
+}
+Server Berjalan pada Port : 8000
+opened connection

@@ -6,3 +6,9 @@
 .latest_id.txt
 .data.json
 .package-lock.json
+.bot_da_error.log
+.bot_da.log
+.bot_grading_error.log
+.bot-grading-error.log
+.bot-grading-out.log
+/uploads

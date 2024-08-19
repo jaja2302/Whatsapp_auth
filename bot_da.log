@@ -1,0 +1,7185 @@
+Server Berjalan pada Port : 3000
+cronjob
+opened connection
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Closing open session in favor of incoming prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    'BVK4n/l5cEFyMn4+2aTCcXg3v5wd3QaKGYuI8uOV93Uq': { chainKey: [Object], chainType: 2, messageKeys: {} },
+    'BWjMPV/GW28uGXuFRGcE2tRxWFMvX1sr/lsA4L4dJs1o': { chainKey: [Object], chainType: 2, messageKeys: {} },
+    'BdJzI4Mwf2Vbhlsh0QeDDbqQ/O7NRsSUICF9EcPN//gW': { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 23,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 d2 73 23 83 30 7f 65 5b 86 5b 21 d1 07 83 0d ba 90 fc ee cd 46 c4 94 20 21 7d 11 c3 cd ff f8 16>,
+      privKey: <Buffer b0 e6 7a e0 57 77 18 8b 89 dc ef 48 59 3f 9d 62 4d 4d 2a 93 16 87 c1 30 f5 47 e1 c5 1d 2f 8c 6c>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 68 cc 3d 5f c6 5b 6f 2e 19 7b 85 44 67 04 da d4 71 58 53 2f 5f 5b 2b fe 5b 00 e0 be 1d 26 cd 68>,
+    previousCounter: 0,
+    rootKey: <Buffer 3e fd dd 37 ea 05 19 9d d2 6f 14 1f fd 39 d3 00 2f d5 17 22 c2 fe c2 dc f7 4b 74 62 a2 7d 23 e9>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 d4 d5 d0 3a fe 81 42 85 b1 ac c9 8b a8 9b 9b 74 16 64 54 3f b0 83 3f b6 02 15 23 1f 2f c5 9c 51>,
+    baseKeyType: 2,
+    closed: -1,
+    used: 1723801360374,
+    created: 1722593453071,
+    remoteIdentityKey: <Buffer 05 ef e9 03 a1 9f 87 d0 a4 5b da ba cc bd f0 4d fd 9b 6f d9 01 01 c9 4f 6e 9d bb 9b 60 66 64 ce 4a>
+  }
+}
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+Smartlabs Kosong
+cronjob
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+Smartlabs Kosong
+cronjob
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+Smartlabs Kosong
+cronjob
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+Smartlabs Kosong
+cronjob
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Error fetching files: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+Smartlabs Kosong
+cronjob
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:290:47\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:293:23\n' +
+      '    at Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n' +
+      '    at relayMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:279:30)\n' +
+      '    at Object.sendMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:652:23)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+Smartlabs Kosong
+cronjob
+Error fetching files: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32
+    at runNextTicks (node:internal/process/task_queues:60:5)
+    at process.processTimers (node:internal/timers:511:9) {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:290:47\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:293:23\n' +
+      '    at Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n' +
+      '    at relayMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:279:30)\n' +
+      '    at Object.sendMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:652:23)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Error fetching files: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+Smartlabs Kosong
+cronjob
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:290:47\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:293:23\n' +
+      '    at Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n' +
+      '    at relayMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:279:30)\n' +
+      '    at Object.sendMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:652:23)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Error fetching files: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:290:47\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:293:23\n' +
+      '    at Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n' +
+      '    at relayMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:279:30)\n' +
+      '    at Object.sendMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:652:23)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Error fetching files: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:290:47\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:293:23\n' +
+      '    at Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n' +
+      '    at relayMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:279:30)\n' +
+      '    at Object.sendMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:652:23)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Error fetching files: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:290:47\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:293:23\n' +
+      '    at Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n' +
+      '    at relayMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:279:30)\n' +
+      '    at Object.sendMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:652:23)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Error fetching files: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+Smartlabs Kosong
+cronjob
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:290:47\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:293:23\n' +
+      '    at Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n' +
+      '    at relayMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:279:30)\n' +
+      '    at Object.sendMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:652:23)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+Error fetching files: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+Smartlabs Kosong
+cronjob
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:290:47\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:293:23\n' +
+      '    at Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n' +
+      '    at relayMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:279:30)\n' +
+      '    at Object.sendMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:652:23)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Server Berjalan pada Port : 3000
+cronjob
+opened connection
+Server Berjalan pada Port : 3000
+cronjob
+opened connection
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+Smartlabs Kosong
+cronjob
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+Smartlabs Kosong
+cronjob
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Server Berjalan pada Port : 3000
+cronjob
+opened connection
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Server Berjalan pada Port : 3000
+cronjob
+opened connection
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Error fetching data or sending messages: AxiosError: read ECONNRESET
+    at AxiosError.from (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\axios\dist\node\axios.cjs:836:14)
+    at RedirectableRequest.handleRequestError (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\axios\dist\node\axios.cjs:3086:25)
+    at RedirectableRequest.emit (node:events:518:28)
+    at eventHandlers.<computed> (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\follow-redirects\index.js:38:24)
+    at ClientRequest.emit (node:events:518:28)
+    at TLSSocket.socketErrorListener (node:_http_client:500:9)
+    at TLSSocket.emit (node:events:518:28)
+    at emitErrorNT (node:internal/streams/destroy:169:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:128:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+    at Axios.request (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\axios\dist\node\axios.cjs:3876:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async sendMessagesBasedOnData (C:\Users\Digital Architect SR\Desktop\bot_da\helper.js:107:26)
+    at async cron.schedule.scheduled [as _execution] (C:\Users\Digital Architect SR\Desktop\bot_da\helper.js:1820:13) {
+  syscall: 'read',
+  code: 'ECONNRESET',
+  errno: -4077,
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false
+    },
+    adapter: [ 'xhr', 'http' ],
+    transformRequest: [ [Function: transformRequest] ],
+    transformResponse: [ [Function: transformResponse] ],
+    timeout: 0,
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    env: { FormData: [Function], Blob: [class Blob] },
+    validateStatus: [Function: validateStatus],
+    headers: Object [AxiosHeaders] {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': undefined,
+      'User-Agent': 'axios/1.6.8',
+      'Accept-Encoding': 'gzip, compress, deflate, br'
+    },
+    method: 'get',
+    url: 'https://qc-apps.srs-ssms.com/api/getmsgsmartlabs',
+    data: undefined
+  },
+  request: <ref *1> Writable {
+    _events: {
+      close: undefined,
+      error: [Function: handleRequestError],
+      prefinish: undefined,
+      finish: undefined,
+      drain: undefined,
+      response: [Function: handleResponse],
+      socket: [Function: handleRequestSocket]
+    },
+    _writableState: WritableState {
+      highWaterMark: 16384,
+      length: 0,
+      corked: 0,
+      onwrite: [Function: bound onwrite],
+      writelen: 0,
+      bufferedIndex: 0,
+      pendingcb: 0,
+      [Symbol(kState)]: 17580812,
+      [Symbol(kBufferedValue)]: null
+    },
+    _maxListeners: undefined,
+    _options: {
+      maxRedirects: 21,
+      maxBodyLength: Infinity,
+      protocol: 'https:',
+      path: '/api/getmsgsmartlabs',
+      method: 'GET',
+      headers: [Object: null prototype],
+      agents: [Object],
+      auth: undefined,
+      family: undefined,
+      beforeRedirect: [Function: dispatchBeforeRedirect],
+      beforeRedirects: [Object],
+      hostname: 'qc-apps.srs-ssms.com',
+      port: '',
+      agent: undefined,
+      nativeProtocols: [Object],
+      pathname: '/api/getmsgsmartlabs'
+    },
+    _ended: true,
+    _ending: true,
+    _redirectCount: 0,
+    _redirects: [],
+    _requestBodyLength: 0,
+    _requestBodyBuffers: [],
+    _eventsCount: 3,
+    _onNativeResponse: [Function (anonymous)],
+    _currentRequest: ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 7,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: false,
+      _last: true,
+      chunkedEncoding: false,
+      shouldKeepAlive: true,
+      maxRequestsOnConnectionReached: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: false,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      strictContentLength: false,
+      _contentLength: 0,
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      _closed: false,
+      socket: [TLSSocket],
+      _header: 'GET /api/getmsgsmartlabs HTTP/1.1\r\n' +
+        'Accept: application/json, text/plain, */*\r\n' +
+        'User-Agent: axios/1.6.8\r\n' +
+        'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+        'Host: qc-apps.srs-ssms.com\r\n' +
+        'Connection: keep-alive\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: nop],
+      agent: [Agent],
+      socketPath: undefined,
+      method: 'GET',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      joinDuplicateHeaders: undefined,
+      path: '/api/getmsgsmartlabs',
+      _ended: false,
+      res: null,
+      aborted: false,
+      timeoutCb: [Function: emitRequestTimeout],
+      upgradeOrConnect: false,
+      parser: null,
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: 'qc-apps.srs-ssms.com',
+      protocol: 'https:',
+      _redirectable: [Circular *1],
+      [Symbol(shapeMode)]: false,
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(kNeedDrain)]: false,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype],
+      [Symbol(errored)]: null,
+      [Symbol(kHighWaterMark)]: 16384,
+      [Symbol(kRejectNonStandardBodyWrites)]: false,
+      [Symbol(kUniqueHeaders)]: null
+    },
+    _currentUrl: 'https://qc-apps.srs-ssms.com/api/getmsgsmartlabs',
+    [Symbol(shapeMode)]: true,
+    [Symbol(kCapture)]: false
+  },
+  cause: Error: read ECONNRESET
+      at TLSWrap.onStreamRead (node:internal/stream_base_commons:217:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  }
+}
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Server Berjalan pada Port : 3000
+cronjob
+opened connection
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Connection closed, reconnecting....
+cronjob
+opened connection
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Error fetching files: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:290:47\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:293:23\n' +
+      '    at Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n' +
+      '    at relayMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:279:30)\n' +
+      '    at Object.sendMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_da\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:652:23)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Server Berjalan pada Port : 3000
+cronjob
+opened connection
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+Smartlabs Kosong
+cronjob
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+Smartlabs Kosong
+cronjob
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+Smartlabs Kosong
+cronjob
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Error fetching data or sending messages: AxiosError: read ECONNRESET
+    at AxiosError.from (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\axios\dist\node\axios.cjs:836:14)
+    at RedirectableRequest.handleRequestError (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\axios\dist\node\axios.cjs:3086:25)
+    at RedirectableRequest.emit (node:events:518:28)
+    at eventHandlers.<computed> (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\follow-redirects\index.js:38:24)
+    at ClientRequest.emit (node:events:518:28)
+    at TLSSocket.socketErrorListener (node:_http_client:500:9)
+    at TLSSocket.emit (node:events:518:28)
+    at emitErrorNT (node:internal/streams/destroy:169:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:128:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+    at Axios.request (C:\Users\Digital Architect SR\Desktop\bot_da\node_modules\axios\dist\node\axios.cjs:3876:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async sendMessagesBasedOnData (C:\Users\Digital Architect SR\Desktop\bot_da\helper.js:107:26)
+    at async cron.schedule.scheduled [as _execution] (C:\Users\Digital Architect SR\Desktop\bot_da\helper.js:1820:13) {
+  syscall: 'read',
+  code: 'ECONNRESET',
+  errno: -4077,
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false
+    },
+    adapter: [ 'xhr', 'http' ],
+    transformRequest: [ [Function: transformRequest] ],
+    transformResponse: [ [Function: transformResponse] ],
+    timeout: 0,
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    env: { FormData: [Function], Blob: [class Blob] },
+    validateStatus: [Function: validateStatus],
+    headers: Object [AxiosHeaders] {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': undefined,
+      'User-Agent': 'axios/1.6.8',
+      'Accept-Encoding': 'gzip, compress, deflate, br'
+    },
+    method: 'get',
+    url: 'https://qc-apps.srs-ssms.com/api/getmsgsmartlabs',
+    data: undefined
+  },
+  request: <ref *1> Writable {
+    _events: {
+      close: undefined,
+      error: [Function: handleRequestError],
+      prefinish: undefined,
+      finish: undefined,
+      drain: undefined,
+      response: [Function: handleResponse],
+      socket: [Function: handleRequestSocket]
+    },
+    _writableState: WritableState {
+      highWaterMark: 16384,
+      length: 0,
+      corked: 0,
+      onwrite: [Function: bound onwrite],
+      writelen: 0,
+      bufferedIndex: 0,
+      pendingcb: 0,
+      [Symbol(kState)]: 17580812,
+      [Symbol(kBufferedValue)]: null
+    },
+    _maxListeners: undefined,
+    _options: {
+      maxRedirects: 21,
+      maxBodyLength: Infinity,
+      protocol: 'https:',
+      path: '/api/getmsgsmartlabs',
+      method: 'GET',
+      headers: [Object: null prototype],
+      agents: [Object],
+      auth: undefined,
+      family: undefined,
+      beforeRedirect: [Function: dispatchBeforeRedirect],
+      beforeRedirects: [Object],
+      hostname: 'qc-apps.srs-ssms.com',
+      port: '',
+      agent: undefined,
+      nativeProtocols: [Object],
+      pathname: '/api/getmsgsmartlabs'
+    },
+    _ended: true,
+    _ending: true,
+    _redirectCount: 0,
+    _redirects: [],
+    _requestBodyLength: 0,
+    _requestBodyBuffers: [],
+    _eventsCount: 3,
+    _onNativeResponse: [Function (anonymous)],
+    _currentRequest: ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 7,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: false,
+      _last: true,
+      chunkedEncoding: false,
+      shouldKeepAlive: true,
+      maxRequestsOnConnectionReached: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: false,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      strictContentLength: false,
+      _contentLength: 0,
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      _closed: false,
+      socket: [TLSSocket],
+      _header: 'GET /api/getmsgsmartlabs HTTP/1.1\r\n' +
+        'Accept: application/json, text/plain, */*\r\n' +
+        'User-Agent: axios/1.6.8\r\n' +
+        'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+        'Host: qc-apps.srs-ssms.com\r\n' +
+        'Connection: keep-alive\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: nop],
+      agent: [Agent],
+      socketPath: undefined,
+      method: 'GET',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      joinDuplicateHeaders: undefined,
+      path: '/api/getmsgsmartlabs',
+      _ended: false,
+      res: null,
+      aborted: false,
+      timeoutCb: [Function: emitRequestTimeout],
+      upgradeOrConnect: false,
+      parser: null,
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: 'qc-apps.srs-ssms.com',
+      protocol: 'https:',
+      _redirectable: [Circular *1],
+      [Symbol(shapeMode)]: false,
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(kNeedDrain)]: false,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype],
+      [Symbol(errored)]: null,
+      [Symbol(kHighWaterMark)]: 16384,
+      [Symbol(kRejectNonStandardBodyWrites)]: false,
+      [Symbol(kUniqueHeaders)]: null
+    },
+    _currentUrl: 'https://qc-apps.srs-ssms.com/api/getmsgsmartlabs',
+    [Symbol(shapeMode)]: true,
+    [Symbol(kCapture)]: false
+  },
+  cause: Error: read ECONNRESET
+      at TLSWrap.onStreamRead (node:internal/stream_base_commons:217:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  }
+}
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Server Berjalan pada Port : 3000
+cronjob
+opened connection
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+Smartlabs Kosong
+cronjob
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Server Berjalan pada Port : 3000
+cronjob
+opened connection
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+Smartlabs Kosong
+cronjob
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+No data or invalid data received from the API.
+120363200959267322@g.us { text: 'Last online device NBE OD B9 terakhir 13-05-2023 10:09:13\n' }
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
+Smartlabs Kosong
+cronjob
