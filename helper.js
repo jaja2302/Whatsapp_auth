@@ -2864,7 +2864,7 @@ const setupCronJobs = (sock) => {
           let message = ''; // Initialize the message variable here
 
           if (data.status === 'approved') {
-            message += `*Izin Keluar Kebun Anda Telah Disetujui ${data.atasan}*\n\n`;
+            message += `*Izin Keluar Kebun Anda Telah Disetujui*\n\n`;
             message += `Hallo Selamat Siang Bapak/Ibu ${data.nama_user},\n\n`;
             message += `Kami ingin menginformasikan bahwa permintaan izin keluar kebun Anda telah disetujui.\n\n`;
             message += `Berikut adalah detail izin Anda:\n`;
@@ -3093,7 +3093,6 @@ const setupCronJobs = (sock) => {
         console.log('Unexpected error:', globalError);
       }
     });
-
   } else {
     console.log('WhatsApp belum terhubung');
   }
