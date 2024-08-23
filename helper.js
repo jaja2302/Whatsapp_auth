@@ -3160,7 +3160,7 @@ const setupCronJobs = (sock) => {
         });
         if (dataitem.asal === 'Eksternal') {
           const response = await axios.get(
-            'http://127.0.0.1:8000/api/invoices_smartlabs',
+            'https://management.srs-ssms.com/api/invoices_smartlabs',
             {
               params: {
                 email: 'j',
