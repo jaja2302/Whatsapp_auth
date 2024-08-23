@@ -178,7 +178,6 @@ async function connectToWhatsApp() {
             message.message?.extendedTextMessage?.text) ??
           'No message text available';
         const lowerCaseMessage = text ? text.toLowerCase() : null;
-
         if (message.message?.extendedTextMessage?.contextInfo) {
           const contextInfo = message.message.extendedTextMessage.contextInfo;
           const text_repply = message.message.extendedTextMessage.text;
@@ -235,7 +234,6 @@ async function connectToWhatsApp() {
                     }
                   );
                   let responses = response.data;
-
                   await sock.sendMessage(noWa, {
                     text: 'Mohon Tunggu server melakukan validasi.....',
                   });
@@ -351,7 +349,6 @@ async function connectToWhatsApp() {
                 .trim();
               const [id] = idPemohon.split('/').map((part) => part.trim());
               console.log(respon_atasan);
-
               try {
                 // const response = await axios.post('http://qc-apps2.test/api/updatenotifijin', {
                 const response = await axios.post(
@@ -373,7 +370,6 @@ async function connectToWhatsApp() {
             }
           }
         }
-
         if (message.key.remoteJid.endsWith('@g.us')) {
           if (lowerCaseMessage && lowerCaseMessage.startsWith('!tarik')) {
             const estateCommand = lowerCaseMessage.replace('!tarik', '').trim();

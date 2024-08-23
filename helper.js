@@ -2513,6 +2513,41 @@ const setupCronJobs = (sock) => {
     //     timezone: 'Asia/Jakarta', // Set the timezone according to your location
     //   }
     // );
+    // cron.schedule(
+    //   '0 9 * * * *',
+    //   async () => {
+    //     await handleBotDailyPengawasanOperatorAI(sock);
+    //   },
+    //   {
+    //     scheduled: true,
+    //     timezone: 'Asia/Jakarta',
+    //   }
+    // );
+    // untuk  pc ardiono
+    // cron.schedule(
+    //   '0 */30 * * * *',
+    //   async () => {
+    //     try {
+    //       let response = await axios.get(
+    //         'https://qc-apps.srs-ssms.com/api/checkPcStatus'
+    //       );
+    //       // Assuming the response data has the structure { message: "All PCs are online" }
+    //       if (response.data.message === 'All PCs are online') {
+    //         console.log('All PCs are online');
+    //       } else {
+    //         await sendfailcronjob(sock);
+    //         await get_mill_data(sock);
+    //       }
+    //     } catch (error) {
+    //       console.error('Error fetching the status:', error);
+    //     }
+    //   },
+    //   {
+    //     scheduled: true,
+    //     timezone: 'Asia/Jakarta',
+    //   }
+    // );
+    // WebSocket pusher untuk bot grading
     // untuk pc di ho boootroot
     cron.schedule(
       '0 9 * * *',
@@ -2557,41 +2592,6 @@ const setupCronJobs = (sock) => {
         timezone: 'Asia/Jakarta',
       }
     );
-    // cron.schedule(
-    //   '0 9 * * * *',
-    //   async () => {
-    //     await handleBotDailyPengawasanOperatorAI(sock);
-    //   },
-    //   {
-    //     scheduled: true,
-    //     timezone: 'Asia/Jakarta',
-    //   }
-    // );
-    // untuk  pc ardiono
-    // cron.schedule(
-    //   '0 */30 * * * *',
-    //   async () => {
-    //     try {
-    //       let response = await axios.get(
-    //         'https://qc-apps.srs-ssms.com/api/checkPcStatus'
-    //       );
-    //       // Assuming the response data has the structure { message: "All PCs are online" }
-    //       if (response.data.message === 'All PCs are online') {
-    //         console.log('All PCs are online');
-    //       } else {
-    //         await sendfailcronjob(sock);
-    //         await get_mill_data(sock);
-    //       }
-    //     } catch (error) {
-    //       console.error('Error fetching the status:', error);
-    //     }
-    //   },
-    //   {
-    //     scheduled: true,
-    //     timezone: 'Asia/Jakarta',
-    //   }
-    // );
-    // WebSocket pusher untuk bot grading
     channel.bind('item-requested', async (eventData) => {
       // Log the full event data to debug the structure
       // console.log(eventData);
@@ -3137,7 +3137,6 @@ const setupCronJobs = (sock) => {
         console.log('Event data, data, or bot_data is undefined.');
         return;
       }
-
       // Loop through each item in the data array
       itemdata.data.forEach(async (dataitem) => {
         let message = `*Selamat Pagi*:\n`;
@@ -3156,17 +3155,46 @@ const setupCronJobs = (sock) => {
         message += `Dengan kode tracking  *${dataitem.kodesample}*\n`;
         message += `Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.\n`;
         console.log(message);
-
         await sock.sendMessage(`${dataitem.penerima}@s.whatsapp.net`, {
           text: message,
         });
-        // if (dataitem.asal === 'Eksternal') {
-        //   let invoice = `*Invoice*:\n`;
-        //   invoice += `*No. Invoice* : ${dataitem.no_surat}\n`;
-        //   await sock.sendMessage(`${dataitem.penerima}@s.whatsapp.net`, {
-        //     text: invoice,
-        //   });
-        // }
+        if (dataitem.asal === 'Eksternal') {
+          const response = await axios.get(
+            'http://127.0.0.1:8000/api/invoices_smartlabs',
+            {
+              params: {
+                email: 'j',
+                password: 'j',
+                id_data: dataitem.id_invoice,
+              },
+            }
+          );
+
+          const responseData = response.data;
+
+          if (responseData.pdf) {
+            // Step 2: Decode the base64 PDF
+            const pdfBuffer = Buffer.from(responseData.pdf, 'base64');
+            const pdfFilename = responseData.filename || 'Invoice.pdf';
+
+            // Step 3: Send the PDF as a document via WhatsApp
+            const messageOptions = {
+              document: pdfBuffer,
+              mimetype: 'application/pdf',
+              fileName: pdfFilename,
+              caption: 'Invoice Smartlabs',
+            };
+
+            await sock.sendMessage(
+              dataitem.penerima + '@s.whatsapp.net',
+              messageOptions
+            );
+
+            console.log('PDF sent successfully!');
+          } else {
+            console.log('PDF not found in the API response.');
+          }
+        }
       });
     });
   } else {
