@@ -815,8 +815,9 @@ async function handleBotDailyPengawasanOperatorAI(sock) {
       month: 'long',
       day: 'numeric',
     };
-    const today = new Date();
-    const formattedDate = today.toLocaleDateString('id-ID', options);
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1); // Subtract one day
+    const formattedDate = yesterday.toLocaleDateString('id-ID', options);
 
     if (response.status === 200 && data[0]) {
       for (const itemdata of data) {
