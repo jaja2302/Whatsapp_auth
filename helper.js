@@ -3216,46 +3216,44 @@ const setupCronJobs = (sock) => {
       });
     });
 
-    channel.bind('notifkasirapidresponse', async (itemdata) => {
-      if (!itemdata || !itemdata.data) {
-        console.log('Event data or data is undefined.');
+    channel.bind('notifkasirapidresponse', async (arrayData) => {
+      if (!arrayData || !arrayData.data) {
+        console.log('Event data, data, or bot_data is undefined.');
         return;
       }
 
-      // Construct the message
-      const createMessage = (verifikatorName, blok, baris) => {
-        return (
-          `*${greeting}*:\n` +
-          `Yth. Bapak/ibu ${verifikatorName}\n` +
-          `Anda memiliki permintaan untuk meverifikasi data dari rekomendator ${itemdata.rekomendator} dalam aplikasi rapid respons. Dengan rincian\n` +
-          `*estate* : ${itemdata.estate}\n` +
-          `*afdeling* : ${itemdata.afdeling}\n` +
-          `*blok* : ${blok}\n` +
-          `*baris* : ${baris}\n` +
-          `Detail dapat anda periksa di website : https://rapidresponse.srs-ssms.com\n`
-        );
-      };
+      let itemdata = arrayData.data;
+      let verifikator1Message = `*${greeting}*:\n`;
+      verifikator1Message += `Yth. Bapak/ibu ${itemdata.nama_verifikator1}\n`;
+      verifikator1Message += `Anda memiliki permintaan untuk meverifikasi data dari rekomendator ${itemdata.rekomendator} dalam aplikasi rapid respons. Dengan rincian\n`;
+      verifikator1Message += `*Doc ID* : ${itemdata.id}\n`;
+      verifikator1Message += `*Estate* : ${itemdata.estate}\n`;
+      verifikator1Message += `*Afdeling* : ${itemdata.afdeling}\n`;
+      verifikator1Message += `*Blok* : ${itemdata.blok}\n`;
+      verifikator1Message += `*Baris* : ${itemdata.baris}\n`;
+      verifikator1Message += `Silahkan Repply pesan ini dengan kata kunci "Ya" untuk menerima permintaan verifikasi. Jika anda tidak dapat melakukan verifikasi, silahkan reply pesan ini dengan kata kunci "Tidak" untuk menolak permintaan verifikasi. \n`;
+      verifikator1Message += `Detail dapat anda periksa di website : https://rapidresponse.srs-ssms.com \n`;
 
       // Send message to verifikator1
-      let message = createMessage(
-        itemdata.nama_verifikator1,
-        itemdata.blok,
-        itemdata.baris
-      );
       await sock.sendMessage(`${itemdata.verifikator1}@s.whatsapp.net`, {
-        text: message,
+        text: verifikator1Message,
       });
 
-      // Check if verifikator1 and verifikator2 are the same
-      if (itemdata.verifikator1 !== itemdata.verifikator2) {
-        // Send message to verifikator2 if different from verifikator1
-        message = createMessage(
-          itemdata.nama_verifikator2,
-          itemdata.blok,
-          itemdata.baris
-        );
+      // If verifikator2 is different from verifikator1, send a separate message
+      if (itemdata.verifikator2 !== itemdata.verifikator1) {
+        let verifikator2Message = `*${greeting}*:\n`;
+        verifikator2Message += `Yth. Bapak/ibu ${itemdata.nama_verifikator2}\n`;
+        verifikator2Message += `Anda memiliki permintaan untuk meverifikasi data dari rekomendator ${itemdata.rekomendator} dalam aplikasi rapid respons. Dengan rincian\n`;
+        verifikator1Message += `*Doc ID* : ${itemdata.id}\n`;
+        verifikator1Message += `*Estate* : ${itemdata.estate}\n`;
+        verifikator1Message += `*Afdeling* : ${itemdata.afdeling}\n`;
+        verifikator1Message += `*Blok* : ${itemdata.blok}\n`;
+        verifikator1Message += `*Baris* : ${itemdata.baris}\n`;
+        verifikator1Message += `Silahkan Repply pesan ini dengan kata kunci "Ya" untuk menerima permintaan verifikasi. Jika anda tidak dapat melakukan verifikasi, silahkan reply pesan ini dengan kata kunci "Tidak" untuk menolak permintaan verifikasi. \n`;
+        verifikator1Message += `Detail dapat anda periksa di website : https://rapidresponse.srs-ssms.com \n`;
+
         await sock.sendMessage(`${itemdata.verifikator2}@s.whatsapp.net`, {
-          text: message,
+          text: verifikator2Message,
         });
       }
     });
