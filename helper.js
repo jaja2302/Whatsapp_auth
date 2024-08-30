@@ -41,7 +41,19 @@ function formatPhoneNumber(phoneNumber) {
 }
 
 // function kirim notifkasi edit nilai qc
+let now = new Date();
+let hour = now.getHours();
+let greeting;
 
+if (hour >= 4 && hour < 12) {
+  greeting = 'Selamat Pagi';
+} else if (hour >= 12 && hour < 15) {
+  greeting = 'Selamat Siang';
+} else if (hour >= 15 && hour < 18) {
+  greeting = 'Selamat Sore';
+} else {
+  greeting = 'Selamat Malam';
+}
 function readLatestId() {
   try {
     if (fs.existsSync('latest_id.txt')) {
@@ -1369,7 +1381,7 @@ const handleijinmsg = async (noWa, text, sock) => {
         } catch (error) {
           if (error.response && error.response.status === 404) {
             console.log(error);
-            
+
             await sock.sendMessage(noWa, {
               text: 'Terjadi error tidak terduga',
             });
@@ -2189,7 +2201,7 @@ const handleIotInput = async (noWa, text, sock) => {
       } catch (error) {
         if (error.response && error.response.status === 404) {
           console.log(error);
-          
+
           await sock.sendMessage(noWa, { text: 'Terjadi error tidak terduga' });
           delete userIotChoice[noWa];
           delete botIotPrompt[noWa];
@@ -3142,9 +3154,10 @@ const setupCronJobs = (sock) => {
         console.log('Event data, data, or bot_data is undefined.');
         return;
       }
+
       // Loop through each item in the data array
       itemdata.data.forEach(async (dataitem) => {
-        let message = `*Selamat Pagi*:\n`;
+        let message = `*${greeting}*:\n`;
         message += `Yth. Pelanggan Setia Lab CBI\n`;
         if (dataitem.type === 'input') {
           message += `Progress Sampel anda telah kami terima dengan:\n`;
@@ -3201,6 +3214,50 @@ const setupCronJobs = (sock) => {
           }
         }
       });
+    });
+
+    channel.bind('notifkasirapidresponse', async (itemdata) => {
+      if (!itemdata || !itemdata.data) {
+        console.log('Event data or data is undefined.');
+        return;
+      }
+
+      // Construct the message
+      const createMessage = (verifikatorName, blok, baris) => {
+        return (
+          `*${greeting}*:\n` +
+          `Yth. Bapak/ibu ${verifikatorName}\n` +
+          `Anda memiliki permintaan untuk meverifikasi data dari rekomendator ${itemdata.rekomendator} dalam aplikasi rapid respons. Dengan rincian\n` +
+          `*estate* : ${itemdata.estate}\n` +
+          `*afdeling* : ${itemdata.afdeling}\n` +
+          `*blok* : ${blok}\n` +
+          `*baris* : ${baris}\n` +
+          `Detail dapat anda periksa di website : https://rapidresponse.srs-ssms.com\n`
+        );
+      };
+
+      // Send message to verifikator1
+      let message = createMessage(
+        itemdata.nama_verifikator1,
+        itemdata.blok,
+        itemdata.baris
+      );
+      await sock.sendMessage(`${itemdata.verifikator1}@s.whatsapp.net`, {
+        text: message,
+      });
+
+      // Check if verifikator1 and verifikator2 are the same
+      if (itemdata.verifikator1 !== itemdata.verifikator2) {
+        // Send message to verifikator2 if different from verifikator1
+        message = createMessage(
+          itemdata.nama_verifikator2,
+          itemdata.blok,
+          itemdata.baris
+        );
+        await sock.sendMessage(`${itemdata.verifikator2}@s.whatsapp.net`, {
+          text: message,
+        });
+      }
     });
   } else {
     console.log('WhatsApp belum terhubung');
