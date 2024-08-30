@@ -3226,11 +3226,13 @@ const setupCronJobs = (sock) => {
       let verifikator1Message = `*${greeting}*:\n`;
       verifikator1Message += `Yth. Bapak/ibu ${itemdata.nama_verifikator1}\n`;
       verifikator1Message += `Anda memiliki permintaan untuk meverifikasi data dari rekomendator ${itemdata.rekomendator} dalam aplikasi rapid respons. Dengan rincian\n`;
-      verifikator1Message += `*Doc ID* : ${itemdata.id}\n`;
+      verifikator1Message += `*Doc ID* : ${itemdata.id}/${itemdata.id_verifikator1}\n`;
       verifikator1Message += `*Estate* : ${itemdata.estate}\n`;
       verifikator1Message += `*Afdeling* : ${itemdata.afdeling}\n`;
       verifikator1Message += `*Blok* : ${itemdata.blok}\n`;
       verifikator1Message += `*Baris* : ${itemdata.baris}\n`;
+      verifikator1Message += `*Masalah* : ${itemdata.masalah}\n`;
+      verifikator1Message += `*Catatan* : ${itemdata.catatan}\n`;
       verifikator1Message += `Silahkan Repply pesan ini dengan kata kunci "Ya" untuk menerima permintaan verifikasi. Jika anda tidak dapat melakukan verifikasi, silahkan reply pesan ini dengan kata kunci "Tidak" untuk menolak permintaan verifikasi. \n`;
       verifikator1Message += `Detail dapat anda periksa di website : https://rapidresponse.srs-ssms.com \n`;
 
@@ -3244,11 +3246,13 @@ const setupCronJobs = (sock) => {
         let verifikator2Message = `*${greeting}*:\n`;
         verifikator2Message += `Yth. Bapak/ibu ${itemdata.nama_verifikator2}\n`;
         verifikator2Message += `Anda memiliki permintaan untuk meverifikasi data dari rekomendator ${itemdata.rekomendator} dalam aplikasi rapid respons. Dengan rincian\n`;
-        verifikator1Message += `*Doc ID* : ${itemdata.id}\n`;
+        verifikator1Message += `*Doc ID* : ${itemdata.id}/${itemdata.id_verifikator2}\n`;
         verifikator1Message += `*Estate* : ${itemdata.estate}\n`;
         verifikator1Message += `*Afdeling* : ${itemdata.afdeling}\n`;
         verifikator1Message += `*Blok* : ${itemdata.blok}\n`;
         verifikator1Message += `*Baris* : ${itemdata.baris}\n`;
+        verifikator1Message += `*Masalah* : ${itemdata.masalah}\n`;
+        verifikator1Message += `*Catatan* : ${itemdata.catatan}\n`;
         verifikator1Message += `Silahkan Repply pesan ini dengan kata kunci "Ya" untuk menerima permintaan verifikasi. Jika anda tidak dapat melakukan verifikasi, silahkan reply pesan ini dengan kata kunci "Tidak" untuk menolak permintaan verifikasi. \n`;
         verifikator1Message += `Detail dapat anda periksa di website : https://rapidresponse.srs-ssms.com \n`;
 
