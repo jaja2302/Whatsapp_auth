@@ -31,6 +31,7 @@ const today = new Date();
 
 const datetimeValue = formatDate(today);
 const idgroup = '120363205553012899@g.us';
+const idgroup_testing = '120363204285862734@g.us';
 
 function formatPhoneNumber(phoneNumber) {
   if (phoneNumber.startsWith('08')) {
@@ -2455,6 +2456,86 @@ async function botmanagementgudang(sock, msg) {
   }
 }
 
+//bot kirim laporan ke group izin kebun
+async function Report_group_izinkebun(sock) {
+  try {
+    const response = await axios.get(
+      'https://management.srs-ssms.com/api/get_reportdata_suratizin',
+      // 'http://127.0.0.1:8000/api/get_reportdata_suratizin',
+      {
+        params: {
+          email: 'j',
+          password: 'j',
+        },
+      }
+    );
+
+    const data = response.data.data;
+
+    // Check if data or id array is empty, if so, do nothing
+    if (
+      !data ||
+      Object.keys(data).length === 0 ||
+      !response.data.id ||
+      response.data.id.length === 0
+    ) {
+      console.log('No data to process.');
+      return; // Exit the function early if there's no data
+    }
+
+    let message = '*Laporan Surat Izin Keluar Kebun*:\n';
+
+    // Iterate over each date in the data
+    Object.keys(data).forEach((date) => {
+      message += `\n*Tanggal: ${date}*\n`;
+
+      // Iterate over each entry for the specific date
+      data[date].forEach((entry) => {
+        message += `ID: ${entry.id}\n`;
+        message += `User ID: ${entry.userizin ? entry.userizin.nama_lengkap : 'Tidak Tersedia'}\n`;
+        message += `Tanggal Keluar: ${entry.tanggal_keluar}\n`;
+        message += `Tanggal Kembali: ${entry.tanggal_kembali}\n`;
+        message += `Kendaraan: ${entry.kendaraan}\n`;
+        message += `Plat Nomor: ${entry.plat_nomor ? entry.plat_nomor : 'Tidak Tersedia'}\n`;
+        message += `Lokasi Tujuan: ${entry.lokasi_tujuan}\n`;
+        message += `Keperluan: ${entry.keperluan}\n`;
+        message += `Atasan 1: ${entry.atasan1 ? entry.atasan1.nama_lengkap : 'Tidak Tersedia'}\n`;
+        message += `Atasan 2: ${entry.atasan2 ? entry.atasan2.nama_lengkap : 'Tidak Tersedia'}\n`;
+        message += `Atasan 3: ${entry.atasan3 ? entry.atasan3.nama_lengkap : 'Tidak Tersedia'}\n`;
+        message += '-----------------------------------------\n';
+      });
+    });
+
+    // Attempt to update the status
+    try {
+      const updateResponse = await axios.post(
+        'https://management.srs-ssms.com/api/update_status_report_group_izin',
+        // 'http://127.0.0.1:8000/api/update_status_report_group_izin',
+        {
+          id: response.data.id,
+          email: 'j',
+          password: 'j',
+        }
+      );
+
+      // Send the formatted message if the status update is successful
+      if (updateResponse.status === 200) {
+        await sock.sendMessage(idgroup, {
+          text: message,
+        });
+      }
+    } catch (error) {
+      console.log('Error approving:', error);
+    }
+
+    // Return the formatted message if needed
+    return message;
+  } catch (error) {
+    console.error('Error fetching data from API:', error.message);
+    throw error;
+  }
+}
+
 // websocket
 const pusher = new Pusher('b193dcd8922273835547', {
   cluster: 'ap1',
@@ -3148,13 +3229,11 @@ const setupCronJobs = (sock) => {
         console.log('Unexpected error:', globalError);
       }
     });
-
     channel.bind('Smartlabsnotification', async (itemdata) => {
       if (!itemdata || !itemdata.data) {
         console.log('Event data, data, or bot_data is undefined.');
         return;
       }
-
       // Loop through each item in the data array
       itemdata.data.forEach(async (dataitem) => {
         let message = `*${greeting}*:\n`;
@@ -3187,14 +3266,11 @@ const setupCronJobs = (sock) => {
               },
             }
           );
-
           const responseData = response.data;
-
           if (responseData.pdf) {
             // Step 2: Decode the base64 PDF
             const pdfBuffer = Buffer.from(responseData.pdf, 'base64');
             const pdfFilename = responseData.filename || 'Invoice.pdf';
-
             // Step 3: Send the PDF as a document via WhatsApp
             const messageOptions = {
               document: pdfBuffer,
@@ -3202,12 +3278,10 @@ const setupCronJobs = (sock) => {
               fileName: pdfFilename,
               caption: 'Invoice Smartlabs',
             };
-
             await sock.sendMessage(
               dataitem.penerima + '@s.whatsapp.net',
               messageOptions
             );
-
             console.log('PDF sent successfully!');
           } else {
             console.log('PDF not found in the API response.');
@@ -3215,13 +3289,11 @@ const setupCronJobs = (sock) => {
         }
       });
     });
-
     channel.bind('notifkasirapidresponse', async (arrayData) => {
       if (!arrayData || !arrayData.data) {
         console.log('Event data, data, or bot_data is undefined.');
         return;
       }
-
       let itemdata = arrayData.data;
       let verifikator1Message = `*${greeting}*:\n`;
       verifikator1Message += `Yth. Bapak/ibu ${itemdata.nama_verifikator1}\n`;
@@ -3235,12 +3307,10 @@ const setupCronJobs = (sock) => {
       verifikator1Message += `*Catatan* : ${itemdata.catatan}\n`;
       verifikator1Message += `Silahkan Repply pesan ini dengan kata kunci "Ya" untuk menerima permintaan verifikasi. Jika anda tidak dapat melakukan verifikasi, silahkan reply pesan ini dengan kata kunci "Tidak" untuk menolak permintaan verifikasi. \n`;
       verifikator1Message += `Detail dapat anda periksa di website : https://rapidresponse.srs-ssms.com \n`;
-
       // Send message to verifikator1
       await sock.sendMessage(`${itemdata.verifikator1}@s.whatsapp.net`, {
         text: verifikator1Message,
       });
-
       // If verifikator2 is different from verifikator1, send a separate message
       if (itemdata.verifikator2 !== itemdata.verifikator1) {
         let verifikator2Message = `*${greeting}*:\n`;
@@ -3255,12 +3325,22 @@ const setupCronJobs = (sock) => {
         verifikator1Message += `*Catatan* : ${itemdata.catatan}\n`;
         verifikator1Message += `Silahkan Repply pesan ini dengan kata kunci "Ya" untuk menerima permintaan verifikasi. Jika anda tidak dapat melakukan verifikasi, silahkan reply pesan ini dengan kata kunci "Tidak" untuk menolak permintaan verifikasi. \n`;
         verifikator1Message += `Detail dapat anda periksa di website : https://rapidresponse.srs-ssms.com \n`;
-
         await sock.sendMessage(`${itemdata.verifikator2}@s.whatsapp.net`, {
           text: verifikator2Message,
         });
       }
     });
+
+    cron.schedule(
+      '0 12 * * 6',
+      async () => {
+        await Report_group_izinkebun(sock);
+      },
+      {
+        scheduled: true,
+        timezone: 'Asia/Jakarta',
+      }
+    );
   } else {
     console.log('WhatsApp belum terhubung');
   }
@@ -3279,4 +3359,5 @@ module.exports = {
   botmanagementgudang,
   triggerStatusPCPengawasanOperatorAI,
   handleBotLaporanHarianFleetManagement,
+  Report_group_izinkebun,
 };
