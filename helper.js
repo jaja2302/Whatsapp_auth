@@ -2610,50 +2610,69 @@ async function Report_group_izinkebun(sock) {
       return; // Exit the function early if there's no data
     }
 
-    let message = '*Laporan Surat Izin Keluar Kebun*:\n';
-
-    // Iterate over each date in the data
-    Object.keys(data).forEach((date) => {
-      message += `\n*Tanggal: ${date}*\n`;
-
-      // Iterate over each entry for the specific date
-      data[date].forEach((entry) => {
-        message += `ID: ${entry.id}\n`;
-        message += `User ID: ${entry.userizin ? entry.userizin.nama_lengkap : 'Tidak Tersedia'}\n`;
-        message += `Tanggal Keluar: ${entry.tanggal_keluar}\n`;
-        message += `Tanggal Kembali: ${entry.tanggal_kembali}\n`;
-        message += `Kendaraan: ${entry.kendaraan}\n`;
-        message += `Plat Nomor: ${entry.plat_nomor ? entry.plat_nomor : 'Tidak Tersedia'}\n`;
-        message += `Lokasi Tujuan: ${entry.lokasi_tujuan}\n`;
-        message += `Keperluan: ${entry.keperluan}\n`;
-        message += `Atasan 1: ${entry.atasan1 ? entry.atasan1.nama_lengkap : 'Tidak Tersedia'}\n`;
-        message += `Atasan 2: ${entry.atasan2 ? entry.atasan2.nama_lengkap : 'Tidak Tersedia'}\n`;
-        message += `Atasan 3: ${entry.atasan3 ? entry.atasan3.nama_lengkap : 'Tidak Tersedia'}\n`;
-        message += '-----------------------------------------\n';
-      });
-    });
-
-    // Attempt to update the status
-    try {
-      const updateResponse = await axios.post(
-        'https://management.srs-ssms.com/api/update_status_report_group_izin',
-        // 'http://127.0.0.1:8000/api/update_status_report_group_izin',
-        {
-          id: response.data.id,
-          email: 'j',
-          password: 'j',
-        }
+    if (response.data.pdf) {
+      // Step 2: Decode the base64 PDF
+      const pdfBuffer = Buffer.from(responseData.pdf, 'base64');
+      const pdfFilename = responseData.filename || 'Invoice.pdf';
+      // Step 3: Send the PDF as a document via WhatsApp
+      const messageOptions = {
+        document: pdfBuffer,
+        mimetype: 'application/pdf',
+        fileName: pdfFilename,
+        caption: 'Laporan Izin Kebun',
+      };
+      await sock.sendMessage(
+        idgroup,
+        messageOptions
       );
-
-      // Send the formatted message if the status update is successful
-      if (updateResponse.status === 200) {
-        await sock.sendMessage(idgroup, {
-          text: message,
-        });
-      }
-    } catch (error) {
-      console.log('Error approving:', error);
+      console.log('PDF sent successfully!');
+    } else {
+      console.log('PDF not found in the API response.');
     }
+    // let message = '*Laporan Surat Izin Keluar Kebun*:\n';
+
+    // // Iterate over each date in the data
+    // Object.keys(data).forEach((date) => {
+    //   message += `\n*Tanggal: ${date}*\n`;
+
+    //   // Iterate over each entry for the specific date
+    //   data[date].forEach((entry) => {
+    //     message += `ID: ${entry.id}\n`;
+    //     message += `User ID: ${entry.userizin ? entry.userizin.nama_lengkap : 'Tidak Tersedia'}\n`;
+    //     message += `Tanggal Keluar: ${entry.tanggal_keluar}\n`;
+    //     message += `Tanggal Kembali: ${entry.tanggal_kembali}\n`;
+    //     message += `Kendaraan: ${entry.kendaraan}\n`;
+    //     message += `Plat Nomor: ${entry.plat_nomor ? entry.plat_nomor : 'Tidak Tersedia'}\n`;
+    //     message += `Lokasi Tujuan: ${entry.lokasi_tujuan}\n`;
+    //     message += `Keperluan: ${entry.keperluan}\n`;
+    //     message += `Atasan 1: ${entry.atasan1 ? entry.atasan1.nama_lengkap : 'Tidak Tersedia'}\n`;
+    //     message += `Atasan 2: ${entry.atasan2 ? entry.atasan2.nama_lengkap : 'Tidak Tersedia'}\n`;
+    //     message += `Atasan 3: ${entry.atasan3 ? entry.atasan3.nama_lengkap : 'Tidak Tersedia'}\n`;
+    //     message += '-----------------------------------------\n';
+    //   });
+    // });
+
+    // // Attempt to update the status
+    // try {
+    //   const updateResponse = await axios.post(
+    //     'https://management.srs-ssms.com/api/update_status_report_group_izin',
+    //     // 'http://127.0.0.1:8000/api/update_status_report_group_izin',
+    //     {
+    //       id: response.data.id,
+    //       email: 'j',
+    //       password: 'j',
+    //     }
+    //   );
+
+    //   // Send the formatted message if the status update is successful
+    //   if (updateResponse.status === 200) {
+    //     await sock.sendMessage(idgroup, {
+    //       text: message,
+    //     });
+    //   }
+    // } catch (error) {
+    //   console.log('Error approving:', error);
+    // }
 
     // Return the formatted message if needed
     return message;
