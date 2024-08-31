@@ -147,12 +147,12 @@ async function connectToWhatsApp() {
       console.log('opened connection');
       let getGroups = await sock.groupFetchAllParticipating();
       let groups = Object.values(await sock.groupFetchAllParticipating());
-      //   console.log(groups);
-      //   for (let group of groups) {
-      //     console.log(
-      //       "id_group: " + group.id + " || Nama Group: " + group.subject
-      //     );
-      //   }
+        console.log(groups);
+        for (let group of groups) {
+          console.log(
+            "id_group: " + group.id + " || Nama Group: " + group.subject
+          );
+        }
       return;
     }
     if (update.qr) {
