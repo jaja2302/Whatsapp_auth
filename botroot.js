@@ -29,7 +29,13 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = require('express')();
 const axios = require('axios');
-const { userchoice, userIotChoice, userTalsasiChoice } = require('./state.js');
+const {
+  userchoice,
+  userIotChoice,
+  configSnoozeBotPengawasanOperator,
+  userTalsasiChoice,
+  userchoiceSnoozeBotPengawasanOperator,
+} = require('./state.js');
 const {
   sendtaksasiest,
   setupCronJobs,
@@ -37,6 +43,7 @@ const {
   getNotifications,
   handleIotInput,
   handleTaksasi,
+  handleChatSnoozePengawasanOperatorAi,
   restartbot,
   get_mill_data,
   botmanagementgudang,
@@ -448,7 +455,7 @@ async function connectToWhatsApp() {
             await sock.sendMessage(
               noWa,
               {
-                text: 'Perintah Bot Yang tersida \n1 = !tarik (Menarik Estate yang di pilih untuk di generate ke dalam grup yang sudah di tentukan) \n2.!getgrup (Menampilkan semua isi list group yang ada) \n3.!cast (melakukan broadcast pesan ke semua grup taksasi) \n4.!taksasi = Menarik Banyak laporar taksasi sekaligus berdasarkan waktu yang di pilih',
+                text: 'Perintah Bot Yang tersedia \n1 = !tarik (Menarik Estate yang di pilih untuk di generate ke dalam grup yang sudah di tentukan) \n2.!getgrup (Menampilkan semua isi list group yang ada) \n3.!cast (melakukan broadcast pesan ke semua grup taksasi) \n4.!taksasi = Menarik Banyak laporar taksasi sekaligus berdasarkan waktu yang di pilih',
               },
               { quoted: message }
             );
@@ -544,6 +551,122 @@ async function connectToWhatsApp() {
             }
             // Listen for the user's response to the broadcast message
             sock.ev.on('messages.upsert', handleBroadcast);
+          } else if (lowerCaseMessage === '!format snooze') {
+            await sock.sendMessage(
+              noWa,
+              {
+                text: 'Contoh Option Snooze Bot : \n1). 27-08-2024 s/d 29-08-2024 (Opsi snooze range tanggal) \n2). 27-08-2024 (Opsi snooze selama 24 jam) \n3). 27-08-2024 04:00 - 12.00 (Opsi menyesuaikan range jam)',
+              },
+              { quoted: message }
+            );
+            break;
+          } else if (lowerCaseMessage.includes('!snooze')) {
+            const snoozeContent = lowerCaseMessage
+              .substring('!snooze '.length)
+              .trim();
+
+            // Regex patterns for different options
+            const dateRangePattern =
+              /^(\d{1,2}-\d{1,2}-\d{4})\s*s\/d\s*(\d{1,2}-\d{1,2}-\d{4})$/;
+            const singleDatePattern = /^(\d{1,2}-\d{1,2}-\d{4})$/;
+            const dateTimeRangePattern =
+              /^(\d{1,2}-\d{1,2}-\d{4})\s(\d{2}[:.]\d{2})\s*-\s*(\d{2}[:.]\d{2})$/;
+
+            const now = new Date();
+
+            // Helper function to parse date and time into a Date object
+            const parseDateTime = (date, time = '00:00') => {
+              const [day, month, year] = date.split('-').map(Number);
+              const [hour, minute] = time.split(/[:.]/).map(Number);
+              return new Date(year, month - 1, day, hour, minute);
+            };
+
+            if (dateRangePattern.test(snoozeContent)) {
+              const matches = snoozeContent.match(dateRangePattern);
+              const startDate = matches[1];
+              const endDate = matches[2];
+
+              const startDateTime = parseDateTime(startDate);
+              const endDateTime = parseDateTime(endDate);
+
+              if (startDateTime <= now || endDateTime <= now) {
+                let text =
+                  'Format tanggal dan waktu harus setelah waktu saat ini.';
+                await handleChatSnoozePengawasanOperatorAi(noWa, text, sock);
+              } else {
+                const differenceInMillis = endDateTime - startDateTime;
+                const differenceInHours = differenceInMillis / (1000 * 60 * 60);
+                configSnoozeBotPengawasanOperator[noWa] = {
+                  datetime: `${startDate} s/d ${endDate}`,
+                  hour: differenceInHours,
+                };
+                await handleChatSnoozePengawasanOperatorAi(noWa, text, sock);
+              }
+            } else if (singleDatePattern.test(snoozeContent)) {
+              const matches = snoozeContent.match(singleDatePattern);
+              const singleDate = matches[1];
+
+              const singleDateTime = parseDateTime(singleDate);
+
+              if (singleDateTime <= now) {
+                let text =
+                  'Format tanggal dan waktu harus setelah waktu saat ini.';
+                await handleChatSnoozePengawasanOperatorAi(noWa, text, sock);
+              } else {
+                configSnoozeBotPengawasanOperator[noWa] = {
+                  datetime: singleDate,
+                  hour: 24,
+                };
+
+                await handleChatSnoozePengawasanOperatorAi(noWa, text, sock);
+              }
+            } else if (dateTimeRangePattern.test(snoozeContent)) {
+              const matches = snoozeContent.match(dateTimeRangePattern);
+              const date = matches[1];
+              const startTime = matches[2];
+              const endTime = matches[3];
+
+              const startDateTime = parseDateTime(date, startTime);
+              const endDateTime = parseDateTime(date, endTime);
+
+              if (startDateTime <= now) {
+                let text =
+                  'Format tanggal dan waktu harus setelah waktu saat ini.';
+                await handleChatSnoozePengawasanOperatorAi(noWa, text, sock);
+              } else {
+                const differenceInHours =
+                  (endDateTime - startDateTime) / (1000 * 60 * 60);
+                configSnoozeBotPengawasanOperator[noWa] = {
+                  datetime: `${date} ${startTime} - ${endTime}`,
+                  hour: differenceInHours,
+                };
+                await handleChatSnoozePengawasanOperatorAi(noWa, text, sock);
+              }
+            } else {
+              // Invalid format
+              await sock.sendMessage(
+                noWa,
+                {
+                  text: 'Terdapat kesalahan pada input format. Mohon untuk menggunakan format inputan berikut:\n1) 27-08-2024 s/d 29-08-2024\n2) 27-08-2024\n3) 27-08-2024 04:00 - 12:00',
+                },
+                { quoted: message }
+              );
+              return;
+            }
+          } else if (userchoiceSnoozeBotPengawasanOperator[noWa]) {
+            let waUser = message.key.participant;
+            let phoneNumber = waUser.replace(/[^0-9]/g, '');
+
+            // Replace the first 3 digits (if they are '628') with '08'
+            if (phoneNumber.length >= 3) {
+              phoneNumber = phoneNumber.replace(/^628/, '08');
+            }
+            await handleChatSnoozePengawasanOperatorAi(
+              noWa,
+              text,
+              sock,
+              phoneNumber
+            );
           }
         } else {
           if (lowerCaseMessage === '!menu') {
