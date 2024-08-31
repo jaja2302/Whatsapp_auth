@@ -12,8 +12,11 @@ const {
   timeoutHandles,
   userIotChoice,
   botIotPrompt,
+  userchoiceSnoozeBotPengawasanOperator,
+  choiceSnoozeBotPengawasanOperator,
   userTalsasiChoice,
   botTaksasi,
+  configSnoozeBotPengawasanOperator,
 } = require('./state');
 const moment = require('moment-timezone');
 const { text } = require('express');
@@ -2341,6 +2344,130 @@ const handleIotInput = async (noWa, text, sock) => {
 
 // end function
 
+//function chatting snooze bot pengawasan operator ai
+const handleChatSnoozePengawasanOperatorAi = async (
+  noWa,
+  text,
+  sock,
+  waUser
+) => {
+  if (!userchoiceSnoozeBotPengawasanOperator[noWa]) {
+    handleTimeout(noWa, sock);
+    if (text.startsWith('!snooze ')) {
+      userchoiceSnoozeBotPengawasanOperator[noWa] = 'machine';
+      const response = await axios.get(
+        'https://srs-ssms.com/op_monitoring/get_list_machine.php'
+      );
+
+      const data = response.data;
+      const activeDevices = data.filter((device) => device.status === '1');
+
+      const deviceList = activeDevices
+        .map((device, index) => `${index + 1}. ${device.name}`)
+        .join('\n');
+      configSnoozeBotPengawasanOperator[noWa] = {
+        ...configSnoozeBotPengawasanOperator[noWa], // Spread the existing properties
+        devices: activeDevices, // Add the devices property
+      };
+
+      await sock.sendMessage(noWa, {
+        text: `Pilih Machine CCTV yang akan di snooze (ketik nomor):\n${deviceList}`,
+      });
+      handleTimeout(noWa, sock);
+    } else {
+      await sock.sendMessage(noWa, {
+        text: text,
+      });
+    }
+  } else {
+    handleTimeout(noWa, sock);
+    const step = userchoiceSnoozeBotPengawasanOperator[noWa];
+    if (step === 'machine') {
+      const selectedDeviceIndex = parseInt(text, 10) - 1;
+      const devices = configSnoozeBotPengawasanOperator[noWa].devices;
+
+      if (
+        isNaN(selectedDeviceIndex) ||
+        selectedDeviceIndex < 0 ||
+        selectedDeviceIndex >= devices.length
+      ) {
+        await sock.sendMessage(noWa, {
+          text: 'Pilihan tidak valid. Mohon ketik nomor yang sesuai dengan daftar mesin.',
+        });
+        return;
+      }
+
+      const selectedDevice = devices[selectedDeviceIndex];
+
+      configSnoozeBotPengawasanOperator[noWa].machine_id = text;
+      let machineId = text;
+      configSnoozeBotPengawasanOperator[noWa].no_hp = waUser;
+
+      try {
+        await sock.sendMessage(noWa, {
+          text: 'Mohon tunggu sedang melakukan update konfigurasi Operator Pengawasai AI',
+        });
+        console.log(configSnoozeBotPengawasanOperator[noWa]);
+        const response = await axios.post(
+          'https://srs-ssms.com/op_monitoring/update_snooze_machine_bot.php',
+          new URLSearchParams({
+            description: configSnoozeBotPengawasanOperator[noWa].datetime,
+            hour: configSnoozeBotPengawasanOperator[noWa].hour,
+            machine_id: selectedDevice.id,
+            no_hp: configSnoozeBotPengawasanOperator[noWa].no_hp,
+          })
+        );
+
+        let responses = response.data;
+
+        if (responses.status === 1) {
+          const response = await axios.get(
+            'https://srs-ssms.com/op_monitoring/get_list_machine.php',
+            {
+              params: {
+                machine_id: machineId,
+              },
+            }
+          );
+
+          const data = response.data;
+          await sock.sendMessage(noWa, {
+            text: `Konfigurasi berhasil disimpan untuk ${data[0].name}\n`,
+          });
+          delete configSnoozeBotPengawasanOperator[noWa];
+          delete userchoiceSnoozeBotPengawasanOperator[noWa];
+          clearTimeout(timeoutHandles[noWa]);
+          delete timeoutHandles[noWa];
+        } else if (responses.status === 0) {
+          await sock.sendMessage(noWa, {
+            text: 'Terjadi kesalahan saat update konfigurasi. Mohon coba lagi!',
+          });
+          delete configSnoozeBotPengawasanOperator[noWa];
+          delete userchoiceSnoozeBotPengawasanOperator[noWa];
+          clearTimeout(timeoutHandles[noWa]);
+          delete timeoutHandles[noWa];
+        }
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          await sock.sendMessage(noWa, { text: 'Terjadi error tidak terduga' });
+          delete configSnoozeBotPengawasanOperator[noWa];
+          delete userchoiceSnoozeBotPengawasanOperator[noWa];
+          clearTimeout(timeoutHandles[noWa]);
+          delete timeoutHandles[noWa];
+        } else {
+          await sock.sendMessage(noWa, {
+            text: 'Terjadi kesalahan saat mengirim data. Mohon coba lagi.',
+          });
+          delete configSnoozeBotPengawasanOperator[noWa];
+          delete userchoiceSnoozeBotPengawasanOperator[noWa];
+          clearTimeout(timeoutHandles[noWa]);
+          delete timeoutHandles[noWa];
+        }
+      }
+    }
+  }
+};
+
 // functiopn update status online bot
 const updatePCStatus = async () => {
   try {
@@ -2822,7 +2949,7 @@ const setupCronJobs = (sock) => {
       fileName = eventData.fileName;
       const fs = require('fs');
       const axios = require('axios');
-      let message = `Tidak ada aktivitas id *${lokasiCCTV}* pada  *${hourMissing}*`;
+      let message = `Tidak ada aktivitas di *${lokasiCCTV}* pada  *${hourMissing}*`;
       try {
         const response = await axios.get(
           `https://srs-ssms.com/op_monitoring/get_screenshot_file.php?filename=${fileName}`
@@ -3352,6 +3479,7 @@ module.exports = {
   handleijinmsg,
   getNotifications,
   handleIotInput,
+  handleChatSnoozePengawasanOperatorAi,
   handleTaksasi,
   restartbot,
   get_mill_data,
