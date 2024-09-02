@@ -35,6 +35,7 @@ const today = new Date();
 const datetimeValue = formatDate(today);
 const idgroup = '120363205553012899@g.us';
 const idgroup_testing = '120363204285862734@g.us';
+const idgroup_da = '120363303562042176@g.us';
 
 function formatPhoneNumber(phoneNumber) {
   if (phoneNumber.startsWith('08')) {
@@ -2597,23 +2598,23 @@ async function Report_group_izinkebun(sock) {
       }
     );
 
-    const data = response.data.data;
-
+    const data = response.data;
+// log
     // Check if data or id array is empty, if so, do nothing
-    if (
-      !data ||
-      Object.keys(data).length === 0 ||
-      !response.data.id ||
-      response.data.id.length === 0
-    ) {
-      console.log('No data to process.');
-      return; // Exit the function early if there's no data
-    }
+    // if (
+    //   !data ||
+    //   Object.keys(data).length === 0 ||
+    //   !response.data.id ||
+    //   response.data.id.length === 0
+    // ) {
+    //   console.log('No data to process.');
+    //   return; // Exit the function early if there's no data
+    // }
 
     if (response.data.pdf) {
       // Step 2: Decode the base64 PDF
-      const pdfBuffer = Buffer.from(responseData.pdf, 'base64');
-      const pdfFilename = responseData.filename || 'Invoice.pdf';
+      const pdfBuffer = Buffer.from(response.data.pdf, 'base64');
+      const pdfFilename = response.data.filename || 'Invoice.pdf';
       // Step 3: Send the PDF as a document via WhatsApp
       const messageOptions = {
         document: pdfBuffer,
@@ -2622,7 +2623,8 @@ async function Report_group_izinkebun(sock) {
         caption: 'Laporan Izin Kebun',
       };
       await sock.sendMessage(
-        idgroup,
+        idgroup_da,
+        // idgroup,
         messageOptions
       );
       console.log('PDF sent successfully!');
