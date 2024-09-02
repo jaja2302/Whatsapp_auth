@@ -49,7 +49,7 @@ const {
   botmanagementgudang,
   handleBotDailyPengawasanOperatorAI,
   triggerStatusPCPengawasanOperatorAI,
-  Report_group_izinkebun
+  Report_group_izinkebun,
 } = require('./helper.js');
 // enable files upload
 app.use(
@@ -155,13 +155,13 @@ async function connectToWhatsApp() {
       console.log('opened connection');
       let getGroups = await sock.groupFetchAllParticipating();
       let groups = Object.values(await sock.groupFetchAllParticipating());
-        console.log(groups);
-        for (let group of groups) {
-          console.log(
-            "id_group: " + group.id + " || Nama Group: " + group.subject
-          );
-        }
-      return;
+      // console.log(groups);
+      // for (let group of groups) {
+      //   console.log(
+      //     'id_group: ' + group.id + ' || Nama Group: ' + group.subject
+      //   );
+      // }
+      // return;
     }
     if (update.qr) {
       qr = update.qr;
@@ -456,7 +456,7 @@ async function connectToWhatsApp() {
             await sock.sendMessage(
               noWa,
               {
-                text: 'Perintah Bot Yang tersedia \n1 = !tarik (Menarik Estate yang di pilih untuk di generate ke dalam grup yang sudah di tentukan) \n2.!getgrup (Menampilkan semua isi list group yang ada) \n3.!cast (melakukan broadcast pesan ke semua grup taksasi) \n4.!taksasi = Menarik Banyak laporar taksasi sekaligus berdasarkan waktu yang di pilih',
+                text: 'Perintah Bot Yang tersedia \n1 = !tarik (Menarik Estate yang di pilih untuk di generate ke dalam grup yang sudah di tentukan) \n2.!getgrup (Menampilkan semua isi list group yang ada) \n3.!cast (melakukan broadcast pesan ke semua grup taksasi) \n4.!taksasi = Menarik Banyak laporar taksasi sekaligus berdasarkan waktu yang di pilih\n5.!laporan izinkebun Menarik laporan izin kebun (Harap gunakan hanya di hari sabtu atau minggu)!',
               },
               { quoted: message }
             );
@@ -565,31 +565,25 @@ async function connectToWhatsApp() {
             const snoozeContent = lowerCaseMessage
               .substring('!snooze '.length)
               .trim();
-
             // Regex patterns for different options
             const dateRangePattern =
               /^(\d{1,2}-\d{1,2}-\d{4})\s*s\/d\s*(\d{1,2}-\d{1,2}-\d{4})$/;
             const singleDatePattern = /^(\d{1,2}-\d{1,2}-\d{4})$/;
             const dateTimeRangePattern =
               /^(\d{1,2}-\d{1,2}-\d{4})\s(\d{2}[:.]\d{2})\s*-\s*(\d{2}[:.]\d{2})$/;
-
             const now = new Date();
-
             // Helper function to parse date and time into a Date object
             const parseDateTime = (date, time = '00:00') => {
               const [day, month, year] = date.split('-').map(Number);
               const [hour, minute] = time.split(/[:.]/).map(Number);
               return new Date(year, month - 1, day, hour, minute);
             };
-
             if (dateRangePattern.test(snoozeContent)) {
               const matches = snoozeContent.match(dateRangePattern);
               const startDate = matches[1];
               const endDate = matches[2];
-
               const startDateTime = parseDateTime(startDate);
               const endDateTime = parseDateTime(endDate);
-
               if (startDateTime <= now || endDateTime <= now) {
                 let text =
                   'Format tanggal dan waktu harus setelah waktu saat ini.';
@@ -606,9 +600,7 @@ async function connectToWhatsApp() {
             } else if (singleDatePattern.test(snoozeContent)) {
               const matches = snoozeContent.match(singleDatePattern);
               const singleDate = matches[1];
-
               const singleDateTime = parseDateTime(singleDate);
-
               if (singleDateTime <= now) {
                 let text =
                   'Format tanggal dan waktu harus setelah waktu saat ini.';
@@ -618,7 +610,6 @@ async function connectToWhatsApp() {
                   datetime: singleDate,
                   hour: 24,
                 };
-
                 await handleChatSnoozePengawasanOperatorAi(noWa, text, sock);
               }
             } else if (dateTimeRangePattern.test(snoozeContent)) {
@@ -626,10 +617,8 @@ async function connectToWhatsApp() {
               const date = matches[1];
               const startTime = matches[2];
               const endTime = matches[3];
-
               const startDateTime = parseDateTime(date, startTime);
               const endDateTime = parseDateTime(date, endTime);
-
               if (startDateTime <= now) {
                 let text =
                   'Format tanggal dan waktu harus setelah waktu saat ini.';
@@ -657,7 +646,6 @@ async function connectToWhatsApp() {
           } else if (userchoiceSnoozeBotPengawasanOperator[noWa]) {
             let waUser = message.key.participant;
             let phoneNumber = waUser.replace(/[^0-9]/g, '');
-
             // Replace the first 3 digits (if they are '628') with '08'
             if (phoneNumber.length >= 3) {
               phoneNumber = phoneNumber.replace(/^628/, '08');
@@ -668,6 +656,9 @@ async function connectToWhatsApp() {
               sock,
               phoneNumber
             );
+          } else if (lowerCaseMessage === '!laporan izinkebun') {
+            await Report_group_izinkebun(sock);
+            break;
           }
         } else {
           if (lowerCaseMessage === '!menu') {
