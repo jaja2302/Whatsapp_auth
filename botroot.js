@@ -556,7 +556,7 @@ async function connectToWhatsApp() {
             await sock.sendMessage(
               noWa,
               {
-                text: 'Contoh Option Snooze Bot : \n1). 27-08-2024 s/d 29-08-2024 (Opsi snooze range tanggal) \n2). 27-08-2024 (Opsi snooze selama 24 jam) \n3). 27-08-2024 04:00 - 12.00 (Opsi menyesuaikan range jam)',
+                text: 'Contoh Option Snooze Bot : \n1).!snooze 27-08-2024 s/d 29-08-2024 (Opsi snooze range tanggal) \n2).!snooze 27-08-2024 (Opsi snooze selama 24 jam) \n3).!snooze 27-08-2024 04:00 - 12.00 (Opsi menyesuaikan range jam)',
               },
               { quoted: message }
             );
@@ -637,7 +637,7 @@ async function connectToWhatsApp() {
               await sock.sendMessage(
                 noWa,
                 {
-                  text: 'Terdapat kesalahan pada input format. Mohon untuk menggunakan format inputan berikut:\n1) 27-08-2024 s/d 29-08-2024\n2) 27-08-2024\n3) 27-08-2024 04:00 - 12:00',
+                  text: 'Terdapat kesalahan pada input format. Mohon untuk menggunakan format inputan berikut:\n1).!snooze 27-08-2024 s/d 29-08-2024\n2).!snooze 27-08-2024\n3).!snooze 27-08-2024 04:00 - 12:00',
                 },
                 { quoted: message }
               );
