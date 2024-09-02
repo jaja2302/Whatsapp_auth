@@ -2599,7 +2599,7 @@ async function Report_group_izinkebun(sock) {
     );
 
     const data = response.data;
-// log
+    // log
     // Check if data or id array is empty, if so, do nothing
     // if (
     //   !data ||
@@ -3438,44 +3438,78 @@ const setupCronJobs = (sock) => {
       });
     });
     channel.bind('notifkasirapidresponse', async (arrayData) => {
-      if (!arrayData || !arrayData.data) {
+      if (!arrayData?.data) {
         console.log('Event data, data, or bot_data is undefined.');
         return;
       }
-      let itemdata = arrayData.data;
-      let verifikator1Message = `*${greeting}*:\n`;
-      verifikator1Message += `Yth. Bapak/ibu ${itemdata.nama_verifikator1}\n`;
-      verifikator1Message += `Anda memiliki permintaan untuk meverifikasi data dari rekomendator ${itemdata.rekomendator} dalam aplikasi rapid respons. Dengan rincian\n`;
-      verifikator1Message += `*Doc ID* : ${itemdata.id}/${itemdata.id_verifikator1}\n`;
-      verifikator1Message += `*Estate* : ${itemdata.estate}\n`;
-      verifikator1Message += `*Afdeling* : ${itemdata.afdeling}\n`;
-      verifikator1Message += `*Blok* : ${itemdata.blok}\n`;
-      verifikator1Message += `*Baris* : ${itemdata.baris}\n`;
-      verifikator1Message += `*Masalah* : ${itemdata.masalah}\n`;
-      verifikator1Message += `*Catatan* : ${itemdata.catatan}\n`;
-      verifikator1Message += `Silahkan Repply pesan ini dengan kata kunci "Ya" untuk menerima permintaan verifikasi. Jika anda tidak dapat melakukan verifikasi, silahkan reply pesan ini dengan kata kunci "Tidak" untuk menolak permintaan verifikasi. \n`;
-      verifikator1Message += `Detail dapat anda periksa di website : https://rapidresponse.srs-ssms.com \n`;
-      // Send message to verifikator1
-      await sock.sendMessage(`${itemdata.verifikator1}@s.whatsapp.net`, {
-        text: verifikator1Message,
-      });
-      // If verifikator2 is different from verifikator1, send a separate message
-      if (itemdata.verifikator2 !== itemdata.verifikator1) {
-        let verifikator2Message = `*${greeting}*:\n`;
-        verifikator2Message += `Yth. Bapak/ibu ${itemdata.nama_verifikator2}\n`;
-        verifikator2Message += `Anda memiliki permintaan untuk meverifikasi data dari rekomendator ${itemdata.rekomendator} dalam aplikasi rapid respons. Dengan rincian\n`;
-        verifikator1Message += `*Doc ID* : ${itemdata.id}/${itemdata.id_verifikator2}\n`;
-        verifikator1Message += `*Estate* : ${itemdata.estate}\n`;
-        verifikator1Message += `*Afdeling* : ${itemdata.afdeling}\n`;
-        verifikator1Message += `*Blok* : ${itemdata.blok}\n`;
-        verifikator1Message += `*Baris* : ${itemdata.baris}\n`;
-        verifikator1Message += `*Masalah* : ${itemdata.masalah}\n`;
-        verifikator1Message += `*Catatan* : ${itemdata.catatan}\n`;
-        verifikator1Message += `Silahkan Repply pesan ini dengan kata kunci "Ya" untuk menerima permintaan verifikasi. Jika anda tidak dapat melakukan verifikasi, silahkan reply pesan ini dengan kata kunci "Tidak" untuk menolak permintaan verifikasi. \n`;
-        verifikator1Message += `Detail dapat anda periksa di website : https://rapidresponse.srs-ssms.com \n`;
-        await sock.sendMessage(`${itemdata.verifikator2}@s.whatsapp.net`, {
-          text: verifikator2Message,
+
+      const itemdata = arrayData.data;
+
+      try {
+        const { data: responseData } = await axios.get(
+          'https://management.srs-ssms.com/api/generate_pdf_rapidresponse',
+          {
+            params: {
+              email: 'j',
+              password: 'j',
+              id: itemdata.id,
+            },
+          }
+        );
+
+        if (responseData.pdf) {
+          const pdfBuffer = Buffer.from(responseData.pdf, 'base64');
+          const pdfFilename = responseData.filename || 'Invoice.pdf';
+
+          const messageOptions = {
+            document: pdfBuffer,
+            mimetype: 'application/pdf',
+            fileName: pdfFilename,
+            caption: 'Rapid Response Approval',
+          };
+
+          await sendWhatsAppMessage(itemdata.verifikator1, messageOptions);
+          await sendWhatsAppMessage(itemdata.verifikator2, messageOptions);
+          console.log('PDF sent successfully!');
+        } else {
+          console.log('PDF not found in the API response.');
+        }
+      } catch (error) {
+        console.error('Error sending PDF:', error);
+      }
+
+      const sendMessage = async (verifikator, name, id_verifikator) => {
+        const message =
+          `*${greeting}*:\n` +
+          `Yth. Bapak/ibu ${name}\n` +
+          `Anda memiliki permintaan untuk meverifikasi data dari rekomendator ${itemdata.rekomendator} dalam aplikasi rapid respons. Dengan rincian\n` +
+          `*Doc ID* : ${itemdata.id}/${id_verifikator}\n` +
+          `*Estate* : ${itemdata.estate}\n` +
+          `*Afdeling* : ${itemdata.afdeling}\n` +
+          `*Blok* : ${itemdata.blok}\n` +
+          `*Baris* : ${itemdata.baris}\n` +
+          `*Masalah* : ${itemdata.masalah}\n` +
+          `*Catatan* : ${itemdata.catatan}\n` +
+          `Silahkan Repply pesan ini dengan kata kunci "Ya" untuk menerima permintaan verifikasi. Jika anda tidak dapat melakukan verifikasi, silahkan reply pesan ini dengan kata kunci "Tidak" untuk menolak permintaan verifikasi. \n` +
+          `Detail dapat anda periksa di website : https://rapidresponse.srs-ssms.com \n`;
+
+        await sock.sendMessage(`${verifikator}@s.whatsapp.net`, {
+          text: message,
         });
+      };
+
+      await sendMessage(
+        itemdata.verifikator1,
+        itemdata.nama_verifikator1,
+        itemdata.id_verifikator1
+      );
+
+      if (itemdata.verifikator2 !== itemdata.verifikator1) {
+        await sendMessage(
+          itemdata.verifikator2,
+          itemdata.nama_verifikator2,
+          itemdata.id_verifikator2
+        );
       }
     });
 
