@@ -73891,3 +73891,723 @@ id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
 id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
 id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
 Server Berjalan pada Port : 8000
+opened connection
+[
+  {
+    id: '120363321959291717@g.us',
+    subject: 'AI Operator Ruang Mesin',
+    subjectOwner: '6281230588866@s.whatsapp.net',
+    subjectTime: 1722212214,
+    size: 6,
+    creation: 1722212214,
+    owner: '6281230588866@s.whatsapp.net',
+    desc: undefined,
+    descId: undefined,
+    restrict: false,
+    announce: false,
+    isCommunity: false,
+    isCommunityAnnounce: false,
+    joinApprovalMode: false,
+    memberAddMode: true,
+    participants: [ [Object], [Object], [Object], [Object], [Object], [Object] ],
+    ephemeralDuration: undefined
+  },
+  {
+    id: '120363205553012899@g.us',
+    subject: 'BOT DA_RND',
+    subjectOwner: '6281349807050@s.whatsapp.net',
+    subjectTime: 1703144113,
+    size: 6,
+    creation: 1701749083,
+    owner: '6281349807050@s.whatsapp.net',
+    desc: undefined,
+    descId: undefined,
+    restrict: false,
+    announce: false,
+    isCommunity: false,
+    isCommunityAnnounce: false,
+    joinApprovalMode: false,
+    memberAddMode: true,
+    participants: [ [Object], [Object], [Object], [Object], [Object], [Object] ],
+    ephemeralDuration: undefined
+  },
+  {
+    id: '120363264196563911@g.us',
+    subject: 'Aplikasi Traksi',
+    subjectOwner: '6285820074024@s.whatsapp.net',
+    subjectTime: 1710556876,
+    size: 7,
+    creation: 1710556876,
+    owner: '6285820074024@s.whatsapp.net',
+    desc: undefined,
+    descId: undefined,
+    restrict: false,
+    announce: false,
+    isCommunity: false,
+    isCommunityAnnounce: false,
+    joinApprovalMode: false,
+    memberAddMode: true,
+    participants: [
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object]
+    ],
+    ephemeralDuration: undefined
+  },
+  {
+    id: '120363303562042176@g.us',
+    subject: 'Digital Architect',
+    subjectOwner: '6281230588866@s.whatsapp.net',
+    subjectTime: 1723775922,
+    size: 9,
+    creation: 1723775922,
+    owner: '6281230588866@s.whatsapp.net',
+    desc: undefined,
+    descId: undefined,
+    restrict: false,
+    announce: false,
+    isCommunity: false,
+    isCommunityAnnounce: false,
+    joinApprovalMode: false,
+    memberAddMode: true,
+    participants: [
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object]
+    ],
+    ephemeralDuration: undefined
+  },
+  {
+    id: '120363152744155925@g.us',
+    subject: 'Taksasi - SCE',
+    subjectOwner: '6285820074024@s.whatsapp.net',
+    subjectTime: 1694233175,
+    size: 10,
+    creation: 1694233175,
+    owner: '6285820074024@s.whatsapp.net',
+    desc: undefined,
+    descId: undefined,
+    restrict: false,
+    announce: false,
+    isCommunity: false,
+    isCommunityAnnounce: false,
+    joinApprovalMode: false,
+    memberAddMode: true,
+    participants: [
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object]
+    ],
+    ephemeralDuration: undefined
+  },
+  {
+    id: '120363193125275627@g.us',
+    subject: 'Aplikasi Taksasi - TBE',
+    subjectOwner: '6285820074024@s.whatsapp.net',
+    subjectTime: 1703130130,
+    size: 11,
+    creation: 1703130130,
+    owner: '6285820074024@s.whatsapp.net',
+    desc: undefined,
+    descId: undefined,
+    restrict: false,
+    announce: false,
+    isCommunity: false,
+    isCommunityAnnounce: false,
+    joinApprovalMode: false,
+    memberAddMode: true,
+    participants: [
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object]
+    ],
+    ephemeralDuration: 604800
+  },
+  {
+    id: '120363193243380343@g.us',
+    subject: 'Aplikasi Taksasi - LME2',
+    subjectOwner: '6285820074024@s.whatsapp.net',
+    subjectTime: 1703061490,
+    size: 12,
+    creation: 1703061490,
+    owner: '6285820074024@s.whatsapp.net',
+    desc: undefined,
+    descId: undefined,
+    restrict: false,
+    announce: false,
+    isCommunity: false,
+    isCommunityAnnounce: false,
+    joinApprovalMode: false,
+    memberAddMode: true,
+    participants: [
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object]
+    ],
+    ephemeralDuration: undefined
+  },
+  {
+    id: '120363226513991710@g.us',
+    subject: 'Taksasi Panen BTE',
+    subjectOwner: '6282277247403@s.whatsapp.net',
+    subjectTime: 1706604077,
+    size: 12,
+    creation: 1706604077,
+    owner: '6282277247403@s.whatsapp.net',
+    desc: undefined,
+    descId: undefined,
+    restrict: false,
+    announce: false,
+    isCommunity: false,
+    isCommunityAnnounce: false,
+    joinApprovalMode: false,
+    memberAddMode: true,
+    participants: [
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object]
+    ],
+    ephemeralDuration: undefined
+  },
+  {
+    id: '120363164751475851@g.us',
+    subject: 'Trial Aplikasi QC',
+    subjectOwner: '6285820074024@s.whatsapp.net',
+    subjectTime: 1691379205,
+    size: 12,
+    creation: 1691379205,
+    owner: '6285820074024@s.whatsapp.net',
+    desc: undefined,
+    descId: undefined,
+    restrict: false,
+    announce: false,
+    isCommunity: false,
+    isCommunityAnnounce: false,
+    joinApprovalMode: false,
+    memberAddMode: false,
+    participants: [
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object]
+    ],
+    ephemeralDuration: undefined
+  },
+  {
+    id: '120363210871038595@g.us',
+    subject: 'Aplikasi Taksasi - KTE Reg4',
+    subjectOwner: '6285820074024@s.whatsapp.net',
+    subjectTime: 1703302640,
+    size: 14,
+    creation: 1703302640,
+    owner: '6285820074024@s.whatsapp.net',
+    desc: undefined,
+    descId: undefined,
+    restrict: false,
+    announce: false,
+    isCommunity: false,
+    isCommunityAnnounce: false,
+    joinApprovalMode: false,
+    memberAddMode: true,
+    participants: [
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object]
+    ],
+    ephemeralDuration: undefined
+  },
+  {
+    id: '120363220146576654@g.us',
+    subject: 'Taksasi panen SBE',
+    subjectOwner: '6282277247403@s.whatsapp.net',
+    subjectTime: 1705455450,
+    size: 15,
+    creation: 1705455450,
+    owner: '6282277247403@s.whatsapp.net',
+    desc: undefined,
+    descId: undefined,
+    restrict: false,
+    announce: false,
+    isCommunity: false,
+    isCommunityAnnounce: false,
+    joinApprovalMode: false,
+    memberAddMode: true,
+    participants: [
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object]
+    ],
+    ephemeralDuration: undefined
+  },
+  {
+    id: '120363217291038671@g.us',
+    subject: 'Taksasi Panen PDE',
+    subjectOwner: '6282277247403@s.whatsapp.net',
+    subjectTime: 1704875550,
+    size: 17,
+    creation: 1704875550,
+    owner: '6282277247403@s.whatsapp.net',
+    desc: undefined,
+    descId: undefined,
+    restrict: false,
+    announce: false,
+    isCommunity: false,
+    isCommunityAnnounce: false,
+    joinApprovalMode: false,
+    memberAddMode: true,
+    participants: [
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object]
+    ],
+    ephemeralDuration: undefined
+  },
+  {
+    id: '120363207525577365@g.us',
+    subject: 'Aplikasi Taksasi - SJE',
+    subjectOwner: '6285820074024@s.whatsapp.net',
+    subjectTime: 1702974084,
+    size: 17,
+    creation: 1702974084,
+    owner: '6285820074024@s.whatsapp.net',
+    desc: undefined,
+    descId: undefined,
+    restrict: false,
+    announce: false,
+    isCommunity: false,
+    isCommunityAnnounce: false,
+    joinApprovalMode: false,
+    memberAddMode: true,
+    participants: [
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object]
+    ],
+    ephemeralDuration: undefined
+  },
+  {
+    id: '120363231670115838@g.us',
+    subject: 'Taksasi Panen NNE',
+    subjectOwner: '6282277247403@s.whatsapp.net',
+    subjectTime: 1707179471,
+    size: 19,
+    creation: 1707179471,
+    owner: '6282277247403@s.whatsapp.net',
+    desc: undefined,
+    descId: undefined,
+    restrict: false,
+    announce: false,
+    isCommunity: false,
+    isCommunityAnnounce: false,
+    joinApprovalMode: false,
+    memberAddMode: true,
+    participants: [
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object]
+    ],
+    ephemeralDuration: undefined
+  },
+  {
+    id: '120363217152686034@g.us',
+    subject: 'Taksasi panen NKE',
+    subjectOwner: '6282277247403@s.whatsapp.net',
+    subjectTime: 1704941237,
+    size: 19,
+    creation: 1704941237,
+    owner: '6282277247403@s.whatsapp.net',
+    desc: undefined,
+    descId: undefined,
+    restrict: false,
+    announce: false,
+    isCommunity: false,
+    isCommunityAnnounce: false,
+    joinApprovalMode: false,
+    memberAddMode: true,
+    participants: [
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object]
+    ],
+    ephemeralDuration: undefined
+  },
+  {
+    id: '120363208984887370@g.us',
+    subject: 'Aplikasi Taksasi - LME1',
+    subjectOwner: '6285820074024@s.whatsapp.net',
+    subjectTime: 1703149007,
+    size: 20,
+    creation: 1703149007,
+    owner: '6285820074024@s.whatsapp.net',
+    desc: undefined,
+    descId: undefined,
+    restrict: false,
+    announce: false,
+    isCommunity: false,
+    isCommunityAnnounce: false,
+    joinApprovalMode: false,
+    memberAddMode: true,
+    participants: [
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object]
+    ],
+    ephemeralDuration: undefined
+  },
+  {
+    id: '120363217205685424@g.us',
+    subject: 'Taksasi Panen MRE',
+    subjectOwner: '6282277247403@s.whatsapp.net',
+    subjectTime: 1707447950,
+    size: 21,
+    creation: 1707447950,
+    owner: '6282277247403@s.whatsapp.net',
+    desc: undefined,
+    descId: undefined,
+    restrict: false,
+    announce: false,
+    isCommunity: false,
+    isCommunityAnnounce: false,
+    joinApprovalMode: false,
+    memberAddMode: true,
+    participants: [
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object]
+    ],
+    ephemeralDuration: undefined
+  },
+  {
+    id: '120363149785590346@g.us',
+    subject: 'Taksasi BHE',
+    subjectOwner: '6285820074024@s.whatsapp.net',
+    subjectTime: 1692922888,
+    size: 21,
+    creation: 1692922888,
+    owner: '6285820074024@s.whatsapp.net',
+    desc: undefined,
+    descId: undefined,
+    restrict: false,
+    announce: false,
+    isCommunity: false,
+    isCommunityAnnounce: false,
+    joinApprovalMode: false,
+    memberAddMode: true,
+    participants: [
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object]
+    ],
+    ephemeralDuration: undefined
+  },
+  {
+    id: '120363220419839708@g.us',
+    subject: 'Taksasi Panen SPE',
+    subjectOwner: '6282277247403@s.whatsapp.net',
+    subjectTime: 1705055953,
+    size: 24,
+    creation: 1705055953,
+    owner: '6282277247403@s.whatsapp.net',
+    desc: undefined,
+    descId: undefined,
+    restrict: false,
+    announce: false,
+    isCommunity: false,
+    isCommunityAnnounce: false,
+    joinApprovalMode: false,
+    memberAddMode: true,
+    participants: [
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object]
+    ],
+    ephemeralDuration: undefined
+  },
+  {
+    id: '120363166668733371@g.us',
+    subject: 'Taksasi BDE',
+    subjectOwner: '6285820074024@s.whatsapp.net',
+    subjectTime: 1710475084,
+    size: 26,
+    creation: 1692760836,
+    owner: '6285820074024@s.whatsapp.net',
+    desc: undefined,
+    descId: undefined,
+    restrict: false,
+    announce: false,
+    isCommunity: false,
+    isCommunityAnnounce: false,
+    joinApprovalMode: false,
+    memberAddMode: true,
+    participants: [
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object]
+    ],
+    ephemeralDuration: undefined
+  },
+  {
+    id: '120363170524329595@g.us',
+    subject: 'Taksasi KTE',
+    subjectOwner: '6285820074024@s.whatsapp.net',
+    subjectTime: 1693179837,
+    size: 30,
+    creation: 1693179837,
+    owner: '6285820074024@s.whatsapp.net',
+    desc: undefined,
+    descId: undefined,
+    restrict: false,
+    announce: false,
+    isCommunity: false,
+    isCommunityAnnounce: false,
+    joinApprovalMode: false,
+    memberAddMode: true,
+    participants: [
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object]
+    ],
+    ephemeralDuration: undefined
+  },
+  {
+    id: '120363213054175770@g.us',
+    subject: 'Taksasi Panen MLE',
+    subjectOwner: '6282277247403@s.whatsapp.net',
+    subjectTime: 1707187860,
+    size: 30,
+    creation: 1707187860,
+    owner: '6282277247403@s.whatsapp.net',
+    desc: undefined,
+    descId: undefined,
+    restrict: false,
+    announce: false,
+    isCommunity: false,
+    isCommunityAnnounce: false,
+    joinApprovalMode: false,
+    memberAddMode: true,
+    participants: [
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object]
+    ],
+    ephemeralDuration: undefined
+  },
+  {
+    id: '120363047670143778@g.us',
+    subject: 'Taksasi Wil II',
+    subjectOwner: undefined,
+    subjectTime: 1675818013,
+    size: 40,
+    creation: 1675818013,
+    owner: undefined,
+    desc: 'Ada',
+    descId: '3221B98DE2049CD14E9058F72F33299D',
+    restrict: false,
+    announce: false,
+    isCommunity: false,
+    isCommunityAnnounce: false,
+    joinApprovalMode: false,
+    memberAddMode: false,
+    participants: [
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object]
+    ],
+    ephemeralDuration: undefined
+  },
+  {
+    id: '120363025737216061@g.us',
+    subject: 'Taksasi Wil-I',
+    subjectOwner: undefined,
+    subjectTime: 1663381448,
+    size: 43,
+    creation: 1659948996,
+    owner: undefined,
+    desc: undefined,
+    descId: undefined,
+    restrict: false,
+    announce: false,
+    isCommunity: false,
+    isCommunityAnnounce: false,
+    joinApprovalMode: false,
+    memberAddMode: false,
+    participants: [
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object]
+    ],
+    ephemeralDuration: 7776000
+  },
+  {
+    id: '120363048442215265@g.us',
+    subject: 'Taksasi Wil III',
+    subjectOwner: undefined,
+    subjectTime: 1673863336,
+    size: 64,
+    creation: 1673863336,
+    owner: undefined,
+    desc: undefined,
+    descId: undefined,
+    restrict: false,
+    announce: false,
+    isCommunity: false,
+    isCommunityAnnounce: false,
+    joinApprovalMode: false,
+    memberAddMode: false,
+    participants: [
+      [Object], [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object]
+    ],
+    ephemeralDuration: undefined
+  }
+]
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363303562042176@g.us || Nama Group: Digital Architect
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+nodata
+data kosong
