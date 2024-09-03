@@ -3411,83 +3411,89 @@ const setupCronJobs = (sock) => {
         }
       });
     });
-    // channel.bind('notifkasirapidresponse', async (arrayData) => {
-    //   if (!arrayData?.data) {
-    //     console.log('Event data, data, or bot_data is undefined.');
-    //     return;
-    //   }
-    //   const itemdata = arrayData.data;
-    
-    //   // Define the sendMessage function here
-    //   const sendMessage = async (verifikator, name, id_verifikator) => {
-    //     const message =
-    //       `*${greeting}*:\n` +
-    //       `Yth. Bapak/ibu ${name}\n` +
-    //       `Anda memiliki permintaan untuk meverifikasi data dari rekomendator ${itemdata.rekomendator} dalam aplikasi rapid respons. Dengan rincian\n` +
-    //       `*Doc ID* : ${itemdata.id}/${id_verifikator}\n` +
-    //       `*Estate* : ${itemdata.estate}\n` +
-    //       `*Afdeling* : ${itemdata.afdeling}\n` +
-    //       `*Blok* : ${itemdata.blok}\n` +
-    //       `*Baris* : ${itemdata.baris}\n` +
-    //       `*Masalah* : ${itemdata.masalah}\n` +
-    //       `*Catatan* : ${itemdata.catatan}\n` +
-    //       `Silahkan Repply pesan ini dengan kata kunci "Ya" untuk menerima permintaan verifikasi. Jika anda tidak dapat melakukan verifikasi, silahkan reply pesan ini dengan kata kunci "Tidak" untuk menolak permintaan verifikasi. \n` +
-    //       `Detail dapat anda periksa di website : https://rapidresponse.srs-ssms.com \n`;
-    //     await sock.sendMessage(`${verifikator}@s.whatsapp.net`, {
-    //       text: message,
-    //     });
-    //     console.log(message);
-    //   };
-    
-    //   try {
-    //     const { data: responseData } = await axios.get(
-    //       'https://management.srs-ssms.com/api/generate_pdf_rapidresponse',
-    //       {
-    //         params: {
-    //           email: 'j',
-    //           password: 'j',
-    //           id: itemdata.id,
-    //         },
-    //       }
-    //     );
-    
-    //     if (responseData.pdf) {
-    //       const pdfBuffer = Buffer.from(responseData.pdf, 'base64');
-    //       const pdfFilename = responseData.filename || 'Invoice.pdf';
-    //       const messageOptions = {
-    //         document: pdfBuffer,
-    //         mimetype: 'application/pdf',
-    //         fileName: pdfFilename,
-    //         caption: 'Rapid Response Approval',
-    //       };
-    
-    //       // Send the PDF
-    //       await sock.sendMessage(`${itemdata.verifikator1}@s.whatsapp.net`, messageOptions);
-    //       await sock.sendMessage(`${itemdata.verifikator2}@s.whatsapp.net`, messageOptions);
-    //       console.log('PDF sent successfully!');
-    //     } else {
-    //       console.log('PDF not found in the API response.');
-    //     }
-    
-    //     // Send the text message
-    //     await sendMessage(
-    //       itemdata.verifikator1,
-    //       itemdata.nama_verifikator1,
-    //       itemdata.id_verifikator1
-    //     );
-    
-    //     if (itemdata.verifikator2 !== itemdata.verifikator1) {
-    //       await sendMessage(
-    //         itemdata.verifikator2,
-    //         itemdata.nama_verifikator2,
-    //         itemdata.id_verifikator2
-    //       );
-    //     }
-    //   } catch (error) {
-    //     console.error('Error sending PDF:', error);
-    //   }
-    // });
-    
+    channel.bind('notifkasirapidresponse', async (arrayData) => {
+      if (!arrayData?.data) {
+        console.log('Event data, data, or bot_data is undefined.');
+        return;
+      }
+      const itemdata = arrayData.data;
+
+      // Define the sendMessage function here
+      const sendMessage = async (verifikator, name, id_verifikator) => {
+        const message =
+          `*${greeting}*:\n` +
+          `Yth. Bapak/ibu ${name}\n` +
+          `Anda memiliki permintaan untuk meverifikasi data dari rekomendator ${itemdata.rekomendator} dalam aplikasi rapid respons. Dengan rincian\n` +
+          `*Doc ID* : ${itemdata.id}/${id_verifikator}\n` +
+          `*Estate* : ${itemdata.estate}\n` +
+          `*Afdeling* : ${itemdata.afdeling}\n` +
+          `*Blok* : ${itemdata.blok}\n` +
+          `*Baris* : ${itemdata.baris}\n` +
+          `*Masalah* : ${itemdata.masalah}\n` +
+          `*Catatan* : ${itemdata.catatan}\n` +
+          `Silahkan Repply pesan ini dengan kata kunci "Ya" untuk menerima permintaan verifikasi. Jika anda tidak dapat melakukan verifikasi, silahkan reply pesan ini dengan kata kunci "Tidak" untuk menolak permintaan verifikasi. \n` +
+          `Detail dapat anda periksa di website : https://rapidresponse.srs-ssms.com \n`;
+        await sock.sendMessage(`${verifikator}@s.whatsapp.net`, {
+          text: message,
+        });
+        // console.log(message);
+      };
+
+      try {
+        const { data: responseData } = await axios.get(
+          'https://management.srs-ssms.com/api/generate_pdf_rapidresponse',
+          {
+            params: {
+              email: 'j',
+              password: 'j',
+              id: itemdata.id,
+            },
+          }
+        );
+
+        if (responseData.pdf) {
+          const pdfBuffer = Buffer.from(responseData.pdf, 'base64');
+          const pdfFilename = responseData.filename || 'Invoice.pdf';
+          const messageOptions = {
+            document: pdfBuffer,
+            mimetype: 'application/pdf',
+            fileName: pdfFilename,
+            caption: 'Rapid Response Approval',
+          };
+
+          // Send the PDF
+          await sock.sendMessage(
+            `${itemdata.verifikator1}@s.whatsapp.net`,
+            messageOptions
+          );
+          await sock.sendMessage(
+            `${itemdata.verifikator2}@s.whatsapp.net`,
+            messageOptions
+          );
+          console.log('PDF sent successfully!');
+        } else {
+          console.log('PDF not found in the API response.');
+        }
+
+        // Send the text message
+        await sendMessage(
+          itemdata.verifikator1,
+          itemdata.nama_verifikator1,
+          itemdata.id_verifikator1
+        );
+
+        if (itemdata.verifikator2 !== itemdata.verifikator1) {
+          await sendMessage(
+            itemdata.verifikator2,
+            itemdata.nama_verifikator2,
+            itemdata.id_verifikator2
+          );
+        }
+      } catch (error) {
+        console.error('Error sending PDF:', error);
+      }
+    });
+
     cron.schedule(
       '0 12 * * 6',
       async () => {
