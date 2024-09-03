@@ -767,6 +767,7 @@ const updateQR = (data) => {
 app.get('/testing', async (req, res) => {
   try {
     await Report_group_izinkebun(sock);
+    // da
     // console.log(sock.user);
     // console.log(result);
     res.status(200).json({
