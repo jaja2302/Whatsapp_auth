@@ -74611,3 +74611,142 @@ data kosong
 data kosong
 nodata
 data kosong
+Server Berjalan pada Port : 8000
+opened connection
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+nodata
+data kosong
+data kosong
+Server Berjalan pada Port : 8000
+opened connection
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Error sending PDF: ReferenceError: sendWhatsAppMessage is not defined
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:3440:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+*Selamat Pagi*:
+Yth. Bapak/ibu AHMAD YUSRIL LUMBAN GAOL
+Anda memiliki permintaan untuk meverifikasi data dari rekomendator AHMAD YUSRIL LUMBAN GAOL dalam aplikasi rapid respons. Dengan rincian
+*Doc ID* : 14/1096
+*Estate* : UPE
+*Afdeling* : OA
+*Blok* : Q02808$N02107
+*Baris* : 2
+*Masalah* : Ulat (Tirathaba  sp.)
+*Catatan* : Oke
+Silahkan Repply pesan ini dengan kata kunci "Ya" untuk menerima permintaan verifikasi. Jika anda tidak dapat melakukan verifikasi, silahkan reply pesan ini dengan kata kunci "Tidak" untuk menolak permintaan verifikasi. 
+Detail dapat anda periksa di website : https://rapidresponse.srs-ssms.com 
+
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+nodata
+Error sending PDF: ReferenceError: Cannot access 'sendMessage' before initialization
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:3440:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+*Selamat Pagi*:
+Yth. Bapak/ibu AHMAD YUSRIL LUMBAN GAOL
+Anda memiliki permintaan untuk meverifikasi data dari rekomendator BAHARUDDIN YUSUF dalam aplikasi rapid respons. Dengan rincian
+*Doc ID* : 15/1096
+*Estate* : SLE
+*Afdeling* : OA
+*Blok* : L0109$L0205
+*Baris* : 33
+*Masalah* : Ulat kantong (Mahasena corbetti, Metisa plana, C. 
+*Catatan* : Masal
+Silahkan Repply pesan ini dengan kata kunci "Ya" untuk menerima permintaan verifikasi. Jika anda tidak dapat melakukan verifikasi, silahkan reply pesan ini dengan kata kunci "Tidak" untuk menolak permintaan verifikasi. 
+Detail dapat anda periksa di website : https://rapidresponse.srs-ssms.com 
+
+*Selamat Pagi*:
+Yth. Bapak/ibu BAHARUDDIN YUSUF
+Anda memiliki permintaan untuk meverifikasi data dari rekomendator BAHARUDDIN YUSUF dalam aplikasi rapid respons. Dengan rincian
+*Doc ID* : 15/1092
+*Estate* : SLE
+*Afdeling* : OA
+*Blok* : L0109$L0205
+*Baris* : 33
+*Masalah* : Ulat kantong (Mahasena corbetti, Metisa plana, C. 
+*Catatan* : Masal
+Silahkan Repply pesan ini dengan kata kunci "Ya" untuk menerima permintaan verifikasi. Jika anda tidak dapat melakukan verifikasi, silahkan reply pesan ini dengan kata kunci "Tidak" untuk menolak permintaan verifikasi. 
+Detail dapat anda periksa di website : https://rapidresponse.srs-ssms.com 
+
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+PDF sent successfully!
+*Selamat Pagi*:
+Yth. Bapak/ibu AHMAD YUSRIL LUMBAN GAOL
+Anda memiliki permintaan untuk meverifikasi data dari rekomendator BAHARUDDIN YUSUF dalam aplikasi rapid respons. Dengan rincian
+*Doc ID* : 16/1096
+*Estate* : NBE
+*Afdeling* : OB
+*Blok* : F0504$E0505
+*Baris* : 12
+*Masalah* : Ulat (Tirathaba  sp.)
+*Catatan* : Oke aja
+Silahkan Repply pesan ini dengan kata kunci "Ya" untuk menerima permintaan verifikasi. Jika anda tidak dapat melakukan verifikasi, silahkan reply pesan ini dengan kata kunci "Tidak" untuk menolak permintaan verifikasi. 
+Detail dapat anda periksa di website : https://rapidresponse.srs-ssms.com 
+
+*Selamat Pagi*:
+Yth. Bapak/ibu BAHARUDDIN YUSUF
+Anda memiliki permintaan untuk meverifikasi data dari rekomendator BAHARUDDIN YUSUF dalam aplikasi rapid respons. Dengan rincian
+*Doc ID* : 16/1092
+*Estate* : NBE
+*Afdeling* : OB
+*Blok* : F0504$E0505
+*Baris* : 12
+*Masalah* : Ulat (Tirathaba  sp.)
+*Catatan* : Oke aja
+Silahkan Repply pesan ini dengan kata kunci "Ya" untuk menerima permintaan verifikasi. Jika anda tidak dapat melakukan verifikasi, silahkan reply pesan ini dengan kata kunci "Tidak" untuk menolak permintaan verifikasi. 
+Detail dapat anda periksa di website : https://rapidresponse.srs-ssms.com 
+
+nodata
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+nodata
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+nodata
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+File 'Rekap_Taksasi_Suja_Selasa, 03 September 2024.pdf' in folder 'Inti' deleted successfully.
+File 'Rekap_Taksasi_Kenambui_Selasa, 03 September 2024.pdf' in folder 'Wilayah_1' deleted successfully.
+File 'Rekap_Taksasi_Pulau_Selasa, 03 September 2024.pdf' in folder 'Wilayah_1' deleted successfully.
+File 'Rekap_Taksasi_Rangda_Selasa, 03 September 2024.pdf' in folder 'Wilayah_1' deleted successfully.
+File 'Rekap_Taksasi_Sulung_Selasa, 03 September 2024.pdf' in folder 'Wilayah_1' deleted successfully.
+File 'Rekap_Taksasi_Batu Kotam_Selasa, 03 September 2024.pdf' in folder 'Wilayah_2' deleted successfully.
+File 'Rekap_Taksasi_Kondang_Selasa, 03 September 2024.pdf' in folder 'Wilayah_2' deleted successfully.
+File 'Rekap_Taksasi_Rungun_Selasa, 03 September 2024.pdf' in folder 'Wilayah_2' deleted successfully.
+File 'Rekap_Taksasi_Selangkun_Selasa, 03 September 2024.pdf' in folder 'Wilayah_2' deleted successfully.
+File 'Rekap_Taksasi_Bengaris_Selasa, 03 September 2024.pdf' in folder 'Wilayah_3' deleted successfully.
+File 'Rekap_Taksasi_Natai Baru_Selasa, 03 September 2024.pdf' in folder 'Wilayah_3' deleted successfully.
+File 'Rekap_Taksasi_Suayap_Selasa, 03 September 2024.pdf' in folder 'Wilayah_3' deleted successfully.
+File 'Rekap_Taksasi_Sulung Research Station_Selasa, 03 September 2024.pdf' in folder 'Wilayah_9' deleted successfully.
+Upload successful after 1 attempts
+File downloaded successfully.
+File 'Rekap_Taksasi_Badirih_Selasa, 03 September 2024.pdf' in folder 'Wilayah_7' deleted successfully.
+Response: { success: true }
+Status updated: { message: 'Record updated successfully' }
+data kosong
+nodata
+data kosong
+data kosong
+data kosong
+nodata
+Status updated: { message: 'Record updated successfully' }
+Server Berjalan pada Port : 8000
+opened connection

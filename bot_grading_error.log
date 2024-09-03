@@ -56,3 +56,9 @@ Error: Timed Out
   }
 }
 Upload failed after 5 attempts
+Error sending PDF: ReferenceError: sendWhatsAppMessage is not defined
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:3440:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Error sending PDF: ReferenceError: Cannot access 'sendMessage' before initialization
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:3440:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
