@@ -2658,6 +2658,113 @@ async function Report_group_izinkebun(sock) {
   }
 }
 
+// bot baru untuk taksasi
+async function Generateandsendtaksasi(sock) {
+  try {
+    const response = await axios.get(
+      'https://management.srs-ssms.com/api/get_crontab_data',
+      {
+        params: {
+          email: 'j',
+          password: 'j',
+        },
+      }
+    );
+    const data = response.data.data;
+    for (const item of data) {
+      await generatemapstaksasi(item.estate, datetimeValue);
+
+      try {
+        const { data: responseData } = await axios.get(
+          `https://smart-app.srs-ssms.com/api/exportPdfTaksasi/${item.estate}/${datetimeValue}`
+        );
+
+        if (responseData.base64_pdf) {
+          const pdfBuffer = Buffer.from(responseData.base64_pdf, 'base64');
+          const pdfFilename = `Rekap Taksasi ${item.estate} ${datetimeValue}.pdf`;
+          let captions = `Laporan Taksasi Perlu persetujuan sebelum diterbitkan\n`;
+          captions += `\nID : ${item.id}`;
+          captions += `\nEstate : ${item.estate}`;
+          captions += `\nTanggal : ${datetimeValue}`;
+          captions += `Harap hanya membalas pesan ini dengan jawaban ya atau tidak`;
+          captions += `\n\nTerima kasih`;
+          const messageOptions = {
+            document: pdfBuffer,
+            mimetype: 'application/pdf',
+            fileName: pdfFilename,
+            caption: captions,
+          };
+
+          await sock.sendMessage(item.new_group, messageOptions);
+
+          console.log('PDF sent successfully!');
+        } else {
+          console.log('PDF not found in the API response.');
+        }
+      } catch (error) {
+        console.error('Error sending PDF:', error.message);
+      }
+    }
+  } catch (error) {
+    console.error('Error fetching data from API:', error.message);
+    throw error;
+  }
+}
+
+async function Sendverificationtaksasi(sock) {
+  try {
+    const response = await axios.get(
+      'https://management.srs-ssms.com/api/send_verification_pdf',
+      {
+        params: {
+          email: 'j',
+          password: 'j',
+        },
+      }
+    );
+    const responseMessage = response.data.message;
+
+    // Handle the case when no data is found
+    if (responseMessage === 'Tidak ada data yang ditemukan') {
+      console.log('No data found in the API response.');
+      return; // Stop execution if no data is found
+    }
+
+    const data = response.data.data;
+    for (const item of data) {
+      await generatemapstaksasi(item.estate, datetimeValue);
+
+      try {
+        const { data: responseData } = await axios.get(
+          `https://smart-app.srs-ssms.com/api/exportPdfTaksasi/${item.estate}/${datetimeValue}`
+        );
+
+        if (responseData.base64_pdf) {
+          const pdfBuffer = Buffer.from(responseData.base64_pdf, 'base64');
+          const pdfFilename = `Rekap Taksasi ${item.estate} ${datetimeValue}.pdf`;
+          const messageOptions = {
+            document: pdfBuffer,
+            mimetype: 'application/pdf',
+            fileName: pdfFilename,
+            caption: 'Pesan otomatis, harap jangan membalas pesan ini',
+          };
+
+          await sock.sendMessage(item.new_group, messageOptions);
+
+          console.log('PDF sent successfully!');
+        } else {
+          console.log('PDF not found in the API response.');
+        }
+      } catch (error) {
+        console.error('Error sending PDF:', error.message);
+      }
+    }
+  } catch (error) {
+    console.error('Error fetching data from API:', error.message);
+    throw error;
+  }
+}
+
 // websocket
 const pusher = new Pusher('b193dcd8922273835547', {
   cluster: 'ap1',
@@ -3417,7 +3524,6 @@ const setupCronJobs = (sock) => {
         return;
       }
       const itemdata = arrayData.data;
-
       // Define the sendMessage function here
       const sendMessage = async (verifikator, name, id_verifikator) => {
         const message =
@@ -3438,7 +3544,6 @@ const setupCronJobs = (sock) => {
         });
         // console.log(message);
       };
-
       try {
         const { data: responseData } = await axios.get(
           'https://management.srs-ssms.com/api/generate_pdf_rapidresponse',
@@ -3450,7 +3555,6 @@ const setupCronJobs = (sock) => {
             },
           }
         );
-
         if (responseData.pdf) {
           const pdfBuffer = Buffer.from(responseData.pdf, 'base64');
           const pdfFilename = responseData.filename || 'Invoice.pdf';
@@ -3460,7 +3564,6 @@ const setupCronJobs = (sock) => {
             fileName: pdfFilename,
             caption: 'Rapid Response Approval',
           };
-
           // Send the PDF
           await sock.sendMessage(
             `${itemdata.verifikator1}@s.whatsapp.net`,
@@ -3474,14 +3577,12 @@ const setupCronJobs = (sock) => {
         } else {
           console.log('PDF not found in the API response.');
         }
-
         // Send the text message
         await sendMessage(
           itemdata.verifikator1,
           itemdata.nama_verifikator1,
           itemdata.id_verifikator1
         );
-
         if (itemdata.verifikator2 !== itemdata.verifikator1) {
           await sendMessage(
             itemdata.verifikator2,
@@ -3493,11 +3594,31 @@ const setupCronJobs = (sock) => {
         console.error('Error sending PDF:', error);
       }
     });
-
     cron.schedule(
       '0 12 * * 6',
       async () => {
         await Report_group_izinkebun(sock);
+      },
+      {
+        scheduled: true,
+        timezone: 'Asia/Jakarta',
+      }
+    );
+
+    cron.schedule(
+      '0 14 * * *', // Runs at 14:00 every day
+      async () => {
+        await Generateandsendtaksasi(sock);
+      },
+      {
+        scheduled: true,
+        timezone: 'Asia/Jakarta',
+      }
+    );
+    cron.schedule(
+      '0 17 * * *', // Runs at 14:00 every day
+      async () => {
+        await Sendverificationtaksasi(sock);
       },
       {
         scheduled: true,
@@ -3524,4 +3645,5 @@ module.exports = {
   triggerStatusPCPengawasanOperatorAI,
   handleBotLaporanHarianFleetManagement,
   Report_group_izinkebun,
+  Generateandsendtaksasi,
 };
