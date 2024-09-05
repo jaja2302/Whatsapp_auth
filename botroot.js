@@ -471,7 +471,10 @@ async function connectToWhatsApp() {
                 const id = idMatch[1];
                 // console.log('Extracted ID:', id);
 
-                if (text_repply !== 'ya' || text_repply !== 'tidak') {
+                if (
+                  text_repply.toLowerCase() !== 'ya' ||
+                  text_repply.toLowerCase() !== 'tidak'
+                ) {
                   await sock.sendMessage(noWa, {
                     text: 'Hanya bisa memilih ya atau tidak',
                   });
