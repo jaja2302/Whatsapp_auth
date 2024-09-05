@@ -472,7 +472,7 @@ async function connectToWhatsApp() {
                 // console.log('Extracted ID:', id);
 
                 if (
-                  text_repply.toLowerCase() !== 'ya' ||
+                  text_repply.toLowerCase() !== 'ya' &&
                   text_repply.toLowerCase() !== 'tidak'
                 ) {
                   await sock.sendMessage(noWa, {
@@ -480,6 +480,8 @@ async function connectToWhatsApp() {
                   });
                 } else {
                   try {
+                    // console.log(quotedMessageSender);
+                    
                     const response = await axios.post(
                       // 'http://127.0.0.1:8000/api/taksasi_verification',
                       'https://management.srs-ssms.com/api/taksasi_verification',
@@ -487,7 +489,7 @@ async function connectToWhatsApp() {
                         id: id,
                         email: 'j',
                         password: 'j',
-                        no_hp: quotedMessageSender,
+                        no_hp: message.key.participant,
                         answer: text_repply,
                       }
                     );
