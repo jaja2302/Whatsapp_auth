@@ -74911,3 +74911,60 @@ Error: Connection Closed
     headers: {}
   }
 }
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32
+    at runNextTicks (node:internal/process/task_queues:60:5)
+    at process.processTimers (node:internal/timers:511:9) {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at sendPassiveIq (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:326:37)\n' +
+      '    at WebSocketClient.<anonymous> (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:493:15)\n' +
+      '    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+nodata
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Connection reset. Retrying up to 5 times...
+Retry successful
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at getUSyncDevices (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:166:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:357:53\n' +
+      '    at Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n' +
+      '    at relayMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:279:30)\n' +
+      '    at Object.sendMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:652:23)\n' +
+      '    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n' +
+      '    at async C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\helper.js:3124:13'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
