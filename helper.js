@@ -916,7 +916,7 @@ async function triggerStatusPCPengawasanOperatorAI(sock) {
       }
 
       // Check if the current time is greater than threeHoursLater
-      if (now > threeHoursLater) {
+      if (now > threeHoursLater && parseInt(item.reset_pc_mati)>=0) {
         const formattedDate = formatDateIndonesian(lastOnline);
 
         let message = `*Last Online PC dari Machine id ${item.id} mati sejak ${formattedDate}*:\n`;
