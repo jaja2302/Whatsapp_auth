@@ -74968,3 +74968,47 @@ Error: Timed Out
     headers: {}
   }
 }
+data kosong
+Server Berjalan pada Port : 8000
+opened connection
+Error status: 404
+Error data: { message: 'Tidak ada permintaan yang dapat di proses saat ini.' }
+*Selamat Pagi*:
+Yth. Pelanggan Setia Lab CBI
+Progress Sampel anda telah kami terima dengan:
+*No. Surat* : 026/RCH-SSS/SRS-Soil/IX/2024
+*Departemen* : Soil
+*Jenis Sampel* : Tanah
+*Jumlah Sampel* : 12
+*Progress saat ini* : Penerimaan dan Registrasi Sampel
+Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com
+Dengan kode tracking  *NIZ6HHW8*
+Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.
+
+Error status: 404
+Error data: { message: 'Tidak ada permintaan yang dapat di proses saat ini.' }
+pesan lain
+Error status: 404
+Error data: { message: 'Tidak ada permintaan yang dapat di proses saat ini.' }
+Error status: 404
+Error data: { message: 'Tidak ada permintaan yang dapat di proses saat ini.' }
+data kosong
+nodata
+Server Berjalan pada Port : 8000
+opened connection
+*Selamat Pagi*:
+Yth. Pelanggan Setia Lab CBI
+Progress Sampel anda telah kami terima dengan:
+*No. Surat* : 045/RCH-SSS/SRS-Soil/IX/2024
+*Departemen* : Soil
+*Jenis Sampel* : Daun
+*Jumlah Sampel* : 12
+*Progress saat ini* : Penerimaan dan Registrasi Sampel
+Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com
+Dengan kode tracking  *KTXWV6DD*
+Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.
+
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Server Berjalan pada Port : 8000
+opened connection

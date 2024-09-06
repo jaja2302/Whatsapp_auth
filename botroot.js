@@ -882,7 +882,7 @@ async function connectToWhatsApp() {
                   {
                     email: 'j',
                     password: 'j',
-                    no_hp: message.key.participant,
+                    no_hp: noWa,
                     jawaban: 'ya',
                   }
                 );
@@ -926,7 +926,7 @@ async function connectToWhatsApp() {
                   {
                     email: 'j',
                     password: 'j',
-                    no_hp: message.key.participant,
+                    no_hp: noWa,
                     jawaban: 'tidak',
                   }
                 );
