@@ -52,6 +52,7 @@ const {
   Report_group_izinkebun,
   Generateandsendtaksasi,
 } = require('./helper.js');
+
 // enable files upload
 app.use(
   fileUpload({
@@ -481,7 +482,7 @@ async function connectToWhatsApp() {
                 } else {
                   try {
                     // console.log(quotedMessageSender);
-                    
+
                     const response = await axios.post(
                       // 'http://127.0.0.1:8000/api/taksasi_verification',
                       'https://management.srs-ssms.com/api/taksasi_verification',
@@ -531,293 +532,295 @@ async function connectToWhatsApp() {
               console.log('The caption does not contain the required text.');
             }
           } else {
-            console.log('Bukan document');
+            // console.log('Bukan document');
           }
         }
 
         if (message.key.remoteJid.endsWith('@g.us')) {
-          if (lowerCaseMessage && lowerCaseMessage.startsWith('!tarik')) {
-            const estateCommand = lowerCaseMessage.replace('!tarik', '').trim();
-            const estate = estateCommand.toUpperCase(); // Convert to uppercase for consistency
-            // Check if the estate name is valid
-            if (!estate) {
-              await sock.sendMessage(
-                noWa,
-                {
-                  text: 'Mohon masukkan nama estate setelah perintah !tarik dilanjutkan dengan singkatan nama Estate.\n-Contoh !tarikkne = Untuk Estate KNE dan seterusnya',
-                },
-                { quoted: message }
-              );
-              return;
-            }
-            const apiUrl = 'https://qc-apps.srs-ssms.com/api/getdatacron';
-            try {
-              const response = await axios.get(apiUrl);
-              const dataestate = response.data;
-              const matchingTasks = dataestate.filter(
-                (task) => task.estate === estate
-              );
-              if (matchingTasks.length > 0) {
-                const {
-                  estate: estateFromMatchingTask,
-                  group_id,
-                  wilayah: folder,
-                } = matchingTasks[0];
-                await sock.sendMessage(
-                  noWa,
-                  { text: 'Mohon tunggu laporan sedang di proses' },
-                  { quoted: message }
-                );
-                const result = await sendtaksasiest(
-                  estateFromMatchingTask,
-                  group_id,
-                  folder,
-                  sock
-                );
-                console.log(result);
-                if (result === 'success') {
-                  console.log('success');
-                  break;
-                } else {
-                  await sock.sendMessage(
-                    noWa,
-                    {
-                      text: 'Terjadi kesalahan saat mengirim taksasi. Silakan Hubungi Tim D.A.',
-                    },
-                    { quoted: message }
-                  );
-                  break;
-                }
-              } else {
-                await sock.sendMessage(
-                  noWa,
-                  {
-                    text: 'Estate yang anda masukan tidak tersedia di database. Silahkan Ulangi dan Cek Kembali',
-                  },
-                  { quoted: message }
-                );
-                break;
-              }
-            } catch (error) {
-              console.log('Error fetching data:', error.message);
-              break;
-            }
-          } else if (lowerCaseMessage === '!taksasi') {
-            if (!userTalsasiChoice[noWa]) {
-              await handleTaksasi(noWa, lowerCaseMessage, sock);
-            }
-          } else if (userTalsasiChoice[noWa]) {
-            // Continue the ijin process if it has already started
-            await handleTaksasi(noWa, text, sock);
-          } else if (lowerCaseMessage === '!menu') {
-            await sock.sendMessage(
-              noWa,
-              {
-                text: 'Perintah Bot Yang tersedia \n1 = !tarik (Menarik Estate yang di pilih untuk di generate ke dalam grup yang sudah di tentukan) \n2.!getgrup (Menampilkan semua isi list group yang ada) \n3.!cast (melakukan broadcast pesan ke semua grup taksasi) \n4.!taksasi = Menarik Banyak laporar taksasi sekaligus berdasarkan waktu yang di pilih\n5.!laporan izinkebun Menarik laporan izin kebun (Harap gunakan hanya di hari sabtu atau minggu)!',
-              },
-              { quoted: message }
-            );
-            break;
-          } else if (lowerCaseMessage === '!getgrup') {
-            let getGroups = await sock.groupFetchAllParticipating();
-            let groups = Object.values(await sock.groupFetchAllParticipating());
-            let datagrup = []; // Initialize an empty array to store group information
-            for (let group of groups) {
-              datagrup.push(
-                `id_group: ${group.id} || Nama Group: ${group.subject}`
-              );
-            }
-            await sock.sendMessage(
-              noWa,
-              { text: `List ${datagrup.join('\n')}` },
-              { quoted: message }
-            );
-            break;
-          } else if (lowerCaseMessage === '!cast') {
-            // Send a message asking for the broadcast message
-            await sock.sendMessage(
-              noWa,
-              {
-                text: 'Masukan Kata kata yang ingin di broadcast ke dalam group?',
-              },
-              { quoted: message }
-            );
-            // Define a function to handle the response
-            async function handleBroadcast({ messages: responseMessages }) {
-              let messageSent = false; // Flag to track if the message has been sent
-              for (const responseMessage of responseMessages) {
-                if (
-                  !responseMessage.key.fromMe &&
-                  responseMessage.key.remoteJid === noWa
-                ) {
-                  // Get the broadcast message from the user's response
-                  const broadcastMessage = responseMessage.message.conversation;
-                  // Get the participating groups
-                  let groups = Object.values(
-                    await sock.groupFetchAllParticipating()
-                  );
-                  let datagrup = groups.map((group) => ({
-                    id_group: group.id,
-                    nama: group.subject,
-                  }));
-                  let groupdont = [
-                    '120363200959267322@g.us',
-                    '120363164661400702@g.us',
-                    '120363214741096436@g.us',
-                    '120363158376501304@g.us',
-                  ];
-                  // Send a message indicating that the broadcast is being processed
-                  await sock.sendMessage(
-                    noWa,
-                    { text: 'Mohon Tunggu, Broadcast Sedang Di Proses' },
-                    { quoted: message }
-                  );
-                  // Set a timer for 60 seconds (1 minute)
-                  const timer = setTimeout(async () => {
-                    if (!messageSent) {
-                      // If the message hasn't been sent within the time limit, notify the user
-                      await sock.sendMessage(
-                        noWa,
-                        { text: 'Waktu habis! Silahkan coba kembali.' },
-                        { quoted: message }
-                      );
-                    }
-                  }, 60000); // 60 seconds in milliseconds
-                  // Send the broadcast message to groups
-                  for (const group of datagrup) {
-                    if (!groupdont.includes(group.id_group)) {
-                      await sock.sendMessage(group.id_group, {
-                        text: broadcastMessage,
-                      });
-                      console.log(group.id_group, { text: broadcastMessage });
-                      messageSent = true; // Update the flag since the message has been sent
-                    }
-                  }
-                  // Clear the timer since the message has been sent or the timer has expired
-                  clearTimeout(timer);
-                  // Send a message indicating that the broadcast message has been sent to all groups
-                  await sock.sendMessage(
-                    noWa,
-                    { text: 'Broadcast Pesan sudah di kirim Kesemua Grup' },
-                    { quoted: message }
-                  );
-                  // Turn off the event listener for handling broadcast messages
-                  sock.ev.off('messages.upsert', handleBroadcast);
-                  break;
-                }
-              }
-            }
-            // Listen for the user's response to the broadcast message
-            sock.ev.on('messages.upsert', handleBroadcast);
-          } else if (lowerCaseMessage === '!format snooze') {
-            await sock.sendMessage(
-              noWa,
-              {
-                text: 'Contoh Option Snooze Bot : \n1).!snooze 27-08-2024 s/d 29-08-2024 (Opsi snooze range tanggal) \n2).!snooze 27-08-2024 (Opsi snooze selama 24 jam) \n3).!snooze 27-08-2024 04:00 - 12.00 (Opsi menyesuaikan range jam)',
-              },
-              { quoted: message }
-            );
-            break;
-          } else if (lowerCaseMessage.includes('!snooze')) {
-            const snoozeContent = lowerCaseMessage
-              .substring('!snooze '.length)
-              .trim();
-            // Regex patterns for different options
-            const dateRangePattern =
-              /^(\d{1,2}-\d{1,2}-\d{4})\s*s\/d\s*(\d{1,2}-\d{1,2}-\d{4})$/;
-            const singleDatePattern = /^(\d{1,2}-\d{1,2}-\d{4})$/;
-            const dateTimeRangePattern =
-              /^(\d{1,2}-\d{1,2}-\d{4})\s(\d{2}[:.]\d{2})\s*-\s*(\d{2}[:.]\d{2})$/;
-            const now = new Date();
-            // Helper function to parse date and time into a Date object
-            const parseDateTime = (date, time = '00:00') => {
-              const [day, month, year] = date.split('-').map(Number);
-              const [hour, minute] = time.split(/[:.]/).map(Number);
-              return new Date(year, month - 1, day, hour, minute);
-            };
-            if (dateRangePattern.test(snoozeContent)) {
-              const matches = snoozeContent.match(dateRangePattern);
-              const startDate = matches[1];
-              const endDate = matches[2];
-              const startDateTime = parseDateTime(startDate);
-              const endDateTime = parseDateTime(endDate);
-              if (startDateTime <= now || endDateTime <= now) {
-                let text =
-                  'Format tanggal dan waktu harus setelah waktu saat ini.';
-                await handleChatSnoozePengawasanOperatorAi(noWa, text, sock);
-              } else {
-                const differenceInMillis = endDateTime - startDateTime;
-                const differenceInHours = differenceInMillis / (1000 * 60 * 60);
-                configSnoozeBotPengawasanOperator[noWa] = {
-                  datetime: `${startDate} s/d ${endDate}`,
-                  hour: differenceInHours,
-                };
-                await handleChatSnoozePengawasanOperatorAi(noWa, text, sock);
-              }
-            } else if (singleDatePattern.test(snoozeContent)) {
-              const matches = snoozeContent.match(singleDatePattern);
-              const singleDate = matches[1];
-              const singleDateTime = parseDateTime(singleDate);
-              if (singleDateTime <= now) {
-                let text =
-                  'Format tanggal dan waktu harus setelah waktu saat ini.';
-                await handleChatSnoozePengawasanOperatorAi(noWa, text, sock);
-              } else {
-                configSnoozeBotPengawasanOperator[noWa] = {
-                  datetime: singleDate,
-                  hour: 24,
-                };
-                await handleChatSnoozePengawasanOperatorAi(noWa, text, sock);
-              }
-            } else if (dateTimeRangePattern.test(snoozeContent)) {
-              const matches = snoozeContent.match(dateTimeRangePattern);
-              const date = matches[1];
-              const startTime = matches[2];
-              const endTime = matches[3];
-              const startDateTime = parseDateTime(date, startTime);
-              const endDateTime = parseDateTime(date, endTime);
-              if (startDateTime <= now) {
-                let text =
-                  'Format tanggal dan waktu harus setelah waktu saat ini.';
-                await handleChatSnoozePengawasanOperatorAi(noWa, text, sock);
-              } else {
-                const differenceInHours =
-                  (endDateTime - startDateTime) / (1000 * 60 * 60);
-                configSnoozeBotPengawasanOperator[noWa] = {
-                  datetime: `${date} ${startTime} - ${endTime}`,
-                  hour: differenceInHours,
-                };
-                await handleChatSnoozePengawasanOperatorAi(noWa, text, sock);
-              }
-            } else {
-              // Invalid format
-              await sock.sendMessage(
-                noWa,
-                {
-                  text: 'Terdapat kesalahan pada input format. Mohon untuk menggunakan format inputan berikut:\n1).!snooze 27-08-2024 s/d 29-08-2024\n2).!snooze 27-08-2024\n3).!snooze 27-08-2024 04:00 - 12:00',
-                },
-                { quoted: message }
-              );
-              return;
-            }
-          } else if (userchoiceSnoozeBotPengawasanOperator[noWa]) {
-            let waUser = message.key.participant;
-            let phoneNumber = waUser.replace(/[^0-9]/g, '');
-            // Replace the first 3 digits (if they are '628') with '08'
-            if (phoneNumber.length >= 3) {
-              phoneNumber = phoneNumber.replace(/^628/, '08');
-            }
-            await handleChatSnoozePengawasanOperatorAi(
-              noWa,
-              text,
-              sock,
-              phoneNumber
-            );
-          } else if (lowerCaseMessage === '!laporan izinkebun') {
-            await Report_group_izinkebun(sock);
-            break;
-          }
+          // if (lowerCaseMessage && lowerCaseMessage.startsWith('!tarik')) {
+          //   const estateCommand = lowerCaseMessage.replace('!tarik', '').trim();
+          //   const estate = estateCommand.toUpperCase(); // Convert to uppercase for consistency
+          //   // Check if the estate name is valid
+          //   if (!estate) {
+          //     await sock.sendMessage(
+          //       noWa,
+          //       {
+          //         text: 'Mohon masukkan nama estate setelah perintah !tarik dilanjutkan dengan singkatan nama Estate.\n-Contoh !tarikkne = Untuk Estate KNE dan seterusnya',
+          //       },
+          //       { quoted: message }
+          //     );
+          //     return;
+          //   }
+          //   const apiUrl = 'https://qc-apps.srs-ssms.com/api/getdatacron';
+          //   try {
+          //     const response = await axios.get(apiUrl);
+          //     const dataestate = response.data;
+          //     const matchingTasks = dataestate.filter(
+          //       (task) => task.estate === estate
+          //     );
+          //     if (matchingTasks.length > 0) {
+          //       const {
+          //         estate: estateFromMatchingTask,
+          //         group_id,
+          //         wilayah: folder,
+          //       } = matchingTasks[0];
+          //       await sock.sendMessage(
+          //         noWa,
+          //         { text: 'Mohon tunggu laporan sedang di proses' },
+          //         { quoted: message }
+          //       );
+          //       const result = await sendtaksasiest(
+          //         estateFromMatchingTask,
+          //         group_id,
+          //         folder,
+          //         sock
+          //       );
+          //       console.log(result);
+          //       if (result === 'success') {
+          //         console.log('success');
+          //         break;
+          //       } else {
+          //         await sock.sendMessage(
+          //           noWa,
+          //           {
+          //             text: 'Terjadi kesalahan saat mengirim taksasi. Silakan Hubungi Tim D.A.',
+          //           },
+          //           { quoted: message }
+          //         );
+          //         break;
+          //       }
+          //     } else {
+          //       await sock.sendMessage(
+          //         noWa,
+          //         {
+          //           text: 'Estate yang anda masukan tidak tersedia di database. Silahkan Ulangi dan Cek Kembali',
+          //         },
+          //         { quoted: message }
+          //       );
+          //       break;
+          //     }
+          //   } catch (error) {
+          //     console.log('Error fetching data:', error.message);
+          //     break;
+          //   }
+          // } else if (lowerCaseMessage === '!taksasi') {
+          //   if (!userTalsasiChoice[noWa]) {
+          //     await handleTaksasi(noWa, lowerCaseMessage, sock);
+          //   }
+          // } else if (userTalsasiChoice[noWa]) {
+          //   // Continue the ijin process if it has already started
+          //   await handleTaksasi(noWa, text, sock);
+          // } else if (lowerCaseMessage === '!menu') {
+          //   await sock.sendMessage(
+          //     noWa,
+          //     {
+          //       text: 'Perintah Bot Yang tersedia \n1 = !tarik (Menarik Estate yang di pilih untuk di generate ke dalam grup yang sudah di tentukan) \n2.!getgrup (Menampilkan semua isi list group yang ada) \n3.!cast (melakukan broadcast pesan ke semua grup taksasi) \n4.!taksasi = Menarik Banyak laporar taksasi sekaligus berdasarkan waktu yang di pilih\n5.!laporan izinkebun Menarik laporan izin kebun (Harap gunakan hanya di hari sabtu atau minggu)!',
+          //     },
+          //     { quoted: message }
+          //   );
+          //   break;
+          // } else if (lowerCaseMessage === '!getgrup') {
+          //   let getGroups = await sock.groupFetchAllParticipating();
+          //   let groups = Object.values(await sock.groupFetchAllParticipating());
+          //   let datagrup = []; // Initialize an empty array to store group information
+          //   for (let group of groups) {
+          //     datagrup.push(
+          //       `id_group: ${group.id} || Nama Group: ${group.subject}`
+          //     );
+          //   }
+          //   await sock.sendMessage(
+          //     noWa,
+          //     { text: `List ${datagrup.join('\n')}` },
+          //     { quoted: message }
+          //   );
+          //   break;
+          // } else if (lowerCaseMessage === '!cast') {
+          //   // Send a message asking for the broadcast message
+          //   await sock.sendMessage(
+          //     noWa,
+          //     {
+          //       text: 'Masukan Kata kata yang ingin di broadcast ke dalam group?',
+          //     },
+          //     { quoted: message }
+          //   );
+          //   // Define a function to handle the response
+          //   async function handleBroadcast({ messages: responseMessages }) {
+          //     let messageSent = false; // Flag to track if the message has been sent
+          //     for (const responseMessage of responseMessages) {
+          //       if (
+          //         !responseMessage.key.fromMe &&
+          //         responseMessage.key.remoteJid === noWa
+          //       ) {
+          //         // Get the broadcast message from the user's response
+          //         const broadcastMessage = responseMessage.message.conversation;
+          //         // Get the participating groups
+          //         let groups = Object.values(
+          //           await sock.groupFetchAllParticipating()
+          //         );
+          //         let datagrup = groups.map((group) => ({
+          //           id_group: group.id,
+          //           nama: group.subject,
+          //         }));
+          //         let groupdont = [
+          //           '120363200959267322@g.us',
+          //           '120363164661400702@g.us',
+          //           '120363214741096436@g.us',
+          //           '120363158376501304@g.us',
+          //         ];
+          //         // Send a message indicating that the broadcast is being processed
+          //         await sock.sendMessage(
+          //           noWa,
+          //           { text: 'Mohon Tunggu, Broadcast Sedang Di Proses' },
+          //           { quoted: message }
+          //         );
+          //         // Set a timer for 60 seconds (1 minute)
+          //         const timer = setTimeout(async () => {
+          //           if (!messageSent) {
+          //             // If the message hasn't been sent within the time limit, notify the user
+          //             await sock.sendMessage(
+          //               noWa,
+          //               { text: 'Waktu habis! Silahkan coba kembali.' },
+          //               { quoted: message }
+          //             );
+          //           }
+          //         }, 60000); // 60 seconds in milliseconds
+          //         // Send the broadcast message to groups
+          //         for (const group of datagrup) {
+          //           if (!groupdont.includes(group.id_group)) {
+          //             await sock.sendMessage(group.id_group, {
+          //               text: broadcastMessage,
+          //             });
+          //             console.log(group.id_group, { text: broadcastMessage });
+          //             messageSent = true; // Update the flag since the message has been sent
+          //           }
+          //         }
+          //         // Clear the timer since the message has been sent or the timer has expired
+          //         clearTimeout(timer);
+          //         // Send a message indicating that the broadcast message has been sent to all groups
+          //         await sock.sendMessage(
+          //           noWa,
+          //           { text: 'Broadcast Pesan sudah di kirim Kesemua Grup' },
+          //           { quoted: message }
+          //         );
+          //         // Turn off the event listener for handling broadcast messages
+          //         sock.ev.off('messages.upsert', handleBroadcast);
+          //         break;
+          //       }
+          //     }
+          //   }
+          //   // Listen for the user's response to the broadcast message
+          //   sock.ev.on('messages.upsert', handleBroadcast);
+          // } else if (lowerCaseMessage === '!format snooze') {
+          //   await sock.sendMessage(
+          //     noWa,
+          //     {
+          //       text: 'Contoh Option Snooze Bot : \n1).!snooze 27-08-2024 s/d 29-08-2024 (Opsi snooze range tanggal) \n2).!snooze 27-08-2024 (Opsi snooze selama 24 jam) \n3).!snooze 27-08-2024 04:00 - 12.00 (Opsi menyesuaikan range jam)',
+          //     },
+          //     { quoted: message }
+          //   );
+          //   break;
+          // } else if (lowerCaseMessage.includes('!snooze')) {
+          //   const snoozeContent = lowerCaseMessage
+          //     .substring('!snooze '.length)
+          //     .trim();
+          //   // Regex patterns for different options
+          //   const dateRangePattern =
+          //     /^(\d{1,2}-\d{1,2}-\d{4})\s*s\/d\s*(\d{1,2}-\d{1,2}-\d{4})$/;
+          //   const singleDatePattern = /^(\d{1,2}-\d{1,2}-\d{4})$/;
+          //   const dateTimeRangePattern =
+          //     /^(\d{1,2}-\d{1,2}-\d{4})\s(\d{2}[:.]\d{2})\s*-\s*(\d{2}[:.]\d{2})$/;
+          //   const now = new Date();
+          //   // Helper function to parse date and time into a Date object
+          //   const parseDateTime = (date, time = '00:00') => {
+          //     const [day, month, year] = date.split('-').map(Number);
+          //     const [hour, minute] = time.split(/[:.]/).map(Number);
+          //     return new Date(year, month - 1, day, hour, minute);
+          //   };
+          //   if (dateRangePattern.test(snoozeContent)) {
+          //     const matches = snoozeContent.match(dateRangePattern);
+          //     const startDate = matches[1];
+          //     const endDate = matches[2];
+          //     const startDateTime = parseDateTime(startDate);
+          //     const endDateTime = parseDateTime(endDate);
+          //     if (startDateTime <= now || endDateTime <= now) {
+          //       let text =
+          //         'Format tanggal dan waktu harus setelah waktu saat ini.';
+          //       await handleChatSnoozePengawasanOperatorAi(noWa, text, sock);
+          //     } else {
+          //       const differenceInMillis = endDateTime - startDateTime;
+          //       const differenceInHours = differenceInMillis / (1000 * 60 * 60);
+          //       configSnoozeBotPengawasanOperator[noWa] = {
+          //         datetime: `${startDate} s/d ${endDate}`,
+          //         hour: differenceInHours,
+          //       };
+          //       await handleChatSnoozePengawasanOperatorAi(noWa, text, sock);
+          //     }
+          //   } else if (singleDatePattern.test(snoozeContent)) {
+          //     const matches = snoozeContent.match(singleDatePattern);
+          //     const singleDate = matches[1];
+          //     const singleDateTime = parseDateTime(singleDate);
+          //     if (singleDateTime <= now) {
+          //       let text =
+          //         'Format tanggal dan waktu harus setelah waktu saat ini.';
+          //       await handleChatSnoozePengawasanOperatorAi(noWa, text, sock);
+          //     } else {
+          //       configSnoozeBotPengawasanOperator[noWa] = {
+          //         datetime: singleDate,
+          //         hour: 24,
+          //       };
+          //       await handleChatSnoozePengawasanOperatorAi(noWa, text, sock);
+          //     }
+          //   } else if (dateTimeRangePattern.test(snoozeContent)) {
+          //     const matches = snoozeContent.match(dateTimeRangePattern);
+          //     const date = matches[1];
+          //     const startTime = matches[2];
+          //     const endTime = matches[3];
+          //     const startDateTime = parseDateTime(date, startTime);
+          //     const endDateTime = parseDateTime(date, endTime);
+          //     if (startDateTime <= now) {
+          //       let text =
+          //         'Format tanggal dan waktu harus setelah waktu saat ini.';
+          //       await handleChatSnoozePengawasanOperatorAi(noWa, text, sock);
+          //     } else {
+          //       const differenceInHours =
+          //         (endDateTime - startDateTime) / (1000 * 60 * 60);
+          //       configSnoozeBotPengawasanOperator[noWa] = {
+          //         datetime: `${date} ${startTime} - ${endTime}`,
+          //         hour: differenceInHours,
+          //       };
+          //       await handleChatSnoozePengawasanOperatorAi(noWa, text, sock);
+          //     }
+          //   } else {
+          //     // Invalid format
+          //     await sock.sendMessage(
+          //       noWa,
+          //       {
+          //         text: 'Terdapat kesalahan pada input format. Mohon untuk menggunakan format inputan berikut:\n1).!snooze 27-08-2024 s/d 29-08-2024\n2).!snooze 27-08-2024\n3).!snooze 27-08-2024 04:00 - 12:00',
+          //       },
+          //       { quoted: message }
+          //     );
+          //     return;
+          //   }
+          // } else if (userchoiceSnoozeBotPengawasanOperator[noWa]) {
+          //   let waUser = message.key.participant;
+          //   let phoneNumber = waUser.replace(/[^0-9]/g, '');
+          //   // Replace the first 3 digits (if they are '628') with '08'
+          //   if (phoneNumber.length >= 3) {
+          //     phoneNumber = phoneNumber.replace(/^628/, '08');
+          //   }
+          //   await handleChatSnoozePengawasanOperatorAi(
+          //     noWa,
+          //     text,
+          //     sock,
+          //     phoneNumber
+          //   );
+          // } else if (lowerCaseMessage === '!laporan izinkebun') {
+          //   await Report_group_izinkebun(sock);
+          //   break;
+          // }
         } else {
+          // console.log(lowerCaseMessage);
+
           if (lowerCaseMessage === '!menu') {
             await sock.sendMessage(
               noWa,
@@ -869,9 +872,16 @@ async function connectToWhatsApp() {
             // Continue the input process if it has already started
             await handleIotInput(noWa, text, sock);
           } else {
-            // Handle other messages
-            console.log('message comming to number');
-            // await handleMessage(noWa, lowerCaseMessage, messages);
+            if (lowerCaseMessage === 'ya') {
+            } else if (lowerCaseMessage === 'tidak') {
+              await sock.sendMessage(
+                noWa,
+                { text: 'tidak opo?' },
+                { quoted: message }
+              );
+            } else {
+              console.log('pesan lain');
+            }
           }
         }
       }
