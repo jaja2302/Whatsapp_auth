@@ -2615,7 +2615,7 @@ async function Report_group_izinkebun(sock) {
         };
 
         // Send the PDF as a document via WhatsApp
-        await sock.sendMessage(idgroup_testing, messageOptions);
+        await sock.sendMessage(idgroup_da, messageOptions);
         console.log('PDF sent successfully!');
       } catch (sendError) {
         console.error('Error sending PDF:', sendError.message);
@@ -2624,31 +2624,31 @@ async function Report_group_izinkebun(sock) {
       console.log('PDF not found in the API response.');
     }
 
-    try {
-      // Update the status for all IDs at once
-      const updateResponse = await axios.post(
-        // 'http://127.0.0.1:8000/api/update_status_report_group_izin',
-        'https://management.srs-ssms.com/api/update_status_report_group_izin',
-        {
-          id: data.id, // Pass the array of IDs directly
-          email: 'j',
-          password: 'j',
-        }
-      );
+    // try {
+    //   // Update the status for all IDs at once
+    //   const updateResponse = await axios.post(
+    //     // 'http://127.0.0.1:8000/api/update_status_report_group_izin',
+    //     'https://management.srs-ssms.com/api/update_status_report_group_izin',
+    //     {
+    //       id: data.id, // Pass the array of IDs directly
+    //       email: 'j',
+    //       password: 'j',
+    //     }
+    //   );
 
-      // If status update is successful, send a confirmation message
-      if (updateResponse.status === 200) {
-        await sock.sendMessage(idgroup_da, { text: data.message });
-        console.log('Status updated and message sent successfully!');
-      } else {
-        console.error(
-          'Failed to update status, response status:',
-          updateResponse.status
-        );
-      }
-    } catch (updateError) {
-      console.error('Error updating status:', updateError.message);
-    }
+    //   // If status update is successful, send a confirmation message
+    //   if (updateResponse.status === 200) {
+    //     // await sock.sendMessage(idgroup_da, { text: data.message });
+    //     console.log('Status updated and message sent successfully!');
+    //   } else {
+    //     console.error(
+    //       'Failed to update status, response status:',
+    //       updateResponse.status
+    //     );
+    //   }
+    // } catch (updateError) {
+    //   console.error('Error updating status:', updateError.message);
+    // }
 
     // Return the message if needed
     return data.message;

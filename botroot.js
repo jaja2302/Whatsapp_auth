@@ -888,10 +888,24 @@ async function connectToWhatsApp() {
                 );
 
                 let responses = response.data;
-                await sock.sendMessage(noWa, {
-                  text: `${responses.message}`,
-                });
+                if (Array.isArray(responses.messages)) {
+                  // Join the messages into a single string or handle them individually
+                  const allMessages = responses.messages.join('\n'); // You can also change the separator as needed
+                  
+                  console.log(allMessages); // Logs the joined messages
+                
+                  await sock.sendMessage(noWa, {
+                    text: `${allMessages}`,  // Send the combined message
+                  });
+                } else {
+                  // Handle the case where `messages` is not an array
+                  console.log(`ini test: ${responses.message}`);
+                  await sock.sendMessage(noWa, {
+                    text: `${responses.message}`,
+                  });
+                }
               } catch (error) {
+                console.log(error);
                 // Check if there is a response from the server
                 if (error.response) {
                   // Server responded with a status code other than 2xx
@@ -932,10 +946,25 @@ async function connectToWhatsApp() {
                 );
 
                 let responses = response.data;
-                await sock.sendMessage(noWa, {
-                  text: `${responses.message}`,
-                });
+                if (Array.isArray(responses.messages)) {
+                  // Join the messages into a single string or handle them individually
+                  const allMessages = responses.messages.join('\n'); // You can also change the separator as needed
+                  
+                  console.log(allMessages); // Logs the joined messages
+                
+                  await sock.sendMessage(noWa, {
+                    text: `${allMessages}`,  // Send the combined message
+                  });
+                } else {
+                  // Handle the case where `messages` is not an array
+                  console.log(`ini test: ${responses.message}`);
+                  await sock.sendMessage(noWa, {
+                    text: `${responses.message}`,
+                  });
+                }
               } catch (error) {
+                console.log(error);
+                
                 // Check if there is a response from the server
                 if (error.response) {
                   // Server responded with a status code other than 2xx
