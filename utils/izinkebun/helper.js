@@ -1001,7 +1001,7 @@ async function getNotifications(sock) {
 }
 
 const runfunction = async (sock) => {
-  channel.bind('izinkebunnotifa', async (itemdata) => {
+  channel.bind('izinkebunnotif', async (itemdata) => {
     try {
       if (!itemdata || !itemdata.data) {
         console.log('itemdata is undefined or missing data property.');
@@ -1013,7 +1013,7 @@ const runfunction = async (sock) => {
       errormsg += `*Nama* : ${data.nama_user}\n`;
       errormsg += `Error mengirim ke nomor ${data.nama_atasan_1}\n`;
       if (data.type === 'send_atasan_satu') {
-        const base_url = 'http://erpda.test/api/izin';
+        const base_url = 'https://management.srs-ssms.com/api/izin';
         const url_ya = await shortenURL(
           `${base_url}/${data.id}/ya/${data.uuid}`
         );
@@ -1036,7 +1036,7 @@ const runfunction = async (sock) => {
           text: message,
         });
       } else if (data.type === 'send_atasan_dua') {
-        const base_url = 'http://erpda.test/api/izin';
+        const base_url = 'https://management.srs-ssms.com/api/izin';
         const url_ya = await shortenURL(
           `${base_url}/${data.id}/ya/${data.uuid}`
         );
@@ -1160,7 +1160,7 @@ const runfunction = async (sock) => {
           text: message,
         });
       } else if (data.type === 'send_atasan_tiga') {
-        const base_url = 'http://erpda.test/api/izin';
+        const base_url = 'https://management.srs-ssms.com/api/izin';
         const url_ya = await shortenURL(
           `${base_url}/${data.id}/ya/${data.uuid}`
         );
