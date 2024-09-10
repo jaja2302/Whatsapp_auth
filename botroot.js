@@ -14,6 +14,7 @@ const {
   MessageRetryMap,
   useMultiFileAuthState,
   msgRetryCounterMap,
+  proto,
 } = require('@whiskeysockets/baileys');
 
 const log = (pino = require('pino'));
@@ -30,28 +31,17 @@ const bodyParser = require('body-parser');
 const app = require('express')();
 const axios = require('axios');
 const {
-  userchoice,
   userIotChoice,
   configSnoozeBotPengawasanOperator,
   userTalsasiChoice,
   userchoiceSnoozeBotPengawasanOperator,
 } = require('./state.js');
+const { setupCronJobs } = require('./helper.js');
 const {
-  sendtaksasiest,
-  setupCronJobs,
   handleijinmsg,
-  getNotifications,
-  handleIotInput,
-  handleTaksasi,
-  handleChatSnoozePengawasanOperatorAi,
-  restartbot,
-  get_mill_data,
-  botmanagementgudang,
-  handleBotDailyPengawasanOperatorAI,
-  triggerStatusPCPengawasanOperatorAI,
-  Report_group_izinkebun,
-  Generateandsendtaksasi,
-} = require('./helper.js');
+  runfunction,
+  userchoice,
+} = require('./utils/izinkebun/helper.js');
 
 // enable files upload
 app.use(
@@ -193,9 +183,7 @@ async function connectToWhatsApp() {
           const text_repply = message.message.extendedTextMessage.text;
           const quotedMessageSender = contextInfo.participant;
           const respon_atasan = text_repply;
-
           // console.log(quotedMessageSender);
-
           if (
             contextInfo.quotedMessage &&
             contextInfo.quotedMessage.conversation
@@ -223,15 +211,15 @@ async function connectToWhatsApp() {
                 .substring(namaStartIndex, namaEndIndex)
                 .trim();
               if (
-                respon_atasan.toLowerCase() !== 'ya' &&
-                respon_atasan.toLowerCase() !== 'tidak'
+                respon_atasan.toLowerCase() !== 'ya setuju' &&
+                respon_atasan.toLowerCase() !== 'tidak setuju'
               ) {
                 await sock.sendMessage(
                   noWa,
-                  { text: 'Harap hanya balas ya atau tidak' },
+                  { text: 'Harap hanya balas ya setuju atau tidak setuju' },
                   { quoted: message }
                 );
-              } else if (respon_atasan.toLowerCase() === 'ya') {
+              } else if (respon_atasan.toLowerCase() === 'ya setuju') {
                 try {
                   // const response = await axios.post('http://qc-apps2.test/api/updatenotifijin', {
                   const response = await axios.post(
@@ -256,7 +244,7 @@ async function connectToWhatsApp() {
                 } catch (error) {
                   console.log('Error approving:', error);
                 }
-              } else if (respon_atasan.toLowerCase() === 'tidak') {
+              } else if (respon_atasan.toLowerCase() === 'tidak setuju') {
                 let message = `*Alasan izin di tolak?*:\n`;
                 message += `*ID Pemohon* : ${id}/${idAtasan}\n`;
                 message += `*Nama* : ${nama}\n`;
@@ -385,13 +373,10 @@ async function connectToWhatsApp() {
             ) {
               // Extract the Doc ID
               const docIdMatch = conversation.match(/\*Doc ID\* : (\d+\/\d+)/);
-
               if (docIdMatch) {
                 const docId = docIdMatch[1];
                 const [id, user_id] = docId.split('/');
-
                 // console.log(respon_atasan.toLowerCase());
-
                 if (respon_atasan.toLowerCase() === 'ya') {
                   try {
                     const response = await axios.post(
@@ -458,7 +443,6 @@ async function connectToWhatsApp() {
               contextInfo.quotedMessage.documentWithCaptionMessage.message;
             const caption = document_type.documentMessage.caption;
             // console.log(contextInfo);
-
             if (
               caption &&
               caption.includes(
@@ -467,11 +451,9 @@ async function connectToWhatsApp() {
             ) {
               // Regular expression to match 'ID : 34'
               const idMatch = caption.match(/ID\s*:\s*(\d+)/);
-
               if (idMatch && idMatch[1]) {
                 const id = idMatch[1];
                 // console.log('Extracted ID:', id);
-
                 if (
                   text_repply.toLowerCase() !== 'ya' &&
                   text_repply.toLowerCase() !== 'tidak'
@@ -482,7 +464,6 @@ async function connectToWhatsApp() {
                 } else {
                   try {
                     // console.log(quotedMessageSender);
-
                     const response = await axios.post(
                       // 'http://127.0.0.1:8000/api/taksasi_verification',
                       'https://management.srs-ssms.com/api/taksasi_verification',
@@ -494,7 +475,6 @@ async function connectToWhatsApp() {
                         answer: text_repply,
                       }
                     );
-
                     let responses = response.data;
                     await sock.sendMessage(noWa, {
                       text: `${responses.message}`,
@@ -505,7 +485,6 @@ async function connectToWhatsApp() {
                       // Server responded with a status code other than 2xx
                       console.log('Error status:', error.response.status);
                       console.log('Error data:', error.response.data);
-
                       // Send the error message to the user
                       await sock.sendMessage(noWa, {
                         text: `${error.response.data.message || 'Something went wrong'}`,
@@ -535,7 +514,6 @@ async function connectToWhatsApp() {
             // console.log('Bukan document');
           }
         }
-
         if (message.key.remoteJid.endsWith('@g.us')) {
           if (lowerCaseMessage && lowerCaseMessage.startsWith('!tarik')) {
             const estateCommand = lowerCaseMessage.replace('!tarik', '').trim();
@@ -820,7 +798,6 @@ async function connectToWhatsApp() {
           }
         } else {
           // console.log(lowerCaseMessage);
-
           if (lowerCaseMessage === '!menu') {
             await sock.sendMessage(
               noWa,
@@ -873,9 +850,16 @@ async function connectToWhatsApp() {
             await handleIotInput(noWa, text, sock);
           } else {
             if (lowerCaseMessage === 'ya') {
+              await sock.sendMessage(noWa, {
+                text: `Harap hanya balas *ya semua* untuk melanjutkan.`,
+              });
+            } else if (lowerCaseMessage === 'tidak semua') {
+              await sock.sendMessage(noWa, {
+                text: `Harap hanya balas  *tidak setuju* untuk melanjutkan.`,
+              });
+            } else if (lowerCaseMessage === 'ya semua') {
               try {
                 // console.log(quotedMessageSender);
-
                 const response = await axios.post(
                   // 'http://127.0.0.1:8000/api/getizinverifinew',
                   'https://management.srs-ssms.com/api/getizinverifinew',
@@ -886,16 +870,13 @@ async function connectToWhatsApp() {
                     jawaban: 'ya',
                   }
                 );
-
                 let responses = response.data;
                 if (Array.isArray(responses.messages)) {
                   // Join the messages into a single string or handle them individually
                   const allMessages = responses.messages.join('\n'); // You can also change the separator as needed
-                  
                   console.log(allMessages); // Logs the joined messages
-                
                   await sock.sendMessage(noWa, {
-                    text: `${allMessages}`,  // Send the combined message
+                    text: `${allMessages}`, // Send the combined message
                   });
                 } else {
                   // Handle the case where `messages` is not an array
@@ -911,7 +892,6 @@ async function connectToWhatsApp() {
                   // Server responded with a status code other than 2xx
                   console.log('Error status:', error.response.status);
                   console.log('Error data:', error.response.data);
-
                   // Send the error message to the user
                   await sock.sendMessage(noWa, {
                     text: `${error.response.data.message || 'Something went wrong'}`,
@@ -930,10 +910,9 @@ async function connectToWhatsApp() {
                   });
                 }
               }
-            } else if (lowerCaseMessage === 'tidak') {
+            } else if (lowerCaseMessage === 'tidak semua') {
               try {
                 // console.log(quotedMessageSender);
-
                 const response = await axios.post(
                   // 'http://127.0.0.1:8000/api/getizinverifinew',
                   'https://management.srs-ssms.com/api/getizinverifinew',
@@ -944,16 +923,13 @@ async function connectToWhatsApp() {
                     jawaban: 'tidak',
                   }
                 );
-
                 let responses = response.data;
                 if (Array.isArray(responses.messages)) {
                   // Join the messages into a single string or handle them individually
                   const allMessages = responses.messages.join('\n'); // You can also change the separator as needed
-                  
                   console.log(allMessages); // Logs the joined messages
-                
                   await sock.sendMessage(noWa, {
-                    text: `${allMessages}`,  // Send the combined message
+                    text: `${allMessages}`, // Send the combined message
                   });
                 } else {
                   // Handle the case where `messages` is not an array
@@ -964,13 +940,11 @@ async function connectToWhatsApp() {
                 }
               } catch (error) {
                 console.log(error);
-                
                 // Check if there is a response from the server
                 if (error.response) {
                   // Server responded with a status code other than 2xx
                   console.log('Error status:', error.response.status);
                   console.log('Error data:', error.response.data);
-
                   // Send the error message to the user
                   await sock.sendMessage(noWa, {
                     text: `${error.response.data.message || 'Something went wrong'}`,
@@ -999,6 +973,7 @@ async function connectToWhatsApp() {
   });
 
   setupCronJobs(sock);
+  runfunction(sock);
 }
 
 io.on('connection', async (socket) => {
@@ -1040,10 +1015,18 @@ const updateQR = (data) => {
       break;
   }
 };
+const sendButtonMessage = async (jid) => {
+  let message = 'Hello, this is a button message!\n';
+  message += 'Setuju: https://management.srs-ssms.com/dashboard\n';
+  message += 'Tidak: https://management.srs-ssms.com/dashboard';
+
+  await sock.sendMessage(jid, {
+    text: message,
+  });
+};
 
 app.get('/testing', async (req, res) => {
   try {
-    await Generateandsendtaksasi(sock);
     // da
     // console.log(sock.user);
     // console.log(result);

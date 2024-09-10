@@ -5,7 +5,9 @@ const fs = require('fs');
 const http = require('http');
 const https = require('https');
 const { DateTime } = require('luxon');
-const Pusher = require('pusher-js/node');
+
+const { channel, channelPython } = require('./utils/pusher');
+
 const {
   userchoice,
   botpromt,
@@ -916,7 +918,7 @@ async function triggerStatusPCPengawasanOperatorAI(sock) {
       }
 
       // Check if the current time is greater than threeHoursLater
-      if (now > threeHoursLater && parseInt(item.reset_pc_mati)>=0) {
+      if (now > threeHoursLater && parseInt(item.reset_pc_mati) >= 0) {
         const formattedDate = formatDateIndonesian(lastOnline);
 
         let message = `*Last Online PC dari Machine id ${item.id} mati sejak ${formattedDate}*:\n`;
@@ -1034,47 +1036,6 @@ async function get_mill_data(sock) {
       const result = data.data;
 
       for (const itemdata of result) {
-        // for (const fileName of itemdata.foto) {
-        //     const trimmedFileName = fileName.trim(); // Ensure no leading/trailing spaces
-        //     const fileUrl = `https://mobilepro.srs-ssms.com/storage/app/public/qc/grading_mill/${trimmedFileName}`;
-        //     const destinationPath = path.join(__dirname, 'uploads', trimmedFileName);
-
-        //     // Download the file
-        //     await new Promise((resolve, reject) => {
-        //         const file = fs.createWriteStream(destinationPath);
-        //         https.get(fileUrl, function(response) {
-        //             response.pipe(file);
-        //             file.on('finish', function() {
-        //                 file.close(() => {
-        //                     console.log('File downloaded successfully:', destinationPath);
-        //                     resolve(); // Resolve the promise after the file is downloaded
-        //                 });
-        //             });
-        //         }).on('error', function(err) {
-        //             fs.unlink(destinationPath, () => {}); // Delete the file if there is an error
-        //             console.error('Error downloading the file:', err);
-        //             reject(err); // Reject the promise if there is an error
-        //         });
-        //     });
-
-        //     const messageOptions = {
-        //         image: {
-        //             url: destinationPath
-        //         },
-        //     };
-
-        //     await sock.sendMessage(noWa_grading, messageOptions);
-
-        //     // Remove the image file after sending
-        //     fs.unlink(destinationPath, (err) => {
-        //         if (err) {
-        //             console.error('Error unlinking the file:', err);
-        //         } else {
-        //             console.log('File removed successfully:', destinationPath);
-        //         }
-        //     });
-        // }
-        // Update the data mill after processing each itemdata
         await axios.post('https://qc-apps.srs-ssms.com/api/updatedatamill', {
           id: itemdata.id,
         });
@@ -1164,999 +1125,6 @@ async function get_mill_data(sock) {
     console.error('Error fetching data:', error);
   }
 }
-
-// end function
-
-// function surat izin bot
-
-async function getuserinfo(user) {
-  try {
-    // Fetch data from the API using the provided name
-    const response = await axios.post(
-      'https://qc-apps.srs-ssms.com/api/getuserinfo',
-      {
-        nama: user,
-      }
-    );
-    // const response = await axios.post('https://qc-apps.srs-ssms.com/api/getuserinfo', {
-    //     nama: user
-    // });
-
-    return response.data.data; // Assuming your API response structure has a 'data' field
-  } catch (error) {
-    // Check if the error response is due to a 404 status code
-    if (error.response && error.response.status === 404) {
-      return { message: 'Nama User tidak ditemukan' };
-    } else {
-      console.error('Error fetching data:', error);
-      // throw new Error('Error fetching data from API');
-    }
-  }
-}
-async function checkatasan(nama_atasansatu) {
-  try {
-    const response = await axios.post(
-      'https://qc-apps.srs-ssms.com/api/getnamaatasan',
-      {
-        nama: nama_atasansatu,
-      }
-    );
-    // const response = await axios.post('https://qc-apps.srs-ssms.com/api/getnamaatasan', {
-    //     nama: nama_atasansatu
-    // });
-
-    return response.data.data; // Assuming your API response structure has a 'data' field
-  } catch (error) {
-    // Check if the error response is due to a 404 status code
-    if (error.response && error.response.status === 404) {
-      return { message: 'Nama Atasan tidak ditemukan' };
-    } else {
-      console.error('Error fetching data:', error);
-      // throw new Error('Error fetching data from API');
-    }
-  }
-}
-
-const handleTimeout = (noWa, sock) => {
-  if (timeoutHandles[noWa]) {
-    clearTimeout(timeoutHandles[noWa]);
-  }
-
-  timeoutHandles[noWa] = setTimeout(
-    async () => {
-      console.log(`Timeout triggered for ${noWa}`);
-      await sock.sendMessage(noWa, {
-        text: 'Waktu Anda telah habis. Silakan mulai kembali dengan mengetikkan !izin.',
-      });
-      delete userchoice[noWa];
-      delete botpromt[noWa];
-      delete timeoutHandles[noWa];
-    },
-    5 * 60 * 1000
-  );
-
-  // console.log(`Timeout set for ${noWa}`);
-};
-
-const handleijinmsg = async (noWa, text, sock) => {
-  if (!userchoice[noWa]) {
-    userchoice[noWa] = 'name';
-    botpromt[noWa] = { attempts: 0 };
-    await sock.sendMessage(noWa, {
-      text: 'Anda dapat membatalkan kapan saja permintaan izin dengan menjawab batal pada pertanyaan.',
-    });
-
-    await sock.sendMessage(noWa, {
-      text: 'Silakan masukkan *nama lengkap anda* atau *nama depan Anda* untuk pencarian di database.Balas batal untuk membatalkan.',
-    });
-
-    handleTimeout(noWa, sock);
-  } else {
-    handleTimeout(noWa, sock); // Reset timeout with every interaction
-    const step = userchoice[noWa];
-
-    if (step === 'name') {
-      if (text.toLowerCase() === 'batal') {
-        await sock.sendMessage(noWa, {
-          text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
-        });
-        delete userchoice[noWa];
-        delete botpromt[noWa];
-        clearTimeout(timeoutHandles[noWa]);
-        delete timeoutHandles[noWa];
-        return;
-      }
-      botpromt[noWa].name = text;
-      userchoice[noWa] = 'check_user';
-      await sock.sendMessage(noWa, {
-        text: 'Memeriksa nama pengguna di database...',
-      });
-
-      const result = await getuserinfo(text);
-
-      // console.log(result);
-      if (result.message && result.message === 'Nama User tidak ditemukan') {
-        botpromt[noWa].attempts += 1;
-        if (botpromt[noWa].attempts >= 3) {
-          await sock.sendMessage(noWa, {
-            text: 'Anda telah mencoba 3 kali. Silakan coba lagi nanti.',
-          });
-          delete userchoice[noWa];
-          delete botpromt[noWa];
-          clearTimeout(timeoutHandles[noWa]);
-          delete timeoutHandles[noWa];
-        } else {
-          await sock.sendMessage(noWa, {
-            text: 'Pengguna tidak ditemukan di database. Harap masukkan ulang:',
-          });
-          userchoice[noWa] = 'name';
-        }
-      } else if (result !== null && result.length > 0) {
-        botpromt[noWa].user_id_option = result;
-
-        let message =
-          'Silakan pilih pengguna dari daftar berikut ,*HARAP MASUKAN ANGKA SAJA DARI PILIHAN TERSEDIA*:\n';
-        result.forEach((item, index) => {
-          message += `${index + 1}. ${item.nama} (${item.departemen})\n`;
-        });
-        message += `${
-          result.length + 1
-        }. Pengguna tidak tersedia dalam daftar.\n`;
-        message += `${result.length + 2}. Coba masukan nama kembali`;
-
-        userchoice[noWa] = 'choose_name';
-        await sock.sendMessage(noWa, { text: message });
-      }
-    } else if (step === 'choose_name') {
-      if (text.toLowerCase() === 'batal') {
-        await sock.sendMessage(noWa, {
-          text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
-        });
-        delete userchoice[noWa];
-        delete botpromt[noWa];
-        clearTimeout(timeoutHandles[noWa]);
-        delete timeoutHandles[noWa];
-        return;
-      }
-      const chosenIndex = parseInt(text) - 1;
-      const options = botpromt[noWa].user_id_option;
-
-      if (
-        isNaN(chosenIndex) ||
-        !options ||
-        chosenIndex < 0 ||
-        chosenIndex >= options.length + 2
-      ) {
-        await sock.sendMessage(noWa, {
-          text: 'Pilihan tidak valid. Silakan masukkan nomor yang sesuai:',
-        });
-        return;
-      }
-
-      if (chosenIndex === options.length) {
-        await sock.sendMessage(noWa, {
-          text: 'Nama tidak tersedia.Silakan hubungi admin Digital Architect untuk penambahan nama.',
-        });
-        delete userchoice[noWa];
-        delete botpromt[noWa];
-        clearTimeout(timeoutHandles[noWa]);
-        delete timeoutHandles[noWa];
-      } else if (chosenIndex === options.length + 1) {
-        userchoice[noWa] = 'name';
-        await sock.sendMessage(noWa, {
-          text: 'Silakan masukkan *nama lengkap anda* atau *nama depan Anda* untuk pencarian di database.',
-        });
-      } else {
-        try {
-          const response = await axios.post(
-            'https://qc-apps.srs-ssms.com/api/formdataizin',
-            {
-              name: options[chosenIndex].id,
-              type: 'check_user',
-              no_hp: noWa,
-            }
-          );
-          let responses = response.data;
-
-          const responseKey = Object.keys(responses)[0];
-
-          // console.log(responses);
-          await sock.sendMessage(noWa, {
-            text: 'Mohon tunggu, server sedang melakukan validasi.',
-          });
-          if (responseKey === 'error_validasi') {
-            await sock.sendMessage(noWa, {
-              text: `Verifikasi data gagal karena: ${responses[responseKey]}`,
-            });
-            await sock.sendMessage(noWa, {
-              text: `Session Berakhir, Silahkan Izin Ulang dengan perintah !izin`,
-            });
-            delete userchoice[noWa];
-            delete botpromt[noWa];
-            clearTimeout(timeoutHandles[noWa]);
-            delete timeoutHandles[noWa];
-          } else {
-            botpromt[noWa].user_nama = options[chosenIndex].nama;
-            botpromt[noWa].user_nama_id = options[chosenIndex].id;
-            userchoice[noWa] = 'location';
-            await sock.sendMessage(noWa, {
-              text: 'Mohon tentukan *LOKASI* yang akan Anda kunjungi untuk pengajuan izin.',
-            });
-          }
-        } catch (error) {
-          if (error.response && error.response.status === 404) {
-            console.log(error);
-
-            await sock.sendMessage(noWa, {
-              text: 'Terjadi error tidak terduga',
-            });
-            delete userchoice[noWa];
-            delete botpromt[noWa];
-            clearTimeout(timeoutHandles[noWa]);
-            delete timeoutHandles[noWa];
-          } else {
-            await sock.sendMessage(noWa, {
-              text: 'Terjadi kesalahan saat mengirim data. Mohon coba lagi.',
-            });
-            delete userchoice[noWa];
-            delete botpromt[noWa];
-            clearTimeout(timeoutHandles[noWa]);
-            delete timeoutHandles[noWa];
-          }
-        }
-      }
-    } else if (step === 'location') {
-      if (text.toLowerCase() === 'batal') {
-        await sock.sendMessage(noWa, {
-          text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
-        });
-        delete userchoice[noWa];
-        delete botpromt[noWa];
-        clearTimeout(timeoutHandles[noWa]);
-        delete timeoutHandles[noWa];
-        return;
-      }
-      botpromt[noWa].location = text;
-      userchoice[noWa] = 'kendaraan';
-      await sock.sendMessage(noWa, {
-        text: 'Harap masukkan jenis kendaraan *UNTUK KELUAR KEBUN*',
-      });
-    } else if (step === 'kendaraan') {
-      if (text.toLowerCase() === 'batal') {
-        await sock.sendMessage(noWa, {
-          text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
-        });
-        delete userchoice[noWa];
-        delete botpromt[noWa];
-        clearTimeout(timeoutHandles[noWa]);
-        delete timeoutHandles[noWa];
-        return;
-      }
-      botpromt[noWa].kendaraan = text;
-      userchoice[noWa] = 'plat_nomor';
-      await sock.sendMessage(noWa, {
-        text: 'Harap masukkan Plat nomor Kendaraan *UNTUK KELUAR KEBUN*, Anda bisa melewatkan pertanyaan ini dengan menjawab *skip*',
-      });
-    } else if (step === 'plat_nomor') {
-      if (text.toLowerCase() === 'batal') {
-        await sock.sendMessage(noWa, {
-          text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
-        });
-        delete userchoice[noWa];
-        delete botpromt[noWa];
-        clearTimeout(timeoutHandles[noWa]);
-        delete timeoutHandles[noWa];
-        return;
-      }
-
-      if (text.toLowerCase() === 'skip') {
-        botpromt[noWa].plat_nomor = text.toLowerCase();
-      } else {
-        botpromt[noWa].plat_nomor = text.toUpperCase();
-      }
-      userchoice[noWa] = 'date';
-      await sock.sendMessage(noWa, {
-        text: 'Harap masukkan tanggal *UNTUK KELUAR KEBUN* dengan format (DD-MM-YYYY)(23-02-2024) yang benar:',
-      });
-    } else if (step === 'date') {
-      if (text.toLowerCase() === 'batal') {
-        await sock.sendMessage(noWa, {
-          text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
-        });
-        delete userchoice[noWa];
-        delete botpromt[noWa];
-        clearTimeout(timeoutHandles[noWa]);
-        delete timeoutHandles[noWa];
-        return;
-      }
-      const dateRegex = /^\d{2}-\d{2}-\d{4}$/;
-      if (!dateRegex.test(text)) {
-        await sock.sendMessage(noWa, {
-          text: 'Tanggal Tidak sesuai harap masukkan kembali (Format:Hari-Bulan-Tahun):',
-        });
-        return;
-      }
-
-      const [day, month, year] = text.split('-').map(Number);
-
-      if (month < 1 || month > 12 || day < 1 || day > 31) {
-        await sock.sendMessage(noWa, {
-          text: 'Tanggal atau bulan tidak valid. Harap masukkan kembali (Format:Hari-Bulan-Tahun):',
-        });
-        return;
-      }
-
-      const inputDate = new Date(year, month - 1, day);
-      if (
-        inputDate.getDate() !== day ||
-        inputDate.getMonth() !== month - 1 ||
-        inputDate.getFullYear() !== year
-      ) {
-        await sock.sendMessage(noWa, {
-          text: 'Tanggal tidak valid. Harap masukkan kembali (Format:Hari-Bulan-Tahun):',
-        });
-        return;
-      }
-
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-
-      if (inputDate < today) {
-        await sock.sendMessage(noWa, {
-          text: 'Tanggal Tidak boleh di masa lalu. Harap masukkan tanggal yang valid (Format:Hari-Bulan-Tahun):',
-        });
-        return;
-      }
-
-      botpromt[noWa].date = text;
-      userchoice[noWa] = 'jam_keluar';
-      await sock.sendMessage(noWa, {
-        text: 'Mohon masukan waktu *jam keluar* dari kebun dengan format (HH:MM)(10:00):',
-      });
-    } else if (step === 'jam_keluar') {
-      if (text.toLowerCase() === 'batal') {
-        await sock.sendMessage(noWa, {
-          text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
-        });
-        delete userchoice[noWa];
-        delete botpromt[noWa];
-        clearTimeout(timeoutHandles[noWa]);
-        delete timeoutHandles[noWa];
-        return;
-      }
-      const timeRegex = /^([01]\d|2[0-3]):([0-5]\d)$/;
-      if (!timeRegex.test(text)) {
-        await sock.sendMessage(noWa, {
-          text: 'Waktu tidak valid. Harap masukkan waktu dalam format 24 jam (HH:MM), contoh: 11:00 atau 23:30',
-        });
-        return;
-      }
-      botpromt[noWa].jam_keluar = text;
-      userchoice[noWa] = 'date_2';
-      await sock.sendMessage(noWa, {
-        text: 'Harap masukkan tanggal *UNTUK KEMBALI* dengan format (DD-MM-YYYY)(23-02-2024) yang benar:',
-      });
-    } else if (step === 'date_2') {
-      if (text.toLowerCase() === 'batal') {
-        await sock.sendMessage(noWa, {
-          text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
-        });
-        delete userchoice[noWa];
-        delete botpromt[noWa];
-        clearTimeout(timeoutHandles[noWa]);
-        delete timeoutHandles[noWa];
-        return;
-      }
-      const dateRegex = /^\d{2}-\d{2}-\d{4}$/;
-      if (!dateRegex.test(text)) {
-        await sock.sendMessage(noWa, {
-          text: 'Tanggal Tidak sesuai harap masukkan kembali (Format:Hari-Bulan-Tahun):',
-        });
-        return;
-      }
-
-      const [day, month, year] = text.split('-').map(Number);
-
-      if (month < 1 || month > 12 || day < 1 || day > 31) {
-        await sock.sendMessage(noWa, {
-          text: 'Tanggal atau bulan tidak valid. Harap masukkan kembali (Format:Hari-Bulan-Tahun):',
-        });
-        return;
-      }
-
-      const inputDate = new Date(year, month - 1, day);
-      if (
-        inputDate.getDate() !== day ||
-        inputDate.getMonth() !== month - 1 ||
-        inputDate.getFullYear() !== year
-      ) {
-        await sock.sendMessage(noWa, {
-          text: 'Tanggal tidak valid. Harap masukkan kembali (Format:Hari-Bulan-Tahun):',
-        });
-        return;
-      }
-
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-
-      if (inputDate < today) {
-        await sock.sendMessage(noWa, {
-          text: 'Tanggal Tidak boleh di masa lalu. Harap masukkan tanggal yang valid (Format:Hari-Bulan-Tahun):',
-        });
-        return;
-      }
-
-      botpromt[noWa].date_2 = text;
-      userchoice[noWa] = 'jam_kembali';
-      await sock.sendMessage(noWa, {
-        text: 'Mohon masukan waktu *jam kembali* ke kebun dengan format (HH:MM)(10:00):',
-      });
-    } else if (step === 'jam_kembali') {
-      if (text.toLowerCase() === 'batal') {
-        await sock.sendMessage(noWa, {
-          text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
-        });
-        delete userchoice[noWa];
-        delete botpromt[noWa];
-        clearTimeout(timeoutHandles[noWa]);
-        delete timeoutHandles[noWa];
-        return;
-      }
-      const timeRegex = /^([01]\d|2[0-3]):([0-5]\d)$/;
-      if (!timeRegex.test(text)) {
-        await sock.sendMessage(noWa, {
-          text: 'Waktu tidak valid. Harap masukkan waktu dalam format 24 jam (HH:MM), contoh: 11:00 atau 23:30',
-        });
-        return;
-      }
-      botpromt[noWa].jam_kembali = text;
-      userchoice[noWa] = 'needs';
-      await sock.sendMessage(noWa, {
-        text: 'Mohon jelaskan keperluan Anda untuk keluar dari kebun:',
-      });
-    } else if (step === 'needs') {
-      if (text.toLowerCase() === 'batal') {
-        await sock.sendMessage(noWa, {
-          text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
-        });
-        delete userchoice[noWa];
-        delete botpromt[noWa];
-        clearTimeout(timeoutHandles[noWa]);
-        delete timeoutHandles[noWa];
-        return;
-      }
-      botpromt[noWa].needs = text;
-      userchoice[noWa] = 'atasan_satu';
-      await sock.sendMessage(noWa, {
-        text: 'Silakan masukkan nama lengkap *ATASAN PERTAMA* atau nama depan untuk pencarian didatabase',
-      });
-    } else if (step === 'atasan_satu') {
-      if (text.toLowerCase() === 'batal') {
-        await sock.sendMessage(noWa, {
-          text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
-        });
-        delete userchoice[noWa];
-        delete botpromt[noWa];
-        clearTimeout(timeoutHandles[noWa]);
-        delete timeoutHandles[noWa];
-        return;
-      }
-      botpromt[noWa].atasan_satu = text;
-      const nama_atasansatu = text;
-      const result = await checkatasan(nama_atasansatu);
-
-      if (result.message && result.message === 'Nama Atasan tidak ditemukan') {
-        botpromt[noWa].attempts = (botpromt[noWa].attempts || 0) + 1;
-        if (botpromt[noWa].attempts >= 3) {
-          await sock.sendMessage(noWa, {
-            text: 'Anda sudah melakukan percobaan 3 kali. Silahkan coba kembali nanti.',
-          });
-          delete userchoice[noWa];
-          delete botpromt[noWa];
-          clearTimeout(timeoutHandles[noWa]);
-          delete timeoutHandles[noWa];
-        } else {
-          await sock.sendMessage(noWa, {
-            text: 'Nama Atasan Tidak ditemukan di database. Harap input ulang:',
-          });
-        }
-      } else if (result && result.length > 0) {
-        botpromt[noWa].atasan_options_satu = result;
-
-        let message =
-          'Pilih Nama Atasan Pertama.*HARAP MASUKAN ANGKA SAJA DARI PILIHAN TERSEDIA*:\n';
-        result.forEach((item, index) => {
-          message += `${index + 1}. ${item.nama} (${item.departemen})\n`;
-        });
-        message += `${
-          result.length + 1
-        }. Nama tidak tersedia di dalam pilihan\n`;
-        message += `${result.length + 2}. Coba masukan nama kembali`;
-
-        userchoice[noWa] = 'choose_atasan_satu';
-        await sock.sendMessage(noWa, { text: message });
-      } else {
-        await sock.sendMessage(noWa, {
-          text: 'Nama Atasan Tidak ditemukan di database. Harap input ulang:',
-        });
-      }
-    } else if (step === 'choose_atasan_satu') {
-      if (text.toLowerCase() === 'batal') {
-        await sock.sendMessage(noWa, {
-          text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
-        });
-        delete userchoice[noWa];
-        delete botpromt[noWa];
-        clearTimeout(timeoutHandles[noWa]);
-        delete timeoutHandles[noWa];
-        return;
-      }
-      const chosenIndex = parseInt(text) - 1;
-      const options = botpromt[noWa].atasan_options_satu;
-
-      if (
-        isNaN(chosenIndex) ||
-        !options ||
-        chosenIndex < 0 ||
-        chosenIndex >= options.length + 2
-      ) {
-        botpromt[noWa].attempts = (botpromt[noWa].attempts || 0) + 1;
-        if (botpromt[noWa].attempts >= 3) {
-          await sock.sendMessage(noWa, {
-            text: 'Anda sudah melakukan percobaan 3 kali. Silahkan coba kembali nanti.',
-          });
-          delete userchoice[noWa];
-          delete botpromt[noWa];
-          clearTimeout(timeoutHandles[noWa]);
-          delete timeoutHandles[noWa];
-          return;
-        } else {
-          await sock.sendMessage(noWa, {
-            text: 'Pilihan tidak valid. Silakan masukkan nomor yang sesuai:',
-          });
-          return;
-        }
-      }
-
-      if (chosenIndex === options.length) {
-        await sock.sendMessage(noWa, {
-          text: 'Nama Atasan tidak tersedia. Silakan hubungi admin Digital Architect untuk penambahan nama atasan.',
-        });
-        delete userchoice[noWa];
-        delete botpromt[noWa];
-        clearTimeout(timeoutHandles[noWa]);
-        delete timeoutHandles[noWa];
-      } else if (chosenIndex === options.length + 1) {
-        userchoice[noWa] = 'atasan_satu';
-        await sock.sendMessage(noWa, {
-          text: 'Silakan masukkan nama lengkap atasan *PERTAMA* atau nama depan untuk pencarian didatabase',
-        });
-      } else {
-        botpromt[noWa].atasan_satu = options[chosenIndex].nama;
-        botpromt[noWa].atasan_satu_id = options[chosenIndex].id;
-        delete botpromt[noWa].atasan_options_satu;
-
-        userchoice[noWa] = 'atasan_dua';
-        // botpromt[noWa] = { attempts: 0 };
-        await sock.sendMessage(noWa, {
-          text: 'Silakan masukkan nama lengkap *ATASAN KEDUA* atau nama depan untuk pencarian didatabase',
-        });
-      }
-    } else if (step === 'atasan_dua') {
-      if (text.toLowerCase() === 'batal') {
-        await sock.sendMessage(noWa, {
-          text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
-        });
-        delete userchoice[noWa];
-        delete botpromt[noWa];
-        clearTimeout(timeoutHandles[noWa]);
-        delete timeoutHandles[noWa];
-        return;
-      }
-      botpromt[noWa].atasan_dua = text;
-      const nama_atasandua = text;
-      const result = await checkatasan(nama_atasandua);
-      if (result.message && result.message === 'Nama Atasan tidak ditemukan') {
-        botpromt[noWa].attempts += 1;
-        if (botpromt[noWa].attempts >= 3) {
-          await sock.sendMessage(noWa, {
-            text: 'Anda sudah melakukan percobaan *3 kali*. Silahkan coba kembali nanti.',
-          });
-          delete userchoice[noWa];
-          delete botpromt[noWa];
-          clearTimeout(timeoutHandles[noWa]);
-          delete timeoutHandles[noWa];
-        } else {
-          await sock.sendMessage(noWa, {
-            text: 'Nama Atasan Tidak ditemukan di database. Harap input ulang:',
-          });
-        }
-      } else if (result !== null && result.length > 0) {
-        botpromt[noWa].atasan_options_dua = result;
-
-        let message =
-          'Pilih Nama Atasan kedua , *HARAP MASUKAN ANGKA SAJA DARI PILIHAN TERSEDIA*:\n';
-        result.forEach((item, index) => {
-          message += `${index + 1}. ${item.nama} (${item.departemen})\n`;
-        });
-        message += `${
-          result.length + 1
-        }. Nama tidak tersedia di dalam pilihan\n`;
-        message += `${result.length + 2}. Coba masukan nama kembali`;
-
-        userchoice[noWa] = 'choose_atasan_dua';
-        await sock.sendMessage(noWa, { text: message });
-      } else {
-        await sock.sendMessage(noWa, {
-          text: 'Nama Atasan Tidak ditemukan di database. Harap input ulang:',
-        });
-      }
-    } else if (step === 'choose_atasan_dua') {
-      const chosenIndex = parseInt(text) - 1;
-      const options = botpromt[noWa].atasan_options_dua;
-
-      if (
-        isNaN(chosenIndex) ||
-        !options ||
-        chosenIndex < 0 ||
-        chosenIndex >= options.length + 2
-      ) {
-        botpromt[noWa].attempts = (botpromt[noWa].attempts || 0) + 1;
-        if (botpromt[noWa].attempts >= 3) {
-          await sock.sendMessage(noWa, {
-            text: 'Anda sudah melakukan percobaan 3 kali. Silahkan coba kembali nanti.',
-          });
-          delete userchoice[noWa];
-          delete botpromt[noWa];
-          clearTimeout(timeoutHandles[noWa]);
-          delete timeoutHandles[noWa];
-          return;
-        } else {
-          await sock.sendMessage(noWa, {
-            text: 'Pilihan tidak valid. Silakan masukkan nomor atasan 2 yang sesuai:',
-          });
-          return;
-        }
-      }
-      if (chosenIndex === options.length) {
-        await sock.sendMessage(noWa, {
-          text: 'Nama Atasan tidak tersedia.Silakan hubungi admin Digital Architect untuk penambahan nama.',
-        });
-        delete userchoice[noWa];
-        delete botpromt[noWa];
-        clearTimeout(timeoutHandles[noWa]);
-        delete timeoutHandles[noWa];
-      } else if (chosenIndex === options.length + 1) {
-        userchoice[noWa] = 'atasan_dua';
-        await sock.sendMessage(noWa, {
-          text: 'Silakan masukkan nama lengkap atasan *KEDUA* atau nama depan untuk pencarian didatabase',
-        });
-      } else if (!isNaN(chosenIndex) && options && options[chosenIndex]) {
-        botpromt[noWa].atasan_dua = options[chosenIndex].nama;
-        botpromt[noWa].atasan_dua_id = options[chosenIndex].id;
-        delete botpromt[noWa].atasan_options_dua;
-
-        userchoice[noWa] = 'confirm';
-        await sock.sendMessage(noWa, {
-          text: `*HARAP CROSSCHECK DATA ANDA TERLEBIH DAHULU*:
-                        \nNama: ${botpromt[noWa].user_nama}
-                        \nTujuan: ${botpromt[noWa].location}
-                        \nKendaraan: ${botpromt[noWa].kendaraan}
-                        \nPlat Nomor: ${botpromt[noWa].plat_nomor}
-                        \nTanggal Izin Keluar: ${botpromt[noWa].date}
-                        \nTanggal Kembali: ${botpromt[noWa].date_2}
-                        \nJam Keluar: ${botpromt[noWa].jam_keluar}
-                        \nJam Kembali: ${botpromt[noWa].jam_kembali}
-                        \nKeperluan: ${botpromt[noWa].needs}
-                        \nAtasan Satu: ${botpromt[noWa].atasan_satu}
-                        \nAtasan Dua: ${botpromt[noWa].atasan_dua}
-                        \nApakah semua data sudah sesuai? (ya/tidak)`,
-        });
-      } else {
-        await sock.sendMessage(noWa, {
-          text: 'Pilihan tidak valid. Silakan masukkan pilihan yang sesuai:',
-        });
-        return;
-      }
-    } else if (step === 'confirm') {
-      if (text.toLowerCase() === 'ya') {
-        userchoice[noWa] = 'disclamer_user';
-        await sock.sendMessage(noWa, {
-          text: `*Disclamer Harap di baca dengan seksama apakah anda setuju atau tidak*:
-                    \n- Izin kebun diberikan dengan tujuan yang telah ditentukan dan harus digunakan sesuai dengan ketentuan yang berlaku.
-                    \n- Pemberi izin tidak bertanggung jawab atas cedera, kerugian, atau kerusakan yang timbul dari kecelakaan, baik yang diakibatkan oleh kelalaian sendiri maupun orang lain.
-                    \n- Izin kebun dapat dibatalkan sewaktu-waktu oleh pemberi izin jika ditemukan pelanggaran terhadap ketentuan yang berlaku.\n\nApakah Anda setuju dengan disclaimer ini? (ya/tidak)`,
-        });
-      } else if (text.toLowerCase() === 'tidak') {
-        await sock.sendMessage(noWa, {
-          text: 'Silakan coba lagi untuk input dengan mengetikkan !izin.',
-        });
-      } else {
-        await sock.sendMessage(noWa, {
-          text: 'Pilihan tidak valid. Silakan jawab dengan "ya" atau "tidak":',
-        });
-        return;
-      }
-    } else if (step === 'disclamer_user') {
-      if (text.toLowerCase() === 'ya') {
-        try {
-          const response = await axios.post(
-            'https://management.srs-ssms.com/api/formdataizin',
-            {
-              name: botpromt[noWa].user_nama_id,
-              tujuan: botpromt[noWa].location,
-              pergi: botpromt[noWa].date,
-              kembali: botpromt[noWa].date_2,
-              keperluan: botpromt[noWa].needs,
-              atasan_satu: botpromt[noWa].atasan_satu_id,
-              atasan_dua: botpromt[noWa].atasan_dua_id,
-              kendaraan: botpromt[noWa].kendaraan,
-              plat_nomor: botpromt[noWa].plat_nomor,
-              jam_keluar: botpromt[noWa].jam_keluar,
-              jam_kembali: botpromt[noWa].jam_kembali,
-              no_hp: noWa,
-              email: 'j',
-              password: 'j',
-            }
-          );
-
-          let responses = response.data;
-
-          const responseKey = Object.keys(responses)[0];
-
-          // console.log(responses);
-          await sock.sendMessage(noWa, {
-            text: 'Mohon Tunggu server melakukan validasi.....',
-          });
-          if (responseKey === 'error_validasi') {
-            await sock.sendMessage(noWa, {
-              text: `Data gagal diverifikasi, Karena: ${responses[responseKey]}`,
-            });
-          } else {
-            await sock.sendMessage(noWa, {
-              text: 'Permohonan izin berhasil dikirim dan sedang menunggu persetujuan dari atasan. Harap tunggu notifikasi selanjutnya atau cek perkembangan di website: https://izin-kebun.srs-ssms.com/.',
-            });
-          }
-        } catch (error) {
-          if (error.response && error.response.status === 404) {
-            await sock.sendMessage(noWa, {
-              text: 'Nama Atasan tidak ditemukan di database. Harap input ulang.',
-            });
-          } else {
-            console.error('Error fetching data:', error);
-            await sock.sendMessage(noWa, {
-              text: 'Terjadi kesalahan saat mengirim data. Silakan coba lagi.',
-            });
-          }
-        }
-
-        // await sock.sendMessage(noWa, { text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.' });
-        delete userchoice[noWa];
-        delete botpromt[noWa];
-        clearTimeout(timeoutHandles[noWa]);
-        delete timeoutHandles[noWa];
-      } else if (text.toLowerCase() === 'tidak') {
-        await sock.sendMessage(noWa, {
-          text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
-        });
-        delete userchoice[noWa];
-        delete botpromt[noWa];
-        clearTimeout(timeoutHandles[noWa]);
-        delete timeoutHandles[noWa];
-      } else {
-        await sock.sendMessage(noWa, {
-          text: 'Pilihan tidak valid. Silakan jawab dengan "ya" atau "tidak":',
-        });
-        return;
-      }
-    } else {
-      await sock.sendMessage(noWa, {
-        text: 'Silahkan coba kembali dengan mengetikan perintah !izin:',
-      });
-      delete userchoice[noWa];
-      delete botpromt[noWa];
-      clearTimeout(timeoutHandles[noWa]);
-      delete timeoutHandles[noWa];
-    }
-  }
-};
-async function getNotifications(sock) {
-  try {
-    // const response = await axios.get('http://qc-apps2.test/api/getnotifijin');
-    const response = await axios.get(
-      'https://qc-apps.srs-ssms.com/api/getnotifijin'
-    );
-    const data = response.data;
-    // console.log(data);
-    if (data.status === '200' && data.data && data.data.length > 0) {
-      const result = data.data;
-      // console.log("Data ada");
-      // console.log(data);
-      for (const itemdata of result) {
-        if (itemdata.no_hp) {
-          const exists = await sock.onWhatsApp(itemdata.no_hp);
-          if (exists?.jid || (exists && exists[0]?.jid)) {
-            if (itemdata.status === 'approved') {
-              let message = `*Izin baru perlu di approved*:\n`;
-              message += `Hallo Selamat Siang Bapak/Ibu ${itemdata.atasan_nama}\n`;
-              message += `Anda memiliki request baru untuk izin keluar kebun dengan detail sebagai berikut:\n`;
-              message += `*ID Pemohon* : ${itemdata.id}\n`;
-              message += `*Nama* : ${itemdata.user_request}\n`;
-              message += `*Keperluan izin keluar kebun* : ${itemdata.keperluan}\n`;
-              message += `*Lokasi yang dituju* : ${itemdata.lokasi_tujuan}\n`;
-              message += `*Tanggal keluar izin* : ${itemdata.tanggal_keluar} ${itemdata.jam_keluar}\n`;
-              message += `*Tanggal kembali izin* : ${itemdata.tanggal_kembali} ${itemdata.jam_kembali}\n`;
-              message += `Silahkan Reply Pesan ini kemudian balas ya/tidak\n`;
-              message += `Generated by Digital Architect SRS Bot`;
-              await sock.sendMessage(itemdata.no_hp + '@s.whatsapp.net', {
-                text: message,
-              });
-              // Check if the user's phone number is set and send a message to the user
-              if (itemdata.no_hp_user) {
-                let userMessage = `*Izin Keluar Kebun Anda Telah Di setujui Atasan Pertama*\n\n`;
-                userMessage += `Hallo Selamat Siang Bapak/Ibu ${itemdata.user_request},\n\n`;
-                userMessage += `Kami ingin menginformasikan bahwa permintaan izin keluar kebun Anda telah Disetuji :\n\n`;
-                userMessage += `Silahkan tunggu notifikasi  berikutnya untuk persetujuan dari atasan kedua.\n\n`;
-                userMessage += `Terima kasih,\n`;
-                userMessage += `Tim Digital Architect SRS Bot`;
-
-                await sock.sendMessage(
-                  itemdata.no_hp_user + '@s.whatsapp.net',
-                  { text: userMessage }
-                );
-              }
-            } else if (itemdata.status === 'send_approved') {
-              let message = `*Izin Keluar Kebun Anda Telah Disetujui Atasan Kedua*\n\n`;
-              message += `Hallo Selamat Siang Bapak/Ibu ${itemdata.nama_user},\n\n`;
-              message += `Kami ingin menginformasikan bahwa permintaan izin keluar kebun Anda telah disetujui.\n\n`;
-              message += `Berikut adalah detail izin Anda:\n`;
-              message += `*Nama Pemohon*: ${itemdata.nama_user}\n`;
-              message += `*Tanggal keluar izin* : ${itemdata.tanggal_keluar} ${itemdata.jam_keluar}\n`;
-              message += `*Tanggal kembali izin* : ${itemdata.tanggal_kembali} ${itemdata.jam_kembali}\n`;
-              message += `*Keperluan*: ${itemdata.keperluan}\n`;
-              message += `*Lokasi Tujuan*: ${itemdata.lokasi_tujuan}\n\n`;
-              message += `Harap selalu berhati-hati selama perjalanan dan pastikan untuk mengikuti protokol keamanan yang berlaku. Kami mendoakan agar Anda tiba dengan selamat di tujuan dan kembali ke kebun dengan kondisi sehat dan aman.\n\n`;
-              message += `Jika ada pertanyaan lebih lanjut, jangan ragu untuk menghubungi kami.\n\n`;
-              message += `Atau kunjungi web kami di :https://izin-kebun.srs-ssms.com \n\n`;
-              message += `Terima kasih,\n`;
-              message += `Tim Digital Architect SRS Bot`;
-
-              // kirim pdf
-              try {
-                // const genpdf = await axios.get('http://qc-apps2.test/api/generatePdfIzinKebun', {
-                const genpdf = await axios.get(
-                  'https://izin-kebun.srs-ssms.com/api/generatePdfIzinKebun',
-                  {
-                    params: {
-                      user: 'j',
-                      pw: 'j',
-                      id: itemdata.id,
-                    },
-                  }
-                );
-                // console.log(genpdf.data.filename);
-
-                const fileUrl = `https://izin-kebun.srs-ssms.com/public/storage/files/${genpdf.data.filename}`;
-                const destinationPath = `./uploads/${itemdata.filename_pdf}`;
-
-                const file = fs.createWriteStream(destinationPath);
-
-                await new Promise((resolve, reject) => {
-                  https
-                    .get(fileUrl, function (response) {
-                      response.pipe(file);
-                      file.on('finish', function () {
-                        file.close(() => {
-                          console.log('File downloaded successfully.');
-                          resolve(); // Resolve the promise after the file is downloaded
-                        });
-                      });
-                    })
-                    .on('error', function (err) {
-                      fs.unlink(destinationPath, () => {}); // Delete the file if there is an error
-                      console.error('Error downloading the file:', err);
-                      reject(err); // Reject the promise if there is an error
-                    });
-                });
-                const messageOptions = {
-                  document: {
-                    url: destinationPath,
-                    caption: 'ini caption',
-                  },
-                  fileName: 'Surat Izin Kebun',
-                };
-                await sock.sendMessage(
-                  itemdata.no_hp + '@s.whatsapp.net',
-                  messageOptions
-                );
-
-                try {
-                  const unlinkpdf = await axios.get(
-                    'https://izin-kebun.srs-ssms.com/api/deletePdfIzinKebun',
-                    {
-                      params: {
-                        user: 'j',
-                        pw: 'j',
-                        filename: genpdf.data.filename,
-                      },
-                    }
-                  );
-                } catch (error) {
-                  console.log('Error unlinkpdf PDF:', error);
-                }
-              } catch (error) {
-                console.log('Error generating PDF:', error);
-              }
-
-              await sock.sendMessage(itemdata.no_hp + '@s.whatsapp.net', {
-                text: message,
-              });
-
-              try {
-                // const response = await axios.post('http://qc-apps2.test/api/updatenotifijin', {
-                const response = await axios.post(
-                  'https://qc-apps.srs-ssms.com/api/updatenotifijin',
-                  {
-                    id_data: itemdata.id,
-                    id_atasan: itemdata.id_atasan,
-                    answer: 'ya',
-                  }
-                );
-              } catch (error) {
-                console.log('Error approving:', error);
-              }
-            } else if (itemdata.status === 'rejected') {
-              let message = `*Izin Keluar Kebun Anda Telah Ditolak*\n\n`;
-              message += `Hallo Selamat Siang Bapak/Ibu ${itemdata.user_request},\n\n`;
-              message += `Kami ingin menginformasikan bahwa permintaan izin keluar kebun Anda telah ditolak dikarenakan :\n\n`;
-              message += `*Alasan ditolak*: ${itemdata.alasan}\n`;
-              message += `Jika ada pertanyaan lebih lanjut, jangan ragu untuk menghubungi kami.\n\n`;
-              message += `Terima kasih,\n`;
-              message += `Tim Digital Architect SRS Bot`;
-              await sock.sendMessage(itemdata.no_hp + '@s.whatsapp.net', {
-                text: message,
-              });
-
-              try {
-                // const response = await axios.post('http://qc-apps2.test/api/updatenotifijin', {
-                const response = await axios.post(
-                  'https://qc-apps.srs-ssms.com/api/updatenotifijin',
-                  {
-                    id_data: itemdata.id,
-                    id_atasan: '3',
-                    answer: 'tidak',
-                  }
-                );
-                console.log(response);
-              } catch (error) {
-                console.log('Error approving:', error);
-              }
-            }
-          } else {
-            let message = `Aplikasi Surat izin kebun Nomor HP tidak bisa di chat : ${itemdata.id}\n`;
-            message += `Haraf di update nomor hp ${itemdata.no_hp}\n`;
-            await sock.sendMessage('120363205553012899' + '@g.us', {
-              text: message,
-            });
-          }
-        } else {
-          let message = `Aplikasi Surat izin kebun Nomor HP kosong untuk : ${itemdata.id}\n`;
-          message += `Haraf di update nama atasan ${itemdata.atasan_nama}\n`;
-          await sock.sendMessage('120363205553012899' + '@g.us', {
-            text: message,
-          });
-        }
-      }
-    } else {
-      console.log('Data kosong');
-      console.log(data);
-    }
-    return response;
-  } catch (error) {
-    console.error('Error:', error);
-  }
-}
-// end function
 
 // function crud input iot
 
@@ -2624,32 +1592,6 @@ async function Report_group_izinkebun(sock) {
       console.log('PDF not found in the API response.');
     }
 
-    // try {
-    //   // Update the status for all IDs at once
-    //   const updateResponse = await axios.post(
-    //     // 'http://127.0.0.1:8000/api/update_status_report_group_izin',
-    //     'https://management.srs-ssms.com/api/update_status_report_group_izin',
-    //     {
-    //       id: data.id, // Pass the array of IDs directly
-    //       email: 'j',
-    //       password: 'j',
-    //     }
-    //   );
-
-    //   // If status update is successful, send a confirmation message
-    //   if (updateResponse.status === 200) {
-    //     // await sock.sendMessage(idgroup_da, { text: data.message });
-    //     console.log('Status updated and message sent successfully!');
-    //   } else {
-    //     console.error(
-    //       'Failed to update status, response status:',
-    //       updateResponse.status
-    //     );
-    //   }
-    // } catch (updateError) {
-    //   console.error('Error updating status:', updateError.message);
-    // }
-
     // Return the message if needed
     return data.message;
   } catch (error) {
@@ -2766,25 +1708,38 @@ async function Sendverificationtaksasi(sock) {
 }
 
 // websocket
-const pusher = new Pusher('b193dcd8922273835547', {
-  cluster: 'ap1',
-  encrypted: true,
-});
-
-// app_id = "1841216"
-// key = "b193dcd8922273835547"
-// secret = "5e39e309c9ee6a995b84"
-// cluster = "ap1"
-
-const channel = pusher.subscribe('my-channel');
-const channelPython = pusher.subscribe('operator-missing');
 
 const setupCronJobs = (sock) => {
   const isConnected = () => {
     return sock.user;
   };
   if (isConnected) {
-    //   untuk wasecond
+    // untuk  pc ardiono
+    // cron.schedule(
+    //   '0 */30 * * * *',
+    //   async () => {
+    //     try {
+    //       let response = await axios.get(
+    //         'https://qc-apps.srs-ssms.com/api/checkPcStatus'
+    //       );
+    //       // Assuming the response data has the structure { message: "All PCs are online" }
+    //       if (response.data.message === 'All PCs are online') {
+    //         console.log('All PCs are online');
+    //       } else {
+    //         await sendfailcronjob(sock);
+    //         await get_mill_data(sock);
+    //       }
+    //     } catch (error) {
+    //       console.error('Error fetching the status:', error);
+    //     }
+    //   },
+    //   {
+    //     scheduled: true,
+    //     timezone: 'Asia/Jakarta',
+    //   }
+    // );
+    // WebSocket pusher untuk bot grading
+    // untuk pc di ho boootroot
     // cron.schedule(
     //   '0 * * * *',
     //   async () => {
@@ -2850,780 +1805,387 @@ const setupCronJobs = (sock) => {
     //     timezone: 'Asia/Jakarta',
     //   }
     // );
-    // untuk  pc ardiono
     // cron.schedule(
-    //   '0 */30 * * * *',
+    //   '0 9 * * *',
     //   async () => {
-    //     try {
-    //       let response = await axios.get(
-    //         'https://qc-apps.srs-ssms.com/api/checkPcStatus'
-    //       );
-    //       // Assuming the response data has the structure { message: "All PCs are online" }
-    //       if (response.data.message === 'All PCs are online') {
-    //         console.log('All PCs are online');
-    //       } else {
-    //         await sendfailcronjob(sock);
-    //         await get_mill_data(sock);
-    //       }
-    //     } catch (error) {
-    //       console.error('Error fetching the status:', error);
-    //     }
+    //     await handleBotLaporanHarianFleetManagement(sock);
+    //     await handleBotDailyPengawasanOperatorAI(sock);
     //   },
     //   {
     //     scheduled: true,
     //     timezone: 'Asia/Jakarta',
     //   }
     // );
-    // WebSocket pusher untuk bot grading
-    // untuk pc di ho boootroot
-    cron.schedule(
-      '0 9 * * *',
-      async () => {
-        await handleBotLaporanHarianFleetManagement(sock);
-        await handleBotDailyPengawasanOperatorAI(sock);
-      },
-      {
-        scheduled: true,
-        timezone: 'Asia/Jakarta',
-      }
-    );
-    cron.schedule(
-      '*/10 * * * *',
-      async () => {
-        await sendfailcronjob(sock);
-      },
-      {
-        scheduled: true,
-        timezone: 'Asia/Jakarta',
-      }
-    );
-    cron.schedule(
-      '*/5 * * * *',
-      async () => {
-        // await getNotifications(sock);
-        await get_mill_data(sock);
-      },
-      {
-        scheduled: true,
-        timezone: 'Asia/Jakarta',
-      }
-    );
-    cron.schedule(
-      '*/15 * * * *',
-      async () => {
-        await updatePCStatus();
-        await triggerStatusPCPengawasanOperatorAI(sock);
-      },
-      {
-        scheduled: true,
-        timezone: 'Asia/Jakarta',
-      }
-    );
-    channel.bind('item-requested', async (eventData) => {
-      // Log the full event data to debug the structure
-      // console.log(eventData);
-      if (!eventData || !eventData.data || !eventData.data.bot_data) {
-        console.log('Event data, data, or bot_data is undefined.');
-        return;
-      }
-      const dataitem = eventData.data.bot_data;
-      if (!dataitem.nama_atasan_pemilik) {
-        console.log('nama_atasan_pemilik is undefined.');
-        return;
-      }
-      let message = `*Permintaan barang perlu di review*:\n`;
-      message += `Hallo Selamat Siang Bapak/Ibu ${dataitem.nama_atasan_pemilik}\n`;
-      message += `Anda memiliki request baru dengan detail sebagai berikut:\n`;
-      message += `*ID* : ${dataitem.id_data}\n`;
-      message += `*Nama pemohon* : ${dataitem.id_pemohon}\n`;
-      message += `*Departement pemohon* : ${dataitem.nama_departement_pemohon}\n`;
-      message += `*Nama barang* : ${dataitem.nama_barang} (${dataitem.nama_lain})\n`;
-      message += `*Jumlah* : ${dataitem.jumlah}\n`;
-      message += `*Tanggal pengajuan* : ${dataitem.tanggal_pengajuan}\n`;
-      message += `Silahkan Reply Pesan ini kemudian balas ya/tidak untuk approval\n`;
-      message += `Generated by Digital Architect SRS Bot`;
-      await sock.sendMessage(dataitem.send_to + '@s.whatsapp.net', {
-        text: message,
-      });
-      try {
-        const response = await axios.post(
-          'https://management.srs-ssms.com/api/changestatusbot',
-          // 'http://127.0.0.1:8000/api/changestatusbot',
-          {
-            id: dataitem.id_data,
-            type: 'send_to_pemilik',
-            email: 'j',
-            password: 'j',
-          }
-        );
-        let responses = response.data;
-      } catch (error) {
-        console.log('Error approving:', error);
-      }
-    });
-    channel.bind('item-approved', async (eventData) => {
-      // Log the full event data to debug the structure
-      console.log(eventData);
-      if (!eventData || !eventData.data || !eventData.data.bot_data) {
-        console.log('Event data, data, or bot_data is undefined.');
-        return;
-      }
-      const dataitem = eventData.data.bot_data;
-      if (!dataitem.nama_atasan_pemilik) {
-        console.log('nama_atasan_pemilik is undefined.');
-        return;
-      }
-      let message = `*Permintaan barang disetujui*:\n`;
-      message += `Hallo Selamat Siang Bapak/Ibu ${dataitem.id_pemohon}\n`;
-      message += `Permintaan barang dengan detail sebagai berikut telah disetujui:\n`;
-      message += `*ID* : ${dataitem.id_data}\n`;
-      message += `*Nama atasan departement* : ${dataitem.nama_atasan_pemilik}\n`;
-      message += `*Departement pengajuan* : ${dataitem.nama_departement_pemilik}\n`;
-      message += `*Nama barang* : ${dataitem.nama_barang} (${dataitem.nama_lain})\n`;
-      message += `*Jumlah* : ${dataitem.jumlah}\n`;
-      message += `*Tanggal pengajuan* : ${dataitem.tanggal_pengajuan}\n`;
-      message += `Generated by Digital Architect SRS Bot`;
-      await sock.sendMessage(dataitem.send_to + '@s.whatsapp.net', {
-        text: message,
-      });
-      try {
-        const response = await axios.post(
-          'https://management.srs-ssms.com/api/changestatusbot',
-          // 'http://127.0.0.1:8000/api/changestatusbot',
-          {
-            email: 'j',
-            password: 'j',
-            id: dataitem.id_data,
-            type: 'else',
-          }
-        );
-        let responses = response.data;
-      } catch (error) {
-        console.log('Error approving:', error);
-      }
-    });
-    channel.bind('item-rejected', async (eventData) => {
-      // Log the full event data to debug the structure
-      // console.log(eventData);
-      if (!eventData || !eventData.data || !eventData.data.bot_data) {
-        console.log('Event data, data, or bot_data is undefined.');
-        return;
-      }
-      const dataitem = eventData.data.bot_data;
-      if (!dataitem.nama_atasan_pemilik) {
-        console.log('nama_atasan_pemilik is undefined.');
-        return;
-      }
-      let message = `*Permintaan barang ditolak*:\n`;
-      message += `Hallo Selamat Siang Bapak/Ibu ${dataitem.id_pemohon}\n`;
-      message += `Permintaan barang dengan detail sebagai berikut telah ditolak:\n`;
-      message += `*ID* : ${dataitem.id_data}\n`;
-      message += `*Nama atasan departement* : ${dataitem.nama_atasan_pemilik}\n`;
-      message += `*Departement pengajuan* : ${dataitem.nama_departement_pemilik}\n`;
-      message += `*Nama barang* : ${dataitem.nama_barang} (${dataitem.nama_lain})\n`;
-      message += `*Jumlah* : ${dataitem.jumlah}\n`;
-      message += `*Tanggal pengajuan* : ${dataitem.tanggal_pengajuan}\n`;
-      message += `*Alasan di tolak* : ${dataitem.alasan}\n`;
-      message += `Generated by Digital Architect SRS Bot`;
-      await sock.sendMessage(dataitem.send_to + '@s.whatsapp.net', {
-        text: message,
-      });
-      try {
-        const response = await axios.post(
-          // "http://127.0.0.1:8000/api/changestatusbot",
-          'https://management.srs-ssms.com/api/changestatusbot',
-          {
-            email: 'j',
-            password: 'j',
-            id: dataitem.id_data,
-            type: 'else',
-          }
-        );
-        let responses = response.data;
-      } catch (error) {
-        console.log('Error approving:', error);
-      }
-    });
-    channelPython.bind('python', async (eventData) => {
-      group_id = '120363321959291717@g.us';
-      hourMissing = eventData.date;
-      lokasiCCTV = eventData.location;
-      fileName = eventData.fileName;
-      const fs = require('fs');
-      const axios = require('axios');
-      let message = `Tidak ada aktivitas di *${lokasiCCTV}* pada  *${hourMissing}*`;
-      try {
-        const response = await axios.get(
-          `https://srs-ssms.com/op_monitoring/get_screenshot_file.php?filename=${fileName}`
-        );
-        const base64Image = response.data;
-        const buffer = Buffer.from(base64Image, 'base64');
-        const filePath = `./uploads/${fileName}`;
-        fs.writeFileSync(filePath, buffer);
-        const messageOptions = {
-          image: {
-            url: filePath,
-          },
-          caption: message,
-        };
-        await sock
-          .sendMessage(group_id, messageOptions)
-          .then((result) => {
-            if (fs.existsSync(filePath)) {
-              fs.unlink(filePath, (err) => {
-                if (err && err.code == 'ENOENT') {
-                  // file doens't exist
-                  console.info("File doesn't exist, won't remove it.");
-                } else if (err) {
-                  console.error('Error occurred while trying to remove file.');
-                }
-              });
-            }
-          })
-          .catch((err) => {
-            res.status(500).json({
-              status: false,
-              response: err,
-            });
-            console.log('pesan gagal terkirim');
-          });
-      } catch (error) {
-        console.error('Error fetching base64 image:', error);
-      }
-    });
-    channel.bind('izinkebunnotif', async (itemdata) => {
-      try {
-        if (!itemdata || !itemdata.data) {
-          console.log('itemdata is undefined or missing data property.');
-          return;
-        }
-        const data = itemdata.data;
-        let errormsg = 'Error mengirim notifikasi izin keluar kebun\n';
-        errormsg += `*ID Pemohon* : ${data.id}\n`;
-        errormsg += `*Nama* : ${data.nama_user}\n`;
-        errormsg += `Error mengirim ke nomor ${data.nama_atasan_1}\n`;
-        if (data.type === 'send_atasan_satu') {
-          let message = `*Izin baru perlu di approved*:\n`;
-          message += `Hallo Selamat Siang Bapak/Ibu ${data.nama_atasan_1}\n`;
-          message += `Anda memiliki request baru untuk izin keluar kebun dengan detail sebagai berikut:\n`;
-          message += `*ID Pemohon* : ${data.id}\n`;
-          message += `*Nama* : ${data.nama_user}\n`;
-          message += `*Keperluan izin keluar kebun* : ${data.keperluan}\n`;
-          message += `*Lokasi yang dituju* : ${data.lokasi_tujuan}\n`;
-          message += `*Tanggal keluar izin* : ${data.tanggal_keluar}\n`;
-          message += `*Tanggal kembali izin* : ${data.tanggal_kembali}\n`;
-          message += `Silahkan Reply Pesan ini kemudian balas ya/tidak\n`;
-          message += `Generated by Digital Architect SRS Bot`;
-          try {
-            await axios.post('https://management.srs-ssms.com/api/addons', {
-              id: data.id_db,
-              type: 'atasan1',
-              email: 'j',
-              password: 'j',
-            });
-            await sock.sendMessage(`${data.send_to}@s.whatsapp.net`, {
-              text: message,
-            });
-          } catch (error) {
-            if (
-              error.code === 'ECONNRESET' ||
-              'Request failed with status code 500'
-            ) {
-              console.log('Connection reset. Retrying up to 5 times...');
-              // Implement retry logic here, with a maximum of 5 attempts
-              for (let attempt = 1; attempt <= 5; attempt++) {
-                try {
-                  await axios.post(
-                    'https://management.srs-ssms.com/api/addons',
-                    {
-                      id: data.id_db,
-                      type: 'atasan1',
-                      email: 'j',
-                      password: 'j',
-                    }
-                  );
-                  console.log('Retry successful');
-                  break;
-                } catch (retryError) {
-                  if (attempt === 5) {
-                    await sock.sendMessage(idgroup, {
-                      text: errormsg + '\n' + retryError.message,
-                    });
-                    console.log(
-                      'Max retries reached. Unable to complete the request.'
-                    );
-                  } else {
-                    console.log(`Retrying... Attempt ${attempt}`);
-                  }
-                }
-              }
-            } else {
-              await sock.sendMessage(idgroup, {
-                text: errormsg + '\n' + error.message,
-              });
-              console.log('Error:', error.message);
-            }
-          }
-        } else if (data.type === 'send_atasan_dua') {
-          let message = `*Izin baru perlu di approved*:\n`;
-          message += `Hallo Selamat Siang Bapak/Ibu ${data.nama_atasan_2}\n`;
-          message += `Anda memiliki request baru untuk izin keluar kebun dengan detail sebagai berikut:\n`;
-          message += `*ID Pemohon* : ${data.id}\n`;
-          message += `*Nama* : ${data.nama_user}\n`;
-          message += `*Keperluan izin keluar kebun* : ${data.keperluan}\n`;
-          message += `*Lokasi yang dituju* : ${data.lokasi_tujuan}\n`;
-          message += `*Tanggal keluar izin* : ${data.tanggal_keluar}\n`;
-          message += `*Tanggal kembali izin* : ${data.tanggal_kembali}\n`;
-          message += `Silahkan Reply Pesan ini kemudian balas ya/tidak\n`;
-          message += `Generated by Digital Architect SRS Bot`;
-          let userMessage = `*Izin Keluar Kebun Anda Telah Disetujui Atasan Pertama*\n\n`;
-          userMessage += `Hallo Selamat Siang Bapak/Ibu ${data.nama_user},\n\n`;
-          userMessage += `Kami ingin menginformasikan bahwa permintaan izin keluar kebun Anda telah Disetujui.\n\n`;
-          userMessage += `Silahkan tunggu notifikasi  berikutnya untuk persetujuan dari atasan kedua.\n\n`;
-          userMessage += `Terima kasih,\n`;
-          userMessage += `Tim Digital Architect SRS Bot`;
-          try {
-            await axios.post('https://management.srs-ssms.com/api/addons', {
-              id: data.id_db,
-              type: 'atasan2',
-              email: 'j',
-              password: 'j',
-            });
-            await sock.sendMessage(`${data.send_to}@s.whatsapp.net`, {
-              text: message,
-            });
-            await sock.sendMessage(data.no_hp_user + '@s.whatsapp.net', {
-              text: userMessage,
-            });
-          } catch (error) {
-            if (
-              error.code === 'ECONNRESET' ||
-              'Request failed with status code 500'
-            ) {
-              console.log('Connection reset. Retrying up to 5 times...');
-              // Implement retry logic here, with a maximum of 5 attempts
-              for (let attempt = 1; attempt <= 5; attempt++) {
-                try {
-                  await axios.post(
-                    'https://management.srs-ssms.com/api/addons',
-                    {
-                      id: data.id_db,
-                      type: 'atasan2',
-                      email: 'j',
-                      password: 'j',
-                    }
-                  );
-                  console.log('Retry successful');
-                  break;
-                } catch (retryError) {
-                  if (attempt === 5) {
-                    await sock.sendMessage(idgroup, {
-                      text: errormsg + '\n' + retryError.message,
-                    });
-                    console.log(
-                      'Max retries reached. Unable to complete the request.'
-                    );
-                  } else {
-                    console.log(`Retrying... Attempt ${attempt}`);
-                  }
-                }
-              }
-            } else {
-              await sock.sendMessage(idgroup, {
-                text: errormsg + '\n' + error.message,
-              });
-              console.log('Error:', error.message);
-            }
-          }
-        } else if (data.type === 'send_user') {
-          let message = ''; // Initialize the message variable here
-          if (data.status === 'approved') {
-            message += `*Izin Keluar Kebun Anda Telah Disetujui*\n\n`;
-            message += `Hallo Selamat Siang Bapak/Ibu ${data.nama_user},\n\n`;
-            message += `Kami ingin menginformasikan bahwa permintaan izin keluar kebun Anda telah disetujui.\n\n`;
-            message += `Berikut adalah detail izin Anda:\n`;
-            message += `*Nama Pemohon*: ${data.nama_user}\n`;
-            message += `*Tanggal keluar izin* : ${data.tanggal_keluar}\n`;
-            message += `*Tanggal kembali izin* : ${data.tanggal_kembali}\n`;
-            message += `*Keperluan*: ${data.keperluan}\n`;
-            message += `*Lokasi Tujuan*: ${data.lokasi_tujuan}\n\n`;
-            message += `Harap selalu berhati-hati selama perjalanan dan pastikan untuk mengikuti protokol keamanan yang berlaku. Kami mendoakan agar Anda tiba dengan selamat di tujuan dan kembali ke kebun dengan kondisi sehat dan aman.\n\n`;
-            message += `Jika ada pertanyaan lebih lanjut, jangan ragu untuk menghubungi kami.\n\n`;
-            message += `Atau kunjungi web kami di :https://izin-kebun.srs-ssms.com \n\n`;
-            message += `Terima kasih,\n`;
-            message += `Tim Digital Architect SRS Bot`;
-            try {
-              // const genpdf = await axios.get('http://qc-apps2.test/api/generatePdfIzinKebun', {
-              const genpdf = await axios.get(
-                'https://izin-kebun.srs-ssms.com/api/generatePdfIzinKebun',
-                // 'http://qc-apps2.test/api/generatePdfIzinKebun',
-                {
-                  params: {
-                    user: 'j',
-                    pw: 'j',
-                    id: data.id_db,
-                  },
-                }
-              );
-              // console.log(genpdf.data.filename);
-              const fileUrl = `https://izin-kebun.srs-ssms.com/public/storage/files/${genpdf.data.filename}`;
-              const destinationPath = `./uploads/${itemdata.filename_pdf}`;
-              const file = fs.createWriteStream(destinationPath);
-              await new Promise((resolve, reject) => {
-                https
-                  .get(fileUrl, function (response) {
-                    response.pipe(file);
-                    file.on('finish', function () {
-                      file.close(() => {
-                        console.log('File downloaded successfully.');
-                        resolve(); // Resolve the promise after the file is downloaded
-                      });
-                    });
-                  })
-                  .on('error', function (err) {
-                    fs.unlink(destinationPath, () => {}); // Delete the file if there is an error
-                    console.error('Error downloading the file:', err);
-                    reject(err); // Reject the promise if there is an error
-                  });
-              });
-              const messageOptions = {
-                document: {
-                  url: destinationPath,
-                  caption: 'ini caption',
-                },
-                fileName: 'Surat Izin Kebun',
-              };
-              await sock.sendMessage(
-                data.send_to + '@s.whatsapp.net',
-                messageOptions
-              );
-              try {
-                const unlinkpdf = await axios.get(
-                  'https://izin-kebun.srs-ssms.com/api/deletePdfIzinKebun',
-                  {
-                    params: {
-                      user: 'j',
-                      pw: 'j',
-                      filename: genpdf.data.filename,
-                    },
-                  }
-                );
-              } catch (error) {
-                console.log('Error unlinkpdf PDF:', error);
-              }
-            } catch (error) {
-              console.log('Error generating PDF:', error);
-            }
-          } else if (data.status === 'rejected') {
-            message += `*Izin Keluar Kebun Anda Telah Ditolak*\n\n`;
-            message += `Hallo Selamat Siang Bapak/Ibu ${data.nama_user},\n\n`;
-            message += `Kami ingin menginformasikan bahwa permintaan izin keluar kebun Anda telah ditolak dikarenakan :\n\n`;
-            message += `*Alasan ditolak*: ${data.response}\n`;
-            message += `Jika ada pertanyaan lebih lanjut, jangan ragu untuk menghubungi kami.\n\n`;
-            message += `Terima kasih,\n`;
-            message += `Tim Digital Architect SRS Bot`;
-          } else {
-            console.log('Unknown status:', data.type);
-            return;
-          }
-          console.log('send_user');
-          try {
-            await axios.post('https://management.srs-ssms.com/api/addons', {
-              id: data.id_db,
-              type: 'user',
-              email: 'j',
-              password: 'j',
-            });
-            await sock.sendMessage(`${data.send_to}@s.whatsapp.net`, {
-              text: message,
-            });
-          } catch (error) {
-            console.log(error);
-            if (
-              error.code === 'ECONNRESET' ||
-              error.message.includes('Request failed with status code 500')
-            ) {
-              console.log('Connection reset. send_user');
-              // Implement retry logic here, with a maximum of 5 attempts
-              for (let attempt = 1; attempt <= 5; attempt++) {
-                try {
-                  await axios.post(
-                    'https://management.srs-ssms.com/api/addons',
-                    {
-                      id: data.id_db,
-                      type: 'user',
-                      email: 'j',
-                      password: 'j',
-                    }
-                  );
-                  console.log('Retry successful');
-                  break;
-                } catch (retryError) {
-                  if (attempt === 5) {
-                    await sock.sendMessage(idgroup, {
-                      text: message + '\n' + retryError.message, // Use the message here
-                    });
-                    console.log('Max retries reached. send_user.');
-                  } else {
-                    console.log(`Retrying... Attempt ${attempt}`);
-                  }
-                }
-              }
-            } else {
-              await sock.sendMessage(idgroup, {
-                text: message + '\n' + error.message, // Use the message here
-              });
-              console.log('Error send_user:', error.message);
-            }
-          }
-        } else if (data.type === 'send_atasan_tiga') {
-          let message = `*Izin baru perlu di approved*:\n`;
-          message += `Hallo Selamat Siang Bapak/Ibu ${data.nama_atasan_3}\n`;
-          message += `Anda memiliki request baru untuk izin keluar kebun dengan detail sebagai berikut:\n`;
-          message += `*ID Pemohon* : ${data.id}\n`;
-          message += `*Nama* : ${data.nama_user}\n`;
-          message += `*Keperluan izin keluar kebun* : ${data.keperluan}\n`;
-          message += `*Lokasi yang dituju* : ${data.lokasi_tujuan}\n`;
-          message += `*Tanggal keluar izin* : ${data.tanggal_keluar}\n`;
-          message += `*Tanggal kembali izin* : ${data.tanggal_kembali}\n`;
-          message += `Silahkan Reply Pesan ini kemudian balas ya/tidak\n`;
-          message += `Generated by Digital Architect SRS Bot`;
-          let userMessage = `*Izin Keluar Kebun Anda Telah Di setujui Atasan Kedua*\n\n`;
-          userMessage += `Hallo Selamat Siang Bapak/Ibu ${data.nama_user},\n\n`;
-          userMessage += `Kami ingin menginformasikan bahwa permintaan izin keluar kebun Anda telah Disetuji :\n\n`;
-          userMessage += `Silahkan tunggu notifikasi  berikutnya untuk persetujuan dari atasan ketiga.\n\n`;
-          userMessage += `Terima kasih,\n`;
-          userMessage += `Tim Digital Architect SRS Bot`;
-          try {
-            await axios.post('https://management.srs-ssms.com/api/addons', {
-              id: data.id_db,
-              type: 'atasan3',
-              email: 'j',
-              password: 'j',
-            });
-            await sock.sendMessage(`${data.send_to}@s.whatsapp.net`, {
-              text: message,
-            });
-            await sock.sendMessage(data.no_hp_user + '@s.whatsapp.net', {
-              text: userMessage,
-            });
-          } catch (error) {
-            if (
-              error.code === 'ECONNRESET' ||
-              'Request failed with status code 500'
-            ) {
-              console.log('Connection reset. Retrying up to 5 times...');
-              // Implement retry logic here, with a maximum of 5 attempts
-              for (let attempt = 1; attempt <= 5; attempt++) {
-                try {
-                  await axios.post(
-                    'https://management.srs-ssms.com/api/addons',
-                    {
-                      id: data.id_db,
-                      type: 'atasan3',
-                      email: 'j',
-                      password: 'j',
-                    }
-                  );
-                  console.log('Retry successful');
-                  break;
-                } catch (retryError) {
-                  if (attempt === 5) {
-                    await sock.sendMessage(idgroup, {
-                      text: errormsg + '\n' + retryError.message,
-                    });
-                    console.log(
-                      'Max retries reached. Unable to complete the request.'
-                    );
-                  } else {
-                    console.log(`Retrying... Attempt ${attempt}`);
-                  }
-                }
-              }
-            } else {
-              await sock.sendMessage(idgroup, {
-                text: errormsg + '\n' + error.message,
-              });
-              console.log('Error:', error.message);
-            }
-          }
-        } else {
-          console.log('Unknown status:', data.type);
-          return;
-        }
-      } catch (globalError) {
-        await sock.sendMessage(idgroup, {
-          text: errormsg + '\n' + globalError.message,
-        });
-        console.log('Unexpected error:', globalError);
-      }
-    });
-    channel.bind('Smartlabsnotification', async (itemdata) => {
-      if (!itemdata || !itemdata.data) {
-        console.log('Event data, data, or bot_data is undefined.');
-        return;
-      }
-      // Loop through each item in the data array
-      itemdata.data.forEach(async (dataitem) => {
-        let message = `*${greeting}*:\n`;
-        message += `Yth. Pelanggan Setia Lab CBI\n`;
-        if (dataitem.type === 'input') {
-          message += `Progress Sampel anda telah kami terima dengan:\n`;
-        } else {
-          message += `Progress Sampel anda telah Terupdate dengan:\n`;
-        }
-        message += `*No. Surat* : ${dataitem.no_surat}\n`;
-        message += `*Departemen* : ${dataitem.nama_departemen}\n`;
-        message += `*Jenis Sampel* : ${dataitem.jenis_sampel}\n`;
-        message += `*Jumlah Sampel* : ${dataitem.jumlah_sampel}\n`;
-        message += `*Progress saat ini* : ${dataitem.progresss}\n`;
-        message += `Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com\n`;
-        message += `Dengan kode tracking  *${dataitem.kodesample}*\n`;
-        message += `Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.\n`;
-        console.log(message);
-        await sock.sendMessage(`${dataitem.penerima}@s.whatsapp.net`, {
-          text: message,
-        });
-        if (dataitem.asal === 'Eksternal') {
-          const response = await axios.get(
-            'https://management.srs-ssms.com/api/invoices_smartlabs',
-            {
-              params: {
-                email: 'j',
-                password: 'j',
-                id_data: dataitem.id_invoice,
-              },
-            }
-          );
-          const responseData = response.data;
-          if (responseData.pdf) {
-            // Step 2: Decode the base64 PDF
-            const pdfBuffer = Buffer.from(responseData.pdf, 'base64');
-            const pdfFilename = responseData.filename || 'Invoice.pdf';
-            // Step 3: Send the PDF as a document via WhatsApp
-            const messageOptions = {
-              document: pdfBuffer,
-              mimetype: 'application/pdf',
-              fileName: pdfFilename,
-              caption: 'Invoice Smartlabs',
-            };
-            await sock.sendMessage(
-              dataitem.penerima + '@s.whatsapp.net',
-              messageOptions
-            );
-            console.log('PDF sent successfully!');
-          } else {
-            console.log('PDF not found in the API response.');
-          }
-        }
-      });
-    });
-    channel.bind('notifkasirapidresponse', async (arrayData) => {
-      if (!arrayData?.data) {
-        console.log('Event data, data, or bot_data is undefined.');
-        return;
-      }
-      const itemdata = arrayData.data;
-      // Define the sendMessage function here
-      const sendMessage = async (verifikator, name, id_verifikator) => {
-        const message =
-          `*${greeting}*:\n` +
-          `Yth. Bapak/ibu ${name}\n` +
-          `Anda memiliki permintaan untuk meverifikasi data dari rekomendator ${itemdata.rekomendator} dalam aplikasi rapid respons. Dengan rincian\n` +
-          `*Doc ID* : ${itemdata.id}/${id_verifikator}\n` +
-          `*Estate* : ${itemdata.estate}\n` +
-          `*Afdeling* : ${itemdata.afdeling}\n` +
-          `*Blok* : ${itemdata.blok}\n` +
-          `*Baris* : ${itemdata.baris}\n` +
-          `*Masalah* : ${itemdata.masalah}\n` +
-          `*Catatan* : ${itemdata.catatan}\n` +
-          `Silahkan Repply pesan ini dengan kata kunci "Ya" untuk menerima permintaan verifikasi. Jika anda tidak dapat melakukan verifikasi, silahkan reply pesan ini dengan kata kunci "Tidak" untuk menolak permintaan verifikasi. \n` +
-          `Detail dapat anda periksa di website : https://rapidresponse.srs-ssms.com \n`;
-        await sock.sendMessage(`${verifikator}@s.whatsapp.net`, {
-          text: message,
-        });
-        // console.log(message);
-      };
-      try {
-        const { data: responseData } = await axios.get(
-          'https://management.srs-ssms.com/api/generate_pdf_rapidresponse',
-          {
-            params: {
-              email: 'j',
-              password: 'j',
-              id: itemdata.id,
-            },
-          }
-        );
-        if (responseData.pdf) {
-          const pdfBuffer = Buffer.from(responseData.pdf, 'base64');
-          const pdfFilename = responseData.filename || 'Invoice.pdf';
-          const messageOptions = {
-            document: pdfBuffer,
-            mimetype: 'application/pdf',
-            fileName: pdfFilename,
-            caption: 'Rapid Response Approval',
-          };
-          // Send the PDF
-          await sock.sendMessage(
-            `${itemdata.verifikator1}@s.whatsapp.net`,
-            messageOptions
-          );
-          await sock.sendMessage(
-            `${itemdata.verifikator2}@s.whatsapp.net`,
-            messageOptions
-          );
-          console.log('PDF sent successfully!');
-        } else {
-          console.log('PDF not found in the API response.');
-        }
-        // Send the text message
-        await sendMessage(
-          itemdata.verifikator1,
-          itemdata.nama_verifikator1,
-          itemdata.id_verifikator1
-        );
-        if (itemdata.verifikator2 !== itemdata.verifikator1) {
-          await sendMessage(
-            itemdata.verifikator2,
-            itemdata.nama_verifikator2,
-            itemdata.id_verifikator2
-          );
-        }
-      } catch (error) {
-        console.error('Error sending PDF:', error);
-      }
-    });
-    cron.schedule(
-      '0 12 * * 6',
-      async () => {
-        await Report_group_izinkebun(sock);
-      },
-      {
-        scheduled: true,
-        timezone: 'Asia/Jakarta',
-      }
-    );
-    cron.schedule(
-      '0 14 * * *', // Runs at 14:00 every day
-      async () => {
-        await Generateandsendtaksasi(sock);
-      },
-      {
-        scheduled: true,
-        timezone: 'Asia/Jakarta',
-      }
-    );
-    cron.schedule(
-      '0 17 * * *', // Runs at 14:00 every day
-      async () => {
-        await Sendverificationtaksasi(sock);
-      },
-      {
-        scheduled: true,
-        timezone: 'Asia/Jakarta',
-      }
-    );
+    // cron.schedule(
+    //   '*/10 * * * *',
+    //   async () => {
+    //     await sendfailcronjob(sock);
+    //   },
+    //   {
+    //     scheduled: true,
+    //     timezone: 'Asia/Jakarta',
+    //   }
+    // );
+    // cron.schedule(
+    //   '*/5 * * * *',
+    //   async () => {
+    //     // await getNotifications(sock);
+    //     await get_mill_data(sock);
+    //   },
+    //   {
+    //     scheduled: true,
+    //     timezone: 'Asia/Jakarta',
+    //   }
+    // );
+    // cron.schedule(
+    //   '*/15 * * * *',
+    //   async () => {
+    //     await updatePCStatus();
+    //     await triggerStatusPCPengawasanOperatorAI(sock);
+    //   },
+    //   {
+    //     scheduled: true,
+    //     timezone: 'Asia/Jakarta',
+    //   }
+    // );
+    // channel.bind('item-requested', async (eventData) => {
+    //   // Log the full event data to debug the structure
+    //   // console.log(eventData);
+    //   if (!eventData || !eventData.data || !eventData.data.bot_data) {
+    //     console.log('Event data, data, or bot_data is undefined.');
+    //     return;
+    //   }
+    //   const dataitem = eventData.data.bot_data;
+    //   if (!dataitem.nama_atasan_pemilik) {
+    //     console.log('nama_atasan_pemilik is undefined.');
+    //     return;
+    //   }
+    //   let message = `*Permintaan barang perlu di review*:\n`;
+    //   message += `Hallo Selamat Siang Bapak/Ibu ${dataitem.nama_atasan_pemilik}\n`;
+    //   message += `Anda memiliki request baru dengan detail sebagai berikut:\n`;
+    //   message += `*ID* : ${dataitem.id_data}\n`;
+    //   message += `*Nama pemohon* : ${dataitem.id_pemohon}\n`;
+    //   message += `*Departement pemohon* : ${dataitem.nama_departement_pemohon}\n`;
+    //   message += `*Nama barang* : ${dataitem.nama_barang} (${dataitem.nama_lain})\n`;
+    //   message += `*Jumlah* : ${dataitem.jumlah}\n`;
+    //   message += `*Tanggal pengajuan* : ${dataitem.tanggal_pengajuan}\n`;
+    //   message += `Silahkan Reply Pesan ini kemudian balas ya/tidak untuk approval\n`;
+    //   message += `Generated by Digital Architect SRS Bot`;
+    //   await sock.sendMessage(dataitem.send_to + '@s.whatsapp.net', {
+    //     text: message,
+    //   });
+    //   try {
+    //     const response = await axios.post(
+    //       'https://management.srs-ssms.com/api/changestatusbot',
+    //       // 'http://127.0.0.1:8000/api/changestatusbot',
+    //       {
+    //         id: dataitem.id_data,
+    //         type: 'send_to_pemilik',
+    //         email: 'j',
+    //         password: 'j',
+    //       }
+    //     );
+    //     let responses = response.data;
+    //   } catch (error) {
+    //     console.log('Error approving:', error);
+    //   }
+    // });
+    // channel.bind('item-approved', async (eventData) => {
+    //   // Log the full event data to debug the structure
+    //   console.log(eventData);
+    //   if (!eventData || !eventData.data || !eventData.data.bot_data) {
+    //     console.log('Event data, data, or bot_data is undefined.');
+    //     return;
+    //   }
+    //   const dataitem = eventData.data.bot_data;
+    //   if (!dataitem.nama_atasan_pemilik) {
+    //     console.log('nama_atasan_pemilik is undefined.');
+    //     return;
+    //   }
+    //   let message = `*Permintaan barang disetujui*:\n`;
+    //   message += `Hallo Selamat Siang Bapak/Ibu ${dataitem.id_pemohon}\n`;
+    //   message += `Permintaan barang dengan detail sebagai berikut telah disetujui:\n`;
+    //   message += `*ID* : ${dataitem.id_data}\n`;
+    //   message += `*Nama atasan departement* : ${dataitem.nama_atasan_pemilik}\n`;
+    //   message += `*Departement pengajuan* : ${dataitem.nama_departement_pemilik}\n`;
+    //   message += `*Nama barang* : ${dataitem.nama_barang} (${dataitem.nama_lain})\n`;
+    //   message += `*Jumlah* : ${dataitem.jumlah}\n`;
+    //   message += `*Tanggal pengajuan* : ${dataitem.tanggal_pengajuan}\n`;
+    //   message += `Generated by Digital Architect SRS Bot`;
+    //   await sock.sendMessage(dataitem.send_to + '@s.whatsapp.net', {
+    //     text: message,
+    //   });
+    //   try {
+    //     const response = await axios.post(
+    //       'https://management.srs-ssms.com/api/changestatusbot',
+    //       // 'http://127.0.0.1:8000/api/changestatusbot',
+    //       {
+    //         email: 'j',
+    //         password: 'j',
+    //         id: dataitem.id_data,
+    //         type: 'else',
+    //       }
+    //     );
+    //     let responses = response.data;
+    //   } catch (error) {
+    //     console.log('Error approving:', error);
+    //   }
+    // });
+    // channel.bind('item-rejected', async (eventData) => {
+    //   // Log the full event data to debug the structure
+    //   // console.log(eventData);
+    //   if (!eventData || !eventData.data || !eventData.data.bot_data) {
+    //     console.log('Event data, data, or bot_data is undefined.');
+    //     return;
+    //   }
+    //   const dataitem = eventData.data.bot_data;
+    //   if (!dataitem.nama_atasan_pemilik) {
+    //     console.log('nama_atasan_pemilik is undefined.');
+    //     return;
+    //   }
+    //   let message = `*Permintaan barang ditolak*:\n`;
+    //   message += `Hallo Selamat Siang Bapak/Ibu ${dataitem.id_pemohon}\n`;
+    //   message += `Permintaan barang dengan detail sebagai berikut telah ditolak:\n`;
+    //   message += `*ID* : ${dataitem.id_data}\n`;
+    //   message += `*Nama atasan departement* : ${dataitem.nama_atasan_pemilik}\n`;
+    //   message += `*Departement pengajuan* : ${dataitem.nama_departement_pemilik}\n`;
+    //   message += `*Nama barang* : ${dataitem.nama_barang} (${dataitem.nama_lain})\n`;
+    //   message += `*Jumlah* : ${dataitem.jumlah}\n`;
+    //   message += `*Tanggal pengajuan* : ${dataitem.tanggal_pengajuan}\n`;
+    //   message += `*Alasan di tolak* : ${dataitem.alasan}\n`;
+    //   message += `Generated by Digital Architect SRS Bot`;
+    //   await sock.sendMessage(dataitem.send_to + '@s.whatsapp.net', {
+    //     text: message,
+    //   });
+    //   try {
+    //     const response = await axios.post(
+    //       // "http://127.0.0.1:8000/api/changestatusbot",
+    //       'https://management.srs-ssms.com/api/changestatusbot',
+    //       {
+    //         email: 'j',
+    //         password: 'j',
+    //         id: dataitem.id_data,
+    //         type: 'else',
+    //       }
+    //     );
+    //     let responses = response.data;
+    //   } catch (error) {
+    //     console.log('Error approving:', error);
+    //   }
+    // });
+    // channelPython.bind('python', async (eventData) => {
+    //   group_id = '120363321959291717@g.us';
+    //   hourMissing = eventData.date;
+    //   lokasiCCTV = eventData.location;
+    //   fileName = eventData.fileName;
+    //   const fs = require('fs');
+    //   const axios = require('axios');
+    //   let message = `Tidak ada aktivitas di *${lokasiCCTV}* pada  *${hourMissing}*`;
+    //   try {
+    //     const response = await axios.get(
+    //       `https://srs-ssms.com/op_monitoring/get_screenshot_file.php?filename=${fileName}`
+    //     );
+    //     const base64Image = response.data;
+    //     const buffer = Buffer.from(base64Image, 'base64');
+    //     const filePath = `./uploads/${fileName}`;
+    //     fs.writeFileSync(filePath, buffer);
+    //     const messageOptions = {
+    //       image: {
+    //         url: filePath,
+    //       },
+    //       caption: message,
+    //     };
+    //     await sock
+    //       .sendMessage(group_id, messageOptions)
+    //       .then((result) => {
+    //         if (fs.existsSync(filePath)) {
+    //           fs.unlink(filePath, (err) => {
+    //             if (err && err.code == 'ENOENT') {
+    //               // file doens't exist
+    //               console.info("File doesn't exist, won't remove it.");
+    //             } else if (err) {
+    //               console.error('Error occurred while trying to remove file.');
+    //             }
+    //           });
+    //         }
+    //       })
+    //       .catch((err) => {
+    //         res.status(500).json({
+    //           status: false,
+    //           response: err,
+    //         });
+    //         console.log('pesan gagal terkirim');
+    //       });
+    //   } catch (error) {
+    //     console.error('Error fetching base64 image:', error);
+    //   }
+    // });
+    // channel.bind('Smartlabsnotification', async (itemdata) => {
+    //   if (!itemdata || !itemdata.data) {
+    //     console.log('Event data, data, or bot_data is undefined.');
+    //     return;
+    //   }
+    //   // Loop through each item in the data array
+    //   itemdata.data.forEach(async (dataitem) => {
+    //     let message = `*${greeting}*:\n`;
+    //     message += `Yth. Pelanggan Setia Lab CBI\n`;
+    //     if (dataitem.type === 'input') {
+    //       message += `Progress Sampel anda telah kami terima dengan:\n`;
+    //     } else {
+    //       message += `Progress Sampel anda telah Terupdate dengan:\n`;
+    //     }
+    //     message += `*No. Surat* : ${dataitem.no_surat}\n`;
+    //     message += `*Departemen* : ${dataitem.nama_departemen}\n`;
+    //     message += `*Jenis Sampel* : ${dataitem.jenis_sampel}\n`;
+    //     message += `*Jumlah Sampel* : ${dataitem.jumlah_sampel}\n`;
+    //     message += `*Progress saat ini* : ${dataitem.progresss}\n`;
+    //     message += `Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com\n`;
+    //     message += `Dengan kode tracking  *${dataitem.kodesample}*\n`;
+    //     message += `Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.\n`;
+    //     console.log(message);
+    //     await sock.sendMessage(`${dataitem.penerima}@s.whatsapp.net`, {
+    //       text: message,
+    //     });
+    //     if (dataitem.asal === 'Eksternal') {
+    //       const response = await axios.get(
+    //         'https://management.srs-ssms.com/api/invoices_smartlabs',
+    //         {
+    //           params: {
+    //             email: 'j',
+    //             password: 'j',
+    //             id_data: dataitem.id_invoice,
+    //           },
+    //         }
+    //       );
+    //       const responseData = response.data;
+    //       if (responseData.pdf) {
+    //         // Step 2: Decode the base64 PDF
+    //         const pdfBuffer = Buffer.from(responseData.pdf, 'base64');
+    //         const pdfFilename = responseData.filename || 'Invoice.pdf';
+    //         // Step 3: Send the PDF as a document via WhatsApp
+    //         const messageOptions = {
+    //           document: pdfBuffer,
+    //           mimetype: 'application/pdf',
+    //           fileName: pdfFilename,
+    //           caption: 'Invoice Smartlabs',
+    //         };
+    //         await sock.sendMessage(
+    //           dataitem.penerima + '@s.whatsapp.net',
+    //           messageOptions
+    //         );
+    //         console.log('PDF sent successfully!');
+    //       } else {
+    //         console.log('PDF not found in the API response.');
+    //       }
+    //     }
+    //   });
+    // });
+    // channel.bind('notifkasirapidresponse', async (arrayData) => {
+    //   if (!arrayData?.data) {
+    //     console.log('Event data, data, or bot_data is undefined.');
+    //     return;
+    //   }
+    //   const itemdata = arrayData.data;
+    //   // Define the sendMessage function here
+    //   const sendMessage = async (verifikator, name, id_verifikator) => {
+    //     const message =
+    //       `*${greeting}*:\n` +
+    //       `Yth. Bapak/ibu ${name}\n` +
+    //       `Anda memiliki permintaan untuk meverifikasi data dari rekomendator ${itemdata.rekomendator} dalam aplikasi rapid respons. Dengan rincian\n` +
+    //       `*Doc ID* : ${itemdata.id}/${id_verifikator}\n` +
+    //       `*Estate* : ${itemdata.estate}\n` +
+    //       `*Afdeling* : ${itemdata.afdeling}\n` +
+    //       `*Blok* : ${itemdata.blok}\n` +
+    //       `*Baris* : ${itemdata.baris}\n` +
+    //       `*Masalah* : ${itemdata.masalah}\n` +
+    //       `*Catatan* : ${itemdata.catatan}\n` +
+    //       `Silahkan Repply pesan ini dengan kata kunci "Ya" untuk menerima permintaan verifikasi. Jika anda tidak dapat melakukan verifikasi, silahkan reply pesan ini dengan kata kunci "Tidak" untuk menolak permintaan verifikasi. \n` +
+    //       `Detail dapat anda periksa di website : https://rapidresponse.srs-ssms.com \n`;
+    //     await sock.sendMessage(`${verifikator}@s.whatsapp.net`, {
+    //       text: message,
+    //     });
+    //     // console.log(message);
+    //   };
+    //   try {
+    //     const { data: responseData } = await axios.get(
+    //       'https://management.srs-ssms.com/api/generate_pdf_rapidresponse',
+    //       {
+    //         params: {
+    //           email: 'j',
+    //           password: 'j',
+    //           id: itemdata.id,
+    //         },
+    //       }
+    //     );
+    //     if (responseData.pdf) {
+    //       const pdfBuffer = Buffer.from(responseData.pdf, 'base64');
+    //       const pdfFilename = responseData.filename || 'Invoice.pdf';
+    //       const messageOptions = {
+    //         document: pdfBuffer,
+    //         mimetype: 'application/pdf',
+    //         fileName: pdfFilename,
+    //         caption: 'Rapid Response Approval',
+    //       };
+    //       // Send the PDF
+    //       await sock.sendMessage(
+    //         `${itemdata.verifikator1}@s.whatsapp.net`,
+    //         messageOptions
+    //       );
+    //       await sock.sendMessage(
+    //         `${itemdata.verifikator2}@s.whatsapp.net`,
+    //         messageOptions
+    //       );
+    //       console.log('PDF sent successfully!');
+    //     } else {
+    //       console.log('PDF not found in the API response.');
+    //     }
+    //     // Send the text message
+    //     await sendMessage(
+    //       itemdata.verifikator1,
+    //       itemdata.nama_verifikator1,
+    //       itemdata.id_verifikator1
+    //     );
+    //     if (itemdata.verifikator2 !== itemdata.verifikator1) {
+    //       await sendMessage(
+    //         itemdata.verifikator2,
+    //         itemdata.nama_verifikator2,
+    //         itemdata.id_verifikator2
+    //       );
+    //     }
+    //   } catch (error) {
+    //     console.error('Error sending PDF:', error);
+    //   }
+    // });
+    // cron.schedule(
+    //   '0 12 * * 6',
+    //   async () => {
+    //     await Report_group_izinkebun(sock);
+    //   },
+    //   {
+    //     scheduled: true,
+    //     timezone: 'Asia/Jakarta',
+    //   }
+    // );
+    // cron.schedule(
+    //   '0 14 * * *', // Runs at 14:00 every day
+    //   async () => {
+    //     await Generateandsendtaksasi(sock);
+    //   },
+    //   {
+    //     scheduled: true,
+    //     timezone: 'Asia/Jakarta',
+    //   }
+    // );
+    // cron.schedule(
+    //   '0 17 * * *', // Runs at 14:00 every day
+    //   async () => {
+    //     await Sendverificationtaksasi(sock);
+    //   },
+    //   {
+    //     scheduled: true,
+    //     timezone: 'Asia/Jakarta',
+    //   }
+    // );
   } else {
     console.log('WhatsApp belum terhubung');
   }
@@ -3632,8 +2194,6 @@ const setupCronJobs = (sock) => {
 module.exports = {
   sendtaksasiest,
   setupCronJobs,
-  handleijinmsg,
-  getNotifications,
   handleIotInput,
   handleChatSnoozePengawasanOperatorAi,
   handleTaksasi,
