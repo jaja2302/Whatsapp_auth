@@ -47,6 +47,7 @@ const {
   botTaksasi,
   userTalsasiChoice,
   timeoutHandlestaksasi,
+  Generateandsendtaksasi,
   sendfailcronjob,
 } = require('./utils/taksasi/taksasihelper.js');
 // enable files upload
@@ -1033,7 +1034,7 @@ const sendButtonMessage = async (jid) => {
 
 app.get('/testing', async (req, res) => {
   try {
-    await sendfailcronjob(sock);
+    await Generateandsendtaksasi(sock);
     // da
     // console.log(sock.user);
     // console.log(result);
