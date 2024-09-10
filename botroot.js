@@ -851,11 +851,11 @@ async function connectToWhatsApp() {
           } else {
             if (lowerCaseMessage === 'ya') {
               await sock.sendMessage(noWa, {
-                text: `Harap hanya balas *ya semua* untuk melanjutkan.`,
+                text: `Harap hanya balas *ya semua* untuk menyetujui semua izin atas persetujuan anda atau klik link di setuju di atas.`,
               });
             } else if (lowerCaseMessage === 'tidak semua') {
               await sock.sendMessage(noWa, {
-                text: `Harap hanya balas  *tidak setuju* untuk melanjutkan.`,
+                text: `Harap hanya balas  *tidak setuju* untuk tidak menyetujui semua izin atas persetujuan anda atau klik link di tidak di atas.`,
               });
             } else if (lowerCaseMessage === 'ya semua') {
               try {

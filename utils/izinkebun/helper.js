@@ -8,6 +8,10 @@ const { shortenURL } = require('../../utils/shortenurl');
 const userchoice = {};
 const botpromt = {};
 const timeoutHandles = {};
+const fs = require('fs');
+const https = require('https');
+
+
 // function surat izin bot
 
 async function getuserinfo(user) {
@@ -225,6 +229,8 @@ const handleijinmsg = async (noWa, text, sock) => {
             });
           }
         } catch (error) {
+          console.log(error);
+          
           if (error.response && error.response.status === 404) {
             console.log(error);
 
@@ -1085,8 +1091,8 @@ const runfunction = async (sock) => {
           try {
             // const genpdf = await axios.get('http://qc-apps2.test/api/generatePdfIzinKebun', {
             const genpdf = await axios.get(
-              // 'https://izin-kebun.srs-ssms.com/api/generatePdfIzinKebun',
-              'http://qc-apps2.test/api/generatePdfIzinKebun',
+              'https://izin-kebun.srs-ssms.com/api/generatePdfIzinKebun',
+              // 'http://qc-apps2.test/api/generatePdfIzinKebun',
               {
                 params: {
                   user: 'j',
