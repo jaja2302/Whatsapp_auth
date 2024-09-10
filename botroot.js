@@ -33,16 +33,22 @@ const axios = require('axios');
 const {
   userIotChoice,
   configSnoozeBotPengawasanOperator,
-  userTalsasiChoice,
   userchoiceSnoozeBotPengawasanOperator,
 } = require('./state.js');
-const { setupCronJobs ,sendtaksasiest} = require('./helper.js');
+const { setupCronJobs } = require('./helper.js');
 const {
   handleijinmsg,
   runfunction,
   userchoice,
 } = require('./utils/izinkebun/helper.js');
-
+const {
+  handleTaksasi,
+  sendtaksasiest,
+  botTaksasi,
+  userTalsasiChoice,
+  timeoutHandlestaksasi,
+  sendfailcronjob,
+} = require('./utils/taksasi/taksasihelper.js');
 // enable files upload
 app.use(
   fileUpload({
@@ -553,7 +559,7 @@ async function connectToWhatsApp() {
                   folder,
                   sock
                 );
-                console.log(result);
+                // console.log(result);
                 if (result === 'success') {
                   console.log('success');
                   break;
@@ -1027,6 +1033,7 @@ const sendButtonMessage = async (jid) => {
 
 app.get('/testing', async (req, res) => {
   try {
+    await sendfailcronjob(sock);
     // da
     // console.log(sock.user);
     // console.log(result);

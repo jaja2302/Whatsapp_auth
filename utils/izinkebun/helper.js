@@ -11,7 +11,6 @@ const timeoutHandles = {};
 const fs = require('fs');
 const https = require('https');
 
-
 // function surat izin bot
 
 async function getuserinfo(user) {
@@ -230,7 +229,7 @@ const handleijinmsg = async (noWa, text, sock) => {
           }
         } catch (error) {
           console.log(error);
-          
+
           if (error.response && error.response.status === 404) {
             console.log(error);
 
@@ -1006,6 +1005,52 @@ async function getNotifications(sock) {
   }
 }
 
+async function Report_group_izinkebun(sock) {
+  try {
+    // Fetch data from the API
+    const response = await axios.get(
+      // 'http://127.0.0.1:8000/api/get_reportdata_suratizin',
+      'https://management.srs-ssms.com/api/get_reportdata_suratizin',
+      {
+        params: {
+          email: 'j',
+          password: 'j',
+        },
+      }
+    );
+
+    const data = response.data;
+
+    // Check if the PDF exists in the response
+    if (data.pdf) {
+      try {
+        // Decode the base64 PDF and prepare it for sending
+        const pdfBuffer = Buffer.from(data.pdf, 'base64');
+        const pdfFilename = data.filename || 'Invoice.pdf';
+        const messageOptions = {
+          document: pdfBuffer,
+          mimetype: 'application/pdf',
+          fileName: pdfFilename,
+          caption: 'Laporan Izin Kebun',
+        };
+
+        // Send the PDF as a document via WhatsApp
+        await sock.sendMessage(idgroup_da, messageOptions);
+        console.log('PDF sent successfully!');
+      } catch (sendError) {
+        console.error('Error sending PDF:', sendError.message);
+      }
+    } else {
+      console.log('PDF not found in the API response.');
+    }
+
+    // Return the message if needed
+    return data.message;
+  } catch (error) {
+    console.error('Error fetching data from API:', error.message);
+    throw error;
+  }
+}
 const runfunction = async (sock) => {
   channel.bind('izinkebunnotif', async (itemdata) => {
     try {
@@ -1212,4 +1257,5 @@ module.exports = {
   userchoice,
   botpromt,
   timeoutHandles,
+  Report_group_izinkebun,
 };

@@ -7,6 +7,12 @@ const https = require('https');
 const { DateTime } = require('luxon');
 
 const { channel, channelPython } = require('./utils/pusher');
+const { Report_group_izinkebun } = require('./utils/izinkebun/helper');
+const {
+  sendfailcronjob,
+  Generateandsendtaksasi,
+  Sendverificationtaksasi,
+} = require('./utils/taksasi/taksasihelper');
 
 const {
   userchoice,
@@ -273,548 +279,6 @@ async function statusAWS(sock) {
 }
 
 // endfunction
-
-// function bot taksasi
-
-async function deleteFile(filename, folder) {
-  try {
-    const response = await axios.head(
-      `https://srs-ssms.com/whatsapp_bot/deletebot.php?filename=${filename}&path=${folder}`
-    );
-
-    if (response.status === 200) {
-      await axios.get(
-        `https://srs-ssms.com/whatsapp_bot/deletebot.php?filename=${filename}&path=${folder}`
-      );
-      console.log(
-        `File '${filename}' in folder '${folder}' deleted successfully.`
-      );
-    } else if (response.status === 404) {
-      console.log(
-        `File '${filename}' in folder '${folder}' doesn't exist. Skipping deletion.`
-      );
-    } else {
-      console.log(
-        `Unexpected status code ${response.status} received. Skipping deletion.`
-      );
-    }
-  } catch (error) {
-    console.log(
-      `Error checking or deleting file '${filename}' in folder '${folder}':`,
-      error.message
-    );
-    await sock.sendMessage(idgroup, {
-      text: 'Error checking or deleting file',
-    });
-  }
-}
-async function checkAndDeleteFiles() {
-  let attempts = 0;
-  const maxAttempts = 5;
-  const retryDelay = 3000; // 3 seconds in milliseconds
-
-  while (attempts < maxAttempts) {
-    try {
-      const getStatus = await axios.get(
-        'https://srs-ssms.com/whatsapp_bot/checkfolderstatus.php'
-      );
-      const { data: folderStatus } = getStatus;
-
-      if (Array.isArray(folderStatus) && folderStatus.length > 0) {
-        for (const file of folderStatus) {
-          if (
-            file.hasOwnProperty('wilayah') &&
-            file.hasOwnProperty('filename')
-          ) {
-            const { wilayah, filename } = file;
-            await deleteFile(filename, wilayah);
-          }
-        }
-      } else {
-        console.log('No files found or empty folder. Nothing to delete.');
-      }
-      // Break the loop if successful
-      break;
-    } catch (error) {
-      attempts++;
-      console.error('Error checking and deleting files:', error);
-      if (attempts < maxAttempts) {
-        console.log(
-          `Retrying attempt ${attempts} after ${retryDelay / 1000} seconds`
-        );
-        await new Promise((resolve) => setTimeout(resolve, retryDelay));
-      } else {
-        console.error(
-          `Max retry attempts (${maxAttempts}) reached. Exiting retry loop.`
-        );
-        throw error; // Throw the error after max attempts are reached
-      }
-    }
-  }
-}
-
-async function generatemapstaksasi(est, datetime) {
-  let attempts = 0;
-  let uploadSuccess = false;
-
-  while (attempts < 2 && !uploadSuccess) {
-    try {
-      const browser = await puppeteer.launch({
-        // executablePath: '../chrome-win/chrome.exe',
-        headless: 'new',
-      });
-      const page = await browser.newPage();
-
-      // Listen for console events and check for the success message
-      page.on('console', (msg) => {
-        if (msg.text() === 'Upload successfully gan') {
-          uploadSuccess = true;
-        }
-      });
-
-      await page.goto(
-        `https://srs-ssms.com/rekap_pdf/convert_taksasi_pdf_get.php?datetime=${datetime}&estate=${est}`
-      );
-      await page.title();
-
-      // Delay for 15 seconds before checking the success flag
-      await new Promise((resolve) => setTimeout(resolve, 10000));
-
-      if (uploadSuccess) {
-        console.log('Upload successful after', attempts + 1, 'attempts');
-        await page.close();
-        await browser.close();
-        return {
-          body: {}, // Provide your response body here
-          cookies: {}, // Provide your cookies object here
-          response: 'success',
-        };
-      } else {
-        console.log('Upload not successful, retrying...');
-        await page.close();
-        await browser.close();
-        attempts++;
-      }
-    } catch (error) {
-      console.error('Attempt', attempts + 1, 'failed with error:', error);
-      attempts++;
-    }
-  }
-
-  if (!uploadSuccess) {
-    console.error('Upload failed after 5 attempts');
-    return { error: 'Upload failed after maximum attempts' };
-  }
-}
-
-async function sendtaksasiest(estate, group_id, folder, sock) {
-  try {
-    await checkAndDeleteFiles();
-    await generatemapstaksasi(estate, datetimeValue);
-    await GenDefaultTaksasi(estate, sock);
-    await sendPdfToGroups(folder, group_id, sock);
-
-    return 'success';
-  } catch (error) {
-    console.log(error);
-    return 'error';
-  }
-}
-
-async function checkAndDeleteFiles() {
-  let attempts = 0;
-  const maxAttempts = 5;
-  const retryDelay = 3000; // 3 seconds in milliseconds
-
-  while (attempts < maxAttempts) {
-    try {
-      const getStatus = await axios.get(
-        'https://srs-ssms.com/whatsapp_bot/checkfolderstatus.php'
-      );
-      const { data: folderStatus } = getStatus;
-
-      if (Array.isArray(folderStatus) && folderStatus.length > 0) {
-        for (const file of folderStatus) {
-          if (
-            file.hasOwnProperty('wilayah') &&
-            file.hasOwnProperty('filename')
-          ) {
-            const { wilayah, filename } = file;
-            await deleteFile(filename, wilayah);
-          }
-        }
-      } else {
-        console.log('No files found or empty folder. Nothing to delete.');
-      }
-      // Break the loop if successful
-      break;
-    } catch (error) {
-      attempts++;
-      console.error('Error checking and deleting files:', error);
-      if (attempts < maxAttempts) {
-        console.log(
-          `Retrying attempt ${attempts} after ${retryDelay / 1000} seconds`
-        );
-        await new Promise((resolve) => setTimeout(resolve, retryDelay));
-      } else {
-        console.error(
-          `Max retry attempts (${maxAttempts}) reached. Exiting retry loop.`
-        );
-        throw error; // Throw the error after max attempts are reached
-      }
-    }
-  }
-}
-
-async function GenDefaultTaksasi(est, sock) {
-  let attempts = 0;
-  const maxAttempts = 5;
-  const retryDelay = 3000; // 3 seconds in milliseconds
-
-  while (attempts < maxAttempts) {
-    try {
-      const response = await axios.get(
-        `https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder.php?est=${est.toLowerCase()}`
-      );
-      await sock.sendMessage(idgroup, {
-        text: `Pdf berhasil di generate ${est}`,
-      });
-      return response;
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      attempts++;
-      if (attempts < maxAttempts) {
-        console.log(`Retrying attempt ${attempts} for ${est}`);
-        await sock.sendMessage(idgroup, {
-          text: `Mengulang Generate PDF ${est}`,
-        });
-        await new Promise((resolve) => setTimeout(resolve, retryDelay));
-      } else {
-        await sock.sendMessage(idgroup, {
-          text: `Sudah Max Generate PDF ${est} Gagal`,
-        });
-        throw error; // Throw the error after max attempts are reached
-      }
-    }
-  }
-}
-
-async function GenDefaultTaksasinew(est, datetime, sock) {
-  let attempts = 0;
-  const maxAttempts = 5;
-  const retryDelay = 3000; // 3 seconds in milliseconds
-
-  while (attempts < maxAttempts) {
-    try {
-      const response = await axios.get(
-        `https://srs-ssms.com/rekap_pdf/pdf_taksasi_folder.php?est=${est.toLowerCase()}&datetime=${datetime}`
-      );
-      await sock.sendMessage(idgroup, {
-        text: `Pdf berhasil di generate ${est}`,
-      });
-      return response;
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      attempts++;
-      if (attempts < maxAttempts) {
-        console.log(`Retrying attempt ${attempts} for ${est}`);
-        await sock.sendMessage(idgroup, {
-          text: `Mengulang Generate PDF ${est}`,
-        });
-        await new Promise((resolve) => setTimeout(resolve, retryDelay));
-      } else {
-        await sock.sendMessage(idgroup, {
-          text: `Sudah Max Generate PDF ${est} Gagal`,
-        });
-        throw error; // Throw the error after max attempts are reached
-      }
-    }
-  }
-}
-
-async function senddata(groupID, destinationPath, fileName, sock) {
-  const pesankirim = fileName;
-
-  const messageOptions = {
-    document: {
-      url: destinationPath,
-      caption: pesankirim,
-    },
-    fileName: fileName,
-    caption: 'Dikirim oleh *ROBOT*,jangan balas pesan',
-  };
-
-  // Send the PDF file
-  await sock.sendMessage(groupID, messageOptions);
-  // await sock.sendMessage(groupID, { text: 'Ini pesan dari robot' })
-  // Unlink the file after sending
-  fs.unlink(destinationPath, (err) => {
-    if (err) {
-      console.error('Error unlinking the file:', err);
-    }
-  });
-}
-
-async function sendPdfToGroups(folder, groupID, sock) {
-  try {
-    const response = await axios.get(
-      `https://srs-ssms.com/whatsapp_bot/taksasiScan.php?folder=${folder}`
-    );
-
-    // Accessing the response data
-    const files = response.data;
-
-    if (!files || files.length === 0) {
-      // return res.status(200).json({
-      //     status: false,
-      //     response: "Folder is empty"
-      // });
-      await sock.sendMessage(idgroup, { text: 'Folder is empty' });
-      console.log('empty');
-    }
-
-    for (const key in files) {
-      if (Object.hasOwnProperty.call(files, key)) {
-        const fileName = files[key];
-        const fileUrl = `https://srs-ssms.com/whatsapp_bot/taksasi/${folder}/${fileName}`;
-        const destinationPath = `./uploads/${fileName}`;
-
-        const file = fs.createWriteStream(destinationPath);
-
-        await new Promise((resolve, reject) => {
-          https
-            .get(fileUrl, function (response) {
-              response.pipe(file);
-              file.on('finish', function () {
-                file.close(() => {
-                  console.log('File downloaded successfully.');
-                  resolve(); // Resolve the promise after the file is downloaded
-                });
-              });
-            })
-            .on('error', function (err) {
-              fs.unlink(destinationPath, () => {}); // Delete the file if there is an error
-              console.error('Error downloading the file:', err);
-              reject(err); // Reject the promise if there is an error
-            });
-        });
-
-        await senddata(groupID, destinationPath, fileName, sock);
-        await deleteFile(fileName, folder);
-      }
-    }
-    await sock.sendMessage(idgroup, {
-      text: 'Laporan berhasil di kirim ke grup',
-    });
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-}
-
-async function sendhistorycron(estate, id) {
-  try {
-    // const apiUrl = 'http://ssms-qc.test/api/recordcronjob';
-    const apiUrl = 'https://qc-apps.srs-ssms.com/api/recordcronjob';
-
-    // Create the form data with variables estate and datetime
-    const formData = new FormData();
-    formData.append('est', estate);
-
-    // Get the current date and time in the Jakarta timezone using Luxon
-    const dateTime = DateTime.now().setZone('Asia/Jakarta').toISO();
-
-    formData.append('datetime', dateTime);
-    formData.append('id', id);
-    // Send the POST request with form data
-    const response = await axios.post(apiUrl, formData);
-
-    // Handle the response if needed
-    console.log('Response:', response.data);
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-}
-async function sendfailcronjob(sock) {
-  try {
-    const apiUrl = 'https://qc-apps.srs-ssms.com/api/checkcronjob';
-    const response = await axios.get(apiUrl);
-
-    let data = response.data.cronfail;
-    // console.log(sock);
-    if (data.length === 0) {
-      console.log('nodata');
-    } else {
-      for (const task of data) {
-        try {
-          await checkAndDeleteFiles();
-          await generatemapstaksasi(task.estate, datetimeValue);
-          await GenDefaultTaksasi(task.estate, sock);
-          await sendPdfToGroups(task.wilayah, task.group_id, sock);
-          await sendhistorycron(task.estate, task.id, sock);
-        } catch (error) {
-          console.error('Error performing task in cronjob:', error);
-        }
-      }
-    }
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-}
-const timeoutHandlestaksasi = {};
-const handleTaksasi = async (noWa, text, sock) => {
-  const resetUserState = async () => {
-    await sock.sendMessage(noWa, {
-      text: 'Waktu Anda telah habis. Silakan mulai kembali dengan mengetikkan !taksasi.',
-    });
-    delete userTalsasiChoice[noWa];
-    delete botTaksasi[noWa];
-    if (timeoutHandlestaksasi[noWa]) {
-      clearTimeout(timeoutHandlestaksasi[noWa]);
-      delete timeoutHandlestaksasi[noWa];
-    }
-  };
-
-  const setUserTimeout = () => {
-    if (timeoutHandlestaksasi[noWa]) {
-      clearTimeout(timeoutHandlestaksasi[noWa]);
-    }
-    timeoutHandlestaksasi[noWa] = setTimeout(resetUserState, 60 * 1000);
-  };
-
-  if (!userTalsasiChoice[noWa]) {
-    userTalsasiChoice[noWa] = 'tanggal';
-    botTaksasi[noWa] = { attempts: 0 };
-    await sock.sendMessage(noWa, {
-      text: 'Masukkan Tanggal (Format: Hari-Bulan-Tahun) Contoh : (20-02-2024)',
-    });
-    setUserTimeout();
-  } else {
-    setUserTimeout(); // Reset timeout with every interaction
-    const step = userTalsasiChoice[noWa];
-
-    if (step === 'tanggal') {
-      botTaksasi[noWa].tanggal = text;
-      const dateRegex = /^\d{2}-\d{2}-\d{4}$/;
-      if (!dateRegex.test(text)) {
-        await sock.sendMessage(noWa, {
-          text: 'Tanggal tidak sesuai, harap masukkan kembali (Format: Hari-Bulan-Tahun):',
-        });
-        return;
-      }
-
-      const [day, month, year] = text.split('-').map(Number);
-      if (month < 1 || month > 12 || day < 1 || day > 31) {
-        await sock.sendMessage(noWa, {
-          text: 'Tanggal atau bulan tidak valid. Harap masukkan kembali (Format: Hari-Bulan-Tahun):',
-        });
-        return;
-      }
-
-      const inputDate = new Date(year, month - 1, day);
-      if (
-        inputDate.getDate() !== day ||
-        inputDate.getMonth() !== month - 1 ||
-        inputDate.getFullYear() !== year
-      ) {
-        await sock.sendMessage(noWa, {
-          text: 'Tanggal tidak valid. Harap masukkan kembali (Format: Hari-Bulan-Tahun):',
-        });
-        return;
-      }
-
-      botTaksasi[noWa].date = text;
-      userTalsasiChoice[noWa] = 'estate';
-      await sock.sendMessage(noWa, {
-        text: 'Harap masukkan Estate apa saja dengan format setiap estate diakhiri dengan (/) contoh: kne/sce/nbe',
-      });
-    } else if (step === 'estate') {
-      const estates = text.split('/').filter(Boolean); // Split input by '/' and filter out empty strings
-      botTaksasi[noWa].estates = estates;
-
-      // Validate the input format
-      if (!text.includes('/')) {
-        await sock.sendMessage(noWa, {
-          text: 'Format tidak sesuai. Harap masukkan estate dengan pemisah / contoh: kne/sce/nbe',
-        });
-        return;
-      }
-
-      try {
-        const apiUrl = 'https://qc-apps.srs-ssms.com/api/getdatacron';
-        const response = await axios.get(apiUrl);
-
-        if (Array.isArray(response.data)) {
-          const apiEstates = response.data.map((item) =>
-            item.estate.toLowerCase()
-          ); // Extract estate values from API response and convert to lowercase
-
-          // Find available estates
-          const availableEstates = estates.filter((estate) =>
-            apiEstates.includes(estate.toLowerCase())
-          ); // Convert user input to lowercase before comparing
-
-          if (availableEstates.length === 0) {
-            await sock.sendMessage(noWa, {
-              text: 'Masukan nama estate yang benar!',
-            });
-          } else {
-            const dataestate = response.data;
-
-            for (const estate of availableEstates) {
-              const matchingTasks = dataestate.filter(
-                (task) => task.estate.toLowerCase() === estate.toLowerCase()
-              );
-
-              if (matchingTasks.length > 0) {
-                const {
-                  estate: estateFromMatchingTask,
-                  group_id,
-                  wilayah: folder,
-                } = matchingTasks[0];
-                await sock.sendMessage(noWa, {
-                  text: `Estate ${estateFromMatchingTask} sedang di proses`,
-                });
-                await checkAndDeleteFiles();
-                await generatemapstaksasi(
-                  estateFromMatchingTask,
-                  botTaksasi[noWa].tanggal
-                );
-                await GenDefaultTaksasinew(
-                  estateFromMatchingTask,
-                  botTaksasi[noWa].tanggal,
-                  sock
-                );
-                await sendPdfToGroups(folder, group_id, sock);
-              }
-            }
-          }
-        } else {
-          throw new Error('Invalid API response structure');
-        }
-      } catch (error) {
-        console.log('Error fetching data:', error.message);
-        await sock.sendMessage(noWa, {
-          text: 'There was an error checking the estate availability. Please try again later.',
-        });
-      }
-
-      // Send a thank you message with the estates entered
-      // await sock.sendMessage(noWa, { text: `Terima kasih. Estate yang Anda masukkan adalah: ${estates.join(', ')}` });
-
-      // Reset all states
-      delete userTalsasiChoice[noWa];
-      delete botTaksasi[noWa];
-      if (timeoutHandlestaksasi[noWa]) {
-        clearTimeout(timeoutHandlestaksasi[noWa]);
-        delete timeoutHandlestaksasi[noWa];
-      }
-    } else {
-      await sock.sendMessage(noWa, {
-        text: 'Pilihan tidak valid. Silakan masukkan nomor yang sesuai:',
-      });
-    }
-  }
-};
 
 // endfunction
 
@@ -1552,240 +1016,23 @@ async function botmanagementgudang(sock, msg) {
   }
 }
 
-//bot kirim laporan ke group izin kebun
-async function Report_group_izinkebun(sock) {
-  try {
-    // Fetch data from the API
-    const response = await axios.get(
-      // 'http://127.0.0.1:8000/api/get_reportdata_suratizin',
-      'https://management.srs-ssms.com/api/get_reportdata_suratizin',
-      {
-        params: {
-          email: 'j',
-          password: 'j',
-        },
-      }
-    );
-
-    const data = response.data;
-
-    // Check if the PDF exists in the response
-    if (data.pdf) {
-      try {
-        // Decode the base64 PDF and prepare it for sending
-        const pdfBuffer = Buffer.from(data.pdf, 'base64');
-        const pdfFilename = data.filename || 'Invoice.pdf';
-        const messageOptions = {
-          document: pdfBuffer,
-          mimetype: 'application/pdf',
-          fileName: pdfFilename,
-          caption: 'Laporan Izin Kebun',
-        };
-
-        // Send the PDF as a document via WhatsApp
-        await sock.sendMessage(idgroup_da, messageOptions);
-        console.log('PDF sent successfully!');
-      } catch (sendError) {
-        console.error('Error sending PDF:', sendError.message);
-      }
-    } else {
-      console.log('PDF not found in the API response.');
-    }
-
-    // Return the message if needed
-    return data.message;
-  } catch (error) {
-    console.error('Error fetching data from API:', error.message);
-    throw error;
-  }
-}
-
-// bot baru untuk taksasi
-async function Generateandsendtaksasi(sock) {
-  try {
-    const response = await axios.get(
-      'https://management.srs-ssms.com/api/get_crontab_data',
-      {
-        params: {
-          email: 'j',
-          password: 'j',
-        },
-      }
-    );
-    const data = response.data.data;
-    for (const item of data) {
-      await generatemapstaksasi(item.estate, datetimeValue);
-
-      try {
-        const { data: responseData } = await axios.get(
-          `https://smart-app.srs-ssms.com/api/exportPdfTaksasi/${item.estate}/${datetimeValue}`
-        );
-
-        if (responseData.base64_pdf) {
-          const pdfBuffer = Buffer.from(responseData.base64_pdf, 'base64');
-          const pdfFilename = `Rekap Taksasi ${item.estate} ${datetimeValue}.pdf`;
-          let captions = `Laporan Taksasi Perlu persetujuan sebelum diterbitkan\n`;
-          captions += `\nID : ${item.id}`;
-          captions += `\nEstate : ${item.estate}`;
-          captions += `\nTanggal : ${datetimeValue}`;
-          captions += `Harap hanya membalas pesan ini dengan jawaban ya atau tidak`;
-          captions += `\n\nTerima kasih`;
-          const messageOptions = {
-            document: pdfBuffer,
-            mimetype: 'application/pdf',
-            fileName: pdfFilename,
-            caption: captions,
-          };
-
-          await sock.sendMessage(item.new_group, messageOptions);
-
-          console.log('PDF sent successfully!');
-        } else {
-          console.log('PDF not found in the API response.');
-        }
-      } catch (error) {
-        console.error('Error sending PDF:', error.message);
-      }
-    }
-  } catch (error) {
-    console.error('Error fetching data from API:', error.message);
-    throw error;
-  }
-}
-
-async function Sendverificationtaksasi(sock) {
-  try {
-    const response = await axios.get(
-      'https://management.srs-ssms.com/api/send_verification_pdf',
-      {
-        params: {
-          email: 'j',
-          password: 'j',
-        },
-      }
-    );
-    const responseMessage = response.data.message;
-
-    // Handle the case when no data is found
-    if (responseMessage === 'Tidak ada data yang ditemukan') {
-      console.log('No data found in the API response.');
-      return; // Stop execution if no data is found
-    }
-
-    const data = response.data.data;
-    for (const item of data) {
-      await generatemapstaksasi(item.estate, datetimeValue);
-
-      try {
-        const { data: responseData } = await axios.get(
-          `https://smart-app.srs-ssms.com/api/exportPdfTaksasi/${item.estate}/${datetimeValue}`
-        );
-
-        if (responseData.base64_pdf) {
-          const pdfBuffer = Buffer.from(responseData.base64_pdf, 'base64');
-          const pdfFilename = `Rekap Taksasi ${item.estate} ${datetimeValue}.pdf`;
-          const messageOptions = {
-            document: pdfBuffer,
-            mimetype: 'application/pdf',
-            fileName: pdfFilename,
-            caption: 'Pesan otomatis, harap jangan membalas pesan ini',
-          };
-
-          await sock.sendMessage(item.new_group, messageOptions);
-
-          console.log('PDF sent successfully!');
-        } else {
-          console.log('PDF not found in the API response.');
-        }
-      } catch (error) {
-        console.error('Error sending PDF:', error.message);
-      }
-    }
-  } catch (error) {
-    console.error('Error fetching data from API:', error.message);
-    throw error;
-  }
-}
-
 // websocket
+
+// all cronjob di sini
 
 const setupCronJobs = (sock) => {
   const isConnected = () => {
     return sock.user;
   };
   if (isConnected) {
-    // untuk  pc ardiono
-    // cron.schedule(
-    //   '0 */30 * * * *',
-    //   async () => {
-    //     try {
-    //       let response = await axios.get(
-    //         'https://qc-apps.srs-ssms.com/api/checkPcStatus'
-    //       );
-    //       // Assuming the response data has the structure { message: "All PCs are online" }
-    //       if (response.data.message === 'All PCs are online') {
-    //         console.log('All PCs are online');
-    //       } else {
-    //         await sendfailcronjob(sock);
-    //         await get_mill_data(sock);
-    //       }
-    //     } catch (error) {
-    //       console.error('Error fetching the status:', error);
-    //     }
-    //   },
-    //   {
-    //     scheduled: true,
-    //     timezone: 'Asia/Jakarta',
-    //   }
-    // );
-    // WebSocket pusher untuk bot grading
     // untuk pc di ho boootroot
+    // cron job
     cron.schedule(
       '0 * * * *',
       async () => {
         try {
-          // console.log('Running message history');
-          await statusHistory(sock); // Call the function to check history and send message
-        } catch (error) {
-          console.error('Error in cron job:', error);
-        }
-      },
-      {
-        scheduled: true,
-        timezone: 'Asia/Jakarta', // Set the timezone according to your location
-      }
-    );
-    // cron.schedule(
-    //   '*/1 * * * *',
-    //   async () => {
-    //     await sendMessagesBasedOnData(sock);
-    //     console.log('cronjob');
-    //     // await maintencweget(sock);
-    //   },
-    //   {
-    //     scheduled: true,
-    //     timezone: 'Asia/Jakarta',
-    //   }
-    // );
-    cron.schedule(
-      '0 * * * *',
-      async () => {
-        try {
-          await statusAWS(sock); // Call the function to check AWS status and send message
-        } catch (error) {
-          console.error('Error in cron job:', error);
-        }
-      },
-      {
-        scheduled: true,
-        timezone: 'Asia/Jakarta', // Set the timezone according to your location
-      }
-    );
-    cron.schedule(
-      '0 9 * * *',
-      async () => {
-        try {
-          await statusAWS(sock); // Call the function to check AWS status and send message
+          await statusAWS(sock);
+          await statusHistory(sock);
         } catch (error) {
           console.error('Error in cron job:', error);
         }
@@ -1848,6 +1095,37 @@ const setupCronJobs = (sock) => {
         timezone: 'Asia/Jakarta',
       }
     );
+    cron.schedule(
+      '0 12 * * 6',
+      async () => {
+        await Report_group_izinkebun(sock);
+      },
+      {
+        scheduled: true,
+        timezone: 'Asia/Jakarta',
+      }
+    );
+    cron.schedule(
+      '0 14 * * *', // Runs at 14:00 every day
+      async () => {
+        await Generateandsendtaksasi(sock);
+      },
+      {
+        scheduled: true,
+        timezone: 'Asia/Jakarta',
+      }
+    );
+    cron.schedule(
+      '0 17 * * *', // Runs at 14:00 every day
+      async () => {
+        await Sendverificationtaksasi(sock);
+      },
+      {
+        scheduled: true,
+        timezone: 'Asia/Jakarta',
+      }
+    );
+    // websocket
     channel.bind('item-requested', async (eventData) => {
       // Log the full event data to debug the structure
       // console.log(eventData);
@@ -2156,53 +1434,19 @@ const setupCronJobs = (sock) => {
         console.error('Error sending PDF:', error);
       }
     });
-    cron.schedule(
-      '0 12 * * 6',
-      async () => {
-        await Report_group_izinkebun(sock);
-      },
-      {
-        scheduled: true,
-        timezone: 'Asia/Jakarta',
-      }
-    );
-    cron.schedule(
-      '0 14 * * *', // Runs at 14:00 every day
-      async () => {
-        await Generateandsendtaksasi(sock);
-      },
-      {
-        scheduled: true,
-        timezone: 'Asia/Jakarta',
-      }
-    );
-    cron.schedule(
-      '0 17 * * *', // Runs at 14:00 every day
-      async () => {
-        await Sendverificationtaksasi(sock);
-      },
-      {
-        scheduled: true,
-        timezone: 'Asia/Jakarta',
-      }
-    );
   } else {
     console.log('WhatsApp belum terhubung');
   }
 };
 
 module.exports = {
-  sendtaksasiest,
   setupCronJobs,
   handleIotInput,
   handleChatSnoozePengawasanOperatorAi,
-  handleTaksasi,
   restartbot,
   get_mill_data,
   handleBotDailyPengawasanOperatorAI,
   botmanagementgudang,
   triggerStatusPCPengawasanOperatorAI,
   handleBotLaporanHarianFleetManagement,
-  Report_group_izinkebun,
-  Generateandsendtaksasi,
 };
