@@ -1755,18 +1755,18 @@ const setupCronJobs = (sock) => {
         timezone: 'Asia/Jakarta', // Set the timezone according to your location
       }
     );
-    cron.schedule(
-      '*/1 * * * *',
-      async () => {
-        await sendMessagesBasedOnData(sock);
-        console.log('cronjob');
-        // await maintencweget(sock);
-      },
-      {
-        scheduled: true,
-        timezone: 'Asia/Jakarta',
-      }
-    );
+    // cron.schedule(
+    //   '*/1 * * * *',
+    //   async () => {
+    //     await sendMessagesBasedOnData(sock);
+    //     console.log('cronjob');
+    //     // await maintencweget(sock);
+    //   },
+    //   {
+    //     scheduled: true,
+    //     timezone: 'Asia/Jakarta',
+    //   }
+    // );
     cron.schedule(
       '0 * * * *',
       async () => {
