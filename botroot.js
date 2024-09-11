@@ -261,7 +261,7 @@ async function connectToWhatsApp() {
                 } catch (error) {
                   // console.log('Error approving:', error);
                 }
-              } else if (respon_atasan.toLowerCase() === 'tidak') {
+              } else if (respon_atasan.toLowerCase() === 'tidak setuju') {
                 let message = `*Alasan izin di tolak?*:\n`;
                 message += `*ID Pemohon* : ${id}/${idAtasan}\n`;
                 message += `*Nama* : ${nama}\n`;
