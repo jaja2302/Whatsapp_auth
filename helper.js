@@ -1043,16 +1043,6 @@ const setupCronJobs = (sock) => {
       }
     );
     cron.schedule(
-      '0 9 * * * *',
-      async () => {
-        await handleBotDailyPengawasanOperatorAI(sock);
-      },
-      {
-        scheduled: true,
-        timezone: 'Asia/Jakarta',
-      }
-    );
-    cron.schedule(
       '0 9 * * *',
       async () => {
         await handleBotLaporanHarianFleetManagement(sock);
