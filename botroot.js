@@ -238,8 +238,8 @@ async function connectToWhatsApp() {
               } else if (respon_atasan.toLowerCase() === 'ya setuju') {
                 try {
                   const response = await axios.post(
-                    // 'https://management.srs-ssms.com/api/updatenotifijin',
-                    'http://127.0.0.1:8000/api/updatenotifijin',
+                    'https://management.srs-ssms.com/api/updatenotifijin',
+                    // 'http://127.0.0.1:8000/api/updatenotifijin',
                     {
                       id_data: id,
                       id_atasan: idAtasan,
@@ -300,7 +300,7 @@ async function connectToWhatsApp() {
                 console.log(responses);
 
                 await sock.sendMessage(noWa, {
-                  text: 'Mohon Tunggu server melakukan validasi.....',
+                  text: 'Izin keluar kebun berhasil di perbaharui',
                 });
                 await sock.sendMessage(noWa, {
                   text: responses.message,

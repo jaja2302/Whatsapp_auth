@@ -80,7 +80,8 @@ async function sendImageWithCaption(sock, noWa, imagePath, caption) {
 async function updatestatus_sock_vbot(id, type_atasan) {
   try {
     const response = await axios.post(
-      'http://127.0.0.1:8000/api/update_status_sock',
+      'https://management.srs-ssms.com/api/update_status_sock',
+      // 'http://127.0.0.1:8000/api/update_status_sock',
       {
         id: id,
         type_atasan: type_atasan,
