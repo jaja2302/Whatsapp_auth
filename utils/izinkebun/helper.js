@@ -709,9 +709,9 @@ const handleijinmsg = async (noWa, text, sock) => {
         userchoice[noWa] = 'disclamer_user';
         await sock.sendMessage(noWa, {
           text: `*Disclamer Harap di baca dengan seksama apakah anda setuju atau tidak*:
-                      \n- Izin kebun diberikan dengan tujuan yang telah ditentukan dan harus digunakan sesuai dengan ketentuan yang berlaku.
+                      \n- Izin kerja diberikan dengan tujuan yang telah ditentukan dan harus digunakan sesuai dengan ketentuan yang berlaku.
                       \n- Pemberi izin tidak bertanggung jawab atas cedera, kerugian, atau kerusakan yang timbul dari kecelakaan, baik yang diakibatkan oleh kelalaian sendiri maupun orang lain.
-                      \n- Izin kebun dapat dibatalkan sewaktu-waktu oleh pemberi izin jika ditemukan pelanggaran terhadap ketentuan yang berlaku.\n\nApakah Anda setuju dengan disclaimer ini? (ya/tidak)`,
+                      \n- Izin kerja dapat dibatalkan sewaktu-waktu oleh pemberi izin jika ditemukan pelanggaran terhadap ketentuan yang berlaku.\n\nApakah Anda setuju dengan disclaimer ini? (ya/tidak)`,
         });
       } else if (text.toLowerCase() === 'tidak') {
         await sock.sendMessage(noWa, {
@@ -1078,10 +1078,12 @@ const runfunction = async (sock) => {
         message += `*ID Pemohon*: ${data.id}\n`;
         message += `*Nama Pemohon*: *${data.nama_user}*\n`;
         message += `*Tanggal Keluar*: ${data.tanggal_keluar}\n\n`;
-        message += `Untuk memberikan persetujuan, Anda dapat mengklik salah satu link berikut untuk menyetujui atau menolak hanya permintaan ini. Anda juga bisa membalas dengan *Ya semua*/*Tidak semua* untuk menyetujui/menolak semua permintaan yang terkait dengan Anda.\n\n`;
+        message += `Untuk memberikan persetujuan, Anda dapat mengklik salah satu link berikut untuk menyetujui atau menolak hanya permintaan ini.\n`;
+        message +=
+          ' Anda juga bisa membalas dengan *Ya semua*/*Tidak semua* untuk menyetujui/menolak semua permintaan yang terkait dengan Anda.\n\n';
         message += `✅ Setuju: ${url_ya}\n`;
         message += `❌ Tidak Setuju: ${url_tidak}\n\n`;
-        message += `Pesan ini digenerate otomatis oleh Digital Architect SRS Bot.`;
+        message += `Pesan otomatis oleh Digital Architect SRS Bot.`;
 
         await sock.sendMessage(`${data.send_to}@s.whatsapp.net`, {
           text: message,
@@ -1100,10 +1102,12 @@ const runfunction = async (sock) => {
         message += `*ID Pemohon* : ${data.id}\n`;
         message += `*Nama* : ${data.nama_user}\n`;
         message += `*Tanggal keluar izin* : ${data.tanggal_keluar}\n`;
-        message += `Untuk memberikan persetujuan, Anda dapat mengklik salah satu link berikut untuk menyetujui atau menolak hanya permintaan ini. Anda juga bisa membalas dengan *Ya semua*/*Tidak semua* untuk menyetujui/menolak semua permintaan yang terkait dengan Anda.\n\n`;
+        message += `Untuk memberikan persetujuan, Anda dapat mengklik salah satu link berikut untuk menyetujui atau menolak hanya permintaan ini.\n`;
+        message +=
+          ' Anda juga bisa membalas dengan *Ya semua*/*Tidak semua* untuk menyetujui/menolak semua permintaan yang terkait dengan Anda.\n\n';
         message += `✅ Setuju: ${url_ya}\n`;
         message += `❌ Tidak Setuju: ${url_tidak}\n\n`;
-        message += `Pesan ini digenerate otomatis oleh Digital Architect SRS Bot.`;
+        message += `Pesan otomatis oleh Digital Architect SRS Bot.`;
         let userMessage = `*Izin Keluar Kebun Anda Telah Disetujui Atasan Pertama*\n\n`;
         userMessage += `Hallo Selamat Siang Bapak/Ibu ${data.nama_user},\n\n`;
         userMessage += `Kami ingin menginformasikan bahwa permintaan izin keluar kebun Anda telah Disetujui.\n\n`;
@@ -1224,10 +1228,12 @@ const runfunction = async (sock) => {
         message += `*ID Pemohon* : ${data.id}\n`;
         message += `*Nama* : ${data.nama_user}\n`;
         message += `*Tanggal keluar izin* : ${data.tanggal_keluar}\n`;
-        message += `Untuk memberikan persetujuan, Anda dapat mengklik salah satu link berikut untuk menyetujui atau menolak hanya permintaan ini. Anda juga bisa membalas dengan *Ya semua*/*Tidak semua* untuk menyetujui/menolak semua permintaan yang terkait dengan Anda.\n\n`;
+        message += `Untuk memberikan persetujuan, Anda dapat mengklik salah satu link berikut untuk menyetujui atau menolak hanya permintaan ini.\n`;
+        message +=
+          ' Anda juga bisa membalas dengan *Ya semua*/*Tidak semua* untuk menyetujui/menolak semua permintaan yang terkait dengan Anda.\n\n';
         message += `✅ Setuju: ${url_ya}\n`;
         message += `❌ Tidak Setuju: ${url_tidak}\n\n`;
-        message += `Pesan ini digenerate otomatis oleh Digital Architect SRS Bot.`;
+        message += `Pesan otomatis oleh Digital Architect SRS Bot.`;
         let userMessage = `*Izin Keluar Kebun Anda Telah Di setujui Atasan Kedua*\n\n`;
         userMessage += `Hallo Selamat Siang Bapak/Ibu ${data.nama_user},\n\n`;
         userMessage += `Kami ingin menginformasikan bahwa permintaan izin keluar kebun Anda telah Disetuji :\n\n`;

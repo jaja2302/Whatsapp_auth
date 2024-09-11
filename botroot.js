@@ -218,15 +218,15 @@ async function connectToWhatsApp() {
                 .substring(namaStartIndex, namaEndIndex)
                 .trim();
               if (
-                respon_atasan.toLowerCase() !== 'ya setuju' &&
-                respon_atasan.toLowerCase() !== 'tidak setuju'
+                respon_atasan.toLowerCase() !== 'ya' &&
+                respon_atasan.toLowerCase() !== 'tidak'
               ) {
                 await sock.sendMessage(
                   noWa,
-                  { text: 'Harap hanya balas ya setuju atau tidak setuju' },
+                  { text: 'Harap hanya balas ya  atau tidak' },
                   { quoted: message }
                 );
-              } else if (respon_atasan.toLowerCase() === 'ya setuju') {
+              } else if (respon_atasan.toLowerCase() === 'ya') {
                 try {
                   // const response = await axios.post('http://qc-apps2.test/api/updatenotifijin', {
                   const response = await axios.post(
@@ -251,7 +251,7 @@ async function connectToWhatsApp() {
                 } catch (error) {
                   console.log('Error approving:', error);
                 }
-              } else if (respon_atasan.toLowerCase() === 'tidak setuju') {
+              } else if (respon_atasan.toLowerCase() === 'tidak') {
                 let message = `*Alasan izin di tolak?*:\n`;
                 message += `*ID Pemohon* : ${id}/${idAtasan}\n`;
                 message += `*Nama* : ${nama}\n`;
@@ -562,7 +562,7 @@ async function connectToWhatsApp() {
                 );
                 // console.log(result);
                 if (result === 'success') {
-                  console.log('success');
+                  // console.log('success');
                   break;
                 } else {
                   await sock.sendMessage(
@@ -858,11 +858,11 @@ async function connectToWhatsApp() {
           } else {
             if (lowerCaseMessage === 'ya') {
               await sock.sendMessage(noWa, {
-                text: `Harap hanya balas *ya semua* untuk menyetujui semua izin atas persetujuan anda atau klik link di setuju di atas.`,
+                text: `Harap repply pesan yang tertera dengan *ya* *Repply pesan = Tekan/tahan pesan kemudian balas dengan ya* untuk menyetujui izin di atas, atau balas *ya semua* tanpa menekan/menahan pesan di atas untuk menyetujui semua izin atas persetujuan anda.`,
               });
-            } else if (lowerCaseMessage === 'tidak semua') {
+            } else if (lowerCaseMessage === 'tidak') {
               await sock.sendMessage(noWa, {
-                text: `Harap hanya balas  *tidak setuju* untuk tidak menyetujui semua izin atas persetujuan anda atau klik link di tidak di atas.`,
+                text: `Harap hanya balas  *tidak* untuk menolak izin di atas, atau balas *tidak semua* tanpa menekan/menahan pesan di atas untuk menolak semua izin atas persetujuan anda.`,
               });
             } else if (lowerCaseMessage === 'ya semua') {
               try {
