@@ -709,9 +709,9 @@ const handleijinmsg = async (noWa, text, sock) => {
         userchoice[noWa] = 'disclamer_user';
         await sock.sendMessage(noWa, {
           text: `*Disclamer Harap di baca dengan seksama apakah anda setuju atau tidak*:
-                      \n- Izin kerja diberikan dengan tujuan yang telah ditentukan dan harus digunakan sesuai dengan ketentuan yang berlaku.
+                      \n- Izin keluar kebun diberikan dengan tujuan yang telah ditentukan dan harus digunakan sesuai dengan ketentuan yang berlaku.
                       \n- Pemberi izin tidak bertanggung jawab atas cedera, kerugian, atau kerusakan yang timbul dari kecelakaan, baik yang diakibatkan oleh kelalaian sendiri maupun orang lain.
-                      \n- Izin kerja dapat dibatalkan sewaktu-waktu oleh pemberi izin jika ditemukan pelanggaran terhadap ketentuan yang berlaku.\n\nApakah Anda setuju dengan disclaimer ini? (ya/tidak)`,
+                      \n- Izin keluar kebun dapat dibatalkan sewaktu-waktu oleh pemberi izin jika ditemukan pelanggaran terhadap ketentuan yang berlaku.\n\nApakah Anda setuju dengan disclaimer ini? (ya/tidak)`,
         });
       } else if (text.toLowerCase() === 'tidak') {
         await sock.sendMessage(noWa, {

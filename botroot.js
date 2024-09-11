@@ -218,15 +218,15 @@ async function connectToWhatsApp() {
                 .substring(namaStartIndex, namaEndIndex)
                 .trim();
               if (
-                respon_atasan.toLowerCase() !== 'ya' &&
-                respon_atasan.toLowerCase() !== 'tidak'
+                respon_atasan.toLowerCase() !== 'ya setuju' &&
+                respon_atasan.toLowerCase() !== 'tidak setuju'
               ) {
                 await sock.sendMessage(
                   noWa,
-                  { text: 'Harap hanya balas ya  atau tidak' },
+                  { text: 'Harap hanya balas ya setuju atau tidak setuju' },
                   { quoted: message }
                 );
-              } else if (respon_atasan.toLowerCase() === 'ya') {
+              } else if (respon_atasan.toLowerCase() === 'ya setuju') {
                 try {
                   // const response = await axios.post('http://qc-apps2.test/api/updatenotifijin', {
                   const response = await axios.post(
@@ -858,11 +858,11 @@ async function connectToWhatsApp() {
           } else {
             if (lowerCaseMessage === 'ya') {
               await sock.sendMessage(noWa, {
-                text: `Harap repply pesan yang tertera dengan *ya* *Repply pesan = Tekan/tahan pesan kemudian balas dengan ya* untuk menyetujui izin di atas, atau balas *ya semua* tanpa menekan/menahan pesan di atas untuk menyetujui semua izin atas persetujuan anda.`,
+                text: `Harap reply pesan yang tertera dengan *ya setuju* *Reply pesan = Tekan/tahan pesan kemudian balas dengan ya setuju* untuk menyetujui izin di atas, atau balas *ya semua* tanpa menekan/menahan pesan di atas untuk menyetujui semua izin atas persetujuan anda.`,
               });
             } else if (lowerCaseMessage === 'tidak') {
               await sock.sendMessage(noWa, {
-                text: `Harap hanya balas  *tidak* untuk menolak izin di atas, atau balas *tidak semua* tanpa menekan/menahan pesan di atas untuk menolak semua izin atas persetujuan anda.`,
+                text: `Harap hanya balas  *tidak setuju* untuk menolak izin di atas, atau balas *tidak semua* tanpa menekan/menahan pesan di atas untuk menolak semua izin atas persetujuan anda.`,
               });
             } else if (lowerCaseMessage === 'ya semua') {
               try {
@@ -887,7 +887,7 @@ async function connectToWhatsApp() {
                   });
                 } else {
                   // Handle the case where `messages` is not an array
-                  console.log(`ini test: ${responses.message}`);
+                  // console.log(`ini test: ${responses.message}`);
                   await sock.sendMessage(noWa, {
                     text: `${responses.message}`,
                   });
