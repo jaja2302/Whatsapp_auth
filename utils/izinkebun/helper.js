@@ -61,6 +61,22 @@ async function checkatasan(nama_atasansatu) {
   }
 }
 
+async function sendImageWithCaption(sock, noWa, imagePath, caption) {
+  try {
+    const imageBuffer = require('fs').readFileSync(imagePath);
+
+    // Send the image with a caption
+    await sock.sendMessage(noWa, {
+      image: imageBuffer,
+      caption: caption,
+    });
+
+    console.log('Image sent with caption successfully.');
+  } catch (error) {
+    console.error('Error sending image with caption:', error);
+  }
+}
+
 const handleTimeout = (noWa, sock) => {
   if (timeoutHandles[noWa]) {
     clearTimeout(timeoutHandles[noWa]);
@@ -1036,7 +1052,7 @@ async function Report_group_izinkebun(sock) {
 
         // Send the PDF as a document via WhatsApp
         await sock.sendMessage(idgroup_da, messageOptions);
-        console.log('PDF sent successfully!');
+        // console.log('PDF sent successfully!');
       } catch (sendError) {
         console.error('Error sending PDF:', sendError.message);
       }
@@ -1052,7 +1068,7 @@ async function Report_group_izinkebun(sock) {
   }
 }
 const runfunction = async (sock) => {
-  channel.bind('izinkebunnotif', async (itemdata) => {
+  channel.bind('izinkebunnotif_test', async (itemdata) => {
     try {
       if (!itemdata || !itemdata.data) {
         console.log('itemdata is undefined or missing data property.');
@@ -1263,5 +1279,6 @@ module.exports = {
   userchoice,
   botpromt,
   timeoutHandles,
+  sendImageWithCaption,
   Report_group_izinkebun,
 };
