@@ -1090,7 +1090,7 @@ const runfunction = async (sock) => {
 
         let message = `*Permintaan Persetujuan Izin Baru*:\n`;
         message += `Halo, Selamat Siang Bapak/Ibu ${data.nama_atasan_1},\n`;
-        message += `Anda memiliki permintaan izin keluar kebun yang membutuhkan persetujuan dengan rincian sebagai berikut:\n\n`;
+        message += `Anda memiliki permintaan izin keluar kebun yang membutuhkan persetujuan dengan rincian sebagai berikut:\n`;
         message += `*ID Pemohon*: ${data.id}\n`;
         message += `*Nama Pemohon*: *${data.nama_user}*\n`;
         message += `*Tanggal Keluar*: ${data.tanggal_keluar}\n\n`;
@@ -1112,10 +1112,10 @@ const runfunction = async (sock) => {
         const url_tidak = await shortenURL(
           `${base_url}/${data.id}/tidak/${data.uuid}`
         );
-        let message = `*Izin baru perlu di approved*:\n`;
-        message += `Hallo Selamat Siang Bapak/Ibu ${data.nama_atasan_2}\n`;
-        message += `Anda memiliki request baru untuk izin keluar kebun dengan detail sebagai berikut:\n`;
-        message += `*ID Pemohon* : ${data.id}\n`;
+        let message = `*Permintaan Persetujuan Izin Baru*:\n`;
+        message += `Halo, Selamat Siang Bapak/Ibu ${data.nama_atasan_2},\n`;
+        message += `Anda memiliki permintaan izin keluar kebun yang membutuhkan persetujuan dengan rincian sebagai berikut:\n`;
+        message += `*ID Pemohon*: ${data.id}\n`;
         message += `*Nama* : ${data.nama_user}\n`;
         message += `*Tanggal keluar izin* : ${data.tanggal_keluar}\n`;
         message += `Untuk memberikan persetujuan, Anda dapat mengklik salah satu link berikut untuk menyetujui atau menolak hanya permintaan ini.\n`;
@@ -1238,10 +1238,10 @@ const runfunction = async (sock) => {
         const url_tidak = await shortenURL(
           `${base_url}/${data.id}/tidak/${data.uuid}`
         );
-        let message = `*Izin baru perlu di approved*:\n`;
-        message += `Hallo Selamat Siang Bapak/Ibu ${data.nama_atasan_3}\n`;
-        message += `Anda memiliki request baru untuk izin keluar kebun dengan detail sebagai berikut:\n`;
-        message += `*ID Pemohon* : ${data.id}\n`;
+        let message = `*Permintaan Persetujuan Izin Baru*:\n`;
+        message += `Halo, Selamat Siang Bapak/Ibu ${data.nama_atasan_3},\n`;
+        message += `Anda memiliki permintaan izin keluar kebun yang membutuhkan persetujuan dengan rincian sebagai berikut:\n`;
+        message += `*ID Pemohon*: ${data.id}\n`;
         message += `*Nama* : ${data.nama_user}\n`;
         message += `*Tanggal keluar izin* : ${data.tanggal_keluar}\n`;
         message += `Untuk memberikan persetujuan, Anda dapat mengklik salah satu link berikut untuk menyetujui atau menolak hanya permintaan ini.\n`;
