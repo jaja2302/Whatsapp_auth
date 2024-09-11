@@ -77,6 +77,23 @@ async function sendImageWithCaption(sock, noWa, imagePath, caption) {
   }
 }
 
+async function updatestatus_sock_vbot(id, type_atasan) {
+  try {
+    const response = await axios.post(
+      'http://127.0.0.1:8000/api/update_status_sock',
+      {
+        id: id,
+        type_atasan: type_atasan,
+        email: 'j',
+        password: 'j',
+      }
+    );
+    console.log(response.data); // Handle the response if necessary
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 const handleTimeout = (noWa, sock) => {
   if (timeoutHandles[noWa]) {
     clearTimeout(timeoutHandles[noWa]);
@@ -1101,6 +1118,7 @@ const runfunction = async (sock) => {
         message += `❌ Tidak Setuju: ${url_tidak}\n\n`;
         message += `Pesan otomatis oleh Digital Architect SRS Bot.`;
 
+        await updatestatus_sock_vbot(data.id_db, data.type);
         await sock.sendMessage(`${data.send_to}@s.whatsapp.net`, {
           text: message,
         });
@@ -1130,6 +1148,7 @@ const runfunction = async (sock) => {
         userMessage += `Silahkan tunggu notifikasi  berikutnya untuk persetujuan dari atasan kedua.\n\n`;
         userMessage += `Terima kasih,\n`;
         userMessage += `Tim Digital Architect SRS Bot`;
+        await updatestatus_sock_vbot(data.id_db, data.type);
         await sock.sendMessage(`${data.send_to}@s.whatsapp.net`, {
           text: message,
         });
@@ -1194,6 +1213,7 @@ const runfunction = async (sock) => {
               },
               fileName: 'Surat Izin Kebun',
             };
+            await updatestatus_sock_vbot(data.id_db, data.type);
             await sock.sendMessage(
               data.send_to + '@s.whatsapp.net',
               messageOptions
@@ -1227,6 +1247,7 @@ const runfunction = async (sock) => {
           console.log('Unknown status:', data.type);
           return;
         }
+        await updatestatus_sock_vbot(data.id_db, data.type);
         await sock.sendMessage(`${data.send_to}@s.whatsapp.net`, {
           text: message,
         });
@@ -1256,6 +1277,7 @@ const runfunction = async (sock) => {
         userMessage += `Silahkan tunggu notifikasi  berikutnya untuk persetujuan dari atasan ketiga.\n\n`;
         userMessage += `Terima kasih,\n`;
         userMessage += `Tim Digital Architect SRS Bot`;
+        await updatestatus_sock_vbot(data.id_db, data.type);
         await sock.sendMessage(`${data.send_to}@s.whatsapp.net`, {
           text: message,
         });

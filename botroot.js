@@ -238,8 +238,8 @@ async function connectToWhatsApp() {
               } else if (respon_atasan.toLowerCase() === 'ya setuju') {
                 try {
                   const response = await axios.post(
-                    'https://management.srs-ssms.com/api/updatenotifijin',
-                    // 'http://127.0.0.1:8000/api/updatenotifijin',
+                    // 'https://management.srs-ssms.com/api/updatenotifijin',
+                    'http://127.0.0.1:8000/api/updatenotifijin',
                     {
                       id_data: id,
                       id_atasan: idAtasan,
@@ -297,6 +297,8 @@ async function connectToWhatsApp() {
                   }
                 );
                 let responses = response.data;
+                console.log(responses);
+
                 await sock.sendMessage(noWa, {
                   text: 'Mohon Tunggu server melakukan validasi.....',
                 });
@@ -814,42 +816,7 @@ async function connectToWhatsApp() {
             break;
           }
         } else {
-          if (lowerCaseMessage === '!menu') {
-            await sock.sendMessage(
-              noWa,
-              { text: 'Hanya dapat di gunakan di dalam grup!' },
-              { quoted: message }
-            );
-            break;
-          } else if (lowerCaseMessage.startsWith('!tarik')) {
-            await sock.sendMessage(
-              noWa,
-              { text: 'Hanya dapat di gunakan di dalam grup!' },
-              { quoted: message }
-            );
-            break;
-          } else if (lowerCaseMessage === '!update') {
-            await sock.sendMessage(
-              noWa,
-              { text: 'Hanya dapat di gunakan di dalam grup!' },
-              { quoted: message }
-            );
-            break;
-          } else if (lowerCaseMessage === '!cast') {
-            await sock.sendMessage(
-              noWa,
-              { text: 'Hanya dapat di gunakan di dalam grup!' },
-              { quoted: message }
-            );
-            break;
-          } else if (lowerCaseMessage === '!restart') {
-            await sock.sendMessage(
-              noWa,
-              { text: 'Hanya dapat di gunakan di dalam grup!' },
-              { quoted: message }
-            );
-            break;
-          } else if (lowerCaseMessage === '!izin') {
+          if (lowerCaseMessage === '!izin') {
             // Start the ijin process only if it's not already started
             if (!userchoice[noWa]) {
               await handleijinmsg(noWa, lowerCaseMessage, sock);
@@ -914,7 +881,7 @@ async function connectToWhatsApp() {
                   });
                 }
               } catch (error) {
-                console.log(error);
+                // console.log(error);
                 // Check if there is a response from the server
                 if (error.response) {
                   // Server responded with a status code other than 2xx
