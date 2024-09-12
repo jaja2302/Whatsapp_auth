@@ -30,30 +30,10 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = require('express')();
 const axios = require('axios');
-const {
-  userIotChoice,
-  configSnoozeBotPengawasanOperator,
-  userchoiceSnoozeBotPengawasanOperator,
-} = require('./state.js');
-const {
-  setupCronJobs,
-  handleChatSnoozePengawasanOperatorAi,
-} = require('./helper.js');
-const {
-  handleijinmsg,
-  runfunction,
-  userchoice,
-  sendImageWithCaption,
-} = require('./utils/izinkebun/helper.js');
-const {
-  handleTaksasi,
-  sendtaksasiest,
-  botTaksasi,
-  userTalsasiChoice,
-  timeoutHandlestaksasi,
-  Generateandsendtaksasi,
-} = require('./utils/taksasi/taksasihelper.js');
 
+const { setupCronJobs } = require('./helper.js');
+const { runfunction } = require('./utils/izinkebun/helper.js');
+const { Generateandsendtaksasi } = require('./utils/taksasi/taksasihelper.js');
 const { handlePrivateMessage } = require('./utils/private_messages.js');
 const {
   handleReplyNoDocMessage,
@@ -228,26 +208,40 @@ async function connectToWhatsApp() {
           if (quotedMessage.conversation) {
             // console.log('This is a reply to a text message');
             // Handle reply to text
-            await handleReplyNoDocMessage(conversation, noWa, sock);
+            await handleReplyNoDocMessage(
+              conversation,
+              noWa,
+              sock,
+              respon_atasan,
+              message
+            );
           } else if (quotedMessage.documentWithCaptionMessage) {
             // console.log('This is a reply to a text document');
-            await handleReplyDocMessage(conversation, noWa, sock);
+            await handleReplyDocMessage(
+              conversation,
+              noWa,
+              sock,
+              respon_atasan,
+              quotedMessageSender,
+              is_repply_text,
+              is_repply_doc
+            );
           }
         } else {
           if (isGroup) {
             // console.log('This is a group message without reply:', text);
             // Handle group message
-            // await handleGroupMessage(
-            //   lowerCaseMessage,
-            //   noWa,
-            //   text,
-            //   sock,
-            //   message
-            // );
+            await handleGroupMessage(
+              lowerCaseMessage,
+              noWa,
+              text,
+              sock,
+              message
+            );
           } else if (isPrivate) {
             // console.log('This is a private message without reply:', text);
             // Handle other private messages
-            // await handlePrivateMessage(lowerCaseMessage, noWa, text, sock);
+            await handlePrivateMessage(lowerCaseMessage, noWa, text, sock);
           }
         }
 
@@ -266,8 +260,8 @@ async function connectToWhatsApp() {
     }
   });
 
-  // setupCronJobs(sock);
-  // runfunction(sock);
+  setupCronJobs(sock);
+  runfunction(sock);
 }
 
 io.on('connection', async (socket) => {

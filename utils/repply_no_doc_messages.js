@@ -1,5 +1,11 @@
 const axios = require('axios');
-const handleReplyNoDocMessage = async (conversation, noWa, sock) => {
+const handleReplyNoDocMessage = async (
+  conversation,
+  noWa,
+  sock,
+  respon_atasan,
+  message
+) => {
   if (conversation.includes('Permintaan Persetujuan Izin Baru')) {
     const idPemohonStartIndex =
       conversation.indexOf('*ID Pemohon*: ') + '*ID Pemohon*: '.length;
@@ -30,9 +36,10 @@ const handleReplyNoDocMessage = async (conversation, noWa, sock) => {
       );
     } else if (respon_atasan.toLowerCase() === 'ya') {
       try {
+        // const response = await axios.post('http://qc-apps2.test/api/updatenotifijin', {
         const response = await axios.post(
-          // 'http://127.0.0.1:8000/api/updatenotifijin',
           'https://management.srs-ssms.com/api/updatenotifijin',
+          // 'http://127.0.0.1:8000/api/updatenotifijin',
           {
             id_data: id,
             id_atasan: idAtasan,
@@ -42,27 +49,16 @@ const handleReplyNoDocMessage = async (conversation, noWa, sock) => {
             response: respon_atasan,
           }
         );
-
-        // Check if status code is 2xx range (success)
-        if (response.status >= 200 && response.status < 300) {
-          let responses = response.data;
-          console.log(`test: ${respon_atasan}`);
-
-          await sock.sendMessage(noWa, {
-            text: 'Permintaan berhasil diperbaharui',
-          });
-
-          await sock.sendMessage(noWa, {
-            text: responses.message,
-          });
-        } else {
-          // If status code is not in 2xx range, throw an error
-          throw new Error(
-            `API Error: ${response.status} - ${response.statusText}`
-          );
-        }
+        let responses = response.data;
+        await sock.sendMessage(noWa, {
+          text: responses.message,
+        });
       } catch (error) {
-        console.error('Error occurred:', error.message || error); // Log specific error message
+        // console.log(error);
+
+        await sock.sendMessage(noWa, {
+          text: error.response.data.message ?? 'Terjadi kesalahan',
+        });
       }
     } else if (respon_atasan.toLowerCase() === 'tidak') {
       let message = `*Alasan izin di tolak?*:\n`;
@@ -88,22 +84,21 @@ const handleReplyNoDocMessage = async (conversation, noWa, sock) => {
           id_data: id,
           id_atasan: idAtasan,
           answer: 'tidak',
-          response: respon_atasan,
           email: 'j',
           password: 'j',
+          response: respon_atasan,
         }
       );
       let responses = response.data;
-      console.log(responses);
-
-      await sock.sendMessage(noWa, {
-        text: 'Izin keluar kebun berhasil di perbaharui',
-      });
       await sock.sendMessage(noWa, {
         text: responses.message,
       });
     } catch (error) {
-      console.log('Error approving:', error);
+      // console.log(error);
+
+      await sock.sendMessage(noWa, {
+        text: error.response.data.message ?? 'Terjadi kesalahan',
+      });
     }
   } else if (conversation.includes('*Permintaan barang perlu di review*:')) {
     const idPemohonStartIndex =
