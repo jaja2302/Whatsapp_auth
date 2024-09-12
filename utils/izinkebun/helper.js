@@ -968,7 +968,7 @@ async function getNotifications(sock) {
                   itemdata.no_hp + '@s.whatsapp.net',
                   messageOptions
                 );
-
+             
                 try {
                   const unlinkpdf = await axios.get(
                     'https://izin-kebun.srs-ssms.com/api/deletePdfIzinKebun',
@@ -986,10 +986,7 @@ async function getNotifications(sock) {
               } catch (error) {
                 console.log('Error generating PDF:', error);
               }
-
-              await sock.sendMessage(itemdata.no_hp + '@s.whatsapp.net', {
-                text: message,
-              });
+        
 
               try {
                 // const response = await axios.post('http://qc-apps2.test/api/updatenotifijin', {
@@ -1001,6 +998,11 @@ async function getNotifications(sock) {
                     answer: 'ya',
                   }
                 );
+
+                await sock.sendMessage(itemdata.no_hp + '@s.whatsapp.net', {
+                  text: message,
+                });
+            
               } catch (error) {
                 console.log('Error approving:', error);
               }
@@ -1252,6 +1254,9 @@ const runfunction = async (sock) => {
                 data.send_to + '@s.whatsapp.net',
                 messageOptions
               );
+              await sock.sendMessage(data.send_to + '@s.whatsapp.net', {
+                text: message,
+              });
               await updatestatus_sock_vbot(data.id_db, data.type);
             } catch (error) {
               await catcherror(data.id_db, data.type);
