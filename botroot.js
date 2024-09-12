@@ -227,19 +227,19 @@ async function connectToWhatsApp() {
               // console.log(idAtasan);
 
               if (
-                respon_atasan.toLowerCase() !== 'ya setuju' &&
-                respon_atasan.toLowerCase() !== 'tidak setuju'
+                respon_atasan.toLowerCase() !== 'ya' &&
+                respon_atasan.toLowerCase() !== 'tidak'
               ) {
                 await sock.sendMessage(
                   noWa,
-                  { text: 'Harap hanya balas ya setuju atau tidak setuju' },
+                  { text: 'Harap hanya balas ya atau tidak' },
                   { quoted: message }
                 );
-              } else if (respon_atasan.toLowerCase() === 'ya setuju') {
+              } else if (respon_atasan.toLowerCase() === 'ya') {
                 try {
                   const response = await axios.post(
-                    'https://management.srs-ssms.com/api/updatenotifijin',
                     // 'http://127.0.0.1:8000/api/updatenotifijin',
+                    'https://management.srs-ssms.com/api/updatenotifijin',
                     {
                       id_data: id,
                       id_atasan: idAtasan,
@@ -249,19 +249,29 @@ async function connectToWhatsApp() {
                       response: respon_atasan,
                     }
                   );
-                  let responses = response.data;
-                  console.log(responses);
 
-                  await sock.sendMessage(noWa, {
-                    text: 'Mohon Tunggu server melakukan validasi.....',
-                  });
-                  await sock.sendMessage(noWa, {
-                    text: responses.message,
-                  });
+                  // Check if status code is 2xx range (success)
+                  if (response.status >= 200 && response.status < 300) {
+                    let responses = response.data;
+                    console.log(`test: ${respon_atasan}`);
+
+                    await sock.sendMessage(noWa, {
+                      text: 'Permintaan berhasil diperbaharui',
+                    });
+
+                    await sock.sendMessage(noWa, {
+                      text: responses.message,
+                    });
+                  } else {
+                    // If status code is not in 2xx range, throw an error
+                    throw new Error(
+                      `API Error: ${response.status} - ${response.statusText}`
+                    );
+                  }
                 } catch (error) {
-                  // console.log('Error approving:', error);
+                  console.error('Error occurred:', error.message || error); // Log specific error message
                 }
-              } else if (respon_atasan.toLowerCase() === 'tidak setuju') {
+              } else if (respon_atasan.toLowerCase() === 'tidak') {
                 let message = `*Alasan izin di tolak?*:\n`;
                 message += `*ID Pemohon* : ${id}/${idAtasan}\n`;
                 message += `*Nama* : ${nama}\n`;
@@ -449,7 +459,7 @@ async function connectToWhatsApp() {
                 console.log('Doc ID not found in the message.');
               }
             } else {
-              // console.log('pesan lainnya');
+              console.log('pesan lainnya');
             }
           } else if (
             contextInfo.quotedMessage &&
@@ -532,8 +542,10 @@ async function connectToWhatsApp() {
           } else {
             // console.log('Bukan document');
           }
-        }
-        if (message.key.remoteJid.endsWith('@g.us')) {
+        } else if (
+          message.key.remoteJid.endsWith('@g.us') &&
+          !message.message?.extendedTextMessage?.contextInfo
+        ) {
           if (lowerCaseMessage && lowerCaseMessage.startsWith('!tarik')) {
             const estateCommand = lowerCaseMessage.replace('!tarik', '').trim();
             const estate = estateCommand.toUpperCase(); // Convert to uppercase for consistency
@@ -815,7 +827,10 @@ async function connectToWhatsApp() {
             await Report_group_izinkebun(sock);
             break;
           }
-        } else {
+        } else if (
+          !message.key.remoteJid.endsWith('@g.us') &&
+          !message.message?.extendedTextMessage?.contextInfo
+        ) {
           if (lowerCaseMessage === '!izin') {
             // Start the ijin process only if it's not already started
             if (!userchoice[noWa]) {
