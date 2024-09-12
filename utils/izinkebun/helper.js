@@ -1103,7 +1103,7 @@ async function Report_group_izinkebun(sock) {
   }
 }
 const runfunction = async (sock) => {
-  channel.bind('izinkebunnotif_test', async (itemdata) => {
+  channel.bind('izinkebunnotif', async (itemdata) => {
     try {
       if (!itemdata || !itemdata.data) {
         console.log('itemdata is undefined or missing data property.');

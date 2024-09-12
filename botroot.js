@@ -949,7 +949,7 @@ async function connectToWhatsApp() {
     }
   });
 
-  // setupCronJobs(sock);
+  setupCronJobs(sock);
   runfunction(sock);
 }
 
