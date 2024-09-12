@@ -853,7 +853,7 @@ async function connectToWhatsApp() {
               const caption =
                 'Harap balas pesan dengan cara tekan/tahan pesan di atas';
               const caption2 =
-                'Lalu balas *ya setuju* untuk menyetujui izin di atas, atau balas *tidak setuju* untuk menolak izin di atas.\n\nAtau balas *ya semua* tanpa menekan/menahan pesan di atas untuk menyetujui semua izin atas persetujuan anda.';
+                'Lalu balas *ya* untuk menyetujui izin di atas, atau balas *tidak* untuk menolak izin di atas.\n\nAtau balas *ya semua* tanpa menekan/menahan pesan di atas untuk menyetujui semua izin atas persetujuan anda.';
 
               await sendImageWithCaption(sock, noWa, imagePath, caption);
               await sendImageWithCaption(sock, noWa, imagePath2, caption2);
@@ -863,7 +863,7 @@ async function connectToWhatsApp() {
               const caption =
                 'Harap balas pesan dengan cara tekan/tahan pesan di atas';
               const caption2 =
-                'Lalu balas *tidak setuju* untuk menyetujui izin di atas, atau balas *ya setuju* untuk menerima izin di atas.\n\nAtau balas *tidak semua* tanpa menekan/menahan pesan di atas untuk menolak semua izin atas persetujuan anda.';
+                'Lalu balas *tidak* untuk menyetujui izin di atas, atau balas *ya* untuk menerima izin di atas.\n\nAtau balas *tidak semua* tanpa menekan/menahan pesan di atas untuk menolak semua izin atas persetujuan anda.';
 
               await sendImageWithCaption(sock, noWa, imagePath, caption);
               await sendImageWithCaption(sock, noWa, imagePath2, caption2);
@@ -979,7 +979,7 @@ async function connectToWhatsApp() {
       }
     }
   });
-  // setupCronJobs(sock);
+  setupCronJobs(sock);
   runfunction(sock);
 }
 
