@@ -7,7 +7,7 @@ const https = require('https');
 const { DateTime } = require('luxon');
 
 const { channel, channelPython } = require('./utils/pusher');
-const { Report_group_izinkebun } = require('./utils/izinkebun/helper');
+const { Report_group_izinkebun ,catcherror} = require('./utils/izinkebun/helper');
 const {
   sendfailcronjob,
   Generateandsendtaksasi,
@@ -500,9 +500,7 @@ async function get_mill_data(sock) {
       const result = data.data;
 
       for (const itemdata of result) {
-        await axios.post('https://qc-apps.srs-ssms.com/api/updatedatamill', {
-          id: itemdata.id,
-        });
+      
         let pemanen_tanpabrondol =
           itemdata.pemanen_list_tanpabrondol?.tanpaBrondol_list || [];
         let pemanen_kurangbrondol =
@@ -569,11 +567,17 @@ async function get_mill_data(sock) {
           },
           fileName: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
         };
-
+        try {
+          await sock.sendMessage(noWa_grading, messageOptions);
+          await sock.sendMessage(noWa_grading, { text: message });
+          await axios.post('https://qc-apps.srs-ssms.com/api/updatedatamill', {
+            id: itemdata.id,
+          });
+        } catch (error) {
+          await catcherror(itemdata.id,'error_cronjob','bot_grading_mill')
+        }
         // Send the PDF file
-        await sock.sendMessage(noWa_grading, messageOptions);
-        await sock.sendMessage(noWa_grading, { text: message });
-
+      
         // Unlink the file after sending
         fs.unlink(destinationPath, (err) => {
           if (err) {
