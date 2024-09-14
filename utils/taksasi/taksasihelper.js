@@ -106,6 +106,8 @@ async function sendtaksasiest(estate, group_id, folder, sock) {
         console.log('PDF not found in the API response.');
       }
     } catch (error) {
+      // console.log(error);
+      
       console.error('Error sending PDF:', error.message);
     }
     return 'success';
