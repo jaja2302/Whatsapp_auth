@@ -95,17 +95,17 @@ async function updatestatus_sock_vbot(id, type_atasan) {
   }
 }
 
-async function catcherror(id, type_atasan,bot_type) {
+async function catcherror(id, type_atasan, bot_type) {
   try {
     const response = await axios.post(
-      'https://management.srs-ssms.com/api/catch_error_bot',
-      // 'http://127.0.0.1:8000/api/update_status_sock',
+      // 'https://management.srs-ssms.com/api/catch_error_bot',
+      'http://127.0.0.1:8000/api/catch_error_bot',
       {
         id: id,
         error_data: type_atasan,
         email: 'j',
         password: 'j',
-        bot_type: bot_type
+        bot_type: bot_type,
       }
     );
     console.log(response.data);
@@ -949,7 +949,7 @@ const runfunction = async (sock) => {
           });
           await updatestatus_sock_vbot(data.id_db, data.type);
         } catch (error) {
-          await catcherror(data.id_db, data.type,'izin_kebun');
+          await catcherror(data.id_db, data.type, 'izin_kebun');
           console.log(error);
         }
       } else if (data.type === 'send_atasan_dua') {
@@ -991,7 +991,7 @@ const runfunction = async (sock) => {
           });
           await updatestatus_sock_vbot(data.id_db, data.type);
         } catch (error) {
-          await catcherror(data.id_db, data.type,'izin_kebun');
+          await catcherror(data.id_db, data.type, 'izin_kebun');
         }
       } else if (data.type === 'send_user') {
         let message = ''; // Initialize the message variable here
@@ -1061,7 +1061,7 @@ const runfunction = async (sock) => {
               });
               await updatestatus_sock_vbot(data.id_db, data.type);
             } catch (error) {
-              await catcherror(data.id_db, data.type,'izin_kebun');
+              await catcherror(data.id_db, data.type, 'izin_kebun');
             }
 
             try {
@@ -1096,7 +1096,7 @@ const runfunction = async (sock) => {
             });
             await updatestatus_sock_vbot(data.id_db, data.type);
           } catch (error) {
-            await catcherror(data.id_db, data.type,'izin_kebun');
+            await catcherror(data.id_db, data.type, 'izin_kebun');
           }
         } else {
           console.log('Unknown status:', data.type);
@@ -1141,7 +1141,7 @@ const runfunction = async (sock) => {
           });
           await updatestatus_sock_vbot(data.id_db, data.type);
         } catch (error) {
-          await catcherror(data.id_db, data.type,'izin_kebun');
+          await catcherror(data.id_db, data.type, 'izin_kebun');
         }
       } else {
         console.log('Unknown status:', data.type);
@@ -1161,5 +1161,5 @@ module.exports = {
   timeoutHandles,
   sendImageWithCaption,
   Report_group_izinkebun,
-  catcherror
+  catcherror,
 };

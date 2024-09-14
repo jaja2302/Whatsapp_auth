@@ -35,6 +35,7 @@ const { setupCronJobs } = require('./helper.js');
 const { runfunction } = require('./utils/izinkebun/helper.js');
 const { Generateandsendtaksasi } = require('./utils/taksasi/taksasihelper.js');
 const { handlePrivateMessage } = require('./utils/private_messages.js');
+const { function_rapidresponse } = require('./utils/rapiprespons/helper.js');
 const {
   handleReplyNoDocMessage,
 } = require('./utils/repply_no_doc_messages.js');
@@ -222,9 +223,7 @@ async function connectToWhatsApp() {
               noWa,
               sock,
               respon_atasan,
-              quotedMessageSender,
-              is_repply_text,
-              is_repply_doc
+              quotedMessage
             );
           }
         } else {
@@ -262,6 +261,7 @@ async function connectToWhatsApp() {
 
   setupCronJobs(sock);
   runfunction(sock);
+  function_rapidresponse(sock);
 }
 
 io.on('connection', async (socket) => {

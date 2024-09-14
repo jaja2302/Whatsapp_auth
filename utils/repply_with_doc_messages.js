@@ -1,15 +1,26 @@
 const axios = require('axios');
-const handleReplyDocMessage = async (conversation, noWa, sock) => {
+const handleReplyDocMessage = async (
+  conversation,
+  noWa,
+  sock,
+  respon_atasan,
+  quotedMessage
+) => {
   const documentMessage =
-    quotedMessage.documentWithCaptionMessage.message.documentMessage;
+    quotedMessage.documentWithCaptionMessage.message.documentMessage.caption;
   // Handle reply to document
+
+  // console.log(documentMessage);
+
   if (
-    conversation.includes(
+    documentMessage.includes(
       'Anda memiliki permintaan untuk meverifikasi data dari rekomendator'
     )
   ) {
     // Extract the Doc ID
-    const docIdMatch = conversation.match(/\*Doc ID\* : (\d+\/\d+)/);
+    // console.log('test');
+
+    const docIdMatch = documentMessage.match(/\*Doc ID\* : (\d+\/\d+)/);
     if (docIdMatch) {
       const docId = docIdMatch[1];
       const [id, user_id] = docId.split('/');
