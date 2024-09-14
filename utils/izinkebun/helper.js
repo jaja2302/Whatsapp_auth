@@ -98,8 +98,8 @@ async function updatestatus_sock_vbot(id, type_atasan) {
 async function catcherror(id, type_atasan, bot_type) {
   try {
     const response = await axios.post(
-      // 'https://management.srs-ssms.com/api/catch_error_bot',
-      'http://127.0.0.1:8000/api/catch_error_bot',
+      'https://management.srs-ssms.com/api/catch_error_bot',
+      // 'http://127.0.0.1:8000/api/catch_error_bot',
       {
         id: id,
         error_data: type_atasan,
