@@ -890,7 +890,7 @@ async function Report_group_izinkebun(sock) {
         };
 
         // Send the PDF as a document via WhatsApp
-        await sock.sendMessage(idgroup_da, messageOptions);
+        await sock.sendMessage(idgroup, messageOptions);
         // console.log('PDF sent successfully!');
       } catch (sendError) {
         console.error('Error sending PDF:', sendError.message);
