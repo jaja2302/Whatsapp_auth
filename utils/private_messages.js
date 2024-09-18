@@ -53,36 +53,27 @@ const handlePrivateMessage = async (lowerCaseMessage, noWa, text, sock) => {
             jawaban: 'ya',
           }
         );
+
         let responses = response.data;
-        if (Array.isArray(responses.messages)) {
-          const allMessages = responses.messages.join('\n');
-          await sock.sendMessage(noWa, {
-            text: `${allMessages}`,
-          });
-        } else {
-          await sock.sendMessage(noWa, {
-            text: `${responses.message}`,
-          });
-        }
+
+        // Split messages by `$` and join with newlines
+        const allMessages = responses.messages.split('$').join('\n');
+
+        await sock.sendMessage(noWa, {
+          text: `${allMessages}`,
+        });
       } catch (error) {
-        if (error.response) {
-          await sock.sendMessage(noWa, {
-            text: `${error.response.data.message || 'Something went wrong'}`,
-          });
-        } else if (error.request) {
-          await sock.sendMessage(noWa, {
-            text: 'No response from the server. Please try again later.',
-          });
-        } else {
-          await sock.sendMessage(noWa, {
-            text: `Error: ${error.message}`,
-          });
-        }
+        // Handle error, send a specific error message or log the error
+        console.error('Error occurred:', error);
+        await sock.sendMessage(noWa, {
+          text: 'An error occurred while processing your request.',
+        });
       }
     } else if (lowerCaseMessage === 'tidak semua') {
       try {
         const response = await axios.post(
           'https://management.srs-ssms.com/api/getizinverifinew',
+          // 'http://erpda.test/api/getizinverifinew',
           {
             email: 'j',
             password: 'j',
@@ -91,30 +82,16 @@ const handlePrivateMessage = async (lowerCaseMessage, noWa, text, sock) => {
           }
         );
         let responses = response.data;
-        if (Array.isArray(responses.messages)) {
-          const allMessages = responses.messages.join('\n');
-          await sock.sendMessage(noWa, {
-            text: `${allMessages}`,
-          });
-        } else {
-          await sock.sendMessage(noWa, {
-            text: `${responses.message}`,
-          });
-        }
+        const allMessages = responses.messages.split('$').join('\n');
+
+        await sock.sendMessage(noWa, {
+          text: `${allMessages}`,
+        });
       } catch (error) {
-        if (error.response) {
-          await sock.sendMessage(noWa, {
-            text: `${error.response.data.message || 'Something went wrong'}`,
-          });
-        } else if (error.request) {
-          await sock.sendMessage(noWa, {
-            text: 'No response from the server. Please try again later.',
-          });
-        } else {
-          await sock.sendMessage(noWa, {
-            text: `Error: ${error.message}`,
-          });
-        }
+        console.error('Error occurred:', error);
+        await sock.sendMessage(noWa, {
+          text: 'An error occurred while processing your request.',
+        });
       }
     }
   }

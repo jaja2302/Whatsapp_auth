@@ -81,7 +81,7 @@ async function updatestatus_sock_vbot(id, type_atasan) {
   try {
     const response = await axios.post(
       'https://management.srs-ssms.com/api/update_status_sock',
-      // 'http://127.0.0.1:8000/api/update_status_sock',
+      // 'http://erpda.test/api/update_status_sock',
       {
         id: id,
         type_atasan: type_atasan,
@@ -919,14 +919,6 @@ const runfunction = async (sock) => {
       errormsg += `*Nama* : ${data.nama_user}\n`;
       errormsg += `Error mengirim ke nomor ${data.nama_atasan_1}\n`;
       if (data.type === 'send_atasan_satu') {
-        const base_url = 'https://management.srs-ssms.com/api/izin';
-        // const url_ya = await shortenURL(
-        //   `${base_url}/${data.id}/ya/${data.uuid}`
-        // );
-        // const url_tidak = await shortenURL(
-        //   `${base_url}/${data.id}/tidak/${data.uuid}`
-        // );
-
         let message = `*Permintaan Persetujuan Izin Baru*:\n`;
         message += `Halo, Selamat Siang Bapak/Ibu ${data.nama_atasan_1},\n`;
         message += `Anda memiliki permintaan izin keluar kebun yang membutuhkan persetujuan dengan rincian sebagai berikut:\n`;
@@ -934,13 +926,10 @@ const runfunction = async (sock) => {
         message += `*Nama Pemohon*: *${data.nama_user}*\n`;
         message += `*Alasan* : ${data.keperluan}\n`;
         message += `*Tanggal Keluar*: ${data.tanggal_keluar}\n\n`;
-        // message += `Untuk memberikan persetujuan, Anda dapat mengklik salah satu link berikut untuk menyetujui atau menolak hanya permintaan ini.\n`;
         message +=
           ' Anda juga bisa membalas dengan *Ya*/*Tidak* untuk menyetujui/menolak semua permintaan yang terkait dengan Anda dengan cara menahan pesan ini dan harap di reply .\n';
         message +=
           ' Anda juga bisa membalas dengan *Ya semua*/*Tidak semua* untuk menyetujui/menolak semua permintaan yang terkait dengan anda tanpa perlu menahan pesan ini\n';
-        // message += `✅ Setuju: ${url_ya}\n`;
-        // message += `❌ Tidak Setuju: ${url_tidak}\n\n`;
         message += `Pesan otomatis oleh Digital Architect SRS Bot.`;
 
         try {
@@ -953,13 +942,6 @@ const runfunction = async (sock) => {
           console.log(error);
         }
       } else if (data.type === 'send_atasan_dua') {
-        const base_url = 'https://management.srs-ssms.com/api/izin';
-        // const url_ya = await shortenURL(
-        //   `${base_url}/${data.id}/ya/${data.uuid}`
-        // );
-        // const url_tidak = await shortenURL(
-        //   `${base_url}/${data.id}/tidak/${data.uuid}`
-        // );
         let message = `*Permintaan Persetujuan Izin Baru*:\n`;
         message += `Halo, Selamat Siang Bapak/Ibu ${data.nama_atasan_2},\n`;
         message += `Anda memiliki permintaan izin keluar kebun yang membutuhkan persetujuan dengan rincian sebagai berikut:\n`;
@@ -967,13 +949,10 @@ const runfunction = async (sock) => {
         message += `*Nama* : ${data.nama_user}\n`;
         message += `*Alasan* : ${data.keperluan}\n`;
         message += `*Tanggal keluar izin* : ${data.tanggal_keluar}\n`;
-        // message += `Untuk memberikan persetujuan, Anda dapat mengklik salah satu link berikut untuk menyetujui atau menolak hanya permintaan ini.\n`;
         message +=
           ' Anda juga bisa membalas dengan *Ya*/*Tidak* untuk menyetujui/menolak semua permintaan yang terkait dengan Anda dengan cara menahan pesan ini dan harap di reply .\n';
         message +=
           ' Anda juga bisa membalas dengan *Ya semua*/*Tidak semua* untuk menyetujui/menolak semua permintaan yang terkait dengan anda tanpa perlu menahan pesan ini\n';
-        // message += `✅ Setuju: ${url_ya}\n`;
-        // message += `❌ Tidak Setuju: ${url_tidak}\n\n`;
         message += `Pesan otomatis oleh Digital Architect SRS Bot.`;
         let userMessage = `*Izin Keluar Kebun Anda Telah Disetujui Atasan Pertama*\n\n`;
         userMessage += `Hallo Selamat Siang Bapak/Ibu ${data.nama_user},\n\n`;
@@ -1103,13 +1082,6 @@ const runfunction = async (sock) => {
           return;
         }
       } else if (data.type === 'send_atasan_tiga') {
-        const base_url = 'https://management.srs-ssms.com/api/izin';
-        // const url_ya = await shortenURL(
-        //   `${base_url}/${data.id}/ya/${data.uuid}`
-        // );
-        // const url_tidak = await shortenURL(
-        //   `${base_url}/${data.id}/tidak/${data.uuid}`
-        // );
         let message = `*Permintaan Persetujuan Izin Baru*:\n`;
         message += `Halo, Selamat Siang Bapak/Ibu ${data.nama_atasan_3},\n`;
         message += `Anda memiliki permintaan izin keluar kebun yang membutuhkan persetujuan dengan rincian sebagai berikut:\n`;
@@ -1117,13 +1089,10 @@ const runfunction = async (sock) => {
         message += `*Nama* : ${data.nama_user}\n`;
         message += `*Alasan* : ${data.keperluan}\n`;
         message += `*Tanggal keluar izin* : ${data.tanggal_keluar}\n`;
-        // message += `Untuk memberikan persetujuan, Anda dapat mengklik salah satu link berikut untuk menyetujui atau menolak hanya permintaan ini.\n`;
         message +=
           ' Anda juga bisa membalas dengan *Ya*/*Tidak* untuk menyetujui/menolak semua permintaan yang terkait dengan Anda dengan cara menahan pesan ini dan harap di reply .\n';
         message +=
           ' Anda juga bisa membalas dengan *Ya semua*/*Tidak semua* untuk menyetujui/menolak semua permintaan yang terkait dengan anda tanpa perlu menahan pesan ini\n';
-        // message += `✅ Setuju: ${url_ya}\n`;
-        // message += `❌ Tidak Setuju: ${url_tidak}\n\n`;
         message += `Pesan otomatis oleh Digital Architect SRS Bot.`;
         let userMessage = `*Izin Keluar Kebun Anda Telah Di setujui Atasan Kedua*\n\n`;
         userMessage += `Hallo Selamat Siang Bapak/Ibu ${data.nama_user},\n\n`;
