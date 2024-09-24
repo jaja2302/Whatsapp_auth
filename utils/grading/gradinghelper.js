@@ -16,8 +16,8 @@ async function get_mill_data(sock) {
     );
 
     const data = response.data;
-    const noWa_grading = '120363205553012899@g.us';
-    // const noWa_grading = '120363164751475851@g.us';
+    // const noWa_grading = '120363205553012899@g.us';
+    const noWa_grading = '120363164751475851@g.us';
 
     if (data.status === '200' && data.data && data.data.length > 0) {
       const result = data.data;
