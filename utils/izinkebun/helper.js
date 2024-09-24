@@ -919,13 +919,13 @@ const runfunction = async (sock) => {
       errormsg += `*Nama* : ${data.nama_user}\n`;
       errormsg += `Error mengirim ke nomor ${data.nama_atasan_1}\n`;
       if (data.type === 'send_atasan_satu') {
-        let message = `*Permintaan Persetujuan Izin Baru*:\n`;
+        let message = `Permintaan Persetujuan Izin Baru:\n`;
         message += `Halo, Selamat Siang Bapak/Ibu ${data.nama_atasan_1},\n`;
         message += `Anda memiliki permintaan izin keluar kebun yang membutuhkan persetujuan dengan rincian sebagai berikut:\n`;
-        message += `*ID Pemohon*: ${data.id}\n`;
-        message += `*Nama Pemohon*: *${data.nama_user}*\n`;
-        message += `*Alasan* : ${data.keperluan}\n`;
-        message += `*Tanggal Keluar*: ${data.tanggal_keluar}\n\n`;
+        message += `ID Pemohon: ${data.id}\n`;
+        message += `Nama Pemohon: *${data.nama_user}*\n`;
+        message += `Alasan : ${data.keperluan}\n`;
+        message += `Tanggal Keluar: *${data.tanggal_keluar}*\n\n`;
         message +=
           ' Anda juga bisa membalas dengan *Ya*/*Tidak* untuk menyetujui/menolak semua permintaan yang terkait dengan Anda dengan cara menahan pesan ini dan harap di reply .\n';
         message +=
@@ -942,13 +942,13 @@ const runfunction = async (sock) => {
           console.log(error);
         }
       } else if (data.type === 'send_atasan_dua') {
-        let message = `*Permintaan Persetujuan Izin Baru*:\n`;
+        let message = `Permintaan Persetujuan Izin Baru:\n`;
         message += `Halo, Selamat Siang Bapak/Ibu ${data.nama_atasan_2},\n`;
         message += `Anda memiliki permintaan izin keluar kebun yang membutuhkan persetujuan dengan rincian sebagai berikut:\n`;
-        message += `*ID Pemohon*: ${data.id}\n`;
-        message += `*Nama* : ${data.nama_user}\n`;
-        message += `*Alasan* : ${data.keperluan}\n`;
-        message += `*Tanggal keluar izin* : ${data.tanggal_keluar}\n`;
+        message += `ID Pemohon: ${data.id}\n`;
+        message += `Nama : *${data.nama_user}*\n`;
+        message += `Alasan : ${data.keperluan}\n`;
+        message += `Tanggal keluar izin : *${data.tanggal_keluar}*\n`;
         message +=
           ' Anda juga bisa membalas dengan *Ya*/*Tidak* untuk menyetujui/menolak semua permintaan yang terkait dengan Anda dengan cara menahan pesan ini dan harap di reply .\n';
         message +=
@@ -975,15 +975,15 @@ const runfunction = async (sock) => {
       } else if (data.type === 'send_user') {
         let message = ''; // Initialize the message variable here
         if (data.status === 'approved') {
-          message += `*Izin Keluar Kebun Anda Telah Disetujui*\n\n`;
+          message += `Izin Keluar Kebun Anda Telah Disetujui\n\n`;
           message += `Hallo Selamat Siang Bapak/Ibu ${data.nama_user},\n\n`;
           message += `Kami ingin menginformasikan bahwa permintaan izin keluar kebun Anda telah disetujui.\n\n`;
           message += `Berikut adalah detail izin Anda:\n`;
-          message += `*Nama Pemohon*: ${data.nama_user}\n`;
-          message += `*Tanggal keluar izin* : ${data.tanggal_keluar}\n`;
-          message += `*Tanggal kembali izin* : ${data.tanggal_kembali}\n`;
-          message += `*Keperluan*: ${data.keperluan}\n`;
-          message += `*Lokasi Tujuan*: ${data.lokasi_tujuan}\n\n`;
+          message += `Nama Pemohon: *${data.nama_user}*\n`;
+          message += `Tanggal keluar izin : ${data.tanggal_keluar}\n`;
+          message += `Tanggal kembali izin : ${data.tanggal_kembali}\n`;
+          message += `Keperluan: ${data.keperluan}\n`;
+          message += `Lokasi Tujuan: ${data.lokasi_tujuan}\n\n`;
           message += `Harap selalu berhati-hati selama perjalanan dan pastikan untuk mengikuti protokol keamanan yang berlaku. Kami mendoakan agar Anda tiba dengan selamat di tujuan dan kembali ke kebun dengan kondisi sehat dan aman.\n\n`;
           message += `Jika ada pertanyaan lebih lanjut, jangan ragu untuk menghubungi kami.\n\n`;
           message += `Atau kunjungi web kami di :https://izin-kebun.srs-ssms.com \n\n`;
@@ -1082,13 +1082,13 @@ const runfunction = async (sock) => {
           return;
         }
       } else if (data.type === 'send_atasan_tiga') {
-        let message = `*Permintaan Persetujuan Izin Baru*:\n`;
+        let message = `Permintaan Persetujuan Izin Baru:\n`;
         message += `Halo, Selamat Siang Bapak/Ibu ${data.nama_atasan_3},\n`;
         message += `Anda memiliki permintaan izin keluar kebun yang membutuhkan persetujuan dengan rincian sebagai berikut:\n`;
-        message += `*ID Pemohon*: ${data.id}\n`;
-        message += `*Nama* : ${data.nama_user}\n`;
-        message += `*Alasan* : ${data.keperluan}\n`;
-        message += `*Tanggal keluar izin* : ${data.tanggal_keluar}\n`;
+        message += `ID Pemohon: ${data.id}\n`;
+        message += `Nama : *${data.nama_user}*\n`;
+        message += `Alasan : ${data.keperluan}\n`;
+        message += `Tanggal keluar izin : *${data.tanggal_keluar}*\n`;
         message +=
           ' Anda juga bisa membalas dengan *Ya*/*Tidak* untuk menyetujui/menolak semua permintaan yang terkait dengan Anda dengan cara menahan pesan ini dan harap di reply .\n';
         message +=

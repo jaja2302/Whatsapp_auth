@@ -48,13 +48,15 @@ async function generatemapstaksasi(est, datetime) {
       );
       await page.title();
 
-      // Delay for 15 seconds before checking the success flag
+      // Delay for 10 seconds before checking the success flag
       await new Promise((resolve) => setTimeout(resolve, 10000));
+
+      // Close the page and browser regardless of success
+      await page.close();
+      await browser.close();
 
       if (uploadSuccess) {
         console.log('Upload successful after', attempts + 1, 'attempts');
-        await page.close();
-        await browser.close();
         return {
           body: {}, // Provide your response body here
           cookies: {}, // Provide your cookies object here
@@ -62,10 +64,9 @@ async function generatemapstaksasi(est, datetime) {
         };
       } else {
         console.log('Upload not successful, retrying...');
-        await page.close();
-        await browser.close();
-        attempts++;
       }
+
+      attempts++;
     } catch (error) {
       console.error('Attempt', attempts + 1, 'failed with error:', error);
       attempts++;
@@ -73,7 +74,7 @@ async function generatemapstaksasi(est, datetime) {
   }
 
   if (!uploadSuccess) {
-    console.error('Upload failed after 5 attempts');
+    console.error('Upload failed after 2 attempts');
     return { error: 'Upload failed after maximum attempts' };
   }
 }

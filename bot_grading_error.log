@@ -1,0 +1,27 @@
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:29:38\n' +
+      '    at refreshMediaConn (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:50:15)\n' +
+      '    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n' +
+      '    at async Object.upload (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\messages-media.js:530:26)\n' +
+      '    at async C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\messages.js:126:28\n' +
+      '    at async Promise.all (index 0)\n' +
+      '    at async prepareWAMessageMedia (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\messages.js:124:40)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}

@@ -8,7 +8,7 @@ const handleReplyNoDocMessage = async (
 ) => {
   if (conversation.includes('Permintaan Persetujuan Izin Baru')) {
     const idPemohonStartIndex =
-      conversation.indexOf('*ID Pemohon*: ') + '*ID Pemohon*: '.length;
+      conversation.indexOf('ID Pemohon: ') + 'ID Pemohon: '.length;
     const idPemohonEndIndex = conversation.indexOf('\n', idPemohonStartIndex);
     const idPemohon = conversation
       .substring(idPemohonStartIndex, idPemohonEndIndex)
@@ -19,7 +19,7 @@ const handleReplyNoDocMessage = async (
 
     // Extracting Nama Pemohon
     const namaStartIndex =
-      conversation.indexOf('*Nama Pemohon*: ') + '*Nama Pemohon*: '.length;
+      conversation.indexOf('Nama Pemohon: ') + 'Nama Pemohon: '.length;
     const namaEndIndex = conversation.indexOf('\n', namaStartIndex);
     const nama = conversation.substring(namaStartIndex, namaEndIndex).trim();
     // console.log(conversation);
