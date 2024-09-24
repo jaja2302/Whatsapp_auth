@@ -108,7 +108,7 @@ async function sendtaksasiest(estate, group_id, folder, sock) {
       }
     } catch (error) {
       // console.log(error);
-      
+
       console.error('Error sending PDF:', error.message);
     }
     return 'success';
@@ -149,7 +149,7 @@ async function sendfailcronjob(sock) {
     let data = response.data.cronfail;
     // console.log(sock);
     if (data.length === 0) {
-      console.log('nodata');
+      // console.log('nodata');
     } else {
       for (const task of data) {
         try {
