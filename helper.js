@@ -17,16 +17,12 @@ const {
   Sendverificationtaksasi,
 } = require('./utils/taksasi/taksasihelper');
 const { get_mill_data } = require('./utils/grading/gradinghelper');
+const { pingGoogle, sendSummary } = require('./utils/rekap_harian_uptime');
 const {
-  userchoice,
-  botpromt,
   timeoutHandles,
   userIotChoice,
   botIotPrompt,
   userchoiceSnoozeBotPengawasanOperator,
-  choiceSnoozeBotPengawasanOperator,
-  userTalsasiChoice,
-  botTaksasi,
   configSnoozeBotPengawasanOperator,
 } = require('./state');
 const moment = require('moment-timezone');
@@ -923,9 +919,10 @@ const setupCronJobs = (sock) => {
   const isConnected = () => {
     return sock.user;
   };
+
+  // Send summary every day at 9 AM
+
   if (isConnected) {
-    // untuk pc di ho boootroot
-    // cron job
     cron.schedule(
       '0 * * * *',
       async () => {
@@ -946,6 +943,7 @@ const setupCronJobs = (sock) => {
       async () => {
         await handleBotLaporanHarianFleetManagement(sock);
         await handleBotDailyPengawasanOperatorAI(sock);
+        await sendSummary(sock);
       },
       {
         scheduled: true,
@@ -965,7 +963,7 @@ const setupCronJobs = (sock) => {
     cron.schedule(
       '*/5 * * * *',
       async () => {
-        // await getNotifications(sock);
+        await pingGoogle();
         await get_mill_data(sock);
       },
       {

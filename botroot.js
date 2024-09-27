@@ -37,6 +37,7 @@ const { Generateandsendtaksasi } = require('./utils/taksasi/taksasihelper.js');
 const { handlePrivateMessage } = require('./utils/private_messages.js');
 const { function_rapidresponse } = require('./utils/rapiprespons/helper.js');
 const { get_mill_data } = require('./utils/grading/gradinghelper');
+const { pingGoogle, sendSummary } = require('./utils/rekap_harian_uptime.js');
 const {
   handleReplyNoDocMessage,
 } = require('./utils/repply_no_doc_messages.js');
@@ -316,7 +317,8 @@ const sendButtonMessage = async (jid) => {
 
 app.get('/testing', async (req, res) => {
   try {
-    await get_mill_data(sock);
+    // await pingGoogle();
+    // await sendSummary(sock);
     // da
     // console.log(sock.user);
     // console.log(result);
