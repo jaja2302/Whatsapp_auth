@@ -39,6 +39,10 @@ const { function_rapidresponse } = require('./utils/rapiprespons/helper.js');
 const { get_mill_data } = require('./utils/grading/gradinghelper');
 const { pingGoogle, sendSummary } = require('./utils/rekap_harian_uptime.js');
 const {
+  get_outstadingdata,
+  function_marcom,
+} = require('./utils/marcom/marcomhelper.js');
+const {
   handleReplyNoDocMessage,
 } = require('./utils/repply_no_doc_messages.js');
 const {
@@ -264,6 +268,7 @@ async function connectToWhatsApp() {
   setupCronJobs(sock);
   runfunction(sock);
   function_rapidresponse(sock);
+  function_marcom(sock);
 }
 
 io.on('connection', async (socket) => {
@@ -318,7 +323,7 @@ const sendButtonMessage = async (jid) => {
 app.get('/testing', async (req, res) => {
   try {
     // await pingGoogle();
-    // await sendSummary(sock);
+    await get_outstadingdata(sock);
     // da
     // console.log(sock.user);
     // console.log(result);

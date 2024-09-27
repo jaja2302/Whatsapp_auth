@@ -18,6 +18,7 @@ const {
 } = require('./utils/taksasi/taksasihelper');
 const { get_mill_data } = require('./utils/grading/gradinghelper');
 const { pingGoogle, sendSummary } = require('./utils/rekap_harian_uptime');
+const { get_outstadingdata } = require('./utils/marcom/');
 const {
   timeoutHandles,
   userIotChoice,
@@ -944,6 +945,7 @@ const setupCronJobs = (sock) => {
         await handleBotLaporanHarianFleetManagement(sock);
         await handleBotDailyPengawasanOperatorAI(sock);
         await sendSummary(sock);
+        await get_outstadingdata(sock);
       },
       {
         scheduled: true,
