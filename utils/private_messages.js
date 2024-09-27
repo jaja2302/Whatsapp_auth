@@ -26,7 +26,7 @@ const handlePrivateMessage = async (lowerCaseMessage, noWa, text, sock) => {
   } else {
     if (lowerCaseMessage === 'ya') {
       const imagePath = './img/step1.jpeg';
-      const imagePath2 = './img/step2.jpeg';
+      const imagePath2 = './img/step2.jpg';
       const caption = 'Harap balas pesan dengan cara tekan/tahan pesan di atas';
       const caption2 =
         'Lalu balas *ya* untuk menyetujui izin di atas, atau balas *tidak* untuk menolak izin di atas.\n\nAtau balas *ya semua* tanpa menekan/menahan pesan di atas untuk menyetujui semua izin atas persetujuan anda.';
@@ -35,7 +35,7 @@ const handlePrivateMessage = async (lowerCaseMessage, noWa, text, sock) => {
       await sendImageWithCaption(sock, noWa, imagePath2, caption2);
     } else if (lowerCaseMessage === 'tidak') {
       const imagePath = './img/step1.jpeg';
-      const imagePath2 = './img/step2.jpeg';
+      const imagePath2 = './img/step2.jpg';
       const caption = 'Harap balas pesan dengan cara tekan/tahan pesan di atas';
       const caption2 =
         'Lalu balas *tidak* untuk menyetujui izin di atas, atau balas *ya* untuk menerima izin di atas.\n\nAtau balas *tidak semua* tanpa menekan/menahan pesan di atas untuk menolak semua izin atas persetujuan anda.';

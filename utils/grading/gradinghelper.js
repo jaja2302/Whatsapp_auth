@@ -60,7 +60,7 @@ async function get_mill_data(sock) {
         const imgBuffer = Buffer.from(itemdata.base64Collage, 'base64');
         const imageOptions = {
           image: imgBuffer,
-          caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
+          caption: message,
         };
         await sock.sendMessage(noWa_grading, imageOptions);
         // sending pdf
@@ -69,7 +69,8 @@ async function get_mill_data(sock) {
           document: pdfBuffer,
           mimetype: 'application/pdf',
           fileName: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
-          caption: message,
+          
+          caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
         };
 
         try {
