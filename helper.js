@@ -18,8 +18,12 @@ const {
 } = require('./utils/taksasi/taksasihelper');
 const { get_mill_data } = require('./utils/grading/gradinghelper');
 const { pingGoogle, sendSummary } = require('./utils/rekap_harian_uptime');
+<<<<<<< HEAD
 const { get_outstadingdata } = require('./utils/marcom/');
 const { get_iot_weatherstation } = require('./utils/iot/iothelper');
+=======
+const { get_outstadingdata } = require('./utils/marcom/marcomhelper');
+>>>>>>> c58a10d2bbc0cfa08114a6dd832da3859f964ab8
 const {
   timeoutHandles,
   userIotChoice,
@@ -967,7 +971,7 @@ const setupCronJobs = (sock) => {
     cron.schedule(
       '*/5 * * * *',
       async () => {
-        await pingGoogle();
+        // await pingGoogle();
         await get_mill_data(sock);
       },
       {
