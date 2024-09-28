@@ -38,6 +38,7 @@ const { handlePrivateMessage } = require('./utils/private_messages.js');
 const { function_rapidresponse } = require('./utils/rapiprespons/helper.js');
 const { get_mill_data } = require('./utils/grading/gradinghelper');
 const { pingGoogle, sendSummary } = require('./utils/rekap_harian_uptime.js');
+const { get_iot_weatherstation } = require('./utils/iot/iothelper');
 const {
   get_outstadingdata,
   function_marcom,
@@ -323,7 +324,7 @@ const sendButtonMessage = async (jid) => {
 app.get('/testing', async (req, res) => {
   try {
     // await pingGoogle();
-    await get_outstadingdata(sock);
+    await get_iot_weatherstation(sock);
     // da
     // console.log(sock.user);
     // console.log(result);

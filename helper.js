@@ -19,6 +19,7 @@ const {
 const { get_mill_data } = require('./utils/grading/gradinghelper');
 const { pingGoogle, sendSummary } = require('./utils/rekap_harian_uptime');
 const { get_outstadingdata } = require('./utils/marcom/');
+const { get_iot_weatherstation } = require('./utils/iot/iothelper');
 const {
   timeoutHandles,
   userIotChoice,
@@ -930,6 +931,7 @@ const setupCronJobs = (sock) => {
         try {
           await statusAWS(sock);
           await statusHistory(sock);
+          await get_iot_weatherstation(sock);
         } catch (error) {
           console.error('Error in cron job:', error);
         }
