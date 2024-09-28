@@ -38,6 +38,7 @@ const { handlePrivateMessage } = require('./utils/private_messages.js');
 const { function_rapidresponse } = require('./utils/rapiprespons/helper.js');
 const { get_mill_data } = require('./utils/grading/gradinghelper');
 const { pingGoogle, sendSummary } = require('./utils/rekap_harian_uptime.js');
+// const { get_outstadingdata } = require('./utils/marcom/marcomhelper');
 const {
   get_outstadingdata,
   function_marcom,

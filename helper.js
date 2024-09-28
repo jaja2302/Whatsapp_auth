@@ -18,7 +18,7 @@ const {
 } = require('./utils/taksasi/taksasihelper');
 const { get_mill_data } = require('./utils/grading/gradinghelper');
 const { pingGoogle, sendSummary } = require('./utils/rekap_harian_uptime');
-const { get_outstadingdata } = require('./utils/marcom/');
+const { get_outstadingdata } = require('./utils/marcom/marcomhelper');
 const {
   timeoutHandles,
   userIotChoice,
@@ -965,7 +965,7 @@ const setupCronJobs = (sock) => {
     cron.schedule(
       '*/5 * * * *',
       async () => {
-        await pingGoogle();
+        // await pingGoogle();
         await get_mill_data(sock);
       },
       {
