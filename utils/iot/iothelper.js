@@ -26,6 +26,7 @@ async function get_iot_weatherstation(sock) {
         message += `Nama: ${itemdata.loc}\n`;
         message += `Detail : ${itemdata.desc}\n`;
         message += `Last online : ${itemdata.last_online}\n`;
+        message += `Ip address : ${itemdata.ip_address}\n`;
 
         try {
           // Send message as an object with the text field
