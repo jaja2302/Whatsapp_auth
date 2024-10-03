@@ -36,6 +36,7 @@ const handleGroupMessage = async (
           estate: estateFromMatchingTask,
           group_id,
           wilayah: folder,
+          id
         } = matchingTasks[0];
         await sock.sendMessage(
           noWa,
