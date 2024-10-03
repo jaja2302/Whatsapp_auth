@@ -3,7 +3,7 @@ const fs = require('fs');
 const cron = require('node-cron');
 const { basename } = require('path');
 const { readFileSync } = require('fs');
-const { format, zonedTimeToUtc } = require('date-fns-tz'); // Import date-fns-tz functions
+const { format, utcToZonedTime } = require('date-fns-tz');
 
 const idgroup = '120363205553012899@g.us';
 const idgroup_testing = '120363204285862734@g.us';
@@ -32,9 +32,17 @@ function getYesterdayDate() {
 
 // Format date for logging in Asia/Jakarta time zone
 function formatDate(date) {
-  const timeZone = 'Asia/Jakarta';
-  const utcDate = zonedTimeToUtc(date, timeZone); // Convert to UTC
-  return format(utcDate, 'yyyy-MM-dd HH:mm:ss', { timeZone }); // Format date
+  // Convert the provided date to Asia/Jakarta timezone using JavaScript's built-in Date methods
+  const nDate = new Date(date).toLocaleString('en-US', {
+    timeZone: 'Asia/Jakarta',
+    hour12: false, // Ensure 24-hour format
+  });
+
+  // Format nDate to 'yyyy-MM-dd HH:mm:ss' manually
+  const [datePart, timePart] = nDate.split(', '); // Separate the date and time
+
+  const [month, day, year] = datePart.split('/'); // US format is MM/DD/YYYY
+  return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')} ${timePart}`;
 }
 
 async function pingGoogle() {
@@ -103,8 +111,21 @@ async function sendSummary(sock) {
     console.error('Error sending WhatsApp message:', error);
   }
 }
+// const pingGoogles = async (sock) => {
+//   cron.schedule(
+//     '*/1 * * * *',
+//     async () => {
+//       await pingGoogle();
+//     },
+//     {
+//       scheduled: true,
+//       timezone: 'Asia/Jakarta',
+//     }
+//   );
+// };
 
 module.exports = {
   pingGoogle,
   sendSummary,
+  // pingGoogles,
 };
