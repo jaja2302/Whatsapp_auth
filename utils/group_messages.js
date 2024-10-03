@@ -46,7 +46,8 @@ const handleGroupMessage = async (
           estateFromMatchingTask,
           group_id,
           folder,
-          sock
+          sock,
+          id
         );
         // console.log(result);
         if (result === 'success') {

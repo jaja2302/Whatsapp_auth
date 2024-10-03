@@ -79,7 +79,7 @@ async function generatemapstaksasi(est, datetime) {
   }
 }
 
-async function sendtaksasiest(estate, group_id, folder, sock) {
+async function sendtaksasiest(estate, group_id, folder, sock, taskid) {
   try {
     await generatemapstaksasi(estate, datetimeValue);
 
@@ -99,7 +99,25 @@ async function sendtaksasiest(estate, group_id, folder, sock) {
           caption: captions,
         };
 
-        await sock.sendMessage(group_id, messageOptions);
+        try {
+          await sock.sendMessage(group_id, messageOptions);
+          const apiUrl = 'https://qc-apps.srs-ssms.com/api/recordcronjob';
+
+          // Create the form data with variables estate and datetime
+          const formData = new FormData();
+          formData.append('est', estate);
+
+          // Get the current date and time in the Jakarta timezone using Luxon
+          const dateTime = DateTime.now().setZone('Asia/Jakarta').toISO();
+
+          formData.append('datetime', dateTime);
+          formData.append('id', taskid);
+          if (taskid !== null && taskid !== 'null') {
+            await axios.post(apiUrl, formData);
+          }
+        } catch (error) {
+          console.log('errpr taksasi ');
+        }
 
         // console.log('PDF sent successfully!');
         return 'success';
@@ -118,29 +136,6 @@ async function sendtaksasiest(estate, group_id, folder, sock) {
   }
 }
 
-async function sendhistorycron(estate, id) {
-  try {
-    // const apiUrl = 'http://ssms-qc.test/api/recordcronjob';
-    const apiUrl = 'https://qc-apps.srs-ssms.com/api/recordcronjob';
-
-    // Create the form data with variables estate and datetime
-    const formData = new FormData();
-    formData.append('est', estate);
-
-    // Get the current date and time in the Jakarta timezone using Luxon
-    const dateTime = DateTime.now().setZone('Asia/Jakarta').toISO();
-
-    formData.append('datetime', dateTime);
-    formData.append('id', id);
-    // Send the POST request with form data
-    const response = await axios.post(apiUrl, formData);
-
-    // Handle the response if needed
-    console.log('Response:', response.data);
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-}
 async function sendfailcronjob(sock) {
   try {
     const apiUrl = 'https://qc-apps.srs-ssms.com/api/checkcronjob';
@@ -154,8 +149,14 @@ async function sendfailcronjob(sock) {
       for (const task of data) {
         try {
           await generatemapstaksasi(task.estate, datetimeValue);
-          await sendtaksasiest(task.estate, task.group_id, 'null', sock);
-          await sendhistorycron(task.estate, task.id, sock);
+          await sendtaksasiest(
+            task.estate,
+            task.group_id,
+            'null',
+            sock,
+            task.id
+          );
+          // await sendhistorycron(task.estate, task.id, sock);
         } catch (error) {
           console.error('Error performing task in cronjob:', error);
         }
@@ -394,7 +395,8 @@ const handleTaksasi = async (noWa, text, sock) => {
                   estateFromMatchingTask,
                   group_id,
                   'null',
-                  sock
+                  sock,
+                  'null'
                 );
               }
             }
