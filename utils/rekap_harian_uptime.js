@@ -4,9 +4,24 @@ const cron = require('node-cron');
 const idgroup = '120363205553012899@g.us';
 const idgroup_testing = '120363204285862734@g.us';
 const idgroup_da = '120363303562042176@g.us';
-let logFile = 'log_uptime_downtime_pc_ho.txt';
 const { basename } = require('path');
 const { readFileSync } = require('fs');
+
+// Ensure the log folder exists
+const logFolder = 'up_time_log';
+if (!fs.existsSync(logFolder)) {
+  fs.mkdirSync(logFolder);
+}
+
+// Helper to get the current date in d-m-y format and log path
+function getLogFileName() {
+  const now = new Date();
+  const day = String(now.getDate()).padStart(2, '0');
+  const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+  const year = now.getFullYear();
+  return `${logFolder}/${day}-${month}-${year}_log_uptime_downtime_pc_ho.txt`;
+}
+
 // Format date for logging
 function formatDate(date) {
   return date.toISOString().replace(/T/, ' ').replace(/\..+/, '');
@@ -14,6 +29,7 @@ function formatDate(date) {
 
 async function pingGoogle() {
   const now = new Date();
+  const logFile = getLogFileName(); // Use today's log file inside the folder
   try {
     const response = await axios.get('https://www.google.com');
     if (response.status === 200) {
@@ -28,6 +44,7 @@ async function pingGoogle() {
 
 async function sendSummary(sock) {
   const now = new Date();
+  const logFile = getLogFileName(); // Use today's log file inside the folder
   const logs = readFileSync(logFile, 'utf-8');
   const lines = logs.split('\n').filter(Boolean);
   let uptime = 0,
@@ -63,10 +80,8 @@ async function sendSummary(sock) {
   } catch (error) {
     console.error('Error sending WhatsApp message:', error);
   }
-
-  // Clear log file for the next day
-  fs.writeFileSync(logFile, '');
 }
+
 module.exports = {
   pingGoogle,
   sendSummary,
