@@ -921,7 +921,17 @@ const setupCronJobs = (sock) => {
   const isConnected = () => {
     return sock.user;
   };
-
+  cron.schedule(
+    '*/5 * * * *',
+    async () => {
+      await pingGoogle();
+      // await get_mill_data(sock);
+    },
+    {
+      scheduled: true,
+      timezone: 'Asia/Jakarta',
+    }
+  );
   // Send summary every day at 9 AM
 
   if (isConnected) {
