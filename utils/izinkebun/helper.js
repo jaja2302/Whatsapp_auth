@@ -906,6 +906,28 @@ async function Report_group_izinkebun(sock) {
     throw error;
   }
 }
+async function Fail_send_pdf() {
+  try {
+    // Fetch data from the API
+    const response = await axios.get(
+      'https://management.srs-ssms.com/api/check_pdf_izin_fail',
+      // 'http://erpda.test/api/check_pdf_izin_fail',
+      {
+        params: {
+          email: 'j',
+          password: 'j',
+        },
+      }
+    );
+
+    // console.log(response.data.message);
+
+    return response.data.message;
+  } catch (error) {
+    console.error('Error fetching data from API:', error.message);
+    throw error;
+  }
+}
 const runfunction = async (sock) => {
   channel.bind('izinkebunnotif', async (itemdata) => {
     try {
@@ -1131,4 +1153,5 @@ module.exports = {
   sendImageWithCaption,
   Report_group_izinkebun,
   catcherror,
+  Fail_send_pdf,
 };

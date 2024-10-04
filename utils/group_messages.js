@@ -7,7 +7,10 @@ const {
   sendfailcronjob,
 } = require('./taksasi/taksasihelper.js');
 const { handleChatSnoozePengawasanOperatorAi } = require('../helper.js');
-const { Report_group_izinkebun } = require('./izinkebun/helper.js');
+const {
+  Report_group_izinkebun,
+  Fail_send_pdf,
+} = require('./izinkebun/helper.js');
 const axios = require('axios');
 const handleGroupMessage = async (
   lowerCaseMessage,
@@ -85,7 +88,7 @@ const handleGroupMessage = async (
     await sock.sendMessage(
       noWa,
       {
-        text: 'Perintah Bot Yang tersedia \n1 = !tarik (Menarik Estate yang di pilih untuk di generate ke dalam grup yang sudah di tentukan) \n2.!getgrup (Menampilkan semua isi list group yang ada) \n3.!cast (melakukan broadcast pesan ke semua grup taksasi) \n4.!taksasi = Menarik Banyak laporar taksasi sekaligus berdasarkan waktu yang di pilih\n5.!laporan izinkebun Menarik laporan izin kebun (Harap gunakan hanya di hari sabtu atau minggu)!\n6.failcronjob = Mrnjalankan semua fail cronjob yang ada di server',
+        text: 'Perintah Bot Yang tersedia \n1 = !tarik (Menarik Estate yang di pilih untuk di generate ke dalam grup yang sudah di tentukan) \n2.!getgrup (Menampilkan semua isi list group yang ada) \n3.!cast (melakukan broadcast pesan ke semua grup taksasi) \n4.!taksasi = Menarik Banyak laporar taksasi sekaligus berdasarkan waktu yang di pilih\n5.!laporan izinkebun Menarik laporan izin kebun (Harap gunakan hanya di hari sabtu atau minggu)!\n6.failcronjob = Mrnjalankan semua fail cronjob yang ada di server\n7.!failizinkebun = Mengirip pdf yang gagal terkirim izin kebun',
       },
       { quoted: message }
     );
@@ -104,6 +107,24 @@ const handleGroupMessage = async (
       noWa,
       {
         text: `${response.message}`,
+      },
+      { quoted: message }
+    );
+  } else if (lowerCaseMessage === '!failizinkebun') {
+    await sock.sendMessage(
+      noWa,
+      {
+        text: 'Mohon tunggu sedang mengcek fail izin kebun.',
+      },
+      { quoted: message }
+    );
+    let response = await Fail_send_pdf();
+    // console.log(response);
+
+    await sock.sendMessage(
+      noWa,
+      {
+        text: `${response}`,
       },
       { quoted: message }
     );
