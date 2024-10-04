@@ -42,3 +42,2507 @@ Upload not successful, retrying...
 Upload failed after 2 attempts
 Server Berjalan pada Port : 8000
 opened connection
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+data kosong iot
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+Upload successful after 1 attempts
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+Message sent successfully.
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+Upload successful after 1 attempts
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+Error fetching data: AxiosError: read ECONNRESET
+    at AxiosError.from (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:876:14)
+    at RedirectableRequest.handleRequestError (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:3156:25)
+    at RedirectableRequest.emit (node:events:518:28)
+    at eventHandlers.<computed> (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\follow-redirects\index.js:38:24)
+    at ClientRequest.emit (node:events:518:28)
+    at TLSSocket.socketErrorListener (node:_http_client:500:9)
+    at TLSSocket.emit (node:events:518:28)
+    at emitErrorNT (node:internal/streams/destroy:169:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:128:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+    at Axios.request (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:4287:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async get_mill_data (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\grading\gradinghelper.js:8:22)
+    at async cron.schedule.scheduled [as _execution] (C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:981:9) {
+  syscall: 'read',
+  code: 'ECONNRESET',
+  errno: -4077,
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false
+    },
+    adapter: [ 'xhr', 'http', 'fetch' ],
+    transformRequest: [ [Function: transformRequest] ],
+    transformResponse: [ [Function: transformResponse] ],
+    timeout: 0,
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    env: { FormData: [Function], Blob: [class Blob] },
+    validateStatus: [Function: validateStatus],
+    headers: Object [AxiosHeaders] {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': undefined,
+      'User-Agent': 'axios/1.7.7',
+      'Accept-Encoding': 'gzip, compress, deflate, br'
+    },
+    params: { email: 'j', password: 'j' },
+    method: 'get',
+    url: 'https://management.srs-ssms.com/api/getdatamill',
+    data: undefined
+  },
+  request: <ref *1> Writable {
+    _events: {
+      close: undefined,
+      error: [Function: handleRequestError],
+      prefinish: undefined,
+      finish: undefined,
+      drain: undefined,
+      response: [Function: handleResponse],
+      socket: [Function: handleRequestSocket]
+    },
+    _writableState: WritableState {
+      highWaterMark: 16384,
+      length: 0,
+      corked: 0,
+      onwrite: [Function: bound onwrite],
+      writelen: 0,
+      bufferedIndex: 0,
+      pendingcb: 0,
+      [Symbol(kState)]: 17580812,
+      [Symbol(kBufferedValue)]: null
+    },
+    _maxListeners: undefined,
+    _options: {
+      maxRedirects: 21,
+      maxBodyLength: Infinity,
+      protocol: 'https:',
+      path: '/api/getdatamill?email=j&password=j',
+      method: 'GET',
+      headers: [Object: null prototype],
+      agents: [Object],
+      auth: undefined,
+      family: undefined,
+      beforeRedirect: [Function: dispatchBeforeRedirect],
+      beforeRedirects: [Object],
+      hostname: 'management.srs-ssms.com',
+      port: '',
+      agent: undefined,
+      nativeProtocols: [Object],
+      pathname: '/api/getdatamill',
+      search: '?email=j&password=j'
+    },
+    _ended: true,
+    _ending: true,
+    _redirectCount: 0,
+    _redirects: [],
+    _requestBodyLength: 0,
+    _requestBodyBuffers: [],
+    _eventsCount: 3,
+    _onNativeResponse: [Function (anonymous)],
+    _currentRequest: ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 7,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: false,
+      _last: true,
+      chunkedEncoding: false,
+      shouldKeepAlive: true,
+      maxRequestsOnConnectionReached: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: false,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      strictContentLength: false,
+      _contentLength: 0,
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      _closed: false,
+      socket: [TLSSocket],
+      _header: 'GET /api/getdatamill?email=j&password=j HTTP/1.1\r\n' +
+        'Accept: application/json, text/plain, */*\r\n' +
+        'User-Agent: axios/1.7.7\r\n' +
+        'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+        'Host: management.srs-ssms.com\r\n' +
+        'Connection: keep-alive\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: nop],
+      agent: [Agent],
+      socketPath: undefined,
+      method: 'GET',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      joinDuplicateHeaders: undefined,
+      path: '/api/getdatamill?email=j&password=j',
+      _ended: false,
+      res: null,
+      aborted: false,
+      timeoutCb: [Function: emitRequestTimeout],
+      upgradeOrConnect: false,
+      parser: null,
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: 'management.srs-ssms.com',
+      protocol: 'https:',
+      _redirectable: [Circular *1],
+      [Symbol(shapeMode)]: false,
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(kNeedDrain)]: false,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype],
+      [Symbol(errored)]: null,
+      [Symbol(kHighWaterMark)]: 16384,
+      [Symbol(kRejectNonStandardBodyWrites)]: false,
+      [Symbol(kUniqueHeaders)]: null
+    },
+    _currentUrl: 'https://management.srs-ssms.com/api/getdatamill?email=j&password=j',
+    [Symbol(shapeMode)]: true,
+    [Symbol(kCapture)]: false
+  },
+  cause: Error: read ECONNRESET
+      at TLSWrap.onStreamRead (node:internal/stream_base_commons:217:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  }
+}
+Server Berjalan pada Port : 8000
+opened connection
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+data kosong iot
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+Status updated: { message: 'Record updated successfully' }
+*Selamat Siang*:
+Yth. Pelanggan Setia Lab CBI
+Progress Sampel anda telah kami terima dengan:
+*No. Surat* : 311/RCH-SSS/SRS-LAB/X/2024
+*Departemen* : Nutrisi Tanaman
+*Jenis Sampel* : Pupuk
+*Jumlah Sampel* : 4
+*Progress saat ini* : Penerimaan dan Registrasi Sampel
+Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com
+Dengan kode tracking  *1YSYXYBV*
+Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.
+
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+data kosong iot
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+Status updated: { message: 'Record updated successfully' }
+*Selamat Sore*:
+Yth. Pelanggan Setia Lab CBI
+Progress Sampel anda telah kami terima dengan:
+*No. Surat* : 404/FER-SSS/SRS-LAB/X/2024
+*Departemen* : Nutrisi Tanaman
+*Jenis Sampel* : Pupuk
+*Jumlah Sampel* : 3
+*Progress saat ini* : Penerimaan dan Registrasi Sampel
+Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com
+Dengan kode tracking  *C59D5WBQ*
+Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.
+
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+*Selamat Sore*:
+Yth. Pelanggan Setia Lab CBI
+Progress Sampel anda telah kami terima dengan:
+*No. Surat* : 405/FER-SSS/SRS-LAB/X/2024
+*Departemen* : Nutrisi Tanaman
+*Jenis Sampel* : Pupuk
+*Jumlah Sampel* : 2
+*Progress saat ini* : Penerimaan dan Registrasi Sampel
+Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com
+Dengan kode tracking  *BOMHWHFU*
+Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.
+
+*Selamat Sore*:
+Yth. Pelanggan Setia Lab CBI
+Progress Sampel anda telah kami terima dengan:
+*No. Surat* : 056/CBI-SSS/R&D-LAB/X/2024
+*Departemen* : Lab. Pupuk Hayati
+*Jenis Sampel* : Tanah
+*Jumlah Sampel* : 6
+*Progress saat ini* : Penerimaan dan Registrasi Sampel
+Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com
+Dengan kode tracking  *AQVL6C6D*
+Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.
+
+*Selamat Sore*:
+Yth. Pelanggan Setia Lab CBI
+Progress Sampel anda telah kami terima dengan:
+*No. Surat* : 056/CBI-SSS/R&D-LAB/X/2024
+*Departemen* : Lab. Pupuk Hayati
+*Jenis Sampel* : Tanah
+*Jumlah Sampel* : 6
+*Progress saat ini* : Penerimaan dan Registrasi Sampel
+Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com
+Dengan kode tracking  *AQVL6C6D*
+Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.
+
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+Status updated: { message: 'Record updated successfully' }
+data kosong
+*Selamat Sore*:
+Yth. Pelanggan Setia Lab CBI
+Progress Sampel anda telah kami terima dengan:
+*No. Surat* : 406/FER-SSS/SRS-LAB/X/2024
+*Departemen* : Nutrisi Tanaman
+*Jenis Sampel* : Pupuk
+*Jumlah Sampel* : 1
+*Progress saat ini* : Penerimaan dan Registrasi Sampel
+Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com
+Dengan kode tracking  *26USB4NW*
+Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.
+
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+{ message: 'Status sock updated successfully' }
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+data kosong
+No data or invalid data received from the API.
+data kosong iot
+Status updated: { message: 'Record updated successfully' }
+Error fetching data from API: Request failed with status code 404
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+Status updated: { message: 'Record updated successfully' }
+No data or invalid data received from the API.
+data kosong iot
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Error fetching data: AxiosError: Request failed with status code 522
+    at settle (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:2019:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:3135:11)
+    at IncomingMessage.emit (node:events:530:35)
+    at endReadableNT (node:internal/streams/readable:1696:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+    at Axios.request (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:4287:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async sendfailcronjob (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\taksasi\taksasihelper.js:142:22)
+    at async cron.schedule.scheduled [as _execution] (C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:970:9) {
+  code: 'ERR_BAD_RESPONSE',
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false
+    },
+    adapter: [ 'xhr', 'http', 'fetch' ],
+    transformRequest: [ [Function: transformRequest] ],
+    transformResponse: [ [Function: transformResponse] ],
+    timeout: 0,
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    env: { FormData: [Function], Blob: [class Blob] },
+    validateStatus: [Function: validateStatus],
+    headers: Object [AxiosHeaders] {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': undefined,
+      'User-Agent': 'axios/1.7.7',
+      'Accept-Encoding': 'gzip, compress, deflate, br'
+    },
+    method: 'get',
+    url: 'https://qc-apps.srs-ssms.com/api/checkcronjob',
+    data: undefined
+  },
+  request: <ref *1> ClientRequest {
+    _events: [Object: null prototype] {
+      abort: [Function (anonymous)],
+      aborted: [Function (anonymous)],
+      connect: [Function (anonymous)],
+      error: [Function (anonymous)],
+      socket: [Function (anonymous)],
+      timeout: [Function (anonymous)],
+      finish: [Function: requestOnFinish]
+    },
+    _eventsCount: 7,
+    _maxListeners: undefined,
+    outputData: [],
+    outputSize: 0,
+    writable: true,
+    destroyed: true,
+    _last: true,
+    chunkedEncoding: false,
+    shouldKeepAlive: true,
+    maxRequestsOnConnectionReached: false,
+    _defaultKeepAlive: true,
+    useChunkedEncodingByDefault: false,
+    sendDate: false,
+    _removedConnection: false,
+    _removedContLen: false,
+    _removedTE: false,
+    strictContentLength: false,
+    _contentLength: 0,
+    _hasBody: true,
+    _trailer: '',
+    finished: true,
+    _headerSent: true,
+    _closed: true,
+    socket: TLSSocket {
+      _tlsOptions: [Object],
+      _secureEstablished: true,
+      _securePending: false,
+      _newSessionPending: false,
+      _controlReleased: true,
+      secureConnecting: false,
+      _SNICallback: null,
+      servername: 'qc-apps.srs-ssms.com',
+      alpnProtocol: false,
+      authorized: true,
+      authorizationError: null,
+      encrypted: true,
+      _events: [Object: null prototype],
+      _eventsCount: 9,
+      connecting: false,
+      _hadError: false,
+      _parent: null,
+      _host: 'qc-apps.srs-ssms.com',
+      _closeAfterHandlingError: false,
+      _readableState: [ReadableState],
+      _writableState: [WritableState],
+      allowHalfOpen: false,
+      _maxListeners: undefined,
+      _sockname: null,
+      _pendingData: null,
+      _pendingEncoding: '',
+      server: undefined,
+      _server: null,
+      ssl: [TLSWrap],
+      _requestCert: true,
+      _rejectUnauthorized: true,
+      timeout: 5000,
+      parser: null,
+      _httpMessage: null,
+      autoSelectFamilyAttemptedAddresses: [Array],
+      [Symbol(alpncallback)]: null,
+      [Symbol(res)]: [TLSWrap],
+      [Symbol(verified)]: true,
+      [Symbol(pendingSession)]: null,
+      [Symbol(async_id_symbol)]: -1,
+      [Symbol(kHandle)]: [TLSWrap],
+      [Symbol(lastWriteQueueSize)]: 0,
+      [Symbol(timeout)]: Timeout {
+        _idleTimeout: 5000,
+        _idlePrev: [TimersList],
+        _idleNext: [Timeout],
+        _idleStart: 752434,
+        _onTimeout: [Function: bound ],
+        _timerArgs: undefined,
+        _repeat: null,
+        _destroyed: false,
+        [Symbol(refed)]: false,
+        [Symbol(kHasPrimitive)]: false,
+        [Symbol(asyncId)]: 8126,
+        [Symbol(triggerId)]: 8124
+      },
+      [Symbol(kBuffer)]: null,
+      [Symbol(kBufferCb)]: null,
+      [Symbol(kBufferGen)]: null,
+      [Symbol(shapeMode)]: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kSetNoDelay)]: false,
+      [Symbol(kSetKeepAlive)]: true,
+      [Symbol(kSetKeepAliveInitialDelay)]: 1,
+      [Symbol(kBytesRead)]: 0,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(connect-options)]: [Object]
+    },
+    _header: 'GET /api/checkcronjob HTTP/1.1\r\n' +
+      'Accept: application/json, text/plain, */*\r\n' +
+      'User-Agent: axios/1.7.7\r\n' +
+      'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+      'Host: qc-apps.srs-ssms.com\r\n' +
+      'Connection: keep-alive\r\n' +
+      '\r\n',
+    _keepAliveTimeout: 0,
+    _onPendingData: [Function: nop],
+    agent: Agent {
+      _events: [Object: null prototype],
+      _eventsCount: 2,
+      _maxListeners: undefined,
+      defaultPort: 443,
+      protocol: 'https:',
+      options: [Object: null prototype],
+      requests: [Object: null prototype] {},
+      sockets: [Object: null prototype],
+      freeSockets: [Object: null prototype],
+      keepAliveMsecs: 1000,
+      keepAlive: true,
+      maxSockets: Infinity,
+      maxFreeSockets: 256,
+      scheduling: 'lifo',
+      maxTotalSockets: Infinity,
+      totalSocketCount: 2,
+      maxCachedSessions: 100,
+      _sessionCache: [Object],
+      [Symbol(shapeMode)]: false,
+      [Symbol(kCapture)]: false
+    },
+    socketPath: undefined,
+    method: 'GET',
+    maxHeaderSize: undefined,
+    insecureHTTPParser: undefined,
+    joinDuplicateHeaders: undefined,
+    path: '/api/checkcronjob',
+    _ended: true,
+    res: IncomingMessage {
+      _events: [Object],
+      _readableState: [ReadableState],
+      _maxListeners: undefined,
+      socket: null,
+      httpVersionMajor: 1,
+      httpVersionMinor: 1,
+      httpVersion: '1.1',
+      complete: true,
+      rawHeaders: [Array],
+      rawTrailers: [],
+      joinDuplicateHeaders: undefined,
+      aborted: false,
+      upgrade: false,
+      url: '',
+      method: null,
+      statusCode: 522,
+      statusMessage: '',
+      client: [TLSSocket],
+      _consuming: true,
+      _dumped: false,
+      req: [Circular *1],
+      _eventsCount: 4,
+      responseUrl: 'https://qc-apps.srs-ssms.com/api/checkcronjob',
+      redirects: [],
+      [Symbol(shapeMode)]: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kHeaders)]: [Object],
+      [Symbol(kHeadersCount)]: 24,
+      [Symbol(kTrailers)]: null,
+      [Symbol(kTrailersCount)]: 0
+    },
+    aborted: false,
+    timeoutCb: null,
+    upgradeOrConnect: false,
+    parser: null,
+    maxHeadersCount: null,
+    reusedSocket: false,
+    host: 'qc-apps.srs-ssms.com',
+    protocol: 'https:',
+    _redirectable: Writable {
+      _events: [Object],
+      _writableState: [WritableState],
+      _maxListeners: undefined,
+      _options: [Object],
+      _ended: true,
+      _ending: true,
+      _redirectCount: 0,
+      _redirects: [],
+      _requestBodyLength: 0,
+      _requestBodyBuffers: [],
+      _eventsCount: 3,
+      _onNativeResponse: [Function (anonymous)],
+      _currentRequest: [Circular *1],
+      _currentUrl: 'https://qc-apps.srs-ssms.com/api/checkcronjob',
+      [Symbol(shapeMode)]: true,
+      [Symbol(kCapture)]: false
+    },
+    [Symbol(shapeMode)]: false,
+    [Symbol(kCapture)]: false,
+    [Symbol(kBytesWritten)]: 0,
+    [Symbol(kNeedDrain)]: false,
+    [Symbol(corked)]: 0,
+    [Symbol(kOutHeaders)]: [Object: null prototype] {
+      accept: [Array],
+      'user-agent': [Array],
+      'accept-encoding': [Array],
+      host: [Array]
+    },
+    [Symbol(errored)]: null,
+    [Symbol(kHighWaterMark)]: 16384,
+    [Symbol(kRejectNonStandardBodyWrites)]: false,
+    [Symbol(kUniqueHeaders)]: null
+  },
+  response: {
+    status: 522,
+    statusText: '',
+    headers: Object [AxiosHeaders] {
+      date: 'Thu, 03 Oct 2024 12:51:50 GMT',
+      'content-type': 'text/html; charset=UTF-8',
+      'content-length': '7116',
+      connection: 'keep-alive',
+      'report-to': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=mbkHKO5Eo9J6G1afcdl%2F2RpX1ROh2A3VY2x%2BXEimgkAZAsMiYf5gmMEG31I59iIlmZJkTeVP7QClNNZsOXg4ODBh0y0KC6A0n2J3fZtpfvML2d14KbG3hL6%2FqUpzAL4ojnFB4snWMA%3D%3D"}],"group":"cf-nel","max_age":604800}',
+      nel: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}',
+      'x-frame-options': 'SAMEORIGIN',
+      'referrer-policy': 'same-origin',
+      'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0',
+      expires: 'Thu, 01 Jan 1970 00:00:01 GMT',
+      server: 'cloudflare',
+      'cf-ray': '8ccd0c7c0994604d-SIN'
+    },
+    config: {
+      transitional: [Object],
+      adapter: [Array],
+      transformRequest: [Array],
+      transformResponse: [Array],
+      timeout: 0,
+      xsrfCookieName: 'XSRF-TOKEN',
+      xsrfHeaderName: 'X-XSRF-TOKEN',
+      maxContentLength: -1,
+      maxBodyLength: -1,
+      env: [Object],
+      validateStatus: [Function: validateStatus],
+      headers: [Object [AxiosHeaders]],
+      method: 'get',
+      url: 'https://qc-apps.srs-ssms.com/api/checkcronjob',
+      data: undefined
+    },
+    request: <ref *1> ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 7,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: true,
+      _last: true,
+      chunkedEncoding: false,
+      shouldKeepAlive: true,
+      maxRequestsOnConnectionReached: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: false,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      strictContentLength: false,
+      _contentLength: 0,
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      _closed: true,
+      socket: [TLSSocket],
+      _header: 'GET /api/checkcronjob HTTP/1.1\r\n' +
+        'Accept: application/json, text/plain, */*\r\n' +
+        'User-Agent: axios/1.7.7\r\n' +
+        'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+        'Host: qc-apps.srs-ssms.com\r\n' +
+        'Connection: keep-alive\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: nop],
+      agent: [Agent],
+      socketPath: undefined,
+      method: 'GET',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      joinDuplicateHeaders: undefined,
+      path: '/api/checkcronjob',
+      _ended: true,
+      res: [IncomingMessage],
+      aborted: false,
+      timeoutCb: null,
+      upgradeOrConnect: false,
+      parser: null,
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: 'qc-apps.srs-ssms.com',
+      protocol: 'https:',
+      _redirectable: [Writable],
+      [Symbol(shapeMode)]: false,
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(kNeedDrain)]: false,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype],
+      [Symbol(errored)]: null,
+      [Symbol(kHighWaterMark)]: 16384,
+      [Symbol(kRejectNonStandardBodyWrites)]: false,
+      [Symbol(kUniqueHeaders)]: null
+    },
+    data: '<!DOCTYPE html>\n' +
+      '<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->\n' +
+      '<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->\n' +
+      '<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en-US"> <![endif]-->\n' +
+      '<!--[if gt IE 8]><!--> <html class="no-js" lang="en-US"> <!--<![endif]-->\n' +
+      '<head>\n' +
+      '\n' +
+      '\n' +
+      '<title>qc-apps.srs-ssms.com | 522: Connection timed out</title>\n' +
+      '<meta charset="UTF-8" />\n' +
+      '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />\n' +
+      '<meta http-equiv="X-UA-Compatible" content="IE=Edge" />\n' +
+      '<meta name="robots" content="noindex, nofollow" />\n' +
+      '<meta name="viewport" content="width=device-width,initial-scale=1" />\n' +
+      '<link rel="stylesheet" id="cf_styles-css" href="/cdn-cgi/styles/main.css" />\n' +
+      '\n' +
+      '\n' +
+      '</head>\n' +
+      '<body>\n' +
+      '<div id="cf-wrapper">\n' +
+      '    <div id="cf-error-details" class="p-0">\n' +
+      '        <header class="mx-auto pt-10 lg:pt-6 lg:px-8 w-240 lg:w-full mb-8">\n' +
+      '            <h1 class="inline-block sm:block sm:mb-2 font-light text-60 lg:text-4xl text-black-dark leading-tight mr-2">\n' +
+      '              <span class="inline-block">Connection timed out</span>\n' +
+      '              <span class="code-label">Error code 522</span>\n' +
+      '            </h1>\n' +
+      '            <div>\n' +
+      '               Visit <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_522&utm_campaign=qc-apps.srs-ssms.com" target="_blank" rel="noopener noreferrer">cloudflare.com</a> for more information.\n' +
+      '            </div>\n' +
+      '            <div class="mt-3">2024-10-03 12:51:50 UTC</div>\n' +
+      '        </header>\n' +
+      '        <div class="my-8 bg-gradient-gray">\n' +
+      '            <div class="w-240 lg:w-full mx-auto">\n' +
+      '                <div class="clearfix md:px-8">\n' +
+      '                  \n' +
+      '<div id="cf-browser-status" class=" relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">\n' +
+      '  <div class="relative mb-10 md:m-0">\n' +
+      '    \n' +
+      '    <span class="cf-icon-browser block md:hidden h-20 bg-center bg-no-repeat"></span>\n' +
+      '    <span class="cf-icon-ok w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>\n' +
+      '    \n' +
+      '  </div>\n' +
+      '  <span class="md:block w-full truncate">You</span>\n' +
+      '  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">\n' +
+      '    \n' +
+      '    Browser\n' +
+      '    \n' +
+      '  </h3>\n' +
+      '  <span class="leading-1.3 text-2xl text-green-success">Working</span>\n' +
+      '</div>\n' +
+      '\n' +
+      '<div id="cf-cloudflare-status" class=" relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">\n' +
+      '  <div class="relative mb-10 md:m-0">\n' +
+      '    <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_522&utm_campaign=qc-apps.srs-ssms.com" target="_blank" rel="noopener noreferrer">\n' +
+      '    <span class="cf-icon-cloud block md:hidden h-20 bg-center bg-no-repeat"></span>\n' +
+      '    <span class="cf-icon-ok w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>\n' +
+      '    </a>\n' +
+      '  </div>\n' +
+      '  <span class="md:block w-full truncate">Singapore</span>\n' +
+      '  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">\n' +
+      '    <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_522&utm_campaign=qc-apps.srs-ssms.com" target="_blank" rel="noopener noreferrer">\n' +
+      '    Cloudflare\n' +
+      '    </a>\n' +
+      '  </h3>\n' +
+      '  <span class="leading-1.3 text-2xl text-green-success">Working</span>\n' +
+      '</div>\n' +
+      '\n' +
+      '<div id="cf-host-status" class="cf-error-source relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">\n' +
+      '  <div class="relative mb-10 md:m-0">\n' +
+      '    \n' +
+      '    <span class="cf-icon-server block md:hidden h-20 bg-center bg-no-repeat"></span>\n' +
+      '    <span class="cf-icon-error w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>\n' +
+      '    \n' +
+      '  </div>\n' +
+      '  <span class="md:block w-full truncate">qc-apps.srs-ssms.com</span>\n' +
+      '  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">\n' +
+      '    \n' +
+      '    Host\n' +
+      '    \n' +
+      '  </h3>\n' +
+      '  <span class="leading-1.3 text-2xl text-red-error">Error</span>\n' +
+      '</div>\n' +
+      '\n' +
+      '                </div>\n' +
+      '            </div>\n' +
+      '        </div>\n' +
+      '\n' +
+      '        <div class="w-240 lg:w-full mx-auto mb-8 lg:px-8">\n' +
+      '            <div class="clearfix">\n' +
+      '                <div class="w-1/2 md:w-full float-left pr-6 md:pb-10 md:pr-0 leading-relaxed">\n' +
+      '                    <h2 class="text-3xl font-normal leading-1.3 mb-4">What happened?</h2>\n' +
+      "                    <p>The initial connection between Cloudflare's network and the origin web server timed out. As a result, the web page can not be displayed.</p>\n" +
+      '                </div>\n' +
+      '                <div class="w-1/2 md:w-full float-left leading-relaxed">\n' +
+      '                    <h2 class="text-3xl font-normal leading-1.3 mb-4">What can I do?</h2>\n' +
+      `                          <h3 class="text-15 font-semibold mb-2">If you're a visitor of this website:</h3>\n` +
+      '      <p class="mb-6">Please try again in a few minutes.</p>\n' +
+      '\n' +
+      `      <h3 class="text-15 font-semibold mb-2">If you're the owner of this website:</h3>\n` +
+      `      <p><span>Contact your hosting provider letting them know your web server is not completing requests. An Error 522 means that the request was able to connect to your web server, but that the request didn't finish. The most likely cause is that something on your server is hogging resources.</span> <a rel="noopener noreferrer" href="https://support.cloudflare.com/hc/en-us/articles/200171906-Error-522">Additional troubleshooting information here.</a></p>\n` +
+      '                </div>\n' +
+      '            </div>\n' +
+      '        </div>\n' +
+      '\n' +
+      '        <div class="cf-error-footer cf-wrapper w-240 lg:w-full py-10 sm:py-4 sm:px-8 mx-auto text-center sm:text-left border-solid border-0 border-t border-gray-300">\n' +
+      '  <p class="text-13">\n' +
+      '    <span class="cf-footer-item sm:block sm:mb-1">Cloudflare Ray ID: <strong class="font-semibold">8ccd0c7c0994604d</strong></span>\n' +
+      '    <span class="cf-footer-separator sm:hidden">&bull;</span>\n' +
+      '    <span id="cf-footer-item-ip" class="cf-footer-item hidden sm:block sm:mb-1">\n' +
+      '      Your IP:\n' +
+      '      <button type="button" id="cf-footer-ip-reveal" class="cf-footer-ip-reveal-btn">Click to reveal</button>\n' +
+      '      <span class="hidden" id="cf-footer-ip">103.229.165.222</span>\n' +
+      '      <span class="cf-footer-separator sm:hidden">&bull;</span>\n' +
+      '    </span>\n' +
+      '    <span class="cf-footer-item sm:block sm:mb-1"><span>Performance &amp; security by</span> <a rel="noopener noreferrer" href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_522&utm_campaign=qc-apps.srs-ssms.com" id="brand_link" target="_blank">Cloudflare</a></span>\n' +
+      '    \n' +
+      '  </p>\n' +
+      '  <script>(function(){function d(){var b=a.getElementById("cf-footer-item-ip"),c=a.getElementById("cf-footer-ip-reveal");b&&"classList"in b&&(b.classList.remove("hidden"),c.addEventListener("click",function(){c.classList.add("hidden");a.getElementById("cf-footer-ip").classList.remove("hidden")}))}var a=document;document.addEventListener&&a.addEventListener("DOMContentLoaded",d)})();</script>\n' +
+      '</div><!-- /.error-footer -->\n' +
+      '\n' +
+      '\n' +
+      '    </div>\n' +
+      '</div>\n' +
+      '</body>\n' +
+      '</html>\n'
+  },
+  status: 522
+}
+Error fetching data: AxiosError: Request failed with status code 522
+    at settle (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:2019:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:3135:11)
+    at IncomingMessage.emit (node:events:530:35)
+    at endReadableNT (node:internal/streams/readable:1696:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+    at Axios.request (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:4287:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async get_mill_data (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\grading\gradinghelper.js:8:22)
+    at async cron.schedule.scheduled [as _execution] (C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:981:9) {
+  code: 'ERR_BAD_RESPONSE',
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false
+    },
+    adapter: [ 'xhr', 'http', 'fetch' ],
+    transformRequest: [ [Function: transformRequest] ],
+    transformResponse: [ [Function: transformResponse] ],
+    timeout: 0,
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    env: { FormData: [Function], Blob: [class Blob] },
+    validateStatus: [Function: validateStatus],
+    headers: Object [AxiosHeaders] {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': undefined,
+      'User-Agent': 'axios/1.7.7',
+      'Accept-Encoding': 'gzip, compress, deflate, br'
+    },
+    params: { email: 'j', password: 'j' },
+    method: 'get',
+    url: 'https://management.srs-ssms.com/api/getdatamill',
+    data: undefined
+  },
+  request: <ref *1> ClientRequest {
+    _events: [Object: null prototype] {
+      abort: [Function (anonymous)],
+      aborted: [Function (anonymous)],
+      connect: [Function (anonymous)],
+      error: [Function (anonymous)],
+      socket: [Function (anonymous)],
+      timeout: [Function (anonymous)],
+      finish: [Function: requestOnFinish]
+    },
+    _eventsCount: 7,
+    _maxListeners: undefined,
+    outputData: [],
+    outputSize: 0,
+    writable: true,
+    destroyed: true,
+    _last: true,
+    chunkedEncoding: false,
+    shouldKeepAlive: true,
+    maxRequestsOnConnectionReached: false,
+    _defaultKeepAlive: true,
+    useChunkedEncodingByDefault: false,
+    sendDate: false,
+    _removedConnection: false,
+    _removedContLen: false,
+    _removedTE: false,
+    strictContentLength: false,
+    _contentLength: 0,
+    _hasBody: true,
+    _trailer: '',
+    finished: true,
+    _headerSent: true,
+    _closed: true,
+    socket: TLSSocket {
+      _tlsOptions: [Object],
+      _secureEstablished: true,
+      _securePending: false,
+      _newSessionPending: false,
+      _controlReleased: true,
+      secureConnecting: false,
+      _SNICallback: null,
+      servername: 'management.srs-ssms.com',
+      alpnProtocol: false,
+      authorized: true,
+      authorizationError: null,
+      encrypted: true,
+      _events: [Object: null prototype],
+      _eventsCount: 9,
+      connecting: false,
+      _hadError: false,
+      _parent: null,
+      _host: 'management.srs-ssms.com',
+      _closeAfterHandlingError: false,
+      _readableState: [ReadableState],
+      _writableState: [WritableState],
+      allowHalfOpen: false,
+      _maxListeners: undefined,
+      _sockname: null,
+      _pendingData: null,
+      _pendingEncoding: '',
+      server: undefined,
+      _server: null,
+      ssl: [TLSWrap],
+      _requestCert: true,
+      _rejectUnauthorized: true,
+      timeout: 5000,
+      parser: null,
+      _httpMessage: null,
+      autoSelectFamilyAttemptedAddresses: [Array],
+      [Symbol(alpncallback)]: null,
+      [Symbol(res)]: [TLSWrap],
+      [Symbol(verified)]: true,
+      [Symbol(pendingSession)]: null,
+      [Symbol(async_id_symbol)]: -1,
+      [Symbol(kHandle)]: [TLSWrap],
+      [Symbol(lastWriteQueueSize)]: 0,
+      [Symbol(timeout)]: Timeout {
+        _idleTimeout: 5000,
+        _idlePrev: [TimersList],
+        _idleNext: [Timeout],
+        _idleStart: 752469,
+        _onTimeout: [Function: bound ],
+        _timerArgs: undefined,
+        _repeat: null,
+        _destroyed: false,
+        [Symbol(refed)]: false,
+        [Symbol(kHasPrimitive)]: false,
+        [Symbol(asyncId)]: 8145,
+        [Symbol(triggerId)]: 8143
+      },
+      [Symbol(kBuffer)]: null,
+      [Symbol(kBufferCb)]: null,
+      [Symbol(kBufferGen)]: null,
+      [Symbol(shapeMode)]: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kSetNoDelay)]: false,
+      [Symbol(kSetKeepAlive)]: true,
+      [Symbol(kSetKeepAliveInitialDelay)]: 1,
+      [Symbol(kBytesRead)]: 0,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(connect-options)]: [Object]
+    },
+    _header: 'GET /api/getdatamill?email=j&password=j HTTP/1.1\r\n' +
+      'Accept: application/json, text/plain, */*\r\n' +
+      'User-Agent: axios/1.7.7\r\n' +
+      'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+      'Host: management.srs-ssms.com\r\n' +
+      'Connection: keep-alive\r\n' +
+      '\r\n',
+    _keepAliveTimeout: 0,
+    _onPendingData: [Function: nop],
+    agent: Agent {
+      _events: [Object: null prototype],
+      _eventsCount: 2,
+      _maxListeners: undefined,
+      defaultPort: 443,
+      protocol: 'https:',
+      options: [Object: null prototype],
+      requests: [Object: null prototype] {},
+      sockets: [Object: null prototype] {},
+      freeSockets: [Object: null prototype],
+      keepAliveMsecs: 1000,
+      keepAlive: true,
+      maxSockets: Infinity,
+      maxFreeSockets: 256,
+      scheduling: 'lifo',
+      maxTotalSockets: Infinity,
+      totalSocketCount: 2,
+      maxCachedSessions: 100,
+      _sessionCache: [Object],
+      [Symbol(shapeMode)]: false,
+      [Symbol(kCapture)]: false
+    },
+    socketPath: undefined,
+    method: 'GET',
+    maxHeaderSize: undefined,
+    insecureHTTPParser: undefined,
+    joinDuplicateHeaders: undefined,
+    path: '/api/getdatamill?email=j&password=j',
+    _ended: true,
+    res: IncomingMessage {
+      _events: [Object],
+      _readableState: [ReadableState],
+      _maxListeners: undefined,
+      socket: null,
+      httpVersionMajor: 1,
+      httpVersionMinor: 1,
+      httpVersion: '1.1',
+      complete: true,
+      rawHeaders: [Array],
+      rawTrailers: [],
+      joinDuplicateHeaders: undefined,
+      aborted: false,
+      upgrade: false,
+      url: '',
+      method: null,
+      statusCode: 522,
+      statusMessage: '',
+      client: [TLSSocket],
+      _consuming: true,
+      _dumped: false,
+      req: [Circular *1],
+      _eventsCount: 4,
+      responseUrl: 'https://management.srs-ssms.com/api/getdatamill?email=j&password=j',
+      redirects: [],
+      [Symbol(shapeMode)]: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kHeaders)]: [Object],
+      [Symbol(kHeadersCount)]: 24,
+      [Symbol(kTrailers)]: null,
+      [Symbol(kTrailersCount)]: 0
+    },
+    aborted: false,
+    timeoutCb: null,
+    upgradeOrConnect: false,
+    parser: null,
+    maxHeadersCount: null,
+    reusedSocket: false,
+    host: 'management.srs-ssms.com',
+    protocol: 'https:',
+    _redirectable: Writable {
+      _events: [Object],
+      _writableState: [WritableState],
+      _maxListeners: undefined,
+      _options: [Object],
+      _ended: true,
+      _ending: true,
+      _redirectCount: 0,
+      _redirects: [],
+      _requestBodyLength: 0,
+      _requestBodyBuffers: [],
+      _eventsCount: 3,
+      _onNativeResponse: [Function (anonymous)],
+      _currentRequest: [Circular *1],
+      _currentUrl: 'https://management.srs-ssms.com/api/getdatamill?email=j&password=j',
+      [Symbol(shapeMode)]: true,
+      [Symbol(kCapture)]: false
+    },
+    [Symbol(shapeMode)]: false,
+    [Symbol(kCapture)]: false,
+    [Symbol(kBytesWritten)]: 0,
+    [Symbol(kNeedDrain)]: false,
+    [Symbol(corked)]: 0,
+    [Symbol(kOutHeaders)]: [Object: null prototype] {
+      accept: [Array],
+      'user-agent': [Array],
+      'accept-encoding': [Array],
+      host: [Array]
+    },
+    [Symbol(errored)]: null,
+    [Symbol(kHighWaterMark)]: 16384,
+    [Symbol(kRejectNonStandardBodyWrites)]: false,
+    [Symbol(kUniqueHeaders)]: null
+  },
+  response: {
+    status: 522,
+    statusText: '',
+    headers: Object [AxiosHeaders] {
+      date: 'Thu, 03 Oct 2024 12:51:50 GMT',
+      'content-type': 'text/html; charset=UTF-8',
+      'content-length': '7134',
+      connection: 'keep-alive',
+      'report-to': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=5w5i417j%2FzbuyXE4LR0Q9WqijZDRx2K%2BDHUl5edABf40UJ2YFOHKTuqeRr9f%2FzvnJvdb9jkefTmqFpWOxp4RCgroZuZxU3z4HRqWwH%2B8wPpdR3R190G3ToZxGxeKFJHv%2FwM5UNVEab%2FWvQ%3D%3D"}],"group":"cf-nel","max_age":604800}',
+      nel: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}',
+      'x-frame-options': 'SAMEORIGIN',
+      'referrer-policy': 'same-origin',
+      'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0',
+      expires: 'Thu, 01 Jan 1970 00:00:01 GMT',
+      server: 'cloudflare',
+      'cf-ray': '8ccd0c7c48c19fd4-SIN'
+    },
+    config: {
+      transitional: [Object],
+      adapter: [Array],
+      transformRequest: [Array],
+      transformResponse: [Array],
+      timeout: 0,
+      xsrfCookieName: 'XSRF-TOKEN',
+      xsrfHeaderName: 'X-XSRF-TOKEN',
+      maxContentLength: -1,
+      maxBodyLength: -1,
+      env: [Object],
+      validateStatus: [Function: validateStatus],
+      headers: [Object [AxiosHeaders]],
+      params: [Object],
+      method: 'get',
+      url: 'https://management.srs-ssms.com/api/getdatamill',
+      data: undefined
+    },
+    request: <ref *1> ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 7,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: true,
+      _last: true,
+      chunkedEncoding: false,
+      shouldKeepAlive: true,
+      maxRequestsOnConnectionReached: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: false,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      strictContentLength: false,
+      _contentLength: 0,
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      _closed: true,
+      socket: [TLSSocket],
+      _header: 'GET /api/getdatamill?email=j&password=j HTTP/1.1\r\n' +
+        'Accept: application/json, text/plain, */*\r\n' +
+        'User-Agent: axios/1.7.7\r\n' +
+        'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+        'Host: management.srs-ssms.com\r\n' +
+        'Connection: keep-alive\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: nop],
+      agent: [Agent],
+      socketPath: undefined,
+      method: 'GET',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      joinDuplicateHeaders: undefined,
+      path: '/api/getdatamill?email=j&password=j',
+      _ended: true,
+      res: [IncomingMessage],
+      aborted: false,
+      timeoutCb: null,
+      upgradeOrConnect: false,
+      parser: null,
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: 'management.srs-ssms.com',
+      protocol: 'https:',
+      _redirectable: [Writable],
+      [Symbol(shapeMode)]: false,
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(kNeedDrain)]: false,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype],
+      [Symbol(errored)]: null,
+      [Symbol(kHighWaterMark)]: 16384,
+      [Symbol(kRejectNonStandardBodyWrites)]: false,
+      [Symbol(kUniqueHeaders)]: null
+    },
+    data: '<!DOCTYPE html>\n' +
+      '<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->\n' +
+      '<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->\n' +
+      '<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en-US"> <![endif]-->\n' +
+      '<!--[if gt IE 8]><!--> <html class="no-js" lang="en-US"> <!--<![endif]-->\n' +
+      '<head>\n' +
+      '\n' +
+      '\n' +
+      '<title>management.srs-ssms.com | 522: Connection timed out</title>\n' +
+      '<meta charset="UTF-8" />\n' +
+      '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />\n' +
+      '<meta http-equiv="X-UA-Compatible" content="IE=Edge" />\n' +
+      '<meta name="robots" content="noindex, nofollow" />\n' +
+      '<meta name="viewport" content="width=device-width,initial-scale=1" />\n' +
+      '<link rel="stylesheet" id="cf_styles-css" href="/cdn-cgi/styles/main.css" />\n' +
+      '\n' +
+      '\n' +
+      '</head>\n' +
+      '<body>\n' +
+      '<div id="cf-wrapper">\n' +
+      '    <div id="cf-error-details" class="p-0">\n' +
+      '        <header class="mx-auto pt-10 lg:pt-6 lg:px-8 w-240 lg:w-full mb-8">\n' +
+      '            <h1 class="inline-block sm:block sm:mb-2 font-light text-60 lg:text-4xl text-black-dark leading-tight mr-2">\n' +
+      '              <span class="inline-block">Connection timed out</span>\n' +
+      '              <span class="code-label">Error code 522</span>\n' +
+      '            </h1>\n' +
+      '            <div>\n' +
+      '               Visit <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_522&utm_campaign=management.srs-ssms.com" target="_blank" rel="noopener noreferrer">cloudflare.com</a> for more information.\n' +
+      '            </div>\n' +
+      '            <div class="mt-3">2024-10-03 12:51:50 UTC</div>\n' +
+      '        </header>\n' +
+      '        <div class="my-8 bg-gradient-gray">\n' +
+      '            <div class="w-240 lg:w-full mx-auto">\n' +
+      '                <div class="clearfix md:px-8">\n' +
+      '                  \n' +
+      '<div id="cf-browser-status" class=" relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">\n' +
+      '  <div class="relative mb-10 md:m-0">\n' +
+      '    \n' +
+      '    <span class="cf-icon-browser block md:hidden h-20 bg-center bg-no-repeat"></span>\n' +
+      '    <span class="cf-icon-ok w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>\n' +
+      '    \n' +
+      '  </div>\n' +
+      '  <span class="md:block w-full truncate">You</span>\n' +
+      '  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">\n' +
+      '    \n' +
+      '    Browser\n' +
+      '    \n' +
+      '  </h3>\n' +
+      '  <span class="leading-1.3 text-2xl text-green-success">Working</span>\n' +
+      '</div>\n' +
+      '\n' +
+      '<div id="cf-cloudflare-status" class=" relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">\n' +
+      '  <div class="relative mb-10 md:m-0">\n' +
+      '    <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_522&utm_campaign=management.srs-ssms.com" target="_blank" rel="noopener noreferrer">\n' +
+      '    <span class="cf-icon-cloud block md:hidden h-20 bg-center bg-no-repeat"></span>\n' +
+      '    <span class="cf-icon-ok w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>\n' +
+      '    </a>\n' +
+      '  </div>\n' +
+      '  <span class="md:block w-full truncate">Singapore</span>\n' +
+      '  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">\n' +
+      '    <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_522&utm_campaign=management.srs-ssms.com" target="_blank" rel="noopener noreferrer">\n' +
+      '    Cloudflare\n' +
+      '    </a>\n' +
+      '  </h3>\n' +
+      '  <span class="leading-1.3 text-2xl text-green-success">Working</span>\n' +
+      '</div>\n' +
+      '\n' +
+      '<div id="cf-host-status" class="cf-error-source relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">\n' +
+      '  <div class="relative mb-10 md:m-0">\n' +
+      '    \n' +
+      '    <span class="cf-icon-server block md:hidden h-20 bg-center bg-no-repeat"></span>\n' +
+      '    <span class="cf-icon-error w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>\n' +
+      '    \n' +
+      '  </div>\n' +
+      '  <span class="md:block w-full truncate">management.srs-ssms.com</span>\n' +
+      '  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">\n' +
+      '    \n' +
+      '    Host\n' +
+      '    \n' +
+      '  </h3>\n' +
+      '  <span class="leading-1.3 text-2xl text-red-error">Error</span>\n' +
+      '</div>\n' +
+      '\n' +
+      '                </div>\n' +
+      '            </div>\n' +
+      '        </div>\n' +
+      '\n' +
+      '        <div class="w-240 lg:w-full mx-auto mb-8 lg:px-8">\n' +
+      '            <div class="clearfix">\n' +
+      '                <div class="w-1/2 md:w-full float-left pr-6 md:pb-10 md:pr-0 leading-relaxed">\n' +
+      '                    <h2 class="text-3xl font-normal leading-1.3 mb-4">What happened?</h2>\n' +
+      "                    <p>The initial connection between Cloudflare's network and the origin web server timed out. As a result, the web page can not be displayed.</p>\n" +
+      '                </div>\n' +
+      '                <div class="w-1/2 md:w-full float-left leading-relaxed">\n' +
+      '                    <h2 class="text-3xl font-normal leading-1.3 mb-4">What can I do?</h2>\n' +
+      `                          <h3 class="text-15 font-semibold mb-2">If you're a visitor of this website:</h3>\n` +
+      '      <p class="mb-6">Please try again in a few minutes.</p>\n' +
+      '\n' +
+      `      <h3 class="text-15 font-semibold mb-2">If you're the owner of this website:</h3>\n` +
+      `      <p><span>Contact your hosting provider letting them know your web server is not completing requests. An Error 522 means that the request was able to connect to your web server, but that the request didn't finish. The most likely cause is that something on your server is hogging resources.</span> <a rel="noopener noreferrer" href="https://support.cloudflare.com/hc/en-us/articles/200171906-Error-522">Additional troubleshooting information here.</a></p>\n` +
+      '                </div>\n' +
+      '            </div>\n' +
+      '        </div>\n' +
+      '\n' +
+      '        <div class="cf-error-footer cf-wrapper w-240 lg:w-full py-10 sm:py-4 sm:px-8 mx-auto text-center sm:text-left border-solid border-0 border-t border-gray-300">\n' +
+      '  <p class="text-13">\n' +
+      '    <span class="cf-footer-item sm:block sm:mb-1">Cloudflare Ray ID: <strong class="font-semibold">8ccd0c7c48c19fd4</strong></span>\n' +
+      '    <span class="cf-footer-separator sm:hidden">&bull;</span>\n' +
+      '    <span id="cf-footer-item-ip" class="cf-footer-item hidden sm:block sm:mb-1">\n' +
+      '      Your IP:\n' +
+      '      <button type="button" id="cf-footer-ip-reveal" class="cf-footer-ip-reveal-btn">Click to reveal</button>\n' +
+      '      <span class="hidden" id="cf-footer-ip">103.229.165.222</span>\n' +
+      '      <span class="cf-footer-separator sm:hidden">&bull;</span>\n' +
+      '    </span>\n' +
+      '    <span class="cf-footer-item sm:block sm:mb-1"><span>Performance &amp; security by</span> <a rel="noopener noreferrer" href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_522&utm_campaign=management.srs-ssms.com" id="brand_link" target="_blank">Cloudflare</a></span>\n' +
+      '    \n' +
+      '  </p>\n' +
+      '  <script>(function(){function d(){var b=a.getElementById("cf-footer-item-ip"),c=a.getElementById("cf-footer-ip-reveal");b&&"classList"in b&&(b.classList.remove("hidden"),c.addEventListener("click",function(){c.classList.add("hidden");a.getElementById("cf-footer-ip").classList.remove("hidden")}))}var a=document;document.addEventListener&&a.addEventListener("DOMContentLoaded",d)})();</script>\n' +
+      '</div><!-- /.error-footer -->\n' +
+      '\n' +
+      '\n' +
+      '    </div>\n' +
+      '</div>\n' +
+      '</body>\n' +
+      '</html>\n'
+  },
+  status: 522
+}
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+data kosong
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+Upload successful after 1 attempts
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+Status updated: { message: 'Record updated successfully' }
+No data or invalid data received from the API.
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+{ message: 'Status sock updated successfully' }
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+data kosong
+data kosong
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+data kosong
+{ message: 'Status sock updated successfully' }
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+1Updated reset_pc_mati for machine ID: 1 to 2
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+1Updated reset_pc_mati for machine ID: 1 to 1
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+1Updated reset_pc_mati for machine ID: 1 to 0
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+1Updated reset_pc_mati for machine ID: 1 to -1
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+data kosong
+data kosong
+Error fetching files: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+Status updated: { message: 'Record updated successfully' }
+No data or invalid data received from the API.
+Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+Server Berjalan pada Port : 8000
+opened connection
+{ message: 'Status sock updated successfully' }
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+{ message: 'Status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+{ message: 'Status sock updated successfully' }
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+{ message: 'Status sock updated successfully' }
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+{ message: 'Status sock updated successfully' }
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+{ message: 'Status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+Status updated: { message: 'Record updated successfully' }
+data kosong
+{ message: 'Status sock updated successfully' }
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+data kosong iot
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+Server Berjalan pada Port : 8000
+opened connection
+memulai cronjob  sendfailcronjob
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+{ message: 'Status sock updated successfully' }
+TypeError: Cannot read properties of null (reading 'message')
+    at handleGroupMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\group_messages.js:104:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async EventEmitter.<anonymous> (C:\Users\Digital Architect SR\Desktop\bot_grading\botroot.js:240:13)
+Server Berjalan pada Port : 8000
+opened connection
+data kosong

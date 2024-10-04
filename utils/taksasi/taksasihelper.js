@@ -164,7 +164,10 @@ async function sendfailcronjob(sock) {
     let data = response.data.cronfail;
     // console.log(data);
     if (data.length === 0) {
-      return null;
+      return {
+        status: 200,
+        message: 'TIdak ada Fail Cronjob',
+      };
     } else {
       for (const task of data) {
         try {

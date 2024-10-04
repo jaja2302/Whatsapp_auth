@@ -98,6 +98,8 @@ const handleGroupMessage = async (
       { quoted: message }
     );
     let response = await sendfailcronjob(sock);
+    // console.log(response);
+
     await sock.sendMessage(
       noWa,
       {
