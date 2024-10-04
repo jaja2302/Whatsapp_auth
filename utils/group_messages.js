@@ -131,7 +131,7 @@ const handleGroupMessage = async (
       { quoted: message }
     );
     let response = await Fail_send_pdf();
-    // console.log(response);
+    console.log(response);
 
     await sock.sendMessage(
       noWa,
