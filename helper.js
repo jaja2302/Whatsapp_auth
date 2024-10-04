@@ -10,6 +10,7 @@ const { channel, channelPython } = require('./utils/pusher');
 const {
   Report_group_izinkebun,
   catcherror,
+  Fail_send_pdf,
 } = require('./utils/izinkebun/helper');
 const {
   sendfailcronjob,
@@ -969,6 +970,7 @@ const setupCronJobs = (sock) => {
       async () => {
         console.log('memulai cronjob  sendfailcronjob');
         await sendfailcronjob(sock);
+        Fail_send_pdf;
       },
       {
         scheduled: true,
@@ -1007,26 +1009,26 @@ const setupCronJobs = (sock) => {
         timezone: 'Asia/Jakarta',
       }
     );
-    cron.schedule(
-      '0 14 * * *', // Runs at 14:00 every day
-      async () => {
-        await Generateandsendtaksasi(sock);
-      },
-      {
-        scheduled: true,
-        timezone: 'Asia/Jakarta',
-      }
-    );
-    cron.schedule(
-      '0 17 * * *', // Runs at 14:00 every day
-      async () => {
-        await Sendverificationtaksasi(sock);
-      },
-      {
-        scheduled: true,
-        timezone: 'Asia/Jakarta',
-      }
-    );
+    // cron.schedule(
+    //   '0 14 * * *', // Runs at 14:00 every day
+    //   async () => {
+    //     await Generateandsendtaksasi(sock);
+    //   },
+    //   {
+    //     scheduled: true,
+    //     timezone: 'Asia/Jakarta',
+    //   }
+    // );
+    // cron.schedule(
+    //   '0 17 * * *', // Runs at 14:00 every day
+    //   async () => {
+    //     await Sendverificationtaksasi(sock);
+    //   },
+    //   {
+    //     scheduled: true,
+    //     timezone: 'Asia/Jakarta',
+    //   }
+    // );
     // websocket
     channel.bind('item-requested', async (eventData) => {
       // Log the full event data to debug the structure
