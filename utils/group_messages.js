@@ -1,7 +1,11 @@
 const userchoiceSnoozeBotPengawasanOperator = {};
 const configSnoozeBotPengawasanOperator = {};
 const userTalsasiChoice = {};
-const { handleTaksasi, sendtaksasiest } = require('./taksasi/taksasihelper.js');
+const {
+  handleTaksasi,
+  sendtaksasiest,
+  sendfailcronjob,
+} = require('./taksasi/taksasihelper.js');
 const { handleChatSnoozePengawasanOperatorAi } = require('../helper.js');
 const { Report_group_izinkebun } = require('./izinkebun/helper.js');
 const axios = require('axios');
@@ -26,6 +30,7 @@ const handleGroupMessage = async (
       );
       return;
     }
+    // const apiUrl = 'http://qc-apps2.test/api/getdatacron';
     const apiUrl = 'https://qc-apps.srs-ssms.com/api/getdatacron';
     try {
       const response = await axios.get(apiUrl);
@@ -36,7 +41,7 @@ const handleGroupMessage = async (
           estate: estateFromMatchingTask,
           group_id,
           wilayah: folder,
-          id
+          id,
         } = matchingTasks[0];
         await sock.sendMessage(
           noWa,
@@ -50,18 +55,13 @@ const handleGroupMessage = async (
           sock,
           id
         );
-        // console.log(result);
-        if (result === 'success') {
-          // console.log('success');
-        } else {
-          await sock.sendMessage(
-            noWa,
-            {
-              text: 'Terjadi kesalahan saat mengirim taksasi. Silakan Hubungi Tim D.A.',
-            },
-            { quoted: message }
-          );
-        }
+        await sock.sendMessage(
+          noWa,
+          {
+            text: result.message,
+          },
+          { quoted: message }
+        );
       } else {
         await sock.sendMessage(
           noWa,
@@ -85,7 +85,23 @@ const handleGroupMessage = async (
     await sock.sendMessage(
       noWa,
       {
-        text: 'Perintah Bot Yang tersedia \n1 = !tarik (Menarik Estate yang di pilih untuk di generate ke dalam grup yang sudah di tentukan) \n2.!getgrup (Menampilkan semua isi list group yang ada) \n3.!cast (melakukan broadcast pesan ke semua grup taksasi) \n4.!taksasi = Menarik Banyak laporar taksasi sekaligus berdasarkan waktu yang di pilih\n5.!laporan izinkebun Menarik laporan izin kebun (Harap gunakan hanya di hari sabtu atau minggu)!',
+        text: 'Perintah Bot Yang tersedia \n1 = !tarik (Menarik Estate yang di pilih untuk di generate ke dalam grup yang sudah di tentukan) \n2.!getgrup (Menampilkan semua isi list group yang ada) \n3.!cast (melakukan broadcast pesan ke semua grup taksasi) \n4.!taksasi = Menarik Banyak laporar taksasi sekaligus berdasarkan waktu yang di pilih\n5.!laporan izinkebun Menarik laporan izin kebun (Harap gunakan hanya di hari sabtu atau minggu)!\n6.failcronjob = Mrnjalankan semua fail cronjob yang ada di server',
+      },
+      { quoted: message }
+    );
+  } else if (lowerCaseMessage === '!failcronjob') {
+    await sock.sendMessage(
+      noWa,
+      {
+        text: 'Mohon tunggu sedang mengcek fail cronjob.',
+      },
+      { quoted: message }
+    );
+    let response = await sendfailcronjob(sock);
+    await sock.sendMessage(
+      noWa,
+      {
+        text: `${response.message}`,
       },
       { quoted: message }
     );

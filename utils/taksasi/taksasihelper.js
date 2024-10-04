@@ -12,6 +12,7 @@ const timeoutHandlestaksasi = {};
 const fs = require('fs');
 const https = require('https');
 const puppeteer = require('puppeteer');
+const { json } = require('express');
 function formatDate(date) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0'); // Adding 1 because getMonth() returns zero-based index
@@ -56,11 +57,10 @@ async function generatemapstaksasi(est, datetime) {
       await browser.close();
 
       if (uploadSuccess) {
-        console.log('Upload successful after', attempts + 1, 'attempts');
+        // console.log('Upload successful after', attempts + 1, 'attempts');
         return {
-          body: {}, // Provide your response body here
-          cookies: {}, // Provide your cookies object here
-          response: 'success',
+          status: 200,
+          message: `Maps berhasil generate untuk ${est}`,
         };
       } else {
         console.log('Upload not successful, retrying...');
@@ -75,7 +75,10 @@ async function generatemapstaksasi(est, datetime) {
 
   if (!uploadSuccess) {
     console.error('Upload failed after 2 attempts');
-    return { error: 'Upload failed after maximum attempts' };
+    return {
+      status: 500,
+      message: 'Maps gagal generate',
+    };
   }
 }
 
@@ -102,6 +105,7 @@ async function sendtaksasiest(estate, group_id, folder, sock, taskid) {
         try {
           await sock.sendMessage(group_id, messageOptions);
           const apiUrl = 'https://qc-apps.srs-ssms.com/api/recordcronjob';
+          // const apiUrl = 'http://qc-apps2.test/api/recordcronjob';
 
           // Create the form data with variables estate and datetime
           const formData = new FormData();
@@ -115,40 +119,55 @@ async function sendtaksasiest(estate, group_id, folder, sock, taskid) {
           if (taskid !== null && taskid !== 'null') {
             await axios.post(apiUrl, formData);
           }
+          return {
+            status: 200,
+            message: `PDF taksasi ${estate} Berhasil dikirim`,
+          };
         } catch (error) {
-          console.log('errpr taksasi ');
+          // console.log('errpr taksasi ');
+          return {
+            status: 500,
+            message: `Taksasi gagal dikirim ${error.message}`,
+          };
         }
-
-        // console.log('PDF sent successfully!');
-        return 'success';
       } else {
-        console.log('PDF not found in the API response.');
+        // console.log('PDF not found in the API response.');
+        return {
+          status: 404,
+          message: `PDF taksasi Tidak Ditemukan`,
+        };
       }
     } catch (error) {
       // console.log(error);
 
-      console.error('Error sending PDF:', error.message);
+      // console.error('Error sending PDF:', error.message);
+      return {
+        status: 500,
+        message: `Error sending PDF: ${error.message}`,
+      };
     }
     return 'success';
   } catch (error) {
-    console.log(error);
-    return 'error';
+    return {
+      status: 500,
+      message: 'Gagal mengirim taksasi',
+    };
   }
 }
 
 async function sendfailcronjob(sock) {
   try {
+    // const apiUrl = 'http://qc-apps2.test/api/checkcronjob';
     const apiUrl = 'https://qc-apps.srs-ssms.com/api/checkcronjob';
     const response = await axios.get(apiUrl);
 
     let data = response.data.cronfail;
-    // console.log(sock);
+    // console.log(data);
     if (data.length === 0) {
-      // console.log('nodata');
+      return null;
     } else {
       for (const task of data) {
         try {
-          await generatemapstaksasi(task.estate, datetimeValue);
           await sendtaksasiest(
             task.estate,
             task.group_id,
@@ -156,14 +175,26 @@ async function sendfailcronjob(sock) {
             sock,
             task.id
           );
-          // await sendhistorycron(task.estate, task.id, sock);
+          // Task completed successfully
+          return {
+            status: 200,
+            message: 'Menggirim Fail Cronjob Berhasil',
+          };
         } catch (error) {
-          console.error('Error performing task in cronjob:', error);
+          // Handle error here if needed
+          console.error(error);
+          return {
+            status: 500,
+            message: 'Mengirim fail Cronjob gagal',
+          };
         }
       }
     }
   } catch (error) {
-    console.error('Error fetching data:', error);
+    return {
+      status: 500,
+      message: 'Mengirim fail Cronjob gagal',
+    };
   }
 }
 

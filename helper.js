@@ -967,6 +967,7 @@ const setupCronJobs = (sock) => {
     cron.schedule(
       '*/10 * * * *',
       async () => {
+        console.log('memulai cronjob  sendfailcronjob');
         await sendfailcronjob(sock);
       },
       {
