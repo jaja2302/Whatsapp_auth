@@ -25,6 +25,30 @@ Error fetching files: Error: forbidden
 Upload failed after 2 attempts
 Upload failed after 2 attempts
 Upload failed after 2 attempts
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
 Upload failed after 2 attempts
 Upload failed after 2 attempts
 Error fetching files: Error: forbidden
@@ -52,38 +76,11 @@ Error fetching files: Error: forbidden
   }
 }
 Upload failed after 2 attempts
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
 Upload failed after 2 attempts
-Upload failed after 2 attempts
-Upload failed after 2 attempts
-Upload failed after 2 attempts
-Upload failed after 2 attempts
-Upload failed after 2 attempts
-Error fetching files: Error: forbidden
-    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
-    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
-    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
-    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
-    at async Promise.all (index 0)
-    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
-    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
-    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
-    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
-  data: 403,
-  isBoom: true,
-  isServer: true,
-  output: {
-    statusCode: 500,
-    payload: {
-      statusCode: 500,
-      error: 'Internal Server Error',
-      message: 'An internal server error occurred'
-    },
-    headers: {}
-  }
-}
-Upload failed after 2 attempts
-Upload failed after 2 attempts
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
 Upload failed after 2 attempts
 Upload failed after 2 attempts
 Upload failed after 2 attempts
@@ -112,251 +109,381 @@ Error fetching files: Error: forbidden
   }
 }
 Upload failed after 2 attempts
+Error occurred: AxiosError: Request failed with status code 404
+    at settle (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:2019:12)
+    at BrotliDecompress.handleStreamEnd (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:3135:11)
+    at BrotliDecompress.emit (node:events:530:35)
+    at endReadableNT (node:internal/streams/readable:1696:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+    at Axios.request (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:4287:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async handlePrivateMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\private_messages.js:47:26)
+    at async EventEmitter.<anonymous> (C:\Users\Digital Architect SR\Desktop\bot_grading\botroot.js:250:13) {
+  code: 'ERR_BAD_REQUEST',
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false
+    },
+    adapter: [ 'xhr', 'http', 'fetch' ],
+    transformRequest: [ [Function: transformRequest] ],
+    transformResponse: [ [Function: transformResponse] ],
+    timeout: 0,
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    env: { FormData: [Function], Blob: [class Blob] },
+    validateStatus: [Function: validateStatus],
+    headers: Object [AxiosHeaders] {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+      'User-Agent': 'axios/1.7.7',
+      'Content-Length': '82',
+      'Accept-Encoding': 'gzip, compress, deflate, br'
+    },
+    method: 'post',
+    url: 'https://management.srs-ssms.com/api/getizinverifinew',
+    data: '{"email":"j","password":"j","no_hp":"6281364362210@s.whatsapp.net","jawaban":"ya"}'
+  },
+  request: <ref *1> ClientRequest {
+    _events: [Object: null prototype] {
+      abort: [Function (anonymous)],
+      aborted: [Function (anonymous)],
+      connect: [Function (anonymous)],
+      error: [Function (anonymous)],
+      socket: [Function (anonymous)],
+      timeout: [Function (anonymous)],
+      finish: [Function: requestOnFinish]
+    },
+    _eventsCount: 7,
+    _maxListeners: undefined,
+    outputData: [],
+    outputSize: 0,
+    writable: true,
+    destroyed: true,
+    _last: false,
+    chunkedEncoding: false,
+    shouldKeepAlive: true,
+    maxRequestsOnConnectionReached: false,
+    _defaultKeepAlive: true,
+    useChunkedEncodingByDefault: true,
+    sendDate: false,
+    _removedConnection: false,
+    _removedContLen: false,
+    _removedTE: false,
+    strictContentLength: false,
+    _contentLength: '82',
+    _hasBody: true,
+    _trailer: '',
+    finished: true,
+    _headerSent: true,
+    _closed: true,
+    socket: TLSSocket {
+      _tlsOptions: [Object],
+      _secureEstablished: true,
+      _securePending: false,
+      _newSessionPending: false,
+      _controlReleased: true,
+      secureConnecting: false,
+      _SNICallback: null,
+      servername: 'management.srs-ssms.com',
+      alpnProtocol: false,
+      authorized: true,
+      authorizationError: null,
+      encrypted: true,
+      _events: [Object: null prototype],
+      _eventsCount: 9,
+      connecting: false,
+      _hadError: false,
+      _parent: null,
+      _host: 'management.srs-ssms.com',
+      _closeAfterHandlingError: false,
+      _readableState: [ReadableState],
+      _writableState: [WritableState],
+      allowHalfOpen: false,
+      _maxListeners: undefined,
+      _sockname: null,
+      _pendingData: null,
+      _pendingEncoding: '',
+      server: undefined,
+      _server: null,
+      ssl: [TLSWrap],
+      _requestCert: true,
+      _rejectUnauthorized: true,
+      timeout: 5000,
+      parser: null,
+      _httpMessage: null,
+      autoSelectFamilyAttemptedAddresses: [Array],
+      [Symbol(alpncallback)]: null,
+      [Symbol(res)]: [TLSWrap],
+      [Symbol(verified)]: true,
+      [Symbol(pendingSession)]: null,
+      [Symbol(async_id_symbol)]: -1,
+      [Symbol(kHandle)]: [TLSWrap],
+      [Symbol(lastWriteQueueSize)]: 0,
+      [Symbol(timeout)]: Timeout {
+        _idleTimeout: 5000,
+        _idlePrev: [TimersList],
+        _idleNext: [Timeout],
+        _idleStart: 187268,
+        _onTimeout: [Function: bound ],
+        _timerArgs: undefined,
+        _repeat: null,
+        _destroyed: false,
+        [Symbol(refed)]: false,
+        [Symbol(kHasPrimitive)]: false,
+        [Symbol(asyncId)]: 2193,
+        [Symbol(triggerId)]: 2191
+      },
+      [Symbol(kBuffer)]: null,
+      [Symbol(kBufferCb)]: null,
+      [Symbol(kBufferGen)]: null,
+      [Symbol(shapeMode)]: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kSetNoDelay)]: false,
+      [Symbol(kSetKeepAlive)]: true,
+      [Symbol(kSetKeepAliveInitialDelay)]: 1,
+      [Symbol(kBytesRead)]: 0,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(connect-options)]: [Object]
+    },
+    _header: 'POST /api/getizinverifinew HTTP/1.1\r\n' +
+      'Accept: application/json, text/plain, */*\r\n' +
+      'Content-Type: application/json\r\n' +
+      'User-Agent: axios/1.7.7\r\n' +
+      'Content-Length: 82\r\n' +
+      'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+      'Host: management.srs-ssms.com\r\n' +
+      'Connection: keep-alive\r\n' +
+      '\r\n',
+    _keepAliveTimeout: 0,
+    _onPendingData: [Function: nop],
+    agent: Agent {
+      _events: [Object: null prototype],
+      _eventsCount: 2,
+      _maxListeners: undefined,
+      defaultPort: 443,
+      protocol: 'https:',
+      options: [Object: null prototype],
+      requests: [Object: null prototype] {},
+      sockets: [Object: null prototype] {},
+      freeSockets: [Object: null prototype],
+      keepAliveMsecs: 1000,
+      keepAlive: true,
+      maxSockets: Infinity,
+      maxFreeSockets: 256,
+      scheduling: 'lifo',
+      maxTotalSockets: Infinity,
+      totalSocketCount: 1,
+      maxCachedSessions: 100,
+      _sessionCache: [Object],
+      [Symbol(shapeMode)]: false,
+      [Symbol(kCapture)]: false
+    },
+    socketPath: undefined,
+    method: 'POST',
+    maxHeaderSize: undefined,
+    insecureHTTPParser: undefined,
+    joinDuplicateHeaders: undefined,
+    path: '/api/getizinverifinew',
+    _ended: true,
+    res: IncomingMessage {
+      _events: [Object],
+      _readableState: [ReadableState],
+      _maxListeners: undefined,
+      socket: null,
+      httpVersionMajor: 1,
+      httpVersionMinor: 1,
+      httpVersion: '1.1',
+      complete: true,
+      rawHeaders: [Array],
+      rawTrailers: [],
+      joinDuplicateHeaders: undefined,
+      aborted: false,
+      upgrade: false,
+      url: '',
+      method: null,
+      statusCode: 404,
+      statusMessage: 'Not Found',
+      client: [TLSSocket],
+      _consuming: true,
+      _dumped: false,
+      req: [Circular *1],
+      _eventsCount: 4,
+      responseUrl: 'https://management.srs-ssms.com/api/getizinverifinew',
+      redirects: [],
+      [Symbol(shapeMode)]: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kHeaders)]: [Object],
+      [Symbol(kHeadersCount)]: 36,
+      [Symbol(kTrailers)]: null,
+      [Symbol(kTrailersCount)]: 0
+    },
+    aborted: false,
+    timeoutCb: null,
+    upgradeOrConnect: false,
+    parser: null,
+    maxHeadersCount: null,
+    reusedSocket: false,
+    host: 'management.srs-ssms.com',
+    protocol: 'https:',
+    _redirectable: Writable {
+      _events: [Object],
+      _writableState: [WritableState],
+      _maxListeners: undefined,
+      _options: [Object],
+      _ended: true,
+      _ending: true,
+      _redirectCount: 0,
+      _redirects: [],
+      _requestBodyLength: 82,
+      _requestBodyBuffers: [],
+      _eventsCount: 3,
+      _onNativeResponse: [Function (anonymous)],
+      _currentRequest: [Circular *1],
+      _currentUrl: 'https://management.srs-ssms.com/api/getizinverifinew',
+      [Symbol(shapeMode)]: true,
+      [Symbol(kCapture)]: false
+    },
+    [Symbol(shapeMode)]: false,
+    [Symbol(kCapture)]: false,
+    [Symbol(kBytesWritten)]: 0,
+    [Symbol(kNeedDrain)]: false,
+    [Symbol(corked)]: 0,
+    [Symbol(kOutHeaders)]: [Object: null prototype] {
+      accept: [Array],
+      'content-type': [Array],
+      'user-agent': [Array],
+      'content-length': [Array],
+      'accept-encoding': [Array],
+      host: [Array]
+    },
+    [Symbol(errored)]: null,
+    [Symbol(kHighWaterMark)]: 16384,
+    [Symbol(kRejectNonStandardBodyWrites)]: false,
+    [Symbol(kUniqueHeaders)]: null
+  },
+  response: {
+    status: 404,
+    statusText: 'Not Found',
+    headers: Object [AxiosHeaders] {
+      date: 'Fri, 04 Oct 2024 08:12:25 GMT',
+      'content-type': 'application/json',
+      'transfer-encoding': 'chunked',
+      connection: 'keep-alive',
+      'x-powered-by': 'PHP/8.2.15',
+      'cache-control': 'no-cache, private',
+      'access-control-allow-origin': '*',
+      vary: 'Accept-Encoding',
+      platform: 'hostinger',
+      panel: 'hpanel',
+      'content-security-policy': 'upgrade-insecure-requests',
+      'x-turbo-charged-by': 'LiteSpeed',
+      'cf-cache-status': 'DYNAMIC',
+      'report-to': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=sG7X4X9S7SISEGqR7XhVf0PULtG8zRp%2BkhXCl6uY0TdMZ5KF11MbjXyT9MBoafdhWyRgPcMwIFDoFvXvyPiNp8wOLM5ytKuRB6SQ4Glf7fjB5elOkF1Fy8uHSrvEeKwaEoQDIvZEqbeJ4Q%3D%3D"}],"group":"cf-nel","max_age":604800}',
+      nel: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}',
+      server: 'cloudflare',
+      'cf-ray': '8cd3b4f33fc35cde-SIN'
+    },
+    config: {
+      transitional: [Object],
+      adapter: [Array],
+      transformRequest: [Array],
+      transformResponse: [Array],
+      timeout: 0,
+      xsrfCookieName: 'XSRF-TOKEN',
+      xsrfHeaderName: 'X-XSRF-TOKEN',
+      maxContentLength: -1,
+      maxBodyLength: -1,
+      env: [Object],
+      validateStatus: [Function: validateStatus],
+      headers: [Object [AxiosHeaders]],
+      method: 'post',
+      url: 'https://management.srs-ssms.com/api/getizinverifinew',
+      data: '{"email":"j","password":"j","no_hp":"6281364362210@s.whatsapp.net","jawaban":"ya"}'
+    },
+    request: <ref *1> ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 7,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: true,
+      _last: false,
+      chunkedEncoding: false,
+      shouldKeepAlive: true,
+      maxRequestsOnConnectionReached: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: true,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      strictContentLength: false,
+      _contentLength: '82',
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      _closed: true,
+      socket: [TLSSocket],
+      _header: 'POST /api/getizinverifinew HTTP/1.1\r\n' +
+        'Accept: application/json, text/plain, */*\r\n' +
+        'Content-Type: application/json\r\n' +
+        'User-Agent: axios/1.7.7\r\n' +
+        'Content-Length: 82\r\n' +
+        'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+        'Host: management.srs-ssms.com\r\n' +
+        'Connection: keep-alive\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: nop],
+      agent: [Agent],
+      socketPath: undefined,
+      method: 'POST',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      joinDuplicateHeaders: undefined,
+      path: '/api/getizinverifinew',
+      _ended: true,
+      res: [IncomingMessage],
+      aborted: false,
+      timeoutCb: null,
+      upgradeOrConnect: false,
+      parser: null,
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: 'management.srs-ssms.com',
+      protocol: 'https:',
+      _redirectable: [Writable],
+      [Symbol(shapeMode)]: false,
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(kNeedDrain)]: false,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype],
+      [Symbol(errored)]: null,
+      [Symbol(kHighWaterMark)]: 16384,
+      [Symbol(kRejectNonStandardBodyWrites)]: false,
+      [Symbol(kUniqueHeaders)]: null
+    },
+    data: { message: 'Tidak ada permintaan yang dapat di proses saat ini.' }
+  },
+  status: 404
+}
+Attempt 1 failed with error: TimeoutError: Navigation timeout of 30000 ms exceeded
+    at new Deferred (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\puppeteer-core\lib\cjs\puppeteer\util\Deferred.js:59:34)
+    at Deferred.create (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\puppeteer-core\lib\cjs\puppeteer\util\Deferred.js:21:16)
+    at new LifecycleWatcher (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\puppeteer-core\lib\cjs\puppeteer\cdp\LifecycleWatcher.js:66:60)
+    at CdpFrame.goto (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\puppeteer-core\lib\cjs\puppeteer\cdp\Frame.js:143:29)
+    at CdpFrame.<anonymous> (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\puppeteer-core\lib\cjs\puppeteer\util\decorators.js:98:27)
+    at CdpPage.goto (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\puppeteer-core\lib\cjs\puppeteer\api\Page.js:588:43)
+    at generatemapstaksasi (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\taksasi\taksasihelper.js:47:18)
+    at async sendtaksasiest (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\taksasi\taksasihelper.js:87:5)
+    at async sendfailcronjob (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\taksasi\taksasihelper.js:174:11)
+    at async cron.schedule.scheduled [as _execution] (C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:971:9)
 Upload failed after 2 attempts
 Upload failed after 2 attempts
-Upload failed after 2 attempts
-Error fetching files: Error: forbidden
-    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
-    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
-    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
-    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
-    at async Promise.all (index 0)
-    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
-    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
-    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
-    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
-  data: 403,
-  isBoom: true,
-  isServer: true,
-  output: {
-    statusCode: 500,
-    payload: {
-      statusCode: 500,
-      error: 'Internal Server Error',
-      message: 'An internal server error occurred'
-    },
-    headers: {}
-  }
-}
-Error fetching files: Error: forbidden
-    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
-    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
-    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
-    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
-    at async Promise.all (index 0)
-    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
-    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
-    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
-    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
-  data: 403,
-  isBoom: true,
-  isServer: true,
-  output: {
-    statusCode: 500,
-    payload: {
-      statusCode: 500,
-      error: 'Internal Server Error',
-      message: 'An internal server error occurred'
-    },
-    headers: {}
-  }
-}
-Error fetching files: Error: forbidden
-    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
-    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
-    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
-    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
-    at async Promise.all (index 0)
-    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
-    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
-    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
-    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
-  data: 403,
-  isBoom: true,
-  isServer: true,
-  output: {
-    statusCode: 500,
-    payload: {
-      statusCode: 500,
-      error: 'Internal Server Error',
-      message: 'An internal server error occurred'
-    },
-    headers: {}
-  }
-}
-Error fetching files: Error: forbidden
-    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
-    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
-    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
-    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
-    at async Promise.all (index 0)
-    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
-    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
-    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
-    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
-  data: 403,
-  isBoom: true,
-  isServer: true,
-  output: {
-    statusCode: 500,
-    payload: {
-      statusCode: 500,
-      error: 'Internal Server Error',
-      message: 'An internal server error occurred'
-    },
-    headers: {}
-  }
-}
-Error fetching files: Error: forbidden
-    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
-    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
-    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
-    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
-    at async Promise.all (index 0)
-    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
-    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
-    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
-    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
-  data: 403,
-  isBoom: true,
-  isServer: true,
-  output: {
-    statusCode: 500,
-    payload: {
-      statusCode: 500,
-      error: 'Internal Server Error',
-      message: 'An internal server error occurred'
-    },
-    headers: {}
-  }
-}
-Error fetching files: Error: Connection Closed
-    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
-    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
-    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
-    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
-    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
-    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
-    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
-    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
-    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
-    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
-  data: null,
-  isBoom: true,
-  isServer: false,
-  output: {
-    statusCode: 428,
-    payload: {
-      statusCode: 428,
-      error: 'Precondition Required',
-      message: 'Connection Closed'
-    },
-    headers: {}
-  }
-}
-Error fetching files: Error: forbidden
-    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
-    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
-    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
-    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
-    at async Promise.all (index 0)
-    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
-    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
-    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
-    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
-  data: 403,
-  isBoom: true,
-  isServer: true,
-  output: {
-    statusCode: 500,
-    payload: {
-      statusCode: 500,
-      error: 'Internal Server Error',
-      message: 'An internal server error occurred'
-    },
-    headers: {}
-  }
-}
-Error fetching files: Error: forbidden
-    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
-    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
-    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
-    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
-    at async Promise.all (index 0)
-    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
-    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
-    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
-    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
-  data: 403,
-  isBoom: true,
-  isServer: true,
-  output: {
-    statusCode: 500,
-    payload: {
-      statusCode: 500,
-      error: 'Internal Server Error',
-      message: 'An internal server error occurred'
-    },
-    headers: {}
-  }
-}
-Error fetching files: Error: forbidden
-    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
-    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
-    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
-    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
-    at async Promise.all (index 0)
-    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
-    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
-    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
-    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
-  data: 403,
-  isBoom: true,
-  isServer: true,
-  output: {
-    statusCode: 500,
-    payload: {
-      statusCode: 500,
-      error: 'Internal Server Error',
-      message: 'An internal server error occurred'
-    },
-    headers: {}
-  }
-}
-Error fetching files: Error: forbidden
-    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
-    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
-    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
-    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
-    at async Promise.all (index 0)
-    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
-    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
-    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
-    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
-  data: 403,
-  isBoom: true,
-  isServer: true,
-  output: {
-    statusCode: 500,
-    payload: {
-      statusCode: 500,
-      error: 'Internal Server Error',
-      message: 'An internal server error occurred'
-    },
-    headers: {}
-  }
-}
-Upload failed after 2 attempts
-TypeError: Cannot read properties of null (reading 'message')
-    at handleGroupMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\group_messages.js:104:27)
-    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async EventEmitter.<anonymous> (C:\Users\Digital Architect SR\Desktop\bot_grading\botroot.js:240:13)

@@ -120,22 +120,22 @@ const handleGroupMessage = async (
       { quoted: message }
     );
     let response = await Fail_send_pdf();
-    // console.log(response);
-    function formatResponseData(data) {
-      return data
-        .map((item) => {
-          return `ID: ${item.id_db}\nUser: ${item.nama_user}\nNo HP: ${item.no_hp_user}\nTanggal Keluar: ${item.tanggal_keluar}\nTanggal Kembali: ${item.tanggal_kembali}\nLokasi Tujuan: ${item.lokasi_tujuan}\nKendaraan: ${item.kendaraan}\nKeperluan: ${item.keperluan}\nStatus: ${item.status}\n\n`;
-        })
-        .join('');
-    }
+    console.log(response);
+    // function formatResponseData(data) {
+    //   return data
+    //     .map((item) => {
+    //       return `ID: ${item.id_db}\nUser: ${item.nama_user}\nNo HP: ${item.no_hp_user}\nTanggal Keluar: ${item.tanggal_keluar}\nTanggal Kembali: ${item.tanggal_kembali}\nLokasi Tujuan: ${item.lokasi_tujuan}\nKendaraan: ${item.kendaraan}\nKeperluan: ${item.keperluan}\nStatus: ${item.status}\n\n`;
+    //     })
+    //     .join('');
+    // }
 
-    // Create the message
-    const messageText = formatResponseData(response.data);
+    // // Create the message
+    // const messageText = formatResponseData(response.data);
 
     await sock.sendMessage(
       noWa,
       {
-        text: messageText,
+        text: response.message,
       },
       { quoted: message }
     );

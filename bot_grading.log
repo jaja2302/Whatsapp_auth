@@ -2548,3 +2548,2092 @@ opened connection
 data kosong
 data kosong
 memulai cronjob  sendfailcronjob
+Status updated: { message: 'Record updated successfully' }
+data kosong
+memulai cronjob  sendfailcronjob
+data kosong
+data kosong
+memulai cronjob  sendfailcronjob
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+Status updated: { message: 'Record updated successfully' }
+data kosong
+data kosong iot
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+memulai cronjob  sendfailcronjob
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+Status updated: { message: 'Record updated successfully' }
+data kosong
+memulai cronjob  sendfailcronjob
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+memulai cronjob  sendfailcronjob
+data kosong
+Status updated: { message: 'Record updated successfully' }
+data kosong
+memulai cronjob  sendfailcronjob
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Server Berjalan pada Port : 8000
+opened connection
+*Selamat Pagi*:
+Yth. Pelanggan Setia Lab CBI
+Progress Sampel anda telah Terupdate dengan:
+*No. Surat* : 406/FER-SSS/SRS-LAB/X/2024
+*Departemen* : Nutrisi Tanaman
+*Jenis Sampel* : Pupuk
+*Jumlah Sampel* : 1
+*Progress saat ini* : Penerimaan dan Registrasi Sampel
+Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com
+Dengan kode tracking  *26USB4NW*
+Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.
+
+memulai cronjob  sendfailcronjob
+data kosong
+*Selamat Pagi*:
+Yth. Pelanggan Setia Lab CBI
+Progress Sampel anda telah Terupdate dengan:
+*No. Surat* : 056/CBI-SSS/R&D-LAB/X/2024
+*Departemen* : Lab. Pupuk Hayati
+*Jenis Sampel* : Tanah
+*Jumlah Sampel* : 6
+*Progress saat ini* : Penerimaan dan Registrasi Sampel
+Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com
+Dengan kode tracking  *AQVL6C6D*
+Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.
+
+*Selamat Pagi*:
+Yth. Pelanggan Setia Lab CBI
+Progress Sampel anda telah Terupdate dengan:
+*No. Surat* : 056/CBI-SSS/R&D-LAB/X/2024
+*Departemen* : Lab. Pupuk Hayati
+*Jenis Sampel* : Tanah
+*Jumlah Sampel* : 6
+*Progress saat ini* : Penerimaan dan Registrasi Sampel
+Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com
+Dengan kode tracking  *AQVL6C6D*
+Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.
+
+*Selamat Pagi*:
+Yth. Pelanggan Setia Lab CBI
+Progress Sampel anda telah Terupdate dengan:
+*No. Surat* : 405/FER-SSS/SRS-LAB/X/2024
+*Departemen* : Nutrisi Tanaman
+*Jenis Sampel* : Pupuk
+*Jumlah Sampel* : 2
+*Progress saat ini* : Penerimaan dan Registrasi Sampel
+Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com
+Dengan kode tracking  *BOMHWHFU*
+Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.
+
+data kosong
+*Selamat Pagi*:
+Yth. Pelanggan Setia Lab CBI
+Progress Sampel anda telah Terupdate dengan:
+*No. Surat* : 405/FER-SSS/SRS-LAB/X/2024
+*Departemen* : Nutrisi Tanaman
+*Jenis Sampel* : Pupuk
+*Jumlah Sampel* : 2
+*Progress saat ini* : Penerimaan dan Registrasi Sampel
+Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com
+Dengan kode tracking  *BOMHWHFU*
+Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.
+
+*Selamat Pagi*:
+Yth. Pelanggan Setia Lab CBI
+Progress Sampel anda telah Terupdate dengan:
+*No. Surat* : 404/FER-SSS/SRS-LAB/X/2024
+*Departemen* : Nutrisi Tanaman
+*Jenis Sampel* : Pupuk
+*Jumlah Sampel* : 3
+*Progress saat ini* : Penerimaan dan Registrasi Sampel
+Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com
+Dengan kode tracking  *C59D5WBQ*
+Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.
+
+*Selamat Pagi*:
+Yth. Pelanggan Setia Lab CBI
+Progress Sampel anda telah Terupdate dengan:
+*No. Surat* : 311/RCH-SSS/SRS-LAB/X/2024
+*Departemen* : Nutrisi Tanaman
+*Jenis Sampel* : Pupuk
+*Jumlah Sampel* : 4
+*Progress saat ini* : Penerimaan dan Registrasi Sampel
+Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com
+Dengan kode tracking  *1YSYXYBV*
+Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.
+
+*Selamat Pagi*:
+Yth. Pelanggan Setia Lab CBI
+Progress Sampel anda telah Terupdate dengan:
+*No. Surat* : 311/RCH-SSS/SRS-LAB/X/2024
+*Departemen* : Nutrisi Tanaman
+*Jenis Sampel* : Pupuk
+*Jumlah Sampel* : 4
+*Progress saat ini* : Penerimaan dan Registrasi Sampel
+Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com
+Dengan kode tracking  *1YSYXYBV*
+Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.
+
+*Selamat Pagi*:
+Yth. Pelanggan Setia Lab CBI
+Progress Sampel anda telah Terupdate dengan:
+*No. Surat* : 311/RCH-SSS/SRS-LAB/X/2024
+*Departemen* : Nutrisi Tanaman
+*Jenis Sampel* : Pupuk
+*Jumlah Sampel* : 4
+*Progress saat ini* : Penerimaan dan Registrasi Sampel
+Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com
+Dengan kode tracking  *1YSYXYBV*
+Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.
+
+memulai cronjob  sendfailcronjob
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+data kosong
+memulai cronjob  sendfailcronjob
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+data kosong
+Status updated: { message: 'Record updated successfully' }
+memulai cronjob  sendfailcronjob
+data kosong
+data kosong
+memulai cronjob  sendfailcronjob
+Error fetching data: AxiosError: Request failed with status code 522
+    at settle (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:2019:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:3135:11)
+    at IncomingMessage.emit (node:events:530:35)
+    at endReadableNT (node:internal/streams/readable:1696:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+    at Axios.request (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:4287:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async get_mill_data (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\grading\gradinghelper.js:8:22)
+    at async cron.schedule.scheduled [as _execution] (C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:982:9) {
+  code: 'ERR_BAD_RESPONSE',
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false
+    },
+    adapter: [ 'xhr', 'http', 'fetch' ],
+    transformRequest: [ [Function: transformRequest] ],
+    transformResponse: [ [Function: transformResponse] ],
+    timeout: 0,
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    env: { FormData: [Function], Blob: [class Blob] },
+    validateStatus: [Function: validateStatus],
+    headers: Object [AxiosHeaders] {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': undefined,
+      'User-Agent': 'axios/1.7.7',
+      'Accept-Encoding': 'gzip, compress, deflate, br'
+    },
+    params: { email: 'j', password: 'j' },
+    method: 'get',
+    url: 'https://management.srs-ssms.com/api/getdatamill',
+    data: undefined
+  },
+  request: <ref *1> ClientRequest {
+    _events: [Object: null prototype] {
+      abort: [Function (anonymous)],
+      aborted: [Function (anonymous)],
+      connect: [Function (anonymous)],
+      error: [Function (anonymous)],
+      socket: [Function (anonymous)],
+      timeout: [Function (anonymous)],
+      finish: [Function: requestOnFinish]
+    },
+    _eventsCount: 7,
+    _maxListeners: undefined,
+    outputData: [],
+    outputSize: 0,
+    writable: true,
+    destroyed: true,
+    _last: true,
+    chunkedEncoding: false,
+    shouldKeepAlive: true,
+    maxRequestsOnConnectionReached: false,
+    _defaultKeepAlive: true,
+    useChunkedEncodingByDefault: false,
+    sendDate: false,
+    _removedConnection: false,
+    _removedContLen: false,
+    _removedTE: false,
+    strictContentLength: false,
+    _contentLength: 0,
+    _hasBody: true,
+    _trailer: '',
+    finished: true,
+    _headerSent: true,
+    _closed: true,
+    socket: TLSSocket {
+      _tlsOptions: [Object],
+      _secureEstablished: true,
+      _securePending: false,
+      _newSessionPending: false,
+      _controlReleased: true,
+      secureConnecting: false,
+      _SNICallback: null,
+      servername: 'management.srs-ssms.com',
+      alpnProtocol: false,
+      authorized: true,
+      authorizationError: null,
+      encrypted: true,
+      _events: [Object: null prototype],
+      _eventsCount: 9,
+      connecting: false,
+      _hadError: false,
+      _parent: null,
+      _host: 'management.srs-ssms.com',
+      _closeAfterHandlingError: false,
+      _readableState: [ReadableState],
+      _writableState: [WritableState],
+      allowHalfOpen: false,
+      _maxListeners: undefined,
+      _sockname: null,
+      _pendingData: null,
+      _pendingEncoding: '',
+      server: undefined,
+      _server: null,
+      ssl: [TLSWrap],
+      _requestCert: true,
+      _rejectUnauthorized: true,
+      timeout: 5000,
+      parser: null,
+      _httpMessage: null,
+      autoSelectFamilyAttemptedAddresses: [Array],
+      [Symbol(alpncallback)]: null,
+      [Symbol(res)]: [TLSWrap],
+      [Symbol(verified)]: true,
+      [Symbol(pendingSession)]: null,
+      [Symbol(async_id_symbol)]: -1,
+      [Symbol(kHandle)]: [TLSWrap],
+      [Symbol(lastWriteQueueSize)]: 0,
+      [Symbol(timeout)]: Timeout {
+        _idleTimeout: 5000,
+        _idlePrev: [TimersList],
+        _idleNext: [Timeout],
+        _idleStart: 2857780,
+        _onTimeout: [Function: bound ],
+        _timerArgs: undefined,
+        _repeat: null,
+        _destroyed: false,
+        [Symbol(refed)]: false,
+        [Symbol(kHasPrimitive)]: false,
+        [Symbol(asyncId)]: 37375,
+        [Symbol(triggerId)]: 37373
+      },
+      [Symbol(kBuffer)]: null,
+      [Symbol(kBufferCb)]: null,
+      [Symbol(kBufferGen)]: null,
+      [Symbol(shapeMode)]: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kSetNoDelay)]: false,
+      [Symbol(kSetKeepAlive)]: true,
+      [Symbol(kSetKeepAliveInitialDelay)]: 1,
+      [Symbol(kBytesRead)]: 0,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(connect-options)]: [Object]
+    },
+    _header: 'GET /api/getdatamill?email=j&password=j HTTP/1.1\r\n' +
+      'Accept: application/json, text/plain, */*\r\n' +
+      'User-Agent: axios/1.7.7\r\n' +
+      'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+      'Host: management.srs-ssms.com\r\n' +
+      'Connection: keep-alive\r\n' +
+      '\r\n',
+    _keepAliveTimeout: 0,
+    _onPendingData: [Function: nop],
+    agent: Agent {
+      _events: [Object: null prototype],
+      _eventsCount: 2,
+      _maxListeners: undefined,
+      defaultPort: 443,
+      protocol: 'https:',
+      options: [Object: null prototype],
+      requests: [Object: null prototype] {},
+      sockets: [Object: null prototype],
+      freeSockets: [Object: null prototype],
+      keepAliveMsecs: 1000,
+      keepAlive: true,
+      maxSockets: Infinity,
+      maxFreeSockets: 256,
+      scheduling: 'lifo',
+      maxTotalSockets: Infinity,
+      totalSocketCount: 3,
+      maxCachedSessions: 100,
+      _sessionCache: [Object],
+      [Symbol(shapeMode)]: false,
+      [Symbol(kCapture)]: false
+    },
+    socketPath: undefined,
+    method: 'GET',
+    maxHeaderSize: undefined,
+    insecureHTTPParser: undefined,
+    joinDuplicateHeaders: undefined,
+    path: '/api/getdatamill?email=j&password=j',
+    _ended: true,
+    res: IncomingMessage {
+      _events: [Object],
+      _readableState: [ReadableState],
+      _maxListeners: undefined,
+      socket: null,
+      httpVersionMajor: 1,
+      httpVersionMinor: 1,
+      httpVersion: '1.1',
+      complete: true,
+      rawHeaders: [Array],
+      rawTrailers: [],
+      joinDuplicateHeaders: undefined,
+      aborted: false,
+      upgrade: false,
+      url: '',
+      method: null,
+      statusCode: 522,
+      statusMessage: '',
+      client: [TLSSocket],
+      _consuming: true,
+      _dumped: false,
+      req: [Circular *1],
+      _eventsCount: 4,
+      responseUrl: 'https://management.srs-ssms.com/api/getdatamill?email=j&password=j',
+      redirects: [],
+      [Symbol(shapeMode)]: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kHeaders)]: [Object],
+      [Symbol(kHeadersCount)]: 24,
+      [Symbol(kTrailers)]: null,
+      [Symbol(kTrailersCount)]: 0
+    },
+    aborted: false,
+    timeoutCb: null,
+    upgradeOrConnect: false,
+    parser: null,
+    maxHeadersCount: null,
+    reusedSocket: false,
+    host: 'management.srs-ssms.com',
+    protocol: 'https:',
+    _redirectable: Writable {
+      _events: [Object],
+      _writableState: [WritableState],
+      _maxListeners: undefined,
+      _options: [Object],
+      _ended: true,
+      _ending: true,
+      _redirectCount: 0,
+      _redirects: [],
+      _requestBodyLength: 0,
+      _requestBodyBuffers: [],
+      _eventsCount: 3,
+      _onNativeResponse: [Function (anonymous)],
+      _currentRequest: [Circular *1],
+      _currentUrl: 'https://management.srs-ssms.com/api/getdatamill?email=j&password=j',
+      [Symbol(shapeMode)]: true,
+      [Symbol(kCapture)]: false
+    },
+    [Symbol(shapeMode)]: false,
+    [Symbol(kCapture)]: false,
+    [Symbol(kBytesWritten)]: 0,
+    [Symbol(kNeedDrain)]: false,
+    [Symbol(corked)]: 0,
+    [Symbol(kOutHeaders)]: [Object: null prototype] {
+      accept: [Array],
+      'user-agent': [Array],
+      'accept-encoding': [Array],
+      host: [Array]
+    },
+    [Symbol(errored)]: null,
+    [Symbol(kHighWaterMark)]: 16384,
+    [Symbol(kRejectNonStandardBodyWrites)]: false,
+    [Symbol(kUniqueHeaders)]: null
+  },
+  response: {
+    status: 522,
+    statusText: '',
+    headers: Object [AxiosHeaders] {
+      date: 'Fri, 04 Oct 2024 04:31:51 GMT',
+      'content-type': 'text/html; charset=UTF-8',
+      'content-length': '7132',
+      connection: 'keep-alive',
+      'report-to': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=D6GwcE6Rs%2FarUT7IAxTuIDUoqJDlq%2FStv%2FrPkf8tZVDFtUZfPUwiaujIfuaYIYnLp1Q%2BD9YOgbL22TzIsHdY6ERF32UrCiIiHpFxUHlmr6Z5mDZ8eV2mtV9ytu40p7o7eJkfauFGq%2F%2BOvg%3D%3D"}],"group":"cf-nel","max_age":604800}',
+      nel: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}',
+      'x-frame-options': 'SAMEORIGIN',
+      'referrer-policy': 'same-origin',
+      'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0',
+      expires: 'Thu, 01 Jan 1970 00:00:01 GMT',
+      server: 'cloudflare',
+      'cf-ray': '8cd26d774ece0176-SIN'
+    },
+    config: {
+      transitional: [Object],
+      adapter: [Array],
+      transformRequest: [Array],
+      transformResponse: [Array],
+      timeout: 0,
+      xsrfCookieName: 'XSRF-TOKEN',
+      xsrfHeaderName: 'X-XSRF-TOKEN',
+      maxContentLength: -1,
+      maxBodyLength: -1,
+      env: [Object],
+      validateStatus: [Function: validateStatus],
+      headers: [Object [AxiosHeaders]],
+      params: [Object],
+      method: 'get',
+      url: 'https://management.srs-ssms.com/api/getdatamill',
+      data: undefined
+    },
+    request: <ref *1> ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 7,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: true,
+      _last: true,
+      chunkedEncoding: false,
+      shouldKeepAlive: true,
+      maxRequestsOnConnectionReached: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: false,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      strictContentLength: false,
+      _contentLength: 0,
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      _closed: true,
+      socket: [TLSSocket],
+      _header: 'GET /api/getdatamill?email=j&password=j HTTP/1.1\r\n' +
+        'Accept: application/json, text/plain, */*\r\n' +
+        'User-Agent: axios/1.7.7\r\n' +
+        'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+        'Host: management.srs-ssms.com\r\n' +
+        'Connection: keep-alive\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: nop],
+      agent: [Agent],
+      socketPath: undefined,
+      method: 'GET',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      joinDuplicateHeaders: undefined,
+      path: '/api/getdatamill?email=j&password=j',
+      _ended: true,
+      res: [IncomingMessage],
+      aborted: false,
+      timeoutCb: null,
+      upgradeOrConnect: false,
+      parser: null,
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: 'management.srs-ssms.com',
+      protocol: 'https:',
+      _redirectable: [Writable],
+      [Symbol(shapeMode)]: false,
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(kNeedDrain)]: false,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype],
+      [Symbol(errored)]: null,
+      [Symbol(kHighWaterMark)]: 16384,
+      [Symbol(kRejectNonStandardBodyWrites)]: false,
+      [Symbol(kUniqueHeaders)]: null
+    },
+    data: '<!DOCTYPE html>\n' +
+      '<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->\n' +
+      '<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->\n' +
+      '<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en-US"> <![endif]-->\n' +
+      '<!--[if gt IE 8]><!--> <html class="no-js" lang="en-US"> <!--<![endif]-->\n' +
+      '<head>\n' +
+      '\n' +
+      '\n' +
+      '<title>management.srs-ssms.com | 522: Connection timed out</title>\n' +
+      '<meta charset="UTF-8" />\n' +
+      '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />\n' +
+      '<meta http-equiv="X-UA-Compatible" content="IE=Edge" />\n' +
+      '<meta name="robots" content="noindex, nofollow" />\n' +
+      '<meta name="viewport" content="width=device-width,initial-scale=1" />\n' +
+      '<link rel="stylesheet" id="cf_styles-css" href="/cdn-cgi/styles/main.css" />\n' +
+      '\n' +
+      '\n' +
+      '</head>\n' +
+      '<body>\n' +
+      '<div id="cf-wrapper">\n' +
+      '    <div id="cf-error-details" class="p-0">\n' +
+      '        <header class="mx-auto pt-10 lg:pt-6 lg:px-8 w-240 lg:w-full mb-8">\n' +
+      '            <h1 class="inline-block sm:block sm:mb-2 font-light text-60 lg:text-4xl text-black-dark leading-tight mr-2">\n' +
+      '              <span class="inline-block">Connection timed out</span>\n' +
+      '              <span class="code-label">Error code 522</span>\n' +
+      '            </h1>\n' +
+      '            <div>\n' +
+      '               Visit <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_522&utm_campaign=management.srs-ssms.com" target="_blank" rel="noopener noreferrer">cloudflare.com</a> for more information.\n' +
+      '            </div>\n' +
+      '            <div class="mt-3">2024-10-04 04:31:51 UTC</div>\n' +
+      '        </header>\n' +
+      '        <div class="my-8 bg-gradient-gray">\n' +
+      '            <div class="w-240 lg:w-full mx-auto">\n' +
+      '                <div class="clearfix md:px-8">\n' +
+      '                  \n' +
+      '<div id="cf-browser-status" class=" relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">\n' +
+      '  <div class="relative mb-10 md:m-0">\n' +
+      '    \n' +
+      '    <span class="cf-icon-browser block md:hidden h-20 bg-center bg-no-repeat"></span>\n' +
+      '    <span class="cf-icon-ok w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>\n' +
+      '    \n' +
+      '  </div>\n' +
+      '  <span class="md:block w-full truncate">You</span>\n' +
+      '  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">\n' +
+      '    \n' +
+      '    Browser\n' +
+      '    \n' +
+      '  </h3>\n' +
+      '  <span class="leading-1.3 text-2xl text-green-success">Working</span>\n' +
+      '</div>\n' +
+      '\n' +
+      '<div id="cf-cloudflare-status" class=" relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">\n' +
+      '  <div class="relative mb-10 md:m-0">\n' +
+      '    <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_522&utm_campaign=management.srs-ssms.com" target="_blank" rel="noopener noreferrer">\n' +
+      '    <span class="cf-icon-cloud block md:hidden h-20 bg-center bg-no-repeat"></span>\n' +
+      '    <span class="cf-icon-ok w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>\n' +
+      '    </a>\n' +
+      '  </div>\n' +
+      '  <span class="md:block w-full truncate">Singapore</span>\n' +
+      '  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">\n' +
+      '    <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_522&utm_campaign=management.srs-ssms.com" target="_blank" rel="noopener noreferrer">\n' +
+      '    Cloudflare\n' +
+      '    </a>\n' +
+      '  </h3>\n' +
+      '  <span class="leading-1.3 text-2xl text-green-success">Working</span>\n' +
+      '</div>\n' +
+      '\n' +
+      '<div id="cf-host-status" class="cf-error-source relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">\n' +
+      '  <div class="relative mb-10 md:m-0">\n' +
+      '    \n' +
+      '    <span class="cf-icon-server block md:hidden h-20 bg-center bg-no-repeat"></span>\n' +
+      '    <span class="cf-icon-error w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>\n' +
+      '    \n' +
+      '  </div>\n' +
+      '  <span class="md:block w-full truncate">management.srs-ssms.com</span>\n' +
+      '  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">\n' +
+      '    \n' +
+      '    Host\n' +
+      '    \n' +
+      '  </h3>\n' +
+      '  <span class="leading-1.3 text-2xl text-red-error">Error</span>\n' +
+      '</div>\n' +
+      '\n' +
+      '                </div>\n' +
+      '            </div>\n' +
+      '        </div>\n' +
+      '\n' +
+      '        <div class="w-240 lg:w-full mx-auto mb-8 lg:px-8">\n' +
+      '            <div class="clearfix">\n' +
+      '                <div class="w-1/2 md:w-full float-left pr-6 md:pb-10 md:pr-0 leading-relaxed">\n' +
+      '                    <h2 class="text-3xl font-normal leading-1.3 mb-4">What happened?</h2>\n' +
+      "                    <p>The initial connection between Cloudflare's network and the origin web server timed out. As a result, the web page can not be displayed.</p>\n" +
+      '                </div>\n' +
+      '                <div class="w-1/2 md:w-full float-left leading-relaxed">\n' +
+      '                    <h2 class="text-3xl font-normal leading-1.3 mb-4">What can I do?</h2>\n' +
+      `                          <h3 class="text-15 font-semibold mb-2">If you're a visitor of this website:</h3>\n` +
+      '      <p class="mb-6">Please try again in a few minutes.</p>\n' +
+      '\n' +
+      `      <h3 class="text-15 font-semibold mb-2">If you're the owner of this website:</h3>\n` +
+      `      <p><span>Contact your hosting provider letting them know your web server is not completing requests. An Error 522 means that the request was able to connect to your web server, but that the request didn't finish. The most likely cause is that something on your server is hogging resources.</span> <a rel="noopener noreferrer" href="https://support.cloudflare.com/hc/en-us/articles/200171906-Error-522">Additional troubleshooting information here.</a></p>\n` +
+      '                </div>\n' +
+      '            </div>\n' +
+      '        </div>\n' +
+      '\n' +
+      '        <div class="cf-error-footer cf-wrapper w-240 lg:w-full py-10 sm:py-4 sm:px-8 mx-auto text-center sm:text-left border-solid border-0 border-t border-gray-300">\n' +
+      '  <p class="text-13">\n' +
+      '    <span class="cf-footer-item sm:block sm:mb-1">Cloudflare Ray ID: <strong class="font-semibold">8cd26d774ece0176</strong></span>\n' +
+      '    <span class="cf-footer-separator sm:hidden">&bull;</span>\n' +
+      '    <span id="cf-footer-item-ip" class="cf-footer-item hidden sm:block sm:mb-1">\n' +
+      '      Your IP:\n' +
+      '      <button type="button" id="cf-footer-ip-reveal" class="cf-footer-ip-reveal-btn">Click to reveal</button>\n' +
+      '      <span class="hidden" id="cf-footer-ip">36.66.225.126</span>\n' +
+      '      <span class="cf-footer-separator sm:hidden">&bull;</span>\n' +
+      '    </span>\n' +
+      '    <span class="cf-footer-item sm:block sm:mb-1"><span>Performance &amp; security by</span> <a rel="noopener noreferrer" href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_522&utm_campaign=management.srs-ssms.com" id="brand_link" target="_blank">Cloudflare</a></span>\n' +
+      '    \n' +
+      '  </p>\n' +
+      '  <script>(function(){function d(){var b=a.getElementById("cf-footer-item-ip"),c=a.getElementById("cf-footer-ip-reveal");b&&"classList"in b&&(b.classList.remove("hidden"),c.addEventListener("click",function(){c.classList.add("hidden");a.getElementById("cf-footer-ip").classList.remove("hidden")}))}var a=document;document.addEventListener&&a.addEventListener("DOMContentLoaded",d)})();</script>\n' +
+      '</div><!-- /.error-footer -->\n' +
+      '\n' +
+      '\n' +
+      '    </div>\n' +
+      '</div>\n' +
+      '</body>\n' +
+      '</html>\n'
+  },
+  status: 522
+}
+Error updating status: AxiosError: Request failed with status code 522
+    at settle (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:2019:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:3135:11)
+    at IncomingMessage.emit (node:events:530:35)
+    at endReadableNT (node:internal/streams/readable:1696:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+    at Axios.request (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:4287:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async updatePCStatus (C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:804:22)
+    at async cron.schedule.scheduled [as _execution] (C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:992:9) {
+  code: 'ERR_BAD_RESPONSE',
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false
+    },
+    adapter: [ 'xhr', 'http', 'fetch' ],
+    transformRequest: [ [Function: transformRequest] ],
+    transformResponse: [ [Function: transformResponse] ],
+    timeout: 0,
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    env: { FormData: [Function], Blob: [class Blob] },
+    validateStatus: [Function: validateStatus],
+    headers: Object [AxiosHeaders] {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+      'User-Agent': 'axios/1.7.7',
+      'Content-Length': '35',
+      'Accept-Encoding': 'gzip, compress, deflate, br'
+    },
+    method: 'post',
+    url: 'https://qc-apps.srs-ssms.com/api/updatestatusbot',
+    data: '{"pc_id":"pc_ho","status":"online"}'
+  },
+  request: <ref *1> ClientRequest {
+    _events: [Object: null prototype] {
+      abort: [Function (anonymous)],
+      aborted: [Function (anonymous)],
+      connect: [Function (anonymous)],
+      error: [Function (anonymous)],
+      socket: [Function (anonymous)],
+      timeout: [Function (anonymous)],
+      finish: [Function: requestOnFinish]
+    },
+    _eventsCount: 7,
+    _maxListeners: undefined,
+    outputData: [],
+    outputSize: 0,
+    writable: true,
+    destroyed: true,
+    _last: false,
+    chunkedEncoding: false,
+    shouldKeepAlive: true,
+    maxRequestsOnConnectionReached: false,
+    _defaultKeepAlive: true,
+    useChunkedEncodingByDefault: true,
+    sendDate: false,
+    _removedConnection: false,
+    _removedContLen: false,
+    _removedTE: false,
+    strictContentLength: false,
+    _contentLength: '35',
+    _hasBody: true,
+    _trailer: '',
+    finished: true,
+    _headerSent: true,
+    _closed: true,
+    socket: TLSSocket {
+      _tlsOptions: [Object],
+      _secureEstablished: true,
+      _securePending: false,
+      _newSessionPending: false,
+      _controlReleased: true,
+      secureConnecting: false,
+      _SNICallback: null,
+      servername: 'qc-apps.srs-ssms.com',
+      alpnProtocol: false,
+      authorized: true,
+      authorizationError: null,
+      encrypted: true,
+      _events: [Object: null prototype],
+      _eventsCount: 9,
+      connecting: false,
+      _hadError: false,
+      _parent: null,
+      _host: 'qc-apps.srs-ssms.com',
+      _closeAfterHandlingError: false,
+      _readableState: [ReadableState],
+      _writableState: [WritableState],
+      allowHalfOpen: false,
+      _maxListeners: undefined,
+      _sockname: null,
+      _pendingData: null,
+      _pendingEncoding: '',
+      server: undefined,
+      _server: null,
+      ssl: [TLSWrap],
+      _requestCert: true,
+      _rejectUnauthorized: true,
+      timeout: 5000,
+      parser: null,
+      _httpMessage: null,
+      autoSelectFamilyAttemptedAddresses: [Array],
+      [Symbol(alpncallback)]: null,
+      [Symbol(res)]: [TLSWrap],
+      [Symbol(verified)]: true,
+      [Symbol(pendingSession)]: null,
+      [Symbol(async_id_symbol)]: -1,
+      [Symbol(kHandle)]: [TLSWrap],
+      [Symbol(lastWriteQueueSize)]: 0,
+      [Symbol(timeout)]: Timeout {
+        _idleTimeout: 5000,
+        _idlePrev: [TimersList],
+        _idleNext: [Timeout],
+        _idleStart: 2857851,
+        _onTimeout: [Function: bound ],
+        _timerArgs: undefined,
+        _repeat: null,
+        _destroyed: false,
+        [Symbol(refed)]: false,
+        [Symbol(kHasPrimitive)]: false,
+        [Symbol(asyncId)]: 37395,
+        [Symbol(triggerId)]: 37393
+      },
+      [Symbol(kBuffer)]: null,
+      [Symbol(kBufferCb)]: null,
+      [Symbol(kBufferGen)]: null,
+      [Symbol(shapeMode)]: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kSetNoDelay)]: false,
+      [Symbol(kSetKeepAlive)]: true,
+      [Symbol(kSetKeepAliveInitialDelay)]: 1,
+      [Symbol(kBytesRead)]: 0,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(connect-options)]: [Object]
+    },
+    _header: 'POST /api/updatestatusbot HTTP/1.1\r\n' +
+      'Accept: application/json, text/plain, */*\r\n' +
+      'Content-Type: application/json\r\n' +
+      'User-Agent: axios/1.7.7\r\n' +
+      'Content-Length: 35\r\n' +
+      'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+      'Host: qc-apps.srs-ssms.com\r\n' +
+      'Connection: keep-alive\r\n' +
+      '\r\n',
+    _keepAliveTimeout: 0,
+    _onPendingData: [Function: nop],
+    agent: Agent {
+      _events: [Object: null prototype],
+      _eventsCount: 2,
+      _maxListeners: undefined,
+      defaultPort: 443,
+      protocol: 'https:',
+      options: [Object: null prototype],
+      requests: [Object: null prototype] {},
+      sockets: [Object: null prototype] {},
+      freeSockets: [Object: null prototype],
+      keepAliveMsecs: 1000,
+      keepAlive: true,
+      maxSockets: Infinity,
+      maxFreeSockets: 256,
+      scheduling: 'lifo',
+      maxTotalSockets: Infinity,
+      totalSocketCount: 3,
+      maxCachedSessions: 100,
+      _sessionCache: [Object],
+      [Symbol(shapeMode)]: false,
+      [Symbol(kCapture)]: false
+    },
+    socketPath: undefined,
+    method: 'POST',
+    maxHeaderSize: undefined,
+    insecureHTTPParser: undefined,
+    joinDuplicateHeaders: undefined,
+    path: '/api/updatestatusbot',
+    _ended: true,
+    res: IncomingMessage {
+      _events: [Object],
+      _readableState: [ReadableState],
+      _maxListeners: undefined,
+      socket: null,
+      httpVersionMajor: 1,
+      httpVersionMinor: 1,
+      httpVersion: '1.1',
+      complete: true,
+      rawHeaders: [Array],
+      rawTrailers: [],
+      joinDuplicateHeaders: undefined,
+      aborted: false,
+      upgrade: false,
+      url: '',
+      method: null,
+      statusCode: 522,
+      statusMessage: '',
+      client: [TLSSocket],
+      _consuming: true,
+      _dumped: false,
+      req: [Circular *1],
+      _eventsCount: 4,
+      responseUrl: 'https://qc-apps.srs-ssms.com/api/updatestatusbot',
+      redirects: [],
+      [Symbol(shapeMode)]: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kHeaders)]: [Object],
+      [Symbol(kHeadersCount)]: 24,
+      [Symbol(kTrailers)]: null,
+      [Symbol(kTrailersCount)]: 0
+    },
+    aborted: false,
+    timeoutCb: null,
+    upgradeOrConnect: false,
+    parser: null,
+    maxHeadersCount: null,
+    reusedSocket: false,
+    host: 'qc-apps.srs-ssms.com',
+    protocol: 'https:',
+    _redirectable: Writable {
+      _events: [Object],
+      _writableState: [WritableState],
+      _maxListeners: undefined,
+      _options: [Object],
+      _ended: true,
+      _ending: true,
+      _redirectCount: 0,
+      _redirects: [],
+      _requestBodyLength: 35,
+      _requestBodyBuffers: [],
+      _eventsCount: 3,
+      _onNativeResponse: [Function (anonymous)],
+      _currentRequest: [Circular *1],
+      _currentUrl: 'https://qc-apps.srs-ssms.com/api/updatestatusbot',
+      [Symbol(shapeMode)]: true,
+      [Symbol(kCapture)]: false
+    },
+    [Symbol(shapeMode)]: false,
+    [Symbol(kCapture)]: false,
+    [Symbol(kBytesWritten)]: 0,
+    [Symbol(kNeedDrain)]: false,
+    [Symbol(corked)]: 0,
+    [Symbol(kOutHeaders)]: [Object: null prototype] {
+      accept: [Array],
+      'content-type': [Array],
+      'user-agent': [Array],
+      'content-length': [Array],
+      'accept-encoding': [Array],
+      host: [Array]
+    },
+    [Symbol(errored)]: null,
+    [Symbol(kHighWaterMark)]: 16384,
+    [Symbol(kRejectNonStandardBodyWrites)]: false,
+    [Symbol(kUniqueHeaders)]: null
+  },
+  response: {
+    status: 522,
+    statusText: '',
+    headers: Object [AxiosHeaders] {
+      date: 'Fri, 04 Oct 2024 04:31:51 GMT',
+      'content-type': 'text/html; charset=UTF-8',
+      'content-length': '7116',
+      connection: 'keep-alive',
+      'report-to': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=dd857%2FrcT7hOBKugRBGlttbZkf239Wb99knKZQPa77y%2B79UNOJ6znItv3UrHUTFq%2BU%2B0vx2ynhx0k58lHp9%2B8RaG66B7VCwqUraMXCHBrYMPexgvO%2Fees0HDGRrS6L0AoJ85berU3A%3D%3D"}],"group":"cf-nel","max_age":604800}',
+      nel: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}',
+      'x-frame-options': 'SAMEORIGIN',
+      'referrer-policy': 'same-origin',
+      'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0',
+      expires: 'Thu, 01 Jan 1970 00:00:01 GMT',
+      server: 'cloudflare',
+      'cf-ray': '8cd26d77bd1f5fb4-SIN'
+    },
+    config: {
+      transitional: [Object],
+      adapter: [Array],
+      transformRequest: [Array],
+      transformResponse: [Array],
+      timeout: 0,
+      xsrfCookieName: 'XSRF-TOKEN',
+      xsrfHeaderName: 'X-XSRF-TOKEN',
+      maxContentLength: -1,
+      maxBodyLength: -1,
+      env: [Object],
+      validateStatus: [Function: validateStatus],
+      headers: [Object [AxiosHeaders]],
+      method: 'post',
+      url: 'https://qc-apps.srs-ssms.com/api/updatestatusbot',
+      data: '{"pc_id":"pc_ho","status":"online"}'
+    },
+    request: <ref *1> ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 7,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: true,
+      _last: false,
+      chunkedEncoding: false,
+      shouldKeepAlive: true,
+      maxRequestsOnConnectionReached: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: true,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      strictContentLength: false,
+      _contentLength: '35',
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      _closed: true,
+      socket: [TLSSocket],
+      _header: 'POST /api/updatestatusbot HTTP/1.1\r\n' +
+        'Accept: application/json, text/plain, */*\r\n' +
+        'Content-Type: application/json\r\n' +
+        'User-Agent: axios/1.7.7\r\n' +
+        'Content-Length: 35\r\n' +
+        'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+        'Host: qc-apps.srs-ssms.com\r\n' +
+        'Connection: keep-alive\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: nop],
+      agent: [Agent],
+      socketPath: undefined,
+      method: 'POST',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      joinDuplicateHeaders: undefined,
+      path: '/api/updatestatusbot',
+      _ended: true,
+      res: [IncomingMessage],
+      aborted: false,
+      timeoutCb: null,
+      upgradeOrConnect: false,
+      parser: null,
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: 'qc-apps.srs-ssms.com',
+      protocol: 'https:',
+      _redirectable: [Writable],
+      [Symbol(shapeMode)]: false,
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(kNeedDrain)]: false,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype],
+      [Symbol(errored)]: null,
+      [Symbol(kHighWaterMark)]: 16384,
+      [Symbol(kRejectNonStandardBodyWrites)]: false,
+      [Symbol(kUniqueHeaders)]: null
+    },
+    data: '<!DOCTYPE html>\n' +
+      '<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->\n' +
+      '<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->\n' +
+      '<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en-US"> <![endif]-->\n' +
+      '<!--[if gt IE 8]><!--> <html class="no-js" lang="en-US"> <!--<![endif]-->\n' +
+      '<head>\n' +
+      '\n' +
+      '\n' +
+      '<title>qc-apps.srs-ssms.com | 522: Connection timed out</title>\n' +
+      '<meta charset="UTF-8" />\n' +
+      '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />\n' +
+      '<meta http-equiv="X-UA-Compatible" content="IE=Edge" />\n' +
+      '<meta name="robots" content="noindex, nofollow" />\n' +
+      '<meta name="viewport" content="width=device-width,initial-scale=1" />\n' +
+      '<link rel="stylesheet" id="cf_styles-css" href="/cdn-cgi/styles/main.css" />\n' +
+      '\n' +
+      '\n' +
+      '</head>\n' +
+      '<body>\n' +
+      '<div id="cf-wrapper">\n' +
+      '    <div id="cf-error-details" class="p-0">\n' +
+      '        <header class="mx-auto pt-10 lg:pt-6 lg:px-8 w-240 lg:w-full mb-8">\n' +
+      '            <h1 class="inline-block sm:block sm:mb-2 font-light text-60 lg:text-4xl text-black-dark leading-tight mr-2">\n' +
+      '              <span class="inline-block">Connection timed out</span>\n' +
+      '              <span class="code-label">Error code 522</span>\n' +
+      '            </h1>\n' +
+      '            <div>\n' +
+      '               Visit <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_522&utm_campaign=qc-apps.srs-ssms.com" target="_blank" rel="noopener noreferrer">cloudflare.com</a> for more information.\n' +
+      '            </div>\n' +
+      '            <div class="mt-3">2024-10-04 04:31:51 UTC</div>\n' +
+      '        </header>\n' +
+      '        <div class="my-8 bg-gradient-gray">\n' +
+      '            <div class="w-240 lg:w-full mx-auto">\n' +
+      '                <div class="clearfix md:px-8">\n' +
+      '                  \n' +
+      '<div id="cf-browser-status" class=" relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">\n' +
+      '  <div class="relative mb-10 md:m-0">\n' +
+      '    \n' +
+      '    <span class="cf-icon-browser block md:hidden h-20 bg-center bg-no-repeat"></span>\n' +
+      '    <span class="cf-icon-ok w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>\n' +
+      '    \n' +
+      '  </div>\n' +
+      '  <span class="md:block w-full truncate">You</span>\n' +
+      '  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">\n' +
+      '    \n' +
+      '    Browser\n' +
+      '    \n' +
+      '  </h3>\n' +
+      '  <span class="leading-1.3 text-2xl text-green-success">Working</span>\n' +
+      '</div>\n' +
+      '\n' +
+      '<div id="cf-cloudflare-status" class=" relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">\n' +
+      '  <div class="relative mb-10 md:m-0">\n' +
+      '    <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_522&utm_campaign=qc-apps.srs-ssms.com" target="_blank" rel="noopener noreferrer">\n' +
+      '    <span class="cf-icon-cloud block md:hidden h-20 bg-center bg-no-repeat"></span>\n' +
+      '    <span class="cf-icon-ok w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>\n' +
+      '    </a>\n' +
+      '  </div>\n' +
+      '  <span class="md:block w-full truncate">Singapore</span>\n' +
+      '  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">\n' +
+      '    <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_522&utm_campaign=qc-apps.srs-ssms.com" target="_blank" rel="noopener noreferrer">\n' +
+      '    Cloudflare\n' +
+      '    </a>\n' +
+      '  </h3>\n' +
+      '  <span class="leading-1.3 text-2xl text-green-success">Working</span>\n' +
+      '</div>\n' +
+      '\n' +
+      '<div id="cf-host-status" class="cf-error-source relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">\n' +
+      '  <div class="relative mb-10 md:m-0">\n' +
+      '    \n' +
+      '    <span class="cf-icon-server block md:hidden h-20 bg-center bg-no-repeat"></span>\n' +
+      '    <span class="cf-icon-error w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>\n' +
+      '    \n' +
+      '  </div>\n' +
+      '  <span class="md:block w-full truncate">qc-apps.srs-ssms.com</span>\n' +
+      '  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">\n' +
+      '    \n' +
+      '    Host\n' +
+      '    \n' +
+      '  </h3>\n' +
+      '  <span class="leading-1.3 text-2xl text-red-error">Error</span>\n' +
+      '</div>\n' +
+      '\n' +
+      '                </div>\n' +
+      '            </div>\n' +
+      '        </div>\n' +
+      '\n' +
+      '        <div class="w-240 lg:w-full mx-auto mb-8 lg:px-8">\n' +
+      '            <div class="clearfix">\n' +
+      '                <div class="w-1/2 md:w-full float-left pr-6 md:pb-10 md:pr-0 leading-relaxed">\n' +
+      '                    <h2 class="text-3xl font-normal leading-1.3 mb-4">What happened?</h2>\n' +
+      "                    <p>The initial connection between Cloudflare's network and the origin web server timed out. As a result, the web page can not be displayed.</p>\n" +
+      '                </div>\n' +
+      '                <div class="w-1/2 md:w-full float-left leading-relaxed">\n' +
+      '                    <h2 class="text-3xl font-normal leading-1.3 mb-4">What can I do?</h2>\n' +
+      `                          <h3 class="text-15 font-semibold mb-2">If you're a visitor of this website:</h3>\n` +
+      '      <p class="mb-6">Please try again in a few minutes.</p>\n' +
+      '\n' +
+      `      <h3 class="text-15 font-semibold mb-2">If you're the owner of this website:</h3>\n` +
+      `      <p><span>Contact your hosting provider letting them know your web server is not completing requests. An Error 522 means that the request was able to connect to your web server, but that the request didn't finish. The most likely cause is that something on your server is hogging resources.</span> <a rel="noopener noreferrer" href="https://support.cloudflare.com/hc/en-us/articles/200171906-Error-522">Additional troubleshooting information here.</a></p>\n` +
+      '                </div>\n' +
+      '            </div>\n' +
+      '        </div>\n' +
+      '\n' +
+      '        <div class="cf-error-footer cf-wrapper w-240 lg:w-full py-10 sm:py-4 sm:px-8 mx-auto text-center sm:text-left border-solid border-0 border-t border-gray-300">\n' +
+      '  <p class="text-13">\n' +
+      '    <span class="cf-footer-item sm:block sm:mb-1">Cloudflare Ray ID: <strong class="font-semibold">8cd26d77bd1f5fb4</strong></span>\n' +
+      '    <span class="cf-footer-separator sm:hidden">&bull;</span>\n' +
+      '    <span id="cf-footer-item-ip" class="cf-footer-item hidden sm:block sm:mb-1">\n' +
+      '      Your IP:\n' +
+      '      <button type="button" id="cf-footer-ip-reveal" class="cf-footer-ip-reveal-btn">Click to reveal</button>\n' +
+      '      <span class="hidden" id="cf-footer-ip">103.229.165.222</span>\n' +
+      '      <span class="cf-footer-separator sm:hidden">&bull;</span>\n' +
+      '    </span>\n' +
+      '    <span class="cf-footer-item sm:block sm:mb-1"><span>Performance &amp; security by</span> <a rel="noopener noreferrer" href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_522&utm_campaign=qc-apps.srs-ssms.com" id="brand_link" target="_blank">Cloudflare</a></span>\n' +
+      '    \n' +
+      '  </p>\n' +
+      '  <script>(function(){function d(){var b=a.getElementById("cf-footer-item-ip"),c=a.getElementById("cf-footer-ip-reveal");b&&"classList"in b&&(b.classList.remove("hidden"),c.addEventListener("click",function(){c.classList.add("hidden");a.getElementById("cf-footer-ip").classList.remove("hidden")}))}var a=document;document.addEventListener&&a.addEventListener("DOMContentLoaded",d)})();</script>\n' +
+      '</div><!-- /.error-footer -->\n' +
+      '\n' +
+      '\n' +
+      '    </div>\n' +
+      '</div>\n' +
+      '</body>\n' +
+      '</html>\n'
+  },
+  status: 522
+}
+data kosong
+memulai cronjob  sendfailcronjob
+data kosong
+{ message: 'Status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+data kosong
+Status updated: { message: 'Record updated successfully' }
+{ message: 'Status sock updated successfully' }
+memulai cronjob  sendfailcronjob
+data kosong
+{ message: 'Status sock updated successfully' }
+data kosong
+memulai cronjob  sendfailcronjob
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+data kosong
+memulai cronjob  sendfailcronjob
+data kosong
+Status updated: { message: 'Record updated successfully' }
+memulai cronjob  sendfailcronjob
+data kosong
+data kosong
+memulai cronjob  sendfailcronjob
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+memulai cronjob  sendfailcronjob
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+Status updated: { message: 'Record updated successfully' }
+memulai cronjob  sendfailcronjob
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+memulai cronjob  sendfailcronjob
+Status updated: { message: 'Record updated successfully' }
+data kosong
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+memulai cronjob  sendfailcronjob
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+Status updated: { message: 'Record updated successfully' }
+{ message: 'Status sock updated successfully' }
+memulai cronjob  sendfailcronjob
+data kosong
+data kosong
+memulai cronjob  sendfailcronjob
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+memulai cronjob  sendfailcronjob
+data kosong
+data kosong
+Status updated: { message: 'Record updated successfully' }
+File downloaded successfully.
+File downloaded successfully.
+File downloaded successfully.
+{ message: 'Status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+memulai cronjob  sendfailcronjob
+data kosong
+{ message: 'Error data and status sock updated successfully' }
+{ message: 'Error data and status sock updated successfully' }
+data kosong
+{ message: 'Error data and status sock updated successfully' }
+{ message: 'Error data and status sock updated successfully' }
+{ message: 'Error data and status sock updated successfully' }
+{ message: 'Error data and status sock updated successfully' }
+{ message: 'Error data and status sock updated successfully' }
+memulai cronjob  sendfailcronjob
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+Server Berjalan pada Port : 8000
+opened connection
+{ message: 'Error data and status sock updated successfully' }
+{ message: 'Error data and status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+{ message: 'Error data and status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+{ message: 'Error data and status sock updated successfully' }
+data kosong
+{ message: 'Status sock updated successfully' }
+*Selamat Siang*:
+Yth. Pelanggan Setia Lab CBI
+Progress Sampel anda telah kami terima dengan:
+*No. Surat* : 407/FER-SSS/SRS-LAB/X/2024
+*Departemen* : Nutrisi Tanaman
+*Jenis Sampel* : Pupuk
+*Jumlah Sampel* : 2
+*Progress saat ini* : Penerimaan dan Registrasi Sampel
+Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com
+Dengan kode tracking  *VB2GRVLM*
+Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.
+
+memulai cronjob  sendfailcronjob
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+{ message: 'Status sock updated successfully' }
+File downloaded successfully.
+{ message: 'Status sock updated successfully' }
+File downloaded successfully.
+File downloaded successfully.
+File downloaded successfully.
+File downloaded successfully.
+File downloaded successfully.
+File downloaded successfully.
+File downloaded successfully.
+File downloaded successfully.
+File downloaded successfully.
+File downloaded successfully.
+File downloaded successfully.
+{ message: 'Status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+Closing stale open session for new outgoing prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    'BYKq+NI6uKPSmRLUbDW6TU7reWMCSaRAd+cTPyDNMgxp': { chainKey: [Object], chainType: 2, messageKeys: {} },
+    'BV63EzoRmqJ3QqaoFtGUoskyIRyslEZPHTf+98kfD35I': { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 2138744497,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 5e b7 13 3a 11 9a a2 77 42 a6 a8 16 d1 94 a2 c9 32 21 1c ac 94 46 4f 1d 37 fe f7 c9 1f 0f 7e 48>,
+      privKey: <Buffer 90 dc c0 69 f7 d2 bf d1 5e 30 9b fa 22 f4 cb ce 2a bf 81 21 43 b8 56 e0 91 f4 56 c1 c6 b6 e8 49>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 82 aa f8 d2 3a b8 a3 d2 99 12 d4 6c 35 ba 4d 4e eb 79 63 02 49 a4 40 77 e7 13 3f 20 cd 32 0c 69>,
+    previousCounter: 5,
+    rootKey: <Buffer 6d 95 63 9e a6 ca a4 66 23 6d 56 ea c1 55 be 58 eb 9b fb a3 3e 21 69 55 e6 dd b5 a9 45 85 2d 3c>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 ff e4 0c 0e 0f 69 41 8f 22 8b bc 46 81 a9 cb a1 cf bc e2 00 c8 be 4c f6 b3 3f 0a fd 42 b1 8f 44>,
+    baseKeyType: 1,
+    closed: -1,
+    used: 1726828850092,
+    created: 1726188524968,
+    remoteIdentityKey: <Buffer 05 46 e8 49 0e 52 9f 60 a9 ba b7 ef 36 00 d3 a1 53 c2 e1 48 61 b0 6a 30 bc 65 9d b5 a7 b1 7b bc 75>
+  }
+}
+Closing stale open session for new outgoing prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    'BWF0UtSd+USqubAVCpIFHAw4FctcEDcEnsK/PqTb8y8O': { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 891862157,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 61 74 52 d4 9d f9 44 aa b9 b0 15 0a 92 05 1c 0c 38 15 cb 5c 10 37 04 9e c2 bf 3e a4 db f3 2f 0e>,
+      privKey: <Buffer c0 8f 51 60 db 61 bd 86 9c c3 35 3b 52 d1 67 08 ab 9d 21 b8 40 57 a9 81 a5 79 d4 31 b5 eb 27 51>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 17 d2 81 91 24 c8 dd d1 d7 73 2c c4 7b 9b 81 f9 87 77 1d 2f d3 d0 02 3d d6 66 d2 dc 09 11 6a 10>,
+    previousCounter: 0,
+    rootKey: <Buffer af 12 f7 99 9f 68 1f ce b2 a5 83 b3 13 9e 16 90 b6 49 a1 4c 66 0b ab 03 af 39 fd 45 ae f7 73 15>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 4c 67 3b ca e4 1f 7f e4 91 9c 0b f1 0c ab 6f 3a 4f c4 aa 67 a2 56 b6 d4 dd 49 8d 45 e2 b4 e6 48>,
+    baseKeyType: 1,
+    closed: -1,
+    used: 1728025885779,
+    created: 1728025885779,
+    remoteIdentityKey: <Buffer 05 c9 4f b5 d4 d5 3d bc 1d 0a a7 6d 24 c3 55 31 9b 98 e4 62 ed c8 b5 31 74 41 d6 1d 81 76 02 ba 34>
+  },
+  pendingPreKey: {
+    signedKeyId: 11621754,
+    baseKey: <Buffer 05 4c 67 3b ca e4 1f 7f e4 91 9c 0b f1 0c ab 6f 3a 4f c4 aa 67 a2 56 b6 d4 dd 49 8d 45 e2 b4 e6 48>,
+    preKeyId: 1461
+  }
+}
+Server Berjalan pada Port : 8000
+opened connection
+File downloaded successfully.
+{ message: 'Status sock updated successfully' }
+File downloaded successfully.
+{ message: 'Status sock updated successfully' }
+*Selamat Siang*:
+Yth. Pelanggan Setia Lab CBI
+Progress Sampel anda telah kami terima dengan:
+*No. Surat* : 313/RCH-SSS/SRS-LAB/X/2024
+*Departemen* : Nutrisi Tanaman
+*Jenis Sampel* : Daun
+*Jumlah Sampel* : 8
+*Progress saat ini* : Penerimaan dan Registrasi Sampel
+Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com
+Dengan kode tracking  *R05UI8IF*
+Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.
+
+data kosong
+Status updated: { message: 'Record updated successfully' }
+*Selamat Siang*:
+Yth. Pelanggan Setia Lab CBI
+Progress Sampel anda telah kami terima dengan:
+*No. Surat* : 314/RCH-SSS/SRS-LAB/X/2024
+*Departemen* : Nutrisi Tanaman
+*Jenis Sampel* : Rachis
+*Jumlah Sampel* : 16
+*Progress saat ini* : Penerimaan dan Registrasi Sampel
+Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com
+Dengan kode tracking  *S3KXDHXJ*
+Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.
+
+memulai cronjob  sendfailcronjob
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+Closing stale open session for new outgoing prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    'BZwF56z2KstPwD0/04VN5/TY5JyBsV40qp5WuMSvR0hk': { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 891862157,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 9c 05 e7 ac f6 2a cb 4f c0 3d 3f d3 85 4d e7 f4 d8 e4 9c 81 b1 5e 34 aa 9e 56 b8 c4 af 47 48 64>,
+      privKey: <Buffer e8 9a fa 85 c6 cc 8c e5 cf 5d bd b0 ad 54 22 02 33 63 5a 79 90 eb 38 2e 40 a7 3f d9 34 a4 65 5d>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 17 d2 81 91 24 c8 dd d1 d7 73 2c c4 7b 9b 81 f9 87 77 1d 2f d3 d0 02 3d d6 66 d2 dc 09 11 6a 10>,
+    previousCounter: 0,
+    rootKey: <Buffer 98 69 ec 44 eb a8 d7 f5 53 6e 12 32 58 0f 1a 88 55 6b 81 d7 e6 ab 26 16 c3 47 f2 8a 78 da 42 6b>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 a4 32 b3 55 ba f6 a3 2f 9c 64 0b 12 66 66 fb 2a 38 5f be bc 38 c5 4f 89 93 b6 79 b6 65 51 01 6f>,
+    baseKeyType: 1,
+    closed: -1,
+    used: 1728025886485,
+    created: 1728025886485,
+    remoteIdentityKey: <Buffer 05 c9 4f b5 d4 d5 3d bc 1d 0a a7 6d 24 c3 55 31 9b 98 e4 62 ed c8 b5 31 74 41 d6 1d 81 76 02 ba 34>
+  },
+  pendingPreKey: {
+    signedKeyId: 11621754,
+    baseKey: <Buffer 05 a4 32 b3 55 ba f6 a3 2f 9c 64 0b 12 66 66 fb 2a 38 5f be bc 38 c5 4f 89 93 b6 79 b6 65 51 01 6f>,
+    preKeyId: 947
+  }
+}
+Closing stale open session for new outgoing prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    Bf8SeSNN7E54s80Gm8dx5V2V0BMUMJaTRjmNFMCO5PMm: { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 891862157,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 ff 12 79 23 4d ec 4e 78 b3 cd 06 9b c7 71 e5 5d 95 d0 13 14 30 96 93 46 39 8d 14 c0 8e e4 f3 26>,
+      privKey: <Buffer 98 3a af f0 02 ea 9b c9 48 63 f1 64 59 66 95 f3 b7 49 11 6a 53 aa b3 e5 55 eb a9 e2 75 18 9a 59>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 17 d2 81 91 24 c8 dd d1 d7 73 2c c4 7b 9b 81 f9 87 77 1d 2f d3 d0 02 3d d6 66 d2 dc 09 11 6a 10>,
+    previousCounter: 0,
+    rootKey: <Buffer 83 af f6 0b bd 31 9e 40 09 24 fa 5d b2 56 9c 35 48 f7 a0 75 fe 3c 80 d1 26 89 77 81 37 a8 18 7f>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 d9 57 4e dd 14 91 22 ba 04 f9 88 5d a3 4d 4d 91 98 3b d9 dd 66 a1 7b de 0c 15 1c 7c 1e b5 41 1e>,
+    baseKeyType: 1,
+    closed: -1,
+    used: 1728026449523,
+    created: 1728026449523,
+    remoteIdentityKey: <Buffer 05 c9 4f b5 d4 d5 3d bc 1d 0a a7 6d 24 c3 55 31 9b 98 e4 62 ed c8 b5 31 74 41 d6 1d 81 76 02 ba 34>
+  },
+  pendingPreKey: {
+    signedKeyId: 11621754,
+    baseKey: <Buffer 05 d9 57 4e dd 14 91 22 ba 04 f9 88 5d a3 4d 4d 91 98 3b d9 dd 66 a1 7b de 0c 15 1c 7c 1e b5 41 1e>,
+    preKeyId: 1476
+  }
+}
+Server Berjalan pada Port : 8000
+opened connection
+{ message: 'Status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+data kosong
+File downloaded successfully.
+{ message: 'Status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+memulai cronjob  sendfailcronjob
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+{ message: 'Status sock updated successfully' }
+memulai cronjob  sendfailcronjob
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Server Berjalan pada Port : 8000
+opened connection
+Unknown status: send_atasan2
+Unknown status: send_atasan2
+Unknown status: send_atasan3
+Unknown status: send_atasan3
+memulai cronjob  sendfailcronjob
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+{ message: 'Status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+File downloaded successfully.
+{ message: 'Status sock updated successfully' }
+Server Berjalan pada Port : 8000
+opened connection
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Server Berjalan pada Port : 8000
+opened connection
+memulai cronjob  sendfailcronjob
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+Message sent successfully.
+Server Berjalan pada Port : 8000
+opened connection
+File downloaded successfully.
+{ message: 'Status sock updated successfully' }
+data kosong
+memulai cronjob  sendfailcronjob
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+{ message: 'Status sock updated successfully' }
+Server Berjalan pada Port : 8000
+opened connection
+Error occurred: AxiosError: Request failed with status code 404
+    at settle (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:2019:12)
+    at BrotliDecompress.handleStreamEnd (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:3135:11)
+    at BrotliDecompress.emit (node:events:530:35)
+    at endReadableNT (node:internal/streams/readable:1696:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+    at Axios.request (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:4287:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async handlePrivateMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\private_messages.js:47:26)
+    at async EventEmitter.<anonymous> (C:\Users\Digital Architect SR\Desktop\bot_grading\botroot.js:250:13) {
+  code: 'ERR_BAD_REQUEST',
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false
+    },
+    adapter: [ 'xhr', 'http', 'fetch' ],
+    transformRequest: [ [Function: transformRequest] ],
+    transformResponse: [ [Function: transformResponse] ],
+    timeout: 0,
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    env: { FormData: [Function], Blob: [class Blob] },
+    validateStatus: [Function: validateStatus],
+    headers: Object [AxiosHeaders] {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+      'User-Agent': 'axios/1.7.7',
+      'Content-Length': '82',
+      'Accept-Encoding': 'gzip, compress, deflate, br'
+    },
+    method: 'post',
+    url: 'https://management.srs-ssms.com/api/getizinverifinew',
+    data: '{"email":"j","password":"j","no_hp":"6281364362210@s.whatsapp.net","jawaban":"ya"}'
+  },
+  request: <ref *1> ClientRequest {
+    _events: [Object: null prototype] {
+      abort: [Function (anonymous)],
+      aborted: [Function (anonymous)],
+      connect: [Function (anonymous)],
+      error: [Function (anonymous)],
+      socket: [Function (anonymous)],
+      timeout: [Function (anonymous)],
+      finish: [Function: requestOnFinish]
+    },
+    _eventsCount: 7,
+    _maxListeners: undefined,
+    outputData: [],
+    outputSize: 0,
+    writable: true,
+    destroyed: true,
+    _last: false,
+    chunkedEncoding: false,
+    shouldKeepAlive: true,
+    maxRequestsOnConnectionReached: false,
+    _defaultKeepAlive: true,
+    useChunkedEncodingByDefault: true,
+    sendDate: false,
+    _removedConnection: false,
+    _removedContLen: false,
+    _removedTE: false,
+    strictContentLength: false,
+    _contentLength: '82',
+    _hasBody: true,
+    _trailer: '',
+    finished: true,
+    _headerSent: true,
+    _closed: true,
+    socket: TLSSocket {
+      _tlsOptions: [Object],
+      _secureEstablished: true,
+      _securePending: false,
+      _newSessionPending: false,
+      _controlReleased: true,
+      secureConnecting: false,
+      _SNICallback: null,
+      servername: 'management.srs-ssms.com',
+      alpnProtocol: false,
+      authorized: true,
+      authorizationError: null,
+      encrypted: true,
+      _events: [Object: null prototype],
+      _eventsCount: 9,
+      connecting: false,
+      _hadError: false,
+      _parent: null,
+      _host: 'management.srs-ssms.com',
+      _closeAfterHandlingError: false,
+      _readableState: [ReadableState],
+      _writableState: [WritableState],
+      allowHalfOpen: false,
+      _maxListeners: undefined,
+      _sockname: null,
+      _pendingData: null,
+      _pendingEncoding: '',
+      server: undefined,
+      _server: null,
+      ssl: [TLSWrap],
+      _requestCert: true,
+      _rejectUnauthorized: true,
+      timeout: 5000,
+      parser: null,
+      _httpMessage: null,
+      autoSelectFamilyAttemptedAddresses: [Array],
+      [Symbol(alpncallback)]: null,
+      [Symbol(res)]: [TLSWrap],
+      [Symbol(verified)]: true,
+      [Symbol(pendingSession)]: null,
+      [Symbol(async_id_symbol)]: -1,
+      [Symbol(kHandle)]: [TLSWrap],
+      [Symbol(lastWriteQueueSize)]: 0,
+      [Symbol(timeout)]: Timeout {
+        _idleTimeout: 5000,
+        _idlePrev: [TimersList],
+        _idleNext: [Timeout],
+        _idleStart: 187268,
+        _onTimeout: [Function: bound ],
+        _timerArgs: undefined,
+        _repeat: null,
+        _destroyed: false,
+        [Symbol(refed)]: false,
+        [Symbol(kHasPrimitive)]: false,
+        [Symbol(asyncId)]: 2193,
+        [Symbol(triggerId)]: 2191
+      },
+      [Symbol(kBuffer)]: null,
+      [Symbol(kBufferCb)]: null,
+      [Symbol(kBufferGen)]: null,
+      [Symbol(shapeMode)]: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kSetNoDelay)]: false,
+      [Symbol(kSetKeepAlive)]: true,
+      [Symbol(kSetKeepAliveInitialDelay)]: 1,
+      [Symbol(kBytesRead)]: 0,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(connect-options)]: [Object]
+    },
+    _header: 'POST /api/getizinverifinew HTTP/1.1\r\n' +
+      'Accept: application/json, text/plain, */*\r\n' +
+      'Content-Type: application/json\r\n' +
+      'User-Agent: axios/1.7.7\r\n' +
+      'Content-Length: 82\r\n' +
+      'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+      'Host: management.srs-ssms.com\r\n' +
+      'Connection: keep-alive\r\n' +
+      '\r\n',
+    _keepAliveTimeout: 0,
+    _onPendingData: [Function: nop],
+    agent: Agent {
+      _events: [Object: null prototype],
+      _eventsCount: 2,
+      _maxListeners: undefined,
+      defaultPort: 443,
+      protocol: 'https:',
+      options: [Object: null prototype],
+      requests: [Object: null prototype] {},
+      sockets: [Object: null prototype] {},
+      freeSockets: [Object: null prototype],
+      keepAliveMsecs: 1000,
+      keepAlive: true,
+      maxSockets: Infinity,
+      maxFreeSockets: 256,
+      scheduling: 'lifo',
+      maxTotalSockets: Infinity,
+      totalSocketCount: 1,
+      maxCachedSessions: 100,
+      _sessionCache: [Object],
+      [Symbol(shapeMode)]: false,
+      [Symbol(kCapture)]: false
+    },
+    socketPath: undefined,
+    method: 'POST',
+    maxHeaderSize: undefined,
+    insecureHTTPParser: undefined,
+    joinDuplicateHeaders: undefined,
+    path: '/api/getizinverifinew',
+    _ended: true,
+    res: IncomingMessage {
+      _events: [Object],
+      _readableState: [ReadableState],
+      _maxListeners: undefined,
+      socket: null,
+      httpVersionMajor: 1,
+      httpVersionMinor: 1,
+      httpVersion: '1.1',
+      complete: true,
+      rawHeaders: [Array],
+      rawTrailers: [],
+      joinDuplicateHeaders: undefined,
+      aborted: false,
+      upgrade: false,
+      url: '',
+      method: null,
+      statusCode: 404,
+      statusMessage: 'Not Found',
+      client: [TLSSocket],
+      _consuming: true,
+      _dumped: false,
+      req: [Circular *1],
+      _eventsCount: 4,
+      responseUrl: 'https://management.srs-ssms.com/api/getizinverifinew',
+      redirects: [],
+      [Symbol(shapeMode)]: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kHeaders)]: [Object],
+      [Symbol(kHeadersCount)]: 36,
+      [Symbol(kTrailers)]: null,
+      [Symbol(kTrailersCount)]: 0
+    },
+    aborted: false,
+    timeoutCb: null,
+    upgradeOrConnect: false,
+    parser: null,
+    maxHeadersCount: null,
+    reusedSocket: false,
+    host: 'management.srs-ssms.com',
+    protocol: 'https:',
+    _redirectable: Writable {
+      _events: [Object],
+      _writableState: [WritableState],
+      _maxListeners: undefined,
+      _options: [Object],
+      _ended: true,
+      _ending: true,
+      _redirectCount: 0,
+      _redirects: [],
+      _requestBodyLength: 82,
+      _requestBodyBuffers: [],
+      _eventsCount: 3,
+      _onNativeResponse: [Function (anonymous)],
+      _currentRequest: [Circular *1],
+      _currentUrl: 'https://management.srs-ssms.com/api/getizinverifinew',
+      [Symbol(shapeMode)]: true,
+      [Symbol(kCapture)]: false
+    },
+    [Symbol(shapeMode)]: false,
+    [Symbol(kCapture)]: false,
+    [Symbol(kBytesWritten)]: 0,
+    [Symbol(kNeedDrain)]: false,
+    [Symbol(corked)]: 0,
+    [Symbol(kOutHeaders)]: [Object: null prototype] {
+      accept: [Array],
+      'content-type': [Array],
+      'user-agent': [Array],
+      'content-length': [Array],
+      'accept-encoding': [Array],
+      host: [Array]
+    },
+    [Symbol(errored)]: null,
+    [Symbol(kHighWaterMark)]: 16384,
+    [Symbol(kRejectNonStandardBodyWrites)]: false,
+    [Symbol(kUniqueHeaders)]: null
+  },
+  response: {
+    status: 404,
+    statusText: 'Not Found',
+    headers: Object [AxiosHeaders] {
+      date: 'Fri, 04 Oct 2024 08:12:25 GMT',
+      'content-type': 'application/json',
+      'transfer-encoding': 'chunked',
+      connection: 'keep-alive',
+      'x-powered-by': 'PHP/8.2.15',
+      'cache-control': 'no-cache, private',
+      'access-control-allow-origin': '*',
+      vary: 'Accept-Encoding',
+      platform: 'hostinger',
+      panel: 'hpanel',
+      'content-security-policy': 'upgrade-insecure-requests',
+      'x-turbo-charged-by': 'LiteSpeed',
+      'cf-cache-status': 'DYNAMIC',
+      'report-to': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=sG7X4X9S7SISEGqR7XhVf0PULtG8zRp%2BkhXCl6uY0TdMZ5KF11MbjXyT9MBoafdhWyRgPcMwIFDoFvXvyPiNp8wOLM5ytKuRB6SQ4Glf7fjB5elOkF1Fy8uHSrvEeKwaEoQDIvZEqbeJ4Q%3D%3D"}],"group":"cf-nel","max_age":604800}',
+      nel: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}',
+      server: 'cloudflare',
+      'cf-ray': '8cd3b4f33fc35cde-SIN'
+    },
+    config: {
+      transitional: [Object],
+      adapter: [Array],
+      transformRequest: [Array],
+      transformResponse: [Array],
+      timeout: 0,
+      xsrfCookieName: 'XSRF-TOKEN',
+      xsrfHeaderName: 'X-XSRF-TOKEN',
+      maxContentLength: -1,
+      maxBodyLength: -1,
+      env: [Object],
+      validateStatus: [Function: validateStatus],
+      headers: [Object [AxiosHeaders]],
+      method: 'post',
+      url: 'https://management.srs-ssms.com/api/getizinverifinew',
+      data: '{"email":"j","password":"j","no_hp":"6281364362210@s.whatsapp.net","jawaban":"ya"}'
+    },
+    request: <ref *1> ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 7,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: true,
+      _last: false,
+      chunkedEncoding: false,
+      shouldKeepAlive: true,
+      maxRequestsOnConnectionReached: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: true,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      strictContentLength: false,
+      _contentLength: '82',
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      _closed: true,
+      socket: [TLSSocket],
+      _header: 'POST /api/getizinverifinew HTTP/1.1\r\n' +
+        'Accept: application/json, text/plain, */*\r\n' +
+        'Content-Type: application/json\r\n' +
+        'User-Agent: axios/1.7.7\r\n' +
+        'Content-Length: 82\r\n' +
+        'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+        'Host: management.srs-ssms.com\r\n' +
+        'Connection: keep-alive\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: nop],
+      agent: [Agent],
+      socketPath: undefined,
+      method: 'POST',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      joinDuplicateHeaders: undefined,
+      path: '/api/getizinverifinew',
+      _ended: true,
+      res: [IncomingMessage],
+      aborted: false,
+      timeoutCb: null,
+      upgradeOrConnect: false,
+      parser: null,
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: 'management.srs-ssms.com',
+      protocol: 'https:',
+      _redirectable: [Writable],
+      [Symbol(shapeMode)]: false,
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(kNeedDrain)]: false,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype],
+      [Symbol(errored)]: null,
+      [Symbol(kHighWaterMark)]: 16384,
+      [Symbol(kRejectNonStandardBodyWrites)]: false,
+      [Symbol(kUniqueHeaders)]: null
+    },
+    data: { message: 'Tidak ada permintaan yang dapat di proses saat ini.' }
+  },
+  status: 404
+}
+Server Berjalan pada Port : 8000
+opened connection
+{ message: 'Status sock updated successfully' }
+Status updated: { message: 'Record updated successfully' }
+data kosong
+{ message: 'Status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+memulai cronjob  sendfailcronjob
+data kosong
+Attempt 1 failed with error: TimeoutError: Navigation timeout of 30000 ms exceeded
+    at new Deferred (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\puppeteer-core\lib\cjs\puppeteer\util\Deferred.js:59:34)
+    at Deferred.create (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\puppeteer-core\lib\cjs\puppeteer\util\Deferred.js:21:16)
+    at new LifecycleWatcher (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\puppeteer-core\lib\cjs\puppeteer\cdp\LifecycleWatcher.js:66:60)
+    at CdpFrame.goto (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\puppeteer-core\lib\cjs\puppeteer\cdp\Frame.js:143:29)
+    at CdpFrame.<anonymous> (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\puppeteer-core\lib\cjs\puppeteer\util\decorators.js:98:27)
+    at CdpPage.goto (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\puppeteer-core\lib\cjs\puppeteer\api\Page.js:588:43)
+    at generatemapstaksasi (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\taksasi\taksasihelper.js:47:18)
+    at async sendtaksasiest (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\taksasi\taksasihelper.js:87:5)
+    at async sendfailcronjob (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\taksasi\taksasihelper.js:174:11)
+    at async cron.schedule.scheduled [as _execution] (C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:971:9)
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+{ message: 'Status sock updated successfully' }
+memulai cronjob  sendfailcronjob
+data kosong
+Status updated: { message: 'Record updated successfully' }
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+data kosong
+{
+  message: 'Fail pdf izin kebun succes terkirim',
+  data: [
+    {
+      id_db: 371,
+      group_id: '120363205553012899@g.us',
+      uuid: '6e422c9b-fa86-4971-a738-8781b215fe46',
+      user_id: 916,
+      nama_user: 'WINDRA SURONO',
+      no_hp_user: '6285264729099',
+      tanggal_keluar: '2024-10-05 15:14:00',
+      tanggal_kembali: '2024-10-06 18:00:00',
+      lokasi_tujuan: 'Pangkalan Bun',
+      plat_nomor: 'KH 1643 RE',
+      kendaraan: 'Mobil',
+      keperluan: 'Services Mobil Di Wira Toyota, Belanja Bulanan',
+      atasan_1: 1066,
+      nama_atasan_1: 'ARIONDO SIMANJUNTAK',
+      atasan_2: 1064,
+      nama_atasan_2: 'ARIS PRIMAYUDA',
+      atasan_3: 1063,
+      nama_atasan_3: 'FIZRUL INDRA LUBIS',
+      type: 'send_atasan_tiga',
+      status: 'approved',
+      atasan: 'Atasan Dua',
+      update_type: 'atasan2',
+      id: '371/1063',
+      send_to: '6281251689888'
+    }
+  ]
+}
+{ message: 'Status sock updated successfully' }
+memulai cronjob  sendfailcronjob
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
