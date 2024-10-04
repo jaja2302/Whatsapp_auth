@@ -922,7 +922,7 @@ async function Fail_send_pdf() {
 
     // console.log(response.data.message);
 
-    return response.data.message;
+    return response.data;
   } catch (error) {
     console.error('Error fetching data from API:', error.message);
     throw error;

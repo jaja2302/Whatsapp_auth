@@ -124,7 +124,7 @@ const handleGroupMessage = async (
     await sock.sendMessage(
       noWa,
       {
-        text: `${response}`,
+        text: `${response.data}`,
       },
       { quoted: message }
     );
