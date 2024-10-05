@@ -920,7 +920,7 @@ async function Fail_send_pdf() {
       }
     );
 
-    // console.log(response.data.message);
+    console.log(response.data);
 
     return response.data;
   } catch (error) {

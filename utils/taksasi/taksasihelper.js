@@ -179,10 +179,6 @@ async function sendfailcronjob(sock) {
             task.id
           );
           // Task completed successfully
-          return {
-            status: 200,
-            message: 'Menggirim Fail Cronjob Berhasil',
-          };
         } catch (error) {
           // Handle error here if needed
           console.error(error);
@@ -193,6 +189,10 @@ async function sendfailcronjob(sock) {
         }
       }
     }
+    return {
+      status: 200,
+      message: 'Menggirim Fail Cronjob Berhasil',
+    };
   } catch (error) {
     return {
       status: 500,

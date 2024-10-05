@@ -970,7 +970,7 @@ const setupCronJobs = (sock) => {
       async () => {
         console.log('memulai cronjob  sendfailcronjob');
         await sendfailcronjob(sock);
-        Fail_send_pdf;
+        Fail_send_pdf();
       },
       {
         scheduled: true,
