@@ -82,13 +82,21 @@ async function generatemapstaksasi(est, datetime) {
   }
 }
 
-async function sendtaksasiest(estate, group_id, folder, sock, taskid) {
+async function sendtaksasiest(estate, group_id, folder, sock, taskid, tanggal) {
   try {
-    await generatemapstaksasi(estate, datetimeValue);
+    let newdaate;
+    if (tanggal === 'null' || tanggal === null) {
+      newdaate = datetimeValue;
+    } else {
+      newdaate = tanggal;
+    }
+    await generatemapstaksasi(estate, newdaate);
+
+    // console.log(newdaate);
 
     try {
       const { data: responseData } = await axios.get(
-        `https://smart-app.srs-ssms.com/api/exportPdfTaksasi/${estate}/${datetimeValue}`
+        `https://smart-app.srs-ssms.com/api/exportPdfTaksasi/${estate}/${newdaate}`
       );
 
       if (responseData.base64_pdf) {
@@ -176,7 +184,8 @@ async function sendfailcronjob(sock) {
             task.group_id,
             'null',
             sock,
-            task.id
+            task.id,
+            'null'
           );
           // Task completed successfully
         } catch (error) {
@@ -307,167 +316,115 @@ async function Sendverificationtaksasi(sock) {
   }
 }
 
-const handleTaksasi = async (noWa, text, sock) => {
-  const resetUserState = async () => {
-    await sock.sendMessage(noWa, {
-      text: 'Waktu Anda telah habis. Silakan mulai kembali dengan mengetikkan !taksasi.',
-    });
-    delete userTalsasiChoice[noWa];
-    delete botTaksasi[noWa];
-    if (timeoutHandlestaksasi[noWa]) {
-      clearTimeout(timeoutHandlestaksasi[noWa]);
-      delete timeoutHandlestaksasi[noWa];
-    }
-  };
+async function handleTaksasi(data, sock) {
+  console.log('Received data:', data);
 
-  const setUserTimeout = () => {
-    if (timeoutHandlestaksasi[noWa]) {
-      clearTimeout(timeoutHandlestaksasi[noWa]);
-    }
-    timeoutHandlestaksasi[noWa] = setTimeout(resetUserState, 60 * 1000);
-  };
+  // Extract parts of the command
+  const parts = data.split('/');
+  console.log(parts);
 
-  if (!userTalsasiChoice[noWa]) {
-    userTalsasiChoice[noWa] = 'tanggal';
-    botTaksasi[noWa] = { attempts: 0 };
-    await sock.sendMessage(noWa, {
-      text: 'Masukkan Tanggal (Format: Hari-Bulan-Tahun) Contoh : (20-02-2024)',
-    });
-    setUserTimeout();
-  } else {
-    setUserTimeout(); // Reset timeout with every interaction
-    const step = userTalsasiChoice[noWa];
-
-    if (step === 'tanggal') {
-      botTaksasi[noWa].tanggal = text;
-      const dateRegex = /^\d{2}-\d{2}-\d{4}$/;
-      if (!dateRegex.test(text)) {
-        await sock.sendMessage(noWa, {
-          text: 'Tanggal tidak sesuai, harap masukkan kembali (Format: Hari-Bulan-Tahun):',
-        });
-        return;
-      }
-
-      const [day, month, year] = text.split('-').map(Number);
-      if (month < 1 || month > 12 || day < 1 || day > 31) {
-        await sock.sendMessage(noWa, {
-          text: 'Tanggal atau bulan tidak valid. Harap masukkan kembali (Format: Hari-Bulan-Tahun):',
-        });
-        return;
-      }
-
-      const inputDate = new Date(year, month - 1, day);
-      if (
-        inputDate.getDate() !== day ||
-        inputDate.getMonth() !== month - 1 ||
-        inputDate.getFullYear() !== year
-      ) {
-        await sock.sendMessage(noWa, {
-          text: 'Tanggal tidak valid. Harap masukkan kembali (Format: Hari-Bulan-Tahun):',
-        });
-        return;
-      }
-
-      botTaksasi[noWa].date = text;
-      userTalsasiChoice[noWa] = 'estate';
-      await sock.sendMessage(noWa, {
-        text: 'Harap masukkan Estate apa saja dengan format setiap estate diakhiri dengan (/) contoh: kne/sce/nbe',
-      });
-    } else if (step === 'estate') {
-      const estates = text.split('/').filter(Boolean); // Split input by '/' and filter out empty strings
-      botTaksasi[noWa].estates = estates;
-
-      // Validate the input format
-      if (!text.includes('/')) {
-        await sock.sendMessage(noWa, {
-          text: 'Format tidak sesuai. Harap masukkan estate dengan pemisah / contoh: kne/sce/nbe',
-        });
-        return;
-      }
-
-      try {
-        const apiUrl = 'https://qc-apps.srs-ssms.com/api/getdatacron';
-        const response = await axios.get(apiUrl);
-
-        if (Array.isArray(response.data)) {
-          const apiEstates = response.data.map((item) =>
-            item.estate.toLowerCase()
-          ); // Extract estate values from API response and convert to lowercase
-
-          // Find available estates
-          const availableEstates = estates.filter((estate) =>
-            apiEstates.includes(estate.toLowerCase())
-          ); // Convert user input to lowercase before comparing
-
-          if (availableEstates.length === 0) {
-            await sock.sendMessage(noWa, {
-              text: 'Masukan nama estate yang benar!',
-            });
-          } else {
-            const dataestate = response.data;
-
-            for (const estate of availableEstates) {
-              const matchingTasks = dataestate.filter(
-                (task) => task.estate.toLowerCase() === estate.toLowerCase()
-              );
-
-              if (matchingTasks.length > 0) {
-                const {
-                  estate: estateFromMatchingTask,
-                  group_id,
-                  wilayah: folder,
-                } = matchingTasks[0];
-                await sock.sendMessage(noWa, {
-                  text: `Estate ${estateFromMatchingTask} sedang di proses`,
-                });
-                await generatemapstaksasi(
-                  estateFromMatchingTask,
-                  botTaksasi[noWa].tanggal
-                );
-                // estate, group_id, folder, sock
-                await sendtaksasiest(
-                  estateFromMatchingTask,
-                  group_id,
-                  'null',
-                  sock,
-                  'null'
-                );
-              }
-            }
-          }
-        } else {
-          throw new Error('Invalid API response structure');
-        }
-      } catch (error) {
-        console.log('Error fetching data:', error.message);
-        await sock.sendMessage(noWa, {
-          text: 'There was an error checking the estate availability. Please try again later.',
-        });
-      }
-
-      // Send a thank you message with the estates entered
-      // await sock.sendMessage(noWa, { text: `Terima kasih. Estate yang Anda masukkan adalah: ${estates.join(', ')}` });
-
-      // Reset all states
-      delete userTalsasiChoice[noWa];
-      delete botTaksasi[noWa];
-      if (timeoutHandlestaksasi[noWa]) {
-        clearTimeout(timeoutHandlestaksasi[noWa]);
-        delete timeoutHandlestaksasi[noWa];
-      }
-    } else {
-      await sock.sendMessage(noWa, {
-        text: 'Pilihan tidak valid. Silakan masukkan nomor yang sesuai:',
-      });
-    }
+  // Check if the command is valid
+  if (parts.length < 1) {
+    return {
+      status: 400,
+      message:
+        'Harap tambahkan  tanggal dan nama estate dibatasi dengan /\n-Contoh !taksasi/2024-12-23/kne/nbe/tbe/sbe/lme1',
+    };
   }
-};
+
+  // Extract date and estate details
+  const command = parts[0]; // !taksasi
+  const date = parts[1]; // 2024-02-97
+  const estates = parts.slice(2); // [kne, nbe, tbe, sbe, lme1]
+
+  // Validate date format
+  const dateRegex = /^\d{4}-\d{1,2}-\d{1,2}$/;
+  if (!dateRegex.test(date)) {
+    return {
+      status: 400,
+      message: 'invalid tanggal format,gunakan format tanggal yyyy-mm-dd',
+    };
+  }
+
+  // Further validate that the date is logically valid
+  const [year, month, day] = date.split('-').map(Number);
+  const dateObject = new Date(year, month - 1, day); // JS Date months are 0-indexed
+
+  if (
+    dateObject.getFullYear() !== year ||
+    dateObject.getMonth() + 1 !== month ||
+    dateObject.getDate() !== day
+  ) {
+    return {
+      status: 400,
+      message: 'Tanggal yang anda masukan tidak valid',
+    };
+  }
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // Normalize today's date to remove time components
+
+  if (date > today) {
+    return {
+      status: 400,
+      message:
+        'Bot tidak punya mesin waktu ke tanggal ini. Masukan masksimal hari ini dan masa lalu.',
+    };
+  }
+  // Define your API URL
+  const apiUrl = 'https://qc-apps.srs-ssms.com/api/getdatacron';
+
+  try {
+    // Fetch data from the API
+    const response = await axios.get(apiUrl);
+    const dataestate = response.data;
+
+    // Loop through user input estates and match with API data
+    for (const estate of estates) {
+      const matchingTasks = dataestate.filter(
+        (task) => task.estate === estate.toUpperCase()
+      );
+
+      if (matchingTasks.length > 0) {
+        // There is a match, loop through and send for each matching task
+        for (const task of matchingTasks) {
+          const { estate, group_id, wilayah: folder, id } = task;
+          try {
+            // Call your sendtaksasiest function here
+            await sendtaksasiest(estate, group_id, 'null', sock, id, date);
+            // console.log(`Successfully sent taksasi for estate: ${estate}`);
+          } catch (error) {
+            // Handle error if sending fails
+            console.error('Error sending taksasi:', error.message);
+            return {
+              status: 500,
+              message: `Failed to send taksasi for estate ${estate}`,
+            };
+          }
+        }
+      } else {
+        // No matching task found
+        console.log(`No matching tasks found for estate: ${estate}`);
+      }
+    }
+  } catch (error) {
+    console.log('Error fetching data:', error.message);
+    return {
+      status: 500,
+      message: 'Error fetching data from API',
+    };
+  }
+
+  return {
+    status: 200,
+    message: 'Taksasi berhasil dikirim',
+  };
+}
 
 module.exports = {
   handleTaksasi,
-  botTaksasi,
-  userTalsasiChoice,
-  timeoutHandlestaksasi,
+  // botTaksasi,
+  // userTalsasiChoice,
+  // timeoutHandlestaksasi,
   sendtaksasiest,
   sendfailcronjob,
   Generateandsendtaksasi,

@@ -19,8 +19,8 @@ const handleGroupMessage = async (
   sock,
   message
 ) => {
-  if (lowerCaseMessage && lowerCaseMessage.startsWith('!tarik')) {
-    const estateCommand = lowerCaseMessage.replace('!tarik', '').trim();
+  if (lowerCaseMessage && lowerCaseMessage.startsWith('!tartar')) {
+    const estateCommand = lowerCaseMessage.replace('!tartar', '').trim();
     const estate = estateCommand.toUpperCase(); // Convert to uppercase for consistency
     // Check if the estate name is valid
     if (!estate) {
@@ -56,7 +56,8 @@ const handleGroupMessage = async (
           group_id,
           folder,
           sock,
-          id
+          id,
+          'null'
         );
         await sock.sendMessage(
           noWa,
@@ -77,13 +78,23 @@ const handleGroupMessage = async (
     } catch (error) {
       console.log('Error fetching data:', error.message);
     }
-  } else if (lowerCaseMessage === '!taksasi') {
-    if (!userTalsasiChoice[noWa]) {
-      await handleTaksasi(noWa, lowerCaseMessage, sock);
-    }
-  } else if (userTalsasiChoice[noWa]) {
-    // Continue the ijin process if it has already started
-    await handleTaksasi(noWa, text, sock);
+  } else if (lowerCaseMessage && lowerCaseMessage.startsWith('!taksasi')) {
+    // console.log(lowerCaseMessage);
+    await sock.sendMessage(
+      noWa,
+      {
+        text: 'Mohon tunggu Taksasi sedang di proses',
+      },
+      { quoted: message }
+    );
+    let respon = await handleTaksasi(lowerCaseMessage, sock);
+    await sock.sendMessage(
+      noWa,
+      {
+        text: respon.message,
+      },
+      { quoted: message }
+    );
   } else if (lowerCaseMessage === '!menu') {
     await sock.sendMessage(
       noWa,
@@ -92,7 +103,7 @@ const handleGroupMessage = async (
       },
       { quoted: message }
     );
-  } else if (lowerCaseMessage === '!failcronjob') {
+  } else if (lowerCaseMessage === '!failcronjobca') {
     await sock.sendMessage(
       noWa,
       {
@@ -111,7 +122,7 @@ const handleGroupMessage = async (
       },
       { quoted: message }
     );
-  } else if (lowerCaseMessage === '!failizinkebun') {
+  } else if (lowerCaseMessage === '!failizinkebunda') {
     await sock.sendMessage(
       noWa,
       {
