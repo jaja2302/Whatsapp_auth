@@ -19,8 +19,8 @@ const handleGroupMessage = async (
   sock,
   message
 ) => {
-  if (lowerCaseMessage && lowerCaseMessage.startsWith('!tartar')) {
-    const estateCommand = lowerCaseMessage.replace('!tartar', '').trim();
+  if (lowerCaseMessage && lowerCaseMessage.startsWith('!tarik')) {
+    const estateCommand = lowerCaseMessage.replace('!tarik', '').trim();
     const estate = estateCommand.toUpperCase(); // Convert to uppercase for consistency
     // Check if the estate name is valid
     if (!estate) {
@@ -103,7 +103,7 @@ const handleGroupMessage = async (
       },
       { quoted: message }
     );
-  } else if (lowerCaseMessage === '!failcronjobca') {
+  } else if (lowerCaseMessage === '!failcronjob') {
     await sock.sendMessage(
       noWa,
       {
@@ -122,7 +122,7 @@ const handleGroupMessage = async (
       },
       { quoted: message }
     );
-  } else if (lowerCaseMessage === '!failizinkebunda') {
+  } else if (lowerCaseMessage === '!failizinkebun') {
     await sock.sendMessage(
       noWa,
       {

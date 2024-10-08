@@ -155,12 +155,12 @@ async function connectToWhatsApp() {
       let getGroups = await sock.groupFetchAllParticipating();
       let groups = Object.values(await sock.groupFetchAllParticipating());
       // console.log(groups);
-      // for (let group of groups) {
-      //   console.log(
-      //     'id_group: ' + group.id + ' || Nama Group: ' + group.subject
-      //   );
-      // }
-      // return;
+      for (let group of groups) {
+        console.log(
+          'id_group: ' + group.id + ' || Nama Group: ' + group.subject
+        );
+      }
+      return;
     }
     if (update.qr) {
       qr = update.qr;
