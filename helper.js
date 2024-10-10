@@ -19,7 +19,10 @@ const {
 } = require('./utils/taksasi/taksasihelper');
 const { get_mill_data } = require('./utils/grading/gradinghelper');
 const { pingGoogle, sendSummary } = require('./utils/rekap_harian_uptime');
-const { get_iot_weatherstation } = require('./utils/iot/iothelper');
+const {
+  get_iot_weatherstation,
+  get_iot_weatherstation_data_gap,
+} = require('./utils/iot/iothelper');
 const { get_outstadingdata } = require('./utils/marcom/marcomhelper');
 const {
   timeoutHandles,
@@ -925,6 +928,8 @@ const setupCronJobs = (sock) => {
   cron.schedule(
     '*/5 * * * *',
     async () => {
+      console.log('cron job ping google');
+
       await pingGoogle();
       // await get_mill_data(sock);
     },
@@ -940,6 +945,10 @@ const setupCronJobs = (sock) => {
       '0 * * * *',
       async () => {
         try {
+          console.log(
+            'cron job statusAWS,statusHistory,get_iot_weatherstation'
+          );
+
           await statusAWS(sock);
           await statusHistory(sock);
           await get_iot_weatherstation(sock);
@@ -955,6 +964,10 @@ const setupCronJobs = (sock) => {
     cron.schedule(
       '0 9 * * *',
       async () => {
+        console.log(
+          'cron job handleBotLaporanHarianFleetManagement,handleBotDailyPengawasanOperatorAI,sendSummary,get_outstadingdata'
+        );
+
         await handleBotLaporanHarianFleetManagement(sock);
         await handleBotDailyPengawasanOperatorAI(sock);
         await sendSummary(sock);
@@ -968,9 +981,10 @@ const setupCronJobs = (sock) => {
     cron.schedule(
       '*/10 * * * *',
       async () => {
-        console.log('memulai cronjob  sendfailcronjob');
+        console.log('memulai cronjob  taksasi fail,pdf izin kebun,iot gap');
         await sendfailcronjob(sock);
         Fail_send_pdf();
+        await get_iot_weatherstation_data_gap(sock);
       },
       {
         scheduled: true,
@@ -980,7 +994,7 @@ const setupCronJobs = (sock) => {
     cron.schedule(
       '*/5 * * * *',
       async () => {
-        // await pingGoogle();
+        console.log('cron job get_mill_data');
         await get_mill_data(sock);
       },
       {
@@ -991,6 +1005,9 @@ const setupCronJobs = (sock) => {
     cron.schedule(
       '*/15 * * * *',
       async () => {
+        console.log(
+          'cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI'
+        );
         await updatePCStatus();
         await triggerStatusPCPengawasanOperatorAI(sock);
       },
@@ -1002,6 +1019,7 @@ const setupCronJobs = (sock) => {
     cron.schedule(
       '0 12 * * 6',
       async () => {
+        console.log('cron job Report_group_izinkebun');
         await Report_group_izinkebun(sock);
       },
       {
