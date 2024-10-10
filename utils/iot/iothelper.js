@@ -2,6 +2,9 @@ const axios = require('axios');
 const { catcherror } = require('../izinkebun/helper');
 const idgroupiot = '120363339511378953@g.us';
 
+// grup testing
+// const idgroupiot = '120363205553012899@g.us';
+
 async function get_iot_weatherstation(sock) {
   try {
     const response = await axios.get(
@@ -47,8 +50,8 @@ async function get_iot_weatherstation(sock) {
 async function get_iot_weatherstation_data_gap(sock) {
   try {
     const response = await axios.get(
-      // 'https://management.srs-ssms.com/api/uptime_data_weather_station',
-      'http://erpda.test/api/uptime_data_weather_station',
+      'https://management.srs-ssms.com/api/uptime_data_weather_station',
+      // 'http://erpda.test/api/uptime_data_weather_station',
       {
         params: {
           email: 'j',
@@ -66,10 +69,12 @@ async function get_iot_weatherstation_data_gap(sock) {
 
       // Handling dead stations
       if (dead_stations.length > 0) {
-        let message = `Laporan Weather Station - Dead Stations\n`;
+        let message = `Laporan Stasiun Cuaca: Stasiun Tidak Aktif\n\n`;
         dead_stations.forEach((station) => {
-          message += `Nama: ${station}\n`;
+          message += `- Nama Stasiun: ${station}\n`;
         });
+
+        message += `\nMohon segera periksa stasiun-stasiun yang tidak aktif.\n`;
 
         try {
           await sock.sendMessage(idgroupiot, { text: message });
@@ -79,17 +84,19 @@ async function get_iot_weatherstation_data_gap(sock) {
         }
       }
 
-      // Handling stations with gaps
+      // Menangani stasiun dengan data gap
       if (Object.keys(stations_with_gaps).length > 0) {
         for (const [stationId, gaps] of Object.entries(stations_with_gaps)) {
           gaps.forEach(async (gapData) => {
-            let message = `Laporan Weather Station - Gaps\n`;
-            message += `Nama: ${gapData.desc}\n`;
+            let message = `Laporan Stasiun Cuaca: Terjadi Kesenjangan Data\n\n`;
+            message += `Nama Stasiun: ${gapData.desc}\n`;
             message += `Lokasi: ${gapData.loc}\n`;
-            message += `Last online station: ${gapData.last_online_station || 'N/A'}\n`;
-            message += `Last update data: ${gapData.last_update_at_data}\n`;
-            message += `Tanggal Sekarang: ${gapData.gap_current_time}\n`;
-            message += `Gap waktu dimiliki (menit): ${gapData.gap_in_minutes.toFixed(2)}\n`;
+            message += `Terakhir Online: ${gapData.last_online_station || 'Data tidak tersedia'}\n`;
+            message += `Terakhir Pembaruan Data: ${gapData.last_update_at_data}\n`;
+            message += `Waktu Perbandingan dengan data terakhir: ${gapData.gap_current_time}\n`;
+            message += `Durasi Kesenjangan Data: ${gapData.gap_in_minutes.toFixed(2)} menit\n`;
+
+            message += `\nMohon selidiki kesenjangan data pada stasiun ini.\n`;
 
             try {
               await sock.sendMessage(idgroupiot, { text: message });
