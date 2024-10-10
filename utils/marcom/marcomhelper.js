@@ -2,7 +2,7 @@ const axios = require('axios');
 const fs = require('fs');
 const https = require('https');
 const { catcherror } = require('../izinkebun/helper');
-const idgroup = '120363205553012899@g.us';
+const idgroup = '120363346145146382@g.us';
 const { channel } = require('../../utils/pusher');
 async function get_outstadingdata(sock) {
   try {

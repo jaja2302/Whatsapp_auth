@@ -2,13 +2,8 @@
 /yarn.lock
 /baileys_auth_info
 /auth_info_baileys
-.vercel.json
-.latest_id.txt
-.data.json
-.package-lock.json
-.bot_da_error.log
-.bot_da.log
-.bot_grading_error.log
-.bot-grading-error.log
-.bot-grading-out.log
+/up_time_log
 /uploads
+.latest_id.txt
+.bot_grading_error.log
+.bot_grading.log
