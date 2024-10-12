@@ -952,6 +952,7 @@ const setupCronJobs = (sock) => {
           await statusAWS(sock);
           await statusHistory(sock);
           await get_iot_weatherstation(sock);
+          await get_iot_weatherstation_data_gap(sock);
         } catch (error) {
           console.error('Error in cron job:', error);
         }
@@ -984,7 +985,6 @@ const setupCronJobs = (sock) => {
         console.log('memulai cronjob  taksasi fail,pdf izin kebun,iot gap');
         await sendfailcronjob(sock);
         Fail_send_pdf();
-        await get_iot_weatherstation_data_gap(sock);
       },
       {
         scheduled: true,

@@ -69,25 +69,46 @@ async function get_mill_data(sock) {
           document: pdfBuffer,
           mimetype: 'application/pdf',
           fileName: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
-          
+
           caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
         };
 
         try {
+          // First, try sending the message
           await sock.sendMessage(noWa_grading, messageOptions);
-          await axios.post(
-            'https://management.srs-ssms.com/api/updatedatamill',
-            {
-              id: itemdata.id,
-              email: 'j',
-              password: 'j',
-            }
-          );
-        } catch (error) {
-          console.log(error);
 
-          await catcherror(itemdata.id, 'error_cronjob', 'bot_grading_mill');
+          // If sendMessage succeeds, then proceed with updating data
+          try {
+            await axios.post(
+              'https://management.srs-ssms.com/api/updatedatamill',
+              {
+                id: itemdata.id,
+                email: 'j', // replace with actual credentials
+                password: 'j', // replace with actual credentials
+              }
+            );
+            console.log('Data update successful for ID:', itemdata.id);
+          } catch (updateError) {
+            console.log(
+              'Error updating data for ID:',
+              itemdata.id,
+              updateError
+            );
+            await catcherror(
+              itemdata.id,
+              'error_updating_data',
+              'bot_grading_mill'
+            );
+          }
+        } catch (sendMessageError) {
+          console.log('Error sending message:', sendMessageError);
+          await catcherror(
+            itemdata.id,
+            'error_sending_message',
+            'bot_grading_mill'
+          );
         }
+
         // Send the PDF file
       }
     } else {
