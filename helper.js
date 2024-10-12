@@ -1017,7 +1017,7 @@ const setupCronJobs = (sock) => {
       }
     );
     cron.schedule(
-      '0 12 * * 6',
+      '30 11 * * 6', // format untuk jam 11:30 setiap Sabtu
       async () => {
         console.log('cron job Report_group_izinkebun');
         await Report_group_izinkebun(sock);
@@ -1027,6 +1027,7 @@ const setupCronJobs = (sock) => {
         timezone: 'Asia/Jakarta',
       }
     );
+
     // cron.schedule(
     //   '0 14 * * *', // Runs at 14:00 every day
     //   async () => {

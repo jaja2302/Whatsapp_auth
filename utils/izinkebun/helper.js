@@ -880,13 +880,18 @@ async function Report_group_izinkebun(sock) {
     if (data.pdf) {
       try {
         // Decode the base64 PDF and prepare it for sending
+        const captions =
+          'Laporan Izin Kebun Minggu ini\n' +
+          'Berikut data yang izin keluar kebun\n' +
+          'Generate by SRS BOT';
+
         const pdfBuffer = Buffer.from(data.pdf, 'base64');
         const pdfFilename = data.filename || 'Invoice.pdf';
         const messageOptions = {
           document: pdfBuffer,
           mimetype: 'application/pdf',
           fileName: pdfFilename,
-          caption: 'Laporan Izin Kebun',
+          caption: captions,
         };
 
         // Send the PDF as a document via WhatsApp
@@ -1015,7 +1020,7 @@ const runfunction = async (sock) => {
             // const genpdf = await axios.get('http://qc-apps2.test/api/generatePdfIzinKebun', {
             const genpdf = await axios.get(
               'https://izin-kebun.srs-ssms.com/api/generatePdfIzinKebun',
-              // 'http://qc-apps2.test/api/generatePdfIzinKebun',
+              // 'http://izin-kebun-web.test/api/generatePdfIzinKebun',
               {
                 params: {
                   user: 'j',
@@ -1024,60 +1029,32 @@ const runfunction = async (sock) => {
                 },
               }
             );
-            // console.log(genpdf.data.filename);
-            const fileUrl = `https://izin-kebun.srs-ssms.com/public/storage/files/${genpdf.data.filename}`;
-            const destinationPath = `./uploads/${itemdata.filename_pdf}`;
-            const file = fs.createWriteStream(destinationPath);
-            await new Promise((resolve, reject) => {
-              https
-                .get(fileUrl, function (response) {
-                  response.pipe(file);
-                  file.on('finish', function () {
-                    file.close(() => {
-                      console.log('File downloaded successfully.');
-                      resolve(); // Resolve the promise after the file is downloaded
-                    });
-                  });
-                })
-                .on('error', function (err) {
-                  fs.unlink(destinationPath, () => {}); // Delete the file if there is an error
-                  console.error('Error downloading the file:', err);
-                  reject(err); // Reject the promise if there is an error
-                });
-            });
-            const messageOptions = {
-              document: {
-                url: destinationPath,
-                caption: 'ini caption',
-              },
-              fileName: 'Surat Izin Kebun',
-            };
-            try {
-              await sock.sendMessage(
-                data.send_to + '@s.whatsapp.net',
-                messageOptions
-              );
-              await sock.sendMessage(data.send_to + '@s.whatsapp.net', {
-                text: message,
-              });
-              await updatestatus_sock_vbot(data.id_db, data.type);
-            } catch (error) {
-              await catcherror(data.id_db, data.type, 'izin_kebun');
-            }
+            const datapdf = genpdf.data;
+            // console.log(datapdf);
+            if (datapdf.pdf) {
+              try {
+                // Decode the base64 PDF and prepare it for sending
+                const pdfBuffer = Buffer.from(datapdf.pdf, 'base64');
+                const pdfFilename = datapdf.filename || 'Invoice.pdf';
+                const messageOptions = {
+                  document: pdfBuffer,
+                  mimetype: 'application/pdf',
+                  fileName: pdfFilename,
+                  caption: message,
+                };
 
-            try {
-              const unlinkpdf = await axios.get(
-                'https://izin-kebun.srs-ssms.com/api/deletePdfIzinKebun',
-                {
-                  params: {
-                    user: 'j',
-                    pw: 'j',
-                    filename: genpdf.data.filename,
-                  },
-                }
-              );
-            } catch (error) {
-              console.log('Error unlinkpdf PDF:', error);
+                // Send the PDF as a document via WhatsApp
+                await sock.sendMessage(
+                  data.send_to + '@s.whatsapp.net',
+                  messageOptions
+                );
+                await updatestatus_sock_vbot(data.id_db, data.type);
+                // console.log('PDF sent successfully!');
+              } catch (sendError) {
+                console.error('Error sending PDF:', sendError.message);
+              }
+            } else {
+              console.log('PDF not found in the API response.');
             }
           } catch (error) {
             console.log('Error generating PDF:', error);
