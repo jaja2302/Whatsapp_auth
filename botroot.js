@@ -324,7 +324,7 @@ const sendButtonMessage = async (jid) => {
 app.get('/testing', async (req, res) => {
   try {
     // await pingGoogle();
-    await get_iot_weatherstation(sock);
+    await get_mill_data(sock);
     // da
     // console.log(sock.user);
     // console.log(result);

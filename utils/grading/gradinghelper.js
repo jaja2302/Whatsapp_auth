@@ -18,6 +18,7 @@ async function get_mill_data(sock) {
     const data = response.data;
     // const noWa_grading = '120363205553012899@g.us';
     const noWa_grading = '120363164751475851@g.us';
+    const noWa_grading_suayap = '6281397270799-1635156024@g.us';
 
     if (data.status === '200' && data.data && data.data.length > 0) {
       const result = data.data;
@@ -63,6 +64,7 @@ async function get_mill_data(sock) {
           caption: message,
         };
         await sock.sendMessage(noWa_grading, imageOptions);
+        //await sock.sendMessage(noWa_grading_suayap, imageOptions);
         // sending pdf
         const pdfBuffer = Buffer.from(itemdata.pdf, 'base64');
         const messageOptions = {
@@ -76,6 +78,7 @@ async function get_mill_data(sock) {
         try {
           // First, try sending the message
           await sock.sendMessage(noWa_grading, messageOptions);
+          //await sock.sendMessage(noWa_grading_suayap, messageOptions);
 
           // If sendMessage succeeds, then proceed with updating data
           try {

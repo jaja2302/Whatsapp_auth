@@ -952,7 +952,7 @@ const setupCronJobs = (sock) => {
           await statusAWS(sock);
           await statusHistory(sock);
           await get_iot_weatherstation(sock);
-          await get_iot_weatherstation_data_gap(sock);
+          // await get_iot_weatherstation_data_gap(sock);
         } catch (error) {
           console.error('Error in cron job:', error);
         }
