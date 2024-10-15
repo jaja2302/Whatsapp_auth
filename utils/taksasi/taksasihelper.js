@@ -13,17 +13,22 @@ const fs = require('fs');
 const https = require('https');
 const puppeteer = require('puppeteer');
 const { json } = require('express');
-function formatDate(date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0'); // Adding 1 because getMonth() returns zero-based index
-  const day = String(date.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
+const moment = require('moment-timezone');
+async function datetimeValue() {
+  try {
+    const response = await axios.get(
+      'https://timeapi.io/api/Time/current/zone?timeZone=Asia/Jakarta'
+    );
+    const dateTime = response.data.dateTime; // Get the dateTime string
+    const formattedDate = new Date(dateTime).toISOString().split('T')[0]; // Format to YYYY-MM-DD
+    return formattedDate;
+  } catch (error) {
+    console.error('Error fetching date:', error);
+    return null;
+  }
 }
 
-// Get the current date
-const today = new Date();
-
-const datetimeValue = formatDate(today);
+// console.log(datetimeValue);
 
 async function generatemapstaksasi(est, datetime) {
   let attempts = 0;
@@ -33,7 +38,7 @@ async function generatemapstaksasi(est, datetime) {
     try {
       const browser = await puppeteer.launch({
         // executablePath: '../chrome-win/chrome.exe',
-        headless: 'new',
+        headless: true,
       });
       const page = await browser.newPage();
 
@@ -86,7 +91,7 @@ async function sendtaksasiest(estate, group_id, folder, sock, taskid, tanggal) {
   try {
     let newdaate;
     if (tanggal === 'null' || tanggal === null) {
-      newdaate = datetimeValue;
+      newdaate = await datetimeValue(); // Call the function to get the date
     } else {
       newdaate = tanggal;
     }
@@ -101,7 +106,7 @@ async function sendtaksasiest(estate, group_id, folder, sock, taskid, tanggal) {
 
       if (responseData.base64_pdf) {
         const pdfBuffer = Buffer.from(responseData.base64_pdf, 'base64');
-        const pdfFilename = `Rekap Taksasi ${estate} ${datetimeValue}.pdf`;
+        const pdfFilename = `Rekap Taksasi ${estate} ${newdaate}.pdf`;
         let captions = `Dikirim oleh ROBOT,jangan balas pesan\n`;
         const messageOptions = {
           document: pdfBuffer,

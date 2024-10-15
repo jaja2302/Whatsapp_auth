@@ -190,10 +190,10 @@ async function connectToWhatsApp() {
     }
   });
 
-  setupCronJobs(sock);
-  runfunction(sock);
-  function_rapidresponse(sock);
-  function_marcom(sock);
+  // setupCronJobs(sock);
+  // runfunction(sock);
+  // function_rapidresponse(sock);
+  // function_marcom(sock);
 }
 
 // Helper function to handle QR code updates
