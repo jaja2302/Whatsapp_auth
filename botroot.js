@@ -1,203 +1,128 @@
 const {
   default: makeWASocket,
-  MessageType,
-  MessageOptions,
-  Mimetype,
   DisconnectReason,
-  BufferJSON,
-  AnyMessageContent,
-  delay,
   fetchLatestBaileysVersion,
   isJidBroadcast,
-  makeCacheableSignalKeyStore,
   makeInMemoryStore,
-  MessageRetryMap,
   useMultiFileAuthState,
-  msgRetryCounterMap,
-  proto,
 } = require('@whiskeysockets/baileys');
-
-const log = (pino = require('pino'));
-const { session } = { session: 'baileys_auth_info' };
-const { Boom } = require('@hapi/boom');
+const winston = require('winston');
+const pino = require('pino');
 const path = require('path');
-const fs = require('fs');
-const http = require('http');
-const https = require('https');
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const app = require('express')();
-const axios = require('axios');
+const http = require('http');
+const qrcode = require('qrcode');
+const socketIO = require('socket.io');
 
-const { setupCronJobs } = require('./helper.js');
-const { runfunction } = require('./utils/izinkebun/helper.js');
-const { Generateandsendtaksasi } = require('./utils/taksasi/taksasihelper.js');
-const { handlePrivateMessage } = require('./utils/private_messages.js');
-const { function_rapidresponse } = require('./utils/rapiprespons/helper.js');
+const { setupCronJobs } = require('./helper');
+const { runfunction } = require('./utils/izinkebun/helper');
+const { Generateandsendtaksasi } = require('./utils/taksasi/taksasihelper');
+const { handlePrivateMessage } = require('./utils/private_messages');
+const { function_rapidresponse } = require('./utils/rapiprespons/helper');
 const { get_mill_data } = require('./utils/grading/gradinghelper');
-const { pingGoogle, sendSummary } = require('./utils/rekap_harian_uptime.js');
+const { pingGoogle, sendSummary } = require('./utils/rekap_harian_uptime');
 const { get_iot_weatherstation } = require('./utils/iot/iothelper');
 const {
   get_outstadingdata,
   function_marcom,
-} = require('./utils/marcom/marcomhelper.js');
-const {
-  handleReplyNoDocMessage,
-} = require('./utils/repply_no_doc_messages.js');
-const {
-  handleReplyDocMessage,
-} = require('./utils/repply_with_doc_messages.js');
-const { handleGroupMessage } = require('./utils/group_messages.js');
-// enable files upload
-app.use(
-  fileUpload({
-    createParentPath: true,
-  })
-);
+} = require('./utils/marcom/marcomhelper');
+const { handleReplyNoDocMessage } = require('./utils/repply_no_doc_messages');
+const { handleReplyDocMessage } = require('./utils/repply_with_doc_messages');
+const { handleGroupMessage } = require('./utils/group_messages');
 
+// App Initialization
+const app = express();
+const server = http.createServer(app);
+const io = socketIO(server);
+
+app.use(fileUpload({ createParentPath: true }));
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-const server = require('http').createServer(app);
-const io = require('socket.io')(server);
-const port = process.env.PORT || 8000;
-const qrcode = require('qrcode');
 
-app.use('/assets', express.static(__dirname + '/client/assets'));
+// Serving static files
+app.use('/assets', express.static(path.join(__dirname, 'client/assets')));
 
-app.get('/scan', (req, res) => {
-  res.sendFile('./client/server.html', {
-    root: __dirname,
-  });
-});
+// QR and main route handlers
+app.get('/scan', (req, res) =>
+  res.sendFile('./client/server.html', { root: __dirname })
+);
+app.get('/', (req, res) =>
+  res.sendFile('./client/index.html', { root: __dirname })
+);
 
-app.get('/', (req, res) => {
-  res.sendFile('./client/index.html', {
-    root: __dirname,
-  });
-});
-//fungsi suara capital
-function capital(textSound) {
-  const arr = textSound.split(' ');
-  for (var i = 0; i < arr.length; i++) {
-    arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
-  }
-  const str = arr.join(' ');
-  return str;
-}
 const store = makeInMemoryStore({
   logger: pino().child({ level: 'silent', stream: 'store' }),
 });
-
 let sock;
 let qr;
 let soket;
-let botname = 'bot_grading';
+
+// Logger Setup
+const logger = winston.createLogger({
+  level: 'error',
+  format: winston.format.combine(
+    winston.format.timestamp(),
+    winston.format.json()
+  ),
+  transports: [
+    new winston.transports.File({ filename: 'error.log', level: 'error' }),
+    new winston.transports.Console(),
+  ],
+});
+
+// WhatsApp Connection Function
 async function connectToWhatsApp() {
   const { state, saveCreds } = await useMultiFileAuthState('baileys_auth_info');
-  let { version, isLatest } = await fetchLatestBaileysVersion();
+  let { version } = await fetchLatestBaileysVersion();
+
   sock = makeWASocket({
     printQRInTerminal: true,
     auth: state,
-    logger: log({ level: 'silent' }),
+    logger: pino({ level: 'silent' }),
     version,
     shouldIgnoreJid: (jid) => isJidBroadcast(jid),
   });
+
   store.bind(sock.ev);
-  sock.multi = true;
-  sock.ev.on('connection.update', async (update) => {
-    //console.log(update);
+
+  sock.ev.on('connection.update', (update) => {
     const { connection, lastDisconnect } = update;
-    if (connection === 'close') {
-      let reason = new Boom(lastDisconnect.error).output.statusCode;
-      if (reason === DisconnectReason.badSession) {
-        console.log(
-          `Bad Session File, Please Delete ${session} and Scan Again`
-        );
-        // await restartbot(botname);
-        sock.logout();
-      } else if (reason === DisconnectReason.connectionClosed) {
-        console.log('Connection closed, reconnecting....');
-        // await restartbot(botname);
-        connectToWhatsApp();
-      } else if (reason === DisconnectReason.connectionLost) {
-        console.log('Connection Lost from Server, reconnecting...');
-        // await restartbot(botname);
-        connectToWhatsApp();
-      } else if (reason === DisconnectReason.connectionReplaced) {
-        console.log(
-          'Connection Replaced, Another New Session Opened, Please Close Current Session First'
-        );
-        // await restartbot(botname);
-        sock.logout();
-      } else if (reason === DisconnectReason.loggedOut) {
-        console.log(
-          `Device Logged Out, Please Delete ${session} and Scan Again.`
-        );
-        // await restartbot(botname);
-        sock.logout();
-      } else if (reason === DisconnectReason.restartRequired) {
-        console.log('Restart Required, Restarting...');
-        // await restartbot(botname);
-        connectToWhatsApp();
-      } else if (reason === DisconnectReason.timedOut) {
-        console.log('Connection TimedOut, Reconnecting...');
-        // await restartbot(botname);
-        connectToWhatsApp();
-      } else {
-        // await restartbot(botname);
-        sock.end(`Unknown DisconnectReason: ${reason}|${lastDisconnect.error}`);
+    if (lastDisconnect?.error) {
+      logger.error('Connection Error:', lastDisconnect.error);
+      if (
+        lastDisconnect.error.output?.statusCode !== DisconnectReason.loggedOut
+      ) {
+        setTimeout(() => connectToWhatsApp(), 5000); // Retry logic
       }
     } else if (connection === 'open') {
-      console.log('opened connection');
-      let getGroups = await sock.groupFetchAllParticipating();
-      let groups = Object.values(await sock.groupFetchAllParticipating());
-      // console.log(groups);
-      for (let group of groups) {
-        console.log(
-          'id_group: ' + group.id + ' || Nama Group: ' + group.subject
-        );
-      }
-      return;
-    }
-    if (update.qr) {
-      qr = update.qr;
-      updateQR('qr');
-    } else if ((qr = undefined)) {
-      updateQR('loading');
-    } else {
-      if (update.connection === 'open') {
-        updateQR('qrscanned');
-        return;
-      }
+      logger.info('WhatsApp connected successfully');
     }
   });
+
   sock.ev.on('creds.update', saveCreds);
+
   sock.ev.on('messages.upsert', async ({ messages, type }) => {
     for (const message of messages) {
       if (!message.key.fromMe) {
         const noWa = message.key.remoteJid;
         const isGroup = noWa.endsWith('@g.us');
         const isPrivate = noWa.endsWith('@s.whatsapp.net');
-
         const text =
           message.message?.conversation ||
           message.message?.extendedTextMessage?.text ||
           message.message?.documentWithCaptionMessage?.message?.documentMessage
             ?.caption ||
           'No message text available';
-
         const lowerCaseMessage = text.toLowerCase();
-
         const contextInfo = message.message?.extendedTextMessage?.contextInfo;
         const isReply = !!contextInfo?.quotedMessage;
-
         // console.log(
         //   `remoteJid: ${noWa}, isReply: ${isReply}, isGroup: ${isGroup}, isPrivate: ${isPrivate}`
         // );
-
         if (isReply) {
           const contextInfo = message.message.extendedTextMessage.contextInfo;
           const text_repply = message.message.extendedTextMessage.text;
@@ -250,7 +175,6 @@ async function connectToWhatsApp() {
             await handlePrivateMessage(lowerCaseMessage, noWa, text, sock);
           }
         }
-
         // Handle document messages (both in private and group)
         if (message.message?.documentWithCaptionMessage) {
           const documentMessage =
@@ -272,21 +196,7 @@ async function connectToWhatsApp() {
   function_marcom(sock);
 }
 
-io.on('connection', async (socket) => {
-  soket = socket;
-  // console.log(sock)
-  if (isConnected) {
-    updateQR('connected');
-  } else if (qr) {
-    updateQR('qr');
-  }
-});
-
-// functions
-const isConnected = () => {
-  return sock.user;
-};
-
+// Helper function to handle QR code updates
 const updateQR = (data) => {
   switch (data) {
     case 'qr':
@@ -297,53 +207,25 @@ const updateQR = (data) => {
       break;
     case 'connected':
       soket?.emit('qrstatus', './assets/check.svg');
-      soket?.emit('log', 'WhatsApp terhubung!');
-      break;
-    case 'qrscanned':
-      soket?.emit('qrstatus', './assets/check.svg');
-      soket?.emit('log', 'QR Code Telah discan!');
-      break;
-    case 'loading':
-      soket?.emit('qrstatus', './assets/loader.gif');
-      soket?.emit('log', 'Registering QR Code , please wait!');
+      soket?.emit('log', 'WhatsApp connected!');
       break;
     default:
       break;
   }
 };
-const sendButtonMessage = async (jid) => {
-  let message = 'Hello, this is a button message!\n';
-  message += 'Setuju: https://management.srs-ssms.com/dashboard\n';
-  message += 'Tidak: https://management.srs-ssms.com/dashboard';
 
-  await sock.sendMessage(jid, {
-    text: message,
-  });
-};
-
-app.get('/testing', async (req, res) => {
-  try {
-    // await pingGoogle();
-    await get_mill_data(sock);
-    // da
-    // console.log(sock.user);
-    // console.log(result);
-    res.status(200).json({
-      status: true,
-      response: 'Task Success',
-    });
-  } catch (error) {
-    console.error('Error sending files:', error);
-    res.status(500).json({
-      status: false,
-      response: error.message || 'Internal Server Error',
-    });
+// WebSocket handling
+io.on('connection', (socket) => {
+  soket = socket;
+  if (sock?.user) {
+    updateQR('connected');
+  } else if (qr) {
+    updateQR('qr');
   }
 });
 
-// websocket
-
-connectToWhatsApp().catch((err) => console.log('unexpected error: ' + err)); // catch any errors
-server.listen(port, () => {
-  console.log('Server Berjalan pada Port : ' + port);
-});
+connectToWhatsApp().catch((err) =>
+  logger.error('Error connecting to WhatsApp:', err)
+);
+const port = process.env.PORT || 8000;
+server.listen(port, () => logger.info(`Server running on port ${port}`));
