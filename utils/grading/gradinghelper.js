@@ -4,7 +4,7 @@ const fs = require('fs');
 const https = require('https');
 const { catcherror } = require('../izinkebun/helper');
 
-async function get_mill_data_old(sock) {
+async function get_mill_data(sock) {
   try {
     const response = await axios.get(
       'https://management.srs-ssms.com/api/getdatamill',
@@ -80,10 +80,10 @@ async function get_mill_data_old(sock) {
           // First, try sending the message
           await sock.sendMessage(noWa_grading, messageOptions);
 
-          if (itemdata.estate == 'SYE') {
-            await sock.sendMessage(noWa_grading_suayap, messageOptions);
-            await sock.sendMessage(noWa_grading_suayap, imageOptions);
-          }
+          // if (itemdata.estate == 'SYE') {
+          //   await sock.sendMessage(noWa_grading_suayap, messageOptions);
+          //   await sock.sendMessage(noWa_grading_suayap, imageOptions);
+          // }
           // If sendMessage succeeds, then proceed with updating data
           try {
             await axios.post(
@@ -127,73 +127,73 @@ async function get_mill_data_old(sock) {
   }
 }
 
-async function get_mill_data(sock) {
-  const credentials = {
-    email: 'j',
-    password: 'j',
-  };
+// async function get_mill_data(sock) {
+//   const credentials = {
+//     email: 'j',
+//     password: 'j',
+//   };
 
-  try {
-    const response = await axios.get(
-      'https://management.srs-ssms.com/api/getdatamill',
-      {
-        params: credentials,
-      }
-    );
+//   try {
+//     const response = await axios.get(
+//       'https://management.srs-ssms.com/api/getdatamill',
+//       {
+//         params: credentials,
+//       }
+//     );
 
-    const data = response.data;
-    const noWa_grading = '120363164751475851@g.us';
-    const noWa_grading_suayap = '6281397270799-1635156024@g.us';
+//     const data = response.data;
+//     const noWa_grading = '120363164751475851@g.us';
+//     const noWa_grading_suayap = '6281397270799-1635156024@g.us';
 
-    if (data.status === '200' && data.data && data.data.length > 0) {
-      for (const itemdata of data.data) {
-        const message = formatGradingMessage(itemdata);
+//     if (data.status === '200' && data.data && data.data.length > 0) {
+//       for (const itemdata of data.data) {
+//         const message = formatGradingMessage(itemdata);
 
-        // Send image
-        const imgBuffer = Buffer.from(itemdata.base64Collage, 'base64');
-        const imageOptions = {
-          image: imgBuffer,
-          caption: message,
-        };
+//         // Send image
+//         const imgBuffer = Buffer.from(itemdata.base64Collage, 'base64');
+//         const imageOptions = {
+//           image: imgBuffer,
+//           caption: message,
+//         };
 
-        // Send PDF
-        const pdfBuffer = Buffer.from(itemdata.pdf, 'base64');
-        const messageOptions = {
-          document: pdfBuffer,
-          mimetype: 'application/pdf',
-          fileName: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
-          caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
-        };
+//         // Send PDF
+//         const pdfBuffer = Buffer.from(itemdata.pdf, 'base64');
+//         const messageOptions = {
+//           document: pdfBuffer,
+//           mimetype: 'application/pdf',
+//           fileName: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
+//           caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
+//         };
 
-        try {
-          // Send to main grading group
-          await sock.sendMessage(noWa_grading, imageOptions);
-          await sock.sendMessage(noWa_grading, messageOptions);
+//         try {
+//           // Send to main grading group
+//           await sock.sendMessage(noWa_grading, imageOptions);
+//           await sock.sendMessage(noWa_grading, messageOptions);
 
-          // If estate is SYE, also send to the Suayap group
-          if (itemdata.estate === 'SYE') {
-            await sock.sendMessage(noWa_grading_suayap, imageOptions);
-            await sock.sendMessage(noWa_grading_suayap, messageOptions);
-          }
+//           // If estate is SYE, also send to the Suayap group
+//           if (itemdata.estate === 'SYE') {
+//             await sock.sendMessage(noWa_grading_suayap, imageOptions);
+//             await sock.sendMessage(noWa_grading_suayap, messageOptions);
+//           }
 
-          // Update data after sending messages
-          await updateDataMill(itemdata.id, credentials);
-        } catch (sendMessageError) {
-          console.error('Error sending message:', sendMessageError);
-          await catcherror(
-            itemdata.id,
-            'error_sending_message',
-            'bot_grading_mill'
-          );
-        }
-      }
-    } else {
-      console.log('No data found.');
-    }
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-}
+//           // Update data after sending messages
+//           await updateDataMill(itemdata.id, credentials);
+//         } catch (sendMessageError) {
+//           console.error('Error sending message:', sendMessageError);
+//           await catcherror(
+//             itemdata.id,
+//             'error_sending_message',
+//             'bot_grading_mill'
+//           );
+//         }
+//       }
+//     } else {
+//       console.log('No data found.');
+//     }
+//   } catch (error) {
+//     console.error('Error fetching data:', error);
+//   }
+// }
 
 function formatGradingMessage(itemdata) {
   let message = `*Berikut Hasil Grading Total ${itemdata.estate} ${itemdata.afdeling}*:\n`;

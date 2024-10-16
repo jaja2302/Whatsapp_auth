@@ -14200,3 +14200,2452 @@ id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
 id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
 id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
 id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+cron job get_mill_data
+data kosong
+Closing stale open session for new outgoing prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    'BR8+itHSav+ZhFufngHZElIJ9NlBbVGGt/9cpKt2dGwc': { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 2076782035,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 1f 3e 8a d1 d2 6a ff 99 84 5b 9f 9e 01 d9 12 52 09 f4 d9 41 6d 51 86 b7 ff 5c a4 ab 76 74 6c 1c>,
+      privKey: <Buffer a8 1e 99 fe 23 ce fe 0d 31 9c 5c 71 be 19 82 3b aa 3b 24 e0 b3 c8 14 0a e1 13 00 5a cc 66 e3 66>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 91 ef d5 89 a1 20 dd 0b e2 71 f4 48 6f 5e 91 c7 fa ae 65 ab 99 e4 61 31 03 3d 5e 29 b9 95 ee 34>,
+    previousCounter: 0,
+    rootKey: <Buffer 5e 9a 18 2f 6d d2 f7 32 0c f5 7a 55 b8 02 48 c2 17 6e cc 1d 9a 3a 6e 59 4b 8c f8 98 13 30 bb 3e>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 6e 61 50 40 08 c7 b9 2c dc 59 f6 58 54 6b fa a0 ee 0e 59 0d b5 d6 e3 1d b0 9e 6b 5d 28 a8 e1 52>,
+    baseKeyType: 1,
+    closed: -1,
+    used: 1725945032178,
+    created: 1725945032178,
+    remoteIdentityKey: <Buffer 05 cd ff 9b 58 a0 1b ab 92 81 cc a1 52 09 39 f6 ed 70 ff 92 9e 7e 6a 51 cc ea 1c f1 e6 5a bb 7c 78>
+  },
+  pendingPreKey: {
+    signedKeyId: 20,
+    baseKey: <Buffer 05 6e 61 50 40 08 c7 b9 2c dc 59 f6 58 54 6b fa a0 ee 0e 59 0d b5 d6 e3 1d b0 9e 6b 5d 28 a8 e1 52>,
+    preKeyId: 9725860
+  }
+}
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+data kosong
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+data kosong
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job get_mill_data
+cron job ping google
+Data update successful for ID: 1310
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+data kosong
+Status updated: { message: 'Record updated successfully' }
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+Data update successful for ID: 1311
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job get_mill_data
+No data found.
+cron job ping google
+cron job ping google
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+Message sent successfully.
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+Data update successful for ID: 1313
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+No data found.
+cron job ping google
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+Data update successful for ID: 1314
+cron job ping google
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+cron job get_mill_data
+Data update successful for ID: 1315
+Data update successful for ID: 1316
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+No data found.
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+No data found.
+Status updated: { message: 'Record updated successfully' }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+cron job ping google
+Data update successful for ID: 1319
+Data update successful for ID: 1320
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+No data found.
+Status updated: { message: 'Record updated successfully' }
+cron job ping google
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+No data or invalid data received from the API.
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+Status updated: { message: 'Record updated successfully' }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+No data found.
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+No data found.
+Status updated: { message: 'Record updated successfully' }
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+No data found.
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+cron job ping google
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+Status updated: { message: 'Record updated successfully' }
+No data found.
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+Data update successful for ID: 1323
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+No data found.
+Status updated: { message: 'Record updated successfully' }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+No data found.
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+No data found.
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+No data found.
+Connection Lost from Server, reconnecting...
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+cron job ping google
+cron job get_mill_data
+cron job get_mill_data
+No data found.
+No data found.
+Connection Lost from Server, reconnecting...
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+cron job ping google
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+Status updated: { message: 'Record updated successfully' }
+No data found.
+No data found.
+No data found.
+Status updated: { message: 'Record updated successfully' }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+cron job ping google
+cron job get_mill_data
+cron job ping google
+cron job ping google
+No data found.
+cron job get_mill_data
+No data found.
+No data found.
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+cron job ping google
+cron job ping google
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+No data found.
+Status updated: { message: 'Record updated successfully' }
+Status updated: { message: 'Record updated successfully' }
+No data found.
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+cron job ping google
+cron job ping google
+Status updated: { message: 'Record updated successfully' }
+No data found.
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job ping google
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+cron job ping google
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+cron job ping google
+cron job ping google
+cron job get_mill_data
+cron job get_mill_data
+cron job ping google
+No data found.
+No data found.
+No data found.
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+cron job ping google
+cron job ping google
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+No data found.
+Error fetching files: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+Status updated: { message: 'Record updated successfully' }
+Status updated: { message: 'Record updated successfully' }
+cron job ping google
+Error fetching files: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+No data found.
+No data found.
+No data or invalid data received from the API.
+Status updated: { message: 'Record updated successfully' }
+No data or invalid data received from the API.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+No data or invalid data received from the API.
+Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+{ message: 'report added to database' }
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+cron job ping google
+cron job get_mill_data
+No data found.
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job ping google
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+No data found.
+Status updated: { message: 'Record updated successfully' }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Connection Lost from Server, reconnecting...
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+cron job get_mill_data
+cron job ping google
+cron job get_mill_data
+No data found.
+No data found.
+cron job ping google
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+cron job ping google
+Status updated: { message: 'Record updated successfully' }
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+No data found.
+Error fetching files: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data found.
+No data or invalid data received from the API.
+No data or invalid data received from the API.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+No data found.
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+No data found.
+Status updated: { message: 'Record updated successfully' }
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+cron job ping google
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+No data or invalid data received from the API.
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+No data found.
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+cron job ping google
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+No data found.
+cron job ping google
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+No data found.
+Status updated: { message: 'Record updated successfully' }
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+No data or invalid data received from the API.
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+No data found.
+Status updated: { message: 'Record updated successfully' }
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+No data found.
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+No data found.
+1Updated reset_pc_mati for machine ID: 1 to 2
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job get_mill_data
+cron job ping google
+No data found.
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Connection closed, reconnecting....
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+cron job ping google
+Status updated: { message: 'Record updated successfully' }
+No data found.
+No data found.
+Error fetching data: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+Status updated: { message: 'Record updated successfully' }
+1Updated reset_pc_mati for machine ID: 1 to 1
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:290:47\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:293:23\n' +
+      '    at Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n' +
+      '    at relayMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:279:30)\n' +
+      '    at Object.sendMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:652:23)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job ping google
+No data found.
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+No data found.
+cron job ping google
+cron job get_mill_data
+cron job ping google
+No data found.
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+Error fetching files: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+cron job get_mill_data
+No data or invalid data received from the API.
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Status updated: { message: 'Record updated successfully' }
+Error fetching data: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+cron job ping google
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+cron job ping google
+Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+Status updated: { message: 'Record updated successfully' }
+{ message: 'report added to database' }
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+1Updated reset_pc_mati for machine ID: 1 to 0
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+1Updated reset_pc_mati for machine ID: 1 to -1
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+No data found.
+Status updated: { message: 'Record updated successfully' }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+cron job ping google
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+Status updated: { message: 'Record updated successfully' }
+No data found.
+No data or invalid data received from the API.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+No data found.
+Status updated: { message: 'Record updated successfully' }
+No data or invalid data received from the API.
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+No data found.
+Status updated: { message: 'Record updated successfully' }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+No data found.
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+Status updated: { message: 'Record updated successfully' }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Server Berjalan pada Port : 8000
