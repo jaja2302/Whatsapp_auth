@@ -16649,3 +16649,146 @@ No data or invalid data received from the API.
 Status updated: { message: 'Record updated successfully' }
 { message: 'Fail pdf izin kebun succes terkirim', data: [] }
 Server Berjalan pada Port : 8000
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+data kosong
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Closing stale open session for new outgoing prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    Bd5n1K3E2dJX6f7llYgA2yhSvFzZ9jbwMot3dkwUWLZl: { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 63,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 de 67 d4 ad c4 d9 d2 57 e9 fe e5 95 88 00 db 28 52 bc 5c d9 f6 36 f0 32 8b 77 76 4c 14 58 b6 65>,
+      privKey: <Buffer 00 10 3b b5 5e 61 69 4e 29 fe 8b f4 39 38 21 e3 b2 90 33 b3 6d 1e f0 c2 ec 04 2c d2 30 35 3e 7d>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 67 10 aa 66 75 31 09 42 f3 50 76 68 c2 39 11 5f 24 f3 5d 3c c0 50 07 88 70 30 cf ec f2 77 f1 62>,
+    previousCounter: 0,
+    rootKey: <Buffer e5 32 6a df de 26 c6 8a ac 4f 64 53 94 71 86 1d 05 d4 5d bf e1 d4 d3 fe 12 a4 82 e8 a9 0c 3e 11>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 37 17 e3 1e a5 48 cc e7 80 04 49 fa 05 7b a2 be 54 1c f3 e2 99 bd f2 04 4b e8 6e a1 d4 9f 5d 30>,
+    baseKeyType: 1,
+    closed: -1,
+    used: 1728699201225,
+    created: 1728699201225,
+    remoteIdentityKey: <Buffer 05 01 c9 0e 13 09 26 30 de 6f a3 4b 00 d9 34 9b 62 4b a7 6f 78 0a db 7a 8e 54 d3 3b 9d 1b 9b ac 4a>
+  },
+  pendingPreKey: {
+    signedKeyId: 1,
+    baseKey: <Buffer 05 37 17 e3 1e a5 48 cc e7 80 04 49 fa 05 7b a2 be 54 1c f3 e2 99 bd f2 04 4b e8 6e a1 d4 9f 5d 30>,
+    preKeyId: 360
+  }
+}
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+data kosong
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+data kosong
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+data kosong
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+data kosong
+cron job ping google
+Status updated: { message: 'Record updated successfully' }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III

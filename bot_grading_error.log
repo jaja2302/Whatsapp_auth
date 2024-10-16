@@ -70,3 +70,4 @@ Error fetching files: Error: forbidden
     headers: {}
   }
 }
+Closing stale open session for new outgoing prekey bundle

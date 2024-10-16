@@ -7,6 +7,7 @@ const {
   sendfailcronjob,
 } = require('./taksasi/taksasihelper.js');
 const { handleChatSnoozePengawasanOperatorAi } = require('../helper.js');
+const { get_mill_data } = require('./grading/gradinghelper.js');
 const {
   Report_group_izinkebun,
   Fail_send_pdf,
@@ -99,7 +100,24 @@ const handleGroupMessage = async (
     await sock.sendMessage(
       noWa,
       {
-        text: 'Perintah Bot Yang tersedia \n1 = !tarik (Menarik Estate yang di pilih untuk di generate ke dalam grup yang sudah di tentukan) \n2.!getgrup (Menampilkan semua isi list group yang ada) \n3.!cast (melakukan broadcast pesan ke semua grup taksasi) \n4.!taksasi = Menarik Banyak laporar taksasi sekaligus berdasarkan waktu yang di pilih\n5.!laporan izinkebun Menarik laporan izin kebun (Harap gunakan hanya di hari sabtu atau minggu)!\n6.failcronjob = Mrnjalankan semua fail cronjob yang ada di server\n7.!failizinkebun = Mengirip pdf yang gagal terkirim izin kebun',
+        text: 'Perintah Bot Yang tersedia \n1 = !tarik (Menarik Estate yang di pilih untuk di generate ke dalam grup yang sudah di tentukan) \n2.!getgrup (Menampilkan semua isi list group yang ada) \n3.!cast (melakukan broadcast pesan ke semua grup taksasi) \n4.!taksasi = Menarik Banyak laporar taksasi sekaligus berdasarkan waktu yang di pilih\n5.!laporan izinkebun Menarik laporan izin kebun (Harap gunakan hanya di hari sabtu atau minggu)!\n6.failcronjob = Mrnjalankan semua fail cronjob yang ada di server\n7.!failizinkebun = Mengirip pdf yang gagal terkirim izin kebun\n8.!failgrading kirim ulang grading mill fail',
+      },
+      { quoted: message }
+    );
+  } else if (lowerCaseMessage === '!failgrading') {
+    await sock.sendMessage(
+      noWa,
+      {
+        text: 'Tunggu Sebentar sedang di proses',
+      },
+      { quoted: message }
+    );
+
+    await get_mill_data(sock);
+    await sock.sendMessage(
+      noWa,
+      {
+        text: 'Berhasil di kirim',
       },
       { quoted: message }
     );
@@ -132,16 +150,6 @@ const handleGroupMessage = async (
     );
     let response = await Fail_send_pdf();
     console.log(response);
-    // function formatResponseData(data) {
-    //   return data
-    //     .map((item) => {
-    //       return `ID: ${item.id_db}\nUser: ${item.nama_user}\nNo HP: ${item.no_hp_user}\nTanggal Keluar: ${item.tanggal_keluar}\nTanggal Kembali: ${item.tanggal_kembali}\nLokasi Tujuan: ${item.lokasi_tujuan}\nKendaraan: ${item.kendaraan}\nKeperluan: ${item.keperluan}\nStatus: ${item.status}\n\n`;
-    //     })
-    //     .join('');
-    // }
-
-    // // Create the message
-    // const messageText = formatResponseData(response.data);
 
     await sock.sendMessage(
       noWa,

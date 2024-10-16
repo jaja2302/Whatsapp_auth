@@ -20,6 +20,7 @@ const function_rapidresponse = async (sock) => {
       console.log('Event data, data, or bot_data is undefined.');
       return;
     }
+    console.log('notifkasirapidresponse');
 
     const itemdata = arrayData.data;
 
