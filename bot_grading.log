@@ -16792,3 +16792,1734 @@ id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
 id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
 id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
 id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+No data found.
+Status updated: { message: 'Record updated successfully' }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+*Selamat Pagi*:
+Yth. Pelanggan Setia Lab CBI
+Progress Sampel anda telah kami terima dengan:
+*No. Surat* : 416/FER-SSS/SRS-LAB/X/2024
+*Departemen* : Nutrisi Tanaman
+*Jenis Sampel* : Pupuk
+*Jumlah Sampel* : 3
+*Progress saat ini* : Penerimaan dan Registrasi Sampel
+Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com
+Dengan kode tracking  *LCAXVOBT*
+Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.
+
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job statusAWS,statusHistory,get_iot_weatherstation
+cron job handleBotLaporanHarianFleetManagement,handleBotDailyPengawasanOperatorAI,sendSummary,get_outstadingdata
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+No data found.
+cron job ping google
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+cron job ping google
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+Status updated: { message: 'Record updated successfully' }
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+No data found.
+Status updated: { message: 'Record updated successfully' }
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+No data found.
+Status updated: { message: 'Record updated successfully' }
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job statusAWS,statusHistory,get_iot_weatherstation
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data or invalid data received from the API.
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+No data found.
+Status updated: { message: 'Record updated successfully' }
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+No data found.
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+No data found.
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:140:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:283:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Message sent successfully.
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+cron job get_mill_data
+Closing stale open session for new outgoing prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    'BdnlxxE6GGiWpAatXh/kEZrjsaUakBGTQFvkRUOOGShd': { chainKey: [Object], chainType: 2, messageKeys: {} },
+    BaFweoUgR5Pu4rPr6fsmYTSkNAkKyht6ZngWlGUYZBYF: { chainKey: [Object], chainType: 2, messageKeys: {} },
+    BeGQoYemwfUeRkj8uqj9CCoXosExKww2sHDrazTTgftt: { chainKey: [Object], chainType: 2, messageKeys: {} },
+    'BQDOanZqzbrRKXB8KOlNiQJMvi6MseFpwr3DDFh+bTNS': { chainKey: [Object], chainType: 2, messageKeys: [Object] },
+    BeW7S3qPkCbWqMYsYqJdv4PHxLm2eOCURCAp9WA43v4e: { chainKey: [Object], chainType: 2, messageKeys: {} },
+    'Bfae2tsmiLppM7V3EEnRw+/2DjJJ474FtAss/nTEPOZO': { chainKey: [Object], chainType: 2, messageKeys: {} },
+    Ba6c0vdAjFyNPK9nG6C7C0oeoTpg4LUf4md8kLGoJbgi: { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 1168402060,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 ae 9c d2 f7 40 8c 5c 8d 3c af 67 1b a0 bb 0b 4a 1e a1 3a 60 e0 b5 1f e2 67 7c 90 b1 a8 25 b8 22>,
+      privKey: <Buffer d0 fd dc 22 42 66 0d 57 bc 16 ad 22 66 ba 11 96 4f 93 6e 00 dd 8b 1e 35 64 03 06 e6 e5 54 62 51>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 f6 9e da db 26 88 ba 69 33 b5 77 10 49 d1 c3 ef f6 0e 32 49 e3 be 05 b4 0b 2c fe 74 c4 3c e6 4e>,
+    previousCounter: 1,
+    rootKey: <Buffer 8d 99 e6 c7 e1 be b7 cc 08 75 68 cc 95 ac 96 22 58 a6 14 d6 e5 fc d8 20 a3 94 90 fa 49 a0 47 d9>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 6b 55 6f 7b b0 8f c4 31 98 6f 00 d6 db 86 59 c3 08 e1 86 e2 4b 3f 90 d7 47 79 95 31 d5 f0 33 7b>,
+    baseKeyType: 1,
+    closed: -1,
+    used: 1728651986383,
+    created: 1725944404129,
+    remoteIdentityKey: <Buffer 05 2f 58 d4 c8 c3 97 9f d1 b0 be ec fa 1e 7d f2 f8 63 a1 28 9d 04 7e 39 b7 c8 20 0e e2 96 85 bd 17>
+  }
+}
+Closing stale open session for new outgoing prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    BX4LG0tqtGSO9TGuGlni2iFPPa1fPLvHbmph74HpvVlP: { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 1770557588,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 7e 0b 1b 4b 6a b4 64 8e f5 31 ae 1a 59 e2 da 21 4f 3d ad 5f 3c bb c7 6e 6a 61 ef 81 e9 bd 59 4f>,
+      privKey: <Buffer 70 20 8e c0 4b ec 5f 28 63 9c 3c ed 6b d3 d2 23 df 73 c1 49 47 e7 82 46 ab e6 1f 2c d9 a9 e5 7b>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 4e b2 08 0f 8f 74 6d ff 40 6c cf 86 fe 99 91 84 32 75 c5 c8 cf 22 3a f2 1f d0 3d ef e0 e7 4a 61>,
+    previousCounter: 0,
+    rootKey: <Buffer bb 36 50 2e 6d 4b 34 c0 b9 1f 12 0f 15 a5 cb fb 31 3b dc e2 54 08 5b bd b0 1b 9b 3e 4f 09 62 da>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 1e 64 4b 3d be ea 02 32 e3 32 73 9e 9b d7 ca 84 d3 ea 0a bf 8d f0 f1 90 89 94 7e 78 cb cd 3f 54>,
+    baseKeyType: 1,
+    closed: -1,
+    used: 1729055131130,
+    created: 1729055131130,
+    remoteIdentityKey: <Buffer 05 29 42 09 60 36 25 c0 19 52 16 59 13 c2 ea 7a 28 de 20 f1 5f d2 b6 14 6f 53 c4 f0 3d 1a 50 bb 2a>
+  },
+  pendingPreKey: {
+    signedKeyId: 0,
+    baseKey: <Buffer 05 1e 64 4b 3d be ea 02 32 e3 32 73 9e 9b d7 ca 84 d3 ea 0a bf 8d f0 f1 90 89 94 7e 78 cb cd 3f 54>,
+    preKeyId: 338161
+  }
+}
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+cron job ping google
+Data update successful for ID: 1325
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+Data update successful for ID: 1326
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+No data found.
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+No data found.
+Status updated: { message: 'Record updated successfully' }
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+cron job ping google
+No data found.
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+cron job ping google
+cron job statusAWS,statusHistory,get_iot_weatherstation
+No data found.
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+Error fetching files: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+Status updated: { message: 'Record updated successfully' }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+No data or invalid data received from the API.
+Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:290:47\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:293:23\n' +
+      '    at Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n' +
+      '    at relayMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:279:30)\n' +
+      '    at Object.sendMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:652:23)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:290:47\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:293:23\n' +
+      '    at Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n' +
+      '    at relayMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:279:30)\n' +
+      '    at Object.sendMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:652:23)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+cron job get_mill_data
+cron job ping google
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+Error sending message: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:29:38
+    at refreshMediaConn (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:50:15)
+    at async Object.upload (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages-media.js:530:26)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:126:28
+    at async Promise.all (index 0)
+    at async prepareWAMessageMedia (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:124:40)
+    at async generateWAMessageContent (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:369:13) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+Error sending message: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:29:38
+    at refreshMediaConn (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:50:15)
+    at async Object.upload (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages-media.js:530:26)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:126:28
+    at async Promise.all (index 0)
+    at async prepareWAMessageMedia (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:124:40)
+    at async generateWAMessageContent (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:369:13) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:29:38\n' +
+      '    at refreshMediaConn (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:50:15)\n' +
+      '    at async Object.upload (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\messages-media.js:530:26)\n' +
+      '    at async C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\messages.js:126:28\n' +
+      '    at async Promise.all (index 0)\n' +
+      '    at async prepareWAMessageMedia (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\messages.js:124:40)\n' +
+      '    at async generateWAMessageContent (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\messages.js:369:13)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Error sending message: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:29:38
+    at refreshMediaConn (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:50:15)
+    at async Object.upload (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages-media.js:530:26)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:126:28
+    at async Promise.all (index 0)
+    at async prepareWAMessageMedia (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:124:40)
+    at async generateWAMessageContent (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:369:13) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+Error sending message: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:29:38
+    at refreshMediaConn (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:50:15)
+    at async Object.upload (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages-media.js:530:26)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:126:28
+    at async Promise.all (index 0)
+    at async prepareWAMessageMedia (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:124:40)
+    at async generateWAMessageContent (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:369:13) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+cron job ping google
+cron job get_mill_data
+Error sending message: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:29:38
+    at refreshMediaConn (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:50:15)
+    at async Object.upload (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages-media.js:530:26)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:126:28
+    at async Promise.all (index 0)
+    at async prepareWAMessageMedia (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:124:40)
+    at async generateWAMessageContent (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:369:13) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+Error sending message: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:29:38
+    at refreshMediaConn (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:50:15)
+    at async Object.upload (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages-media.js:530:26)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:126:28
+    at async Promise.all (index 0)
+    at async prepareWAMessageMedia (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:124:40)
+    at async generateWAMessageContent (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:369:13) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Error sending message: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:29:38
+    at refreshMediaConn (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:50:15)
+    at async Object.upload (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages-media.js:530:26)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:126:28
+    at async Promise.all (index 0)
+    at async prepareWAMessageMedia (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:124:40)
+    at async generateWAMessageContent (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:369:13) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+Error sending message: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:29:38
+    at refreshMediaConn (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:50:15)
+    at async Object.upload (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages-media.js:530:26)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:126:28
+    at async Promise.all (index 0)
+    at async prepareWAMessageMedia (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:124:40)
+    at async generateWAMessageContent (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:369:13) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+cron job ping google
+Error sending message: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:29:38
+    at refreshMediaConn (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:50:15)
+    at async Object.upload (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages-media.js:530:26)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:126:28
+    at async Promise.all (index 0)
+    at async prepareWAMessageMedia (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:124:40)
+    at async generateWAMessageContent (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:369:13) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+Error sending message: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:29:38
+    at refreshMediaConn (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:50:15)
+    at async Object.upload (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages-media.js:530:26)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:126:28
+    at async Promise.all (index 0)
+    at async prepareWAMessageMedia (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:124:40)
+    at async generateWAMessageContent (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:369:13) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+cron job ping google
+Error sending message: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:29:38
+    at refreshMediaConn (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:50:15)
+    at async Object.upload (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages-media.js:530:26)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:126:28
+    at async Promise.all (index 0)
+    at async prepareWAMessageMedia (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:124:40)
+    at async generateWAMessageContent (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:369:13) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+Error sending message: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:29:38
+    at refreshMediaConn (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:50:15)
+    at async Object.upload (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages-media.js:530:26)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:126:28
+    at async Promise.all (index 0)
+    at async prepareWAMessageMedia (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:124:40)
+    at async generateWAMessageContent (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:369:13) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+Error sending message: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:29:38
+    at refreshMediaConn (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:50:15)
+    at async Object.upload (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages-media.js:530:26)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:126:28
+    at async Promise.all (index 0)
+    at async prepareWAMessageMedia (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:124:40)
+    at async generateWAMessageContent (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:369:13) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+cron job ping google
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+Error fetching files: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+Error fetching data: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at Object.groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at statusHistory (C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:121:39)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async cron.schedule.scheduled [as _execution] (C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:953:11) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:290:47
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:293:23
+    at Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:32)
+    at relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:279:30)
+    at Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:652:23) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+Error sending message: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:29:38
+    at refreshMediaConn (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:50:15)
+    at async Object.upload (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages-media.js:530:26)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:126:28
+    at async Promise.all (index 0)
+    at async prepareWAMessageMedia (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:124:40)
+    at async generateWAMessageContent (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:369:13) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+Error sending message: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:29:38
+    at refreshMediaConn (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:50:15)
+    at async Object.upload (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages-media.js:530:26)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:126:28
+    at async Promise.all (index 0)
+    at async prepareWAMessageMedia (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:124:40)
+    at async generateWAMessageContent (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:369:13) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+Error sending message: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:54:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:73:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:137:15)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:29:38
+    at refreshMediaConn (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:50:15)
+    at async Object.upload (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages-media.js:530:26)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:126:28
+    at async Promise.all (index 0)
+    at async prepareWAMessageMedia (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:124:40)
+    at async generateWAMessageContent (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:369:13) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:290:47\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:293:23\n' +
+      '    at Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n' +
+      '    at relayMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:279:30)\n' +
+      '    at Object.sendMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:652:23)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at Object.groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at statusHistory (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\helper.js:121:39)\n' +
+      '    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n' +
+      '    at async cron.schedule.scheduled [as _execution] (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\helper.js:953:11)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:137:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:132:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:114:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:136:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:290:47\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:293:23\n' +
+      '    at Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n' +
+      '    at relayMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:279:30)\n' +
+      '    at Object.sendMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:652:23)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+Server Berjalan pada Port : 8000
+opened connection
+Closing stale open session for new outgoing prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    'BTHFbo1Uh3zYbt2mCrbZOaBMeW35VqSBgKalc/xb0zgv': { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 1808186202,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 31 c5 6e 8d 54 87 7c d8 6e dd a6 0a b6 d9 39 a0 4c 79 6d f9 56 a4 81 80 a6 a5 73 fc 5b d3 38 2f>,
+      privKey: <Buffer 18 2a 26 f6 9a 5a a2 07 f5 27 5a d3 95 b9 c5 1f b5 18 5c dc ce 49 cd f3 d7 34 4e 88 fb de ed 4a>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 75 17 3a 59 b0 01 10 b4 15 6e 03 57 b5 dc 74 ea c0 44 da 23 9d 31 8f 5d ae eb cf d5 d1 e5 72 5e>,
+    previousCounter: 0,
+    rootKey: <Buffer fc 94 7b c5 1f af ec 7c ea ec 19 92 03 e6 7d e1 c9 38 ea 72 24 dd 3b c5 f7 89 2d 74 3d 04 9d 86>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 a4 36 d3 14 83 a3 88 4e c3 7b 2c 84 d4 c7 ff b8 48 88 5a df 76 12 4e 6e f3 10 f5 e9 91 87 c8 67>,
+    baseKeyType: 1,
+    closed: -1,
+    used: 1725934232191,
+    created: 1725934232191,
+    remoteIdentityKey: <Buffer 05 1c 34 74 a1 2f 5b b3 a6 ba 37 e8 f2 6d 4a 23 59 ba 19 45 26 fe 40 3f 36 55 7d a7 dc 28 ad 04 78>
+  },
+  pendingPreKey: {
+    signedKeyId: 31,
+    baseKey: <Buffer 05 a4 36 d3 14 83 a3 88 4e c3 7b 2c 84 d4 c7 ff b8 48 88 5a df 76 12 4e 6e f3 10 f5 e9 91 87 c8 67>,
+    preKeyId: 13821496
+  }
+}
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+Server Berjalan pada Port : 8000
+opened connection
+id_group: 120363339511378953@g.us || Nama Group: Iot
+id_group: 120363346145146382@g.us || Nama Group: Project MarCom
+id_group: 120363314516231871@g.us || Nama Group: Tes Bot WA NBE
+id_group: 120363321959291717@g.us || Nama Group: AI Operator Ruang Mesin
+id_group: 120363205553012899@g.us || Nama Group: BOT DA_RND
+id_group: 120363264196563911@g.us || Nama Group: Aplikasi Traksi
+id_group: 120363226513991710@g.us || Nama Group: Taksasi Panen BTE
+id_group: 120363152744155925@g.us || Nama Group: Taksasi - SCE
+id_group: 120363193243380343@g.us || Nama Group: Aplikasi Taksasi - LME2
+id_group: 120363193125275627@g.us || Nama Group: Aplikasi Taksasi - TBE
+id_group: 120363220146576654@g.us || Nama Group: Taksasi panen SBE
+id_group: 120363217291038671@g.us || Nama Group: Taksasi Panen PDE
+id_group: 120363210871038595@g.us || Nama Group: Aplikasi Taksasi - KTE Reg4
+id_group: 120363231670115838@g.us || Nama Group: Taksasi Panen NNE
+id_group: 120363164751475851@g.us || Nama Group: Trial Aplikasi QC
+id_group: 120363207525577365@g.us || Nama Group: Aplikasi Taksasi - SJE
+id_group: 120363217152686034@g.us || Nama Group: Taksasi panen NKE
+id_group: 120363149785590346@g.us || Nama Group: Taksasi BHE
+id_group: 120363217205685424@g.us || Nama Group: Taksasi Panen MRE
+id_group: 120363208984887370@g.us || Nama Group: Aplikasi Taksasi - LME1
+id_group: 120363220419839708@g.us || Nama Group: Taksasi Panen SPE
+id_group: 6281397270799-1635156024@g.us || Nama Group: SYM 25.00
+id_group: 120363166668733371@g.us || Nama Group: Taksasi BDE
+id_group: 120363213054175770@g.us || Nama Group: Taksasi Panen MLE
+id_group: 120363170524329595@g.us || Nama Group: Taksasi KTE
+id_group: 120363047670143778@g.us || Nama Group: Taksasi Wil II
+id_group: 120363025737216061@g.us || Nama Group: Taksasi Wil-I
+id_group: 120363048442215265@g.us || Nama Group: Taksasi Wil III
+*Selamat Siang*:
+Yth. Pelanggan Setia Lab CBI
+Progress Sampel anda telah Terupdate dengan:
+*No. Surat* : 416/FER-SSS/SRS-LAB/X/2024
+*Departemen* : Nutrisi Tanaman
+*Jenis Sampel* : Pupuk
+*Jumlah Sampel* : 3
+*Progress saat ini* : Penerimaan dan Registrasi Sampel
+Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com
+Dengan kode tracking  *LCAXVOBT*
+Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.
+
+cron job ping google
+cron job get_mill_data
+Data update successful for ID: 1327
+Data update successful for ID: 1328
+Data update successful for ID: 1331
+Data update successful for ID: 1327
+Data update successful for ID: 1328
+Data update successful for ID: 1331
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+*Selamat Siang*:
+Yth. Pelanggan Setia Lab CBI
+Progress Sampel anda telah Terupdate dengan:
+*No. Surat* : 416/FER-SSS/SRS-LAB/X/2024
+*Departemen* : Nutrisi Tanaman
+*Jenis Sampel* : Pupuk
+*Jumlah Sampel* : 3
+*Progress saat ini* : Penerimaan dan Registrasi Sampel
+Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com
+Dengan kode tracking  *LCAXVOBT*
+Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.
+
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+No data found.
+Status updated: { message: 'Record updated successfully' }
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+cron job ping google
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+check data grading
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:145:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:323:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:316:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:306:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:666:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+Message sent successfully.

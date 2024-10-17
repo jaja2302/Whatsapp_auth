@@ -11,6 +11,8 @@ const noWa_grading_suayap = '6281397270799-1635156024@g.us';
 // const noWa_grading_suayap = testingbotsampenikah;
 
 async function get_mill_data(sock) {
+  console.log('check data grading');
+
   const credentials = {
     email: 'j',
     password: 'j',
