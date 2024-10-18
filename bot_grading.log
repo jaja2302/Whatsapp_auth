@@ -18523,3 +18523,312 @@ Error fetching files: Error: forbidden
   }
 }
 Message sent successfully.
+{"data":{"location":"frc","reason":"401"},"isBoom":true,"isServer":false,"level":"error","message":"Connection Error: Connection Failure","output":{"headers":{},"payload":{"error":"Unauthorized","message":"Connection Failure","statusCode":401},"statusCode":401},"stack":"Error: Connection Failure\n    at WebSocketClient.<anonymous> (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:529:13)\n    at WebSocketClient.emit (node:events:518:28)\n    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:149:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2024-10-17T06:58:08.748Z"}
+MLE 2024-10-17
+check data grading
+cron job get_mill_data
+check data grading
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+Data update successful for ID: 1380
+Data update successful for ID: 1381
+Data update successful for ID: 1382
+Data update successful for ID: 1380
+Data update successful for ID: 1385
+Data update successful for ID: 1381
+Data update successful for ID: 1382
+Data update successful for ID: 1386
+Data update successful for ID: 1385
+Data update successful for ID: 1387
+Data update successful for ID: 1386
+Data update successful for ID: 1387
+cron job get_mill_data
+check data grading
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+NKE 2024-10-17
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+KTE 2024-10-17
+SPE 2024-10-17
+Upload not successful, retrying...
+Upload not successful, retrying...
+LME1 2024-10-17
+Upload failed after 2 attempts
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+PDE 2024-10-17
+{ message: 'Status sock updated successfully' }
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+SBE 2024-10-17
+Upload not successful, retrying...
+Upload not successful, retrying...
+BTE 2024-10-17
+Upload failed after 2 attempts
+MRE 2024-10-17
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+LME2 2024-10-17
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+SCE 2024-10-17
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+TBE 2024-10-17
+cron job ping google
+cron job get_mill_data
+check data grading
+No data found.
+{
+  message: 'Fail pdf izin kebun succes terkirim',
+  data: [
+    {
+      id_db: 450,
+      group_id: '120363205553012899@g.us',
+      uuid: '45be914b-284a-41c4-894c-37728d84129a',
+      user_id: 1251,
+      nama_user: 'Aden',
+      no_hp_user: '6285654230567',
+      tanggal_keluar: '2024-10-19 13:30:00',
+      tanggal_kembali: '2024-10-21 03:00:00',
+      lokasi_tujuan: 'Pangkalanbun',
+      plat_nomor: 'KH 3486 WF',
+      kendaraan: 'Motor',
+      keperluan: 'Menjenguk Keluarga. ',
+      atasan_1: 1074,
+      nama_atasan_1: 'IKA WIDIYATNINGRUM',
+      atasan_2: 1065,
+      nama_atasan_2: 'BUDI UMBARA',
+      atasan_3: null,
+      nama_atasan_3: null,
+      type: 'send_atasan_satu',
+      status: 'approved',
+      atasan: 'Atasan Dua',
+      update_type: 'atasan2',
+      id: '450/1074',
+      send_to: '6281253560641'
+    },
+    {
+      id_db: 451,
+      group_id: '120363205553012899@g.us',
+      uuid: 'c8189fb2-e1a1-402f-8def-81934470d857',
+      user_id: 213,
+      nama_user: 'Ribut Wahidi',
+      no_hp_user: '6282155928100',
+      tanggal_keluar: '2024-10-20 07:02:00',
+      tanggal_kembali: '2024-10-21 07:02:00',
+      lokasi_tujuan: 'Lamandau',
+      plat_nomor: 'KhH4729 RE',
+      kendaraan: 'Motor',
+      keperluan: 'Servis Motor',
+      atasan_1: 206,
+      nama_atasan_1: 'Evan Andriyanto',
+      atasan_2: 203,
+      nama_atasan_2: 'Dennis Irawan',
+      atasan_3: null,
+      nama_atasan_3: null,
+      type: 'send_atasan_satu',
+      status: 'approved',
+      atasan: 'Atasan Dua',
+      update_type: 'atasan2',
+      id: '451/206',
+      send_to: '6282220278005'
+    }
+  ]
+}
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+check data grading
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+{
+  message: 'Fail pdf izin kebun succes terkirim',
+  data: [
+    {
+      id_db: 450,
+      group_id: '120363205553012899@g.us',
+      uuid: '45be914b-284a-41c4-894c-37728d84129a',
+      user_id: 1251,
+      nama_user: 'Aden',
+      no_hp_user: '6285654230567',
+      tanggal_keluar: '2024-10-19 13:30:00',
+      tanggal_kembali: '2024-10-21 03:00:00',
+      lokasi_tujuan: 'Pangkalanbun',
+      plat_nomor: 'KH 3486 WF',
+      kendaraan: 'Motor',
+      keperluan: 'Menjenguk Keluarga. ',
+      atasan_1: 1074,
+      nama_atasan_1: 'IKA WIDIYATNINGRUM',
+      atasan_2: 1065,
+      nama_atasan_2: 'BUDI UMBARA',
+      atasan_3: null,
+      nama_atasan_3: null,
+      type: 'send_atasan_satu',
+      status: 'approved',
+      atasan: 'Atasan Dua',
+      update_type: 'atasan2',
+      id: '450/1074',
+      send_to: '6281253560641'
+    },
+    {
+      id_db: 451,
+      group_id: '120363205553012899@g.us',
+      uuid: 'c8189fb2-e1a1-402f-8def-81934470d857',
+      user_id: 213,
+      nama_user: 'Ribut Wahidi',
+      no_hp_user: '6282155928100',
+      tanggal_keluar: '2024-10-20 07:02:00',
+      tanggal_kembali: '2024-10-21 07:02:00',
+      lokasi_tujuan: 'Lamandau',
+      plat_nomor: 'KhH4729 RE',
+      kendaraan: 'Motor',
+      keperluan: 'Servis Motor',
+      atasan_1: 206,
+      nama_atasan_1: 'Evan Andriyanto',
+      atasan_2: 203,
+      nama_atasan_2: 'Dennis Irawan',
+      atasan_3: null,
+      nama_atasan_3: null,
+      type: 'send_atasan_satu',
+      status: 'approved',
+      atasan: 'Atasan Dua',
+      update_type: 'atasan2',
+      id: '451/206',
+      send_to: '6282220278005'
+    }
+  ]
+}
+{ message: 'Status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+Closing stale open session for new outgoing prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    'BarDJ+FuVAOYyRnbNzAgCkKjeyBjsZ9pXUjDvr590F1X': { chainKey: [Object], chainType: 2, messageKeys: {} },
+    'BY3TnsTn2mIv/lxSH9eCvOCDR7mnad0BAS3CxTs1P9d0': { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 427443307,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 8d d3 9e c4 e7 da 62 2f fe 5c 52 1f d7 82 bc e0 83 47 b9 a7 69 dd 01 01 2d c2 c5 3b 35 3f d7 74>,
+      privKey: <Buffer 78 ac bc 69 14 85 60 a1 db a6 53 f8 db ca ba 79 8e f8 ca ec 52 cc fa 8c 69 ca 72 c4 a8 51 96 7a>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 aa c3 27 e1 6e 54 03 98 c9 19 db 37 30 20 0a 42 a3 7b 20 63 b1 9f 69 5d 48 c3 be be 7d d0 5d 57>,
+    previousCounter: 0,
+    rootKey: <Buffer c4 e7 4a a7 c2 09 e4 63 f2 56 2d b5 01 42 eb 43 c7 c1 7b e6 0c 90 0f f0 cc 84 7b 57 82 88 6e 38>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 c2 d1 4d ac b8 33 8a 99 51 4a c2 90 8f 3a 91 07 fa 65 be f9 3d e6 b1 de 0f 5c f5 3b 11 f7 9e 7b>,
+    baseKeyType: 2,
+    closed: -1,
+    used: 1729149092864,
+    created: 1729149092864,
+    remoteIdentityKey: <Buffer 05 f4 fa b0 9f db 65 a3 84 01 81 04 02 15 6c 6f 0d dc eb c3 9a b9 3e e5 77 cd 3d 72 f7 91 8d 53 30>
+  }
+}
+NBE 2024-10-17
+Closing stale open session for new outgoing prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    'BX03DycHFor4pm/xzD9BEZfm6Odx9pUdO1uDgNa/ERBE': { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 427443307,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 7d 37 0f 27 07 16 8a f8 a6 6f f1 cc 3f 41 11 97 e6 e8 e7 71 f6 95 1d 3b 5b 83 80 d6 bf 11 10 44>,
+      privKey: <Buffer 10 f0 7e ad 50 3a 1c 5a 68 19 9c a6 92 60 83 8b b2 5b f1 ce af 37 73 d3 18 2b fe 55 88 69 5c 66>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 56 2e 75 02 41 d8 cf bc 3f e5 e5 18 aa 98 cf f3 f1 36 01 7f 5d 3b e3 8b 58 60 05 31 c3 ea 6d 59>,
+    previousCounter: 0,
+    rootKey: <Buffer 9f 86 6b 2a 4b 32 0d f6 2e ff 3d ae c6 4c 68 32 86 82 20 be 3a 82 43 c2 07 a4 59 e2 07 85 07 89>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 91 2c 69 be 0f 45 d3 34 78 97 11 a1 0b e8 13 cb 36 dd ea 73 ca 2a 0d ca 98 c3 fd 06 1a bf 06 02>,
+    baseKeyType: 1,
+    closed: -1,
+    used: 1729150402361,
+    created: 1729150402361,
+    remoteIdentityKey: <Buffer 05 f4 fa b0 9f db 65 a3 84 01 81 04 02 15 6c 6f 0d dc eb c3 9a b9 3e e5 77 cd 3d 72 f7 91 8d 53 30>
+  },
+  pendingPreKey: {
+    signedKeyId: 2,
+    baseKey: <Buffer 05 91 2c 69 be 0f 45 d3 34 78 97 11 a1 0b e8 13 cb 36 dd ea 73 ca 2a 0d ca 98 c3 fd 06 1a bf 06 02>,
+    preKeyId: 15485355
+  }
+}
+Closing stale open session for new outgoing prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    BYqpmVY08L2YBHHZFeCvfsLQnTbKohtMBSzu1ndGKkI8: { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 427443307,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 8a a9 99 56 34 f0 bd 98 04 71 d9 15 e0 af 7e c2 d0 9d 36 ca a2 1b 4c 05 2c ee d6 77 46 2a 42 3c>,
+      privKey: <Buffer c0 c8 a4 4f 0e b6 60 62 b9 61 d7 af 2c 64 9a 52 b9 9f 9a 27 e9 e9 78 e6 66 35 4f d0 98 d8 f9 69>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 56 2e 75 02 41 d8 cf bc 3f e5 e5 18 aa 98 cf f3 f1 36 01 7f 5d 3b e3 8b 58 60 05 31 c3 ea 6d 59>,
+    previousCounter: 0,
+    rootKey: <Buffer f1 64 5f 4f 11 6a 59 10 08 29 d0 d4 e5 5e 83 f7 b2 cb fd 80 7e 7b 19 5f 26 1d fb 80 dd b6 81 d3>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 7b ac fb 55 50 f3 e9 54 35 8d 36 2e fc b6 51 da e6 dd 92 c5 f5 35 70 97 9c af 40 27 47 c8 8f 20>,
+    baseKeyType: 1,
+    closed: -1,
+    used: 1729150420373,
+    created: 1729150420373,
+    remoteIdentityKey: <Buffer 05 f4 fa b0 9f db 65 a3 84 01 81 04 02 15 6c 6f 0d dc eb c3 9a b9 3e e5 77 cd 3d 72 f7 91 8d 53 30>
+  },
+  pendingPreKey: {
+    signedKeyId: 2,
+    baseKey: <Buffer 05 7b ac fb 55 50 f3 e9 54 35 8d 36 2e fc b6 51 da e6 dd 92 c5 f5 35 70 97 9c af 40 27 47 c8 8f 20>,
+    preKeyId: 15484755
+  }
+}
+cron job ping google
+cron job get_mill_data
+check data grading
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+check data grading
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Data update successful for ID: 1388
+Data update successful for ID: 1389
+Data update successful for ID: 1390
+Data update successful for ID: 1391
+Data update successful for ID: 1392
+Data update successful for ID: 1393
+{ message: 'Status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+cron job ping google
+cron job get_mill_data
+check data grading
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+{ message: 'Status sock updated successfully' }
+{ message: 'Status sock updated successfully' }
+cron job get_mill_data
+check data grading
+cron job ping google
+No data found.
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+NBE 2024-10-17

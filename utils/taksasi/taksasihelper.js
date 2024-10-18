@@ -92,7 +92,7 @@ async function sendtaksasiest(estate, group_id, folder, sock, taskid, tanggal) {
     }
     await generatemapstaksasi(estate, newdaate);
 
-    // console.log(newdaate);
+    console.log(estate, newdaate);
 
     try {
       const { data: responseData } = await axios.get(
