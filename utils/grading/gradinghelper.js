@@ -7,8 +7,10 @@ const testingbotda = '120363205553012899@g.us';
 const testingbotsampenikah = '120363204285862734@g.us';
 const noWa_grading = '120363164751475851@g.us';
 const noWa_grading_suayap = '6281397270799-1635156024@g.us';
+const noWa_grading_sgm = '6282257572112-1635223872@g.us';
 // const noWa_grading = testingbotda;
 // const noWa_grading_suayap = testingbotsampenikah;
+// id_group: 6282257572112-1635223872@g.us || Nama Group: SGM 23.50
 
 async function get_mill_data(sock) {
   console.log('check data grading');
@@ -51,13 +53,19 @@ async function get_mill_data(sock) {
 
         try {
           // Send to main grading group
-          await sock.sendMessage(noWa_grading, imageOptions);
-          await sock.sendMessage(noWa_grading, messageOptions);
+          // await sock.sendMessage(noWa_grading, imageOptions);
+          // await sock.sendMessage(noWa_grading, messageOptions);
 
           // If estate is SYE, also send to the Suayap group
           if (itemdata.mill === 'SYM') {
             await sock.sendMessage(noWa_grading_suayap, imageOptions);
             await sock.sendMessage(noWa_grading_suayap, messageOptions);
+          } else if (itemdata.mill === 'SGM') {
+            await sock.sendMessage(noWa_grading_sgm, imageOptions);
+            await sock.sendMessage(noWa_grading_sgm, messageOptions);
+          } else {
+            await sock.sendMessage(noWa_grading, imageOptions);
+            await sock.sendMessage(noWa_grading, messageOptions);
           }
 
           // Update data after sending messages

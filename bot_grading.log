@@ -18832,3 +18832,894 @@ No data found.
 memulai cronjob  taksasi fail,pdf izin kebun,iot gap
 { message: 'Fail pdf izin kebun succes terkirim', data: [] }
 NBE 2024-10-17
+cron job ping google
+cron job get_mill_data
+check data grading
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+check data grading
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+{ message: 'Status sock updated successfully' }
+cron job ping google
+cron job get_mill_data
+check data grading
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+No data found.
+Status updated: { message: 'Record updated successfully' }
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+check data grading
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+cron job get_mill_data
+check data grading
+No data found.
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+check data grading
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:145:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:323:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:316:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:306:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:666:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+cron job ping google
+No data or invalid data received from the API.
+data kosong iot
+cron job get_mill_data
+check data grading
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+check data grading
+cron job ping google
+No data found.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+NKE 2024-10-18
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Image sent with caption successfully.
+Image sent with caption successfully.
+cron job get_mill_data
+check data grading
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+No data found.
+cron job ping google
+Status updated: { message: 'Record updated successfully' }
+{ message: 'Status sock updated successfully' }
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+check data grading
+No data found.
+{
+  message: 'Fail pdf izin kebun succes terkirim',
+  data: [
+    {
+      id_db: 465,
+      group_id: '120363205553012899@g.us',
+      uuid: '02f28951-ff66-4300-a6de-03e6199588ac',
+      user_id: 1223,
+      nama_user: 'Erwandi',
+      no_hp_user: '6289636407809',
+      tanggal_keluar: '2024-10-19 13:45:00',
+      tanggal_kembali: '2024-10-20 16:41:00',
+      lokasi_tujuan: 'Runtu',
+      plat_nomor: null,
+      kendaraan: 'Motor',
+      keperluan: 'Mengunjungi Keluarga',
+      atasan_1: 1106,
+      nama_atasan_1: 'IBNU RIZKI PERDANA',
+      atasan_2: 1105,
+      nama_atasan_2: 'TAUFIK HADIANTO',
+      atasan_3: 1065,
+      nama_atasan_3: 'BUDI UMBARA',
+      type: 'send_atasan_tiga',
+      status: 'approved',
+      atasan: 'Atasan Dua',
+      update_type: 'atasan2',
+      id: '465/1065',
+      send_to: '6285265942378'
+    }
+  ]
+}
+{ message: 'Status sock updated successfully' }
+cron job get_mill_data
+check data grading
+cron job ping google
+No data found.
+{ message: 'Status sock updated successfully' }
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+check data grading
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+cron job ping google
+Status updated: { message: 'Record updated successfully' }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+No data found.
+cron job get_mill_data
+check data grading
+cron job ping google
+No data found.
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+check data grading
+cron job ping google
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Data update successful for ID: 1417
+cron job get_mill_data
+check data grading
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+No data found.
+Status updated: { message: 'Record updated successfully' }
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+check data grading
+No data found.
+cron job ping google
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+check data grading
+No data found.
+cron job ping google
+cron job get_mill_data
+check data grading
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+cron job ping google
+cron job statusAWS,statusHistory,get_iot_weatherstation
+No data found.
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:145:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:323:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:316:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:306:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:666:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Message sent successfully.
+cron job ping google
+cron job get_mill_data
+check data grading
+Data update successful for ID: 1418
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+KTE 2024-10-18
+SPE 2024-10-18
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+LME1 2024-10-18
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+PDE 2024-10-18
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+SBE 2024-10-18
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+BTE 2024-10-18
+MLE 2024-10-18
+cron job get_mill_data
+check data grading
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+cron job ping google
+Status updated: { message: 'Record updated successfully' }
+MRE 2024-10-18
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+LME2 2024-10-18
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Error sending message: Error: Media upload failed on all hosts
+    at Object.upload (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages-media.js:577:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:122:28
+    at async Promise.all (index 0)
+    at async prepareWAMessageMedia (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:120:40)
+    at async generateWAMessageContent (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:415:13)
+    at async generateWAMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:507:59)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:621:33)
+    at async get_mill_data (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\grading\gradinghelper.js:55:11)
+    at async cron.schedule.scheduled [as _execution] (C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:999:9) {
+  data: null,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+{ message: 'Status sock updated successfully' }
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+check data grading
+Upload not successful, retrying...
+Data update successful for ID: 1419
+Upload not successful, retrying...
+Upload failed after 2 attempts
+KTE 2024-10-18
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+check data grading
+cron job ping google
+Error sending message: Error: Media upload failed on all hosts
+    at Object.upload (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages-media.js:577:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:122:28
+    at async Promise.all (index 0)
+    at async prepareWAMessageMedia (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:120:40)
+    at async generateWAMessageContent (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:415:13)
+    at async generateWAMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:507:59)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:621:33)
+    at async get_mill_data (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\grading\gradinghelper.js:54:11)
+    at async cron.schedule.scheduled [as _execution] (C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:999:9) {
+  data: null,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+cron job get_mill_data
+check data grading
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Data update successful for ID: 1421
+cron job ping google
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+check data grading
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+cron job ping google
+cron job get_mill_data
+check data grading
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+check data grading
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+No data found.
+{"data":null,"isBoom":true,"isServer":false,"level":"error","message":"Connection Error: Connection Terminated","output":{"headers":{},"payload":{"error":"Precondition Required","message":"Connection Terminated","statusCode":428},"statusCode":428},"stack":"Error: Connection Terminated\n    at WebSocketClient.<anonymous> (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:459:30)\n    at WebSocketClient.emit (node:events:530:35)\n    at WebSocket.<anonymous> (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\Client\\web-socket-client.js:46:100)\n    at WebSocket.emit (node:events:518:28)\n    at WebSocket.emitClose (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\ws\\lib\\websocket.js:272:10)\n    at Receiver.receiverOnFinish (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\ws\\lib\\websocket.js:1209:20)\n    at Receiver.emit (node:events:518:28)\n    at finish (node:internal/streams/writable:946:10)\n    at node:internal/streams/writable:927:13\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)","timestamp":"2024-10-18T05:51:29.602Z"}
+cron job ping google
+cron job get_mill_data
+check data grading
+cron job ping google
+No data found.
+cron job get_mill_data
+check data grading
+No data found.
+cron job ping google
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+check data grading
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+cron job ping google
+Status updated: { message: 'Record updated successfully' }
+cron job statusAWS,statusHistory,get_iot_weatherstation
+No data found.
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+check data grading
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:145:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:323:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:316:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:306:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:666:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+Error fetching files: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:59:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:78:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:142:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:323:47
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:316:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+No data found.
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+No data or invalid data received from the API.
+No data or invalid data received from the API.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+data kosong iot
+data kosong iot
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Status updated: { message: 'Record updated successfully' }
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:145:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:140:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:119:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:141:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:323:47\n' +
+      '    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n' +
+      '    at async Promise.all (index 0)\n' +
+      '    at async C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:316:51\n' +
+      '    at async Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:26)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+cron job get_mill_data
+check data grading
+cron job ping google
+No data found.
+cron job get_mill_data
+check data grading
+No data found.
+cron job ping google
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+check data grading
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+check data grading
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Error sending message: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:59:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:78:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:142:15)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:28:38
+    at refreshMediaConn (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:49:15)
+    at async Object.upload (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages-media.js:532:26)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:122:28
+    at async Promise.all (index 0)
+    at async prepareWAMessageMedia (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:120:40)
+    at async generateWAMessageContent (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:415:13) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+Error sending message: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:59:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:78:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:142:15)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:28:38
+    at refreshMediaConn (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:49:15)
+    at async Object.upload (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages-media.js:532:26)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:122:28
+    at async Promise.all (index 0)
+    at async prepareWAMessageMedia (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:120:40)
+    at async generateWAMessageContent (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:415:13) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+Data update successful for ID: 1422
+Data update successful for ID: 1423
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:145:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:140:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:119:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:141:22)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:28:38\n' +
+      '    at refreshMediaConn (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:49:15)\n' +
+      '    at async Object.upload (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\messages-media.js:532:26)\n' +
+      '    at async C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\messages.js:122:28\n' +
+      '    at async Promise.all (index 0)\n' +
+      '    at async prepareWAMessageMedia (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\messages.js:120:40)\n' +
+      '    at async generateWAMessageContent (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\messages.js:415:13)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+cron job get_mill_data
+check data grading
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+cron job ping google
+Status updated: { message: 'Record updated successfully' }
+No data found.
+cron job get_mill_data
+check data grading
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+check data grading
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+check data grading
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+Error sending message: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:59:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:78:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:142:15)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:28:38
+    at refreshMediaConn (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:49:15)
+    at async Object.upload (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages-media.js:532:26)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:122:28
+    at async Promise.all (index 0)
+    at async prepareWAMessageMedia (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:120:40)
+    at async generateWAMessageContent (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:415:13) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+Data update successful for ID: 1424
+cron job ping google
+cron job get_mill_data
+check data grading
+cron job ping google
+No data found.
+cron job get_mill_data
+check data grading
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+check data grading
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+check data grading
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Status updated: { message: 'Record updated successfully' }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Status updated: { message: 'Record updated successfully' }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Error sending message: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:59:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:78:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:142:15)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:28:38
+    at refreshMediaConn (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:49:15)
+    at async Object.upload (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages-media.js:532:26)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:122:28
+    at async Promise.all (index 0)
+    at async prepareWAMessageMedia (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:120:40)
+    at async generateWAMessageContent (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:415:13) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+Data update successful for ID: 1426
+cron job ping google
+cron job get_mill_data
+check data grading
+No data found.
+cron job ping google
+cron job get_mill_data
+check data grading
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+check data grading
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+check data grading
+No data found.
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+check data grading
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+No data found.
+Status updated: { message: 'Record updated successfully' }
+cron job ping google
+cron job get_mill_data
+check data grading
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+No data found.
+Status updated: { message: 'Record updated successfully' }
+cron job ping google
+cron job get_mill_data
+check data grading
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+check data grading
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+check data grading
+cron job ping google
+cron job get_mill_data
+check data grading
+cron job ping google
+Error sending message: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:59:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:78:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:142:15)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:28:38
+    at refreshMediaConn (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:49:15)
+    at async Object.upload (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages-media.js:532:26)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:122:28
+    at async Promise.all (index 0)
+    at async prepareWAMessageMedia (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:120:40)
+    at async generateWAMessageContent (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:415:13) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+Error sending message: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:59:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:78:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:142:15)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:28:38
+    at refreshMediaConn (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:49:15)
+    at async Object.upload (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages-media.js:532:26)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:122:28
+    at async Promise.all (index 0)
+    at async prepareWAMessageMedia (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:120:40)
+    at async generateWAMessageContent (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\messages.js:415:13) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+Data update successful for ID: 1427
+Data update successful for ID: 1428
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+cron job ping google
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+check data grading
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+cron job ping google
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+Status updated: { message: 'Record updated successfully' }
+Status updated: { message: 'Record updated successfully' }
+No data found.
+Error fetching files: Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:59:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:78:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:142:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:323:47
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:316:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+cron job get_mill_data
+check data grading
+No data or invalid data received from the API.
+Error fetching files: Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:145:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:323:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:316:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:306:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:666:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+No data or invalid data received from the API.
+No data found.
+Error: Connection Closed
+    at sendRawMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:59:19)
+    at sendNode (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:78:16)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:142:15)
+    at groupQuery (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:12:55)
+    at groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:30)
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:323:47
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:316:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26) {
+  data: null,
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 428,
+    payload: {
+      statusCode: 428,
+      error: 'Precondition Required',
+      message: 'Connection Closed'
+    },
+    headers: {}
+  }
+}
+{ message: 'report added to database' }
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:145:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:140:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:119:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:141:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:323:47\n' +
+      '    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n' +
+      '    at async Promise.all (index 0)\n' +
+      '    at async C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:316:51\n' +
+      '    at async Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:26)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:145:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:140:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:119:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:141:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:323:47\n' +
+      '    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n' +
+      '    at async Promise.all (index 0)\n' +
+      '    at async C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:316:51\n' +
+      '    at async Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:26)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+cron job ping google
+cron job get_mill_data
+check data grading
+No data found.
+cron job ping google
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+check data grading
+No data found.
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+SCE 2024-10-18
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+TBE 2024-10-18
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
