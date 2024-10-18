@@ -1,6 +1,9 @@
 const axios = require('axios');
 const { catcherror } = require('../izinkebun/helper');
 const idgroupiot = '120363339511378953@g.us';
+const idgroupiot_sge = '120363347403672053@g.us';
+const idgroupiot_rge = '120363329617301042@g.us';
+const idgroupiot_sulung = '120363349319318472@g.us';
 
 // grup testing
 // const idgroupiot = '120363205553012899@g.us';
@@ -32,7 +35,14 @@ async function get_iot_weatherstation(sock) {
         message += `Ip address : ${itemdata.ip_address}\n`;
 
         try {
-          // Send message as an object with the text field
+          if (itemdata.loc === 'SGE') {
+            await sock.sendMessage(idgroupiot_sge, { text: message });
+          } else if (itemdata.loc === 'RGE') {
+            await sock.sendMessage(idgroupiot_rge, { text: message });
+          } else if (itemdata.loc === 'Sulung Ranch') {
+            await sock.sendMessage(idgroupiot_sulung, { text: message });
+          }
+
           await sock.sendMessage(idgroupiot, { text: message });
         } catch (error) {
           console.log(error);
