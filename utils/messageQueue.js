@@ -58,4 +58,4 @@ function getQueueStatus() {
   };
 }
 
-module.exports = { addToQueue, getQueueStatus };
+module.exports = { addToQueue, getQueueStatus, processQueue };

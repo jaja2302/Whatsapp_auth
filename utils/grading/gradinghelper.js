@@ -12,8 +12,6 @@ const noWa_grading_sgm = '6282257572112-1635223872@g.us';
 // const noWa_grading_suayap = testingbotsampenikah;
 // id_group: 6282257572112-1635223872@g.us || Nama Group: SGM 23.50
 
-const { addToQueue } = require('../messageQueue');
-
 async function get_mill_data(sock) {
   console.log('check data grading');
 
@@ -25,6 +23,7 @@ async function get_mill_data(sock) {
   try {
     const response = await axios.get(
       'https://management.srs-ssms.com/api/getdatamill',
+      // 'http://erpda.test/api/getdatamill',
       {
         params: credentials,
       }
@@ -37,14 +36,14 @@ async function get_mill_data(sock) {
       for (const itemdata of data.data) {
         const message = formatGradingMessage(itemdata);
 
-        // Prepare image buffer
+        // Send image
         const imgBuffer = Buffer.from(itemdata.base64Collage, 'base64');
         const imageOptions = {
           image: imgBuffer,
           caption: message,
         };
 
-        // Prepare PDF buffer
+        // Send PDF
         const pdfBuffer = Buffer.from(itemdata.pdf, 'base64');
         const messageOptions = {
           document: pdfBuffer,
@@ -53,33 +52,33 @@ async function get_mill_data(sock) {
           caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
         };
 
-        // Add task to queue
-        addToQueue(async () => {
-          try {
-            let targetGroup;
-            if (itemdata.mill === 'SYM') {
-              targetGroup = noWa_grading_suayap;
-            } else if (itemdata.mill === 'SGM') {
-              targetGroup = noWa_grading_sgm;
-            } else {
-              targetGroup = noWa_grading;
-            }
+        try {
+          // Send to main grading group
+          // await sock.sendMessage(noWa_grading, imageOptions);
+          // await sock.sendMessage(noWa_grading, messageOptions);
 
-            await sock.sendMessage(targetGroup, imageOptions);
-            await sock.sendMessage(targetGroup, messageOptions);
-
-            // Update data after sending messages
-            await updateDataMill(itemdata.id, credentials);
-          } catch (sendMessageError) {
-            console.error('Error sending message:', sendMessageError);
-            await catcherror(
-              itemdata.id,
-              'error_sending_message',
-              'bot_grading_mill'
-            );
-            throw sendMessageError; // Rethrow to trigger retry
+          // If estate is SYE, also send to the Suayap group
+          if (itemdata.mill === 'SYM') {
+            await sock.sendMessage(noWa_grading_suayap, imageOptions);
+            await sock.sendMessage(noWa_grading_suayap, messageOptions);
+          } else if (itemdata.mill === 'SGM') {
+            await sock.sendMessage(noWa_grading_sgm, imageOptions);
+            await sock.sendMessage(noWa_grading_sgm, messageOptions);
+          } else {
+            await sock.sendMessage(noWa_grading, imageOptions);
+            await sock.sendMessage(noWa_grading, messageOptions);
           }
-        }, `Send grading data for ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`);
+
+          // Update data after sending messages
+          await updateDataMill(itemdata.id, credentials);
+        } catch (sendMessageError) {
+          console.error('Error sending message:', sendMessageError);
+          await catcherror(
+            itemdata.id,
+            'error_sending_message',
+            'bot_grading_mill'
+          );
+        }
       }
     } else {
       console.log('No data found.');
