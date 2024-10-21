@@ -32,6 +32,7 @@ const {
 const { handleReplyNoDocMessage } = require('./utils/repply_no_doc_messages');
 const { handleReplyDocMessage } = require('./utils/repply_with_doc_messages');
 const { handleGroupMessage } = require('./utils/group_messages');
+const { getQueueStatus } = require('./utils/messageQueue');
 
 // App Initialization
 const app = express();
@@ -91,17 +92,31 @@ async function connectToWhatsApp() {
 
   sock.ev.on('connection.update', (update) => {
     const { connection, lastDisconnect } = update;
-    if (lastDisconnect?.error) {
-      logger.error('Connection Error:', lastDisconnect.error);
-      if (
-        lastDisconnect.error.output?.statusCode !== DisconnectReason.loggedOut
-      ) {
-        setTimeout(() => connectToWhatsApp(), 5000); // Retry logic
+    if (connection === 'close') {
+      const shouldReconnect =
+        lastDisconnect?.error?.output?.statusCode !==
+        DisconnectReason.loggedOut;
+      console.log(
+        'connection closed due to ',
+        lastDisconnect?.error,
+        ', reconnecting ',
+        shouldReconnect
+      );
+      if (shouldReconnect) {
+        connectToWhatsApp();
       }
     } else if (connection === 'open') {
-      logger.info('WhatsApp connected successfully');
+      console.log('opened connection');
+      // Process any pending tasks in the queue
+      processQueue();
     }
   });
+
+  // Periodically log queue status
+  setInterval(() => {
+    const status = getQueueStatus();
+    logger.info('Queue status', status);
+  }, 60000); // Log every minute
 
   sock.ev.on('creds.update', saveCreds);
 
@@ -190,10 +205,10 @@ async function connectToWhatsApp() {
     }
   });
 
-  // setupCronJobs(sock);
-  // runfunction(sock);
-  // function_rapidresponse(sock);
-  // function_marcom(sock);
+  setupCronJobs(sock);
+  runfunction(sock);
+  function_rapidresponse(sock);
+  function_marcom(sock);
 }
 
 // Helper function to handle QR code updates
