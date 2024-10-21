@@ -30,6 +30,7 @@ async function get_mill_data(sock) {
     );
 
     const data = response.data;
+    console.log(data);
 
     if (data.status === '200' && data.data && data.data.length > 0) {
       for (const itemdata of data.data) {
