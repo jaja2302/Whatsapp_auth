@@ -1,864 +1,873 @@
-Queue loaded from disk, items: 0
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Task added to queue: update_data_mill
+Queue saved to disk
+Task completed: update_data_mill
+Queue saved to disk
+cron job get_mill_data
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Task added to queue: send_message
+Task added to queue: send_message
+Queue saved to disk
+Queue saved to disk
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Task added to queue: send_message
+Task added to queue: send_message
+Queue saved to disk
+Queue saved to disk
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): rate-overlimit
+Error processing task (send_message): forbidden
+Error processing task (send_message): rate-overlimit
+Queue loaded from disk, items: 4
 WhatsApp connected successfully
 Current queue state:
-Queue is empty
-Total tasks in queue: 0
+1. Task type: send_message
+2. Task type: send_message
+3. Task type: send_message
+4. Task type: send_message
+Total tasks in queue: 4
 Queue processing resumed
-Task added to queue: update_data_mill
-Task added to queue: send_image
-Task added to queue: send_document
-Task added to queue: update_data_mill
-Task added to queue: send_image
-Task added to queue: send_document
-Task added to queue: update_data_mill
+Error processing task (send_message): forbidden
+Skipping task: send_message
 Queue saved to disk
+Error processing task (send_message): forbidden
+Skipping task: send_message
 Queue saved to disk
-Queue saved to disk
-Queue saved to disk
-Queue saved to disk
-Queue saved to disk
-Queue saved to disk
-Task completed: update_data_mill
-Queue saved to disk
-Image sent successfully to 6282257572112-1635223872@g.us
-Task completed: send_image
-Queue saved to disk
-Document sent successfully to 6282257572112-1635223872@g.us
-Task completed: send_document
-Queue saved to disk
-Task completed: update_data_mill
-Queue saved to disk
-Image sent successfully to 6282257572112-1635223872@g.us
-Task completed: send_image
-Queue saved to disk
-Document sent successfully to 6282257572112-1635223872@g.us
-Task completed: send_document
-Queue saved to disk
-Task completed: update_data_mill
-Queue saved to disk
-Task added to queue: update_data_mill
-Queue saved to disk
-Task completed: update_data_mill
-Queue saved to disk
-Task added to queue: send_message
-Task added to queue: update_status_izinkebun
-Queue saved to disk
-Queue saved to disk
-Message sent successfully to 6281253560641@s.whatsapp.net
+Message sent successfully to 120363349319318472@g.us
 Task completed: send_message
 Queue saved to disk
-AxiosError: Request failed with status code 404
-    at settle (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:2019:12)
-    at BrotliDecompress.handleStreamEnd (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:3135:11)
-    at BrotliDecompress.emit (node:events:530:35)
-    at endReadableNT (node:internal/streams/readable:1696:12)
-    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
-    at Axios.request (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:4287:41)
-    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async updatestatus_sock_vbot (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\izinkebun\helper.js:85:22)
-    at async Queue.executeTask (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:90:9)
-    at async Queue.process (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:67:7) {
-  code: 'ERR_BAD_REQUEST',
-  config: {
-    transitional: {
-      silentJSONParsing: true,
-      forcedJSONParsing: true,
-      clarifyTimeoutError: false
-    },
-    adapter: [ 'xhr', 'http', 'fetch' ],
-    transformRequest: [ [Function: transformRequest] ],
-    transformResponse: [ [Function: transformResponse] ],
-    timeout: 0,
-    xsrfCookieName: 'XSRF-TOKEN',
-    xsrfHeaderName: 'X-XSRF-TOKEN',
-    maxContentLength: -1,
-    maxBodyLength: -1,
-    env: { FormData: [Function], Blob: [class Blob] },
-    validateStatus: [Function: validateStatus],
-    headers: Object [AxiosHeaders] {
-      Accept: 'application/json, text/plain, */*',
-      'Content-Type': 'application/json',
-      'User-Agent': 'axios/1.7.7',
-      'Content-Length': '70',
-      'Accept-Encoding': 'gzip, compress, deflate, br'
-    },
-    method: 'post',
-    url: 'https://management.srs-ssms.com/api/update_status_izinkebun_sock',
-    data: '{"id":485,"type_atasan":"send_atasan_satu","email":"j","password":"j"}'
-  },
-  request: <ref *1> ClientRequest {
-    _events: [Object: null prototype] {
-      abort: [Function (anonymous)],
-      aborted: [Function (anonymous)],
-      connect: [Function (anonymous)],
-      error: [Function (anonymous)],
-      socket: [Function (anonymous)],
-      timeout: [Function (anonymous)],
-      finish: [Function: requestOnFinish]
-    },
-    _eventsCount: 7,
-    _maxListeners: undefined,
-    outputData: [],
-    outputSize: 0,
-    writable: true,
-    destroyed: true,
-    _last: false,
-    chunkedEncoding: false,
-    shouldKeepAlive: true,
-    maxRequestsOnConnectionReached: false,
-    _defaultKeepAlive: true,
-    useChunkedEncodingByDefault: true,
-    sendDate: false,
-    _removedConnection: false,
-    _removedContLen: false,
-    _removedTE: false,
-    strictContentLength: false,
-    _contentLength: '70',
-    _hasBody: true,
-    _trailer: '',
-    finished: true,
-    _headerSent: true,
-    _closed: true,
-    socket: TLSSocket {
-      _tlsOptions: [Object],
-      _secureEstablished: true,
-      _securePending: false,
-      _newSessionPending: false,
-      _controlReleased: true,
-      secureConnecting: false,
-      _SNICallback: null,
-      servername: 'management.srs-ssms.com',
-      alpnProtocol: false,
-      authorized: true,
-      authorizationError: null,
-      encrypted: true,
-      _events: [Object: null prototype],
-      _eventsCount: 9,
-      connecting: false,
-      _hadError: false,
-      _parent: null,
-      _host: 'management.srs-ssms.com',
-      _closeAfterHandlingError: false,
-      _readableState: [ReadableState],
-      _writableState: [WritableState],
-      allowHalfOpen: false,
-      _maxListeners: undefined,
-      _sockname: null,
-      _pendingData: null,
-      _pendingEncoding: '',
-      server: undefined,
-      _server: null,
-      ssl: [TLSWrap],
-      _requestCert: true,
-      _rejectUnauthorized: true,
-      timeout: 5000,
-      parser: null,
-      _httpMessage: null,
-      autoSelectFamilyAttemptedAddresses: [Array],
-      [Symbol(alpncallback)]: null,
-      [Symbol(res)]: [TLSWrap],
-      [Symbol(verified)]: true,
-      [Symbol(pendingSession)]: null,
-      [Symbol(async_id_symbol)]: -1,
-      [Symbol(kHandle)]: [TLSWrap],
-      [Symbol(lastWriteQueueSize)]: 0,
-      [Symbol(timeout)]: Timeout {
-        _idleTimeout: 5000,
-        _idlePrev: [TimersList],
-        _idleNext: [Timeout],
-        _idleStart: 276064,
-        _onTimeout: [Function: bound ],
-        _timerArgs: undefined,
-        _repeat: null,
-        _destroyed: false,
-        [Symbol(refed)]: false,
-        [Symbol(kHasPrimitive)]: false,
-        [Symbol(asyncId)]: 6303,
-        [Symbol(triggerId)]: 6301
-      },
-      [Symbol(kBuffer)]: null,
-      [Symbol(kBufferCb)]: null,
-      [Symbol(kBufferGen)]: null,
-      [Symbol(shapeMode)]: true,
-      [Symbol(kCapture)]: false,
-      [Symbol(kSetNoDelay)]: false,
-      [Symbol(kSetKeepAlive)]: true,
-      [Symbol(kSetKeepAliveInitialDelay)]: 1,
-      [Symbol(kBytesRead)]: 0,
-      [Symbol(kBytesWritten)]: 0,
-      [Symbol(connect-options)]: [Object]
-    },
-    _header: 'POST /api/update_status_izinkebun_sock HTTP/1.1\r\n' +
-      'Accept: application/json, text/plain, */*\r\n' +
-      'Content-Type: application/json\r\n' +
-      'User-Agent: axios/1.7.7\r\n' +
-      'Content-Length: 70\r\n' +
-      'Accept-Encoding: gzip, compress, deflate, br\r\n' +
-      'Host: management.srs-ssms.com\r\n' +
-      'Connection: keep-alive\r\n' +
-      '\r\n',
-    _keepAliveTimeout: 0,
-    _onPendingData: [Function: nop],
-    agent: Agent {
-      _events: [Object: null prototype],
-      _eventsCount: 2,
-      _maxListeners: undefined,
-      defaultPort: 443,
-      protocol: 'https:',
-      options: [Object: null prototype],
-      requests: [Object: null prototype] {},
-      sockets: [Object: null prototype] {},
-      freeSockets: [Object: null prototype],
-      keepAliveMsecs: 1000,
-      keepAlive: true,
-      maxSockets: Infinity,
-      maxFreeSockets: 256,
-      scheduling: 'lifo',
-      maxTotalSockets: Infinity,
-      totalSocketCount: 1,
-      maxCachedSessions: 100,
-      _sessionCache: [Object],
-      [Symbol(shapeMode)]: false,
-      [Symbol(kCapture)]: false
-    },
-    socketPath: undefined,
-    method: 'POST',
-    maxHeaderSize: undefined,
-    insecureHTTPParser: undefined,
-    joinDuplicateHeaders: undefined,
-    path: '/api/update_status_izinkebun_sock',
-    _ended: true,
-    res: IncomingMessage {
-      _events: [Object],
-      _readableState: [ReadableState],
-      _maxListeners: undefined,
-      socket: null,
-      httpVersionMajor: 1,
-      httpVersionMinor: 1,
-      httpVersion: '1.1',
-      complete: true,
-      rawHeaders: [Array],
-      rawTrailers: [],
-      joinDuplicateHeaders: undefined,
-      aborted: false,
-      upgrade: false,
-      url: '',
-      method: null,
-      statusCode: 404,
-      statusMessage: 'Not Found',
-      client: [TLSSocket],
-      _consuming: true,
-      _dumped: false,
-      req: [Circular *1],
-      _eventsCount: 4,
-      responseUrl: 'https://management.srs-ssms.com/api/update_status_izinkebun_sock',
-      redirects: [],
-      [Symbol(shapeMode)]: true,
-      [Symbol(kCapture)]: false,
-      [Symbol(kHeaders)]: [Object],
-      [Symbol(kHeadersCount)]: 38,
-      [Symbol(kTrailers)]: null,
-      [Symbol(kTrailersCount)]: 0
-    },
-    aborted: false,
-    timeoutCb: null,
-    upgradeOrConnect: false,
-    parser: null,
-    maxHeadersCount: null,
-    reusedSocket: false,
-    host: 'management.srs-ssms.com',
-    protocol: 'https:',
-    _redirectable: Writable {
-      _events: [Object],
-      _writableState: [WritableState],
-      _maxListeners: undefined,
-      _options: [Object],
-      _ended: true,
-      _ending: true,
-      _redirectCount: 0,
-      _redirects: [],
-      _requestBodyLength: 70,
-      _requestBodyBuffers: [],
-      _eventsCount: 3,
-      _onNativeResponse: [Function (anonymous)],
-      _currentRequest: [Circular *1],
-      _currentUrl: 'https://management.srs-ssms.com/api/update_status_izinkebun_sock',
-      [Symbol(shapeMode)]: true,
-      [Symbol(kCapture)]: false
-    },
-    [Symbol(shapeMode)]: false,
-    [Symbol(kCapture)]: false,
-    [Symbol(kBytesWritten)]: 0,
-    [Symbol(kNeedDrain)]: false,
-    [Symbol(corked)]: 0,
-    [Symbol(kOutHeaders)]: [Object: null prototype] {
-      accept: [Array],
-      'content-type': [Array],
-      'user-agent': [Array],
-      'content-length': [Array],
-      'accept-encoding': [Array],
-      host: [Array]
-    },
-    [Symbol(errored)]: null,
-    [Symbol(kHighWaterMark)]: 16384,
-    [Symbol(kRejectNonStandardBodyWrites)]: false,
-    [Symbol(kUniqueHeaders)]: null
-  },
-  response: {
-    status: 404,
-    statusText: 'Not Found',
-    headers: Object [AxiosHeaders] {
-      date: 'Thu, 24 Oct 2024 04:38:17 GMT',
-      'content-type': 'application/json',
-      'transfer-encoding': 'chunked',
-      connection: 'keep-alive',
-      'x-powered-by': 'PHP/8.2.15',
-      'cache-control': 'no-cache, private',
-      'access-control-allow-origin': '*',
-      vary: 'Accept-Encoding',
-      platform: 'hostinger',
-      panel: 'hpanel',
-      'content-security-policy': 'upgrade-insecure-requests',
-      'x-turbo-charged-by': 'LiteSpeed',
-      'cf-cache-status': 'DYNAMIC',
-      'report-to': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=BfsOIkw8tQnfWbc7sY0VhTXlJ0JhqQp1nc%2BfPvAKq6e0M77Wh5hFaGKYID2uGpiCjsC6vhmLMXHn7I5RbvCCYI8xXYrcAIUVgZ8R9gX9fsRqXCETnxubEHSvruOZTbhSezRDN%2FtgudT6xw%3D%3D"}],"group":"cf-nel","max_age":604800}',
-      nel: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}',
-      server: 'cloudflare',
-      'cf-ray': '8d7746c4afe55e3c-SIN',
-      'server-timing': 'cfL4;desc="?proto=TCP&rtt=33649&sent=3&recv=4&lost=0&retrans=0&sent_bytes=147&recv_bytes=995&delivery_rate=40718&cwnd=217&unsent_bytes=0&cid=38115ab8da2b9bed&ts=170&x=0"'
-    },
-    config: {
-      transitional: [Object],
-      adapter: [Array],
-      transformRequest: [Array],
-      transformResponse: [Array],
-      timeout: 0,
-      xsrfCookieName: 'XSRF-TOKEN',
-      xsrfHeaderName: 'X-XSRF-TOKEN',
-      maxContentLength: -1,
-      maxBodyLength: -1,
-      env: [Object],
-      validateStatus: [Function: validateStatus],
-      headers: [Object [AxiosHeaders]],
-      method: 'post',
-      url: 'https://management.srs-ssms.com/api/update_status_izinkebun_sock',
-      data: '{"id":485,"type_atasan":"send_atasan_satu","email":"j","password":"j"}'
-    },
-    request: <ref *1> ClientRequest {
-      _events: [Object: null prototype],
-      _eventsCount: 7,
-      _maxListeners: undefined,
-      outputData: [],
-      outputSize: 0,
-      writable: true,
-      destroyed: true,
-      _last: false,
-      chunkedEncoding: false,
-      shouldKeepAlive: true,
-      maxRequestsOnConnectionReached: false,
-      _defaultKeepAlive: true,
-      useChunkedEncodingByDefault: true,
-      sendDate: false,
-      _removedConnection: false,
-      _removedContLen: false,
-      _removedTE: false,
-      strictContentLength: false,
-      _contentLength: '70',
-      _hasBody: true,
-      _trailer: '',
-      finished: true,
-      _headerSent: true,
-      _closed: true,
-      socket: [TLSSocket],
-      _header: 'POST /api/update_status_izinkebun_sock HTTP/1.1\r\n' +
-        'Accept: application/json, text/plain, */*\r\n' +
-        'Content-Type: application/json\r\n' +
-        'User-Agent: axios/1.7.7\r\n' +
-        'Content-Length: 70\r\n' +
-        'Accept-Encoding: gzip, compress, deflate, br\r\n' +
-        'Host: management.srs-ssms.com\r\n' +
-        'Connection: keep-alive\r\n' +
-        '\r\n',
-      _keepAliveTimeout: 0,
-      _onPendingData: [Function: nop],
-      agent: [Agent],
-      socketPath: undefined,
-      method: 'POST',
-      maxHeaderSize: undefined,
-      insecureHTTPParser: undefined,
-      joinDuplicateHeaders: undefined,
-      path: '/api/update_status_izinkebun_sock',
-      _ended: true,
-      res: [IncomingMessage],
-      aborted: false,
-      timeoutCb: null,
-      upgradeOrConnect: false,
-      parser: null,
-      maxHeadersCount: null,
-      reusedSocket: false,
-      host: 'management.srs-ssms.com',
-      protocol: 'https:',
-      _redirectable: [Writable],
-      [Symbol(shapeMode)]: false,
-      [Symbol(kCapture)]: false,
-      [Symbol(kBytesWritten)]: 0,
-      [Symbol(kNeedDrain)]: false,
-      [Symbol(corked)]: 0,
-      [Symbol(kOutHeaders)]: [Object: null prototype],
-      [Symbol(errored)]: null,
-      [Symbol(kHighWaterMark)]: 16384,
-      [Symbol(kRejectNonStandardBodyWrites)]: false,
-      [Symbol(kUniqueHeaders)]: null
-    },
-    data: {
-      message: 'The route api/update_status_izinkebun_sock could not be found.',
-      exception: 'Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException',
-      file: '/home/u104419741/domains/srs-ssms.com/public_html/subdomain/management/vendor/laravel/framework/src/Illuminate/Routing/AbstractRouteCollection.php',
-      line: 44,
-      trace: [Array]
-    }
-  },
-  status: 404
-}
-Task completed: update_status_izinkebun
+Message sent successfully to 120363339511378953@g.us
+Task completed: send_message
 Queue saved to disk
 memulai cronjob  taksasi fail,pdf izin kebun,iot gap
 cron job get_mill_data
-Task added to queue: send_message
-Task added to queue: update_status_izinkebun
+Task added to queue: update_data_mill
 Queue saved to disk
+Task completed: update_data_mill
 Queue saved to disk
-{
-  message: 'Fail pdf izin kebun succes terkirim',
-  data: [
-    {
-      id_db: 485,
-      group_id: '120363205553012899@g.us',
-      uuid: 'ce632758-929c-4e50-bf56-26f241750528',
-      user_id: 1251,
-      nama_user: 'Aden',
-      no_hp_user: '6285654230567',
-      tanggal_keluar: '2024-10-26 12:30:00',
-      tanggal_kembali: '2024-10-28 03:00:00',
-      lokasi_tujuan: 'Pangkalanbun',
-      plat_nomor: 'KH 3486 WF',
-      kendaraan: 'Motor',
-      keperluan: 'Mengunjungi Keluarga (anak, Istri) ',
-      atasan_1: 1074,
-      nama_atasan_1: 'IKA WIDIYATNINGRUM',
-      atasan_2: 1065,
-      nama_atasan_2: 'BUDI UMBARA',
-      atasan_3: null,
-      nama_atasan_3: null,
-      type: 'send_atasan_satu',
-      status: 'approved',
-      atasan: 'Atasan Dua',
-      update_type: 'atasan2',
-      id: '485/1074',
-      send_to: '6281253560641'
-    }
-  ]
-}
-Message sent successfully to 6281253560641@s.whatsapp.net
-Task completed: send_message
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+KTE 2024-10-24
+Task added to queue: send_document
 Queue saved to disk
-AxiosError: Request failed with status code 404
-    at settle (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:2019:12)
-    at BrotliDecompress.handleStreamEnd (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:3135:11)
-    at BrotliDecompress.emit (node:events:530:35)
-    at endReadableNT (node:internal/streams/readable:1696:12)
-    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
-    at Axios.request (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:4287:41)
-    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async updatestatus_sock_vbot (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\izinkebun\helper.js:85:22)
-    at async Queue.executeTask (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:90:9)
-    at async Queue.process (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:67:7) {
-  code: 'ERR_BAD_REQUEST',
-  config: {
-    transitional: {
-      silentJSONParsing: true,
-      forcedJSONParsing: true,
-      clarifyTimeoutError: false
-    },
-    adapter: [ 'xhr', 'http', 'fetch' ],
-    transformRequest: [ [Function: transformRequest] ],
-    transformResponse: [ [Function: transformResponse] ],
-    timeout: 0,
-    xsrfCookieName: 'XSRF-TOKEN',
-    xsrfHeaderName: 'X-XSRF-TOKEN',
-    maxContentLength: -1,
-    maxBodyLength: -1,
-    env: { FormData: [Function], Blob: [class Blob] },
-    validateStatus: [Function: validateStatus],
-    headers: Object [AxiosHeaders] {
-      Accept: 'application/json, text/plain, */*',
-      'Content-Type': 'application/json',
-      'User-Agent': 'axios/1.7.7',
-      'Content-Length': '70',
-      'Accept-Encoding': 'gzip, compress, deflate, br'
-    },
-    method: 'post',
-    url: 'https://management.srs-ssms.com/api/update_status_izinkebun_sock',
-    data: '{"id":485,"type_atasan":"send_atasan_satu","email":"j","password":"j"}'
-  },
-  request: <ref *1> ClientRequest {
-    _events: [Object: null prototype] {
-      abort: [Function (anonymous)],
-      aborted: [Function (anonymous)],
-      connect: [Function (anonymous)],
-      error: [Function (anonymous)],
-      socket: [Function (anonymous)],
-      timeout: [Function (anonymous)],
-      finish: [Function: requestOnFinish]
-    },
-    _eventsCount: 7,
-    _maxListeners: undefined,
-    outputData: [],
-    outputSize: 0,
-    writable: true,
-    destroyed: true,
-    _last: false,
-    chunkedEncoding: false,
-    shouldKeepAlive: true,
-    maxRequestsOnConnectionReached: false,
-    _defaultKeepAlive: true,
-    useChunkedEncodingByDefault: true,
-    sendDate: false,
-    _removedConnection: false,
-    _removedContLen: false,
-    _removedTE: false,
-    strictContentLength: false,
-    _contentLength: '70',
-    _hasBody: true,
-    _trailer: '',
-    finished: true,
-    _headerSent: true,
-    _closed: true,
-    socket: TLSSocket {
-      _tlsOptions: [Object],
-      _secureEstablished: true,
-      _securePending: false,
-      _newSessionPending: false,
-      _controlReleased: true,
-      secureConnecting: false,
-      _SNICallback: null,
-      servername: 'management.srs-ssms.com',
-      alpnProtocol: false,
-      authorized: true,
-      authorizationError: null,
-      encrypted: true,
-      _events: [Object: null prototype],
-      _eventsCount: 9,
-      connecting: false,
-      _hadError: false,
-      _parent: null,
-      _host: 'management.srs-ssms.com',
-      _closeAfterHandlingError: false,
-      _readableState: [ReadableState],
-      _writableState: [WritableState],
-      allowHalfOpen: false,
-      _maxListeners: undefined,
-      _sockname: null,
-      _pendingData: null,
-      _pendingEncoding: '',
-      server: undefined,
-      _server: null,
-      ssl: [TLSWrap],
-      _requestCert: true,
-      _rejectUnauthorized: true,
-      timeout: 5000,
-      parser: null,
-      _httpMessage: null,
-      autoSelectFamilyAttemptedAddresses: [Array],
-      [Symbol(alpncallback)]: null,
-      [Symbol(res)]: [TLSWrap],
-      [Symbol(verified)]: true,
-      [Symbol(pendingSession)]: null,
-      [Symbol(async_id_symbol)]: -1,
-      [Symbol(kHandle)]: [TLSWrap],
-      [Symbol(lastWriteQueueSize)]: 0,
-      [Symbol(timeout)]: Timeout {
-        _idleTimeout: 5000,
-        _idlePrev: [TimersList],
-        _idleNext: [Timeout],
-        _idleStart: 303883,
-        _onTimeout: [Function: bound ],
-        _timerArgs: undefined,
-        _repeat: null,
-        _destroyed: false,
-        [Symbol(refed)]: false,
-        [Symbol(kHasPrimitive)]: false,
-        [Symbol(asyncId)]: 6829,
-        [Symbol(triggerId)]: 6827
-      },
-      [Symbol(kBuffer)]: null,
-      [Symbol(kBufferCb)]: null,
-      [Symbol(kBufferGen)]: null,
-      [Symbol(shapeMode)]: true,
-      [Symbol(kCapture)]: false,
-      [Symbol(kSetNoDelay)]: false,
-      [Symbol(kSetKeepAlive)]: true,
-      [Symbol(kSetKeepAliveInitialDelay)]: 1,
-      [Symbol(kBytesRead)]: 0,
-      [Symbol(kBytesWritten)]: 0,
-      [Symbol(connect-options)]: [Object]
-    },
-    _header: 'POST /api/update_status_izinkebun_sock HTTP/1.1\r\n' +
-      'Accept: application/json, text/plain, */*\r\n' +
-      'Content-Type: application/json\r\n' +
-      'User-Agent: axios/1.7.7\r\n' +
-      'Content-Length: 70\r\n' +
-      'Accept-Encoding: gzip, compress, deflate, br\r\n' +
-      'Host: management.srs-ssms.com\r\n' +
-      'Connection: keep-alive\r\n' +
-      '\r\n',
-    _keepAliveTimeout: 0,
-    _onPendingData: [Function: nop],
-    agent: Agent {
-      _events: [Object: null prototype],
-      _eventsCount: 2,
-      _maxListeners: undefined,
-      defaultPort: 443,
-      protocol: 'https:',
-      options: [Object: null prototype],
-      requests: [Object: null prototype] {},
-      sockets: [Object: null prototype] {},
-      freeSockets: [Object: null prototype],
-      keepAliveMsecs: 1000,
-      keepAlive: true,
-      maxSockets: Infinity,
-      maxFreeSockets: 256,
-      scheduling: 'lifo',
-      maxTotalSockets: Infinity,
-      totalSocketCount: 3,
-      maxCachedSessions: 100,
-      _sessionCache: [Object],
-      [Symbol(shapeMode)]: false,
-      [Symbol(kCapture)]: false
-    },
-    socketPath: undefined,
-    method: 'POST',
-    maxHeaderSize: undefined,
-    insecureHTTPParser: undefined,
-    joinDuplicateHeaders: undefined,
-    path: '/api/update_status_izinkebun_sock',
-    _ended: true,
-    res: IncomingMessage {
-      _events: [Object],
-      _readableState: [ReadableState],
-      _maxListeners: undefined,
-      socket: null,
-      httpVersionMajor: 1,
-      httpVersionMinor: 1,
-      httpVersion: '1.1',
-      complete: true,
-      rawHeaders: [Array],
-      rawTrailers: [],
-      joinDuplicateHeaders: undefined,
-      aborted: false,
-      upgrade: false,
-      url: '',
-      method: null,
-      statusCode: 404,
-      statusMessage: 'Not Found',
-      client: [TLSSocket],
-      _consuming: true,
-      _dumped: false,
-      req: [Circular *1],
-      _eventsCount: 4,
-      responseUrl: 'https://management.srs-ssms.com/api/update_status_izinkebun_sock',
-      redirects: [],
-      [Symbol(shapeMode)]: true,
-      [Symbol(kCapture)]: false,
-      [Symbol(kHeaders)]: [Object],
-      [Symbol(kHeadersCount)]: 38,
-      [Symbol(kTrailers)]: null,
-      [Symbol(kTrailersCount)]: 0
-    },
-    aborted: false,
-    timeoutCb: null,
-    upgradeOrConnect: false,
-    parser: null,
-    maxHeadersCount: null,
-    reusedSocket: true,
-    host: 'management.srs-ssms.com',
-    protocol: 'https:',
-    _redirectable: Writable {
-      _events: [Object],
-      _writableState: [WritableState],
-      _maxListeners: undefined,
-      _options: [Object],
-      _ended: true,
-      _ending: true,
-      _redirectCount: 0,
-      _redirects: [],
-      _requestBodyLength: 70,
-      _requestBodyBuffers: [],
-      _eventsCount: 3,
-      _onNativeResponse: [Function (anonymous)],
-      _currentRequest: [Circular *1],
-      _currentUrl: 'https://management.srs-ssms.com/api/update_status_izinkebun_sock',
-      [Symbol(shapeMode)]: true,
-      [Symbol(kCapture)]: false
-    },
-    [Symbol(shapeMode)]: false,
-    [Symbol(kCapture)]: false,
-    [Symbol(kBytesWritten)]: 0,
-    [Symbol(kNeedDrain)]: false,
-    [Symbol(corked)]: 0,
-    [Symbol(kOutHeaders)]: [Object: null prototype] {
-      accept: [Array],
-      'content-type': [Array],
-      'user-agent': [Array],
-      'content-length': [Array],
-      'accept-encoding': [Array],
-      host: [Array]
-    },
-    [Symbol(errored)]: null,
-    [Symbol(kHighWaterMark)]: 16384,
-    [Symbol(kRejectNonStandardBodyWrites)]: false,
-    [Symbol(kUniqueHeaders)]: null
-  },
-  response: {
-    status: 404,
-    statusText: 'Not Found',
-    headers: Object [AxiosHeaders] {
-      date: 'Thu, 24 Oct 2024 04:38:45 GMT',
-      'content-type': 'application/json',
-      'transfer-encoding': 'chunked',
-      connection: 'keep-alive',
-      'x-powered-by': 'PHP/8.2.15',
-      'cache-control': 'no-cache, private',
-      'access-control-allow-origin': '*',
-      vary: 'Accept-Encoding',
-      platform: 'hostinger',
-      panel: 'hpanel',
-      'content-security-policy': 'upgrade-insecure-requests',
-      'x-turbo-charged-by': 'LiteSpeed',
-      'cf-cache-status': 'DYNAMIC',
-      'report-to': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=I3oQn7KEj2fUXMKp1eP09JxQxBWFUL1F1fvPE%2BPl%2BftviBWscFyQ4jXGIZTBeOxO%2BiZryIn8O4%2BVzPpOP%2B1UkpkzJy1jh6cPNXNDHd8OY5B1LPfnDzLkdxJEkOhIfLQftDU6Oik%2Bq6e7sA%3D%3D"}],"group":"cf-nel","max_age":604800}',
-      nel: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}',
-      server: 'cloudflare',
-      'cf-ray': '8d77477319f2604d-SIN',
-      'server-timing': 'cfL4;desc="?proto=TCP&rtt=34189&sent=10&recv=8&lost=0&retrans=0&sent_bytes=2785&recv_bytes=1503&delivery_rate=122789&cwnd=190&unsent_bytes=0&cid=30907f8a41f05843&ts=1117&x=0"'
-    },
-    config: {
-      transitional: [Object],
-      adapter: [Array],
-      transformRequest: [Array],
-      transformResponse: [Array],
-      timeout: 0,
-      xsrfCookieName: 'XSRF-TOKEN',
-      xsrfHeaderName: 'X-XSRF-TOKEN',
-      maxContentLength: -1,
-      maxBodyLength: -1,
-      env: [Object],
-      validateStatus: [Function: validateStatus],
-      headers: [Object [AxiosHeaders]],
-      method: 'post',
-      url: 'https://management.srs-ssms.com/api/update_status_izinkebun_sock',
-      data: '{"id":485,"type_atasan":"send_atasan_satu","email":"j","password":"j"}'
-    },
-    request: <ref *1> ClientRequest {
-      _events: [Object: null prototype],
-      _eventsCount: 7,
-      _maxListeners: undefined,
-      outputData: [],
-      outputSize: 0,
-      writable: true,
-      destroyed: true,
-      _last: false,
-      chunkedEncoding: false,
-      shouldKeepAlive: true,
-      maxRequestsOnConnectionReached: false,
-      _defaultKeepAlive: true,
-      useChunkedEncodingByDefault: true,
-      sendDate: false,
-      _removedConnection: false,
-      _removedContLen: false,
-      _removedTE: false,
-      strictContentLength: false,
-      _contentLength: '70',
-      _hasBody: true,
-      _trailer: '',
-      finished: true,
-      _headerSent: true,
-      _closed: true,
-      socket: [TLSSocket],
-      _header: 'POST /api/update_status_izinkebun_sock HTTP/1.1\r\n' +
-        'Accept: application/json, text/plain, */*\r\n' +
-        'Content-Type: application/json\r\n' +
-        'User-Agent: axios/1.7.7\r\n' +
-        'Content-Length: 70\r\n' +
-        'Accept-Encoding: gzip, compress, deflate, br\r\n' +
-        'Host: management.srs-ssms.com\r\n' +
-        'Connection: keep-alive\r\n' +
-        '\r\n',
-      _keepAliveTimeout: 0,
-      _onPendingData: [Function: nop],
-      agent: [Agent],
-      socketPath: undefined,
-      method: 'POST',
-      maxHeaderSize: undefined,
-      insecureHTTPParser: undefined,
-      joinDuplicateHeaders: undefined,
-      path: '/api/update_status_izinkebun_sock',
-      _ended: true,
-      res: [IncomingMessage],
-      aborted: false,
-      timeoutCb: null,
-      upgradeOrConnect: false,
-      parser: null,
-      maxHeadersCount: null,
-      reusedSocket: true,
-      host: 'management.srs-ssms.com',
-      protocol: 'https:',
-      _redirectable: [Writable],
-      [Symbol(shapeMode)]: false,
-      [Symbol(kCapture)]: false,
-      [Symbol(kBytesWritten)]: 0,
-      [Symbol(kNeedDrain)]: false,
-      [Symbol(corked)]: 0,
-      [Symbol(kOutHeaders)]: [Object: null prototype],
-      [Symbol(errored)]: null,
-      [Symbol(kHighWaterMark)]: 16384,
-      [Symbol(kRejectNonStandardBodyWrites)]: false,
-      [Symbol(kUniqueHeaders)]: null
-    },
-    data: {
-      message: 'The route api/update_status_izinkebun_sock could not be found.',
-      exception: 'Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException',
-      file: '/home/u104419741/domains/srs-ssms.com/public_html/subdomain/management/vendor/laravel/framework/src/Illuminate/Routing/AbstractRouteCollection.php',
-      line: 44,
-      trace: [Array]
-    }
-  },
-  status: 404
-}
-Task completed: update_status_izinkebun
+Document sent successfully to 120363170524329595@g.us
+Task completed: send_document
 Queue saved to disk
-Queue loaded from disk, items: 0
-WhatsApp connected successfully
-Current queue state:
-Queue is empty
-Total tasks in queue: 0
-Queue processing resumed
-Task added to queue: send_message
-Task added to queue: send_message
-Task added to queue: update_status_izinkebun
+Upload not successful, retrying...
+SPE 2024-10-24
+Task added to queue: send_document
 Queue saved to disk
+Document sent successfully to 120363220419839708@g.us
+Task completed: send_document
 Queue saved to disk
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+LME1 2024-10-24
+Task added to queue: send_document
 Queue saved to disk
-Message sent successfully to 6285265942378@s.whatsapp.net
-Task completed: send_message
+Document sent successfully to 120363208984887370@g.us
+Task completed: send_document
 Queue saved to disk
-This message contains a document: Narasi KIC PKS.pdf Narasi KIC PKS.pdf
-This message contains a document: Narasi KIC PKS.docx Narasi KIC PKS.docx
-Message sent successfully to 6285654230567@s.whatsapp.net
-Task completed: send_message
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+PDE 2024-10-24
+Task added to queue: send_document
 Queue saved to disk
-{ message: 'Status sock updated successfully' }
-Task completed: update_status_izinkebun
+Document sent successfully to 120363217291038671@g.us
+Task completed: send_document
+Queue saved to disk
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+SBE 2024-10-24
+Task added to queue: send_document
+Queue saved to disk
+Document sent successfully to 120363220146576654@g.us
+Task completed: send_document
+Queue saved to disk
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+BTE 2024-10-24
+Task added to queue: send_document
+Queue saved to disk
+Document sent successfully to 120363226513991710@g.us
+Task completed: send_document
+Queue saved to disk
+MLE 2024-10-24
+Task added to queue: send_document
+Queue saved to disk
+Document sent successfully to 120363213054175770@g.us
+Task completed: send_document
+Queue saved to disk
+MRE 2024-10-24
+Task added to queue: send_document
+Queue saved to disk
+Document sent successfully to 120363217205685424@g.us
+Task completed: send_document
+Queue saved to disk
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+LME2 2024-10-24
+Task added to queue: send_document
+Queue saved to disk
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Document sent successfully to 120363193243380343@g.us
+Task completed: send_document
 Queue saved to disk
 cron job get_mill_data
 cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+This message contains a document: Narasi KIC PKS.pdf Narasi KIC PKS.pdf
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Task added to queue: send_image
+Task added to queue: send_document
+Task added to queue: update_data_mill
+Task added to queue: send_image
+Task added to queue: send_document
+Task added to queue: update_data_mill
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Image sent successfully to 6281397270799-1635156024@g.us
+Task completed: send_image
+Queue saved to disk
+Document sent successfully to 6281397270799-1635156024@g.us
+Task completed: send_document
+Queue saved to disk
+Task completed: update_data_mill
+Queue saved to disk
+Image sent successfully to 6281397270799-1635156024@g.us
+Task completed: send_image
+Queue saved to disk
+Document sent successfully to 6281397270799-1635156024@g.us
+Task completed: send_document
+Queue saved to disk
+Task completed: update_data_mill
+Queue saved to disk
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Task added to queue: update_data_mill
+Task added to queue: send_image
+Task added to queue: send_document
+Task added to queue: update_data_mill
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Task completed: update_data_mill
+Queue saved to disk
+Image sent successfully to 6281397270799-1635156024@g.us
+Task completed: send_image
+Queue saved to disk
+Document sent successfully to 6281397270799-1635156024@g.us
+Task completed: send_document
+Queue saved to disk
+Task completed: update_data_mill
+Queue saved to disk
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Task added to queue: send_image
+Task added to queue: send_document
+Task added to queue: update_data_mill
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Image sent successfully to 6281397270799-1635156024@g.us
+Task completed: send_image
+Queue saved to disk
+Document sent successfully to 6281397270799-1635156024@g.us
+Task completed: send_document
+Queue saved to disk
+Task completed: update_data_mill
+Queue saved to disk
+Error fetching base64 image: TypeError: Cannot read properties of undefined (reading 'sendMessage')
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:1281:12
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Task added to queue: update_data_mill
+Queue saved to disk
+Task completed: update_data_mill
+Queue saved to disk
+cron job get_mill_data
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Task added to queue: send_message
+Task added to queue: send_message
+Queue saved to disk
+Queue saved to disk
+Task added to queue: send_message
+Task added to queue: send_message
+Queue saved to disk
+Queue saved to disk
+Error processing task (send_message): forbidden
+Skipping task: send_message
+Queue saved to disk
+Error processing task (send_message): forbidden
+Skipping task: send_message
+Queue saved to disk
+Message sent successfully to 120363349319318472@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363339511378953@g.us
+Task completed: send_message
+Queue saved to disk
+Error fetching base64 image: TypeError: Cannot read properties of undefined (reading 'sendMessage')
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:1281:12
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+cron job get_mill_data
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Task added to queue: update_data_mill
+Task added to queue: send_image
+Task added to queue: send_document
+Task added to queue: update_data_mill
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Task completed: update_data_mill
+Queue saved to disk
+Image sent successfully to 6281397270799-1635156024@g.us
+Task completed: send_image
+Queue saved to disk
+Document sent successfully to 6281397270799-1635156024@g.us
+Task completed: send_document
+Queue saved to disk
+Task completed: update_data_mill
+Queue saved to disk
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Task added to queue: update_data_mill
+Queue saved to disk
+Task completed: update_data_mill
+Queue saved to disk
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Task added to queue: send_image
+Task added to queue: send_document
+Task added to queue: update_data_mill
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Image sent successfully to 6281397270799-1635156024@g.us
+Task completed: send_image
+Queue saved to disk
+Document sent successfully to 6281397270799-1635156024@g.us
+Task completed: send_document
+Queue saved to disk
+Task completed: update_data_mill
+Queue saved to disk
+Error fetching base64 image: TypeError: Cannot read properties of undefined (reading 'sendMessage')
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:1281:12
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+cron job get_mill_data
+Task added to queue: update_data_mill
+Queue saved to disk
+Task completed: update_data_mill
+Queue saved to disk
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+Task added to queue: send_image
+Task added to queue: send_document
+Task added to queue: update_data_mill
+Task added to queue: send_image
+Task added to queue: send_document
+Task added to queue: update_data_mill
+Task added to queue: send_image
+Task added to queue: send_document
+Task added to queue: update_data_mill
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Image sent successfully to 6282257572112-1635223872@g.us
+Task completed: send_image
+Queue saved to disk
+Document sent successfully to 6282257572112-1635223872@g.us
+Task completed: send_document
+Queue saved to disk
+Task completed: update_data_mill
+Queue saved to disk
+Image sent successfully to 6282257572112-1635223872@g.us
+Task completed: send_image
+Queue saved to disk
+Document sent successfully to 6282257572112-1635223872@g.us
+Task completed: send_document
+Queue saved to disk
+Task completed: update_data_mill
+Queue saved to disk
+Image sent successfully to 6282257572112-1635223872@g.us
+Task completed: send_image
+Queue saved to disk
+Document sent successfully to 6282257572112-1635223872@g.us
+Task completed: send_document
+Queue saved to disk
+Task completed: update_data_mill
+Queue saved to disk
+Error fetching base64 image: TypeError: Cannot read properties of undefined (reading 'sendMessage')
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:1281:12
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+cron job get_mill_data

@@ -61,18 +61,17 @@ class Queue {
     if (this.processing || this.items.length === 0 || this.paused) return;
 
     this.processing = true;
-    const task = this.items[0]; // Don't remove the task yet
+    const task = this.items.shift(); // Remove the task immediately
 
     try {
       await this.executeTask(task);
       console.log(`Task completed: ${task.type}`);
-      this.items.shift(); // Remove the task after successful execution
-      this.saveToFile(); // Save the updated queue to disk
     } catch (error) {
-      console.error(`Error processing task (${task.type}):`, error.message);
-      // Task remains in the queue for retry
+      console.error(`Error processing task (${task.type}): ${error.message}`);
+      console.log(`Skipping task: ${task.type}`);
     }
 
+    this.saveToFile(); // Save the updated queue to disk
     this.processing = false;
     this.process(); // Process next task if available
   }
