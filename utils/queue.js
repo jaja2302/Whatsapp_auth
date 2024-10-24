@@ -1,5 +1,6 @@
 const { updatestatus_sock_vbot } = require('./izinkebun/helper');
 const { updateDataMill } = require('./grading/gradinghelper');
+
 class Queue {
   constructor() {
     this.items = [];
@@ -9,6 +10,7 @@ class Queue {
 
   push(task) {
     this.items.push(task);
+    console.log(`Task added to queue: ${JSON.stringify(task)}`);
     if (!this.paused) {
       this.process();
     }
@@ -31,9 +33,9 @@ class Queue {
 
     try {
       await this.executeTask(task);
+      console.log(`Task completed: ${JSON.stringify(task)}`);
     } catch (error) {
       console.error('Error processing task:', error);
-      // Optionally, you can implement retry logic here
       this.items.unshift(task);
     }
 
@@ -89,6 +91,7 @@ class Queue {
       throw error;
     }
   }
+
   async sendWhatsAppImage(to, image, caption) {
     try {
       let imageBuffer;
