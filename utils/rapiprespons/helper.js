@@ -103,7 +103,7 @@ const function_rapidresponse = async (sock) => {
 
       // console.log('PDF sent successfully!');
     } catch (error) {
-      console.error('Error sending PDF rapid response:', error);
+      console.log('Error sending PDF rapid response:', error);
       await catcherror(itemdata.id, error, 'rapid_response');
     }
   });

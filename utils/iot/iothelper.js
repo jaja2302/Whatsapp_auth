@@ -133,7 +133,7 @@ async function get_iot_weatherstation_data_gap(sock) {
         }
       }
     } else {
-      console.log('Data kosong iot');
+      // console.log('Data kosong iot');
     }
     return response;
   } catch (error) {

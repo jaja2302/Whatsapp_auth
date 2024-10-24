@@ -64,7 +64,7 @@ const handlePrivateMessage = async (lowerCaseMessage, noWa, text, sock) => {
         });
       } catch (error) {
         // Handle error, send a specific error message or log the error
-        console.error('Error occurred:', error);
+        console.log('Error occurred:', error);
         await sock.sendMessage(noWa, {
           text: 'An error occurred while processing your request.',
         });
@@ -88,7 +88,7 @@ const handlePrivateMessage = async (lowerCaseMessage, noWa, text, sock) => {
           text: `${allMessages}`,
         });
       } catch (error) {
-        console.error('Error occurred:', error);
+        console.log('Error occurred:', error);
         await sock.sendMessage(noWa, {
           text: 'An error occurred while processing your request.',
         });

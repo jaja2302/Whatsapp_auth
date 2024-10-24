@@ -57,7 +57,7 @@ async function get_outstadingdata(sock) {
     }
     return response;
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.log('Error fetching data:', error);
   }
 }
 

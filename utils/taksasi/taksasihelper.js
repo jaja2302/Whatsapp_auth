@@ -23,7 +23,7 @@ async function datetimeValue() {
     const formattedDate = new Date(dateTime).toISOString().split('T')[0]; // Format to YYYY-MM-DD
     return formattedDate;
   } catch (error) {
-    console.error('Error fetching date:', error);
+    console.log('Error fetching date:', error);
     return null;
   }
 }
@@ -73,13 +73,13 @@ async function generatemapstaksasi(est, datetime) {
 
       attempts++;
     } catch (error) {
-      console.error('Attempt', attempts + 1, 'failed with error:', error);
+      console.log('Attempt', attempts + 1, 'failed with error:', error);
       attempts++;
     }
   }
 
   if (!uploadSuccess) {
-    console.error('Upload failed after 2 attempts');
+    console.log('Upload failed after 2 attempts');
     return {
       status: 500,
       message: 'Maps gagal generate',
@@ -155,7 +155,7 @@ async function sendtaksasiest(estate, group_id, folder, sock, taskid, tanggal) {
     } catch (error) {
       // console.log(error);
 
-      // console.error('Error sending PDF:', error.message);
+      // console.log('Error sending PDF:', error.message);
       return {
         status: 500,
         message: `Error sending PDF: ${error.message}`,
@@ -197,7 +197,7 @@ async function sendfailcronjob(sock) {
           // Task completed successfully
         } catch (error) {
           // Handle error here if needed
-          console.error(error);
+          console.log(error);
           return {
             status: 500,
             message: 'Mengirim fail Cronjob gagal',
@@ -269,11 +269,11 @@ async function Generateandsendtaksasi(sock) {
           console.log('PDF not found in the API response.');
         }
       } catch (error) {
-        console.error('Error sending PDF:', error.message);
+        console.log('Error sending PDF:', error.message);
       }
     }
   } catch (error) {
-    console.error('Error fetching data from API:', error.message);
+    console.log('Error fetching data from API:', error.message);
     throw error;
   }
 }
@@ -332,11 +332,11 @@ async function Sendverificationtaksasi(sock) {
           console.log('PDF not found in the API response.');
         }
       } catch (error) {
-        console.error('Error sending PDF:', error.message);
+        console.log('Error sending PDF:', error.message);
       }
     }
   } catch (error) {
-    console.error('Error fetching data from API:', error.message);
+    console.log('Error fetching data from API:', error.message);
     throw error;
   }
 }
@@ -419,7 +419,7 @@ async function handleTaksasi(data, sock) {
             // console.log(`Successfully sent taksasi for estate: ${estate}`);
           } catch (error) {
             // Handle error if sending fails
-            console.error('Error sending taksasi:', error.message);
+            console.log('Error sending taksasi:', error.message);
             return {
               status: 500,
               message: `Failed to send taksasi for estate ${estate}`,

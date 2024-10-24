@@ -85,7 +85,7 @@ function readLatestId() {
       return 9;
     }
   } catch (err) {
-    console.error('Error reading latest ID:', err);
+    console.log('Error reading latest ID:', err);
     return null;
   }
 }
@@ -93,7 +93,7 @@ function writeLatestId(id) {
   try {
     fs.writeFileSync('latest_id.txt', id.toString()); // Write the ID to the file
   } catch (err) {
-    console.error('Error writing latest ID:', err);
+    console.log('Error writing latest ID:', err);
   }
 }
 async function statusHistory(sock) {
@@ -135,7 +135,7 @@ async function statusHistory(sock) {
           // await sock.sendMessage(groupId, {
           //   text: `User ${data.nama_user} melakukan ${data.menu} pada ${data.tanggal}`,
           // });
-          console.log('Message sent successfully.');
+          // console.log('Message sent successfully.');
         } else {
           console.log(`ID Group ${groupId} tidak terdaftar.`);
         }
@@ -145,7 +145,7 @@ async function statusHistory(sock) {
       console.log('No data or invalid data received from the API.');
     }
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.log('Error fetching data:', error);
     // Handle the error accordingly
   }
 }
@@ -162,8 +162,7 @@ async function sendMessagesBasedOnData(sock) {
 
     if (numberData.data === 'kosong') {
       // Send a specific message when data is "kosong"
-
-      console.log('Smartlabs Kosong'); // Log the result for debugging
+      // console.log('Smartlabs Kosong'); // Log the result for debugging
     } else {
       // Process the data array as usual
       for (const data of numberData.data) {
@@ -204,7 +203,7 @@ async function sendMessagesBasedOnData(sock) {
       }
     }
   } catch (error) {
-    console.error('Error fetching data or sending messages:', error); // Log the error if any occurs
+    console.log('Error fetching data or sending messages smartlab:', error); // Log the error if any occurs
   }
 }
 
@@ -218,7 +217,7 @@ async function deletemsg(idmsg) {
     );
 
     let responses = response.data;
-    console.log(`Message ID '${idmsg}' deleted successfully.`);
+    // console.log(`Message ID '${idmsg}' deleted successfully.`);
   } catch (error) {
     console.log(`Error deleting message ID '${idmsg}':`, error);
   }
@@ -255,7 +254,7 @@ async function maintencweget(sock) {
         // await sock.sendMessage(numberWA, { text: msg_request });
         // console.log(`Message sent to ${numberWA}`);
       } catch (error) {
-        // console.log(`Failed to send message to ${numberWA}:`, error);
+        console.log(`Failed to send message to ${numberWA}:`, error);
       }
 
       await axios.post(
@@ -305,7 +304,7 @@ async function statusAWS() {
       }
     }
   } catch (error) {
-    console.error(`Error fetching files:`, error);
+    console.log(`Error fetching files: aws`, error);
   }
 }
 
@@ -382,7 +381,7 @@ async function handleBotDailyPengawasanOperatorAI(sock) {
     }
     return response;
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.log('Error fetching data:', error);
   }
 }
 
@@ -436,7 +435,7 @@ async function triggerStatusPCPengawasanOperatorAI(sock) {
           );
           console.log(updateResponse.data);
         } catch (updateError) {
-          console.error(
+          console.log(
             `Error updating reset_pc_mati Machine ID ${item.id}:`,
             updateError.message
           );
@@ -445,7 +444,7 @@ async function triggerStatusPCPengawasanOperatorAI(sock) {
     }
     return response;
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.log('Error fetching data:', error);
   }
 }
 
@@ -485,7 +484,7 @@ async function handleBotLaporanHarianFleetManagement(sock) {
     }
     return response;
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.log('Error fetching data:', error);
   }
 }
 
@@ -525,7 +524,7 @@ async function handleBotLaporanHarianFleetManagement(sock) {
     }
     return response;
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.log('Error fetching data:', error);
   }
 }
 
@@ -779,7 +778,7 @@ const handleChatSnoozePengawasanOperatorAi = async (
         await sock.sendMessage(noWa, {
           text: 'Mohon tunggu sedang melakukan update konfigurasi Operator Pengawasai AI',
         });
-        console.log(configSnoozeBotPengawasanOperator[noWa]);
+        // console.log(configSnoozeBotPengawasanOperator[noWa]);
         const response = await axios.post(
           'https://srs-ssms.com/op_monitoring/update_snooze_machine_bot.php',
           new URLSearchParams({
@@ -850,9 +849,9 @@ const updatePCStatus = async () => {
         status: 'online',
       }
     );
-    console.log('Status updated:', response.data);
+    // console.log('Status updated:', response.data);
   } catch (error) {
-    console.error('Error updating status:', error);
+    console.log('Error updating status:', error);
   }
 };
 
@@ -861,11 +860,11 @@ const updatePCStatus = async () => {
 async function restartbot(namabot) {
   exec(`pm2 restart ${namabot}`, (error, stdout, stderr) => {
     if (error) {
-      console.error(`Error restarting app: ${error.message}`);
+      // console.log(`Error restarting app: ${error.message}`);
       return;
     }
     if (stderr) {
-      console.error(`Restart error: ${stderr}`);
+      console.log(`Restart error: ${stderr}`);
       return;
     }
     console.log(`App restarted: ${stdout}`);
@@ -965,14 +964,14 @@ async function botmanagementgudang(sock, msg) {
           //   }
           // );
         } else {
-          console.log('tidak ada data');
+          // console.log('tidak ada data');
         }
       }
     } else {
-      console.log('Data kosong management gudang');
+      // console.log('Data kosong management gudang');
     }
   } catch (error) {
-    console.error('Error:', error);
+    console.log('Error management gudang:', error);
   }
 }
 
@@ -987,7 +986,7 @@ const setupCronJobs = (sock) => {
   cron.schedule(
     '*/5 * * * *',
     async () => {
-      console.log('cron job ping google');
+      // console.log('cron job ping google');
 
       await pingGoogle();
       // await get_mill_data(sock);
@@ -1013,7 +1012,7 @@ const setupCronJobs = (sock) => {
           await get_iot_weatherstation();
           // await get_iot_weatherstation_data_gap(sock);
         } catch (error) {
-          console.error('Error in cron job:', error);
+          console.log('Error in cron job:', error);
         }
       },
       {
@@ -1253,7 +1252,7 @@ const setupCronJobs = (sock) => {
         );
         let responses = response.data;
       } catch (error) {
-        console.log('Error approving:', error);
+        console.log('Error approving management gudang:', error);
       }
     });
     channelPython.bind('python', async (eventData) => {
@@ -1287,7 +1286,7 @@ const setupCronJobs = (sock) => {
                   // file doens't exist
                   console.info("File doesn't exist, won't remove it.");
                 } else if (err) {
-                  console.error('Error occurred while trying to remove file.');
+                  console.log('Error occurred while trying to remove file.');
                 }
               });
             }
@@ -1300,7 +1299,7 @@ const setupCronJobs = (sock) => {
             console.log('pesan gagal terkirim');
           });
       } catch (error) {
-        console.error('Error fetching base64 image:', error);
+        console.log('Error fetching base64 image:', error);
       }
     });
     channel.bind('Smartlabsnotification', async (itemdata) => {
@@ -1370,9 +1369,9 @@ const setupCronJobs = (sock) => {
             //   dataitem.penerima + '@s.whatsapp.net',
             //   messageOptions
             // );
-            console.log('PDF sent successfully!');
+            // console.log('PDF sent successfully!');
           } else {
-            console.log('PDF not found in the API response.');
+            console.log('PDF not found in the API response smartlab.');
           }
         }
       });

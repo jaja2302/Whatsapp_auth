@@ -34,7 +34,7 @@ async function getuserinfo(user) {
     if (error.response && error.response.status === 404) {
       return { message: 'Nama User tidak ditemukan' };
     } else {
-      console.error('Error fetching data:', error);
+      console.log('Error fetching data:', error);
       // throw new Error('Error fetching data from API');
     }
   }
@@ -57,7 +57,7 @@ async function checkatasan(nama_atasansatu) {
     if (error.response && error.response.status === 404) {
       return { message: 'Nama Atasan tidak ditemukan' };
     } else {
-      console.error('Error fetching data:', error);
+      console.log('Error fetching data:', error);
       // throw new Error('Error fetching data from API');
     }
   }
@@ -76,7 +76,7 @@ async function sendImageWithCaption(sock, noWa, imagePath, caption) {
 
     console.log('Image sent with caption successfully.');
   } catch (error) {
-    console.error('Error sending image with caption:', error);
+    console.log('Error sending image with caption:', error);
   }
 }
 
@@ -820,12 +820,14 @@ const handleijinmsg = async (noWa, text, sock) => {
             });
           }
         } catch (error) {
+          console.log('izinkebun error');
+
           if (error.response && error.response.status === 404) {
             await sock.sendMessage(noWa, {
               text: 'Nama Atasan tidak ditemukan di database. Harap input ulang.',
             });
           } else {
-            console.error('Error fetching data:', error);
+            console.log('Error fetching data:', error);
             await sock.sendMessage(noWa, {
               text: 'Terjadi kesalahan saat mengirim data. Silakan coba lagi.',
             });
@@ -1097,7 +1099,7 @@ async function Report_group_izinkebun(sock) {
         // await sock.sendMessage(idgroup, messageOptions);
         // console.log('PDF sent successfully!');
       } catch (sendError) {
-        console.error('Error sending PDF:', sendError.message);
+        console.log('Error sending PDF:', sendError.message);
       }
     } else {
       console.log('PDF not found in the API response.');
@@ -1106,7 +1108,7 @@ async function Report_group_izinkebun(sock) {
     // Return the message if needed
     return data.message;
   } catch (error) {
-    console.error('Error fetching data from API:', error.message);
+    console.log('Error fetching data from API:', error.message);
     throw error;
   }
 }
@@ -1128,7 +1130,7 @@ async function Fail_send_pdf() {
 
     return response.data;
   } catch (error) {
-    console.error('Error fetching data from API:', error.message);
+    console.log('Error fetching data from API:', error.message);
     throw error;
   }
 }
@@ -1150,7 +1152,7 @@ async function reminder_izin_kebun() {
 
     return response.data;
   } catch (error) {
-    console.error('Error fetching data from API:', error.message);
+    console.log('Error fetching data from API:', error.message);
     throw error;
   }
 }

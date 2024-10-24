@@ -13,7 +13,7 @@ const noWa_grading_sgm = '6282257572112-1635223872@g.us';
 // id_group: 6282257572112-1635223872@g.us || Nama Group: SGM 23.50
 
 async function get_mill_data(sock) {
-  console.log('check data grading');
+  // console.log('check data grading');
 
   const credentials = {
     email: 'j',
@@ -30,7 +30,7 @@ async function get_mill_data(sock) {
     );
 
     const data = response.data;
-    console.log(data);
+    // console.log(data);
 
     if (data.status === '200' && data.data && data.data.length > 0) {
       for (const itemdata of data.data) {
@@ -81,7 +81,7 @@ async function get_mill_data(sock) {
           });
           // await updateDataMill(itemdata.id, credentials);
         } catch (sendMessageError) {
-          console.error('Error sending message:', sendMessageError);
+          console.log('Error sending message:', sendMessageError);
           await catcherror(
             itemdata.id,
             'error_sending_message',
@@ -90,10 +90,10 @@ async function get_mill_data(sock) {
         }
       }
     } else {
-      console.log('No data found.');
+      // console.log('No data found.');
     }
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.log('Error fetching data:', error);
   }
 }
 
@@ -139,9 +139,9 @@ async function updateDataMill(id, credentials) {
       id: id,
       ...credentials,
     });
-    console.log('Data update successful for ID:', id);
+    // console.log('Data update successful for ID:', id);
   } catch (updateError) {
-    console.error('Error updating data for ID:', id, updateError);
+    console.log('Error updating data for ID:', id, updateError);
     await catcherror(id, 'error_updating_data', 'bot_grading_mill');
   }
 }

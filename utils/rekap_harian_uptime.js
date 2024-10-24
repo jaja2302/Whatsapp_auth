@@ -69,7 +69,7 @@ async function sendSummary(sock) {
   try {
     logs = readFileSync(logFile, 'utf-8');
   } catch (error) {
-    console.error(`No log file found for ${yesterday.toDateString()}`);
+    console.log(`No log file found for ${yesterday.toDateString()}`);
     await sock.sendMessage(idgroup, {
       text: `No log file found for ${yesterday.toDateString()}.`,
     });
@@ -108,7 +108,7 @@ async function sendSummary(sock) {
       fileName: basename(logFile), // File name derived from the path
     });
   } catch (error) {
-    console.error('Error sending WhatsApp message:', error);
+    console.log('Error sending WhatsApp message:', error);
   }
 }
 // const pingGoogles = async (sock) => {
