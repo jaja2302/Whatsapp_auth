@@ -20,8 +20,8 @@ const handleGroupMessage = async (
   sock,
   message
 ) => {
-  if (lowerCaseMessage && lowerCaseMessage.startsWith('!tarik')) {
-    const estateCommand = lowerCaseMessage.replace('!tarik', '').trim();
+  if (lowerCaseMessage && lowerCaseMessage.startsWith('!testingaja')) {
+    const estateCommand = lowerCaseMessage.replace('!testingaja', '').trim();
     const estate = estateCommand.toUpperCase(); // Convert to uppercase for consistency
     // Check if the estate name is valid
     if (!estate) {

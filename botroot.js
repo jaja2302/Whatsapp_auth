@@ -16,9 +16,14 @@ const bodyParser = require('body-parser');
 const http = require('http');
 const qrcode = require('qrcode');
 const socketIO = require('socket.io');
+const Queue = require('./utils/queue');
+const fs = require('fs');
 
-const { setupCronJobs } = require('./helper');
-const { runfunction } = require('./utils/izinkebun/helper');
+const { setupCronJobs, statusAWS } = require('./helper');
+const {
+  runfunction,
+  updatestatus_sock_vbot,
+} = require('./utils/izinkebun/helper');
 const { Generateandsendtaksasi } = require('./utils/taksasi/taksasihelper');
 const { handlePrivateMessage } = require('./utils/private_messages');
 const { function_rapidresponse } = require('./utils/rapiprespons/helper');
@@ -57,7 +62,6 @@ app.get('/', (req, res) =>
 const store = makeInMemoryStore({
   logger: pino().child({ level: 'silent', stream: 'store' }),
 });
-let sock;
 let qr;
 let soket;
 
@@ -79,7 +83,7 @@ async function connectToWhatsApp() {
   const { state, saveCreds } = await useMultiFileAuthState('baileys_auth_info');
   let { version } = await fetchLatestBaileysVersion();
 
-  sock = makeWASocket({
+  global.sock = makeWASocket({
     printQRInTerminal: true,
     auth: state,
     logger: pino({ level: 'silent' }),
@@ -87,9 +91,9 @@ async function connectToWhatsApp() {
     shouldIgnoreJid: (jid) => isJidBroadcast(jid),
   });
 
-  store.bind(sock.ev);
+  store.bind(global.sock.ev);
 
-  sock.ev.on('connection.update', (update) => {
+  global.sock.ev.on('connection.update', (update) => {
     const { connection, lastDisconnect } = update;
     if (lastDisconnect?.error) {
       logger.error('Connection Error:', lastDisconnect.error);
@@ -100,14 +104,22 @@ async function connectToWhatsApp() {
       }
     } else if (connection === 'open') {
       console.log('WhatsApp connected successfully');
-
       logger.info('WhatsApp connected successfully');
+
+      // Resume queue processing when connected
+      global.queue.resume();
+    } else if (connection === 'close') {
+      console.log('WhatsApp disconnected');
+      logger.info('WhatsApp disconnected');
+
+      // Pause queue processing when disconnected
+      global.queue.pause();
     }
   });
 
-  sock.ev.on('creds.update', saveCreds);
+  global.sock.ev.on('creds.update', saveCreds);
 
-  sock.ev.on('messages.upsert', async ({ messages, type }) => {
+  global.sock.ev.on('messages.upsert', async ({ messages, type }) => {
     for (const message of messages) {
       if (!message.key.fromMe) {
         const noWa = message.key.remoteJid;
@@ -143,22 +155,22 @@ async function connectToWhatsApp() {
           if (quotedMessage.conversation) {
             // console.log('This is a reply to a text message');
             // Handle reply to text
-            await handleReplyNoDocMessage(
-              conversation,
-              noWa,
-              sock,
-              respon_atasan,
-              message
-            );
+            // await handleReplyNoDocMessage(
+            //   conversation,
+            //   noWa,
+            //   global.sock,
+            //   respon_atasan,
+            //   message
+            // );
           } else if (quotedMessage.documentWithCaptionMessage) {
             // console.log('This is a reply to a text document');
-            await handleReplyDocMessage(
-              conversation,
-              noWa,
-              sock,
-              respon_atasan,
-              quotedMessage
-            );
+            // await handleReplyDocMessage(
+            //   conversation,
+            //   noWa,
+            //   global.sock,
+            //   respon_atasan,
+            //   quotedMessage
+            // );
           }
         } else {
           if (isGroup) {
@@ -168,13 +180,18 @@ async function connectToWhatsApp() {
               lowerCaseMessage,
               noWa,
               text,
-              sock,
+              global.sock,
               message
             );
           } else if (isPrivate) {
             // console.log('This is a private message without reply:', text);
             // Handle other private messages
-            await handlePrivateMessage(lowerCaseMessage, noWa, text, sock);
+            await handlePrivateMessage(
+              lowerCaseMessage,
+              noWa,
+              text,
+              global.sock
+            );
           }
         }
         // Handle document messages (both in private and group)
@@ -191,11 +208,6 @@ async function connectToWhatsApp() {
       }
     }
   });
-
-  setupCronJobs(sock);
-  runfunction(sock);
-  function_rapidresponse(sock);
-  function_marcom(sock);
 }
 
 // Helper function to handle QR code updates
@@ -219,15 +231,44 @@ const updateQR = (data) => {
 // WebSocket handling
 io.on('connection', (socket) => {
   soket = socket;
-  if (sock?.user) {
+  if (global.sock?.user) {
     updateQR('connected');
   } else if (qr) {
     updateQR('qr');
   }
 });
 
+app.get('/testing', async (req, res) => {
+  try {
+    // await pingGoogle();
+    // await statusAWS();
+    // da
+    // console.log(sock.user);
+    // console.log(result);
+    res.status(200).json({
+      status: true,
+      response: 'Task Success',
+    });
+  } catch (error) {
+    console.error('Error sending files:', error);
+    res.status(500).json({
+      status: false,
+      response: error.message || 'Internal Server Error',
+    });
+  }
+});
+// Create a global queue instance
+global.queue = new Queue();
+
 connectToWhatsApp().catch((err) =>
   logger.error('Error connecting to WhatsApp:', err)
 );
+// runfunction();
+// setupCronJobs();
+// function_rapidresponse();
+// function_marcom();
+// ... other function calls
 const port = process.env.PORT || 8000;
 server.listen(port, () => logger.info(`Server running on port ${port}`));
+
+global.sock = null;

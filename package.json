@@ -11,6 +11,7 @@
   "dependencies": {
     "@sparticuz/chromium": "^92.0.0",
     "@whiskeysockets/baileys": "^6.6.0",
+    "better-queue": "^3.8.12",
     "cors": "^2.8.5",
     "date-fns": "^4.1.0",
     "date-fns-tz": "^3.2.0",

@@ -53,24 +53,33 @@ async function get_mill_data(sock) {
         };
 
         try {
-          // Send to main grading group
-          // await sock.sendMessage(noWa_grading, imageOptions);
-          // await sock.sendMessage(noWa_grading, messageOptions);
-
           // If estate is SYE, also send to the Suayap group
           if (itemdata.mill === 'SYM') {
-            await sock.sendMessage(noWa_grading_suayap, imageOptions);
-            await sock.sendMessage(noWa_grading_suayap, messageOptions);
+            queue.push({
+              type: 'send_image',
+              data: imageOptions,
+            });
+            queue.push({
+              type: 'send_document',
+              data: messageOptions,
+            });
           } else if (itemdata.mill === 'SGM') {
-            await sock.sendMessage(noWa_grading_sgm, imageOptions);
-            await sock.sendMessage(noWa_grading_sgm, messageOptions);
-          } else {
-            await sock.sendMessage(noWa_grading, imageOptions);
-            await sock.sendMessage(noWa_grading, messageOptions);
+            queue.push({
+              type: 'send_image',
+              data: imageOptions,
+            });
+            queue.push({
+              type: 'send_document',
+              data: messageOptions,
+            });
           }
 
           // Update data after sending messages
-          await updateDataMill(itemdata.id, credentials);
+          queue.push({
+            type: 'update_data_mill',
+            data: { id: itemdata.id, credentials },
+          });
+          // await updateDataMill(itemdata.id, credentials);
         } catch (sendMessageError) {
           console.error('Error sending message:', sendMessageError);
           await catcherror(
@@ -139,4 +148,5 @@ async function updateDataMill(id, credentials) {
 
 module.exports = {
   get_mill_data,
+  updateDataMill,
 };

@@ -108,15 +108,17 @@ async function sendtaksasiest(estate, group_id, folder, sock, taskid, tanggal) {
         const pdfBuffer = Buffer.from(responseData.base64_pdf, 'base64');
         const pdfFilename = `Rekap Taksasi ${estate} ${newdaate}.pdf`;
         let captions = `Dikirim oleh ROBOT,jangan balas pesan\n`;
-        const messageOptions = {
-          document: pdfBuffer,
-          mimetype: 'application/pdf',
-          fileName: pdfFilename,
-          caption: captions,
-        };
-
         try {
-          await sock.sendMessage(group_id, messageOptions);
+          queue.push({
+            type: 'send_document',
+            data: {
+              to: group_id,
+              filename: pdfFilename, // Changed from fileName to filename
+              document: pdfBuffer,
+              caption: captions,
+            },
+          });
+          // await sock.sendMessage(group_id, messageOptions);
           const apiUrl = 'https://qc-apps.srs-ssms.com/api/recordcronjob';
           // const apiUrl = 'http://qc-apps2.test/api/recordcronjob';
 
@@ -244,14 +246,23 @@ async function Generateandsendtaksasi(sock) {
           captions += `\nTanggal : ${datetimeValue}`;
           captions += `Harap hanya membalas pesan ini dengan jawaban ya atau tidak`;
           captions += `\n\nTerima kasih`;
-          const messageOptions = {
-            document: pdfBuffer,
-            mimetype: 'application/pdf',
-            fileName: pdfFilename,
-            caption: captions,
-          };
+          // const messageOptions = {
+          //   document: pdfBuffer,
+          //   mimetype: 'application/pdf',
+          //   fileName: pdfFilename,
+          //   caption: captions,
+          // };
 
-          await sock.sendMessage(item.new_group, messageOptions);
+          queue.push({
+            type: 'send_document',
+            data: {
+              to: item.new_group,
+              document: pdfBuffer,
+              filename: pdfFilename,
+              caption: captions,
+            },
+          });
+          // await sock.sendMessage(item.new_group, messageOptions);
 
           console.log('PDF sent successfully!');
         } else {
@@ -298,14 +309,23 @@ async function Sendverificationtaksasi(sock) {
         if (responseData.base64_pdf) {
           const pdfBuffer = Buffer.from(responseData.base64_pdf, 'base64');
           const pdfFilename = `Rekap Taksasi ${item.estate} ${datetimeValue}.pdf`;
-          const messageOptions = {
-            document: pdfBuffer,
-            mimetype: 'application/pdf',
-            fileName: pdfFilename,
-            caption: 'Pesan otomatis, harap jangan membalas pesan ini',
-          };
+          // const messageOptions = {
+          //   document: pdfBuffer,
+          //   mimetype: 'application/pdf',
+          //   fileName: pdfFilename,
+          //   caption: 'Pesan otomatis, harap jangan membalas pesan ini',
+          // };
 
-          await sock.sendMessage(item.new_group, messageOptions);
+          queue.push({
+            type: 'send_document',
+            data: {
+              to: item.new_group,
+              document: pdfBuffer,
+              fileName: pdfFilename,
+              caption: 'Pesan otomatis, harap jangan membalas pesan ini',
+            },
+          });
+          // await sock.sendMessage(item.new_group, messageOptions);
 
           console.log('PDF sent successfully!');
         } else {

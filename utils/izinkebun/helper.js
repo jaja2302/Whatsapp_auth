@@ -11,6 +11,8 @@ const timeoutHandles = {};
 const fs = require('fs');
 const https = require('https');
 
+// Use the global queue directly
+
 // function surat izin bot
 
 async function getuserinfo(user) {
@@ -66,6 +68,7 @@ async function sendImageWithCaption(sock, noWa, imagePath, caption) {
     const imageBuffer = require('fs').readFileSync(imagePath);
 
     // Send the image with a caption
+
     await sock.sendMessage(noWa, {
       image: imageBuffer,
       caption: caption,
@@ -80,8 +83,8 @@ async function sendImageWithCaption(sock, noWa, imagePath, caption) {
 async function updatestatus_sock_vbot(id, type_atasan) {
   try {
     const response = await axios.post(
-      'https://management.srs-ssms.com/api/update_status_sock',
-      // 'http://erpda.test/api/update_status_sock',
+      'https://management.srs-ssms.com/api/update_status_izinkebun_sock',
+      // 'http://erpda.test/api/update_status_izinkebun_sock',
       {
         id: id,
         type_atasan: type_atasan,
@@ -860,6 +863,194 @@ const handleijinmsg = async (noWa, text, sock) => {
   }
 };
 
+const runfunction = async () => {
+  channel.bind('izinkebunnotif', async (itemdata) => {
+    try {
+      // Use global.sock directly here
+      if (!global.sock || !global.sock.user) {
+        console.log('WhatsApp connection is not established.');
+        return;
+      }
+
+      if (!itemdata || !itemdata.data) {
+        console.log('itemdata is undefined or missing data property.');
+        return;
+      }
+      const data = itemdata.data;
+      let errormsg = 'Error mengirim notifikasi izin keluar kebun\n';
+      errormsg += `*ID Pemohon* : ${data.id}\n`;
+      errormsg += `*Nama* : ${data.nama_user}\n`;
+      errormsg += `Error mengirim ke nomor ${data.nama_atasan_1}\n`;
+      if (data.type === 'send_atasan_satu') {
+        let message = `Permintaan Persetujuan Izin Baru:\n`;
+        message += `Halo, Selamat Siang Bapak/Ibu ${data.nama_atasan_1},\n`;
+        message += `Anda memiliki permintaan izin keluar kebun yang membutuhkan persetujuan dengan rincian sebagai berikut:\n`;
+        message += `ID Pemohon: ${data.id}\n`;
+        message += `Nama Pemohon: *${data.nama_user}*\n`;
+        message += `Alasan : ${data.keperluan}\n`;
+        message += `Tanggal Keluar: *${data.tanggal_keluar}*\n\n`;
+        message +=
+          ' Anda juga bisa membalas dengan *Ya*/*Tidak* untuk menyetujui/menolak semua permintaan yang terkait dengan Anda dengan cara menahan pesan ini dan harap di reply .\n';
+        message +=
+          ' Anda juga bisa membalas dengan *Ya semua*/*Tidak semua* untuk menyetujui/menolak semua permintaan yang terkait dengan anda tanpa perlu menahan pesan ini\n';
+        message += `Pesan otomatis oleh Digital Architect SRS Bot.`;
+
+        queue.push({
+          type: 'send_message',
+          data: { to: `${data.send_to}@s.whatsapp.net`, message },
+        });
+        queue.push({
+          type: 'update_status_izinkebun',
+          data: { id_db: data.id_db, type: data.type },
+        });
+      } else if (data.type === 'send_atasan_dua') {
+        let message = `Permintaan Persetujuan Izin Baru:\n`;
+        message += `Halo, Selamat Siang Bapak/Ibu ${data.nama_atasan_2},\n`;
+        message += `Anda memiliki permintaan izin keluar kebun yang membutuhkan persetujuan dengan rincian sebagai berikut:\n`;
+        message += `ID Pemohon: ${data.id}\n`;
+        message += `Nama : *${data.nama_user}*\n`;
+        message += `Alasan : ${data.keperluan}\n`;
+        message += `Tanggal keluar izin : *${data.tanggal_keluar}*\n`;
+        message +=
+          ' Anda juga bisa membalas dengan *Ya*/*Tidak* untuk menyetujui/menolak semua permintaan yang terkait dengan Anda dengan cara menahan pesan ini dan harap di reply .\n';
+        message +=
+          ' Anda juga bisa membalas dengan *Ya semua*/*Tidak semua* untuk menyetujui/menolak semua permintaan yang terkait dengan anda tanpa perlu menahan pesan ini\n';
+        message += `Pesan otomatis oleh Digital Architect SRS Bot.`;
+        let userMessage = `*Izin Keluar Kebun Anda Telah Disetujui Atasan Pertama*\n\n`;
+        userMessage += `Hallo Selamat Siang Bapak/Ibu ${data.nama_user},\n\n`;
+        userMessage += `Kami ingin menginformasikan bahwa permintaan izin keluar kebun Anda telah Disetujui.\n\n`;
+        userMessage += `Silahkan tunggu notifikasi  berikutnya untuk persetujuan dari atasan kedua.\n\n`;
+        userMessage += `Terima kasih,\n`;
+        userMessage += `Tim Digital Architect SRS Bot`;
+
+        queue.push({
+          type: 'send_message',
+          data: { to: `${data.send_to}@s.whatsapp.net`, message },
+        });
+        queue.push({
+          type: 'send_message',
+          data: {
+            to: `${data.no_hp_user}@s.whatsapp.net`,
+            message: userMessage,
+          },
+        });
+        queue.push({
+          type: 'update_status_izinkebun',
+          data: { id_db: data.id_db, type: data.type },
+        });
+      } else if (data.type === 'send_user' && data.status === 'approved') {
+        let message = `Izin Keluar Kebun Anda Telah Disetujui\n\n`;
+        message += `Hallo Selamat Siang Bapak/Ibu ${data.nama_user},\n\n`;
+        message += `Kami ingin menginformasikan bahwa permintaan izin keluar kebun Anda telah disetujui.\n\n`;
+        message += `Berikut adalah detail izin Anda:\n`;
+        message += `Nama Pemohon: *${data.nama_user}*\n`;
+        message += `Tanggal keluar izin : ${data.tanggal_keluar}\n`;
+        message += `Tanggal kembali izin : ${data.tanggal_kembali}\n`;
+        message += `Keperluan: ${data.keperluan}\n`;
+        message += `Lokasi Tujuan: ${data.lokasi_tujuan}\n\n`;
+        message += `Harap selalu berhati-hati selama perjalanan dan pastikan untuk mengikuti protokol keamanan yang berlaku. Kami mendoakan agar Anda tiba dengan selamat di tujuan dan kembali ke kebun dengan kondisi sehat dan aman.\n\n`;
+        message += `Jika ada pertanyaan lebih lanjut, jangan ragu untuk menghubungi kami.\n\n`;
+        message += `Atau kunjungi web kami di :https://izin-kebun.srs-ssms.com \n\n`;
+        message += `Terima kasih,\n`;
+        message += `Tim Digital Architect SRS Bot`;
+
+        try {
+          const genpdf = await axios.get(
+            'https://izin-kebun.srs-ssms.com/api/generatePdfIzinKebun',
+            {
+              params: {
+                user: 'j',
+                pw: 'j',
+                id: data.id_db,
+              },
+            }
+          );
+          const datapdf = genpdf.data;
+          if (datapdf.pdf) {
+            const pdfBuffer = Buffer.from(datapdf.pdf, 'base64');
+            const pdfFilename = datapdf.filename || 'Invoice.pdf';
+
+            queue.push({
+              type: 'send_document',
+              data: {
+                to: `${data.send_to}@s.whatsapp.net`,
+                document: pdfBuffer,
+                filename: pdfFilename,
+                caption: message,
+              },
+            });
+            queue.push({
+              type: 'update_status_izinkebun',
+              data: { id_db: data.id_db, type: data.type },
+            });
+          } else {
+            console.log('PDF not found in the API response.');
+          }
+        } catch (error) {
+          console.log('Error generating PDF:', error);
+        }
+      } else if (data.type === 'send_user' && data.status === 'rejected') {
+        let message = `*Izin Keluar Kebun Anda Telah Ditolak*\n\n`;
+        message += `Hallo Selamat Siang Bapak/Ibu ${data.nama_user},\n\n`;
+        message += `Kami ingin menginformasikan bahwa permintaan izin keluar kebun Anda telah ditolak dikarenakan :\n\n`;
+        message += `*Alasan ditolak*: ${data.response}\n`;
+        message += `Jika ada pertanyaan lebih lanjut, jangan ragu untuk menghubungi kami.\n\n`;
+        message += `Terima kasih,\n`;
+        message += `Tim Digital Architect SRS Bot`;
+
+        queue.push({
+          type: 'send_message',
+          data: { to: `${data.send_to}@s.whatsapp.net`, message },
+        });
+        queue.push({
+          type: 'update_status_izinkebun',
+          data: { id_db: data.id_db, type: data.type },
+        });
+      } else if (data.type === 'send_atasan_tiga') {
+        let message = `Permintaan Persetujuan Izin Baru:\n`;
+        message += `Halo, Selamat Siang Bapak/Ibu ${data.nama_atasan_3},\n`;
+        message += `Anda memiliki permintaan izin keluar kebun yang membutuhkan persetujuan dengan rincian sebagai berikut:\n`;
+        message += `ID Pemohon: ${data.id}\n`;
+        message += `Nama : *${data.nama_user}*\n`;
+        message += `Alasan : ${data.keperluan}\n`;
+        message += `Tanggal keluar izin : *${data.tanggal_keluar}*\n`;
+        message +=
+          ' Anda juga bisa membalas dengan *Ya*/*Tidak* untuk menyetujui/menolak semua permintaan yang terkait dengan Anda dengan cara menahan pesan ini dan harap di reply .\n';
+        message +=
+          ' Anda juga bisa membalas dengan *Ya semua*/*Tidak semua* untuk menyetujui/menolak semua permintaan yang terkait dengan anda tanpa perlu menahan pesan ini\n';
+        message += `Pesan otomatis oleh Digital Architect SRS Bot.`;
+        let userMessage = `*Izin Keluar Kebun Anda Telah Di setujui Atasan Kedua*\n\n`;
+        userMessage += `Hallo Selamat Siang Bapak/Ibu ${data.nama_user},\n\n`;
+        userMessage += `Kami ingin menginformasikan bahwa permintaan izin keluar kebun Anda telah Disetuji :\n\n`;
+        userMessage += `Silahkan tunggu notifikasi  berikutnya untuk persetujuan dari atasan ketiga.\n\n`;
+        userMessage += `Terima kasih,\n`;
+        userMessage += `Tim Digital Architect SRS Bot`;
+
+        queue.push({
+          type: 'send_message',
+          data: { to: `${data.send_to}@s.whatsapp.net`, message },
+        });
+        queue.push({
+          type: 'send_message',
+          data: {
+            to: `${data.no_hp_user}@s.whatsapp.net`,
+            message: userMessage,
+          },
+        });
+        queue.push({
+          type: 'update_status_izinkebun',
+          data: { id_db: data.id_db, type: data.type },
+        });
+      } else {
+        console.log('Unknown status:', data.type);
+        return;
+      }
+    } catch (globalError) {
+      console.log('Unexpected error:', globalError);
+    }
+  });
+};
+
 async function Report_group_izinkebun(sock) {
   try {
     // Fetch data from the API
@@ -887,15 +1078,23 @@ async function Report_group_izinkebun(sock) {
 
         const pdfBuffer = Buffer.from(data.pdf, 'base64');
         const pdfFilename = data.filename || 'Invoice.pdf';
-        const messageOptions = {
-          document: pdfBuffer,
-          mimetype: 'application/pdf',
-          fileName: pdfFilename,
-          caption: captions,
-        };
-
+        // const messageOptions = {
+        //   document: pdfBuffer,
+        //   mimetype: 'application/pdf',
+        //   fileName: pdfFilename,
+        //   caption: captions,
+        // };
+        queue.push({
+          type: 'send_document',
+          data: {
+            to: idgroup,
+            document: pdfBuffer,
+            filename: pdfFilename,
+            caption: captions,
+          },
+        });
         // Send the PDF as a document via WhatsApp
-        await sock.sendMessage(idgroup, messageOptions);
+        // await sock.sendMessage(idgroup, messageOptions);
         // console.log('PDF sent successfully!');
       } catch (sendError) {
         console.error('Error sending PDF:', sendError.message);
@@ -955,193 +1154,6 @@ async function reminder_izin_kebun() {
     throw error;
   }
 }
-const runfunction = async (sock) => {
-  channel.bind('izinkebunnotif', async (itemdata) => {
-    try {
-      if (!itemdata || !itemdata.data) {
-        console.log('itemdata is undefined or missing data property.');
-        return;
-      }
-      const data = itemdata.data;
-      let errormsg = 'Error mengirim notifikasi izin keluar kebun\n';
-      errormsg += `*ID Pemohon* : ${data.id}\n`;
-      errormsg += `*Nama* : ${data.nama_user}\n`;
-      errormsg += `Error mengirim ke nomor ${data.nama_atasan_1}\n`;
-      if (data.type === 'send_atasan_satu') {
-        let message = `Permintaan Persetujuan Izin Baru:\n`;
-        message += `Halo, Selamat Siang Bapak/Ibu ${data.nama_atasan_1},\n`;
-        message += `Anda memiliki permintaan izin keluar kebun yang membutuhkan persetujuan dengan rincian sebagai berikut:\n`;
-        message += `ID Pemohon: ${data.id}\n`;
-        message += `Nama Pemohon: *${data.nama_user}*\n`;
-        message += `Alasan : ${data.keperluan}\n`;
-        message += `Tanggal Keluar: *${data.tanggal_keluar}*\n\n`;
-        message +=
-          ' Anda juga bisa membalas dengan *Ya*/*Tidak* untuk menyetujui/menolak semua permintaan yang terkait dengan Anda dengan cara menahan pesan ini dan harap di reply .\n';
-        message +=
-          ' Anda juga bisa membalas dengan *Ya semua*/*Tidak semua* untuk menyetujui/menolak semua permintaan yang terkait dengan anda tanpa perlu menahan pesan ini\n';
-        message += `Pesan otomatis oleh Digital Architect SRS Bot.`;
-
-        try {
-          await sock.sendMessage(`${data.send_to}@s.whatsapp.net`, {
-            text: message,
-          });
-          await updatestatus_sock_vbot(data.id_db, data.type);
-        } catch (error) {
-          await catcherror(data.id_db, data.type, 'izin_kebun');
-          console.log(error);
-        }
-      } else if (data.type === 'send_atasan_dua') {
-        let message = `Permintaan Persetujuan Izin Baru:\n`;
-        message += `Halo, Selamat Siang Bapak/Ibu ${data.nama_atasan_2},\n`;
-        message += `Anda memiliki permintaan izin keluar kebun yang membutuhkan persetujuan dengan rincian sebagai berikut:\n`;
-        message += `ID Pemohon: ${data.id}\n`;
-        message += `Nama : *${data.nama_user}*\n`;
-        message += `Alasan : ${data.keperluan}\n`;
-        message += `Tanggal keluar izin : *${data.tanggal_keluar}*\n`;
-        message +=
-          ' Anda juga bisa membalas dengan *Ya*/*Tidak* untuk menyetujui/menolak semua permintaan yang terkait dengan Anda dengan cara menahan pesan ini dan harap di reply .\n';
-        message +=
-          ' Anda juga bisa membalas dengan *Ya semua*/*Tidak semua* untuk menyetujui/menolak semua permintaan yang terkait dengan anda tanpa perlu menahan pesan ini\n';
-        message += `Pesan otomatis oleh Digital Architect SRS Bot.`;
-        let userMessage = `*Izin Keluar Kebun Anda Telah Disetujui Atasan Pertama*\n\n`;
-        userMessage += `Hallo Selamat Siang Bapak/Ibu ${data.nama_user},\n\n`;
-        userMessage += `Kami ingin menginformasikan bahwa permintaan izin keluar kebun Anda telah Disetujui.\n\n`;
-        userMessage += `Silahkan tunggu notifikasi  berikutnya untuk persetujuan dari atasan kedua.\n\n`;
-        userMessage += `Terima kasih,\n`;
-        userMessage += `Tim Digital Architect SRS Bot`;
-
-        try {
-          await updatestatus_sock_vbot(data.id_db, data.type);
-          await sock.sendMessage(`${data.send_to}@s.whatsapp.net`, {
-            text: message,
-          });
-          await sock.sendMessage(data.no_hp_user + '@s.whatsapp.net', {
-            text: userMessage,
-          });
-        } catch (error) {
-          await catcherror(data.id_db, data.type, 'izin_kebun');
-        }
-      } else if (data.type === 'send_user') {
-        let message = ''; // Initialize the message variable here
-        if (data.status === 'approved') {
-          message += `Izin Keluar Kebun Anda Telah Disetujui\n\n`;
-          message += `Hallo Selamat Siang Bapak/Ibu ${data.nama_user},\n\n`;
-          message += `Kami ingin menginformasikan bahwa permintaan izin keluar kebun Anda telah disetujui.\n\n`;
-          message += `Berikut adalah detail izin Anda:\n`;
-          message += `Nama Pemohon: *${data.nama_user}*\n`;
-          message += `Tanggal keluar izin : ${data.tanggal_keluar}\n`;
-          message += `Tanggal kembali izin : ${data.tanggal_kembali}\n`;
-          message += `Keperluan: ${data.keperluan}\n`;
-          message += `Lokasi Tujuan: ${data.lokasi_tujuan}\n\n`;
-          message += `Harap selalu berhati-hati selama perjalanan dan pastikan untuk mengikuti protokol keamanan yang berlaku. Kami mendoakan agar Anda tiba dengan selamat di tujuan dan kembali ke kebun dengan kondisi sehat dan aman.\n\n`;
-          message += `Jika ada pertanyaan lebih lanjut, jangan ragu untuk menghubungi kami.\n\n`;
-          message += `Atau kunjungi web kami di :https://izin-kebun.srs-ssms.com \n\n`;
-          message += `Terima kasih,\n`;
-          message += `Tim Digital Architect SRS Bot`;
-          try {
-            // const genpdf = await axios.get('http://qc-apps2.test/api/generatePdfIzinKebun', {
-            const genpdf = await axios.get(
-              'https://izin-kebun.srs-ssms.com/api/generatePdfIzinKebun',
-              // 'http://izin-kebun-web.test/api/generatePdfIzinKebun',
-              {
-                params: {
-                  user: 'j',
-                  pw: 'j',
-                  id: data.id_db,
-                },
-              }
-            );
-            const datapdf = genpdf.data;
-            // console.log(datapdf);
-            if (datapdf.pdf) {
-              try {
-                // Decode the base64 PDF and prepare it for sending
-                const pdfBuffer = Buffer.from(datapdf.pdf, 'base64');
-                const pdfFilename = datapdf.filename || 'Invoice.pdf';
-                const messageOptions = {
-                  document: pdfBuffer,
-                  mimetype: 'application/pdf',
-                  fileName: pdfFilename,
-                  caption: message,
-                };
-                await updatestatus_sock_vbot(data.id_db, data.type);
-                // Send the PDF as a document via WhatsApp
-                await sock.sendMessage(
-                  data.send_to + '@s.whatsapp.net',
-                  messageOptions
-                );
-
-                // console.log('PDF sent successfully!');
-              } catch (sendError) {
-                console.error('Error sending PDF:', sendError.message);
-              }
-            } else {
-              console.log('PDF not found in the API response.');
-            }
-          } catch (error) {
-            console.log('Error generating PDF:', error);
-          }
-        } else if (data.status === 'rejected') {
-          message += `*Izin Keluar Kebun Anda Telah Ditolak*\n\n`;
-          message += `Hallo Selamat Siang Bapak/Ibu ${data.nama_user},\n\n`;
-          message += `Kami ingin menginformasikan bahwa permintaan izin keluar kebun Anda telah ditolak dikarenakan :\n\n`;
-          message += `*Alasan ditolak*: ${data.response}\n`;
-          message += `Jika ada pertanyaan lebih lanjut, jangan ragu untuk menghubungi kami.\n\n`;
-          message += `Terima kasih,\n`;
-          message += `Tim Digital Architect SRS Bot`;
-
-          try {
-            await updatestatus_sock_vbot(data.id_db, data.type);
-            await sock.sendMessage(`${data.send_to}@s.whatsapp.net`, {
-              text: message,
-            });
-          } catch (error) {
-            await catcherror(data.id_db, data.type, 'izin_kebun');
-          }
-        } else {
-          console.log('Unknown status:', data.type);
-          return;
-        }
-      } else if (data.type === 'send_atasan_tiga') {
-        let message = `Permintaan Persetujuan Izin Baru:\n`;
-        message += `Halo, Selamat Siang Bapak/Ibu ${data.nama_atasan_3},\n`;
-        message += `Anda memiliki permintaan izin keluar kebun yang membutuhkan persetujuan dengan rincian sebagai berikut:\n`;
-        message += `ID Pemohon: ${data.id}\n`;
-        message += `Nama : *${data.nama_user}*\n`;
-        message += `Alasan : ${data.keperluan}\n`;
-        message += `Tanggal keluar izin : *${data.tanggal_keluar}*\n`;
-        message +=
-          ' Anda juga bisa membalas dengan *Ya*/*Tidak* untuk menyetujui/menolak semua permintaan yang terkait dengan Anda dengan cara menahan pesan ini dan harap di reply .\n';
-        message +=
-          ' Anda juga bisa membalas dengan *Ya semua*/*Tidak semua* untuk menyetujui/menolak semua permintaan yang terkait dengan anda tanpa perlu menahan pesan ini\n';
-        message += `Pesan otomatis oleh Digital Architect SRS Bot.`;
-        let userMessage = `*Izin Keluar Kebun Anda Telah Di setujui Atasan Kedua*\n\n`;
-        userMessage += `Hallo Selamat Siang Bapak/Ibu ${data.nama_user},\n\n`;
-        userMessage += `Kami ingin menginformasikan bahwa permintaan izin keluar kebun Anda telah Disetuji :\n\n`;
-        userMessage += `Silahkan tunggu notifikasi  berikutnya untuk persetujuan dari atasan ketiga.\n\n`;
-        userMessage += `Terima kasih,\n`;
-        userMessage += `Tim Digital Architect SRS Bot`;
-
-        try {
-          await updatestatus_sock_vbot(data.id_db, data.type);
-          await sock.sendMessage(`${data.send_to}@s.whatsapp.net`, {
-            text: message,
-          });
-          await sock.sendMessage(data.no_hp_user + '@s.whatsapp.net', {
-            text: userMessage,
-          });
-        } catch (error) {
-          await catcherror(data.id_db, data.type, 'izin_kebun');
-        }
-      } else {
-        console.log('Unknown status:', data.type);
-        return;
-      }
-    } catch (globalError) {
-      console.log('Unexpected error:', globalError);
-    }
-  });
-};
 
 module.exports = {
   handleijinmsg,
@@ -1154,4 +1166,5 @@ module.exports = {
   catcherror,
   Fail_send_pdf,
   reminder_izin_kebun,
+  updatestatus_sock_vbot,
 };

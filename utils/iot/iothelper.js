@@ -36,14 +36,29 @@ async function get_iot_weatherstation(sock) {
 
         try {
           if (itemdata.loc === 'SGE') {
-            await sock.sendMessage(idgroupiot_sge, { text: message });
+            queue.push({
+              type: 'send_message',
+              data: { to: idgroupiot_sge, message: message },
+            });
+            // await sock.sendMessage(idgroupiot_sge, { text: message });
           } else if (itemdata.loc === 'RGE') {
-            await sock.sendMessage(idgroupiot_rge, { text: message });
+            queue.push({
+              type: 'send_message',
+              data: { to: idgroupiot_rge, message: message },
+            });
+            // await sock.sendMessage(idgroupiot_rge, { text: message });
           } else if (itemdata.loc === 'Sulung Ranch') {
-            await sock.sendMessage(idgroupiot_sulung, { text: message });
+            queue.push({
+              type: 'send_message',
+              data: { to: idgroupiot_sulung, message: message },
+            });
+            // await sock.sendMessage(idgroupiot_sulung, { text: message });
           }
-
-          await sock.sendMessage(idgroupiot, { text: message });
+          queue.push({
+            type: 'send_message',
+            data: { to: idgroupiot, message: message },
+          });
+          // await sock.sendMessage(idgroupiot, { text: message });
         } catch (error) {
           console.log(error);
           await catcherror(itemdata.id, 'error_cronjob', 'bot_iot');

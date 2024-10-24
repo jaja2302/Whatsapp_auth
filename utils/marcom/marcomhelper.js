@@ -42,8 +42,11 @@ async function get_outstadingdata(sock) {
         }
 
         try {
-          // Send message as an object with the text field
-          await sock.sendMessage(idgroup, { text: message });
+          queue.push({
+            type: 'send_message',
+            data: { to: idgroup, message: message },
+          });
+          // await sock.sendMessage(idgroup, { text: message });
         } catch (error) {
           console.log(error);
           await catcherror(itemdata.id, 'error_cronjob', 'bot_marcom');
@@ -96,7 +99,11 @@ const function_marcom = async (sock) => {
       };
 
       try {
-        await sock.sendMessage(idgroup, messageOptions);
+        queue.push({
+          type: 'send_message',
+          data: { to: idgroup, message: messageOptions },
+        });
+        // await sock.sendMessage(idgroup, messageOptions);
       } catch (error) {
         console.log(error);
 

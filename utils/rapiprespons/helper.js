@@ -75,17 +75,30 @@ const function_rapidresponse = async (sock) => {
       );
       // console.log(messageOptions1);
       // console.log(messageOptions2);
-
-      await sock.sendMessage(
-        `${itemdata.verifikator1}@s.whatsapp.net`,
-        messageOptions1
-      );
+      queue.push({
+        type: 'send_message',
+        data: {
+          to: `${itemdata.verifikator1}@s.whatsapp.net`,
+          message: messageOptions1,
+        },
+      });
+      // await sock.sendMessage(
+      //   `${itemdata.verifikator1}@s.whatsapp.net`,
+      //   messageOptions1
+      // );
 
       if (itemdata.verifikator2 !== itemdata.verifikator1) {
-        await sock.sendMessage(
-          `${itemdata.verifikator2}@s.whatsapp.net`,
-          messageOptions2
-        );
+        queue.push({
+          type: 'send_message',
+          data: {
+            to: `${itemdata.verifikator2}@s.whatsapp.net`,
+            message: messageOptions2,
+          },
+        });
+        // await sock.sendMessage(
+        //   `${itemdata.verifikator2}@s.whatsapp.net`,
+        //   messageOptions2
+        // );
       }
 
       // console.log('PDF sent successfully!');
