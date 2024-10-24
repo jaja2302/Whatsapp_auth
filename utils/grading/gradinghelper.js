@@ -90,6 +90,24 @@ async function get_mill_data(sock) {
                 caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
               },
             });
+          } else {
+            queue.push({
+              type: 'send_image',
+              data: {
+                to: noWa_grading,
+                image: imgBuffer,
+                caption: message,
+              },
+            });
+            queue.push({
+              type: 'send_document',
+              data: {
+                to: noWa_grading,
+                document: pdfBuffer,
+                filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
+                caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
+              },
+            });
           }
 
           // Update data after sending messages
