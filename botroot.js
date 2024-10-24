@@ -155,22 +155,22 @@ async function connectToWhatsApp() {
           if (quotedMessage.conversation) {
             // console.log('This is a reply to a text message');
             // Handle reply to text
-            // await handleReplyNoDocMessage(
-            //   conversation,
-            //   noWa,
-            //   global.sock,
-            //   respon_atasan,
-            //   message
-            // );
+            await handleReplyNoDocMessage(
+              conversation,
+              noWa,
+              global.sock,
+              respon_atasan,
+              message
+            );
           } else if (quotedMessage.documentWithCaptionMessage) {
             // console.log('This is a reply to a text document');
-            // await handleReplyDocMessage(
-            //   conversation,
-            //   noWa,
-            //   global.sock,
-            //   respon_atasan,
-            //   quotedMessage
-            // );
+            await handleReplyDocMessage(
+              conversation,
+              noWa,
+              global.sock,
+              respon_atasan,
+              quotedMessage
+            );
           }
         } else {
           if (isGroup) {
@@ -263,10 +263,10 @@ global.queue = new Queue();
 connectToWhatsApp().catch((err) =>
   logger.error('Error connecting to WhatsApp:', err)
 );
-// runfunction();
-// setupCronJobs();
-// function_rapidresponse();
-// function_marcom();
+runfunction();
+setupCronJobs();
+function_rapidresponse();
+function_marcom();
 // ... other function calls
 const port = process.env.PORT || 8000;
 server.listen(port, () => logger.info(`Server running on port ${port}`));
