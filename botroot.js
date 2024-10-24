@@ -95,13 +95,12 @@ async function connectToWhatsApp() {
 
   global.sock.ev.on('connection.update', (update) => {
     const { connection, lastDisconnect } = update;
-    if (lastDisconnect?.error) {
-      logger.error('Connection Error:', lastDisconnect.error);
-      if (
-        lastDisconnect.error.output?.statusCode !== DisconnectReason.loggedOut
-      ) {
-        setTimeout(() => connectToWhatsApp(), 5000); // Retry logic
-      }
+    if (connection === 'close') {
+      console.log('WhatsApp disconnected');
+      logger.info('WhatsApp disconnected');
+
+      // Pause queue processing when disconnected
+      global.queue.pause();
     } else if (connection === 'open') {
       console.log('WhatsApp connected successfully');
       logger.info('WhatsApp connected successfully');
@@ -111,12 +110,14 @@ async function connectToWhatsApp() {
 
       // Resume queue processing when connected
       global.queue.resume();
-    } else if (connection === 'close') {
-      console.log('WhatsApp disconnected');
-      logger.info('WhatsApp disconnected');
-
-      // Pause queue processing when disconnected
-      global.queue.pause();
+    }
+    if (lastDisconnect?.error) {
+      logger.error('Connection Error:', lastDisconnect.error);
+      if (
+        lastDisconnect.error.output?.statusCode !== DisconnectReason.loggedOut
+      ) {
+        setTimeout(() => connectToWhatsApp(), 5000); // Retry logic
+      }
     }
   });
 
@@ -275,3 +276,9 @@ const port = process.env.PORT || 8000;
 server.listen(port, () => logger.info(`Server running on port ${port}`));
 
 global.sock = null;
+
+process.on('SIGINT', async () => {
+  console.log('Shutting down...');
+  await global.queue.saveToFile();
+  process.exit(0);
+});

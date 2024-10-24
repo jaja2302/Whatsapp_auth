@@ -1,16 +1,46 @@
 const { updatestatus_sock_vbot } = require('./izinkebun/helper');
 const { updateDataMill } = require('./grading/gradinghelper');
+const fs = require('fs').promises;
+const path = require('path');
 
 class Queue {
   constructor() {
     this.items = [];
     this.processing = false;
     this.paused = false;
+    this.filePath = path.join(__dirname, 'queue_backup.json');
+    this.loadFromDisk(); // Load queue from disk on startup
+  }
+
+  async saveToFile() {
+    try {
+      await fs.writeFile(this.filePath, JSON.stringify(this.items));
+      console.log('Queue saved to disk');
+    } catch (error) {
+      console.error('Error saving queue to disk:', error);
+    }
+  }
+
+  async loadFromDisk() {
+    try {
+      const data = await fs.readFile(this.filePath, 'utf8');
+      this.items = JSON.parse(data);
+      console.log(`Queue loaded from disk, items: ${this.items.length}`);
+    } catch (error) {
+      if (error.code !== 'ENOENT') {
+        console.error('Error loading queue from disk:', error);
+      } else {
+        console.log(
+          'No existing queue file found. Starting with an empty queue.'
+        );
+      }
+    }
   }
 
   push(task) {
     this.items.push(task);
     console.log(`Task added to queue: ${task.type}`);
+    this.saveToFile(); // Save queue to disk after adding a task
     if (!this.paused) {
       this.process();
     }
@@ -18,10 +48,12 @@ class Queue {
 
   pause() {
     this.paused = true;
+    console.log('Queue processing paused');
   }
 
   resume() {
     this.paused = false;
+    console.log('Queue processing resumed');
     this.process();
   }
 
@@ -29,14 +61,16 @@ class Queue {
     if (this.processing || this.items.length === 0 || this.paused) return;
 
     this.processing = true;
-    const task = this.items.shift();
+    const task = this.items[0]; // Don't remove the task yet
 
     try {
       await this.executeTask(task);
       console.log(`Task completed: ${task.type}`);
+      this.items.shift(); // Remove the task after successful execution
+      this.saveToFile(); // Save the updated queue to disk
     } catch (error) {
       console.error(`Error processing task (${task.type}):`, error.message);
-      this.items.unshift(task);
+      // Task remains in the queue for retry
     }
 
     this.processing = false;
@@ -74,89 +108,69 @@ class Queue {
         await updateDataMill(task.data.id, task.data.credentials);
         break;
       default:
-        console.log('Unknown task type:', task.type);
+        throw new Error(`Unknown task type: ${task.type}`);
     }
   }
 
   async sendWhatsAppMessage(to, message) {
-    try {
-      const result = await global.sock.sendMessage(to, { text: message });
-      if (!result || !result.key) {
-        throw new Error('Failed to send WhatsApp message');
-      }
-      console.log(`Message sent successfully to ${to}`);
-      return result;
-    } catch (error) {
-      console.error(`Error sending WhatsApp message to ${to}:`, error);
-      throw error;
+    const result = await global.sock.sendMessage(to, { text: message });
+    if (!result || !result.key) {
+      throw new Error('Failed to send WhatsApp message');
     }
+    console.log(`Message sent successfully to ${to}`);
+    return result;
   }
 
   async sendWhatsAppImage(to, image, caption) {
-    try {
-      let imageBuffer;
-      if (typeof image === 'string') {
-        imageBuffer = Buffer.from(image, 'base64');
-      } else if (Buffer.isBuffer(image)) {
-        imageBuffer = image;
-      } else {
-        console.error(
-          'Invalid image parameter. Expected a base64 string or Buffer object.'
-        );
-        return null; // Return null instead of throwing an error
-      }
-
-      const result = await global.sock.sendMessage(to, {
-        image: imageBuffer,
-        caption: caption,
-      });
-
-      if (!result || !result.key) {
-        console.error('Failed to send WhatsApp image');
-        return null; // Return null instead of throwing an error
-      }
-
-      console.log(`Image sent successfully to ${to}`);
-      return result;
-    } catch (error) {
-      console.error(`Error sending WhatsApp image to ${to}:`, error);
-      return null; // Return null instead of re-throwing the error
+    let imageBuffer;
+    if (typeof image === 'string') {
+      imageBuffer = Buffer.from(image, 'base64');
+    } else if (Buffer.isBuffer(image)) {
+      imageBuffer = image;
+    } else {
+      throw new Error(
+        'Invalid image parameter. Expected a base64 string or Buffer object.'
+      );
     }
+
+    const result = await global.sock.sendMessage(to, {
+      image: imageBuffer,
+      caption: caption,
+    });
+
+    if (!result || !result.key) {
+      throw new Error('Failed to send WhatsApp image');
+    }
+
+    console.log(`Image sent successfully to ${to}`);
+    return result;
   }
 
   async sendWhatsAppDocument(to, filename, document, caption) {
-    try {
-      let documentBuffer;
-      if (typeof document === 'string') {
-        // If document is a base64 string, convert it to a Buffer
-        documentBuffer = Buffer.from(document, 'base64');
-      } else if (Buffer.isBuffer(document)) {
-        documentBuffer = document;
-      } else {
-        console.error(
-          'Invalid document parameter. Expected a base64 string or Buffer object.'
-        );
-        return null; // Return null instead of throwing an error
-      }
-
-      const result = await global.sock.sendMessage(to, {
-        document: documentBuffer,
-        mimetype: 'application/pdf',
-        fileName: filename || 'document.pdf',
-        caption: caption,
-      });
-
-      if (!result || !result.key) {
-        console.error('Failed to send WhatsApp document');
-        return null; // Return null instead of throwing an error
-      }
-
-      console.log(`Document sent successfully to ${to}`);
-      return result;
-    } catch (error) {
-      console.error(`Error sending WhatsApp document to ${to}:`, error);
-      return null; // Return null instead of re-throwing the error
+    let documentBuffer;
+    if (typeof document === 'string') {
+      documentBuffer = Buffer.from(document, 'base64');
+    } else if (Buffer.isBuffer(document)) {
+      documentBuffer = document;
+    } else {
+      throw new Error(
+        'Invalid document parameter. Expected a base64 string or Buffer object.'
+      );
     }
+
+    const result = await global.sock.sendMessage(to, {
+      document: documentBuffer,
+      mimetype: 'application/pdf',
+      fileName: filename || 'document.pdf',
+      caption: caption,
+    });
+
+    if (!result || !result.key) {
+      throw new Error('Failed to send WhatsApp document');
+    }
+
+    console.log(`Document sent successfully to ${to}`);
+    return result;
   }
 
   logQueueState() {
