@@ -38,39 +38,57 @@ async function get_mill_data(sock) {
 
         // Send image
         const imgBuffer = Buffer.from(itemdata.base64Collage, 'base64');
-        const imageOptions = {
-          image: imgBuffer,
-          caption: message,
-        };
+        // const imageOptions = {
+        //   image: imgBuffer,
+        //   caption: message,
+        // };
 
         // Send PDF
         const pdfBuffer = Buffer.from(itemdata.pdf, 'base64');
-        const messageOptions = {
-          document: pdfBuffer,
-          mimetype: 'application/pdf',
-          fileName: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
-          caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
-        };
+        // const messageOptions = {
+        //   document: pdfBuffer,
+        //   mimetype: 'application/pdf',
+        //   fileName: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
+        //   caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
+        // };
 
         try {
           // If estate is SYE, also send to the Suayap group
           if (itemdata.mill === 'SYM') {
             queue.push({
               type: 'send_image',
-              data: imageOptions,
+              data: {
+                to: noWa_grading_suayap,
+                image: imgBuffer,
+                caption: message,
+              },
             });
             queue.push({
               type: 'send_document',
-              data: messageOptions,
+              data: {
+                to: noWa_grading_suayap,
+                document: pdfBuffer,
+                filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
+                caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
+              },
             });
           } else if (itemdata.mill === 'SGM') {
             queue.push({
               type: 'send_image',
-              data: imageOptions,
+              data: {
+                to: noWa_grading_sgm,
+                image: imgBuffer,
+                caption: message,
+              },
             });
             queue.push({
               type: 'send_document',
-              data: messageOptions,
+              data: {
+                to: noWa_grading_sgm,
+                document: pdfBuffer,
+                filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
+                caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
+              },
             });
           }
 
