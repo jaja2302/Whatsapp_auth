@@ -1011,13 +1011,13 @@ const runfunction = async (sock) => {
         userMessage += `Tim Digital Architect SRS Bot`;
 
         try {
+          await updatestatus_sock_vbot(data.id_db, data.type);
           await sock.sendMessage(`${data.send_to}@s.whatsapp.net`, {
             text: message,
           });
           await sock.sendMessage(data.no_hp_user + '@s.whatsapp.net', {
             text: userMessage,
           });
-          await updatestatus_sock_vbot(data.id_db, data.type);
         } catch (error) {
           await catcherror(data.id_db, data.type, 'izin_kebun');
         }
@@ -1064,13 +1064,13 @@ const runfunction = async (sock) => {
                   fileName: pdfFilename,
                   caption: message,
                 };
-
+                await updatestatus_sock_vbot(data.id_db, data.type);
                 // Send the PDF as a document via WhatsApp
                 await sock.sendMessage(
                   data.send_to + '@s.whatsapp.net',
                   messageOptions
                 );
-                await updatestatus_sock_vbot(data.id_db, data.type);
+
                 // console.log('PDF sent successfully!');
               } catch (sendError) {
                 console.error('Error sending PDF:', sendError.message);
@@ -1091,10 +1091,10 @@ const runfunction = async (sock) => {
           message += `Tim Digital Architect SRS Bot`;
 
           try {
+            await updatestatus_sock_vbot(data.id_db, data.type);
             await sock.sendMessage(`${data.send_to}@s.whatsapp.net`, {
               text: message,
             });
-            await updatestatus_sock_vbot(data.id_db, data.type);
           } catch (error) {
             await catcherror(data.id_db, data.type, 'izin_kebun');
           }
@@ -1123,13 +1123,13 @@ const runfunction = async (sock) => {
         userMessage += `Tim Digital Architect SRS Bot`;
 
         try {
+          await updatestatus_sock_vbot(data.id_db, data.type);
           await sock.sendMessage(`${data.send_to}@s.whatsapp.net`, {
             text: message,
           });
           await sock.sendMessage(data.no_hp_user + '@s.whatsapp.net', {
             text: userMessage,
           });
-          await updatestatus_sock_vbot(data.id_db, data.type);
         } catch (error) {
           await catcherror(data.id_db, data.type, 'izin_kebun');
         }

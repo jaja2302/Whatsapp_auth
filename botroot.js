@@ -99,6 +99,8 @@ async function connectToWhatsApp() {
         setTimeout(() => connectToWhatsApp(), 5000); // Retry logic
       }
     } else if (connection === 'open') {
+      console.log('WhatsApp connected successfully');
+
       logger.info('WhatsApp connected successfully');
     }
   });
