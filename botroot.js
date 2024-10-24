@@ -106,6 +106,9 @@ async function connectToWhatsApp() {
       console.log('WhatsApp connected successfully');
       logger.info('WhatsApp connected successfully');
 
+      // Log the queue state when connection is opened
+      global.queue.logQueueState();
+
       // Resume queue processing when connected
       global.queue.resume();
     } else if (connection === 'close') {

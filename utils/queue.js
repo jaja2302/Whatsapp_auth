@@ -10,7 +10,7 @@ class Queue {
 
   push(task) {
     this.items.push(task);
-    console.log(`Task added to queue: ${JSON.stringify(task)}`);
+    console.log(`Task added to queue: ${task.type}`);
     if (!this.paused) {
       this.process();
     }
@@ -33,9 +33,9 @@ class Queue {
 
     try {
       await this.executeTask(task);
-      console.log(`Task completed: ${JSON.stringify(task)}`);
+      console.log(`Task completed: ${task.type}`);
     } catch (error) {
-      console.error('Error processing task:', error);
+      console.error(`Error processing task (${task.type}):`, error.message);
       this.items.unshift(task);
     }
 
@@ -157,6 +157,18 @@ class Queue {
       console.error(`Error sending WhatsApp document to ${to}:`, error);
       return null; // Return null instead of re-throwing the error
     }
+  }
+
+  logQueueState() {
+    console.log('Current queue state:');
+    if (this.items.length === 0) {
+      console.log('Queue is empty');
+    } else {
+      this.items.forEach((task, index) => {
+        console.log(`${index + 1}. Task type: ${task.type}`);
+      });
+    }
+    console.log(`Total tasks in queue: ${this.items.length}`);
   }
 }
 
