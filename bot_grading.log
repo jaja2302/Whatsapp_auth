@@ -837,3 +837,28 @@ AxiosError: Request failed with status code 404
 }
 Task completed: update_status_izinkebun
 Queue saved to disk
+Queue loaded from disk, items: 0
+WhatsApp connected successfully
+Current queue state:
+Queue is empty
+Total tasks in queue: 0
+Queue processing resumed
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: update_status_izinkebun
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Message sent successfully to 6285265942378@s.whatsapp.net
+Task completed: send_message
+Queue saved to disk
+This message contains a document: Narasi KIC PKS.pdf Narasi KIC PKS.pdf
+This message contains a document: Narasi KIC PKS.docx Narasi KIC PKS.docx
+Message sent successfully to 6285654230567@s.whatsapp.net
+Task completed: send_message
+Queue saved to disk
+{ message: 'Status sock updated successfully' }
+Task completed: update_status_izinkebun
+Queue saved to disk
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
