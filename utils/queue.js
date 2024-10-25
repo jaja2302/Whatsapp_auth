@@ -1,5 +1,17 @@
 const axios = require('axios');
 
+const axiosWithRetry = async (config, retries = 3, delay = 1000) => {
+  try {
+    return await axios(config);
+  } catch (error) {
+    if (retries === 0) {
+      throw error;
+    }
+    await new Promise((resolve) => setTimeout(resolve, delay));
+    return axiosWithRetry(config, retries - 1, delay * 2);
+  }
+};
+
 // const API_BASE_URL = 'http://erpda.test/api';
 const API_BASE_URL = 'https://management.srs-ssms.com/api';
 const BOT_ID = '1'; // Replace with a unique identifier for this bot
@@ -12,10 +24,12 @@ const { updatestatus_sock_vbot } = require('./izinkebun/helper');
 const { updateDataMill } = require('./grading/gradinghelper');
 
 class Queue {
-  constructor(botId) {
+  constructor(botId, concurrency = 4) {
     this.botId = botId;
     this.processing = false;
     this.paused = false;
+    this.concurrency = concurrency;
+    this.runningTasks = 0;
     this.messagesSentTimestamps = [];
     this.currentTaskId = null;
     this.stuckTaskCheckInterval = null;
@@ -24,13 +38,25 @@ class Queue {
 
   async push(task) {
     try {
-      await axios.post(`${API_BASE_URL}/add-task`, {
-        type: task.type,
-        data: task.data,
+      console.log(
+        'Adding task:',
+        task.type,
+        JSON.stringify(task.data, (key, value) =>
+          key === 'document' ? `[Document data: ${typeof value}]` : value
+        )
+      );
+      await axiosWithRetry({
+        method: 'post',
+        url: `${API_BASE_URL}/add-task`,
+        data: {
+          type: task.type,
+          data: task.data,
+        },
       });
       console.log(`Task added to queue: ${task.type}`);
     } catch (error) {
-      console.error('Error adding task to queue:', error);
+      console.error('Error adding task to queue:', error.message);
+      throw error; // rethrow the error if you want calling code to handle it
     }
   }
 
@@ -47,44 +73,48 @@ class Queue {
   }
 
   async process() {
-    if (this.processing || this.paused) {
-      console.log(
-        `Queue processing skipped. Processing: ${this.processing}, Paused: ${this.paused}`
-      );
+    if (this.paused) {
+      console.log(`Queue processing skipped. Paused: ${this.paused}`);
       return;
     }
 
-    this.processing = true;
+    while (this.runningTasks < this.concurrency) {
+      try {
+        const response = await axios.get(`${API_BASE_URL}/next-task`, {
+          params: { bot_id: this.botId },
+        });
+
+        if (response.data && response.data.task_id) {
+          this.runningTasks++;
+          this.processTask(response.data).finally(() => {
+            this.runningTasks--;
+          });
+        } else {
+          // No more tasks to process
+          break;
+        }
+      } catch (error) {
+        console.error(
+          'Error fetching next task:',
+          error.response ? error.response.data : error.message
+        );
+        break;
+      }
+    }
+  }
+
+  async processTask(taskData) {
+    const task = taskData.payload;
+    console.log(`Processing task: ${task.type}`, task);
 
     try {
-      const response = await axios.get(`${API_BASE_URL}/next-task`, {
-        params: { bot_id: this.botId },
-      });
-
-      if (response.data && response.data.task_id) {
-        const task = response.data.payload;
-        this.currentTaskId = response.data.task_id;
-        console.log(`Processing task: ${task.type}`, task);
-
-        try {
-          await this.executeTask(task);
-          await this.completeTask(this.currentTaskId, true);
-          console.log(`Task completed: ${task.type}`);
-        } catch (error) {
-          console.error(`Error processing task (${task.type}):`, error);
-          await this.handleTaskError(response.data);
-        }
-        this.currentTaskId = null;
-      }
+      await this.executeTask(task);
+      await this.completeTask(taskData.task_id, true);
+      console.log(`Task completed: ${task.type}`);
     } catch (error) {
-      console.error(
-        'Error fetching next task:',
-        error.response ? error.response.data : error.message
-      );
+      console.error(`Error processing task (${task.type}):`, error);
+      await this.handleTaskError(taskData);
     }
-
-    this.processing = false;
-    // Instead of setTimeout, we'll use the pollInterval
   }
 
   async handleTaskError(taskData) {
@@ -180,9 +210,11 @@ class Queue {
       imageBuffer = Buffer.from(image, 'base64');
     } else if (Buffer.isBuffer(image)) {
       imageBuffer = image;
+    } else if (image && image.type === 'Buffer' && Array.isArray(image.data)) {
+      imageBuffer = Buffer.from(image.data);
     } else {
       throw new Error(
-        'Invalid image parameter. Expected a base64 string or Buffer object.'
+        'Invalid image parameter. Expected a base64 string, Buffer object, or Buffer-like object.'
       );
     }
 
