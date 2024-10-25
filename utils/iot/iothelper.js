@@ -36,25 +36,25 @@ async function get_iot_weatherstation(sock) {
 
         try {
           if (itemdata.loc === 'SGE') {
-            queue.push({
+            global.queue.push({
               type: 'send_message',
               data: { to: idgroupiot_sge, message: message },
             });
             // await sock.sendMessage(idgroupiot_sge, { text: message });
           } else if (itemdata.loc === 'RGE') {
-            queue.push({
+            global.queue.push({
               type: 'send_message',
               data: { to: idgroupiot_rge, message: message },
             });
             // await sock.sendMessage(idgroupiot_rge, { text: message });
           } else if (itemdata.loc === 'Sulung Ranch') {
-            queue.push({
+            global.queue.push({
               type: 'send_message',
               data: { to: idgroupiot_sulung, message: message },
             });
             // await sock.sendMessage(idgroupiot_sulung, { text: message });
           }
-          queue.push({
+          global.queue.push({
             type: 'send_message',
             data: { to: idgroupiot, message: message },
           });

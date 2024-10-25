@@ -56,7 +56,7 @@ async function get_mill_data(sock) {
         try {
           // If estate is SYE, also send to the Suayap group
           if (itemdata.mill === 'SYM') {
-            queue.push({
+            global.queue.push({
               type: 'send_image',
               data: {
                 to: noWa_grading_suayap,
@@ -64,7 +64,7 @@ async function get_mill_data(sock) {
                 caption: message,
               },
             });
-            queue.push({
+            global.queue.push({
               type: 'send_document',
               data: {
                 to: noWa_grading_suayap,
@@ -74,7 +74,7 @@ async function get_mill_data(sock) {
               },
             });
           } else if (itemdata.mill === 'SGM') {
-            queue.push({
+            global.queue.push({
               type: 'send_image',
               data: {
                 to: noWa_grading_sgm,
@@ -82,7 +82,7 @@ async function get_mill_data(sock) {
                 caption: message,
               },
             });
-            queue.push({
+            global.queue.push({
               type: 'send_document',
               data: {
                 to: noWa_grading_sgm,
@@ -92,7 +92,7 @@ async function get_mill_data(sock) {
               },
             });
           } else if (itemdata.mill === 'SLM') {
-            queue.push({
+            global.queue.push({
               type: 'send_image',
               data: {
                 to: noWa_grading_slm,
@@ -100,7 +100,7 @@ async function get_mill_data(sock) {
                 caption: message,
               },
             });
-            queue.push({
+            global.queue.push({
               type: 'send_document',
               data: {
                 to: noWa_grading_slm,
@@ -110,7 +110,7 @@ async function get_mill_data(sock) {
               },
             });
           } else {
-            queue.push({
+            global.queue.push({
               type: 'send_image',
               data: {
                 to: noWa_grading,
@@ -118,7 +118,7 @@ async function get_mill_data(sock) {
                 caption: message,
               },
             });
-            queue.push({
+            global.queue.push({
               type: 'send_document',
               data: {
                 to: noWa_grading,
@@ -130,7 +130,7 @@ async function get_mill_data(sock) {
           }
 
           // Update data after sending messages
-          queue.push({
+          global.queue.push({
             type: 'update_data_mill',
             data: { id: itemdata.id, credentials },
           });

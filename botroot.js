@@ -18,6 +18,7 @@ const qrcode = require('qrcode');
 const socketIO = require('socket.io');
 const Queue = require('./utils/queue');
 const fs = require('fs');
+const BOT_ID = '1'; // Replace with a unique identifier for this bot
 
 const { setupCronJobs, statusAWS } = require('./helper');
 const {
@@ -262,23 +263,37 @@ app.get('/testing', async (req, res) => {
   }
 });
 // Create a global queue instance
-global.queue = new Queue();
+global.queue = new Queue(BOT_ID);
 
 connectToWhatsApp().catch((err) =>
   logger.error('Error connecting to WhatsApp:', err)
 );
-runfunction();
-setupCronJobs();
-function_rapidresponse();
-function_marcom();
+// runfunction();
+// setupCronJobs();
+// function_rapidresponse();
+// function_marcom();
 // ... other function calls
 const port = process.env.PORT || 8000;
 server.listen(port, () => logger.info(`Server running on port ${port}`));
 
 global.sock = null;
 
-process.on('SIGINT', async () => {
-  console.log('Shutting down...');
-  await global.queue.saveToFile();
-  process.exit(0);
-});
+// Remove or comment out the following lines as they're no longer needed:
+// process.on('SIGINT', async () => {
+//   console.log('Shutting down...');
+//   await global.queue.saveToFile();
+//   process.exit(0);
+// });
+
+// Log queue state every 5 minutes
+setInterval(
+  async () => {
+    try {
+      const queueState = await global.queue.logQueueState();
+      console.log('Queue State:', queueState);
+    } catch (error) {
+      console.error('Failed to log queue state:', error);
+    }
+  },
+  5 * 60 * 1000
+);

@@ -75,7 +75,7 @@ const function_rapidresponse = async (sock) => {
       );
       // console.log(messageOptions1);
       // console.log(messageOptions2);
-      queue.push({
+      global.queue.push({
         type: 'send_message',
         data: {
           to: `${itemdata.verifikator1}@s.whatsapp.net`,
@@ -88,7 +88,7 @@ const function_rapidresponse = async (sock) => {
       // );
 
       if (itemdata.verifikator2 !== itemdata.verifikator1) {
-        queue.push({
+        global.queue.push({
           type: 'send_message',
           data: {
             to: `${itemdata.verifikator2}@s.whatsapp.net`,

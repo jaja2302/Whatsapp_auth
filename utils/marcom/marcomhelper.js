@@ -42,7 +42,7 @@ async function get_outstadingdata(sock) {
         }
 
         try {
-          queue.push({
+          global.queue.push({
             type: 'send_message',
             data: { to: idgroup, message: message },
           });
@@ -99,7 +99,7 @@ const function_marcom = async (sock) => {
       };
 
       try {
-        queue.push({
+        global.queue.push({
           type: 'send_message',
           data: { to: idgroup, message: messageOptions },
         });
