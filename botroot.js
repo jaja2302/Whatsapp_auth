@@ -268,10 +268,10 @@ global.queue = new Queue(BOT_ID);
 connectToWhatsApp().catch((err) =>
   logger.error('Error connecting to WhatsApp:', err)
 );
-// runfunction();
-// setupCronJobs();
-// function_rapidresponse();
-// function_marcom();
+runfunction();
+setupCronJobs();
+function_rapidresponse();
+function_marcom();
 // ... other function calls
 const port = process.env.PORT || 8000;
 server.listen(port, () => logger.info(`Server running on port ${port}`));

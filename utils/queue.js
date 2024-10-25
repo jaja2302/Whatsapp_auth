@@ -8,6 +8,8 @@ const RATE_LIMIT_WINDOW = 60000; // 1 minute in milliseconds
 const MAX_MESSAGES_PER_WINDOW = 10; // Maximum number of messages per minute
 const RATE_LIMIT_DELAY = 1000; // 1 second delay between messages
 const POLL_INTERVAL = 5000; // Poll every 5 seconds
+const { updatestatus_sock_vbot } = require('./izinkebun/helper');
+const { updateDataMill } = require('./grading/gradinghelper');
 
 class Queue {
   constructor(botId) {
