@@ -59,12 +59,44 @@ class Queue {
   }
 
   push(task) {
+    // Define a function to compare tasks
+    const areTasksEqual = (task1, task2) => {
+      // Compare task type
+      if (task1.type !== task2.type) return false;
+
+      // Compare essential task data, ignoring timestamps or other volatile fields
+      const essentialData1 = this.getEssentialTaskData(task1.data);
+      const essentialData2 = this.getEssentialTaskData(task2.data);
+
+      return JSON.stringify(essentialData1) === JSON.stringify(essentialData2);
+    };
+
+    // Check if an identical task already exists in the queue
+    const existingTask = this.items.find((item) => areTasksEqual(item, task));
+
+    if (existingTask) {
+      console.log(`Identical task already in queue: ${task.type}. Skipping.`);
+      return;
+    }
+
     this.items.push(task);
     console.log(`Task added to queue: ${task.type}`);
     this.saveToFile();
     if (!this.paused) {
       this.process();
     }
+  }
+
+  getEssentialTaskData(data) {
+    // Create a copy of the data object
+    const essentialData = { ...data };
+
+    // Remove timestamp or other volatile fields
+    delete essentialData.timestamp;
+    delete essentialData.addedAt;
+    // Add any other fields that should be ignored in the comparison
+
+    return essentialData;
   }
 
   pause() {

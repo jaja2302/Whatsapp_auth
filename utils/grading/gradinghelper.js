@@ -8,6 +8,7 @@ const testingbotsampenikah = '120363204285862734@g.us';
 const noWa_grading = '120363164751475851@g.us';
 const noWa_grading_suayap = '6281397270799-1635156024@g.us';
 const noWa_grading_sgm = '6282257572112-1635223872@g.us';
+const noWa_grading_slm = '6281397270799-1565316655@g.us';
 // const noWa_grading = testingbotda;
 // const noWa_grading_suayap = testingbotsampenikah;
 // id_group: 6282257572112-1635223872@g.us || Nama Group: SGM 23.50
@@ -85,6 +86,24 @@ async function get_mill_data(sock) {
               type: 'send_document',
               data: {
                 to: noWa_grading_sgm,
+                document: pdfBuffer,
+                filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
+                caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
+              },
+            });
+          } else if (itemdata.mill === 'SLM') {
+            queue.push({
+              type: 'send_image',
+              data: {
+                to: noWa_grading_slm,
+                image: imgBuffer,
+                caption: message,
+              },
+            });
+            queue.push({
+              type: 'send_document',
+              data: {
+                to: noWa_grading_slm,
                 document: pdfBuffer,
                 filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
                 caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
