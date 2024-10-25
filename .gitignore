@@ -7,3 +7,4 @@
 .latest_id.txt
 .bot_grading_error.log
 .bot_grading.log
+/utils/queue_backup.json
