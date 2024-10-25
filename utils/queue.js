@@ -1,62 +1,35 @@
 const axios = require('axios');
-
-const axiosWithRetry = async (config, retries = 3, delay = 1000) => {
-  try {
-    return await axios(config);
-  } catch (error) {
-    if (retries === 0) {
-      throw error;
-    }
-    await new Promise((resolve) => setTimeout(resolve, delay));
-    return axiosWithRetry(config, retries - 1, delay * 2);
-  }
-};
-
-// const API_BASE_URL = 'http://erpda.test/api';
-const API_BASE_URL = 'https://management.srs-ssms.com/api';
-const BOT_ID = '1'; // Replace with a unique identifier for this bot
-
-const RATE_LIMIT_WINDOW = 60000; // 1 minute in milliseconds
-const MAX_MESSAGES_PER_WINDOW = 10; // Maximum number of messages per minute
-const RATE_LIMIT_DELAY = 1000; // 1 second delay between messages
-const POLL_INTERVAL = 5000; // Poll every 5 seconds
 const { updatestatus_sock_vbot } = require('./izinkebun/helper');
 const { updateDataMill } = require('./grading/gradinghelper');
 
+const API_BASE_URL = 'https://management.srs-ssms.com/api';
+const BOT_ID = '1'; // Replace with a unique identifier for this bot
+
+const RATE_LIMIT_DELAY = 3000; // 3 seconds
+const RATE_LIMIT_WINDOW = 60000; // 1 minute
+const MAX_MESSAGES_PER_WINDOW = 15; // Adjust as needed
+
 class Queue {
-  constructor(botId, concurrency = 4) {
-    this.botId = botId;
+  constructor() {
     this.processing = false;
     this.paused = false;
-    this.concurrency = concurrency;
-    this.runningTasks = 0;
+    this.maxRetries = 3;
     this.messagesSentTimestamps = [];
-    this.currentTaskId = null;
-    this.stuckTaskCheckInterval = null;
     this.pollInterval = null;
   }
 
   async push(task) {
     try {
-      console.log(
-        'Adding task:',
-        task.type,
-        JSON.stringify(task.data, (key, value) =>
-          key === 'document' ? `[Document data: ${typeof value}]` : value
-        )
-      );
-      await axiosWithRetry({
-        method: 'post',
-        url: `${API_BASE_URL}/add-task`,
-        data: {
-          type: task.type,
-          data: task.data,
-        },
+      await axios.post(`${API_BASE_URL}/add-task`, {
+        type: task.type,
+        data: task.data,
       });
       console.log(`Task added to queue: ${task.type}`);
+      if (!this.paused) {
+        this.process();
+      }
     } catch (error) {
       console.error('Error adding task to queue:', error.message);
-      throw error; // rethrow the error if you want calling code to handle it
     }
   }
 
@@ -70,65 +43,39 @@ class Queue {
     this.paused = false;
     this.startPolling();
     console.log('Queue processing resumed');
+    this.process();
   }
 
   async process() {
-    if (this.paused) {
-      console.log(`Queue processing skipped. Paused: ${this.paused}`);
-      return;
-    }
+    if (this.processing || this.paused) return;
 
-    while (this.runningTasks < this.concurrency) {
-      try {
-        const response = await axios.get(`${API_BASE_URL}/next-task`, {
-          params: { bot_id: this.botId },
-        });
-
-        if (response.data && response.data.task_id) {
-          this.runningTasks++;
-          this.processTask(response.data).finally(() => {
-            this.runningTasks--;
-          });
-        } else {
-          // No more tasks to process
-          break;
-        }
-      } catch (error) {
-        console.error(
-          'Error fetching next task:',
-          error.response ? error.response.data : error.message
-        );
-        break;
-      }
-    }
-  }
-
-  async processTask(taskData) {
-    const task = taskData.payload;
-    console.log(`Processing task: ${task.type}`, task);
-
+    this.processing = true;
     try {
-      await this.executeTask(task);
-      await this.completeTask(taskData.task_id, true);
-      console.log(`Task completed: ${task.type}`);
-    } catch (error) {
-      console.error(`Error processing task (${task.type}):`, error);
-      await this.handleTaskError(taskData);
-    }
-  }
+      const response = await axios.get(`${API_BASE_URL}/next-task`, {
+        params: { bot_id: BOT_ID },
+      });
 
-  async handleTaskError(taskData) {
-    if (taskData.retry_count < 3) {
-      console.log(
-        `Retrying task: ${taskData.payload.type} (Attempt ${taskData.retry_count + 1}/3)`
-      );
-      await this.completeTask(this.currentTaskId, false);
-    } else {
-      console.log(
-        `Marking task as failed: ${taskData.payload.type} after 3 failed attempts`
-      );
-      await this.completeTask(this.currentTaskId, false, true);
+      if (response.data && response.data.task_id) {
+        const task = response.data.payload;
+        try {
+          await this.executeTask(task);
+          await this.completeTask(response.data.task_id, true);
+          console.log(`Task completed: ${task.type}`);
+        } catch (error) {
+          console.error(`Error processing task (${task.type}):`, error);
+          if (response.data.retry_count < this.maxRetries) {
+            await this.completeTask(response.data.task_id, false);
+          } else {
+            await this.completeTask(response.data.task_id, false, true);
+          }
+        }
+      }
+    } catch (error) {
+      console.error('Error fetching next task:', error.message);
     }
+
+    this.processing = false;
+    setTimeout(() => this.process(), 1000);
   }
 
   async executeTask(task) {
@@ -280,82 +227,16 @@ class Queue {
   async logQueueState() {
     try {
       const response = await axios.get(`${API_BASE_URL}/queue-state`, {
-        params: { bot_id: this.botId },
+        params: { bot_id: BOT_ID },
       });
       console.log('Current queue state:', response.data);
-      return response.data;
     } catch (error) {
       console.error('Error fetching queue state:', error);
     }
   }
 
-  startStuckTaskCheck() {
-    this.stuckTaskCheckInterval = setInterval(
-      () => {
-        this.processStuckTasks();
-      },
-      5 * 60 * 1000
-    ); // Check every 5 minutes
-  }
-
-  stopStuckTaskCheck() {
-    if (this.stuckTaskCheckInterval) {
-      clearInterval(this.stuckTaskCheckInterval);
-      this.stuckTaskCheckInterval = null;
-    }
-  }
-
-  async processStuckTasks() {
-    try {
-      const response = await axios.get(`${API_BASE_URL}/next-stuck-task`);
-      if (response.data && response.data.task_id) {
-        const task = response.data.payload;
-        console.log(`Processing stuck task: ${task.type}`);
-
-        try {
-          await this.executeTask(task);
-          await this.completeTask(response.data.task_id, true);
-          console.log(`Stuck task completed: ${task.type}`);
-        } catch (error) {
-          console.error(`Error processing stuck task (${task.type}):`, error);
-          await this.completeTask(response.data.task_id, false);
-        }
-      }
-    } catch (error) {
-      console.error('Error fetching stuck task:', error);
-    }
-  }
-
-  async addTestTask(type, data) {
-    console.log(`Adding test task: ${type}`, data);
-    await this.push({ type, data });
-    console.log('Test task added. Starting processing...');
-    this.process();
-  }
-
-  async resetStuckTasks() {
-    try {
-      const response = await axios.post(`${API_BASE_URL}/reset-stuck-tasks`);
-      console.log('Stuck tasks reset:', response.data.message);
-    } catch (error) {
-      console.error('Error resetting stuck tasks:', error.message);
-    }
-  }
-
-  async sendHeartbeat() {
-    try {
-      await axios.post(`${API_BASE_URL}/bot-heartbeat`, { bot_id: this.botId });
-    } catch (error) {
-      console.error('Error sending heartbeat:', error);
-    }
-  }
-
-  startHeartbeat() {
-    setInterval(() => this.sendHeartbeat(), 30000); // Send heartbeat every 30 seconds
-  }
-
   startPolling() {
-    this.pollInterval = setInterval(() => this.process(), POLL_INTERVAL);
+    this.pollInterval = setInterval(() => this.process(), 5000); // Poll every 5 seconds
   }
 
   stopPolling() {
@@ -366,10 +247,22 @@ class Queue {
   }
 
   async initialize() {
-    await this.resetStuckTasks();
-    this.resume(); // This now starts the polling
-    this.startStuckTaskCheck();
-    this.startHeartbeat();
+    try {
+      await axios.post(`${API_BASE_URL}/reset-stuck-tasks`);
+      console.log('Stuck tasks reset');
+    } catch (error) {
+      console.error('Error resetting stuck tasks:', error);
+    }
+    this.resume();
+    setInterval(() => this.sendHeartbeat(), 30000); // Send heartbeat every 30 seconds
+  }
+
+  async sendHeartbeat() {
+    try {
+      await axios.post(`${API_BASE_URL}/bot-heartbeat`, { bot_id: BOT_ID });
+    } catch (error) {
+      console.error('Error sending heartbeat:', error);
+    }
   }
 }
 
