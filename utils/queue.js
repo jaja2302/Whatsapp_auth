@@ -4,7 +4,7 @@ const { updateDataMill } = require('./grading/gradinghelper');
 
 const API_BASE_URL = 'https://management.srs-ssms.com/api';
 const BOT_ID = '1'; // Replace with a unique identifier for this bot
-
+// jojok
 const RATE_LIMIT_DELAY = 3000; // 3 seconds
 const RATE_LIMIT_WINDOW = 60000; // 1 minute
 const MAX_MESSAGES_PER_WINDOW = 15; // Adjust as needed
