@@ -9,19 +9,10 @@ const RATE_LIMIT_DELAY = 3000; // 3 seconds
 const RATE_LIMIT_WINDOW = 60000; // 1 minute
 const MAX_MESSAGES_PER_WINDOW = 15; // Adjust as needed
 
-const API_BASE_URL = 'https://management.srs-ssms.com/api';
-const BOT_ID = '1'; // Replace with a unique identifier for this bot
-// jojok
-const RATE_LIMIT_DELAY = 3000; // 3 seconds
-const RATE_LIMIT_WINDOW = 60000; // 1 minute
-const MAX_MESSAGES_PER_WINDOW = 15; // Adjust as needed
-
 class Queue {
-  constructor() {
   constructor() {
     this.processing = false;
     this.paused = false;
-    this.maxRetries = 3;
     this.maxRetries = 3;
     this.messagesSentTimestamps = [];
     this.pollInterval = null;
@@ -32,14 +23,8 @@ class Queue {
       await axios.post(`${API_BASE_URL}/add-task`, {
         type: task.type,
         data: task.data,
-      await axios.post(`${API_BASE_URL}/add-task`, {
-        type: task.type,
-        data: task.data,
       });
       console.log(`Task added to queue: ${task.type}`);
-      if (!this.paused) {
-        this.process();
-      }
       if (!this.paused) {
         this.process();
       }
@@ -59,18 +44,11 @@ class Queue {
     this.startPolling();
     console.log('Queue processing resumed');
     this.process();
-    this.process();
   }
 
   async process() {
     if (this.processing || this.paused) return;
-    if (this.processing || this.paused) return;
 
-    this.processing = true;
-    try {
-      const response = await axios.get(`${API_BASE_URL}/next-task`, {
-        params: { bot_id: BOT_ID },
-      });
     this.processing = true;
     try {
       const response = await axios.get(`${API_BASE_URL}/next-task`, {
@@ -85,32 +63,11 @@ class Queue {
           console.log(`Task completed: ${task.type}`);
         } catch (error) {
           console.error(`Error processing task (${task.type}):`, error);
-          if (response.data.retry_count < this.maxRetries) {
-            await this.completeTask(response.data.task_id, false);
-          } else {
-            await this.completeTask(response.data.task_id, false, true);
-          }
-        }
-      }
-    } catch (error) {
-      console.error('Error fetching next task:', error.message);
-    }
-
-    this.processing = false;
-    setTimeout(() => this.process(), 1000);
-      if (response.data && response.data.task_id) {
-        const task = response.data.payload;
-        try {
-          await this.executeTask(task);
-          await this.completeTask(response.data.task_id, true);
-          console.log(`Task completed: ${task.type}`);
-        } catch (error) {
-          console.error(`Error processing task (${task.type}):`, error);
-          if (response.data.retry_count < this.maxRetries) {
-            await this.completeTask(response.data.task_id, false);
-          } else {
-            await this.completeTask(response.data.task_id, false, true);
-          }
+          await this.completeTask(
+            response.data.task_id,
+            false,
+            response.data.retry_count >= this.maxRetries
+          );
         }
       }
     } catch (error) {
@@ -271,7 +228,6 @@ class Queue {
     try {
       const response = await axios.get(`${API_BASE_URL}/queue-state`, {
         params: { bot_id: BOT_ID },
-        params: { bot_id: BOT_ID },
       });
       console.log('Current queue state:', response.data);
     } catch (error) {
@@ -280,7 +236,6 @@ class Queue {
   }
 
   startPolling() {
-    this.pollInterval = setInterval(() => this.process(), 5000); // Poll every 5 seconds
     this.pollInterval = setInterval(() => this.process(), 5000); // Poll every 5 seconds
   }
 
