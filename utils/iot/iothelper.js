@@ -4,6 +4,7 @@ const idgroupiot = '120363339511378953@g.us';
 const idgroupiot_sge = '120363347403672053@g.us';
 const idgroupiot_rge = '120363329617301042@g.us';
 const idgroupiot_sulung = '120363349319318472@g.us';
+const idgroupiot_nke = '120363339978223243@g.us';
 
 // grup testing
 // const idgroupiot = '120363205553012899@g.us';
@@ -52,7 +53,11 @@ async function get_iot_weatherstation(sock) {
               type: 'send_message',
               data: { to: idgroupiot_sulung, message: message },
             });
-            // await sock.sendMessage(idgroupiot_sulung, { text: message });
+          } else if (itemdata.loc === 'NKE') {
+            queue.push({
+              type: 'send_message',
+              data: { to: idgroupiot_nke, message: message },
+            });
           }
           queue.push({
             type: 'send_message',

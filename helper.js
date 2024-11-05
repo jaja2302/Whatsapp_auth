@@ -1053,24 +1053,24 @@ const setupCronJobs = (sock) => {
       '*/5 * * * *',
       async () => {
         console.log('cron job get_mill_data');
-        await get_mill_data(sock);
+        // await get_mill_data(sock);
       },
       {
         scheduled: true,
         timezone: 'Asia/Jakarta',
       }
     );
-    cron.schedule(
-      '0 7 * * 1-6', // 0 7 = Jam 07:00, 1-6 = Senin-Sabtu
-      async () => {
-        console.log('cron job get_mill_data');
-        await reminder_izin_kebun(sock);
-      },
-      {
-        scheduled: true,
-        timezone: 'Asia/Jakarta',
-      }
-    );
+    // cron.schedule(
+    //   '0 7 * * 1-6', // 0 7 = Jam 07:00, 1-6 = Senin-Sabtu
+    //   async () => {
+    //     console.log('cron job get_mill_data');
+    //     await reminder_izin_kebun(sock);
+    //   },
+    //   {
+    //     scheduled: true,
+    //     timezone: 'Asia/Jakarta',
+    //   }
+    // );
     cron.schedule(
       '*/15 * * * *',
       async () => {
