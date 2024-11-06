@@ -18,7 +18,10 @@ const {
   Generateandsendtaksasi,
   Sendverificationtaksasi,
 } = require('./utils/taksasi/taksasihelper');
-const { get_mill_data } = require('./utils/grading/gradinghelper');
+const {
+  get_mill_data,
+  run_jobs_mill,
+} = require('./utils/grading/gradinghelper');
 const { pingGoogle, sendSummary } = require('./utils/rekap_harian_uptime');
 const {
   get_iot_weatherstation,
@@ -1050,10 +1053,10 @@ const setupCronJobs = (sock) => {
       }
     );
     cron.schedule(
-      '*/5 * * * *',
+      '*/2 * * * *',
       async () => {
         console.log('cron job get_mill_data');
-        // await get_mill_data(sock);
+        await run_jobs_mill(sock);
       },
       {
         scheduled: true,

@@ -9,9 +9,30 @@ const noWa_grading = '120363164751475851@g.us';
 const noWa_grading_suayap = '6281397270799-1635156024@g.us';
 const noWa_grading_sgm = '6282257572112-1635223872@g.us';
 const noWa_grading_slm = '6281397270799-1565316655@g.us';
+const { channel } = require('../../utils/pusher');
 // const noWa_grading = testingbotda;
 // const noWa_grading_suayap = testingbotsampenikah;
 // id_group: 6282257572112-1635223872@g.us || Nama Group: SGM 23.50
+
+async function run_jobs_mill() {
+  const credentials = {
+    email: 'j',
+    password: 'j',
+  };
+
+  try {
+    const response = await axios.get(
+      'https://management.srs-ssms.com/api/getdatamill',
+      {
+        params: credentials,
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching mill data:', error);
+    throw error;
+  }
+}
 
 async function get_mill_data(sock) {
   // console.log('check data grading');
@@ -56,7 +77,7 @@ async function get_mill_data(sock) {
         try {
           // If estate is SYE, also send to the Suayap group
           if (itemdata.mill === 'SYM') {
-            queue.push({
+            global.queue.push({
               type: 'send_image',
               data: {
                 to: noWa_grading_suayap,
@@ -64,7 +85,7 @@ async function get_mill_data(sock) {
                 caption: message,
               },
             });
-            queue.push({
+            global.queue.push({
               type: 'send_document',
               data: {
                 to: noWa_grading_suayap,
@@ -74,7 +95,7 @@ async function get_mill_data(sock) {
               },
             });
           } else if (itemdata.mill === 'SGM') {
-            queue.push({
+            global.queue.push({
               type: 'send_image',
               data: {
                 to: noWa_grading_sgm,
@@ -82,7 +103,7 @@ async function get_mill_data(sock) {
                 caption: message,
               },
             });
-            queue.push({
+            global.queue.push({
               type: 'send_document',
               data: {
                 to: noWa_grading_sgm,
@@ -92,7 +113,7 @@ async function get_mill_data(sock) {
               },
             });
           } else if (itemdata.mill === 'SLM') {
-            queue.push({
+            global.queue.push({
               type: 'send_image',
               data: {
                 to: noWa_grading_slm,
@@ -100,7 +121,7 @@ async function get_mill_data(sock) {
                 caption: message,
               },
             });
-            queue.push({
+            global.queue.push({
               type: 'send_document',
               data: {
                 to: noWa_grading_slm,
@@ -110,7 +131,7 @@ async function get_mill_data(sock) {
               },
             });
           } else {
-            queue.push({
+            global.queue.push({
               type: 'send_image',
               data: {
                 to: noWa_grading,
@@ -118,7 +139,7 @@ async function get_mill_data(sock) {
                 caption: message,
               },
             });
-            queue.push({
+            global.queue.push({
               type: 'send_document',
               data: {
                 to: noWa_grading,
@@ -130,10 +151,10 @@ async function get_mill_data(sock) {
           }
 
           // Update data after sending messages
-          queue.push({
-            type: 'update_data_mill',
-            data: { id: itemdata.id, credentials },
-          });
+          // global.queue.push({
+          //   type: 'update_data_mill',
+          //   data: { id: itemdata.id, credentials },
+          // });
           // await updateDataMill(itemdata.id, credentials);
         } catch (sendMessageError) {
           console.log('Error sending message:', sendMessageError);
@@ -201,7 +222,116 @@ async function updateDataMill(id, credentials) {
   }
 }
 
+const broadcast_grading_mill = async () => {
+  channel.bind('gradingmillpdf', async (data) => {
+    console.log(`Broadcast Grading :${data}`);
+    if (data.data && data.data.length > 0) {
+      for (const itemdata of data.data) {
+        const message = formatGradingMessage(itemdata);
+
+        try {
+          // Send to appropriate group based on mill
+          if (itemdata.mill === 'SYM') {
+            // global.queue.push({
+            //   type: 'send_image',
+            //   data: {
+            //     to: noWa_grading_suayap,
+            //     image: itemdata.collage_url,
+            //     caption: message,
+            //   },
+            // });
+            global.queue.push({
+              type: 'send_document',
+              data: {
+                to: noWa_grading_suayap,
+                document: itemdata.pdf_url,
+                filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
+                caption: message,
+              },
+            });
+          } else if (itemdata.mill === 'SGM') {
+            // global.queue.push({
+            //   type: 'send_image',
+            //   data: {
+            //     to: noWa_grading_sgm,
+            //     image: itemdata.collage_url,
+            //     caption: message,
+            //   },
+            // });
+            global.queue.push({
+              type: 'send_document',
+              data: {
+                to: noWa_grading_sgm,
+                document: itemdata.pdf_url,
+                filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
+                caption: message,
+              },
+            });
+          } else if (itemdata.mill === 'SLM') {
+            // global.queue.push({
+            //   type: 'send_image',
+            //   data: {
+            //     to: noWa_grading_slm,
+            //     image: itemdata.collage_url,
+            //     caption: message,
+            //   },
+            // });
+            global.queue.push({
+              type: 'send_document',
+              data: {
+                to: noWa_grading_slm,
+                document: itemdata.pdf_url,
+                filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
+                caption: message,
+              },
+            });
+          } else {
+            // global.queue.push({
+            //   type: 'send_image',
+            //   data: {
+            //     to: noWa_grading,
+            //     image: itemdata.collage_url,
+            //     caption: message,
+            //   },
+            // });
+            global.queue.push({
+              type: 'send_document',
+              data: {
+                to: noWa_grading,
+                document: itemdata.pdf_url,
+                filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
+                caption: message,
+              },
+            });
+          }
+
+          // Update data after sending messages
+          // global.queue.push({
+          //   type: 'update_data_mill',
+          //   data: {
+          //     id: itemdata.id,
+          //     credentials: {
+          //       email: 'j',
+          //       password: 'j',
+          //     },
+          //   },
+          // });
+        } catch (error) {
+          console.log('Error in broadcast_grading_mill:', error);
+          await catcherror(
+            itemdata.id,
+            'error_sending_message',
+            'bot_grading_mill'
+          );
+        }
+      }
+    }
+  });
+};
+
 module.exports = {
   get_mill_data,
   updateDataMill,
+  run_jobs_mill,
+  broadcast_grading_mill,
 };

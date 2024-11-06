@@ -3,6 +3,7 @@ const { updateDataMill } = require('./grading/gradinghelper');
 const fs = require('fs').promises;
 const path = require('path');
 const stream = require('stream');
+const https = require('https');
 
 // Increase the default max listeners for Readable streams
 stream.Readable.defaultMaxListeners = 15;
@@ -204,62 +205,105 @@ class Queue {
 
   async sendImage(to, image, caption) {
     let imageBuffer;
-    if (typeof image === 'string') {
-      imageBuffer = Buffer.from(image, 'base64');
-    } else if (Buffer.isBuffer(image)) {
-      imageBuffer = image;
-    } else {
-      throw new Error(
-        'Invalid image parameter. Expected a base64 string or Buffer object.'
-      );
-    }
 
-    const result = await global.sock
-      .sendMessage(to, {
+    try {
+      // Check if image is a URL
+      if (
+        typeof image === 'string' &&
+        (image.startsWith('http://') || image.startsWith('https://'))
+      ) {
+        imageBuffer = await this.downloadFile(image);
+      }
+      // Check if image is base64
+      else if (typeof image === 'string') {
+        imageBuffer = Buffer.from(image, 'base64');
+      }
+      // Check if image is already a Buffer
+      else if (Buffer.isBuffer(image)) {
+        imageBuffer = image;
+      } else {
+        throw new Error(
+          'Invalid image parameter. Expected a URL, base64 string, or Buffer object.'
+        );
+      }
+
+      const result = await global.sock.sendMessage(to, {
         image: imageBuffer,
         caption: caption,
-      })
-      .catch((error) => {
-        throw new Error(`Failed to send WhatsApp image: ${error.message}`);
       });
 
-    if (!result || !result.key) {
-      throw new Error('Failed to send WhatsApp image');
-    }
+      if (!result || !result.key) {
+        throw new Error('Failed to send WhatsApp image');
+      }
 
-    console.log(`Image sent successfully to ${to}`);
-    return result;
+      console.log(`Image sent successfully to ${to}`);
+      return result;
+    } catch (error) {
+      throw new Error(`Failed to send WhatsApp image: ${error.message}`);
+    }
   }
 
   async sendDocument(to, filename, document, caption) {
     let documentBuffer;
-    if (typeof document === 'string') {
-      documentBuffer = Buffer.from(document, 'base64');
-    } else if (Buffer.isBuffer(document)) {
-      documentBuffer = document;
-    } else {
-      throw new Error(
-        'Invalid document parameter. Expected a base64 string or Buffer object.'
-      );
-    }
 
-    const result = await global.sock
-      .sendMessage(to, {
+    try {
+      // Check if document is a URL
+      if (
+        typeof document === 'string' &&
+        (document.startsWith('http://') || document.startsWith('https://'))
+      ) {
+        documentBuffer = await this.downloadFile(document);
+      }
+      // Check if document is base64
+      else if (typeof document === 'string') {
+        documentBuffer = Buffer.from(document, 'base64');
+      }
+      // Check if document is already a Buffer
+      else if (Buffer.isBuffer(document)) {
+        documentBuffer = document;
+      } else {
+        throw new Error(
+          'Invalid document parameter. Expected a URL, base64 string, or Buffer object.'
+        );
+      }
+
+      const result = await global.sock.sendMessage(to, {
         document: documentBuffer,
         mimetype: 'application/pdf',
         fileName: filename || 'document.pdf',
         caption: caption,
-      })
-      .catch((error) => {
-        throw new Error(`Failed to send WhatsApp document: ${error.message}`);
       });
 
-    if (!result || !result.key) {
-      throw new Error('Failed to send WhatsApp document');
-    }
+      if (!result || !result.key) {
+        throw new Error('Failed to send WhatsApp document');
+      }
 
-    console.log(`Document sent successfully to ${to}`);
-    return result;
+      console.log(`Document sent successfully to ${to}`);
+      return result;
+    } catch (error) {
+      throw new Error(`Failed to send WhatsApp document: ${error.message}`);
+    }
+  }
+
+  // Add helper method to download files
+  async downloadFile(url) {
+    return new Promise((resolve, reject) => {
+      https
+        .get(url, (response) => {
+          if (response.statusCode !== 200) {
+            reject(
+              new Error(`Failed to download file: ${response.statusCode}`)
+            );
+            return;
+          }
+
+          const chunks = [];
+          response.on('data', (chunk) => chunks.push(chunk));
+          response.on('end', () => resolve(Buffer.concat(chunks)));
+          response.on('error', reject);
+        })
+        .on('error', reject);
+    });
   }
 
   logQueueState() {

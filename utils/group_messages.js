@@ -7,7 +7,7 @@ const {
   sendfailcronjob,
 } = require('./taksasi/taksasihelper.js');
 const { handleChatSnoozePengawasanOperatorAi } = require('../helper.js');
-const { get_mill_data } = require('./grading/gradinghelper.js');
+const { get_mill_data, run_jobs_mill } = require('./grading/gradinghelper.js');
 const {
   Report_group_izinkebun,
   Fail_send_pdf,
@@ -113,7 +113,7 @@ const handleGroupMessage = async (
       { quoted: message }
     );
 
-    await get_mill_data(sock);
+    await run_jobs_mill(sock);
     await sock.sendMessage(
       noWa,
       {

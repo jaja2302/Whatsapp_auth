@@ -27,7 +27,11 @@ const {
 const { Generateandsendtaksasi } = require('./utils/taksasi/taksasihelper');
 const { handlePrivateMessage } = require('./utils/private_messages');
 const { function_rapidresponse } = require('./utils/rapiprespons/helper');
-const { get_mill_data } = require('./utils/grading/gradinghelper');
+const {
+  get_mill_data,
+  run_jobs_mill,
+  broadcast_grading_mill,
+} = require('./utils/grading/gradinghelper');
 const { pingGoogle, sendSummary } = require('./utils/rekap_harian_uptime');
 const { get_iot_weatherstation } = require('./utils/iot/iothelper');
 const {
@@ -271,6 +275,7 @@ runfunction();
 setupCronJobs();
 function_rapidresponse();
 function_marcom();
+broadcast_grading_mill();
 // ... other function calls
 const port = process.env.PORT || 8000;
 server.listen(port, () => logger.info(`Server running on port ${port}`));
