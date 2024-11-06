@@ -27,6 +27,7 @@ async function run_jobs_mill() {
   try {
     const response = await axios.get(
       'https://management.srs-ssms.com/api/getdatamill',
+      // 'http://erpda.test/api/getdatamill',
       {
         params: credentials,
       }
@@ -39,8 +40,6 @@ async function run_jobs_mill() {
 }
 
 async function get_mill_data(sock) {
-  // console.log('check data grading');
-
   const credentials = {
     email: 'j',
     password: 'j',
@@ -48,129 +47,69 @@ async function get_mill_data(sock) {
 
   try {
     const response = await axios.get(
-      'https://management.srs-ssms.com/api/getdatamill',
-      // 'http://erpda.test/api/getdatamill',
+      'https://management.srs-ssms.com/api/getdatamilljobs',
       {
         params: credentials,
       }
     );
 
-    const data = response.data;
-    // console.log(data);
+    const { data, id_jobs, pdf_name } = response.data;
 
-    if (data.status === '200' && data.data && data.data.length > 0) {
-      for (const itemdata of data.data) {
-        const message = formatGradingMessage(itemdata);
+    // Check if data exists and is not empty
+    if (!data || data.length === 0) {
+      console.log('No mill data available to process');
+      return; // Exit the function early if no data
+    }
 
-        // Send image
-        const imgBuffer = Buffer.from(itemdata.base64Collage, 'base64');
-        // const imageOptions = {
-        //   image: imgBuffer,
-        //   caption: message,
-        // };
+    // Process data only if we have items
+    for (let i = 0; i < data.length; i++) {
+      const itemdata = data[i];
+      const message = formatGradingMessage(itemdata);
 
-        // Send PDF
-        const pdfBuffer = Buffer.from(itemdata.pdf, 'base64');
-        // const messageOptions = {
-        //   document: pdfBuffer,
-        //   mimetype: 'application/pdf',
-        //   fileName: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
-        //   caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
-        // };
-
-        try {
-          // If estate is SYE, also send to the Suayap group
-          if (itemdata.mill === 'SYM') {
-            global.queue.push({
-              type: 'send_image',
-              data: {
-                to: noWa_grading_suayap,
-                image: imgBuffer,
-                caption: message,
-              },
-            });
-            global.queue.push({
-              type: 'send_document',
-              data: {
-                to: noWa_grading_suayap,
-                document: pdfBuffer,
-                filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
-                caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
-              },
-            });
-          } else if (itemdata.mill === 'SGM') {
-            global.queue.push({
-              type: 'send_image',
-              data: {
-                to: noWa_grading_sgm,
-                image: imgBuffer,
-                caption: message,
-              },
-            });
-            global.queue.push({
-              type: 'send_document',
-              data: {
-                to: noWa_grading_sgm,
-                document: pdfBuffer,
-                filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
-                caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
-              },
-            });
-          } else if (itemdata.mill === 'SLM') {
-            global.queue.push({
-              type: 'send_image',
-              data: {
-                to: noWa_grading_slm,
-                image: imgBuffer,
-                caption: message,
-              },
-            });
-            global.queue.push({
-              type: 'send_document',
-              data: {
-                to: noWa_grading_slm,
-                document: pdfBuffer,
-                filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
-                caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
-              },
-            });
-          } else {
-            global.queue.push({
-              type: 'send_image',
-              data: {
-                to: noWa_grading,
-                image: imgBuffer,
-                caption: message,
-              },
-            });
-            global.queue.push({
-              type: 'send_document',
-              data: {
-                to: noWa_grading,
-                document: pdfBuffer,
-                filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
-                caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`,
-              },
-            });
+      try {
+        const targetGroup = (() => {
+          switch (itemdata.mill) {
+            case 'SYM':
+              return noWa_grading_suayap;
+            case 'SGM':
+              return noWa_grading_sgm;
+            case 'SLM':
+              return noWa_grading_slm;
+            case 'NBM':
+              return noWa_grading_nbm;
+            default:
+              return noWa_grading;
           }
+        })();
 
-          // Update data after sending messages
-          // global.queue.push({
-          //   type: 'update_data_mill',
-          //   data: { id: itemdata.id, credentials },
-          // });
-          // await updateDataMill(itemdata.id, credentials);
-        } catch (sendMessageError) {
-          console.log('Error sending message:', sendMessageError);
-          await catcherror(
-            itemdata.id,
-            'error_sending_message',
-            'bot_grading_mill'
-          );
-        }
+        global.queue.push({
+          type: 'send_document',
+          data: {
+            to: targetGroup,
+            document: itemdata.pdf_url,
+            filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
+            caption: message,
+          },
+        });
+      } catch (error) {
+        console.log('Error in broadcast_grading_mill:', error);
+        await catcherror(
+          itemdata.id,
+          'error_sending_message',
+          'bot_grading_mill'
+        );
       }
-    } else {
-      // console.log('No data found.');
+    }
+
+    // Only push update if we have data to update
+    if (id_jobs.length > 0 && pdf_name.length > 0) {
+      global.queue.push({
+        type: 'update_data_mill',
+        data: {
+          id: id_jobs,
+          pdf_name: pdf_name,
+        },
+      });
     }
   } catch (error) {
     console.log('Error fetching data:', error);
@@ -213,16 +152,27 @@ function formatGradingMessage(itemdata) {
   return message;
 }
 
-async function updateDataMill(id, credentials) {
+async function updateDataMill(data) {
+  const credentials = {
+    email: 'j',
+    password: 'j',
+  };
+  console.log('updateDataMill', data);
+
   try {
-    await axios.post('https://management.srs-ssms.com/api/updatedatamill', {
-      id: id,
-      ...credentials,
-    });
-    // console.log('Data update successful for ID:', id);
+    const response = await axios.post(
+      'https://management.srs-ssms.com/api/updatedatamill',
+      // 'http://erpda.test/api/updatedatamill',
+      {
+        ...credentials,
+        id: data.id,
+        pdf_name: data.pdf_name,
+      }
+    );
+    console.log('Cleanup successful:', response.data);
   } catch (updateError) {
-    console.log('Error updating data for ID:', id, updateError);
-    await catcherror(id, 'error_updating_data', 'bot_grading_mill');
+    console.error('Error cleaning up data:', updateError);
+    throw updateError;
   }
 }
 

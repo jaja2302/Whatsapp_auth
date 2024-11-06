@@ -8224,3 +8224,516 @@ Queue is empty
 Total tasks in queue: 0
 Queue processing resumed
 cron job get_mill_data
+cron job get_mill_data
+cron job get_mill_data
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+BDE 2024-11-06
+Task added to queue: send_document
+Queue saved to disk
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Document sent successfully to 120363166668733371@g.us
+Task completed: send_document
+Queue saved to disk
+cron job get_mill_data
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+cron job get_mill_data
+cron job get_mill_data
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+cron job get_mill_data
+cron job get_mill_data
+cron job get_mill_data
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+cron job get_mill_data
+cron job get_mill_data
+cron job get_mill_data
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Queue loaded from disk, items: 0
+WhatsApp connected successfully
+Current queue state:
+Queue is empty
+Total tasks in queue: 0
+Queue processing resumed
+cron job get_mill_data
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+cron job get_mill_data
+cron job get_mill_data
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+cron job get_mill_data
+cron job get_mill_data
+Queue loaded from disk, items: 0
+WhatsApp connected successfully
+Current queue state:
+Queue is empty
+Total tasks in queue: 0
+Queue processing resumed
+Queue loaded from disk, items: 0
+WhatsApp connected successfully
+Current queue state:
+Queue is empty
+Total tasks in queue: 0
+Queue processing resumed
+cron job get_mill_data
+Broadcast Grading :[object Object]
+Task added to queue: send_document
+Task added to queue: send_document
+Queue saved to disk
+Queue saved to disk
+Document sent successfully to 120363164751475851@g.us
+Task completed: send_document
+Queue saved to disk
+Document sent successfully to 120363164751475851@g.us
+Task completed: send_document
+Queue saved to disk
+cron job get_mill_data
+WhatsApp disconnected
+Queue processing paused
+{"data":{"attrs":{"code":"503"},"tag":"stream:error"},"isBoom":true,"isServer":true,"level":"error","message":"Connection Error: Stream Errored (unknown)","output":{"headers":{},"payload":{"error":"Service Unavailable","message":"Stream Errored (unknown)","statusCode":503},"statusCode":503},"stack":"Error: Stream Errored (unknown)\n    at WebSocketClient.<anonymous> (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:518:28)\n    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:149:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2024-11-06T03:02:16.147Z"}
+WhatsApp connected successfully
+Current queue state:
+Queue is empty
+Total tasks in queue: 0
+Queue processing resumed
+cron job get_mill_data
+cron job get_mill_data
+cron job get_mill_data
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+NNE 2024-11-06
+Task added to queue: send_document
+Queue saved to disk
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Document sent successfully to 120363231670115838@g.us
+Task completed: send_document
+Queue saved to disk
+cron job get_mill_data
+WhatsApp disconnected
+Queue processing paused
+{"data":{"attrs":{"code":"503"},"tag":"stream:error"},"isBoom":true,"isServer":true,"level":"error","message":"Connection Error: Stream Errored (unknown)","output":{"headers":{},"payload":{"error":"Service Unavailable","message":"Stream Errored (unknown)","statusCode":503},"statusCode":503},"stack":"Error: Stream Errored (unknown)\n    at WebSocketClient.<anonymous> (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:518:28)\n    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:149:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2024-11-06T03:12:07.116Z"}
+WhatsApp connected successfully
+Current queue state:
+Queue is empty
+Total tasks in queue: 0
+Queue processing resumed
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+cron job get_mill_data
+WhatsApp disconnected
+Queue processing paused
+{"data":{"attrs":{"code":"503"},"tag":"stream:error"},"isBoom":true,"isServer":true,"level":"error","message":"Connection Error: Stream Errored (unknown)","output":{"headers":{},"payload":{"error":"Service Unavailable","message":"Stream Errored (unknown)","statusCode":503},"statusCode":503},"stack":"Error: Stream Errored (unknown)\n    at WebSocketClient.<anonymous> (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:518:28)\n    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:149:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2024-11-06T03:16:43.076Z"}
+WhatsApp connected successfully
+Current queue state:
+Queue is empty
+Total tasks in queue: 0
+Queue processing resumed
+cron job get_mill_data
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+WhatsApp disconnected
+Queue processing paused
+{"data":{"attrs":{"code":"503"},"tag":"stream:error"},"isBoom":true,"isServer":true,"level":"error","message":"Connection Error: Stream Errored (unknown)","output":{"headers":{},"payload":{"error":"Service Unavailable","message":"Stream Errored (unknown)","statusCode":503},"statusCode":503},"stack":"Error: Stream Errored (unknown)\n    at WebSocketClient.<anonymous> (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:518:28)\n    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:149:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2024-11-06T03:22:09.968Z"}
+WhatsApp connected successfully
+Current queue state:
+Queue is empty
+Total tasks in queue: 0
+Queue processing resumed
+cron job get_mill_data
+Closing stale open session for new outgoing prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    'BctIQt0cIhEZgLOWbBt5uNsi8xeR8HEeGr/17jKmA3FH': { chainKey: [Object], chainType: 2, messageKeys: {} },
+    'BUNIxsBZ2wFJTM2l+Ibexuw5bB6mf9996VUJ2TZRlcRM': { chainKey: [Object], chainType: 2, messageKeys: {} },
+    Ba8MkBD1RGutBl6AzZRCORtFcQ72iAlfbIqk6dxPBVQ6: { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 49,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 af 0c 90 10 f5 44 6b ad 06 5e 80 cd 94 42 39 1b 45 71 0e f6 88 09 5f 6c 8a a4 e9 dc 4f 05 54 3a>,
+      privKey: <Buffer f0 8b dc 36 af 1a e7 28 6e 93 c2 04 76 20 5a 92 18 34 53 8a 0d d8 5f 83 b9 bd 84 9a 25 6e fa 58>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 43 48 c6 c0 59 db 01 49 4c cd a5 f8 86 de c6 ec 39 6c 1e a6 7f df 7d e9 55 09 d9 36 51 95 c4 4c>,
+    previousCounter: 0,
+    rootKey: <Buffer 7c 4e e5 85 6b ba 92 66 8c 96 b6 31 79 a9 c6 24 2d e9 91 73 a2 b5 4d 2f b3 77 7c 09 f7 ff 1d 18>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 6d ba 14 8f 93 bd 75 7c e5 a1 7b 95 db 1c 10 7b f3 f7 05 dd 0a 68 c7 1e 95 66 26 a7 de b3 cd 7f>,
+    baseKeyType: 1,
+    closed: -1,
+    used: 1729827118506,
+    created: 1729760554856,
+    remoteIdentityKey: <Buffer 05 b7 c7 e4 05 c4 3b 75 89 9e 50 04 71 94 20 43 06 a3 b3 ec bc 84 dd 10 65 56 26 05 0d e3 55 82 73>
+  }
+}
+Closing stale open session for new outgoing prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    'BfhvoHzXA7ds3MEw/oO/jUN/QeTLDUhyOc9yI7ZjOu9h': { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 49,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 f8 6f a0 7c d7 03 b7 6c dc c1 30 fe 83 bf 8d 43 7f 41 e4 cb 0d 48 72 39 cf 72 23 b6 63 3a ef 61>,
+      privKey: <Buffer 30 f7 af 9d 2c a8 78 5f 51 f6 98 ae 82 52 6b 3d da 3f 95 16 47 92 45 79 bd ff cf 38 3c 9f ad 7f>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 5e 0e 22 71 99 c8 2a 9a 78 b6 94 ad e0 0b 8f 47 4f de 95 2e b3 88 ae ff f0 7d 1c 32 52 76 13 63>,
+    previousCounter: 0,
+    rootKey: <Buffer 6f d9 6b 57 ea be 52 97 09 8d 9d 18 43 16 7b 4b ab 88 c3 a6 06 cb 20 e0 2e 62 c8 b0 2a 71 f3 44>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 ed 3e 09 47 94 ac 1c 40 d3 0f b0 a9 84 d1 fd a3 24 73 2f 8d 66 17 38 8b 54 12 13 54 03 fe 7b 76>,
+    baseKeyType: 1,
+    closed: -1,
+    used: 1730863512492,
+    created: 1730863512492,
+    remoteIdentityKey: <Buffer 05 b7 c7 e4 05 c4 3b 75 89 9e 50 04 71 94 20 43 06 a3 b3 ec bc 84 dd 10 65 56 26 05 0d e3 55 82 73>
+  },
+  pendingPreKey: {
+    signedKeyId: 1,
+    baseKey: <Buffer 05 ed 3e 09 47 94 ac 1c 40 d3 0f b0 a9 84 d1 fd a3 24 73 2f 8d 66 17 38 8b 54 12 13 54 03 fe 7b 76>,
+    preKeyId: 110
+  }
+}
+cron job get_mill_data
+cron job get_mill_data
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+cron job get_mill_data
+cron job get_mill_data
+cron job get_mill_data
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+cron job get_mill_data
+Broadcast Grading :[object Object]
+Task added to queue: send_document
+Queue saved to disk
+Document sent successfully to 120363164751475851@g.us
+Task completed: send_document
+Queue saved to disk
+cron job get_mill_data
+cron job get_mill_data
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Broadcast Grading :[object Object]
+Task added to queue: send_document
+Queue saved to disk
+Document sent successfully to 6285655573821-1566449850@g.us
+Task completed: send_document
+Queue saved to disk
+cron job get_mill_data
+cron job get_mill_data
+cron job get_mill_data
+cron job get_mill_data
+Decrypted message with closed session.
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+cron job statusAWS,statusHistory,get_iot_weatherstation
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+Task added to queue: send_message
+Queue saved to disk
+data kosong iot
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Error processing task (send_message): Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:145:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:323:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:316:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:306:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:666:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+Retrying task: send_message (Attempt 1/3)
+Queue saved to disk
+Broadcast Grading :[object Object]
+Task added to queue: send_document
+Task added to queue: send_document
+Queue saved to disk
+Queue saved to disk
+Error processing task (send_message): Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:145:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:323:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:316:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:306:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:666:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+Retrying task: send_message (Attempt 2/3)
+Queue saved to disk
+Document sent successfully to 120363164751475851@g.us
+Task completed: send_document
+Queue saved to disk
+Document sent successfully to 6281397270799-1635156024@g.us
+Task completed: send_document
+Queue saved to disk
+Error processing task (send_message): Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:145:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:323:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:316:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:306:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:666:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+Retrying task: send_message (Attempt 3/3)
+Queue saved to disk
+Error processing task (send_message): Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:145:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:323:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:316:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:306:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:666:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+Skipping task: send_message after 3 failed attempts
+Queue saved to disk
+cron job get_mill_data
+cron job get_mill_data
+Broadcast Grading :[object Object]
+Task added to queue: send_document
+Task added to queue: send_document
+Task added to queue: send_document
+Task added to queue: send_document
+Task added to queue: send_document
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Document sent successfully to 6282257572112-1635223872@g.us
+Task completed: send_document
+Queue saved to disk
+Document sent successfully to 6282257572112-1635223872@g.us
+Task completed: send_document
+Queue saved to disk
+Document sent successfully to 6282257572112-1635223872@g.us
+Task completed: send_document
+Queue saved to disk
+Document sent successfully to 6282257572112-1635223872@g.us
+Task completed: send_document
+Queue saved to disk
+Document sent successfully to 6281397270799-1565316655@g.us
+Task completed: send_document
+Queue saved to disk
+cron job get_mill_data
+Broadcast Grading :[object Object]
+Task added to queue: send_document
+Queue saved to disk
+Document sent successfully to 120363164751475851@g.us
+Task completed: send_document
+Queue saved to disk
+cron job get_mill_data
+cron job get_mill_data
+cron job get_mill_data
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+cron job get_mill_data
+cron job get_mill_data
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+Upload not successful, retrying...
+Upload not successful, retrying...
+Upload failed after 2 attempts
+NKE 2024-11-06
+Task added to queue: send_document
+Queue saved to disk
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Document sent successfully to 120363217152686034@g.us
+Task completed: send_document
+Queue saved to disk
+cron job get_mill_data
+cron job get_mill_data
+Broadcast Grading :[object Object]
+Task added to queue: send_document
+Queue saved to disk
+Document sent successfully to 6281397270799-1565316655@g.us
+Task completed: send_document
+Queue saved to disk
+cron job get_mill_data
+Broadcast Grading :[object Object]
+Task added to queue: send_document
+Queue saved to disk
+Document sent successfully to 6285655573821-1566449850@g.us
+Task completed: send_document
+Queue saved to disk
+cron job get_mill_data
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Broadcast Grading :[object Object]
+Task added to queue: send_document
+Queue saved to disk
+Document sent successfully to 120363164751475851@g.us
+Task completed: send_document
+Queue saved to disk
+cron job get_mill_data
+Queue loaded from disk, items: 0
+WhatsApp connected successfully
+Current queue state:
+Queue is empty
+Total tasks in queue: 0
+Queue processing resumed
+cron job get_mill_data
+cron job get_mill_data
+cron job get_mill_data
+Closing stale open session for new outgoing prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    'Bb0OI9/ZNkelBwgeMOSW6NTVFGgkmKyoZrVuHh1VP/ds': { chainKey: [Object], chainType: 2, messageKeys: {} },
+    BbBLB6PcrW49PoDdI1eGIvRbzP0iV8BgnybgfbMziGAw: { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 49,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 b0 4b 07 a3 dc ad 6e 3d 3e 80 dd 23 57 86 22 f4 5b cc fd 22 57 c0 60 9f 26 e0 7d b3 33 88 60 30>,
+      privKey: <Buffer c8 e6 15 80 4d 96 1b fa 49 a2 87 e2 df 23 66 2a 1f ff 9d b6 85 54 c2 06 c7 49 99 47 8d 96 37 44>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 bd 0e 23 df d9 36 47 a5 07 08 1e 30 e4 96 e8 d4 d5 14 68 24 98 ac a8 66 b5 6e 1e 1d 55 3f f7 6c>,
+    previousCounter: -1,
+    rootKey: <Buffer ad 2c e1 14 d6 7d 70 08 46 ba 0d c6 ea 64 6d 5c 26 da 7e fd a2 8e 8f 0f 25 51 30 13 66 be 87 4b>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 2c c5 49 7b fb f1 5c bb 6c 4d 5a 01 1e 4e 7b 7f c1 f6 97 7e c7 05 97 43 02 51 47 3e f7 5b f4 0a>,
+    baseKeyType: 1,
+    closed: -1,
+    used: 1730863535189,
+    created: 1730863535189,
+    remoteIdentityKey: <Buffer 05 b7 c7 e4 05 c4 3b 75 89 9e 50 04 71 94 20 43 06 a3 b3 ec bc 84 dd 10 65 56 26 05 0d e3 55 82 73>
+  },
+  pendingPreKey: {
+    signedKeyId: 1,
+    baseKey: <Buffer 05 2c c5 49 7b fb f1 5c bb 6c 4d 5a 01 1e 4e 7b 7f c1 f6 97 7e c7 05 97 43 02 51 47 3e f7 5b f4 0a>,
+    preKeyId: 100
+  }
+}
+NBE 2024-11-06
+Task added to queue: send_document
+Queue saved to disk
+Document sent successfully to 120363048442215265@g.us
+Task completed: send_document
+Queue saved to disk
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Queue loaded from disk, items: 0
+WhatsApp connected successfully
+Current queue state:
+Queue is empty
+Total tasks in queue: 0
+Queue processing resumed
+cron job get_mill_data
+Task added to queue: send_document
+Task added to queue: update_data_mill
+Queue saved to disk
+Queue saved to disk
+Document sent successfully to 6281397270799-1635156024@g.us
+Task completed: send_document
+Queue saved to disk
+updateDataMill { id: [ 27 ], pdf_name: [ 'grading_mill_2803_1730867779.pdf' ] }
+Cleanup successful: {
+  success: true,
+  message: 'Cleanup completed',
+  details: {
+    deleted_files: [ 'grading_mill_2803_1730867779.pdf' ],
+    deleted_jobs: [ 27 ],
+    errors: []
+  }
+}
+Task completed: update_data_mill
+Queue saved to disk
+NBE 2024-11-06
+Task added to queue: send_document
+Queue saved to disk
+Document sent successfully to 120363048442215265@g.us
+Task completed: send_document
+Queue saved to disk

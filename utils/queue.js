@@ -168,7 +168,7 @@ class Queue {
         );
         break;
       case 'update_data_mill':
-        await updateDataMill(task.data.id, task.data.credentials);
+        await updateDataMill(task.data); // Pass the entire data object instead of individual fields
         break;
       default:
         throw new Error(`Unknown task type: ${task.type}`);
