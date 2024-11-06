@@ -9,6 +9,10 @@ const noWa_grading = '120363164751475851@g.us';
 const noWa_grading_suayap = '6281397270799-1635156024@g.us';
 const noWa_grading_sgm = '6282257572112-1635223872@g.us';
 const noWa_grading_slm = '6281397270799-1565316655@g.us';
+const noWa_grading_nbm = '6285655573821-1566449850@g.us';
+
+// id_group: 6285655573821-1566449850@g.us || Nama Group: NBM 22.00
+
 const { channel } = require('../../utils/pusher');
 // const noWa_grading = testingbotda;
 // const noWa_grading_suayap = testingbotsampenikah;
@@ -280,6 +284,24 @@ const broadcast_grading_mill = async () => {
               type: 'send_document',
               data: {
                 to: noWa_grading_slm,
+                document: itemdata.pdf_url,
+                filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
+                caption: message,
+              },
+            });
+          } else if (itemdata.mill === 'NBM') {
+            // global.queue.push({
+            //   type: 'send_image',
+            //   data: {
+            //     to: noWa_grading_slm,
+            //     image: itemdata.collage_url,
+            //     caption: message,
+            //   },
+            // });
+            global.queue.push({
+              type: 'send_document',
+              data: {
+                to: noWa_grading_nbm,
                 document: itemdata.pdf_url,
                 filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
                 caption: message,

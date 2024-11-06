@@ -7998,3 +7998,229 @@ Queue saved to disk
 Document sent successfully to 6281397270799-1565316655@g.us
 Task completed: send_document
 Queue saved to disk
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+cron job get_mill_data
+Queue loaded from disk, items: 0
+WhatsApp connected successfully
+Current queue state:
+Queue is empty
+Total tasks in queue: 0
+Queue processing resumed
+cron job statusAWS,statusHistory,get_iot_weatherstation
+cron job handleBotLaporanHarianFleetManagement,handleBotDailyPengawasanOperatorAI,sendSummary,get_outstadingdata
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+cron job get_mill_data
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+Task added to queue: send_message
+Queue saved to disk
+Task added to queue: send_message
+Queue saved to disk
+Task added to queue: send_message
+Error sending WhatsApp message: TypeError: Cannot read properties of undefined (reading 'sendMessage')
+    at sendSummary (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\rekap_harian_uptime.js:102:16)
+    at cron.schedule.scheduled [as _execution] (C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:1035:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Queue saved to disk
+data kosong iot
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Message sent successfully to 120363264196563911@g.us
+Task completed: send_message
+Queue saved to disk
+Error processing task (send_message): Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:145:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:323:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:316:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:306:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:666:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+Retrying task: send_message (Attempt 1/3)
+Queue saved to disk
+Message sent successfully to 120363321959291717@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Error processing task (send_message): Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:145:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:323:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:316:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:306:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:666:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+Retrying task: send_message (Attempt 2/3)
+Queue saved to disk
+Error processing task (send_message): Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:145:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:323:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:316:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:306:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:666:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+Retrying task: send_message (Attempt 3/3)
+Queue saved to disk
+Error processing task (send_message): Error: forbidden
+    at assertNodeErrorFree (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\WABinary\generic-utils.js:56:15)
+    at query (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\socket.js:145:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async groupMetadata (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\groups.js:22:24)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:323:41
+    at async Promise.all (index 0)
+    at async C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:316:51
+    at async Object.transaction (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\auth-utils.js:136:26)
+    at async relayMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:306:9)
+    at async Object.sendMessage (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Socket\messages-send.js:666:17) {
+  data: 403,
+  isBoom: true,
+  isServer: true,
+  output: {
+    statusCode: 500,
+    payload: {
+      statusCode: 500,
+      error: 'Internal Server Error',
+      message: 'An internal server error occurred'
+    },
+    headers: {}
+  }
+}
+Skipping task: send_message after 3 failed attempts
+Queue saved to disk
+Queue loaded from disk, items: 0
+WhatsApp connected successfully
+Current queue state:
+Queue is empty
+Total tasks in queue: 0
+Queue processing resumed
+cron job get_mill_data
+Queue loaded from disk, items: 0
+WhatsApp connected successfully
+Current queue state:
+Queue is empty
+Total tasks in queue: 0
+Queue processing resumed
+cron job get_mill_data
