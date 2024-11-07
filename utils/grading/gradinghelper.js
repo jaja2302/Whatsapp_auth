@@ -10,6 +10,12 @@ const noWa_grading_suayap = '6281397270799-1635156024@g.us';
 const noWa_grading_sgm = '6282257572112-1635223872@g.us';
 const noWa_grading_slm = '6281397270799-1565316655@g.us';
 const noWa_grading_nbm = '6285655573821-1566449850@g.us';
+const noWa_grading_mlm = '120363332857987276@g.us';
+const noWa_grading_nkm = '120363046524351245@g.us';
+// id_group: 120363046524351245@g.us || Nama Group: GRADING NKM
+// id_group: 120363332857987276@g.us || Nama Group: QC Grading PKS Malata
+
+// List id_group: 120363331441324422@g.us || Nama Group: Grading Reg II
 
 // id_group: 6285655573821-1566449850@g.us || Nama Group: NBM 22.00
 
@@ -77,6 +83,10 @@ async function get_mill_data(sock) {
               return noWa_grading_slm;
             case 'NBM':
               return noWa_grading_nbm;
+            case 'MLM':
+              return noWa_grading_mlm;
+            case 'NKM':
+              return noWa_grading_nkm;
             default:
               return noWa_grading;
           }

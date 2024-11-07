@@ -1053,10 +1053,19 @@ const setupCronJobs = (sock) => {
       }
     );
     cron.schedule(
-      '*/2 * * * *',
+      '*/1 * * * *',
       async () => {
-        console.log('cron job get_mill_data');
+        // console.log('cron job get_mill_data');
         await run_jobs_mill(sock);
+      },
+      {
+        scheduled: true,
+        timezone: 'Asia/Jakarta',
+      }
+    );
+    cron.schedule(
+      '*/5 * * * *',
+      async () => {
         await get_mill_data(sock);
       },
       {
