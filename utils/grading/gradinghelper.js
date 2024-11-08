@@ -74,41 +74,64 @@ async function get_mill_data(sock) {
 
       try {
         const targetGroup = (() => {
+          // SKM
+          // SGM
+          // SYM
+          // SLM
+          // NBM
+          let send_image = false;
           switch (itemdata.mill) {
             case 'SYM':
+              send_images = true;
               return noWa_grading_suayap;
             case 'SGM':
+              send_images = true;
               return noWa_grading_sgm;
             case 'SLM':
               return noWa_grading_slm;
             case 'NBM':
+              send_images = true;
               return noWa_grading_nbm;
             case 'MLM':
+              send_images = false;
               return noWa_grading_mlm;
             case 'NKM':
+              send_images = false;
               return noWa_grading_nkm;
             default:
+              send_images = false;
               return noWa_grading;
           }
         })();
-        global.queue.push({
-          type: 'send_image',
-          data: {
-            to: targetGroup,
-            image: itemdata.collage_url,
-            caption: message,
-          },
-        });
-        global.queue.push({
-          type: 'send_document',
-          data: {
-            to: targetGroup,
-            document: itemdata.pdf_url,
-            filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
-            // caption: message,
-            caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
-          },
-        });
+        if (send_images) {
+          global.queue.push({
+            type: 'send_image',
+            data: {
+              to: targetGroup,
+              image: itemdata.collage_url,
+              caption: message,
+            },
+          });
+          global.queue.push({
+            type: 'send_document',
+            data: {
+              to: targetGroup,
+              document: itemdata.pdf_url,
+              filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
+              caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
+            },
+          });
+        } else {
+          global.queue.push({
+            type: 'send_document',
+            data: {
+              to: targetGroup,
+              document: itemdata.pdf_url,
+              filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
+              caption: message,
+            },
+          });
+        }
       } catch (error) {
         console.log('Error in broadcast_grading_mill:', error);
         await catcherror(
