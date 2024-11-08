@@ -59,7 +59,7 @@ async function get_mill_data(sock) {
       }
     );
 
-    const { data, id_jobs, pdf_name } = response.data;
+    const { data, id_jobs, pdf_name, image_name } = response.data;
 
     // Check if data exists and is not empty
     if (!data || data.length === 0) {
@@ -91,14 +91,22 @@ async function get_mill_data(sock) {
               return noWa_grading;
           }
         })();
-
+        global.queue.push({
+          type: 'send_image',
+          data: {
+            to: targetGroup,
+            image: itemdata.collage_url,
+            caption: message,
+          },
+        });
         global.queue.push({
           type: 'send_document',
           data: {
             to: targetGroup,
             document: itemdata.pdf_url,
             filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
-            caption: message,
+            // caption: message,
+            caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
           },
         });
       } catch (error) {
@@ -118,6 +126,7 @@ async function get_mill_data(sock) {
         data: {
           id: id_jobs,
           pdf_name: pdf_name,
+          image_name: image_name,
         },
       });
     }
@@ -177,6 +186,7 @@ async function updateDataMill(data) {
         ...credentials,
         id: data.id,
         pdf_name: data.pdf_name,
+        image_name: data.image_name,
       }
     );
     console.log('Cleanup successful:', response.data);
