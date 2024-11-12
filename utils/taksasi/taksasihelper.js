@@ -13,22 +13,48 @@ const fs = require('fs');
 const https = require('https');
 const puppeteer = require('puppeteer');
 const { json } = require('express');
-const moment = require('moment-timezone');
-async function datetimeValue() {
+const { log } = require('console');
+// const moment = require('moment-timezone');
+// async function datetimeValue() {
+//   try {
+//     const response = await axios.get(
+//       'https://timeapi.io/api/Time/current/zone?timeZone=Asia/Jakarta'
+//     );
+//     const dateTime = response.data.dateTime; // Get the dateTime string
+//     const formattedDate = new Date(dateTime).toISOString().split('T')[0]; // Format to YYYY-MM-DD
+//     return formattedDate;
+//   } catch (error) {
+//     console.log('Error fetching date:', error);
+//     return null;
+//   }
+// }
+function getLocalDateTime() {
   try {
-    const response = await axios.get(
-      'https://timeapi.io/api/Time/current/zone?timeZone=Asia/Jakarta'
-    );
-    const dateTime = response.data.dateTime; // Get the dateTime string
-    const formattedDate = new Date(dateTime).toISOString().split('T')[0]; // Format to YYYY-MM-DD
-    return formattedDate;
+    // Create a new Date object for the current time
+    const now = new Date();
+
+    // Get the year, month, and day from the Date object
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed, so add 1
+    const day = String(now.getDate()).padStart(2, '0');
+
+    // Format the date as YYYY-MM-DD
+    const formattedDate = `${year}-${month}-${day}`;
+
+    return formattedDate; // Returns the formatted date as 'YYYY-MM-DD'
   } catch (error) {
-    console.log('Error fetching date:', error);
+    console.log('Error getting local datetime:', error);
     return null;
   }
 }
 
-// console.log(datetimeValue);
+const datetimeValue = getLocalDateTime();
+// console.log(datetimeValue); // Example output: 2024-11-09
+
+// Example usage
+// console.log(getLocalDateTime());
+
+console.log(datetimeValue);
 
 async function generatemapstaksasi(est, datetime) {
   let attempts = 0;
@@ -91,19 +117,19 @@ async function sendtaksasiest(estate, group_id, folder, sock, taskid, tanggal) {
   try {
     let newdaate;
     if (tanggal === 'null' || tanggal === null) {
-      newdaate = await datetimeValue(); // Call the function to get the date
+      newdaate = datetimeValue; // Call the function to get the date
     } else {
       newdaate = tanggal;
     }
     await generatemapstaksasi(estate, newdaate);
 
-    console.log(estate, newdaate);
+    // console.log(estate, newdaate);
 
     try {
       const { data: responseData } = await axios.get(
         `https://smart-app.srs-ssms.com/api/exportPdfTaksasi/${estate}/${newdaate}`
       );
-
+      console.log(responseData);
       if (responseData.base64_pdf) {
         const pdfBuffer = Buffer.from(responseData.base64_pdf, 'base64');
         const pdfFilename = `Rekap Taksasi ${estate} ${newdaate}.pdf`;
@@ -153,7 +179,7 @@ async function sendtaksasiest(estate, group_id, folder, sock, taskid, tanggal) {
         };
       }
     } catch (error) {
-      // console.log(error);
+      console.log(error);
 
       // console.log('Error sending PDF:', error.message);
       return {

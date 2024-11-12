@@ -93,13 +93,13 @@ async function get_mill_data(sock) {
               send_images = true;
               return noWa_grading_nbm;
             case 'MLM':
-              send_images = false;
+              send_images = true;
               return noWa_grading_mlm;
             case 'NKM':
-              send_images = false;
+              send_images = true;
               return noWa_grading_nkm;
             default:
-              send_images = false;
+              send_images = true;
               return noWa_grading;
           }
         })();
