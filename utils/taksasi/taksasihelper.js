@@ -30,31 +30,26 @@ const { log } = require('console');
 // }
 function getLocalDateTime() {
   try {
-    // Create a new Date object for the current time
-    const now = new Date();
-
-    // Get the year, month, and day from the Date object
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed, so add 1
-    const day = String(now.getDate()).padStart(2, '0');
-
-    // Format the date as YYYY-MM-DD
-    const formattedDate = `${year}-${month}-${day}`;
-
-    return formattedDate; // Returns the formatted date as 'YYYY-MM-DD'
+    // Use Luxon for reliable timezone handling and date formatting
+    const jakartaTime = DateTime.now().setZone('Asia/Jakarta');
+    return jakartaTime.toFormat('yyyy-LL-dd'); // LL will give zero-padded month (01-12)
   } catch (error) {
     console.log('Error getting local datetime:', error);
     return null;
   }
 }
 
+// Single console.log for debugging
 const datetimeValue = getLocalDateTime();
+// console.log('Current date:', datetimeValue); // Will output format: 2024-11-09
+// console.log('Current date:', datetimeValue);
+
 // console.log(datetimeValue); // Example output: 2024-11-09
 
 // Example usage
 // console.log(getLocalDateTime());
 
-console.log(datetimeValue);
+// console.log(datetimeValue);
 
 async function generatemapstaksasi(est, datetime) {
   let attempts = 0;
