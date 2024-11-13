@@ -40,9 +40,9 @@ function getLocalDateTime() {
 }
 
 // Single console.log for debugging
-const datetimeValue = getLocalDateTime();
+const datetimeValue = '2024-11-13';
 // console.log('Current date:', datetimeValue); // Will output format: 2024-11-09
-// console.log('Current date:', datetimeValue);
+console.log('Current date:', datetimeValue);
 
 // console.log(datetimeValue); // Example output: 2024-11-09
 
