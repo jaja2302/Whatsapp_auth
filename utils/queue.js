@@ -20,7 +20,10 @@ class Queue {
     this.filePath = path.join(__dirname, 'queue_backup.json');
     this.maxRetries = 3;
     this.messagesSentTimestamps = [];
+    this.failedTasks = [];
+    this.failedTasksFilePath = path.join(__dirname, 'failed_tasks.json');
     this.loadFromDisk();
+    this.loadFailedTasksFromDisk();
   }
 
   async saveToFile() {
@@ -112,7 +115,12 @@ class Queue {
   }
 
   async process() {
-    if (this.processing || this.items.length === 0 || this.paused) return;
+    if (
+      this.processing ||
+      (this.items.length === 0 && this.failedTasks.length === 0) ||
+      this.paused
+    )
+      return;
 
     this.processing = true;
     const task = this.items[0];
@@ -130,10 +138,11 @@ class Queue {
         );
         this.items.push(this.items.shift());
       } else {
-        console.log(
-          `Skipping task: ${task.type} after ${this.maxRetries} failed attempts`
-        );
-        this.items.shift();
+        console.log(`Moving task to failed tasks: ${task.type}`);
+        const failedTask = this.items.shift();
+        failedTask.retries = 0; // Reset retries for future attempts
+        this.failedTasks.push(failedTask);
+        await this.saveFailedTasksToFile();
       }
     }
 
@@ -316,6 +325,67 @@ class Queue {
       });
     }
     console.log(`Total tasks in queue: ${this.items.length}`);
+  }
+
+  // Add new method to load failed tasks
+  async loadFailedTasksFromDisk() {
+    try {
+      const data = await fs.readFile(this.failedTasksFilePath, 'utf8');
+      this.failedTasks = JSON.parse(data);
+      console.log(
+        `Failed tasks loaded from disk, items: ${this.failedTasks.length}`
+      );
+      if (this.failedTasks.length > 0) {
+        this.retryFailedTasks();
+      }
+    } catch (error) {
+      if (error.code !== 'ENOENT') {
+        console.error('Error loading failed tasks from disk:', error);
+      }
+      this.failedTasks = [];
+    }
+  }
+
+  // Add new method to save failed tasks
+  async saveFailedTasksToFile() {
+    try {
+      await fs.writeFile(
+        this.failedTasksFilePath,
+        JSON.stringify(this.failedTasks, null, 2)
+      );
+      console.log('Failed tasks saved to disk');
+    } catch (error) {
+      console.error('Error saving failed tasks to disk:', error);
+    }
+  }
+
+  // Add new method to retry failed tasks
+  async retryFailedTasks() {
+    console.log('Attempting to retry failed tasks...');
+    const maxFailedRetries = 2; // Only try failed tasks 2 times
+
+    for (let i = this.failedTasks.length - 1; i >= 0; i--) {
+      const task = this.failedTasks[i];
+      task.retries = 0; // Reset retry count
+
+      try {
+        await this.executeTask(task);
+        console.log(`Failed task completed successfully: ${task.type}`);
+        this.failedTasks.splice(i, 1);
+      } catch (error) {
+        console.error(`Error processing failed task (${task.type}):`, error);
+        task.retries++;
+
+        if (task.retries >= maxFailedRetries) {
+          console.log(
+            `Permanently skipping failed task: ${task.type} after ${maxFailedRetries} retry attempts`
+          );
+          this.failedTasks.splice(i, 1);
+        }
+      }
+    }
+
+    await this.saveFailedTasksToFile();
   }
 }
 
