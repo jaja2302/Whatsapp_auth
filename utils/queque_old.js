@@ -20,7 +20,6 @@ class Queue {
     this.filePath = path.join(__dirname, 'queue_backup.json');
     this.maxRetries = 3;
     this.messagesSentTimestamps = [];
-    this.failedJobsPath = path.join(__dirname, 'failed_jobs.json');
     this.loadFromDisk();
   }
 
@@ -125,8 +124,6 @@ class Queue {
     } catch (error) {
       console.error(`Error processing task (${task.type}):`, error);
       task.retries = (task.retries || 0) + 1;
-      task.error = error.message;
-
       if (task.retries <= this.maxRetries) {
         console.log(
           `Retrying task: ${task.type} (Attempt ${task.retries}/${this.maxRetries})`
@@ -134,9 +131,8 @@ class Queue {
         this.items.push(this.items.shift());
       } else {
         console.log(
-          `Moving task to failed jobs: ${task.type} after ${this.maxRetries} failed attempts`
+          `Skipping task: ${task.type} after ${this.maxRetries} failed attempts`
         );
-        await this.saveFailedJob(task);
         this.items.shift();
       }
     }
@@ -320,32 +316,6 @@ class Queue {
       });
     }
     console.log(`Total tasks in queue: ${this.items.length}`);
-  }
-
-  async saveFailedJob(task) {
-    try {
-      let failedJobs = [];
-      try {
-        const data = await fs.readFile(this.failedJobsPath, 'utf8');
-        failedJobs = JSON.parse(data);
-      } catch (error) {
-        if (error.code !== 'ENOENT') {
-          console.error('Error reading failed jobs file:', error);
-        }
-      }
-
-      task.failedAt = new Date().toISOString();
-      task.error = task.error?.toString() || 'Unknown error';
-      failedJobs.push(task);
-
-      await fs.writeFile(
-        this.failedJobsPath,
-        JSON.stringify(failedJobs, null, 2)
-      );
-      console.log(`Failed job saved: ${task.type}`);
-    } catch (error) {
-      console.error('Error saving failed job:', error);
-    }
   }
 }
 
