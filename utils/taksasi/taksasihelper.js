@@ -40,7 +40,7 @@ function getLocalDateTime() {
 }
 
 // Single console.log for debugging
-const datetimeValue = '2024-11-13';
+const datetimeValue = getLocalDateTime();
 // console.log('Current date:', datetimeValue); // Will output format: 2024-11-09
 console.log('Current date:', datetimeValue);
 
@@ -112,7 +112,7 @@ async function sendtaksasiest(estate, group_id, folder, sock, taskid, tanggal) {
   try {
     let newdaate;
     if (tanggal === 'null' || tanggal === null) {
-      newdaate = datetimeValue; // Call the function to get the date
+      newdaate = getLocalDateTime();
     } else {
       newdaate = tanggal;
     }
@@ -251,11 +251,11 @@ async function Generateandsendtaksasi(sock) {
     );
     const data = response.data.data;
     for (const item of data) {
-      await generatemapstaksasi(item.estate, datetimeValue);
+      await generatemapstaksasi(item.estate, getLocalDateTime());
 
       try {
         const { data: responseData } = await axios.get(
-          `https://smart-app.srs-ssms.com/api/exportPdfTaksasi/${item.estate}/${datetimeValue}`
+          `https://smart-app.srs-ssms.com/api/exportPdfTaksasi/${item.estate}/${getLocalDateTime()}`
         );
 
         if (responseData.base64_pdf) {
@@ -320,16 +320,16 @@ async function Sendverificationtaksasi(sock) {
 
     const data = response.data.data;
     for (const item of data) {
-      await generatemapstaksasi(item.estate, datetimeValue);
+      await generatemapstaksasi(item.estate, getLocalDateTime());
 
       try {
         const { data: responseData } = await axios.get(
-          `https://smart-app.srs-ssms.com/api/exportPdfTaksasi/${item.estate}/${datetimeValue}`
+          `https://smart-app.srs-ssms.com/api/exportPdfTaksasi/${item.estate}/${getLocalDateTime()}`
         );
 
         if (responseData.base64_pdf) {
           const pdfBuffer = Buffer.from(responseData.base64_pdf, 'base64');
-          const pdfFilename = `Rekap Taksasi ${item.estate} ${datetimeValue}.pdf`;
+          const pdfFilename = `Rekap Taksasi ${item.estate} ${getLocalDateTime()}.pdf`;
           // const messageOptions = {
           //   document: pdfBuffer,
           //   mimetype: 'application/pdf',

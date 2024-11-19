@@ -13,7 +13,7 @@ const noWa_grading_nbm = '6285655573821-1566449850@g.us';
 const noWa_grading_mlm = '120363332857987276@g.us';
 const noWa_grading_nkm = '120363046524351245@g.us';
 const noWa_grading_scm = '120363332360538214@g.us';
-
+const no_grup_skm = '120363283953366418@g.us';
 // id_group: 120363046524351245@g.us || Nama Group: GRADING NKM
 // id_group: 120363332857987276@g.us || Nama Group: QC Grading PKS Malata
 
@@ -22,6 +22,7 @@ const noWa_grading_scm = '120363332360538214@g.us';
 // id_group: 6285655573821-1566449850@g.us || Nama Group: NBM 22.00
 
 const { channel } = require('../../utils/pusher');
+const { REGISTRATION_PUBLIC_KEY } = require('@whiskeysockets/baileys');
 // const noWa_grading = testingbotda;
 // const noWa_grading_suayap = testingbotsampenikah;
 // id_group: 6282257572112-1635223872@g.us || Nama Group: SGM 23.50
@@ -103,6 +104,9 @@ async function get_mill_data(sock) {
             case 'SCM':
               send_images = true;
               return noWa_grading_scm;
+            case 'SKM':
+              send_image = true;
+              return no_grup_skm;
             default:
               send_images = true;
               return noWa_grading;
