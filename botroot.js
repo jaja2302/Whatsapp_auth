@@ -267,10 +267,12 @@ app.get('/testing', async (req, res) => {
 });
 // Create a global queue instance
 global.queue = new Queue();
+console.log('Queue created');
 
 // clear bot_grading_error.log and bot_grading.log
 fs.writeFileSync('./bot_grading_error.log', '');
 fs.writeFileSync('./bot_grading.log', '');
+console.log('bot_grading_error.log and bot_grading.log cleared');
 
 connectToWhatsApp().catch((err) =>
   logger.error('Error connecting to WhatsApp:', err)
