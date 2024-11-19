@@ -269,9 +269,25 @@ app.get('/testing', async (req, res) => {
 global.queue = new Queue();
 console.log('Queue created');
 
-// clear bot_grading_error.log and bot_grading.log
-fs.writeFileSync('./bot_grading_error.log', '');
-fs.writeFileSync('./bot_grading.log', '');
+// Check and clear logs if they exceed 2MB
+const MB_IN_BYTES = 2 * 1024 * 1024; // 2MB in bytes
+
+function clearLogIfNeeded(filePath) {
+  try {
+    if (fs.existsSync(filePath)) {
+      const stats = fs.statSync(filePath);
+      if (stats.size > MB_IN_BYTES) {
+        fs.writeFileSync(filePath, '');
+        console.log(`${filePath} exceeded 2MB and was cleared`);
+      }
+    }
+  } catch (error) {
+    console.error(`Error handling ${filePath}:`, error);
+  }
+}
+
+clearLogIfNeeded('./bot_grading_error.log');
+clearLogIfNeeded('./bot_grading.log');
 console.log('bot_grading_error.log and bot_grading.log cleared');
 
 connectToWhatsApp().catch((err) =>
