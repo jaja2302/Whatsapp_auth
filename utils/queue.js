@@ -63,24 +63,31 @@ class Queue {
   }
 
   push(task) {
-    // Define a function to compare tasks
-    const areTasksEqual = (task1, task2) => {
-      // Compare task type
-      if (task1.type !== task2.type) return false;
+    // Add a flag to control identical task checking
+    const ALLOW_DUPLICATE_TASKS = true; // Set to true to allow duplicate tasks
 
-      // Compare essential task data, ignoring timestamps or other volatile fields
-      const essentialData1 = this.getEssentialTaskData(task1.data);
-      const essentialData2 = this.getEssentialTaskData(task2.data);
+    if (!ALLOW_DUPLICATE_TASKS) {
+      // Define a function to compare tasks
+      const areTasksEqual = (task1, task2) => {
+        // Compare task type
+        if (task1.type !== task2.type) return false;
 
-      return JSON.stringify(essentialData1) === JSON.stringify(essentialData2);
-    };
+        // Compare essential task data, ignoring timestamps or other volatile fields
+        const essentialData1 = this.getEssentialTaskData(task1.data);
+        const essentialData2 = this.getEssentialTaskData(task2.data);
 
-    // Check if an identical task already exists in the queue
-    const existingTask = this.items.find((item) => areTasksEqual(item, task));
+        return (
+          JSON.stringify(essentialData1) === JSON.stringify(essentialData2)
+        );
+      };
 
-    if (existingTask) {
-      console.log(`Identical task already in queue: ${task.type}. Skipping.`);
-      return;
+      // Check if an identical task already exists in the queue
+      const existingTask = this.items.find((item) => areTasksEqual(item, task));
+
+      if (existingTask) {
+        console.log(`Identical task already in queue: ${task.type}. Skipping.`);
+        return;
+      }
     }
 
     this.items.push(task);
