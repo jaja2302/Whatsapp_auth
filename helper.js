@@ -1010,7 +1010,7 @@ const setupCronJobs = (sock) => {
             'cron job statusAWS,statusHistory,get_iot_weatherstation'
           );
 
-          await statusAWS();
+          // await statusAWS();
           // await statusHistory(sock);
           await get_iot_weatherstation();
           // await get_iot_weatherstation_data_gap(sock);
