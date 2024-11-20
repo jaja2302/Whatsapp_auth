@@ -70,8 +70,11 @@ async function generatemapstaksasi(est, datetime) {
         }
       });
 
+      // await page.goto(
+      //   `https://srs-ssms.com/rekap_pdf/convert_taksasi_pdf_get.php?datetime=${datetime}&estate=${est}`
+      // );
       await page.goto(
-        `https://srs-ssms.com/rekap_pdf/convert_taksasi_pdf_get.php?datetime=${datetime}&estate=${est}`
+        `https://management.srs-ssms.com/api/generateMaps/${est}/${datetime}`
       );
       await page.title();
 
@@ -121,10 +124,13 @@ async function sendtaksasiest(estate, group_id, folder, sock, taskid, tanggal) {
     // console.log(estate, newdaate);
 
     try {
+      // const { data: responseData } = await axios.get(
+      //   `https://smart-app.srs-ssms.com/api/exportPdfTaksasi/${estate}/${newdaate}`
+      // );
       const { data: responseData } = await axios.get(
-        `https://smart-app.srs-ssms.com/api/exportPdfTaksasi/${estate}/${newdaate}`
+        `https://management.srs-ssms.com/api/exportPdfTaksasiNew/${estate}/${newdaate}`
       );
-      console.log(responseData);
+      // console.log(responseData);
       if (responseData.base64_pdf) {
         const pdfBuffer = Buffer.from(responseData.base64_pdf, 'base64');
         const pdfFilename = `Rekap Taksasi ${estate} ${newdaate}.pdf`;
@@ -134,20 +140,15 @@ async function sendtaksasiest(estate, group_id, folder, sock, taskid, tanggal) {
             type: 'send_document',
             data: {
               to: group_id,
-              filename: pdfFilename, // Changed from fileName to filename
+              filename: pdfFilename,
               document: pdfBuffer,
               caption: captions,
             },
           });
           // await sock.sendMessage(group_id, messageOptions);
           const apiUrl = 'https://qc-apps.srs-ssms.com/api/recordcronjob';
-          // const apiUrl = 'http://qc-apps2.test/api/recordcronjob';
-
-          // Create the form data with variables estate and datetime
           const formData = new FormData();
           formData.append('est', estate);
-
-          // Get the current date and time in the Jakarta timezone using Luxon
           const dateTime = DateTime.now().setZone('Asia/Jakarta').toISO();
 
           formData.append('datetime', dateTime);
@@ -182,7 +183,6 @@ async function sendtaksasiest(estate, group_id, folder, sock, taskid, tanggal) {
         message: `Error sending PDF: ${error.message}`,
       };
     }
-    return 'success';
   } catch (error) {
     return {
       status: 500,
