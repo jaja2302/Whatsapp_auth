@@ -365,34 +365,29 @@ async function Sendverificationtaksasi(sock) {
 async function handleTaksasi(data, sock) {
   console.log('Received data:', data);
 
-  // Extract parts of the command
   const parts = data.split('/');
   console.log(parts);
 
-  // Check if the command is valid
-  if (parts.length < 1) {
+  if (parts.length < 3) {
+    // At least command, date, and one estate
     return {
       status: 400,
       message:
-        'Harap tambahkan  tanggal dan nama estate dibatasi dengan /\n-Contoh !taksasi/2024-12-23/kne/nbe/tbe/sbe/lme1',
+        'Harap tambahkan tanggal dan nama estate dibatasi dengan /\n-Contoh !taksasi/2024-12-23/kne/nbe/tbe/sbe/lme1',
     };
   }
 
-  // Extract date and estate details
-  const command = parts[0]; // !taksasi
-  const date = parts[1]; // 2024-02-97
-  const estates = parts.slice(2); // [kne, nbe, tbe, sbe, lme1]
+  const [command, date, ...estates] = parts;
 
-  // Validate date format
-  const dateRegex = /^\d{4}-\d{1,2}-\d{1,2}$/;
+  // Validate date format and logical date
+  const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
   if (!dateRegex.test(date)) {
     return {
       status: 400,
-      message: 'invalid tanggal format,gunakan format tanggal yyyy-mm-dd',
+      message: 'Invalid tanggal format, gunakan format tanggal yyyy-mm-dd',
     };
   }
 
-  // Further validate that the date is logically valid
   const [year, month, day] = date.split('-').map(Number);
   const dateObject = new Date(year, month - 1, day); // JS Date months are 0-indexed
 
@@ -406,54 +401,63 @@ async function handleTaksasi(data, sock) {
       message: 'Tanggal yang anda masukan tidak valid',
     };
   }
+
   const today = new Date();
   today.setHours(0, 0, 0, 0); // Normalize today's date to remove time components
 
-  if (date > today) {
+  if (dateObject > today) {
     return {
       status: 400,
       message:
-        'Bot tidak punya mesin waktu ke tanggal ini. Masukan masksimal hari ini dan masa lalu.',
+        'Bot tidak punya mesin waktu ke tanggal ini. Masukan maksimal hari ini dan masa lalu.',
     };
   }
-  // Define your API URL
+
   const apiUrl = 'https://qc-apps.srs-ssms.com/api/getdatacron';
 
   try {
-    // Fetch data from the API
     const response = await axios.get(apiUrl);
     const dataestate = response.data;
 
-    // Loop through user input estates and match with API data
     for (const estate of estates) {
+      const standardizedEstate = estate.toUpperCase();
       const matchingTasks = dataestate.filter(
-        (task) => task.estate === estate.toUpperCase()
+        (task) => task.estate === standardizedEstate
       );
 
       if (matchingTasks.length > 0) {
-        // There is a match, loop through and send for each matching task
         for (const task of matchingTasks) {
-          const { estate, group_id, wilayah: folder, id } = task;
+          const { group_id, wilayah: folder, id } = task;
           try {
-            // Call your sendtaksasiest function here
-            await sendtaksasiest(estate, group_id, 'null', sock, id, date);
-            // console.log(`Successfully sent taksasi for estate: ${estate}`);
+            await sendtaksasiest(
+              standardizedEstate,
+              group_id,
+              'null',
+              sock,
+              id,
+              date
+            );
+            // Optionally log success
+            // console.log(`Successfully sent taksasi for estate: ${standardizedEstate}`);
           } catch (error) {
-            // Handle error if sending fails
-            console.log('Error sending taksasi:', error.message);
+            console.error(
+              `Error sending taksasi for estate ${standardizedEstate}:`,
+              error.message
+            );
             return {
               status: 500,
-              message: `Failed to send taksasi for estate ${estate}`,
+              message: `Failed to send taksasi for estate ${standardizedEstate}`,
             };
           }
         }
       } else {
-        // No matching task found
-        console.log(`No matching tasks found for estate: ${estate}`);
+        console.log(
+          `No matching tasks found for estate: ${standardizedEstate}`
+        );
       }
     }
   } catch (error) {
-    console.log('Error fetching data:', error.message);
+    console.error('Error fetching data:', error.message);
     return {
       status: 500,
       message: 'Error fetching data from API',
