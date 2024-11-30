@@ -77,70 +77,82 @@ async function get_mill_data(sock) {
 
       try {
         const targetGroup = (() => {
-          // SKM
-          // SGM
-          // SYM
-          // SLM
-          // NBM
           let send_image = false;
           switch (itemdata.mill) {
             case 'SYM':
-              send_images = true;
+              // send_images = true;
               return noWa_grading_suayap;
             case 'SGM':
-              send_images = true;
+              // send_images = true;
               return noWa_grading_sgm;
             case 'SLM':
               return noWa_grading_slm;
             case 'NBM':
-              send_images = true;
+              // send_images = true;
               return noWa_grading_nbm;
             case 'MLM':
-              send_images = true;
+              // send_images = true;
               return noWa_grading_mlm;
             case 'NKM':
-              send_images = true;
+              // send_images = true;
               return noWa_grading_nkm;
             case 'SCM':
-              send_images = true;
+              // send_images = true;
               return noWa_grading_scm;
             case 'SKM':
-              send_image = true;
+              // send_image = true;
               return no_grup_skm;
             default:
-              send_images = true;
+              // send_images = true;
               return noWa_grading;
           }
         })();
-        if (send_images) {
-          global.queue.push({
-            type: 'send_image',
-            data: {
-              to: targetGroup,
-              image: itemdata.collage_url,
-              caption: message,
-            },
-          });
-          global.queue.push({
-            type: 'send_document',
-            data: {
-              to: targetGroup,
-              document: itemdata.pdf_url,
-              filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
-              caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
-            },
-          });
-        } else {
-          global.queue.push({
-            type: 'send_document',
-            data: {
-              to: targetGroup,
-              document: itemdata.pdf_url,
-              filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
-              caption: message,
-            },
-          });
-        }
+        global.queue.push({
+          type: 'send_image',
+          data: {
+            to: targetGroup,
+            image: itemdata.collage_url,
+            caption: message,
+          },
+        });
+        global.queue.push({
+          type: 'send_document',
+          data: {
+            to: targetGroup,
+            document: itemdata.pdf_url,
+            filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
+            caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
+          },
+        });
+        // if (send_images) {
+        //   global.queue.push({
+        //     type: 'send_image',
+        //     data: {
+        //       to: targetGroup,
+        //       image: itemdata.collage_url,
+        //       caption: message,
+        //     },
+        //   });
+        //   global.queue.push({
+        //     type: 'send_document',
+        //     data: {
+        //       to: targetGroup,
+        //       document: itemdata.pdf_url,
+        //       filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
+        //       caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
+        //     },
+        //   });
+        // } else {
+        //   global.queue.push({
+        //     type: 'send_document',
+        //     data: {
+        //       to: targetGroup,
+        //       document: itemdata.pdf_url,
+        //       filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
+        //       caption: message,
+        //     },
+        //   });
+        // }
       } catch (error) {
         console.log('Error in broadcast_grading_mill:', error);
         await catcherror(
@@ -198,6 +210,10 @@ function formatGradingMessage(itemdata) {
   message += `Jumlah janjang di Grading: ${itemdata.jjg_grading} jjg\n`;
   message += `Jumlah janjang di SPB: ${itemdata.jjg_spb} jjg\n`;
   message += `Jumlah Selisih janjang: ${itemdata.jjg_selisih} jjg (${itemdata.persentase_selisih}%)\n`;
+  if (itemdata.update_by !== null) {
+    message += `Laporan diperbaharui\n`;
+    message += `*Telah diedit oleh*: ${itemdata.update_by}\n`;
+  }
   message += `Generated by Digital Architect SRS bot`;
 
   return message;
