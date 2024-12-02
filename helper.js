@@ -49,12 +49,7 @@ function formatDate(date) {
 
 // Get the current date
 const today = new Date();
-
-const datetimeValue = formatDate(today);
-const idgroup = '120363205553012899@g.us';
 const idgroup_testing = '120363204285862734@g.us';
-const idgroup_da = '120363303562042176@g.us';
-
 function formatPhoneNumber(phoneNumber) {
   if (phoneNumber.startsWith('08')) {
     return '628' + phoneNumber.substring(2);
@@ -77,156 +72,6 @@ if (hour >= 4 && hour < 12) {
 } else {
   greeting = 'Selamat Malam';
 }
-function readLatestId() {
-  try {
-    if (fs.existsSync('latest_id.txt')) {
-      const data = fs.readFileSync('latest_id.txt', 'utf8');
-      return parseInt(data.trim()); // Parse the ID as an integer
-    } else {
-      // If the file doesn't exist, set the initial latest_id to 9
-      writeLatestId(9);
-      return 9;
-    }
-  } catch (err) {
-    console.log('Error reading latest ID:', err);
-    return null;
-  }
-}
-function writeLatestId(id) {
-  try {
-    fs.writeFileSync('latest_id.txt', id.toString()); // Write the ID to the file
-  } catch (err) {
-    console.log('Error writing latest ID:', err);
-  }
-}
-async function statusHistory(sock) {
-  try {
-    // Get the latest ID from the file
-    let latestId = readLatestId();
-
-    // Fetch new data from the API using the latest ID
-    const response = await axios.get(
-      'https://qc-apps.srs-ssms.com/api/history',
-      {
-        params: {
-          id: latestId, // Change the parameter name to "id"
-        },
-      }
-    );
-    const numberData = response.data;
-
-    if (Array.isArray(numberData) && numberData.length > 0) {
-      for (const data of numberData) {
-        const maxId = Math.max(...response.data.map((item) => item.id));
-        writeLatestId(maxId);
-
-        const pesankirim = data.menu;
-        const groupId = '120363205553012899@g.us'; // Update with your actual group ID
-        let existIdGroup = await sock.groupMetadata(groupId);
-        // console.log(existIdGroup.id);
-        // console.log("isConnected");
-
-        if (existIdGroup?.id || (existIdGroup && existIdGroup[0]?.id)) {
-          queue.push({
-            type: 'send_message',
-            data: {
-              to: groupId,
-              message: `User ${data.nama_user} melakukan ${data.menu} pada ${data.tanggal}`,
-            },
-          });
-
-          // await sock.sendMessage(groupId, {
-          //   text: `User ${data.nama_user} melakukan ${data.menu} pada ${data.tanggal}`,
-          // });
-          // console.log('Message sent successfully.');
-        } else {
-          console.log(`ID Group ${groupId} tidak terdaftar.`);
-        }
-        break;
-      }
-    } else {
-      console.log('No data or invalid data received from the API.');
-    }
-  } catch (error) {
-    console.log('Error fetching data:', error);
-    // Handle the error accordingly
-  }
-}
-//end func
-
-// function send notif ke pelanggan bot smartlabs
-
-async function sendMessagesBasedOnData(sock) {
-  try {
-    const response = await axios.get(
-      'https://qc-apps.srs-ssms.com/api/getmsgsmartlabs'
-    );
-    const numberData = response.data;
-
-    if (numberData.data === 'kosong') {
-      // Send a specific message when data is "kosong"
-      // console.log('Smartlabs Kosong'); // Log the result for debugging
-    } else {
-      // Process the data array as usual
-      for (const data of numberData.data) {
-        const numberWA = data.penerima + '@s.whatsapp.net';
-        const currentTime = moment().tz('Asia/Jakarta');
-        const currentHour = currentTime.hours();
-        let greeting;
-
-        if (currentHour < 10) {
-          greeting = 'Selamat Pagi';
-        } else if (currentHour < 15) {
-          greeting = 'Selamat Siang';
-        } else if (currentHour < 19) {
-          greeting = 'Selamat Sore';
-        } else {
-          greeting = 'Selamat Malam';
-        }
-
-        let chatContent;
-        if (data.type === 'input') {
-          chatContent = `Yth. Pelanggan Setia Lab CBI,\n\nSampel anda telah kami terima dengan no surat *${data.no_surat}*. \nprogress saat ini: *${data.progres}*. Progress anda dapat dilihat di website https://smartlab.srs-ssms.com/tracking_sampel dengan kode tracking sample : *${data.kodesample}*\nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.`;
-        } else {
-          chatContent = `Yth. Pelanggan Setia Lab CBI,\n\nProgress Sampel anda telah *Terupdate* dengan no surat *${data.no_surat}*. \nProgress saat ini: *${data.progres}*. Progress anda dapat dilihat di website https://smartlab.srs-ssms.com/tracking_sampel dengan kode tracking sample : *${data.kodesample}*\nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.`;
-        }
-
-        const message = `${greeting}\n${chatContent}`;
-        queue.push({
-          type: 'send_message',
-          data: {
-            to: numberWA,
-            message: message,
-          },
-        });
-        // await sock.sendMessage(numberWA, { text: message });
-
-        console.log('Message sent: smartlab', data.id); // Log the result for debugging
-        await deletemsg(data.id); // Ensure this function is defined elsewhere in your code
-      }
-    }
-  } catch (error) {
-    console.log('Error fetching data or sending messages smartlab:', error); // Log the error if any occurs
-  }
-}
-
-async function deletemsg(idmsg) {
-  try {
-    const response = await axios.post(
-      'https://qc-apps.srs-ssms.com/api/deletemsgsmartlabs',
-      {
-        id: idmsg,
-      }
-    );
-
-    let responses = response.data;
-    // console.log(`Message ID '${idmsg}' deleted successfully.`);
-  } catch (error) {
-    console.log(`Error deleting message ID '${idmsg}':`, error);
-  }
-}
-//end func
-// function send notifikasi bot web maintence
 
 async function maintencweget(sock) {
   try {
@@ -310,10 +155,6 @@ async function statusAWS() {
     console.log(`Error fetching files: aws`, error);
   }
 }
-
-// endfunction
-
-// endfunction
 
 // function bot pengawasan operator AI
 async function handleBotDailyPengawasanOperatorAI(sock) {
@@ -1315,6 +1156,7 @@ const setupCronJobs = (sock) => {
         console.log('Error fetching base64 image:', error);
       }
     });
+
     channel.bind('Smartlabsnotification', async (itemdata) => {
       if (!itemdata || !itemdata.data) {
         console.log('Event data, data, or bot_data is undefined.');
@@ -1334,6 +1176,8 @@ const setupCronJobs = (sock) => {
         message += `*Jenis Sampel* : ${dataitem.jenis_sampel}\n`;
         message += `*Jumlah Sampel* : ${dataitem.jumlah_sampel}\n`;
         message += `*Progress saat ini* : ${dataitem.progresss}\n`;
+        message += `*Tanggal Registrasi* : ${dataitem.tanggal_registrasi}\n`;
+        message += `*Estimasi* : ${dataitem.estimasi}\n`;
         message += `Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com\n`;
         message += `Dengan kode tracking  *${dataitem.kodesample}*\n`;
         message += `Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.\n`;
@@ -1342,9 +1186,6 @@ const setupCronJobs = (sock) => {
           type: 'send_message',
           data: { to: dataitem.penerima + '@s.whatsapp.net', message: message },
         });
-        // await sock.sendMessage(`${dataitem.penerima}@s.whatsapp.net`, {
-        //   text: message,
-        // });
         if (dataitem.asal === 'Eksternal') {
           const response = await axios.get(
             'https://management.srs-ssms.com/api/invoices_smartlabs',
@@ -1361,13 +1202,6 @@ const setupCronJobs = (sock) => {
             // Step 2: Decode the base64 PDF
             const pdfBuffer = Buffer.from(responseData.pdf, 'base64');
             const pdfFilename = responseData.filename || 'Invoice.pdf';
-            // Step 3: Send the PDF as a document via WhatsApp
-            // const messageOptions = {
-            //   document: pdfBuffer,
-            //   mimetype: 'application/pdf',
-            //   fileName: pdfFilename,
-            //   caption: 'Invoice Smartlabs',
-            // };
             queue.push({
               type: 'send_document',
               data: {
@@ -1378,11 +1212,6 @@ const setupCronJobs = (sock) => {
                 caption: 'Invoice Smartlabs',
               },
             });
-            // await sock.sendMessage(
-            //   dataitem.penerima + '@s.whatsapp.net',
-            //   messageOptions
-            // );
-            // console.log('PDF sent successfully!');
           } else {
             console.log('PDF not found in the API response smartlab.');
           }
