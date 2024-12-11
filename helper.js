@@ -1175,11 +1175,12 @@ const setupCronJobs = (sock) => {
         message += `*Departemen* : ${dataitem.nama_departemen}\n`;
         message += `*Jenis Sampel* : ${dataitem.jenis_sampel}\n`;
         message += `*Jumlah Sampel* : ${dataitem.jumlah_sampel}\n`;
-        message += `*Progress saat ini* : ${dataitem.progresss}\n`;
+        // message += `*Progress saat ini* : ${dataitem.progresss}\n`;
         message += `*Tanggal Registrasi* : ${dataitem.tanggal_registrasi}\n`;
         message += `*Estimasi* : ${dataitem.estimasi}\n`;
         message += `Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com\n`;
-        message += `Dengan kode tracking  *${dataitem.kodesample}*\n`;
+        // message += `Masih dalam taham pengembangan`
+        message += `Progress saat ini dapan dicek,Dengan kode tracking  *${dataitem.kodesample}*\n`;
         message += `Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.\n`;
         // console.log(message);
         queue.push({
