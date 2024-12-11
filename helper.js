@@ -1156,69 +1156,6 @@ const setupCronJobs = (sock) => {
         console.log('Error fetching base64 image:', error);
       }
     });
-
-    channel.bind('Smartlabsnotification', async (itemdata) => {
-      if (!itemdata || !itemdata.data) {
-        console.log('Event data, data, or bot_data is undefined.');
-        return;
-      }
-      // Loop through each item in the data array
-      itemdata.data.forEach(async (dataitem) => {
-        let message = `*${greeting}*:\n`;
-        message += `Yth. Pelanggan Setia Lab CBI\n`;
-        if (dataitem.type === 'input') {
-          message += `Progress Sampel anda telah kami terima dengan:\n`;
-        } else {
-          message += `Progress Sampel anda telah Terupdate dengan:\n`;
-        }
-        message += `*No. Surat* : ${dataitem.no_surat}\n`;
-        message += `*Departemen* : ${dataitem.nama_departemen}\n`;
-        message += `*Jenis Sampel* : ${dataitem.jenis_sampel}\n`;
-        message += `*Jumlah Sampel* : ${dataitem.jumlah_sampel}\n`;
-        // message += `*Progress saat ini* : ${dataitem.progresss}\n`;
-        message += `*Tanggal Registrasi* : ${dataitem.tanggal_registrasi}\n`;
-        message += `*Estimasi* : ${dataitem.estimasi}\n`;
-        message += `Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com\n`;
-        // message += `Masih dalam taham pengembangan`
-        message += `Progress saat ini dapan dicek,Dengan kode tracking  *${dataitem.kodesample}*\n`;
-        message += `Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.\n`;
-        // console.log(message);
-        queue.push({
-          type: 'send_message',
-          data: { to: dataitem.penerima + '@s.whatsapp.net', message: message },
-        });
-        if (dataitem.asal === 'Eksternal') {
-          const response = await axios.get(
-            'https://management.srs-ssms.com/api/invoices_smartlabs',
-            {
-              params: {
-                email: 'j',
-                password: 'j',
-                id_data: dataitem.id_invoice,
-              },
-            }
-          );
-          const responseData = response.data;
-          if (responseData.pdf) {
-            // Step 2: Decode the base64 PDF
-            const pdfBuffer = Buffer.from(responseData.pdf, 'base64');
-            const pdfFilename = responseData.filename || 'Invoice.pdf';
-            queue.push({
-              type: 'send_document',
-              data: {
-                to: dataitem.penerima + '@s.whatsapp.net',
-                document: pdfBuffer,
-                mimetype: 'application/pdf',
-                fileName: pdfFilename,
-                caption: 'Invoice Smartlabs',
-              },
-            });
-          } else {
-            console.log('PDF not found in the API response smartlab.');
-          }
-        }
-      });
-    });
   } else {
     console.log('WhatsApp belum terhubung');
   }

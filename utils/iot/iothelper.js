@@ -136,7 +136,7 @@ async function get_iot_weatherstation_data_gap(sock) {
             try {
               await sock.sendMessage(idgroupiot, { text: message });
             } catch (error) {
-              console.log(error);
+              // console.log(error);
               await catcherror(gapData.id, 'error_cronjob', 'bot_iot');
             }
           });

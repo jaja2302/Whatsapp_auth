@@ -41,7 +41,7 @@ const {
 const { handleReplyNoDocMessage } = require('./utils/repply_no_doc_messages');
 const { handleReplyDocMessage } = require('./utils/repply_with_doc_messages');
 const { handleGroupMessage } = require('./utils/group_messages');
-
+const { helperfunctionSmartlabs } = require('./utils/smartlabs/smartlabs');
 // App Initialization
 const app = express();
 const server = http.createServer(app);
@@ -298,6 +298,7 @@ setupCronJobs();
 function_rapidresponse();
 function_marcom();
 broadcast_grading_mill();
+helperfunctionSmartlabs();
 // ... other function calls
 const port = process.env.PORT || 8000;
 server.listen(port, () => logger.info(`Server running on port ${port}`));

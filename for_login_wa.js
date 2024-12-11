@@ -197,79 +197,9 @@ async function connectToWhatsApp() {
         // console.log(
         //   `remoteJid: ${noWa}, isReply: ${isReply}, isGroup: ${isGroup}, isPrivate: ${isPrivate}`
         // );
-
-        if (isReply) {
-          const contextInfo = message.message.extendedTextMessage.contextInfo;
-          const text_repply = message.message.extendedTextMessage.text;
-          const quotedMessageSender = contextInfo.participant;
-          const respon_atasan = text_repply;
-          const is_repply_text =
-            contextInfo.quotedMessage && contextInfo.quotedMessage.conversation;
-          const is_repply_doc =
-            contextInfo.quotedMessage &&
-            contextInfo.quotedMessage.documentWithCaptionMessage &&
-            contextInfo.quotedMessage.documentWithCaptionMessage.message &&
-            contextInfo.quotedMessage.documentWithCaptionMessage.message
-              .documentMessage;
-          const quotedMessage = contextInfo.quotedMessage;
-          const conversation = contextInfo.quotedMessage.conversation;
-          if (quotedMessage.conversation) {
-            // console.log('This is a reply to a text message');
-            // Handle reply to text
-            await handleReplyNoDocMessage(
-              conversation,
-              noWa,
-              sock,
-              respon_atasan,
-              message
-            );
-          } else if (quotedMessage.documentWithCaptionMessage) {
-            // console.log('This is a reply to a text document');
-            await handleReplyDocMessage(
-              conversation,
-              noWa,
-              sock,
-              respon_atasan,
-              quotedMessage
-            );
-          }
-        } else {
-          if (isGroup) {
-            // console.log('This is a group message without reply:', text);
-            // Handle group message
-            await handleGroupMessage(
-              lowerCaseMessage,
-              noWa,
-              text,
-              sock,
-              message
-            );
-          } else if (isPrivate) {
-            // console.log('This is a private message without reply:', text);
-            // Handle other private messages
-            await handlePrivateMessage(lowerCaseMessage, noWa, text, sock);
-          }
-        }
-
-        // Handle document messages (both in private and group)
-        if (message.message?.documentWithCaptionMessage) {
-          const documentMessage =
-            message.message.documentWithCaptionMessage.message.documentMessage;
-          console.log(
-            'This message contains a document:',
-            documentMessage.fileName,
-            documentMessage.caption
-          );
-          // Handle document message
-        }
       }
     }
   });
-
-  setupCronJobs(sock);
-  runfunction(sock);
-  function_rapidresponse(sock);
-  function_marcom(sock);
 }
 
 io.on('connection', async (socket) => {
