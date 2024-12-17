@@ -14,18 +14,6 @@ const noWa_grading_mlm = '120363332857987276@g.us';
 const noWa_grading_nkm = '120363046524351245@g.us';
 const noWa_grading_scm = '120363332360538214@g.us';
 const no_grup_skm = '120363283953366418@g.us';
-// id_group: 120363046524351245@g.us || Nama Group: GRADING NKM
-// id_group: 120363332857987276@g.us || Nama Group: QC Grading PKS Malata
-
-// List id_group: 120363331441324422@g.us || Nama Group: Grading Reg II
-
-// id_group: 6285655573821-1566449850@g.us || Nama Group: NBM 22.00
-
-const { channel } = require('../../utils/pusher');
-const { REGISTRATION_PUBLIC_KEY } = require('@whiskeysockets/baileys');
-// const noWa_grading = testingbotda;
-// const noWa_grading_suayap = testingbotsampenikah;
-// id_group: 6282257572112-1635223872@g.us || Nama Group: SGM 23.50
 
 async function run_jobs_mill() {
   const credentials = {
@@ -48,7 +36,7 @@ async function run_jobs_mill() {
   }
 }
 
-async function get_mill_data(sock) {
+async function get_mill_data() {
   const credentials = {
     email: 'j',
     password: 'j',
@@ -77,33 +65,24 @@ async function get_mill_data(sock) {
 
       try {
         const targetGroup = (() => {
-          let send_image = false;
           switch (itemdata.mill) {
             case 'SYM':
-              // send_images = true;
               return noWa_grading_suayap;
             case 'SGM':
-              // send_images = true;
               return noWa_grading_sgm;
             case 'SLM':
               return noWa_grading_slm;
             case 'NBM':
-              // send_images = true;
               return noWa_grading_nbm;
             case 'MLM':
-              // send_images = true;
               return noWa_grading_mlm;
             case 'NKM':
-              // send_images = true;
               return noWa_grading_nkm;
             case 'SCM':
-              // send_images = true;
               return noWa_grading_scm;
             case 'SKM':
-              // send_image = true;
               return no_grup_skm;
             default:
-              // send_images = true;
               return noWa_grading;
           }
         })();
@@ -124,37 +103,7 @@ async function get_mill_data(sock) {
             caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
           },
         });
-        // if (send_images) {
-        //   global.queue.push({
-        //     type: 'send_image',
-        //     data: {
-        //       to: targetGroup,
-        //       image: itemdata.collage_url,
-        //       caption: message,
-        //     },
-        //   });
-        //   global.queue.push({
-        //     type: 'send_document',
-        //     data: {
-        //       to: targetGroup,
-        //       document: itemdata.pdf_url,
-        //       filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
-        //       caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
-        //     },
-        //   });
-        // } else {
-        //   global.queue.push({
-        //     type: 'send_document',
-        //     data: {
-        //       to: targetGroup,
-        //       document: itemdata.pdf_url,
-        //       filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
-        //       caption: message,
-        //     },
-        //   });
-        // }
       } catch (error) {
-        console.log('Error in broadcast_grading_mill:', error);
         await catcherror(
           itemdata.id,
           'error_sending_message',
@@ -244,134 +193,8 @@ async function updateDataMill(data) {
   }
 }
 
-const broadcast_grading_mill = async () => {
-  channel.bind('gradingmillpdf', async (data) => {
-    console.log(`Broadcast Grading :${data}`);
-    if (data.data && data.data.length > 0) {
-      for (const itemdata of data.data) {
-        const message = formatGradingMessage(itemdata);
-
-        try {
-          // Send to appropriate group based on mill
-          if (itemdata.mill === 'SYM') {
-            // global.queue.push({
-            //   type: 'send_image',
-            //   data: {
-            //     to: noWa_grading_suayap,
-            //     image: itemdata.collage_url,
-            //     caption: message,
-            //   },
-            // });
-            global.queue.push({
-              type: 'send_document',
-              data: {
-                to: noWa_grading_suayap,
-                document: itemdata.pdf_url,
-                filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
-                caption: message,
-              },
-            });
-          } else if (itemdata.mill === 'SGM') {
-            // global.queue.push({
-            //   type: 'send_image',
-            //   data: {
-            //     to: noWa_grading_sgm,
-            //     image: itemdata.collage_url,
-            //     caption: message,
-            //   },
-            // });
-            global.queue.push({
-              type: 'send_document',
-              data: {
-                to: noWa_grading_sgm,
-                document: itemdata.pdf_url,
-                filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
-                caption: message,
-              },
-            });
-          } else if (itemdata.mill === 'SLM') {
-            // global.queue.push({
-            //   type: 'send_image',
-            //   data: {
-            //     to: noWa_grading_slm,
-            //     image: itemdata.collage_url,
-            //     caption: message,
-            //   },
-            // });
-            global.queue.push({
-              type: 'send_document',
-              data: {
-                to: noWa_grading_slm,
-                document: itemdata.pdf_url,
-                filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
-                caption: message,
-              },
-            });
-          } else if (itemdata.mill === 'NBM') {
-            // global.queue.push({
-            //   type: 'send_image',
-            //   data: {
-            //     to: noWa_grading_slm,
-            //     image: itemdata.collage_url,
-            //     caption: message,
-            //   },
-            // });
-            global.queue.push({
-              type: 'send_document',
-              data: {
-                to: noWa_grading_nbm,
-                document: itemdata.pdf_url,
-                filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
-                caption: message,
-              },
-            });
-          } else {
-            // global.queue.push({
-            //   type: 'send_image',
-            //   data: {
-            //     to: noWa_grading,
-            //     image: itemdata.collage_url,
-            //     caption: message,
-            //   },
-            // });
-            global.queue.push({
-              type: 'send_document',
-              data: {
-                to: noWa_grading,
-                document: itemdata.pdf_url,
-                filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
-                caption: message,
-              },
-            });
-          }
-
-          // Update data after sending messages
-          // global.queue.push({
-          //   type: 'update_data_mill',
-          //   data: {
-          //     id: itemdata.id,
-          //     credentials: {
-          //       email: 'j',
-          //       password: 'j',
-          //     },
-          //   },
-          // });
-        } catch (error) {
-          console.log('Error in broadcast_grading_mill:', error);
-          await catcherror(
-            itemdata.id,
-            'error_sending_message',
-            'bot_grading_mill'
-          );
-        }
-      }
-    }
-  });
-};
-
 module.exports = {
   get_mill_data,
   updateDataMill,
   run_jobs_mill,
-  broadcast_grading_mill,
 };

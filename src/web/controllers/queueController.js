@@ -2,7 +2,7 @@ const Queue = require('../../../utils/queue');
 const fs = require('fs').promises;
 const path = require('path');
 
-const queue = global.queue; // Assuming you've made your queue instance global
+const queue = global.queue;
 
 async function getQueueStatus(req, res) {
   try {

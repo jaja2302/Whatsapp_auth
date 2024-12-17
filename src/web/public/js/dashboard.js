@@ -300,3 +300,83 @@ setInterval(refreshQueueStatus, 30000);
 document.addEventListener('DOMContentLoaded', () => {
   refreshQueueStatus();
 });
+
+// Add these functions to your dashboard.js
+
+// Initialize mill program controls
+async function initializeMillControls() {
+  try {
+    const response = await fetch('/api/mill/status');
+    const data = await response.json();
+
+    if (data.success) {
+      document.getElementById('toggleGetMillData').checked =
+        data.states.get_mill_data;
+      document.getElementById('toggleRunJobsMill').checked =
+        data.states.run_jobs_mill;
+    }
+  } catch (error) {
+    console.error('Error initializing mill controls:', error);
+  }
+}
+
+// Handle toggle switches
+document
+  .getElementById('toggleGetMillData')
+  .addEventListener('change', async (e) => {
+    await toggleMillProgram('get_mill_data', e.target.checked);
+  });
+
+document
+  .getElementById('toggleRunJobsMill')
+  .addEventListener('change', async (e) => {
+    await toggleMillProgram('run_jobs_mill', e.target.checked);
+  });
+
+async function toggleMillProgram(program, enabled) {
+  try {
+    const response = await fetch('/api/mill/toggle', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ program, enabled }),
+    });
+
+    const data = await response.json();
+    if (!data.success) {
+      // Revert toggle if failed
+      document.getElementById(
+        `toggle${program.charAt(0).toUpperCase() + program.slice(1)}`
+      ).checked = !enabled;
+    }
+  } catch (error) {
+    console.error('Error toggling mill program:', error);
+    // Revert toggle on error
+    document.getElementById(
+      `toggle${program.charAt(0).toUpperCase() + program.slice(1)}`
+    ).checked = !enabled;
+  }
+}
+
+async function runMillProgram(program) {
+  try {
+    const response = await fetch(`/api/mill/${program}/run`, {
+      method: 'POST',
+    });
+
+    const data = await response.json();
+    if (data.success) {
+      // Show success message
+      alert(`${program} executed successfully`);
+    }
+  } catch (error) {
+    console.error('Error running mill program:', error);
+    alert(`Error running ${program}`);
+  }
+}
+
+// Initialize controls when page loads
+document.addEventListener('DOMContentLoaded', () => {
+  initializeMillControls();
+});

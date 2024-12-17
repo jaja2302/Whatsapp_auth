@@ -71,6 +71,64 @@
                 </div>
                 <!-- Add more program cards -->
               </div>
+              <div class="card">
+                <div class="card-header">Grading Mill Controls</div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <div class="card">
+                        <div class="card-body">
+                          <h5>Get Mill Data</h5>
+                          <div class="form-check form-switch mb-2">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              id="toggleGetMillData"
+                            />
+                            <label
+                              class="form-check-label"
+                              for="toggleGetMillData"
+                              >Auto Fetch (5 min)</label
+                            >
+                          </div>
+                          <button
+                            class="btn btn-primary"
+                            onclick="runMillProgram('get_mill_data')"
+                          >
+                            Run Now
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                      <div class="card">
+                        <div class="card-body">
+                          <h5>Run Jobs Mill</h5>
+                          <div class="form-check form-switch mb-2">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              id="toggleRunJobsMill"
+                            />
+                            <label
+                              class="form-check-label"
+                              for="toggleRunJobsMill"
+                              >Auto Process (1 min)</label
+                            >
+                          </div>
+                          <button
+                            class="btn btn-primary"
+                            onclick="runMillProgram('run_jobs_mill')"
+                          >
+                            Run Now
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

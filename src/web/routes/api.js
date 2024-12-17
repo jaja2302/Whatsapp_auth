@@ -14,5 +14,8 @@ router.post('/handlers', programController.updateHandlerState);
 router.get('/queue/status', queueController.getQueueStatus);
 router.post('/queue/toggle', queueController.toggleQueue);
 router.post('/queue/retry/:jobId', queueController.retryJob);
+router.post('/mill/toggle', programController.toggleMillProgram);
+router.get('/mill/status', programController.getMillProgramStatus);
+router.post('/mill/:program/run', programController.runMillProgramNow);
 
 module.exports = router;

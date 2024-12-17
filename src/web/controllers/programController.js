@@ -6,6 +6,7 @@ const {
   toggleMessageHandler,
   getMessageHandlerStates,
 } = require('../../services/whatsappService');
+const cron = require('node-cron');
 
 class ProgramController {
   async getStatus(req, res) {
@@ -150,6 +151,87 @@ class ProgramController {
       } else {
         res.status(400).json({ success: false, message: 'Invalid handler ID' });
       }
+    } catch (error) {
+      res.status(500).json({ success: false, error: error.message });
+    }
+  }
+
+  async toggleMillProgram(req, res) {
+    try {
+      const { program, enabled } = req.body;
+
+      // Store the state of the program
+      global.millProgramStates = global.millProgramStates || {};
+      global.millProgramStates[program] = enabled;
+
+      // Clear existing cron job if it exists
+      if (global.millCronJobs && global.millCronJobs[program]) {
+        global.millCronJobs[program].stop();
+      }
+
+      // Setup new cron job if enabled
+      if (enabled) {
+        global.millCronJobs = global.millCronJobs || {};
+
+        if (program === 'get_mill_data') {
+          global.millCronJobs[program] = cron.schedule(
+            '*/5 * * * *',
+            async () => {
+              await get_mill_data(global.sock);
+            },
+            {
+              scheduled: true,
+              timezone: 'Asia/Jakarta',
+            }
+          );
+        } else if (program === 'run_jobs_mill') {
+          global.millCronJobs[program] = cron.schedule(
+            '*/1 * * * *',
+            async () => {
+              await run_jobs_mill(global.sock);
+            },
+            {
+              scheduled: true,
+              timezone: 'Asia/Jakarta',
+            }
+          );
+        }
+      }
+
+      res.json({
+        success: true,
+        message: `${program} ${enabled ? 'enabled' : 'disabled'}`,
+      });
+    } catch (error) {
+      res.status(500).json({ success: false, error: error.message });
+    }
+  }
+
+  async getMillProgramStatus(req, res) {
+    try {
+      const states = global.millProgramStates || {
+        get_mill_data: true, // default states
+        run_jobs_mill: true,
+      };
+      res.json({ success: true, states });
+    } catch (error) {
+      res.status(500).json({ success: false, error: error.message });
+    }
+  }
+
+  async runMillProgramNow(req, res) {
+    try {
+      const { program } = req.params;
+
+      if (program === 'get_mill_data') {
+        await get_mill_data(global.sock);
+      } else if (program === 'run_jobs_mill') {
+        await run_jobs_mill(global.sock);
+      } else {
+        throw new Error('Invalid program specified');
+      }
+
+      res.json({ success: true, message: `${program} executed successfully` });
     } catch (error) {
       res.status(500).json({ success: false, error: error.message });
     }
