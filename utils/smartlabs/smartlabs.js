@@ -15,8 +15,8 @@ if (hour >= 4 && hour < 12) {
 }
 
 const helperfunctionSmartlabs = async () => {
-  channel.bind('Smartlabsnotificationtest', async (itemdata) => {
-    console.log(itemdata);
+  channel.bind('Smartlabsnotification', async (itemdata) => {
+    // console.log(itemdata);
 
     if (!itemdata || !itemdata.data) {
       console.log('Event data, data, or bot_data is undefined.');
@@ -24,8 +24,8 @@ const helperfunctionSmartlabs = async () => {
     }
     // Loop through each item in the data array
     itemdata.data.forEach(async (dataitem) => {
-      let message = `*${greeting}* 👋\n\n`;
-      message += `Yth. Pelanggan Setia Lab CBI ✨\n\n`;
+      // let message = `*${greeting}* 👋\n\n`;
+      let message = `Yth. Pelanggan Setia Lab CBI ✨\n\n`;
       if (dataitem.type === 'input') {
         message += `📥 Progress Sampel anda telah kami terima dengan:\n\n`;
       } else if (dataitem.progresss === 'Rilis Sertifikat') {

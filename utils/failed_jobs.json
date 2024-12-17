@@ -38,5 +38,25 @@
     "retries": 4,
     "error": "Timed Out",
     "failedAt": "2024-11-28T04:09:22.324Z"
+  },
+  {
+    "type": "send_message",
+    "data": {
+      "to": "undefined@s.whatsapp.net",
+      "message": "*Izin Keluar Kebun Anda Telah Disetujui Atasan Pertama*\n\nHallo Selamat Siang Bapak/Ibu Linda Septiani W,\n\nKami ingin menginformasikan bahwa permintaan izin keluar kebun Anda telah Disetujui.\n\nSilahkan tunggu notifikasi  berikutnya untuk persetujuan dari atasan kedua.\n\nTerima kasih,\nTim Digital Architect SRS Bot"
+    },
+    "retries": 4,
+    "error": "Timed Out",
+    "failedAt": "2024-12-13T00:30:03.554Z"
+  },
+  {
+    "type": "send_message",
+    "data": {
+      "to": "undefined@s.whatsapp.net",
+      "message": "*Izin Keluar Kebun Anda Telah Disetujui Atasan Pertama*\n\nHallo Selamat Siang Bapak/Ibu TAUFIK HADIANTO,\n\nKami ingin menginformasikan bahwa permintaan izin keluar kebun Anda telah Disetujui.\n\nSilahkan tunggu notifikasi  berikutnya untuk persetujuan dari atasan kedua.\n\nTerima kasih,\nTim Digital Architect SRS Bot"
+    },
+    "retries": 4,
+    "error": "Timed Out",
+    "failedAt": "2024-12-14T06:29:10.729Z"
   }
 ]
