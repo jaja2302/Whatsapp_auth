@@ -7,7 +7,10 @@ const queue = global.queue; // Assuming you've made your queue instance global
 async function getQueueStatus(req, res) {
   try {
     const activeJobs = queue.items;
-    const failedJobsPath = path.join(__dirname, '../../utils/failed_jobs.json');
+    const failedJobsPath = path.join(
+      __dirname,
+      '../../../utils/failed_jobs.json'
+    );
 
     let failedJobs = [];
     try {

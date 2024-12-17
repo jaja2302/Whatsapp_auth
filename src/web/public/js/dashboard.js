@@ -214,91 +214,67 @@ async function refreshQueueStatus() {
     const data = await response.json();
 
     if (data.success) {
-      updateQueueDisplay(data.data);
-    } else {
-      addToLog(`Failed to fetch queue status: ${data.message}`);
+      // Update Active Queue
+      const activeQueueHtml =
+        data.data.active
+          .map(
+            (job) => `
+        <tr>
+          <td>${job.type}</td>
+          <td>${job.processing ? '<span class="badge bg-primary">Processing</span>' : '<span class="badge bg-secondary">Queued</span>'}</td>
+          <td>${job.retries || 0}</td>
+          <td>
+            <button class="btn btn-sm btn-danger" onclick="removeJob('${job.id}')">Remove</button>
+          </td>
+        </tr>
+      `
+          )
+          .join('') ||
+        '<tr><td colspan="4" class="text-center">No active jobs</td></tr>';
+
+      document.getElementById('active-queue').innerHTML = activeQueueHtml;
+
+      // Update Failed Jobs
+      const failedJobsHtml =
+        data.data.failed
+          .map(
+            (job) => `
+        <tr>
+          <td>${job.type}</td>
+          <td><small class="text-danger">${job.error}</small></td>
+          <td>${new Date(job.failedAt).toLocaleString()}</td>
+          <td>
+            <button class="btn btn-sm btn-primary" onclick="retryJob('${job.id}')">Retry</button>
+          </td>
+        </tr>
+      `
+          )
+          .join('') ||
+        '<tr><td colspan="4" class="text-center">No failed jobs</td></tr>';
+
+      document.getElementById('failed-jobs').innerHTML = failedJobsHtml;
     }
   } catch (error) {
-    addToLog(`Error fetching queue status: ${error.message}`);
+    console.error('Error refreshing queue status:', error);
   }
 }
 
-function updateQueueDisplay(queueData) {
-  // Update Active Queue
-  const activeQueue = document.getElementById('active-queue');
-  activeQueue.innerHTML = queueData.active
-    .map(
-      (job, index) => `
-        <tr>
-            <td>${job.type}</td>
-            <td>${
-              job.processing
-                ? '<span class="badge bg-primary">Processing</span>'
-                : '<span class="badge bg-secondary">Queued</span>'
-            }</td>
-            <td>${job.retries || 0}/${queue.maxRetries}</td>
-            <td>
-                <button class="btn btn-sm btn-info" onclick="showJobDetails('active', ${index})">
-                    Details
-                </button>
-            </td>
-        </tr>
-    `
-    )
-    .join('');
-
-  // Update Failed Jobs
-  const failedJobs = document.getElementById('failed-jobs');
-  failedJobs.innerHTML = queueData.failed
-    .map(
-      (job, index) => `
-        <tr>
-            <td>${job.type}</td>
-            <td>${job.error}</td>
-            <td>${new Date(job.failedAt).toLocaleString()}</td>
-            <td>
-                <button class="btn btn-sm btn-warning" onclick="retryJob('${job.id}')">
-                    Retry
-                </button>
-                <button class="btn btn-sm btn-info" onclick="showJobDetails('failed', ${index})">
-                    Details
-                </button>
-            </td>
-        </tr>
-    `
-    )
-    .join('');
-
-  // Update queue status
-  const queueStatus = queueData.isPaused
-    ? 'Paused'
-    : queueData.isProcessing
-      ? 'Processing'
-      : 'Idle';
-  addToLog(`Queue Status: ${queueStatus}`);
-}
-
-async function toggleQueue(pause) {
+async function toggleQueue(resume) {
   try {
     const response = await fetch('/api/queue/toggle', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ pause }),
+      body: JSON.stringify({ pause: !resume }),
     });
 
     const data = await response.json();
     if (data.success) {
-      addToLog(`Queue ${pause ? 'paused' : 'resumed'}`);
       refreshQueueStatus();
-    } else {
-      addToLog(
-        `Failed to ${pause ? 'pause' : 'resume'} queue: ${data.message}`
-      );
     }
   } catch (error) {
-    addToLog(`Error toggling queue: ${error.message}`);
+    console.error('Error toggling queue:', error);
   }
 }
 
@@ -310,18 +286,17 @@ async function retryJob(jobId) {
 
     const data = await response.json();
     if (data.success) {
-      addToLog('Job queued for retry');
       refreshQueueStatus();
-    } else {
-      addToLog(`Failed to retry job: ${data.message}`);
     }
   } catch (error) {
-    addToLog(`Error retrying job: ${error.message}`);
+    console.error('Error retrying job:', error);
   }
 }
 
-function showJobDetails(type, index) {
-  // Implement a modal to show full job details
-  // You can add this functionality later if needed
-  console.log(`Show details for ${type} job at index ${index}`);
-}
+// Auto-refresh queue status every 30 seconds
+setInterval(refreshQueueStatus, 30000);
+
+// Initial load
+document.addEventListener('DOMContentLoaded', () => {
+  refreshQueueStatus();
+});

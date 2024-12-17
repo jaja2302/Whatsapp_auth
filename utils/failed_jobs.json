@@ -58,5 +58,75 @@
     "retries": 4,
     "error": "Timed Out",
     "failedAt": "2024-12-14T06:29:10.729Z"
+  },
+  {
+    "type": "send_message",
+    "data": {
+      "to": "6287777909185@s.whatsapp.net",
+      "message": "*Selamat Pagi*:\nYth. Pelanggan Setia Lab CBI\nProgress Sampel anda telah Terupdate dengan:\n*No. Surat* : 111/MMS-SYM/XI/2024\n*Departemen* : PKS Suayap\n*Jenis Sampel* : Air\n*Jumlah Sampel* : 1\n*Progress saat ini* : Penerimaan dan Registrasi Sampel,Antrean Analisa,Preparasi & Analisa,Recheck,Penginputan Hasil Analisa & Pembuatan Draft,Penerbitan Sertifikat,Rilis Sertifikat\nProgress anda dapat dilihat di website:https://smartlab.srs-ssms.com\nDengan kode tracking  *3K5I02WP*\nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.\n"
+    },
+    "retries": 5,
+    "error": "WhatsApp connection is not established",
+    "failedAt": "2024-12-17T08:43:13.246Z"
+  },
+  {
+    "type": "send_message",
+    "data": {
+      "to": "6287777909185@s.whatsapp.net",
+      "message": "*Selamat Pagi*:\nYth. Pelanggan Setia Lab CBI\nProgress Sampel anda telah Terupdate dengan:\n*No. Surat* : 111/MMS-SYM/XI/2024\n*Departemen* : PKS Suayap\n*Jenis Sampel* : Air\n*Jumlah Sampel* : 1\n*Progress saat ini* : Penerimaan dan Registrasi Sampel,Antrean Analisa,Preparasi & Analisa,Recheck,Penginputan Hasil Analisa & Pembuatan Draft,Penerbitan Sertifikat,Rilis Sertifikat\nProgress anda dapat dilihat di website:https://smartlab.srs-ssms.com\nDengan kode tracking  *3K5I02WP*\nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.\n"
+    },
+    "retries": 4,
+    "error": "Timed Out",
+    "failedAt": "2024-12-17T08:51:15.304Z"
+  },
+  {
+    "type": "send_message",
+    "data": {
+      "to": "6287777909185@s.whatsapp.net",
+      "message": "*Selamat Pagi*:\nYth. Pelanggan Setia Lab CBI\nProgress Sampel anda telah Terupdate dengan:\n*No. Surat* : 254/CBI-SKM/MM/XI/2024\n*Departemen* : PKS Sungai Kuning\n*Jenis Sampel* : Air\n*Jumlah Sampel* : 1\n*Progress saat ini* : Penerimaan dan Registrasi Sampel,Antrean Analisa,Preparasi & Analisa,Recheck,Penginputan Hasil Analisa & Pembuatan Draft,Penerbitan Sertifikat,Rilis Sertifikat\nProgress anda dapat dilihat di website:https://smartlab.srs-ssms.com\nDengan kode tracking  *EH75OTNE*\nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.\n"
+    },
+    "retries": 4,
+    "error": "Timed Out",
+    "failedAt": "2024-12-17T08:51:15.305Z"
+  },
+  {
+    "type": "send_message",
+    "data": {
+      "to": "6287777909185@s.whatsapp.net",
+      "message": "*Selamat Pagi*:\nYth. Pelanggan Setia Lab CBI\nProgress Sampel anda telah Terupdate dengan:\n*No. Surat* : 252/CBI-SKM/MM/XI/2024\n*Departemen* : PKS Sungai Kuning\n*Jenis Sampel* : Air\n*Jumlah Sampel* : 2\n*Progress saat ini* : Penerimaan dan Registrasi Sampel,Antrean Analisa,Preparasi & Analisa,Recheck,Penginputan Hasil Analisa & Pembuatan Draft,Penerbitan Sertifikat,Rilis Sertifikat\nProgress anda dapat dilihat di website:https://smartlab.srs-ssms.com\nDengan kode tracking  *XBR70A3G*\nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.\n"
+    },
+    "retries": 4,
+    "error": "Timed Out",
+    "failedAt": "2024-12-17T08:51:15.306Z"
+  },
+  {
+    "type": "send_message",
+    "data": {
+      "to": "6287777909185@s.whatsapp.net",
+      "message": "*Selamat Pagi*:\nYth. Pelanggan Setia Lab CBI\nProgress Sampel anda telah Terupdate dengan:\n*No. Surat* : 111/MMS-SYM/XI/2024\n*Departemen* : PKS Suayap\n*Jenis Sampel* : Air\n*Jumlah Sampel* : 1\n*Progress saat ini* : Penerimaan dan Registrasi Sampel,Antrean Analisa,Preparasi & Analisa,Recheck,Penginputan Hasil Analisa & Pembuatan Draft,Penerbitan Sertifikat,Rilis Sertifikat\nProgress anda dapat dilihat di website:https://smartlab.srs-ssms.com\nDengan kode tracking  *3K5I02WP*\nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.\n"
+    },
+    "retries": 1,
+    "error": "Timed Out",
+    "failedAt": "2024-12-17T08:52:15.333Z"
+  },
+  {
+    "type": "send_message",
+    "data": {
+      "to": "6287777909185@s.whatsapp.net",
+      "message": "*Selamat Pagi*:\nYth. Pelanggan Setia Lab CBI\nProgress Sampel anda telah Terupdate dengan:\n*No. Surat* : 254/CBI-SKM/MM/XI/2024\n*Departemen* : PKS Sungai Kuning\n*Jenis Sampel* : Air\n*Jumlah Sampel* : 1\n*Progress saat ini* : Penerimaan dan Registrasi Sampel,Antrean Analisa,Preparasi & Analisa,Recheck,Penginputan Hasil Analisa & Pembuatan Draft,Penerbitan Sertifikat,Rilis Sertifikat\nProgress anda dapat dilihat di website:https://smartlab.srs-ssms.com\nDengan kode tracking  *EH75OTNE*\nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.\n"
+    },
+    "retries": 1,
+    "error": "Timed Out",
+    "failedAt": "2024-12-17T08:52:15.337Z"
+  },
+  {
+    "type": "send_message",
+    "data": {
+      "to": "6287777909185@s.whatsapp.net",
+      "message": "*Selamat Pagi*:\nYth. Pelanggan Setia Lab CBI\nProgress Sampel anda telah Terupdate dengan:\n*No. Surat* : 252/CBI-SKM/MM/XI/2024\n*Departemen* : PKS Sungai Kuning\n*Jenis Sampel* : Air\n*Jumlah Sampel* : 2\n*Progress saat ini* : Penerimaan dan Registrasi Sampel,Antrean Analisa,Preparasi & Analisa,Recheck,Penginputan Hasil Analisa & Pembuatan Draft,Penerbitan Sertifikat,Rilis Sertifikat\nProgress anda dapat dilihat di website:https://smartlab.srs-ssms.com\nDengan kode tracking  *XBR70A3G*\nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.\n"
+    },
+    "retries": 1,
+    "error": "Timed Out",
+    "failedAt": "2024-12-17T08:52:15.339Z"
   }
 ]

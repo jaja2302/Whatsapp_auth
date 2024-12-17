@@ -17,15 +17,50 @@ class Queue {
     this.items = [];
     this.processing = false;
     this.paused = false;
-    this.filePath = path.join(__dirname, 'queue_backup.json');
+    this.filePath = path.join(__dirname, 'queue_list.json');
     this.maxRetries = 3;
     this.messagesSentTimestamps = [];
     this.failedJobsPath = path.join(__dirname, 'failed_jobs.json');
-    this.loadFromDisk();
+
+    // Load queue immediately
+    this.loadFromDisk().catch(console.error);
+
+    // Check for new items and save queue periodically (every 30 seconds)
+    setInterval(async () => {
+      await this.reloadQueue();
+      await this.saveToFile();
+    }, 30000);
+
+    // Save queue on process exit
+    process.on('SIGINT', async () => {
+      console.log('Saving queue before exit...');
+      await this.saveToFile();
+      process.exit();
+    });
+
+    process.on('SIGTERM', async () => {
+      console.log('Saving queue before exit...');
+      await this.saveToFile();
+      process.exit();
+    });
   }
 
   async saveToFile() {
     try {
+      // Create a backup of the current file if it exists
+      try {
+        const exists = await fs
+          .access(this.filePath)
+          .then(() => true)
+          .catch(() => false);
+        if (exists) {
+          await fs.copyFile(this.filePath, `${this.filePath}.backup`);
+        }
+      } catch (error) {
+        console.error('Error creating backup:', error);
+      }
+
+      // Save current queue
       await fs.writeFile(this.filePath, JSON.stringify(this.items, null, 2));
       console.log('Queue saved to disk');
     } catch (error) {
@@ -36,26 +71,44 @@ class Queue {
   async loadFromDisk() {
     try {
       const data = await fs.readFile(this.filePath, 'utf8');
-      this.items = JSON.parse(data);
-      console.log(`Queue loaded from disk, items: ${this.items.length}`);
+      const loadedItems = JSON.parse(data);
+
+      // Filter out items that have failedAt property and move them to failed jobs
+      const activeItems = loadedItems.filter((item) => !item.failedAt);
+      const failedItems = loadedItems.filter((item) => item.failedAt);
+
+      // Save failed items to failed_jobs.json
+      for (const failedItem of failedItems) {
+        await this.saveFailedJob(failedItem);
+      }
+
+      this.items = activeItems;
+      console.log(
+        `Queue loaded from disk, active items: ${this.items.length}, failed items: ${failedItems.length}`
+      );
+
+      // Resume processing if there are items
+      if (this.items.length > 0 && !this.processing && !this.paused) {
+        this.process();
+      }
     } catch (error) {
-      if (error.code !== 'ENOENT') {
+      if (error.code === 'ENOENT') {
+        console.log('No existing queue file found. Starting with empty queue.');
+        this.items = [];
+      } else {
         console.error('Error loading queue from disk:', error);
-        // Try to recover corrupted data
+        // Try to load from backup
         try {
-          const data = await fs.readFile(this.filePath, 'utf8');
-          const cleanedData = data.replace(/[^\x20-\x7E]/g, '');
-          this.items = JSON.parse(cleanedData);
-          console.log(`Queue recovered from disk, items: ${this.items.length}`);
-        } catch (recoverError) {
-          console.error('Failed to recover queue data:', recoverError);
+          const backupData = await fs.readFile(
+            `${this.filePath}.backup`,
+            'utf8'
+          );
+          this.items = JSON.parse(backupData);
+          console.log(`Queue loaded from backup, items: ${this.items.length}`);
+        } catch (backupError) {
+          console.error('Failed to load from backup:', backupError);
           this.items = [];
         }
-      } else {
-        console.log(
-          'No existing queue file found. Starting with an empty queue.'
-        );
-        this.items = [];
       }
     }
   }
@@ -103,13 +156,15 @@ class Queue {
 
   pause() {
     this.paused = true;
-    console.log('Queue processing paused');
+    console.log('Queue paused');
   }
 
   resume() {
     this.paused = false;
-    console.log('Queue processing resumed');
-    this.process();
+    console.log('Queue resumed');
+    if (this.items.length > 0 && !this.processing) {
+      this.process();
+    }
   }
 
   async process() {
@@ -346,6 +401,12 @@ class Queue {
     } catch (error) {
       console.error('Error saving failed job:', error);
     }
+  }
+
+  // Add a new method to reload the queue
+  async reloadQueue() {
+    console.log('Reloading queue from disk...');
+    await this.loadFromDisk();
   }
 }
 
