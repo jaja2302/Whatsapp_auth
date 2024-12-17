@@ -1,7 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 const rimraf = require('rimraf');
-const { connectToWhatsApp } = require('../../services/whatsappService');
+const {
+  connectToWhatsApp,
+  toggleMessageHandler,
+  getMessageHandlerStates,
+} = require('../../services/whatsappService');
 
 class ProgramController {
   async getStatus(req, res) {
@@ -122,6 +126,32 @@ class ProgramController {
         message: 'Failed to reconnect',
         error: error.message,
       });
+    }
+  }
+
+  async getHandlerStates(req, res) {
+    try {
+      const states = getMessageHandlerStates();
+      res.json({ success: true, handlers: states });
+    } catch (error) {
+      res.status(500).json({ success: false, error: error.message });
+    }
+  }
+
+  async updateHandlerState(req, res) {
+    try {
+      const { handlerId, enabled } = req.body;
+      const success = toggleMessageHandler(handlerId, enabled);
+      if (success) {
+        res.json({
+          success: true,
+          message: `Handler ${enabled ? 'enabled' : 'disabled'}`,
+        });
+      } else {
+        res.status(400).json({ success: false, message: 'Invalid handler ID' });
+      }
+    } catch (error) {
+      res.status(500).json({ success: false, error: error.message });
     }
   }
 }

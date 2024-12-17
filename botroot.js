@@ -40,7 +40,6 @@ const {
 } = require('./utils/marcom/marcomhelper');
 const { handleReplyNoDocMessage } = require('./utils/repply_no_doc_messages');
 const { handleReplyDocMessage } = require('./utils/repply_with_doc_messages');
-const { handleGroupMessage } = require('./utils/group_messages');
 const { helperfunctionSmartlabs } = require('./utils/smartlabs/smartlabs');
 const { connectToWhatsApp } = require('./src/services/whatsappService');
 

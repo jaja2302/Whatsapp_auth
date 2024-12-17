@@ -8,10 +8,26 @@ const {
 const pino = require('pino');
 const { promisify } = require('util');
 const sleep = promisify(setTimeout);
+const { handleGroupMessage } = require('../../utils/group_messages');
+const { handlePrivateMessage } = require('../../utils/private_messages');
+const {
+  handleReplyNoDocMessage,
+} = require('../../utils/repply_no_doc_messages');
+const {
+  handleReplyDocMessage,
+} = require('../../utils/repply_with_doc_messages');
 
 // Keep track of connection state
 let isConnected = false;
 let isReconnecting = false;
+
+// Add handler state management
+const messageHandlers = {
+  groupMessages: { enabled: true, name: 'Group Messages' },
+  privateMessages: { enabled: true, name: 'Private Messages' },
+  replyNoDoc: { enabled: true, name: 'Reply (No Doc)' },
+  replyWithDoc: { enabled: true, name: 'Reply (With Doc)' },
+};
 
 async function connectToWhatsApp() {
   try {
@@ -86,6 +102,59 @@ async function connectToWhatsApp() {
 
     global.sock.ev.on('creds.update', saveCreds);
 
+    global.sock.ev.on('messages.upsert', async ({ messages, type }) => {
+      for (const message of messages) {
+        if (!message.key.fromMe) {
+          const noWa = message.key.remoteJid;
+          const isGroup = noWa.endsWith('@g.us');
+          const isPrivate = noWa.endsWith('@s.whatsapp.net');
+          const text =
+            message.message?.conversation ||
+            message.message?.extendedTextMessage?.text ||
+            message.message?.documentWithCaptionMessage?.message
+              ?.documentMessage?.caption ||
+            'No message text available';
+          const lowerCaseMessage = text.toLowerCase();
+          const contextInfo = message.message?.extendedTextMessage?.contextInfo;
+          const isReply = !!contextInfo?.quotedMessage;
+          // console.log(
+          //   `remoteJid: ${noWa}, isReply: ${isReply}, isGroup: ${isGroup}, isPrivate: ${isPrivate}`
+          // );
+          try {
+            if (isGroup && messageHandlers.groupMessages.enabled) {
+              await handleGroupMessage(message);
+            } else if (isPrivate && messageHandlers.privateMessages.enabled) {
+              await handlePrivateMessage(message);
+            }
+
+            if (isReply) {
+              if (
+                quotedMessage?.documentMessage &&
+                messageHandlers.replyWithDoc.enabled
+              ) {
+                await handleReplyDocMessage(message);
+              } else if (messageHandlers.replyNoDoc.enabled) {
+                await handleReplyNoDocMessage(message);
+              }
+            }
+          } catch (error) {
+            console.error('Error handling message:', error);
+          }
+          // Handle document messages (both in private and group)
+          if (message.message?.documentWithCaptionMessage) {
+            const documentMessage =
+              message.message.documentWithCaptionMessage.message
+                .documentMessage;
+            console.log(
+              'This message contains a document:',
+              documentMessage.fileName,
+              documentMessage.caption
+            );
+            // Handle document message
+          }
+        }
+      }
+    });
     await sleep(1000);
     return global.sock;
   } catch (error) {
@@ -104,7 +173,23 @@ function isWhatsAppConnected() {
   };
 }
 
+// Add function to toggle handlers
+function toggleMessageHandler(handlerId, enabled) {
+  if (messageHandlers[handlerId] !== undefined) {
+    messageHandlers[handlerId].enabled = enabled;
+    return true;
+  }
+  return false;
+}
+
+// Add function to get handler states
+function getMessageHandlerStates() {
+  return messageHandlers;
+}
+
 module.exports = {
   connectToWhatsApp,
   isWhatsAppConnected,
+  toggleMessageHandler,
+  getMessageHandlerStates,
 };

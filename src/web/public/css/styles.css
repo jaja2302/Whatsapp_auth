@@ -38,3 +38,60 @@
   margin: 15px 0;
   text-align: center;
 }
+
+.message-handlers .card {
+  height: 100%;
+}
+
+.form-check-input {
+  cursor: pointer;
+}
+
+.card-title {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.table-responsive {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.badge {
+  font-size: 0.8rem;
+}
+
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+.card-header .btn {
+  margin-left: 0.5rem;
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.job-details {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 4px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.modal-dialog {
+  max-width: 800px;
+}
+
+.badge {
+  padding: 0.35em 0.65em;
+}
+
+.table td {
+  vertical-align: middle;
+}
