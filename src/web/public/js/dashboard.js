@@ -49,8 +49,76 @@ function updateStatus(status) {
   }
 }
 
+// Add these functions to handle button states
+function updateButtonStates(connected, isReconnecting) {
+  const connectBtn = document.getElementById('reconnect-btn');
+  const disconnectBtn = document.getElementById('disconnect-btn');
+
+  if (connected) {
+    connectBtn.disabled = true;
+    disconnectBtn.disabled = false;
+  } else if (isReconnecting) {
+    connectBtn.disabled = true;
+    disconnectBtn.disabled = true;
+  } else {
+    connectBtn.disabled = false;
+    disconnectBtn.disabled = true;
+  }
+}
+
+socket.on('connection-status', (status) => {
+  updateStatus({ whatsappConnected: status.connected });
+  updateButtonStates(status.connected, status.isReconnecting);
+
+  if (status.connected) {
+    document.getElementById('qr-code').innerHTML = '';
+    addToLog('WhatsApp connected successfully');
+  } else {
+    addToLog('WhatsApp disconnected');
+  }
+});
+
+socket.on('reconnecting', (isReconnecting) => {
+  updateButtonStates(false, isReconnecting);
+  if (isReconnecting) {
+    addToLog('Attempting to reconnect...');
+  }
+});
+
+async function reconnectWhatsApp() {
+  try {
+    // Disable both buttons immediately
+    updateButtonStates(false, true);
+
+    const response = await fetch('/api/whatsapp/reconnect', {
+      method: 'POST',
+    });
+    const data = await response.json();
+
+    if (data.success) {
+      addToLog('Attempting to reconnect to WhatsApp...');
+      addToLog('Please wait for QR code to appear...');
+      document.getElementById('qr-code').innerHTML = '';
+    } else {
+      addToLog(`Failed to reconnect: ${data.message}`);
+      if (data.error) {
+        addToLog(`Error details: ${data.error}`);
+      }
+      // Re-enable connect button if reconnection fails
+      updateButtonStates(false, false);
+    }
+  } catch (error) {
+    addToLog(`Error during reconnection: ${error.message}`);
+    // Re-enable connect button if there's an error
+    updateButtonStates(false, false);
+  }
+}
+
 async function disconnectWhatsApp() {
   try {
+    // Disable both buttons immediately
+    updateButtonStates(false, true);
+
     const response = await fetch('/api/whatsapp/disconnect', {
       method: 'POST',
     });
@@ -66,41 +134,3 @@ async function disconnectWhatsApp() {
     addToLog(`Error: ${error.message}`);
   }
 }
-
-async function reconnectWhatsApp() {
-  try {
-    const response = await fetch('/api/whatsapp/reconnect', {
-      method: 'POST',
-    });
-    const data = await response.json();
-
-    if (data.success) {
-      addToLog('Attempting to reconnect to WhatsApp...');
-    } else {
-      addToLog(`Failed to reconnect: ${data.message}`);
-    }
-  } catch (error) {
-    addToLog(`Error: ${error.message}`);
-  }
-}
-
-// Add this to your socket.io handlers
-socket.on('connection-status', (status) => {
-  if (status.connected) {
-    updateStatus({ whatsappConnected: true });
-    // Clear QR code when connected
-    document.getElementById('qr-code').innerHTML = '';
-  }
-});
-
-socket.on('qr', (qr) => {
-  const qrContainer = document.getElementById('qr-code');
-  if (
-    !document
-      .getElementById('connection-status')
-      .innerHTML.includes('Connected')
-  ) {
-    qrContainer.innerHTML = `<img src="${qr}" alt="Scan this QR code" />`;
-    addToLog('New QR code received. Please scan with WhatsApp.');
-  }
-});

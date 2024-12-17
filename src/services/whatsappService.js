@@ -11,17 +11,31 @@ const sleep = promisify(setTimeout);
 
 // Keep track of connection state
 let isConnected = false;
+let isReconnecting = false;
 
 async function connectToWhatsApp() {
   try {
+    if (isReconnecting) {
+      console.log('Already attempting to reconnect...');
+      return;
+    }
+
+    isReconnecting = true;
+    global.io?.emit('reconnecting', true);
+
     const { state, saveCreds } =
       await useMultiFileAuthState('baileys_auth_info');
     let { version } = await fetchLatestBaileysVersion();
 
     // If we already have a socket, remove all listeners before creating a new one
     if (global.sock) {
-      global.sock.ev.removeAllListeners();
-      await global.sock.end();
+      try {
+        global.sock.ev.removeAllListeners();
+        await global.sock.end();
+      } catch (err) {
+        console.log('Error closing existing connection:', err);
+        // Continue with new connection even if there's an error closing the old one
+      }
     }
 
     global.sock = makeWASocket({
@@ -36,11 +50,22 @@ async function connectToWhatsApp() {
     global.sock.ev.on('connection.update', (update) => {
       const { connection, lastDisconnect, qr } = update;
 
+      if (qr) {
+        // Convert QR code to data URL
+        const qrUrl = `data:image/png;base64,${qr}`;
+        console.log('New QR code generated');
+        global.io?.emit('qr', qrUrl);
+      }
+
       if (connection === 'close') {
         isConnected = false;
+        isReconnecting = false;
         console.log('WhatsApp disconnected');
+        global.io?.emit('connection-status', {
+          connected: false,
+          isReconnecting: false,
+        });
 
-        // Only auto-reconnect if not logged out
         const shouldReconnect =
           lastDisconnect?.error?.output?.statusCode !==
           DisconnectReason.loggedOut;
@@ -50,14 +75,12 @@ async function connectToWhatsApp() {
         }
       } else if (connection === 'open') {
         isConnected = true;
+        isReconnecting = false;
         console.log('WhatsApp connected successfully');
-        // Clear any existing QR code from the UI when connected
-        global.io?.emit('connection-status', { connected: true });
-      }
-
-      // Only emit QR if we're not already connected
-      if (qr && !isConnected) {
-        global.io?.emit('qr', qr);
+        global.io?.emit('connection-status', {
+          connected: true,
+          isReconnecting: false,
+        });
       }
     });
 
@@ -67,13 +90,18 @@ async function connectToWhatsApp() {
     return global.sock;
   } catch (error) {
     console.error('Error in connectToWhatsApp:', error);
+    isReconnecting = false;
+    global.io?.emit('reconnecting', false);
     throw error;
   }
 }
 
 // Add a function to check connection status
 function isWhatsAppConnected() {
-  return isConnected && !!global.sock?.user;
+  return {
+    isConnected: isConnected && !!global.sock?.user,
+    isReconnecting,
+  };
 }
 
 module.exports = {

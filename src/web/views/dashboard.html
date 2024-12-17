@@ -24,13 +24,21 @@
             <div class="card-header">Connection Status</div>
             <div class="card-body">
               <div id="connection-status">Checking...</div>
-              <div id="qr-code"></div>
+              <div id="qr-code" class="text-center mt-3"></div>
               <div class="mt-3">
-                <button class="btn btn-danger" onclick="disconnectWhatsApp()">
-                  Disconnect
-                </button>
-                <button class="btn btn-success" onclick="reconnectWhatsApp()">
+                <button
+                  id="reconnect-btn"
+                  onclick="reconnectWhatsApp()"
+                  class="btn btn-primary"
+                >
                   Reconnect
+                </button>
+                <button
+                  id="disconnect-btn"
+                  onclick="disconnectWhatsApp()"
+                  class="btn btn-danger"
+                >
+                  Disconnect
                 </button>
               </div>
             </div>
