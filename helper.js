@@ -898,6 +898,7 @@ const setupCronJobs = (sock) => {
       async () => {
         // console.log('cron job get_mill_data');
         await run_jobs_mill(sock);
+        // dada
       },
       {
         scheduled: true,
