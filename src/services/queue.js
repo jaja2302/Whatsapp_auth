@@ -490,14 +490,7 @@ class MessageQueue {
         return false;
       }
 
-      // Add a ping test
-      try {
-        await global.sock.ws.ping();
-        return true;
-      } catch (error) {
-        this.logger.error('Connection ping failed:', error);
-        return false;
-      }
+      return true;
     } catch (error) {
       this.logger.error('Error checking connection:', error);
       return false;

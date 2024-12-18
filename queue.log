@@ -442,3 +442,25 @@
 {"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T05:00:35.731Z"}
 {"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T05:00:45.719Z"}
 {"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T05:00:45.719Z"}
+{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T05:01:10.582Z"}
+{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T05:02:25.469Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T05:02:25.470Z"}
+{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T05:02:49.410Z"}
+{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T05:02:49.411Z"}
+{"level":"error","message":"Connection ping failed: global.sock.ws.ping is not a function","stack":"TypeError: global.sock.ws.ping is not a function\n    at MessageQueue.checkConnection (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:495:30)\n    at MessageQueue.processQueue (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:171:40)\n    at MessageQueue.resume (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:381:12)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\web\\routes\\api.js:154:20\n    at Layer.handle [as handle_request] (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\index.js:346:12)","timestamp":"2024-12-18T05:02:49.411Z"}
+{"level":"info","message":"WhatsApp connection not ready - Pausing queue","timestamp":"2024-12-18T05:02:49.413Z"}
+{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T05:02:49.414Z"}
+{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T05:03:00.223Z"}
+{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T05:03:14.734Z"}
+{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T05:03:14.735Z"}
+{"level":"error","message":"Connection ping failed: global.sock.ws.ping is not a function","stack":"TypeError: global.sock.ws.ping is not a function\n    at MessageQueue.checkConnection (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:495:30)\n    at MessageQueue.processQueue (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:171:40)\n    at MessageQueue.resume (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:381:12)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\web\\routes\\api.js:154:20\n    at Layer.handle [as handle_request] (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\index.js:346:12)","timestamp":"2024-12-18T05:03:14.736Z"}
+{"level":"info","message":"WhatsApp connection not ready - Pausing queue","timestamp":"2024-12-18T05:03:14.737Z"}
+{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T05:03:14.738Z"}
+{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T05:03:21.071Z"}
+{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T05:04:41.145Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T05:04:41.146Z"}
+{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T05:04:56.663Z"}
+{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T05:04:56.663Z"}
+{"level":"info","message":"Message sent successfully to 6287777909185@s.whatsapp.net","timestamp":"2024-12-18T05:05:01.931Z"}
+{"level":"info","message":"Message sent successfully to 6287777909185@s.whatsapp.net","timestamp":"2024-12-18T05:05:06.453Z"}
+{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T05:05:20.353Z"}
