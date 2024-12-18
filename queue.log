@@ -440,3 +440,5 @@
 {"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T05:00:30.918Z"}
 {"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T05:00:30.919Z"}
 {"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T05:00:35.731Z"}
+{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T05:00:45.719Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T05:00:45.719Z"}
