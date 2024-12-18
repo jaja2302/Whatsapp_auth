@@ -140,4 +140,32 @@ router.get('/whatsapp/status', (req, res) => {
   }
 });
 
+// Add this new route for toggling queue
+router.post('/queue/toggle', (req, res) => {
+  try {
+    if (!global.queue) {
+      throw new Error('Queue system is not initialized');
+    }
+
+    const { pause } = req.body;
+    if (pause) {
+      global.queue.pause();
+    } else {
+      global.queue.resume();
+    }
+
+    res.json({
+      success: true,
+      message: `Queue ${pause ? 'paused' : 'resumed'} successfully`,
+      isPaused: pause,
+    });
+  } catch (error) {
+    console.error('Error toggling queue:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message || 'Failed to toggle queue',
+    });
+  }
+});
+
 module.exports = router;

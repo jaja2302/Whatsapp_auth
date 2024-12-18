@@ -368,10 +368,17 @@ async function toggleQueue(resume) {
 
     const data = await response.json();
     if (data.success) {
-      refreshQueueStatus();
+      addToLog(`Queue ${resume ? 'resumed' : 'paused'} successfully`);
+      await refreshQueueStatus(); // Refresh the queue status display
+    } else {
+      addToLog(
+        `Failed to ${resume ? 'resume' : 'pause'} queue: ${data.error}`,
+        'error'
+      );
     }
   } catch (error) {
     console.error('Error toggling queue:', error);
+    addToLog(`Error toggling queue: ${error.message}`, 'error');
   }
 }
 
