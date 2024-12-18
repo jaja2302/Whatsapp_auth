@@ -104,6 +104,8 @@ async function connectToWhatsApp() {
 
     global.sock.ev.on('messages.upsert', async ({ messages, type }) => {
       for (const message of messages) {
+        console.log(message);
+
         if (!message.key.fromMe) {
           const noWa = message.key.remoteJid;
           const isGroup = noWa.endsWith('@g.us');

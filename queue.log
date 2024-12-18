@@ -430,3 +430,13 @@
 {"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:46:38.165Z"}
 {"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:46:38.212Z"}
 {"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:46:38.213Z"}
+{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:47:48.802Z"}
+{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:47:48.827Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:47:48.827Z"}
+{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:50:52.238Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:50:52.239Z"}
+{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:59:45.527Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:59:45.528Z"}
+{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T05:00:30.918Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T05:00:30.919Z"}
+{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T05:00:35.731Z"}

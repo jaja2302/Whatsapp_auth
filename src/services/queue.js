@@ -534,6 +534,15 @@ class MessageQueue {
       return false;
     }
   }
+
+  async saveToFile() {
+    try {
+      await this.saveQueue(); // Assuming saveQueue saves the current queue state to a file
+      this.logger.info('Queue saved to file successfully');
+    } catch (error) {
+      this.logger.error('Error saving queue to file:', error);
+    }
+  }
 }
 
 // Create and export a SINGLE instance

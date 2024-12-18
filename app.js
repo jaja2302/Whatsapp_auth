@@ -1,112 +1,171 @@
+const {
+  default: makeWASocket,
+  DisconnectReason,
+  fetchLatestBaileysVersion,
+  isJidBroadcast,
+  makeInMemoryStore,
+  useMultiFileAuthState,
+} = require('@whiskeysockets/baileys');
+const winston = require('winston');
+const pino = require('pino');
 const path = require('path');
 const express = require('express');
+const fileUpload = require('express-fileupload');
+const cors = require('cors');
+const bodyParser = require('body-parser');
 const http = require('http');
+const qrcode = require('qrcode');
 const socketIO = require('socket.io');
-const { connectToWhatsApp } = require('./src/services/whatsappService');
 const messageQueue = require('./src/services/queue');
-const pino = require('pino');
-
-// Initialize the logger
-const logger = pino();
-
-// Initialize the queue first
-global.queue = messageQueue;
-
-// Then initialize WhatsApp connection
-connectToWhatsApp().catch((err) => {
-  console.error('Error connecting to WhatsApp:', err);
-});
+const fs = require('fs');
+const { connectToWhatsApp } = require('./src/services/whatsappService');
 
 // App Initialization
 const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
-const port = process.env.PORT || 8000;
 
-// Make io available globally and to queue
+app.use(fileUpload({ createParentPath: true }));
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Serving static files
+app.use('/assets', express.static(path.join(__dirname, 'client/assets')));
+
+// QR and main route handlers
+app.get('/scan', (req, res) =>
+  res.sendFile(path.join(__dirname, 'src/web/views/scan.html'))
+);
+app.get('/', (req, res) =>
+  res.sendFile(path.join(__dirname, 'src/web/views/login.html'))
+);
+
+const store = makeInMemoryStore({
+  logger: pino().child({ level: 'silent', stream: 'store' }),
+});
+let qr;
+let soket;
+
+// Logger Setup
+const logger = winston.createLogger({
+  level: 'error',
+  format: winston.format.combine(
+    winston.format.timestamp(),
+    winston.format.json()
+  ),
+  transports: [
+    new winston.transports.File({ filename: 'error.log', level: 'error' }),
+    new winston.transports.Console(),
+  ],
+});
+
+// Make io available globally for QR code updates
 global.io = io;
-messageQueue.setIO(io);
 
-// Import routes (only once!)
-const apiRoutes = require('./src/web/routes/api');
-const dashboardRoutes = require('./src/web/routes/dashboard');
-const authRoutes = require('./src/web/routes/auth');
+// Helper function to handle QR code updates
+const updateQR = (data) => {
+  switch (data) {
+    case 'qr':
+      qrcode.toDataURL(qr, (err, url) => {
+        soket?.emit('qr', url);
+        soket?.emit('log', 'QR Code received, please scan!');
+      });
+      break;
+    case 'connected':
+      soket?.emit('qrstatus', './assets/check.svg');
+      soket?.emit('log', 'WhatsApp connected!');
+      break;
+    default:
+      break;
+  }
+};
 
-// Middleware
-app.use(express.json());
-app.use(express.static(path.join(__dirname, 'src/web/public')));
-
-// Routes
-app.use('/api', apiRoutes);
-app.use('/', dashboardRoutes);
-app.use('/auth', authRoutes);
-
-// Error handling middleware
-app.use((err, req, res, next) => {
-  logger.error(err.stack);
-  res.status(500).json({
-    success: false,
-    error: err.message || 'Something went wrong!',
-  });
+// WebSocket handling
+io.on('connection', (socket) => {
+  soket = socket;
+  if (global.sock?.user) {
+    updateQR('connected');
+  } else if (qr) {
+    updateQR('qr');
+  }
 });
-process.on('unhandledRejection', (reason, promise) => {
-  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
-});
-// Graceful shutdown handler
-const handleShutdown = async () => {
-  logger.info('Shutting down...');
+
+app.get('/testing', async (req, res) => {
   try {
-    // Stop accepting new connections
-    server.close();
+    // await pingGoogle();
+    // await statusAWS();
+    // da
+    // console.log(sock.user);
+    // console.log(result);
+    res.status(200).json({
+      status: true,
+      response: 'Task Success',
+    });
+  } catch (error) {
+    console.error('Error sending files:', error);
+    res.status(500).json({
+      status: false,
+      response: error.message || 'Internal Server Error',
+    });
+  }
+});
+// Use the imported messageQueue instance
+global.queue = messageQueue;
+console.log('Queue created');
 
-    // Close WhatsApp connection
-    if (global.sock) {
-      try {
-        await global.sock.logout();
-        await global.sock.end();
-      } catch (error) {
-        logger.error('Error closing WhatsApp connection:', error);
+// Check and clear logs if they exceed 2MB
+const MB_IN_BYTES = 2 * 1024 * 1024; // 2MB in bytes
+
+function clearLogIfNeeded(filePath) {
+  try {
+    if (fs.existsSync(filePath)) {
+      const stats = fs.statSync(filePath);
+      if (stats.size > MB_IN_BYTES) {
+        fs.writeFileSync(filePath, '');
+        console.log(`${filePath} exceeded 2MB and was cleared`);
       }
     }
-
-    process.exit(0);
   } catch (error) {
-    logger.error('Error during shutdown:', error);
-    process.exit(1);
+    console.error(`Error handling ${filePath}:`, error);
   }
-};
+}
 
-// Register shutdown handlers
-process.on('SIGINT', handleShutdown);
-process.on('SIGTERM', handleShutdown);
+clearLogIfNeeded('./bot_grading_error.log');
+clearLogIfNeeded('./bot_grading.log');
+console.log('bot_grading_error.log and bot_grading.log cleared');
 
-// Start server and initialize components
-const startServer = async () => {
-  try {
-    // Initialize WhatsApp connection
-    await connectToWhatsApp();
+// Initial connection
+connectToWhatsApp().catch((err) =>
+  logger.error('Error connecting to WhatsApp:', err)
+);
+// runfunction();
+// setupCronJobs();
+// function_rapidresponse();
+// function_marcom();
+// broadcast_grading_mill();
+// helperfunctionSmartlabs();
+// ... other function calls
+const port = process.env.PORT || 8000;
+server.listen(port, () => logger.info(`Server running on port ${port}`));
 
-    // Start the server
-    server.listen(port, () => {
-      logger.info(`Server running on port ${port}`);
-    });
-  } catch (err) {
-    logger.error('Error starting server:', err);
-    process.exit(1);
-  }
-};
+global.sock = null;
 
-// Start the application
-startServer();
-
-// WebSocket connection handling
-io.on('connection', (socket) => {
-  logger.info('Client connected');
-
-  socket.on('disconnect', () => {
-    logger.info('Client disconnected');
-  });
+process.on('SIGINT', async () => {
+  console.log('Shutting down...');
+  await global.queue.saveToFile();
+  process.exit(0);
 });
 
-// Export for testing
-module.exports = { app, server };
+// Add new imports for web interface
+const webRoutes = require('./src/web/routes/dashboard');
+const apiRoutes = require('./src/web/routes/api');
+const authRoutes = require('./src/web/routes/auth');
+
+// Serve static files from the web/public directory
+app.use(express.static(path.join(__dirname, 'src/web/public')));
+
+// Use the new routes
+app.use('/auth', authRoutes);
+app.use('/dashboard', webRoutes);
+app.use('/api', apiRoutes);
