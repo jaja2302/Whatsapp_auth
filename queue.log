@@ -509,3 +509,18 @@
 {"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T08:13:51.141Z"}
 {"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T08:13:51.172Z"}
 {"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T08:13:51.173Z"}
+{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T08:26:54.523Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T08:26:54.556Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T08:26:54.556Z"}
+{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T08:33:00.427Z"}
+{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T08:36:00.034Z"}
+{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T08:39:00.440Z"}
+{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T08:42:00.805Z"}
+{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T08:45:00.213Z"}
+{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T08:48:00.731Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T08:49:27.095Z"}
+{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T08:49:27.095Z"}
+{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T08:49:32.207Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T08:49:32.246Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T08:49:32.246Z"}
+{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T08:57:00.069Z"}

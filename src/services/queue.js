@@ -17,14 +17,6 @@ const RATE_LIMIT_DELAY = 3000; // 3 seconds
 const RATE_LIMIT_WINDOW = 60000; // 1 minute
 const MAX_MESSAGES_PER_WINDOW = 15;
 
-// Add WebSocket constants at the top
-const WS_READY_STATES = {
-  CONNECTING: 0,
-  OPEN: 1,
-  CLOSING: 2,
-  CLOSED: 3,
-};
-
 class MessageQueue {
   constructor() {
     this.queue = [];
