@@ -7,6 +7,7 @@ const https = require('https');
 const { updatestatus_sock_vbot } = require('../web/programs/izinkebun/helper');
 const { updateDataMill } = require('../web/programs/grading/gradingMill');
 const { connectToWhatsApp } = require('./whatsappService');
+const chokidar = require('chokidar');
 
 // Increase the default max listeners for Readable streams
 stream.Readable.defaultMaxListeners = 15;
@@ -62,6 +63,9 @@ class MessageQueue {
     this.init().catch((err) => {
       console.error('Queue initialization error:', err);
     });
+
+    // Set up file watcher
+    this.setupFileWatcher();
 
     // Track WhatsApp connection state
     this.whatsappConnected = false;
@@ -535,6 +539,23 @@ class MessageQueue {
     } catch (error) {
       this.logger.error('Error saving queue to file:', error);
     }
+  }
+
+  setupFileWatcher() {
+    const watcher = chokidar.watch(this.queuePath, {
+      persistent: true,
+      ignoreInitial: true,
+    });
+
+    watcher.on('change', async () => {
+      this.logger.info(
+        'Detected change in message_queue.json, reloading queue...'
+      );
+      await this.loadQueue();
+      if (!this.paused) {
+        this.processQueue();
+      }
+    });
   }
 }
 

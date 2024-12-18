@@ -25,6 +25,9 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
 
+// Set the io instance in messageQueue
+messageQueue.setIO(io);
+
 app.use(fileUpload({ createParentPath: true }));
 app.use(cors());
 app.use(bodyParser.json());
@@ -158,7 +161,7 @@ process.on('SIGINT', async () => {
 });
 
 // Add new imports for web interface
-const webRoutes = require('./src/web/routes/dashboard');
+const webRoutes = require('./src/web/routes/serverDashboard');
 const apiRoutes = require('./src/web/routes/api');
 const authRoutes = require('./src/web/routes/auth');
 
