@@ -1,0 +1,14 @@
+[
+  {
+    "id": "mill_get_mill_data",
+    "program": "get_mill_data",
+    "cronExpression": "*/2 * * * *"
+  },
+  {
+    "id": "mill_run_jobs_mill",
+    "program": "run_jobs_mill",
+    "cronExpression": "*/3 * * * *",
+    "enabled": true,
+    "type": "grading"
+  }
+]

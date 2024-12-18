@@ -6,7 +6,7 @@
   "author": "jaja",
   "license": "MIT",
   "scripts": {
-    "start": "node botroot.js"
+    "start": "node app.js"
   },
   "dependencies": {
     "@sparticuz/chromium": "^92.0.0",

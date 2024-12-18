@@ -5,6 +5,7 @@ const queueController = require('../controllers/queueController');
 const cron = require('node-cron');
 const GradingMill = require('../programs/grading/gradingMill');
 const GRADING_TYPES = require('../programs/grading/types');
+const messageQueue = require('../../../utils/queue');
 
 // API routes
 router.get('/status', programController.getStatus);
@@ -18,25 +19,10 @@ router.get('/queue/status', queueController.getQueueStatus);
 router.post('/queue/toggle', queueController.toggleQueue);
 router.post('/queue/retry/:jobId', queueController.retryJob);
 router.post('/mill/toggle', programController.toggleMillProgram);
-router.get('/mill/status', programController.getMillProgramStatus);
-router.post('/mill/:program/run', async (req, res) => {
-  try {
-    const { program } = req.params;
-
-    if (program === GRADING_TYPES.GET_MILL_DATA) {
-      await GradingMill.getMillData(global.sock);
-    } else if (program === GRADING_TYPES.RUN_JOBS_MILL) {
-      await GradingMill.runJobsMill();
-    } else {
-      throw new Error('Invalid program specified');
-    }
-
-    res.json({ success: true, message: `${program} executed successfully` });
-  } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
-  }
-});
-
+router.get('/mill/status', (req, res) =>
+  programController.getMillProgramStatus(req, res)
+);
+router.post('/mill/:program/run', programController.runMillProgram);
 router.post('/queue/type/toggle', queueController.toggleQueueType);
 router.post('/programs/schedule', programController.scheduleProgram);
 router.get('/programs/schedules', programController.getProgramSchedules);
@@ -45,66 +31,50 @@ router.delete('/programs/schedule/:id', programController.deleteSchedule);
 router.post('/mill/schedule', async (req, res) => {
   try {
     const { program, cronExpression } = req.body;
+    await programController.updateSchedule(program, cronExpression);
 
-    // Stop existing schedule if it exists
-    if (global.millCronJobs && global.millCronJobs[program]) {
-      global.millCronJobs[program].stop();
-    }
-
-    // Create new schedule
-    global.millCronJobs = global.millCronJobs || {};
-    global.millCronJobs[program] = cron.schedule(
-      cronExpression,
-      async () => {
-        try {
-          if (program === GRADING_TYPES.GET_MILL_DATA) {
-            await GradingMill.getMillData(global.sock);
-          } else if (program === GRADING_TYPES.RUN_JOBS_MILL) {
-            await GradingMill.runJobsMill();
-          }
-        } catch (error) {
-          console.error(`Error executing ${program}:`, error);
-          if (global.queue) {
-            global.queue.emitLog(
-              `Error in scheduled job ${program}: ${error.message}`,
-              'error'
-            );
-          }
-        }
-      },
-      {
-        scheduled: true,
-        timezone: 'Asia/Jakarta',
-      }
-    );
-
-    // Save the schedule
-    const id = `mill_${program}`;
-    const schedule = {
-      id,
-      program,
-      cronExpression,
-    };
-
-    // Add to program controller schedules
-    if (programController.schedules) {
-      programController.schedules.set(id, schedule);
-      await programController.saveSchedules();
-    } else {
-      throw new Error('Program controller schedules not initialized');
-    }
+    // Save to schedules.json
+    await programController.saveSchedules();
 
     res.json({
       success: true,
-      message: `Updated ${program} schedule to ${cronExpression}`,
+      message: `Schedule updated for ${program}`,
     });
   } catch (error) {
-    console.error('Error updating mill schedule:', error);
+    console.error('Error updating schedule:', error);
     res.status(500).json({
       success: false,
       error: error.message,
     });
   }
+});
+
+// Add message to queue
+router.post('/message/queue', async (req, res) => {
+  try {
+    const messageId = await messageQueue.addMessage(req.body);
+    res.json({ success: true, messageId });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// Get queue status
+router.get('/message/queue/status', (req, res) => {
+  const status = messageQueue.getQueueStatus();
+  res.json({ success: true, status });
+});
+
+// Clear queue
+router.post('/message/queue/clear', async (req, res) => {
+  const result = await messageQueue.clearQueue();
+  res.json(result);
+});
+
+// Retry failed messages
+router.post('/message/queue/retry', async (req, res) => {
+  const result = await messageQueue.retryFailedMessages();
+  res.json(result);
 });
 
 module.exports = router;

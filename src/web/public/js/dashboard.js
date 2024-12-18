@@ -387,30 +387,70 @@ document.addEventListener('DOMContentLoaded', () => {
 // Initialize mill program controls
 async function initializeMillControls() {
   try {
+    // Get initial state when page loads
     const response = await fetch('/api/mill/status');
     const data = await response.json();
 
     if (data.success) {
-      // Set toggle states
-      document.getElementById('toggleGetMillData').checked =
-        data.states.get_mill_data;
-      document.getElementById('toggleRunJobsMill').checked =
-        data.states.run_jobs_mill;
+      // Get all required elements
+      const elements = {
+        toggleGetMillData: document.getElementById('toggleGetMillData'),
+        toggleRunJobsMill: document.getElementById('toggleRunJobsMill'),
+        getMillDataMinutes: document.getElementById('getMillDataMinutes'),
+        runJobsMillMinutes: document.getElementById('runJobsMillMinutes'),
+        updateGetMillDataSchedule: document.getElementById(
+          'updateGetMillDataSchedule'
+        ),
+        updateRunJobsMillSchedule: document.getElementById(
+          'updateRunJobsMillSchedule'
+        ),
+      };
 
-      // Set schedule values
+      // Check if all elements exist
+      const missingElements = Object.entries(elements)
+        .filter(([key, element]) => !element)
+        .map(([key]) => key);
+
+      if (missingElements.length > 0) {
+        console.error('Missing elements:', missingElements);
+        return;
+      }
+
+      // Set toggle states
+      elements.toggleGetMillData.checked = data.states.get_mill_data;
+      elements.toggleRunJobsMill.checked = data.states.run_jobs_mill;
+
+      // Set schedule values from saved schedules
       if (data.schedules) {
         if (data.schedules.get_mill_data) {
-          document.getElementById('getMillDataMinutes').value =
-            data.schedules.get_mill_data.match(/\*\/(\d+)/)[1];
+          const minutes =
+            data.schedules.get_mill_data.cronExpression.match(/\*\/(\d+)/)[1];
+          elements.getMillDataMinutes.value = minutes;
         }
+
         if (data.schedules.run_jobs_mill) {
-          document.getElementById('runJobsMillMinutes').value =
-            data.schedules.run_jobs_mill.match(/\*\/(\d+)/)[1];
+          const minutes =
+            data.schedules.run_jobs_mill.cronExpression.match(/\*\/(\d+)/)[1];
+          elements.runJobsMillMinutes.value = minutes;
         }
       }
+
+      // Add event listeners
+      elements.updateGetMillDataSchedule.addEventListener('click', async () => {
+        const minutes = elements.getMillDataMinutes.value;
+        await updateSchedule('get_mill_data', minutes);
+        await initializeMillControls();
+      });
+
+      elements.updateRunJobsMillSchedule.addEventListener('click', async () => {
+        const minutes = elements.runJobsMillMinutes.value;
+        await updateSchedule('run_jobs_mill', minutes);
+        await initializeMillControls();
+      });
     }
   } catch (error) {
     console.error('Error initializing mill controls:', error);
+    addToLog(`Error initializing mill controls: ${error.message}`, 'error');
   }
 }
 
@@ -457,16 +497,20 @@ async function runMillProgram(program) {
   try {
     const response = await fetch(`/api/mill/${program}/run`, {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
 
     const data = await response.json();
     if (data.success) {
-      // Show success message
-      alert(`${program} executed successfully`);
+      addToLog(`${program} executed successfully`, 'success');
+    } else {
+      addToLog(`Error running ${program}: ${data.message}`, 'error');
     }
   } catch (error) {
     console.error('Error running mill program:', error);
-    alert(`Error running ${program}`);
+    addToLog(`Error running ${program}: ${error.message}`, 'error');
   }
 }
 
@@ -568,3 +612,60 @@ async function updateMillSchedule(program) {
     addToLog(`Error updating schedule: ${error.message}`, 'error');
   }
 }
+
+// Define all helper functions first
+async function updateSchedule(program, minutes) {
+  try {
+    const response = await fetch('/api/mill/schedule', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        program,
+        cronExpression: `*/${minutes} * * * *`,
+      }),
+    });
+
+    const data = await response.json();
+    if (data.success) {
+      addToLog(
+        `Updated ${program} schedule to run every ${minutes} minutes`,
+        'success'
+      );
+      // Refresh the display to show new values
+      await initializeMillControls();
+    } else {
+      addToLog(`Failed to update ${program} schedule: ${data.error}`, 'error');
+    }
+  } catch (error) {
+    console.error('Error updating schedule:', error);
+    addToLog(`Error updating schedule: ${error.message}`, 'error');
+  }
+}
+
+async function addToLog(message, type = 'info') {
+  const logContainer = document.getElementById('logContainer');
+  if (logContainer) {
+    const logEntry = document.createElement('div');
+    logEntry.className = `log-entry ${type}`;
+    logEntry.textContent = `${new Date().toLocaleTimeString()}: ${message}`;
+    logContainer.insertBefore(logEntry, logContainer.firstChild);
+  }
+}
+
+// Then your initialization function
+async function initializeMillControls() {
+  try {
+    const response = await fetch('/api/mill/status');
+    const data = await response.json();
+
+    // ... rest of your initialization code ...
+  } catch (error) {
+    console.error('Error initializing mill controls:', error);
+    addToLog(`Error initializing mill controls: ${error.message}`, 'error');
+  }
+}
+
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', initializeMillControls);
