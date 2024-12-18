@@ -232,21 +232,19 @@ async function refreshQueueStatus() {
     const data = await response.json();
 
     if (data.success) {
+      const status = data.status; // Get the status from the response
+
       // Create HTML for active jobs, grouped by type
       let activeQueueHtml = '';
 
       // Handle grouped jobs
-      Object.entries(data.data.active).forEach(([type, jobs]) => {
+      Object.entries(status.active).forEach(([type, jobs]) => {
         // Add type header
         activeQueueHtml += `
           <tr class="table-secondary">
             <td colspan="4">
               <div class="d-flex justify-content-between align-items-center">
                 <strong>${type}</strong>
-                <div>
-                  <button class="btn btn-sm btn-success" onclick="toggleQueueType('${type}', false)">Resume</button>
-                  <button class="btn btn-sm btn-warning" onclick="toggleQueueType('${type}', true)">Pause</button>
-                </div>
               </div>
             </td>
           </tr>
@@ -272,22 +270,41 @@ async function refreshQueueStatus() {
       });
 
       // If no jobs at all
-      if (Object.keys(data.data.active).length === 0) {
+      if (Object.keys(status.active).length === 0) {
         activeQueueHtml =
           '<tr><td colspan="4" class="text-center">No active jobs</td></tr>';
       }
 
       document.getElementById('active-queue').innerHTML = activeQueueHtml;
 
-      // Update Failed Jobs
+      // Update queue status indicators
+      const statusHtml = `
+        <div class="mb-3">
+          <strong>Queue Status:</strong> 
+          <span class="badge ${status.isPaused ? 'bg-warning' : 'bg-success'}">
+            ${status.isPaused ? 'Paused' : 'Running'}
+          </span>
+        </div>
+        <div class="mb-2">
+          <strong>Statistics:</strong>
+          <span class="badge bg-primary ms-2">Total: ${status.stats.total}</span>
+          <span class="badge bg-success ms-2">Completed: ${status.stats.completed}</span>
+          <span class="badge bg-warning ms-2">Pending: ${status.stats.pending}</span>
+          <span class="badge bg-danger ms-2">Failed: ${status.stats.failed}</span>
+        </div>
+      `;
+
+      document.getElementById('queue-status').innerHTML = statusHtml;
+
+      // Update Failed Jobs section if you have failed jobs
       const failedJobsHtml =
-        data.data.failed.length > 0
-          ? data.data.failed
+        status.failed.length > 0
+          ? status.failed
               .map(
                 (job) => `
           <tr>
             <td>${job.type}</td>
-            <td><small class="text-danger">${job.error}</small></td>
+            <td><small class="text-danger">${job.error || 'Unknown error'}</small></td>
             <td>${new Date(job.failedAt).toLocaleString()}</td>
             <td>
               <button class="btn btn-sm btn-primary" onclick="retryJob('${job.id}')">Retry</button>
@@ -299,9 +316,8 @@ async function refreshQueueStatus() {
           : '<tr><td colspan="4" class="text-center">No failed jobs</td></tr>';
 
       document.getElementById('failed-jobs').innerHTML = failedJobsHtml;
-
-      // Update queue status indicators
-      updateQueueStatusIndicators(data.data.isPaused, data.data.pausedTypes);
+    } else {
+      console.error('Failed to get queue status:', data.error);
     }
   } catch (error) {
     console.error('Error refreshing queue status:', error);
@@ -669,3 +685,55 @@ async function initializeMillControls() {
 
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', initializeMillControls);
+
+async function resumeQueue() {
+  try {
+    // Check connection status first
+    const statusResponse = await fetch('/api/whatsapp/status');
+    const statusData = await statusResponse.json();
+
+    if (!statusData.connected) {
+      addToLog('Cannot resume queue: WhatsApp is not connected', 'error');
+      return;
+    }
+
+    const response = await fetch('/api/queue/resume', {
+      method: 'POST',
+    });
+    const data = await response.json();
+
+    if (data.success) {
+      addToLog('Queue processing resumed', 'success');
+      await refreshQueueStatus();
+    } else {
+      addToLog(`Failed to resume queue: ${data.error}`, 'error');
+    }
+  } catch (error) {
+    console.error('Error resuming queue:', error);
+    addToLog(`Error resuming queue: ${error.message}`, 'error');
+  }
+}
+
+// Make sure the button is properly connected
+document.addEventListener('DOMContentLoaded', () => {
+  const resumeButton =
+    document.querySelector('.resume-queue-btn') ||
+    document.getElementById('resumeQueue');
+  if (resumeButton) {
+    resumeButton.addEventListener('click', resumeQueue);
+  }
+});
+
+// Add WebSocket listeners for real-time updates
+socket.on('whatsapp:status', (data) => {
+  const { connected } = data;
+  updateConnectionStatus(connected);
+});
+
+function updateConnectionStatus(connected) {
+  const statusElement = document.querySelector('.connection-status');
+  if (statusElement) {
+    statusElement.textContent = connected ? 'Connected' : 'Disconnected';
+    statusElement.className = `connection-status ${connected ? 'connected' : 'disconnected'}`;
+  }
+}

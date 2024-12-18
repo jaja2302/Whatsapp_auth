@@ -1,11 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const programController = require('../controllers/programController');
-const queueController = require('../controllers/queueController');
-const cron = require('node-cron');
-const GradingMill = require('../programs/grading/gradingMill');
-const GRADING_TYPES = require('../programs/grading/types');
-const messageQueue = require('../../../utils/queue');
+const messageQueue = require('../../services/queue');
 
 // API routes
 router.get('/status', programController.getStatus);
@@ -15,15 +11,26 @@ router.post('/whatsapp/disconnect', programController.disconnectWhatsApp);
 router.post('/whatsapp/reconnect', programController.reconnectWhatsApp);
 router.get('/handlers', programController.getHandlerStates);
 router.post('/handlers', programController.updateHandlerState);
-router.get('/queue/status', queueController.getQueueStatus);
-router.post('/queue/toggle', queueController.toggleQueue);
-router.post('/queue/retry/:jobId', queueController.retryJob);
+router.get('/queue/status', (req, res) => {
+  try {
+    const status = global.queue.getStatus();
+    res.json({
+      success: true,
+      status,
+    });
+  } catch (error) {
+    console.error('Error getting queue status:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message || 'Failed to get queue status',
+    });
+  }
+});
 router.post('/mill/toggle', programController.toggleMillProgram);
 router.get('/mill/status', (req, res) =>
   programController.getMillProgramStatus(req, res)
 );
 router.post('/mill/:program/run', programController.runMillProgram);
-router.post('/queue/type/toggle', queueController.toggleQueueType);
 router.post('/programs/schedule', programController.scheduleProgram);
 router.get('/programs/schedules', programController.getProgramSchedules);
 router.delete('/programs/schedule/:id', programController.deleteSchedule);
@@ -75,6 +82,62 @@ router.post('/message/queue/clear', async (req, res) => {
 router.post('/message/queue/retry', async (req, res) => {
   const result = await messageQueue.retryFailedMessages();
   res.json(result);
+});
+
+// Resume queue processing
+router.post('/queue/resume', (req, res) => {
+  try {
+    if (!global.queue) {
+      throw new Error('Queue system is not initialized');
+    }
+    global.queue.resume();
+    res.json({
+      success: true,
+      message: 'Queue processing resumed',
+    });
+  } catch (error) {
+    console.error('Error resuming queue:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message || 'Failed to resume queue',
+    });
+  }
+});
+
+// Pause queue processing
+router.post('/queue/pause', (req, res) => {
+  try {
+    if (!global.queue) {
+      throw new Error('Queue system is not initialized');
+    }
+    global.queue.pause();
+    res.json({
+      success: true,
+      message: 'Queue processing paused',
+    });
+  } catch (error) {
+    console.error('Error pausing queue:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message || 'Failed to pause queue',
+    });
+  }
+});
+
+// Add WhatsApp status endpoint
+router.get('/whatsapp/status', (req, res) => {
+  try {
+    const isConnected = global.queue.checkConnection();
+    res.json({
+      success: true,
+      connected: isConnected,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message,
+    });
+  }
 });
 
 module.exports = router;

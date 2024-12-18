@@ -31,7 +31,7 @@ class ProgramController {
 
   async loadSchedules() {
     try {
-      const data = await fs.readFile(
+      const data = await fs.promises.readFile(
         path.join(__dirname, '../data/schedules.json'),
         'utf8'
       );

@@ -1,8 +1,12 @@
 const axios = require('axios');
-const Queue = require('../../../../utils/queue');
+const Queue = require('../../../services/queue');
 require('dotenv').config();
 class GradingMill {
   constructor() {
+    this.isRunning = false;
+    this.autoFetchEnabled = false;
+    this.autoProcessEnabled = false;
+    this.logger = global.queue ? global.queue.logger : console;
     this.credentials = {
       email: process.env.MILL_EMAIL,
       password: process.env.MILL_PASSWORD,
@@ -80,6 +84,12 @@ class GradingMill {
 
   async runJobsMill() {
     try {
+      if (!this.autoProcessEnabled) {
+        this.log('Auto process is disabled');
+        return;
+      }
+
+      this.log('Starting jobs mill process');
       if (!this.baseUrl) {
         throw new Error('Base URL is not configured');
       }
@@ -90,10 +100,7 @@ class GradingMill {
       global.queue.emitLog('Successfully fetched mill jobs', 'success');
       return response.data;
     } catch (error) {
-      global.queue.emitLog(
-        `Error fetching mill jobs: ${error.message}`,
-        'error'
-      );
+      this.logError(`Error in runJobsMill: ${error.message}`);
       throw error;
     }
   }
@@ -167,6 +174,22 @@ class GradingMill {
       SCM: '120363332360538214@g.us',
     };
     return groups[mill];
+  }
+
+  log(message) {
+    if (global.queue && global.queue.emitLog) {
+      global.queue.emitLog(message, 'info');
+    } else {
+      console.log(message);
+    }
+  }
+
+  logError(message) {
+    if (global.queue && global.queue.emitLog) {
+      global.queue.emitLog(message, 'error');
+    } else {
+      console.error(message);
+    }
   }
 }
 

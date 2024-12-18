@@ -16,6 +16,7 @@ const {
 const {
   handleReplyDocMessage,
 } = require('../../utils/repply_with_doc_messages');
+const { log } = require('../web/programs/grading/gradingMill');
 
 // Keep track of connection state
 let isConnected = false;
@@ -98,6 +99,33 @@ async function connectToWhatsApp() {
           isReconnecting: false,
         });
       }
+
+      // Update queue when connection is established
+      if (connection === 'open' && global.sock.user) {
+        console.log('WhatsApp connected!');
+        if (global.queue) {
+          global.queue.whatsappConnected = true;
+          // Emit connection status to all clients
+          if (global.io) {
+            global.io.emit('whatsapp:status', {
+              connected: true,
+              user: global.sock.user.id,
+            });
+          }
+        }
+      } else if (connection === 'close') {
+        console.log('WhatsApp disconnected!');
+        if (global.queue) {
+          global.queue.whatsappConnected = false;
+          global.queue.pause();
+          // Emit connection status to all clients
+          if (global.io) {
+            global.io.emit('whatsapp:status', {
+              connected: false,
+            });
+          }
+        }
+      }
     });
 
     global.sock.ev.on('creds.update', saveCreds);
@@ -120,6 +148,8 @@ async function connectToWhatsApp() {
           // console.log(
           //   `remoteJid: ${noWa}, isReply: ${isReply}, isGroup: ${isGroup}, isPrivate: ${isPrivate}`
           // );
+          console.log(text);
+
           try {
             if (isGroup && messageHandlers.groupMessages.enabled) {
               await handleGroupMessage(message);
@@ -155,6 +185,16 @@ async function connectToWhatsApp() {
         }
       }
     });
+
+    // Add connection check method
+    global.sock.isConnected = () => {
+      return (
+        global.sock.user &&
+        global.sock.ws.readyState === global.sock.ws.OPEN &&
+        typeof global.sock.sendMessage === 'function'
+      );
+    };
+
     await sleep(1000);
     return global.sock;
   } catch (error) {
