@@ -7,8 +7,116 @@ const {
   getMessageHandlerStates,
 } = require('../../services/whatsappService');
 const cron = require('node-cron');
+const GradingMill = require('../programs/grading/gradingMill');
+const GRADING_TYPES = require('../programs/grading/types');
 
 class ProgramController {
+  constructor() {
+    this.schedules = new Map();
+    this.loadSchedules();
+
+    // Initialize mill program states
+    global.millProgramStates = {
+      get_mill_data: false,
+      run_jobs_mill: false,
+    };
+  }
+
+  async loadSchedules() {
+    try {
+      const data = await fs.readFile(
+        path.join(__dirname, '../data/schedules.json'),
+        'utf8'
+      );
+      const schedules = JSON.parse(data);
+      schedules.forEach((schedule) => {
+        this.createSchedule(
+          schedule.id,
+          schedule.program,
+          schedule.cronExpression
+        );
+      });
+    } catch (error) {
+      console.log('No existing schedules found');
+    }
+  }
+
+  async saveSchedules() {
+    const schedules = Array.from(this.schedules.values()).map((s) => ({
+      id: s.id,
+      program: s.program,
+      cronExpression: s.cronExpression,
+    }));
+    await fs.writeFile(
+      path.join(__dirname, '../data/schedules.json'),
+      JSON.stringify(schedules, null, 2)
+    );
+  }
+
+  createSchedule(id, program, cronExpression) {
+    const job = cron.schedule(cronExpression, () => {
+      this.runProgram({ params: { programName: program } }, null);
+    });
+
+    this.schedules.set(id, {
+      id,
+      program,
+      cronExpression,
+      job,
+    });
+  }
+
+  async scheduleProgram(req, res) {
+    try {
+      const { program, cronExpression } = req.body;
+      const id = Date.now().toString();
+
+      this.createSchedule(id, program, cronExpression);
+      await this.saveSchedules();
+
+      res.json({
+        success: true,
+        schedule: {
+          id,
+          program,
+          cronExpression,
+        },
+      });
+    } catch (error) {
+      res.status(500).json({ success: false, error: error.message });
+    }
+  }
+
+  async getProgramSchedules(req, res) {
+    try {
+      const schedules = Array.from(this.schedules.values()).map((s) => ({
+        id: s.id,
+        program: s.program,
+        cronExpression: s.cronExpression,
+      }));
+      res.json({ success: true, schedules });
+    } catch (error) {
+      res.status(500).json({ success: false, error: error.message });
+    }
+  }
+
+  async deleteSchedule(req, res) {
+    try {
+      const { id } = req.params;
+      const schedule = this.schedules.get(id);
+      if (schedule) {
+        schedule.job.stop();
+        this.schedules.delete(id);
+        await this.saveSchedules();
+        res.json({ success: true });
+      } else {
+        res.status(404).json({ success: false, message: 'Schedule not found' });
+      }
+    } catch (error) {
+      res.status(500).json({ success: false, error: error.message });
+    }
+  }
+
   async getStatus(req, res) {
     try {
       const status = {
@@ -209,13 +317,32 @@ class ProgramController {
 
   async getMillProgramStatus(req, res) {
     try {
+      // Get current states
       const states = global.millProgramStates || {
-        get_mill_data: true, // default states
-        run_jobs_mill: true,
+        get_mill_data: false,
+        run_jobs_mill: false,
       };
-      res.json({ success: true, states });
+
+      // Get current schedules for mill programs
+      const schedules = {};
+      for (const [id, schedule] of this.schedules.entries()) {
+        if (id.startsWith('mill_')) {
+          const programName = id.replace('mill_', '');
+          schedules[programName] = schedule.cronExpression;
+        }
+      }
+
+      res.json({
+        success: true,
+        states,
+        schedules,
+      });
     } catch (error) {
-      res.status(500).json({ success: false, error: error.message });
+      console.error('Error getting mill status:', error);
+      res.status(500).json({
+        success: false,
+        error: error.message,
+      });
     }
   }
 
@@ -232,6 +359,65 @@ class ProgramController {
       }
 
       res.json({ success: true, message: `${program} executed successfully` });
+    } catch (error) {
+      res.status(500).json({ success: false, error: error.message });
+    }
+  }
+
+  async runMillProgram(req, res) {
+    try {
+      const { program } = req.params;
+
+      if (program === GRADING_TYPES.GET_MILL_DATA) {
+        await GradingMill.getMillData(global.sock);
+      } else if (program === GRADING_TYPES.RUN_JOBS_MILL) {
+        await GradingMill.runJobsMill();
+      } else {
+        throw new Error('Invalid program specified');
+      }
+
+      res.json({ success: true, message: `${program} executed successfully` });
+    } catch (error) {
+      res.status(500).json({ success: false, error: error.message });
+    }
+  }
+
+  async updateMillSchedule(req, res) {
+    try {
+      const { program, cronExpression } = req.body;
+
+      // Create new schedule
+      const job = cron.schedule(
+        cronExpression,
+        async () => {
+          try {
+            if (program === GRADING_TYPES.GET_MILL_DATA) {
+              await GradingMill.getMillData(global.sock);
+            } else if (program === GRADING_TYPES.RUN_JOBS_MILL) {
+              await GradingMill.runJobsMill();
+            }
+          } catch (error) {
+            global.queue.emitLog(
+              `Error in scheduled job ${program}: ${error.message}`,
+              'error'
+            );
+          }
+        },
+        {
+          scheduled: true,
+          timezone: 'Asia/Jakarta',
+        }
+      );
+
+      // Save schedule
+      const id = `mill_${program}`;
+      this.schedules.set(id, { id, program, cronExpression, job });
+      await this.saveSchedules();
+
+      res.json({
+        success: true,
+        message: `Updated ${program} schedule to ${cronExpression}`,
+      });
     } catch (error) {
       res.status(500).json({ success: false, error: error.message });
     }

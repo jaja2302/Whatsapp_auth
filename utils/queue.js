@@ -21,6 +21,7 @@ class Queue {
     this.maxRetries = 3;
     this.messagesSentTimestamps = [];
     this.failedJobsPath = path.join(__dirname, 'failed_jobs.json');
+    this.pausedTypes = new Set(); // Track paused types
 
     // Load queue immediately
     this.loadFromDisk().catch(console.error);
@@ -43,6 +44,16 @@ class Queue {
       await this.saveToFile();
       process.exit();
     });
+
+    // Add this line to get access to io
+    this.io = global.io;
+  }
+
+  emitLog(message, type = 'info') {
+    if (this.io) {
+      this.io.emit('server-log', { message, type });
+    }
+    console.log(message); // Keep console logging
   }
 
   async saveToFile() {
@@ -63,8 +74,10 @@ class Queue {
       // Save current queue
       await fs.writeFile(this.filePath, JSON.stringify(this.items, null, 2));
       console.log('Queue saved to disk');
+      this.emitLog('Queue saved to disk', 'info');
     } catch (error) {
       console.error('Error saving queue to disk:', error);
+      this.emitLog(`Error saving queue to disk: ${error}`, 'error');
     }
   }
 
@@ -86,6 +99,10 @@ class Queue {
       console.log(
         `Queue loaded from disk, active items: ${this.items.length}, failed items: ${failedItems.length}`
       );
+      this.emitLog(
+        `Queue loaded from disk, active items: ${this.items.length}, failed items: ${failedItems.length}`,
+        'info'
+      );
 
       // Resume processing if there are items
       if (this.items.length > 0 && !this.processing && !this.paused) {
@@ -95,6 +112,10 @@ class Queue {
       if (error.code === 'ENOENT') {
         console.log('No existing queue file found. Starting with empty queue.');
         this.items = [];
+        this.emitLog(
+          'No existing queue file found. Starting with empty queue.',
+          'info'
+        );
       } else {
         console.error('Error loading queue from disk:', error);
         // Try to load from backup
@@ -109,11 +130,15 @@ class Queue {
           console.error('Failed to load from backup:', backupError);
           this.items = [];
         }
+        this.emitLog(`Error loading queue from disk: ${error}`, 'error');
       }
     }
   }
 
   push(task) {
+    // Add default type if not specified
+    task.queueType = task.queueType || 'general';
+
     // Define a function to compare tasks
     const areTasksEqual = (task1, task2) => {
       // Compare task type
@@ -140,6 +165,7 @@ class Queue {
     if (!this.paused) {
       this.process();
     }
+    this.emitLog(`Task added to queue: ${task.type}`, 'info');
   }
 
   getEssentialTaskData(data) {
@@ -157,6 +183,7 @@ class Queue {
   pause() {
     this.paused = true;
     console.log('Queue paused');
+    this.emitLog('Queue paused', 'warning');
   }
 
   resume() {
@@ -165,18 +192,27 @@ class Queue {
     if (this.items.length > 0 && !this.processing) {
       this.process();
     }
+    this.emitLog('Queue resumed', 'success');
   }
 
   async process() {
     if (this.processing || this.items.length === 0 || this.paused) return;
 
+    // Find first task of non-paused type
+    const taskIndex = this.items.findIndex(
+      (task) => !this.pausedTypes.has(task.queueType)
+    );
+    if (taskIndex === -1) return; // All available task types are paused
+
     this.processing = true;
-    const task = this.items[0];
+    const task = this.items[taskIndex];
 
     try {
       await this.executeTask(task);
-      console.log(`Task completed: ${task.type}`);
-      this.items.shift();
+      console.log(
+        `Task completed: ${task.type} (Queue type: ${task.queueType})`
+      );
+      this.items.splice(taskIndex, 1);
     } catch (error) {
       console.error(`Error processing task (${task.type}):`, error);
       task.retries = (task.retries || 0) + 1;
@@ -407,6 +443,20 @@ class Queue {
   async reloadQueue() {
     console.log('Reloading queue from disk...');
     await this.loadFromDisk();
+  }
+
+  // Add new method to pause/resume specific type
+  pauseType(type) {
+    this.pausedTypes.add(type);
+    console.log(`Queue type ${type} paused`);
+  }
+
+  resumeType(type) {
+    this.pausedTypes.delete(type);
+    console.log(`Queue type ${type} resumed`);
+    if (this.items.length > 0 && !this.processing) {
+      this.process();
+    }
   }
 }
 

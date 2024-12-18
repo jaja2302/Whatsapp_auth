@@ -22,12 +22,21 @@ async function getQueueStatus(req, res) {
       }
     }
 
+    // Group active jobs by type
+    const groupedJobs = activeJobs.reduce((acc, job) => {
+      const type = job.queueType || 'general';
+      acc[type] = acc[type] || [];
+      acc[type].push(job);
+      return acc;
+    }, {});
+
     res.json({
       success: true,
       data: {
-        active: activeJobs,
+        active: groupedJobs,
         failed: failedJobs,
         isPaused: queue.paused,
+        pausedTypes: Array.from(queue.pausedTypes),
         isProcessing: queue.processing,
       },
     });
@@ -45,6 +54,20 @@ async function toggleQueue(req, res) {
       queue.resume();
     }
     res.json({ success: true, isPaused: queue.paused });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+}
+
+async function toggleQueueType(req, res) {
+  try {
+    const { type, pause } = req.body;
+    if (pause) {
+      queue.pauseType(type);
+    } else {
+      queue.resumeType(type);
+    }
+    res.json({ success: true, type, isPaused: pause });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
@@ -89,5 +112,6 @@ async function retryJob(req, res) {
 module.exports = {
   getQueueStatus,
   toggleQueue,
+  toggleQueueType,
   retryJob,
 };
