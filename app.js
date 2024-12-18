@@ -1,3 +1,4 @@
+// Import necessary modules
 const {
   default: makeWASocket,
   DisconnectReason,
@@ -28,6 +29,7 @@ const io = socketIO(server);
 // Set the io instance in messageQueue
 messageQueue.setIO(io);
 
+// Middleware setup
 app.use(fileUpload({ createParentPath: true }));
 app.use(cors());
 app.use(bodyParser.json());
@@ -96,11 +98,6 @@ io.on('connection', (socket) => {
 
 app.get('/testing', async (req, res) => {
   try {
-    // await pingGoogle();
-    // await statusAWS();
-    // da
-    // console.log(sock.user);
-    // console.log(result);
     res.status(200).json({
       status: true,
       response: 'Task Success',
@@ -113,6 +110,7 @@ app.get('/testing', async (req, res) => {
     });
   }
 });
+
 // Use the imported messageQueue instance
 global.queue = messageQueue;
 console.log('Queue created');
@@ -142,13 +140,7 @@ console.log('bot_grading_error.log and bot_grading.log cleared');
 connectToWhatsApp().catch((err) =>
   logger.error('Error connecting to WhatsApp:', err)
 );
-// runfunction();
-// setupCronJobs();
-// function_rapidresponse();
-// function_marcom();
-// broadcast_grading_mill();
-// helperfunctionSmartlabs();
-// ... other function calls
+
 const port = process.env.PORT || 8000;
 server.listen(port, () => logger.info(`Server running on port ${port}`));
 

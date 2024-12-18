@@ -524,3 +524,8 @@
 {"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T08:49:32.246Z"}
 {"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T08:49:32.246Z"}
 {"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T08:57:00.069Z"}
+{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T09:00:00.204Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:01:06.843Z"}
+{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:01:11.268Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:01:11.296Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:01:11.296Z"}
