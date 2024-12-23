@@ -14,12 +14,8 @@ const noWa_grading_mlm = '120363332857987276@g.us';
 const noWa_grading_nkm = '120363046524351245@g.us';
 const noWa_grading_scm = '120363332360538214@g.us';
 const no_grup_skm = '120363283953366418@g.us';
-// id_group: 120363046524351245@g.us || Nama Group: GRADING NKM
-// id_group: 120363332857987276@g.us || Nama Group: QC Grading PKS Malata
-
-// List id_group: 120363331441324422@g.us || Nama Group: Grading Reg II
-
-// id_group: 6285655573821-1566449850@g.us || Nama Group: NBM 22.00
+const no_grup_sjm = '120363349956616448@g.us';
+// id_group: 120363349956616448@g.us || Nama Group: Team Grading SUJA MILL
 
 const { channel } = require('../../utils/pusher');
 const { REGISTRATION_PUBLIC_KEY } = require('@whiskeysockets/baileys');
@@ -102,6 +98,9 @@ async function get_mill_data(sock) {
             case 'SKM':
               // send_image = true;
               return no_grup_skm;
+            case 'SJM':
+              // send_image = true;
+              return no_grup_sjm;
             default:
               // send_images = true;
               return noWa_grading;
