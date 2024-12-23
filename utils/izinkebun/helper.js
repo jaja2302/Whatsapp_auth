@@ -897,11 +897,11 @@ const runfunction = async () => {
           ' Anda juga bisa membalas dengan *Ya semua*/*Tidak semua* untuk menyetujui/menolak semua permintaan yang terkait dengan anda tanpa perlu menahan pesan ini\n';
         message += `Pesan otomatis oleh Digital Architect SRS Bot.`;
 
-        global.queue.push({
+        queue.push({
           type: 'send_message',
           data: { to: `${data.send_to}@s.whatsapp.net`, message },
         });
-        global.queue.push({
+        queue.push({
           type: 'update_status_izinkebun',
           data: { id_db: data.id_db, type: data.type },
         });
@@ -925,18 +925,18 @@ const runfunction = async () => {
         userMessage += `Terima kasih,\n`;
         userMessage += `Tim Digital Architect SRS Bot`;
 
-        global.queue.push({
+        queue.push({
           type: 'send_message',
           data: { to: `${data.send_to}@s.whatsapp.net`, message },
         });
-        global.queue.push({
+        queue.push({
           type: 'send_message',
           data: {
             to: `${data.no_hp_user}@s.whatsapp.net`,
             message: userMessage,
           },
         });
-        global.queue.push({
+        queue.push({
           type: 'update_status_izinkebun',
           data: { id_db: data.id_db, type: data.type },
         });
@@ -972,7 +972,7 @@ const runfunction = async () => {
             const pdfBuffer = Buffer.from(datapdf.pdf, 'base64');
             const pdfFilename = datapdf.filename || 'Invoice.pdf';
 
-            global.queue.push({
+            queue.push({
               type: 'send_document',
               data: {
                 to: `${data.send_to}@s.whatsapp.net`,
@@ -981,7 +981,7 @@ const runfunction = async () => {
                 caption: message,
               },
             });
-            global.queue.push({
+            queue.push({
               type: 'update_status_izinkebun',
               data: { id_db: data.id_db, type: data.type },
             });
@@ -1000,11 +1000,11 @@ const runfunction = async () => {
         message += `Terima kasih,\n`;
         message += `Tim Digital Architect SRS Bot`;
 
-        global.queue.push({
+        queue.push({
           type: 'send_message',
           data: { to: `${data.send_to}@s.whatsapp.net`, message },
         });
-        global.queue.push({
+        queue.push({
           type: 'update_status_izinkebun',
           data: { id_db: data.id_db, type: data.type },
         });
@@ -1028,18 +1028,18 @@ const runfunction = async () => {
         userMessage += `Terima kasih,\n`;
         userMessage += `Tim Digital Architect SRS Bot`;
 
-        global.queue.push({
+        queue.push({
           type: 'send_message',
           data: { to: `${data.send_to}@s.whatsapp.net`, message },
         });
-        global.queue.push({
+        queue.push({
           type: 'send_message',
           data: {
             to: `${data.no_hp_user}@s.whatsapp.net`,
             message: userMessage,
           },
         });
-        global.queue.push({
+        queue.push({
           type: 'update_status_izinkebun',
           data: { id_db: data.id_db, type: data.type },
         });
@@ -1086,7 +1086,7 @@ async function Report_group_izinkebun(sock) {
         //   fileName: pdfFilename,
         //   caption: captions,
         // };
-        global.queue.push({
+        queue.push({
           type: 'send_document',
           data: {
             to: idgroup,

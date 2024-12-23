@@ -136,7 +136,7 @@ async function sendtaksasiest(estate, group_id, folder, sock, taskid, tanggal) {
         const pdfFilename = `Rekap Taksasi ${estate} ${newdaate}.pdf`;
         let captions = `Dikirim oleh ROBOT,jangan balas pesan\n`;
         try {
-          global.queue.push({
+          queue.push({
             type: 'send_document',
             data: {
               to: group_id,
@@ -274,7 +274,7 @@ async function Generateandsendtaksasi(sock) {
           //   caption: captions,
           // };
 
-          global.queue.push({
+          queue.push({
             type: 'send_document',
             data: {
               to: item.new_group,
@@ -337,7 +337,7 @@ async function Sendverificationtaksasi(sock) {
           //   caption: 'Pesan otomatis, harap jangan membalas pesan ini',
           // };
 
-          global.queue.push({
+          queue.push({
             type: 'send_document',
             data: {
               to: item.new_group,
