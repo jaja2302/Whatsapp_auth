@@ -20,6 +20,8 @@ const socketIO = require('socket.io');
 const messageQueue = require('./src/services/queue');
 const fs = require('fs');
 const { connectToWhatsApp } = require('./src/services/whatsappService');
+const readline = require('readline');
+const util = require('util');
 
 // App Initialization
 const app = express();
@@ -88,12 +90,20 @@ const updateQR = (data) => {
 
 // WebSocket handling
 io.on('connection', (socket) => {
+  console.log('Client connected');
+
   soket = socket;
   if (global.sock?.user) {
     updateQR('connected');
   } else if (qr) {
     updateQR('qr');
   }
+
+  // Send recent logs on connection
+  const recentLogs = getRecentLogs(); // You'll need to implement this
+  recentLogs.forEach((log) => {
+    socket.emit('server-log', log);
+  });
 });
 
 app.get('/testing', async (req, res) => {
@@ -155,12 +165,95 @@ process.on('SIGINT', async () => {
 // Add new imports for web interface
 const webRoutes = require('./src/web/routes/serverDashboard');
 const apiRoutes = require('./src/web/routes/api');
-const authRoutes = require('./src/web/routes/auth');
 
 // Serve static files from the web/public directory
 app.use(express.static(path.join(__dirname, 'src/web/public')));
 
 // Use the new routes
-app.use('/auth', authRoutes);
 app.use('/dashboard', webRoutes);
 app.use('/api', apiRoutes);
+
+// Emit logs to clients
+function emitLogToClients(level, message) {
+  if (global.io) {
+    global.io.emit('server-log', { level, message });
+  }
+}
+
+// Update logger to emit logs
+logger.add(
+  new winston.transports.Console({
+    format: winston.format.printf(({ level, message, timestamp }) => {
+      const logMessage = `${timestamp} [${level}]: ${message}`;
+      emitLogToClients(level, logMessage);
+      return logMessage;
+    }),
+  })
+);
+
+// Watch the queue.log file for changes
+fs.watchFile('queue.log', (curr, prev) => {
+  if (curr.mtime !== prev.mtime) {
+    const rl = readline.createInterface({
+      input: fs.createReadStream('queue.log', {
+        start: prev.size,
+        end: curr.size,
+      }),
+      output: process.stdout,
+      terminal: false,
+    });
+
+    rl.on('line', (line) => {
+      const logEntry = JSON.parse(line);
+      io.emit('server-log', logEntry); // Emit log to clients
+    });
+  }
+});
+
+// Override console.log and console.error
+const originalLog = console.log;
+const originalError = console.error;
+
+console.log = function () {
+  if (global.io) {
+    global.io.emit('console-log', util.format.apply(null, arguments));
+  }
+  originalLog.apply(console, arguments);
+};
+
+console.error = function () {
+  if (global.io) {
+    global.io.emit('error-log', util.format.apply(null, arguments));
+  }
+  originalError.apply(console, arguments);
+};
+
+// Optional: Keep track of recent logs
+const recentLogs = [];
+const MAX_LOGS = 100;
+
+function getRecentLogs() {
+  return recentLogs;
+}
+
+function addToRecentLogs(log) {
+  recentLogs.push(log);
+  if (recentLogs.length > MAX_LOGS) {
+    recentLogs.shift();
+  }
+}
+
+// Add this to your winston logger configuration
+logger.on('logging', (transport, level, msg) => {
+  const logEntry = {
+    timestamp: new Date().toISOString(),
+    level,
+    message: msg,
+  };
+
+  addToRecentLogs(logEntry);
+
+  if (global.io) {
+    global.io.emit('server-log', logEntry);
+  }
+});

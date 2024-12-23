@@ -1,3 +1,13 @@
+// Ensure socket is defined and connected
+// const socket = io(); // Initialize socket.io client
+
+// Listen for server logs
+socket.on('server-log', (logData) => {
+  addToLog(logData.message, logData.level);
+});
+
+// Other socket event listeners...
+
 async function runProgram(programName) {
   try {
     const response = await fetch(`/api/programs/${programName}`, {

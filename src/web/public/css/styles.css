@@ -15,10 +15,9 @@
   height: 400px;
   overflow-y: auto;
   background: #1e1e1e;
-  color: #ffffff;
-  font-family: monospace;
+  color: #fff;
   padding: 10px;
-  border-radius: 4px;
+  font-family: monospace;
 }
 
 #qr-code img {
@@ -99,10 +98,23 @@
 }
 
 .log-entry {
+  margin: 2px 0;
   padding: 2px 5px;
-  border-bottom: 1px solid #333;
-  white-space: pre-wrap;
-  word-wrap: break-word;
+  border-left: 3px solid transparent;
+}
+
+.log-entry.info {
+  border-left-color: #0d6efd;
+}
+
+.log-entry.error {
+  border-left-color: #dc3545;
+  color: #ff8080;
+}
+
+.log-entry.warning {
+  border-left-color: #ffc107;
+  color: #ffeb99;
 }
 
 .log-time {
@@ -110,18 +122,7 @@
   margin-right: 10px;
 }
 
-.log-entry.info {
-  color: #ffffff;
-}
-
-.log-entry.success {
-  color: #4caf50;
-}
-
-.log-entry.warning {
-  color: #ff9800;
-}
-
-.log-entry.error {
-  color: #f44336;
+.log-message {
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }

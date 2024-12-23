@@ -76,7 +76,7 @@ class MessageQueue {
 
       // Emit to Socket.IO if available
       if (this._io) {
-        this._io.emit('log', logMessage);
+        this._io.emit('server-log', logMessage);
       }
 
       return logMessage;

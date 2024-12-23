@@ -1,531 +1,135 @@
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T02:57:34.104Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T02:57:34.106Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T03:00:14.735Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T03:00:14.737Z"}
-{"level":"info","message":"Loaded 3 messages from queue","timestamp":"2024-12-18T03:01:41.390Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T03:01:41.391Z"}
-{"level":"info","message":"Loaded 3 messages from queue","timestamp":"2024-12-18T03:03:55.998Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T03:03:55.999Z"}
-{"level":"info","message":"Loaded 3 messages from queue","timestamp":"2024-12-18T03:09:48.126Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T03:09:48.127Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T03:09:48.128Z"}
-{"level":"error","message":"Error processing task send_message: WhatsApp connection is not established","stack":"Error: WhatsApp connection is not established\n    at MessageQueue.executeTask (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:132:13)\n    at MessageQueue.processQueue (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:102:22)\n    at MessageQueue.init (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:60:14)","timestamp":"2024-12-18T03:09:48.128Z"}
-{"data":{"stack":"Error\n    at promiseTimeout (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:140:19)\n    at waitForMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:119:53)\n    at query (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:141:22)\n    at getUSyncDevices (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:168:30)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:391:57\n    at Object.transaction (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n    at relayMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:306:30)\n    at Object.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:666:23)\n    at async MessageQueue.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:182:20)\n    at async MessageQueue.executeTask (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:139:9)"},"isBoom":true,"isServer":false,"level":"error","message":"Error processing task send_message: Timed Out","output":{"headers":{},"payload":{"error":"Request Time-out","message":"Timed Out","statusCode":408},"statusCode":408},"stack":"Error: Timed Out\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:145:32","timestamp":"2024-12-18T03:10:52.174Z"}
-{"data":null,"isBoom":true,"isServer":false,"level":"error","message":"Error processing task send_message: Connection Closed","output":{"headers":{},"payload":{"error":"Precondition Required","message":"Connection Closed","statusCode":428},"statusCode":428},"stack":"Error: Connection Closed\n    at sendRawMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:59:19)\n    at sendNode (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:78:16)\n    at query (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:142:15)\n    at getUSyncDevices (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:168:30)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:391:57\n    at Object.transaction (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n    at relayMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:306:30)\n    at Object.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:666:23)\n    at async MessageQueue.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:182:20)\n    at async MessageQueue.executeTask (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:139:9)","timestamp":"2024-12-18T03:10:56.211Z"}
-{"level":"info","message":"Loaded 3 messages from queue","timestamp":"2024-12-18T03:12:50.199Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T03:12:50.200Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T03:12:50.201Z"}
-{"level":"error","message":"Error processing task send_message: WhatsApp connection is not established","stack":"Error: WhatsApp connection is not established\n    at MessageQueue.processQueue (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:129:19)\n    at MessageQueue.init (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:60:14)","timestamp":"2024-12-18T03:12:50.201Z"}
-{"level":"info","message":"Failed message saved: send_message","timestamp":"2024-12-18T03:12:50.210Z"}
-{"level":"info","message":"Pausing queue due to WhatsApp connection issue","timestamp":"2024-12-18T03:12:50.211Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T03:12:50.211Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T03:13:43.784Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T03:13:43.785Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T03:13:43.786Z"}
-{"level":"error","message":"Error processing task send_message: WhatsApp connection is not established","stack":"Error: WhatsApp connection is not established\n    at MessageQueue.processQueue (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:129:19)\n    at MessageQueue.init (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:60:14)","timestamp":"2024-12-18T03:13:43.786Z"}
-{"level":"info","message":"Pausing queue due to WhatsApp connection issue","timestamp":"2024-12-18T03:13:43.793Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T03:13:43.793Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T03:15:50.964Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T03:15:50.965Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T03:20:04.448Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T03:20:04.471Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T03:20:04.471Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T03:20:22.176Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T03:20:22.177Z"}
-{"data":null,"isBoom":true,"isServer":false,"level":"error","message":"Error processing task send_message: Connection Closed","output":{"headers":{},"payload":{"error":"Precondition Required","message":"Connection Closed","statusCode":428},"statusCode":428},"stack":"Error: Connection Closed\n    at sendRawMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:59:19)\n    at sendNode (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:78:16)\n    at query (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:142:15)\n    at getUSyncDevices (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:168:30)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:391:57\n    at Object.transaction (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n    at relayMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:306:30)\n    at Object.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:666:23)\n    at async MessageQueue.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:239:20)\n    at async MessageQueue.executeTask (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:196:9)","timestamp":"2024-12-18T03:20:25.194Z"}
-{"level":"info","message":"Pausing queue due to WhatsApp connection issue","timestamp":"2024-12-18T03:20:25.196Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T03:20:25.196Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T03:20:41.613Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T03:20:41.614Z"}
-{"data":null,"isBoom":true,"isServer":false,"level":"error","message":"Error processing task send_message: Connection Closed","output":{"headers":{},"payload":{"error":"Precondition Required","message":"Connection Closed","statusCode":428},"statusCode":428},"stack":"Error: Connection Closed\n    at sendRawMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:59:19)\n    at sendNode (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:78:16)\n    at query (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:142:15)\n    at getUSyncDevices (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:168:30)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:391:57\n    at Object.transaction (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n    at relayMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:306:30)\n    at Object.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:666:23)\n    at async MessageQueue.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:239:20)\n    at async MessageQueue.executeTask (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:196:9)","timestamp":"2024-12-18T03:20:44.625Z"}
-{"level":"info","message":"Pausing queue due to WhatsApp connection issue","timestamp":"2024-12-18T03:20:44.632Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T03:20:44.633Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T03:22:13.784Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T03:22:13.810Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T03:22:13.810Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T03:22:18.397Z"}
-{"level":"error","message":"Error resuming queue: Cannot resume: WhatsApp connection is not established","stack":"Error: Cannot resume: WhatsApp connection is not established\n    at MessageQueue.resume (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:327:15)\n    at toggleQueue (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\web\\controllers\\queueController.js:54:13)\n    at Layer.handle [as handle_request] (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at Function.handle (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\index.js:175:3)","timestamp":"2024-12-18T03:22:51.384Z"}
-{"level":"error","message":"Error resuming queue: Cannot resume: WhatsApp connection is not established","stack":"Error: Cannot resume: WhatsApp connection is not established\n    at MessageQueue.resume (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:327:15)\n    at toggleQueue (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\web\\controllers\\queueController.js:54:13)\n    at Layer.handle [as handle_request] (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at Function.handle (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\index.js:175:3)","timestamp":"2024-12-18T03:22:56.441Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T03:25:35.698Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T03:25:35.723Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T03:25:35.723Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T03:25:41.482Z"}
-{"canSend":true,"hasUser":true,"isConnected":false,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:25:53.636Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T03:25:53.637Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T03:25:53.637Z"}
-{"level":"info","message":"WhatsApp connection lost - Pausing queue","timestamp":"2024-12-18T03:25:53.638Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T03:25:53.639Z"}
-{"canSend":true,"hasUser":true,"isConnected":false,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:26:06.742Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T03:26:06.744Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T03:26:06.744Z"}
-{"level":"info","message":"WhatsApp connection lost - Pausing queue","timestamp":"2024-12-18T03:26:06.745Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T03:26:06.745Z"}
-{"canSend":true,"hasUser":true,"isConnected":false,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:26:07.495Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T03:26:07.496Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T03:26:07.497Z"}
-{"level":"info","message":"WhatsApp connection lost - Pausing queue","timestamp":"2024-12-18T03:26:07.497Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T03:26:07.498Z"}
-{"canSend":true,"hasUser":true,"isConnected":false,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:26:18.526Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T03:26:18.527Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T03:26:18.527Z"}
-{"level":"info","message":"WhatsApp connection lost - Pausing queue","timestamp":"2024-12-18T03:26:18.527Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T03:26:18.528Z"}
-{"canSend":true,"hasUser":true,"isConnected":false,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:26:18.711Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T03:26:18.712Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T03:26:18.712Z"}
-{"level":"info","message":"WhatsApp connection lost - Pausing queue","timestamp":"2024-12-18T03:26:18.713Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T03:26:18.713Z"}
-{"canSend":true,"hasUser":true,"isConnected":false,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:26:18.863Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T03:26:18.864Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T03:26:18.865Z"}
-{"level":"info","message":"WhatsApp connection lost - Pausing queue","timestamp":"2024-12-18T03:26:18.865Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T03:26:18.866Z"}
-{"canSend":true,"hasUser":true,"isConnected":false,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:26:25.990Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T03:26:25.991Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T03:26:25.991Z"}
-{"level":"info","message":"WhatsApp connection lost - Pausing queue","timestamp":"2024-12-18T03:26:25.992Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T03:26:25.992Z"}
-{"canSend":true,"hasUser":true,"isConnected":false,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:26:49.170Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T03:26:49.171Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T03:26:49.172Z"}
-{"level":"info","message":"WhatsApp connection lost - Pausing queue","timestamp":"2024-12-18T03:26:49.173Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T03:26:49.173Z"}
-{"canSend":true,"hasUser":true,"isConnected":false,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:26:50.907Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T03:26:50.908Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T03:26:50.908Z"}
-{"level":"info","message":"WhatsApp connection lost - Pausing queue","timestamp":"2024-12-18T03:26:50.908Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T03:26:50.909Z"}
-{"canSend":true,"hasUser":true,"isConnected":false,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:26:52.811Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T03:26:52.811Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T03:26:52.812Z"}
-{"level":"info","message":"WhatsApp connection lost - Pausing queue","timestamp":"2024-12-18T03:26:52.812Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T03:26:52.812Z"}
-{"canSend":true,"hasUser":true,"isConnected":false,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:26:55.251Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T03:26:55.252Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T03:26:55.252Z"}
-{"level":"info","message":"WhatsApp connection lost - Pausing queue","timestamp":"2024-12-18T03:26:55.253Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T03:26:55.253Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T03:27:09.305Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T03:27:09.330Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T03:27:09.330Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T03:27:13.435Z"}
-{"canSend":true,"hasUser":true,"isConnected":false,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:27:33.509Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T03:27:33.510Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T03:27:33.511Z"}
-{"level":"info","message":"WhatsApp connection lost - Pausing queue","timestamp":"2024-12-18T03:27:33.512Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T03:27:33.512Z"}
-{"canSend":true,"hasUser":true,"isConnected":false,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:27:36.025Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T03:27:36.025Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T03:27:36.026Z"}
-{"level":"info","message":"WhatsApp connection lost - Pausing queue","timestamp":"2024-12-18T03:27:36.026Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T03:27:36.026Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T03:30:25.606Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T03:30:25.634Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T03:30:25.634Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T03:30:29.745Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T03:30:50.531Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T03:30:50.532Z"}
-{"hasUser":true,"isConnected":true,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:30:50.533Z"}
-{"data":null,"isBoom":true,"isServer":false,"level":"error","message":"Error processing task send_message: Connection Closed","output":{"headers":{},"payload":{"error":"Precondition Required","message":"Connection Closed","statusCode":428},"statusCode":428},"stack":"Error: Connection Closed\n    at sendRawMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:59:19)\n    at sendNode (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:78:16)\n    at query (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:142:15)\n    at getUSyncDevices (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:168:30)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:391:57\n    at Object.transaction (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n    at relayMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:306:30)\n    at Object.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:666:23)\n    at async MessageQueue.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:270:20)\n    at async MessageQueue.executeTask (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:227:9)","timestamp":"2024-12-18T03:30:53.565Z"}
-{"hasUser":true,"isConnected":true,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:30:53.568Z"}
-{"hasUser":true,"isConnected":true,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:30:55.577Z"}
-{"data":null,"isBoom":true,"isServer":false,"level":"error","message":"Error processing task send_message: Connection Closed","output":{"headers":{},"payload":{"error":"Precondition Required","message":"Connection Closed","statusCode":428},"statusCode":428},"stack":"Error: Connection Closed\n    at sendRawMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:59:19)\n    at sendNode (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:78:16)\n    at query (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:142:15)\n    at getUSyncDevices (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:168:30)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:391:57\n    at Object.transaction (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n    at relayMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:306:30)\n    at Object.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:666:23)\n    at async MessageQueue.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:270:20)\n    at async MessageQueue.executeTask (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:227:9)","timestamp":"2024-12-18T03:30:58.591Z"}
-{"hasUser":true,"isConnected":true,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:30:58.594Z"}
-{"level":"info","message":"Failed message saved: send_message","timestamp":"2024-12-18T03:30:58.600Z"}
-{"hasUser":true,"isConnected":true,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:31:00.617Z"}
-{"data":null,"isBoom":true,"isServer":false,"level":"error","message":"Error processing task send_message: Connection Closed","output":{"headers":{},"payload":{"error":"Precondition Required","message":"Connection Closed","statusCode":428},"statusCode":428},"stack":"Error: Connection Closed\n    at sendRawMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:59:19)\n    at sendNode (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:78:16)\n    at query (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:142:15)\n    at getUSyncDevices (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:168:30)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:391:57\n    at Object.transaction (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n    at relayMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:306:30)\n    at Object.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:666:23)\n    at async MessageQueue.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:270:20)\n    at async MessageQueue.executeTask (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:227:9)","timestamp":"2024-12-18T03:31:03.624Z"}
-{"hasUser":true,"isConnected":true,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:31:03.626Z"}
-{"level":"info","message":"Failed message saved: send_message","timestamp":"2024-12-18T03:31:03.627Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T03:42:47.087Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T03:42:47.112Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T03:42:47.112Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T03:42:53.287Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T03:43:48.966Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T03:45:00.765Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T03:49:36.622Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T03:49:36.646Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T03:49:36.646Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T03:49:40.311Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T03:50:28.318Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T03:51:00.496Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T03:51:18.681Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T03:51:18.705Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T03:51:18.705Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T03:51:22.667Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T03:51:29.924Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T03:51:29.925Z"}
-{"hasUser":true,"isConnected":true,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:51:29.926Z"}
-{"data":null,"isBoom":true,"isServer":false,"level":"error","message":"Error processing task send_message: Connection Closed","output":{"headers":{},"payload":{"error":"Precondition Required","message":"Connection Closed","statusCode":428},"statusCode":428},"stack":"Error: Connection Closed\n    at sendRawMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:59:19)\n    at sendNode (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:78:16)\n    at query (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:142:15)\n    at getUSyncDevices (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:168:30)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:391:57\n    at Object.transaction (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n    at relayMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:306:30)\n    at Object.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:666:23)\n    at async MessageQueue.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:270:20)\n    at async MessageQueue.executeTask (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:227:9)","timestamp":"2024-12-18T03:51:32.940Z"}
-{"hasUser":true,"isConnected":true,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:51:32.941Z"}
-{"hasUser":true,"isConnected":true,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:51:34.946Z"}
-{"data":null,"isBoom":true,"isServer":false,"level":"error","message":"Error processing task send_message: Connection Closed","output":{"headers":{},"payload":{"error":"Precondition Required","message":"Connection Closed","statusCode":428},"statusCode":428},"stack":"Error: Connection Closed\n    at sendRawMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:59:19)\n    at sendNode (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:78:16)\n    at query (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:142:15)\n    at getUSyncDevices (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:168:30)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:391:57\n    at Object.transaction (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n    at relayMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:306:30)\n    at Object.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:666:23)\n    at async MessageQueue.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:270:20)\n    at async MessageQueue.executeTask (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:227:9)","timestamp":"2024-12-18T03:51:37.969Z"}
-{"hasUser":true,"isConnected":true,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:51:37.970Z"}
-{"hasUser":true,"isConnected":true,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:51:39.973Z"}
-{"data":null,"isBoom":true,"isServer":false,"level":"error","message":"Error processing task send_message: Connection Closed","output":{"headers":{},"payload":{"error":"Precondition Required","message":"Connection Closed","statusCode":428},"statusCode":428},"stack":"Error: Connection Closed\n    at sendRawMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:59:19)\n    at sendNode (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:78:16)\n    at query (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:142:15)\n    at getUSyncDevices (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:168:30)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:391:57\n    at Object.transaction (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n    at relayMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:306:30)\n    at Object.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:666:23)\n    at async MessageQueue.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:270:20)\n    at async MessageQueue.executeTask (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:227:9)","timestamp":"2024-12-18T03:51:42.994Z"}
-{"hasUser":true,"isConnected":true,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:51:42.999Z"}
-{"hasUser":true,"isConnected":true,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:51:45.015Z"}
-{"data":null,"isBoom":true,"isServer":false,"level":"error","message":"Error processing task send_message: Connection Closed","output":{"headers":{},"payload":{"error":"Precondition Required","message":"Connection Closed","statusCode":428},"statusCode":428},"stack":"Error: Connection Closed\n    at sendRawMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:59:19)\n    at sendNode (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:78:16)\n    at query (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:142:15)\n    at getUSyncDevices (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:168:30)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:391:57\n    at Object.transaction (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n    at relayMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:306:30)\n    at Object.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:666:23)\n    at async MessageQueue.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:270:20)\n    at async MessageQueue.executeTask (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:227:9)","timestamp":"2024-12-18T03:51:48.034Z"}
-{"hasUser":true,"isConnected":true,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:51:48.035Z"}
-{"hasUser":true,"isConnected":true,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:51:50.039Z"}
-{"data":null,"isBoom":true,"isServer":false,"level":"error","message":"Error processing task send_message: Connection Closed","output":{"headers":{},"payload":{"error":"Precondition Required","message":"Connection Closed","statusCode":428},"statusCode":428},"stack":"Error: Connection Closed\n    at sendRawMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:59:19)\n    at sendNode (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:78:16)\n    at query (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:142:15)\n    at getUSyncDevices (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:168:30)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:391:57\n    at Object.transaction (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n    at relayMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:306:30)\n    at Object.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:666:23)\n    at async MessageQueue.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:270:20)\n    at async MessageQueue.executeTask (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:227:9)","timestamp":"2024-12-18T03:51:53.057Z"}
-{"hasUser":true,"isConnected":true,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:51:53.059Z"}
-{"level":"info","message":"Failed message saved: send_message","timestamp":"2024-12-18T03:51:53.060Z"}
-{"hasUser":true,"isConnected":true,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:51:55.074Z"}
-{"data":null,"isBoom":true,"isServer":false,"level":"error","message":"Error processing task send_message: Connection Closed","output":{"headers":{},"payload":{"error":"Precondition Required","message":"Connection Closed","statusCode":428},"statusCode":428},"stack":"Error: Connection Closed\n    at sendRawMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:59:19)\n    at sendNode (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:78:16)\n    at query (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:142:15)\n    at getUSyncDevices (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:168:30)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:391:57\n    at Object.transaction (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n    at relayMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:306:30)\n    at Object.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:666:23)\n    at async MessageQueue.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:270:20)\n    at async MessageQueue.executeTask (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:227:9)","timestamp":"2024-12-18T03:51:58.092Z"}
-{"hasUser":true,"isConnected":true,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:51:58.094Z"}
-{"level":"info","message":"Failed message saved: send_message","timestamp":"2024-12-18T03:51:58.097Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T03:56:01.838Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T03:56:01.864Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T03:56:01.864Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T03:56:04.811Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T03:56:04.812Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T03:57:00.420Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T03:57:30.033Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T03:57:30.058Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T03:57:30.059Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T03:57:36.087Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T03:57:36.089Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T03:57:41.389Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T03:57:41.391Z"}
-{"hasUser":true,"isConnected":true,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:57:41.392Z"}
-{"data":null,"isBoom":true,"isServer":false,"level":"error","message":"Error processing task send_message: Connection Closed","output":{"headers":{},"payload":{"error":"Precondition Required","message":"Connection Closed","statusCode":428},"statusCode":428},"stack":"Error: Connection Closed\n    at sendRawMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:59:19)\n    at sendNode (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:78:16)\n    at query (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:142:15)\n    at getUSyncDevices (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:168:30)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:391:57\n    at Object.transaction (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n    at relayMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:306:30)\n    at Object.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:666:23)\n    at async MessageQueue.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:270:20)\n    at async MessageQueue.executeTask (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:227:9)","timestamp":"2024-12-18T03:57:44.408Z"}
-{"hasUser":true,"isConnected":true,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:57:44.410Z"}
-{"hasUser":true,"isConnected":true,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:57:46.418Z"}
-{"data":null,"isBoom":true,"isServer":false,"level":"error","message":"Error processing task send_message: Connection Closed","output":{"headers":{},"payload":{"error":"Precondition Required","message":"Connection Closed","statusCode":428},"statusCode":428},"stack":"Error: Connection Closed\n    at sendRawMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:59:19)\n    at sendNode (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:78:16)\n    at query (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:142:15)\n    at getUSyncDevices (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:168:30)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:391:57\n    at Object.transaction (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n    at relayMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:306:30)\n    at Object.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:666:23)\n    at async MessageQueue.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:270:20)\n    at async MessageQueue.executeTask (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:227:9)","timestamp":"2024-12-18T03:57:49.437Z"}
-{"hasUser":true,"isConnected":true,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:57:49.440Z"}
-{"hasUser":true,"isConnected":true,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:57:51.453Z"}
-{"data":null,"isBoom":true,"isServer":false,"level":"error","message":"Error processing task send_message: Connection Closed","output":{"headers":{},"payload":{"error":"Precondition Required","message":"Connection Closed","statusCode":428},"statusCode":428},"stack":"Error: Connection Closed\n    at sendRawMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:59:19)\n    at sendNode (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:78:16)\n    at query (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:142:15)\n    at getUSyncDevices (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:168:30)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:391:57\n    at Object.transaction (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:32)\n    at relayMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:306:30)\n    at Object.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:666:23)\n    at async MessageQueue.sendMessage (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:270:20)\n    at async MessageQueue.executeTask (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:227:9)","timestamp":"2024-12-18T03:57:54.464Z"}
-{"hasUser":true,"isConnected":true,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:57:54.466Z"}
-{"hasUser":true,"isConnected":true,"level":"info","message":"WhatsApp connection check:","timestamp":"2024-12-18T03:57:56.477Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:00:22.922Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:00:22.948Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:00:22.949Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:00:25.469Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:00:25.472Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T04:01:00.340Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T04:01:00.341Z"}
-{"level":"info","message":"WhatsApp connection lost - Pausing queue","timestamp":"2024-12-18T04:01:00.344Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:01:00.344Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:03:21.895Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:03:21.919Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:03:21.919Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:03:27.806Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:03:27.807Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T04:03:59.374Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T04:03:59.375Z"}
-{"level":"info","message":"WhatsApp connection not ready - Pausing queue","timestamp":"2024-12-18T04:04:01.565Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:04:01.566Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:04:05.739Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:04:05.741Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:04:16.837Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:04:16.862Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:04:16.862Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:04:20.743Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:04:20.745Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:04:31.894Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:04:31.917Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:04:31.917Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:04:35.339Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:04:35.342Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T04:06:00.718Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T04:06:00.818Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T04:06:00.819Z"}
-{"level":"info","message":"WhatsApp connection not ready - Pausing queue","timestamp":"2024-12-18T04:06:03.017Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:06:03.018Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:06:03.366Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:06:03.369Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:09:40.195Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:09:40.221Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:09:40.221Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:09:42.524Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:09:42.525Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T04:10:33.445Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T04:10:33.445Z"}
-{"level":"info","message":"WhatsApp connection not ready - Pausing queue","timestamp":"2024-12-18T04:10:35.645Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:10:35.646Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:10:37.368Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:10:37.371Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:11:13.152Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:11:13.200Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:11:13.200Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:11:46.714Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:11:46.717Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T04:11:53.830Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T04:11:53.830Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:11:54.235Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:11:54.237Z"}
-{"level":"info","message":"WhatsApp connection not ready - Pausing queue","timestamp":"2024-12-18T04:11:55.891Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:11:55.892Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T04:11:57.298Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T04:11:57.299Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:11:57.854Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:11:57.855Z"}
-{"level":"info","message":"WhatsApp connection not ready - Pausing queue","timestamp":"2024-12-18T04:11:59.445Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:11:59.445Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T04:12:00.409Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T04:12:00.410Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:12:00.795Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:12:00.796Z"}
-{"level":"info","message":"WhatsApp connection not ready - Pausing queue","timestamp":"2024-12-18T04:12:02.489Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:12:02.490Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T04:12:03.730Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T04:12:03.731Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:12:04.275Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:12:04.276Z"}
-{"level":"info","message":"WhatsApp connection not ready - Pausing queue","timestamp":"2024-12-18T04:12:05.860Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:12:05.860Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T04:12:07.137Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T04:12:07.138Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:12:07.633Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:12:07.634Z"}
-{"level":"info","message":"WhatsApp connection not ready - Pausing queue","timestamp":"2024-12-18T04:12:09.229Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:12:09.231Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T04:12:10.400Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T04:12:10.400Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:12:10.913Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:12:10.914Z"}
-{"level":"info","message":"WhatsApp connection not ready - Pausing queue","timestamp":"2024-12-18T04:12:12.501Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:12:12.502Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T04:12:13.194Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T04:12:13.194Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:12:13.639Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:12:13.642Z"}
-{"level":"info","message":"WhatsApp connection not ready - Pausing queue","timestamp":"2024-12-18T04:12:15.287Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:12:15.288Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T04:12:16.446Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T04:12:16.447Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:12:16.977Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:12:30.631Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:12:30.657Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:12:30.658Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T04:12:32.893Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T04:12:32.894Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:12:33.277Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:13:47.462Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:13:47.488Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:13:47.489Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T04:13:49.465Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T04:13:49.466Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:13:49.850Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:13:49.851Z"}
-{"level":"info","message":"WhatsApp connection not ready - Pausing queue","timestamp":"2024-12-18T04:13:51.531Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:13:51.533Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T04:13:52.759Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T04:13:52.760Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:13:53.293Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:13:53.294Z"}
-{"level":"info","message":"WhatsApp connection not ready - Pausing queue","timestamp":"2024-12-18T04:13:54.829Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:13:54.830Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T04:13:55.983Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T04:13:55.984Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:13:56.533Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:13:56.534Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:13:58.009Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:15:37.624Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:15:37.648Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:15:37.648Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T04:15:40.400Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T04:15:40.401Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:15:40.902Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:15:40.903Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:17:23.425Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:17:23.448Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:17:23.448Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:19:03.752Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:19:03.809Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:19:03.809Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:19:41.621Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:19:41.646Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:19:41.646Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T04:21:00.426Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:21:18.149Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:21:21.246Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:21:21.270Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:21:21.270Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:24:53.021Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:24:56.602Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:24:56.628Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:24:56.629Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:24:59.699Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T04:25:27.100Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T04:25:27.100Z"}
-{"level":"error","message":"Connection ping failed: global.sock.ws.ping is not a function","stack":"TypeError: global.sock.ws.ping is not a function\n    at MessageQueue.checkConnection (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:495:30)\n    at MessageQueue.processQueue (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:171:40)\n    at MessageQueue.resume (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:381:12)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\web\\routes\\api.js:154:20\n    at Layer.handle [as handle_request] (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\index.js:346:12)","timestamp":"2024-12-18T04:25:27.101Z"}
-{"level":"info","message":"WhatsApp connection not ready - Pausing queue","timestamp":"2024-12-18T04:25:27.103Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:25:27.103Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:25:51.534Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:25:51.559Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:25:51.559Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:25:55.300Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:27:32.397Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:27:32.422Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:27:32.422Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:27:34.840Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:28:45.300Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:28:45.324Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:28:45.324Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:28:46.799Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:31:58.308Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:31:58.333Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:31:58.333Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:32:40.617Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:32:40.669Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:32:40.670Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T04:32:59.906Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T04:32:59.906Z"}
-{"level":"error","message":"Connection ping failed: global.sock.ws.ping is not a function","stack":"TypeError: global.sock.ws.ping is not a function\n    at MessageQueue.checkConnection (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:495:30)\n    at MessageQueue.processQueue (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:171:40)\n    at MessageQueue.resume (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:381:12)\n    at EventEmitter.<anonymous> (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\whatsappService.js:105:24)\n    at EventEmitter.emit (node:events:526:35)\n    at EventEmitter.<anonymous> (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\event-buffer.js:40:16)\n    at EventEmitter.emit (node:events:514:28)\n    at Object.emit (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\event-buffer.js:94:23)\n    at WebSocketClient.<anonymous> (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:519:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2024-12-18T04:32:59.906Z"}
-{"level":"info","message":"WhatsApp connection not ready - Pausing queue","timestamp":"2024-12-18T04:32:59.907Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:32:59.908Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:34:06.845Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:34:06.872Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:34:06.872Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:34:24.372Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:34:24.397Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:34:24.397Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:37:18.317Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:37:18.342Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:37:18.343Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:38:06.824Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:38:06.878Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:38:06.879Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T04:38:26.878Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T04:38:26.878Z"}
-{"level":"error","message":"Connection ping failed: global.sock.ws.ping is not a function","stack":"TypeError: global.sock.ws.ping is not a function\n    at MessageQueue.checkConnection (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:495:30)\n    at MessageQueue.processQueue (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:171:40)\n    at MessageQueue.resume (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:381:12)\n    at EventEmitter.<anonymous> (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\whatsappService.js:106:24)\n    at EventEmitter.emit (node:events:526:35)\n    at EventEmitter.<anonymous> (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\event-buffer.js:40:16)\n    at EventEmitter.emit (node:events:514:28)\n    at Object.emit (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\event-buffer.js:94:23)\n    at WebSocketClient.<anonymous> (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:519:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2024-12-18T04:38:26.878Z"}
-{"level":"info","message":"WhatsApp connection not ready - Pausing queue","timestamp":"2024-12-18T04:38:26.879Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:38:26.879Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T04:39:31.905Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T04:39:31.906Z"}
-{"level":"error","message":"Connection ping failed: global.sock.ws.ping is not a function","stack":"TypeError: global.sock.ws.ping is not a function\n    at MessageQueue.checkConnection (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:495:30)\n    at MessageQueue.processQueue (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:171:40)\n    at MessageQueue.resume (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:381:12)\n    at EventEmitter.<anonymous> (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\whatsappService.js:106:24)\n    at EventEmitter.emit (node:events:526:35)\n    at EventEmitter.<anonymous> (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\event-buffer.js:40:16)\n    at EventEmitter.emit (node:events:514:28)\n    at Object.emit (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\event-buffer.js:94:23)\n    at WebSocketClient.<anonymous> (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:519:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2024-12-18T04:39:31.906Z"}
-{"level":"info","message":"WhatsApp connection not ready - Pausing queue","timestamp":"2024-12-18T04:39:31.907Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:39:31.907Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:41:41.968Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:41:41.995Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:41:41.995Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:41:59.942Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:41:59.989Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:41:59.990Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T04:42:06.035Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T04:42:06.036Z"}
-{"level":"error","message":"Connection ping failed: global.sock.ws.ping is not a function","stack":"TypeError: global.sock.ws.ping is not a function\n    at MessageQueue.checkConnection (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:495:30)\n    at MessageQueue.processQueue (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:171:40)\n    at MessageQueue.resume (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:381:12)\n    at EventEmitter.<anonymous> (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\whatsappService.js:106:24)\n    at EventEmitter.emit (node:events:526:35)\n    at EventEmitter.<anonymous> (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\event-buffer.js:40:16)\n    at EventEmitter.emit (node:events:514:28)\n    at Object.emit (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\event-buffer.js:94:23)\n    at WebSocketClient.<anonymous> (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:519:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2024-12-18T04:42:06.036Z"}
-{"level":"info","message":"WhatsApp connection not ready - Pausing queue","timestamp":"2024-12-18T04:42:06.037Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:42:06.037Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:43:32.976Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:43:33.008Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:43:33.008Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T04:43:35.459Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T04:43:35.459Z"}
-{"level":"error","message":"Connection ping failed: global.sock.ws.ping is not a function","stack":"TypeError: global.sock.ws.ping is not a function\n    at MessageQueue.checkConnection (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:495:30)\n    at MessageQueue.processQueue (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:171:40)\n    at MessageQueue.resume (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:381:12)\n    at EventEmitter.<anonymous> (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\whatsappService.js:89:24)\n    at EventEmitter.emit (node:events:526:35)\n    at EventEmitter.<anonymous> (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\event-buffer.js:40:16)\n    at EventEmitter.emit (node:events:514:28)\n    at Object.emit (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\event-buffer.js:94:23)\n    at WebSocketClient.<anonymous> (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:519:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2024-12-18T04:43:35.460Z"}
-{"level":"info","message":"WhatsApp connection not ready - Pausing queue","timestamp":"2024-12-18T04:43:35.461Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:43:35.462Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T04:44:10.943Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T04:44:10.944Z"}
-{"level":"error","message":"Connection ping failed: global.sock.ws.ping is not a function","stack":"TypeError: global.sock.ws.ping is not a function\n    at MessageQueue.checkConnection (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:495:30)\n    at MessageQueue.processQueue (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:171:40)\n    at MessageQueue.resume (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:381:12)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\web\\routes\\api.js:154:20\n    at Layer.handle [as handle_request] (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\index.js:346:12)","timestamp":"2024-12-18T04:44:10.945Z"}
-{"level":"info","message":"WhatsApp connection not ready - Pausing queue","timestamp":"2024-12-18T04:44:10.947Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T04:44:10.948Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:44:36.459Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:44:36.483Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:44:36.483Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:46:18.637Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:46:18.662Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:46:18.662Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:46:38.165Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:46:38.212Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:46:38.213Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T04:47:48.802Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:47:48.827Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:47:48.827Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:50:52.238Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:50:52.239Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T04:59:45.527Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T04:59:45.528Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T05:00:30.918Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T05:00:30.919Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T05:00:35.731Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T05:00:45.719Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T05:00:45.719Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T05:01:10.582Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T05:02:25.469Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T05:02:25.470Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T05:02:49.410Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T05:02:49.411Z"}
-{"level":"error","message":"Connection ping failed: global.sock.ws.ping is not a function","stack":"TypeError: global.sock.ws.ping is not a function\n    at MessageQueue.checkConnection (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:495:30)\n    at MessageQueue.processQueue (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:171:40)\n    at MessageQueue.resume (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:381:12)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\web\\routes\\api.js:154:20\n    at Layer.handle [as handle_request] (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\index.js:346:12)","timestamp":"2024-12-18T05:02:49.411Z"}
-{"level":"info","message":"WhatsApp connection not ready - Pausing queue","timestamp":"2024-12-18T05:02:49.413Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T05:02:49.414Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T05:03:00.223Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T05:03:14.734Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T05:03:14.735Z"}
-{"level":"error","message":"Connection ping failed: global.sock.ws.ping is not a function","stack":"TypeError: global.sock.ws.ping is not a function\n    at MessageQueue.checkConnection (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:495:30)\n    at MessageQueue.processQueue (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:171:40)\n    at MessageQueue.resume (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\services\\queue.js:381:12)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\src\\web\\routes\\api.js:154:20\n    at Layer.handle [as handle_request] (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\jaja.valentino\\Desktop\\Whatsapp_auth\\node_modules\\express\\lib\\router\\index.js:346:12)","timestamp":"2024-12-18T05:03:14.736Z"}
-{"level":"info","message":"WhatsApp connection not ready - Pausing queue","timestamp":"2024-12-18T05:03:14.737Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T05:03:14.738Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T05:03:21.071Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T05:04:41.145Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T05:04:41.146Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T05:04:56.663Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T05:04:56.663Z"}
-{"level":"info","message":"Message sent successfully to 6287777909185@s.whatsapp.net","timestamp":"2024-12-18T05:05:01.931Z"}
-{"level":"info","message":"Message sent successfully to 6287777909185@s.whatsapp.net","timestamp":"2024-12-18T05:05:06.453Z"}
-{"level":"info","message":"Queue processing paused","timestamp":"2024-12-18T05:05:20.353Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T05:06:00.328Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T05:09:00.571Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T05:09:49.679Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T07:43:28.646Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T07:43:28.647Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T07:45:00.927Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T07:46:26.830Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T07:46:39.499Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T07:46:50.342Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T07:46:50.343Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T07:47:15.919Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T07:47:15.920Z"}
-{"level":"info","message":"Message sent successfully to 6287777909185@s.whatsapp.net","timestamp":"2024-12-18T07:47:20.751Z"}
-{"level":"info","message":"Message sent successfully to 6287777909185@s.whatsapp.net","timestamp":"2024-12-18T07:47:25.290Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T07:48:00.928Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T07:51:00.271Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T07:51:30.865Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T07:51:37.708Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T07:51:37.709Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T07:51:59.901Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T07:51:59.902Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T07:52:31.397Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T07:52:31.398Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T07:52:58.255Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T07:52:58.261Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T07:53:36.645Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T07:53:36.646Z"}
-{"level":"info","message":"Message sent successfully to 6287777909185@s.whatsapp.net","timestamp":"2024-12-18T07:53:41.182Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T07:53:41.187Z"}
-{"level":"info","message":"Loaded 1 messages from queue","timestamp":"2024-12-18T07:53:41.188Z"}
-{"level":"info","message":"Message sent successfully to 6287777909185@s.whatsapp.net","timestamp":"2024-12-18T07:53:45.710Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T07:53:45.712Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T07:53:45.713Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T07:54:00.677Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T07:57:00.006Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T07:59:26.538Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T07:59:26.538Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T08:13:27.840Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T08:13:27.882Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T08:13:27.883Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T08:13:46.266Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T08:13:46.267Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T08:13:51.141Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T08:13:51.172Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T08:13:51.173Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T08:26:54.523Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T08:26:54.556Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T08:26:54.556Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T08:33:00.427Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T08:36:00.034Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T08:39:00.440Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T08:42:00.805Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T08:45:00.213Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T08:48:00.731Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T08:49:27.095Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T08:49:27.095Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T08:49:32.207Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T08:49:32.246Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T08:49:32.246Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T08:57:00.069Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T09:00:00.204Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:01:06.843Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:01:11.268Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:01:11.296Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:01:11.296Z"}
+{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:07:59.019Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:07:59.050Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:07:59.050Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:10:38.663Z"}
+{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:10:38.664Z"}
+{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:12:18.511Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:12:18.555Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:12:18.555Z"}
+{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T09:15:00.041Z"}
+{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T09:18:00.355Z"}
+{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T09:21:00.575Z"}
+{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T09:24:00.017Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:24:07.269Z"}
+{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:24:07.270Z"}
+{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:24:15.345Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:24:15.373Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:24:15.373Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:26:46.629Z"}
+{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:26:46.630Z"}
+{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:26:50.846Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:26:50.876Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:26:50.876Z"}
+{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T09:27:00.966Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:27:50.468Z"}
+{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:27:50.470Z"}
+{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:28:20.603Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:28:20.635Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:28:20.635Z"}
+{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T09:30:00.337Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:30:03.514Z"}
+{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:30:03.516Z"}
+{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:30:07.899Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:30:07.928Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:30:07.928Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:31:06.628Z"}
+{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:31:06.629Z"}
+{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:31:09.928Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:31:09.958Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:31:09.958Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:31:40.457Z"}
+{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:31:40.457Z"}
+{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:31:44.513Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:31:44.544Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:31:44.544Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:32:43.987Z"}
+{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:32:43.989Z"}
+{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:47:20.659Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:47:20.688Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:47:20.688Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:47:43.338Z"}
+{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T09:47:43.353Z"}
+{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T09:47:59.325Z"}
+{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T09:47:59.326Z"}
+{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T09:48:00.164Z"}
+{"level":"info","message":"Message sent successfully to 6287777909185@s.whatsapp.net","timestamp":"2024-12-18T09:48:03.593Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:48:03.599Z"}
+{"level":"info","message":"Loaded 1 messages from queue","timestamp":"2024-12-18T09:48:03.602Z"}
+{"level":"info","message":"Message sent successfully to 6287777909185@s.whatsapp.net","timestamp":"2024-12-18T09:48:07.837Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:48:07.840Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:48:07.840Z"}
+{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T09:51:00.481Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:51:19.889Z"}
+{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:51:19.890Z"}
+{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:51:40.838Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:51:40.869Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:51:40.870Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:51:42.052Z"}
+{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:51:42.053Z"}
+{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:53:38.255Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:53:38.285Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:53:38.285Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:54:36.558Z"}
+{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:54:36.559Z"}
+{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:54:39.556Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:54:39.585Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:54:39.586Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:56:29.973Z"}
+{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:56:29.974Z"}
+{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:56:33.838Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:56:33.867Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:56:33.867Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:58:05.272Z"}
+{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:58:05.272Z"}
+{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:58:10.492Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:58:10.522Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:58:10.522Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:58:51.413Z"}
+{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:58:51.413Z"}
+{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:58:55.288Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:58:55.319Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:58:55.320Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:59:13.364Z"}
+{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:59:13.365Z"}
+{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:59:18.928Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:59:18.962Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:59:18.963Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:59:41.375Z"}
+{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:59:41.375Z"}
+{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:59:46.379Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:59:46.408Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:59:46.409Z"}
+{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T10:00:00.445Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T10:00:12.745Z"}
+{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T10:00:12.746Z"}
+{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T10:00:18.301Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T10:00:18.329Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T10:00:18.329Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T10:00:45.936Z"}
+{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T10:00:45.940Z"}
+{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T10:00:49.269Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T10:00:49.298Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T10:00:49.299Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T10:03:03.895Z"}
+{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T10:03:03.896Z"}
+{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T10:03:08.479Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T10:03:08.507Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T10:03:08.507Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T10:04:03.202Z"}
+{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T10:04:03.204Z"}
+{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T10:04:07.375Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T10:04:07.405Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T10:04:07.406Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T10:04:31.001Z"}
+{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T10:04:31.016Z"}
+{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T10:04:36.156Z"}
+{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T10:04:36.157Z"}
+{"level":"info","message":"Message sent successfully to 6287777909185@s.whatsapp.net","timestamp":"2024-12-18T10:04:40.728Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T10:04:40.735Z"}
+{"level":"info","message":"Loaded 1 messages from queue","timestamp":"2024-12-18T10:04:40.735Z"}
+{"level":"info","message":"Message sent successfully to 6287777909185@s.whatsapp.net","timestamp":"2024-12-18T10:04:45.517Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T10:04:45.520Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T10:04:45.521Z"}
+{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T10:06:47.247Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T10:06:47.278Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T10:06:47.278Z"}
