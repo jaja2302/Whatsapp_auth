@@ -26,6 +26,7 @@ const { pingGoogle, sendSummary } = require('./utils/rekap_harian_uptime');
 const {
   get_iot_weatherstation,
   get_iot_weatherstation_data_gap,
+  get_data_harian_aws,
 } = require('./utils/iot/iothelper');
 const { get_outstadingdata } = require('./utils/marcom/marcomhelper');
 const {
@@ -864,6 +865,18 @@ const setupCronJobs = (sock) => {
         timezone: 'Asia/Jakarta', // Set the timezone according to your location
       }
     );
+    // cronjob evryday at 5 PM
+    cron.schedule(
+      '0 17 * * *',
+      async () => {
+        await get_data_harian_aws();
+      },
+      {
+        scheduled: true,
+        timezone: 'Asia/Jakarta',
+      }
+    );
+
     cron.schedule(
       '0 9 * * *',
       async () => {
