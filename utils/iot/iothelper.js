@@ -221,6 +221,7 @@ async function get_data_harian_aws(sock) {
     return response;
   } catch (error) {
     console.error('Error fetching AWS daily data:', error);
+    // await catcherror('error_cronjob', 'bot_iot');
   }
 }
 
