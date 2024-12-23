@@ -1,4 +1,3 @@
-const axios = require('axios');
 const { updatestatus_sock_vbot } = require('./izinkebun/helper');
 const { updateDataMill } = require('./grading/gradinghelper');
 const fs = require('fs').promises;
@@ -15,44 +14,105 @@ const MAX_MESSAGES_PER_WINDOW = 15; // Adjust as needed
 
 class Queue {
   constructor() {
+    this.items = [];
     this.processing = false;
     this.paused = false;
+    this.filePath = path.join(__dirname, 'queue_backup.json');
     this.maxRetries = 3;
     this.messagesSentTimestamps = [];
-    this.failedJobsPath = path.join(__dirname, 'failed_jobs.json');
     this.loadFromDisk();
   }
 
-  async push(task) {
+  async saveToFile() {
     try {
-      await axios.post(`${API_BASE_URL}/add-task`, {
-        type: task.type,
-        data: task.data,
-      });
-      console.log(`Task added to queue: ${task.type}`);
-      if (!this.paused) {
-        this.process();
-      }
+      await fs.writeFile(this.filePath, JSON.stringify(this.items, null, 2));
+      console.log('Queue saved to disk');
     } catch (error) {
-      console.error('Error adding task to queue:', error.message);
+      console.error('Error saving queue to disk:', error);
     }
+  }
+
+  async loadFromDisk() {
+    try {
+      const data = await fs.readFile(this.filePath, 'utf8');
+      this.items = JSON.parse(data);
+      console.log(`Queue loaded from disk, items: ${this.items.length}`);
+    } catch (error) {
+      if (error.code !== 'ENOENT') {
+        console.error('Error loading queue from disk:', error);
+        // Try to recover corrupted data
+        try {
+          const data = await fs.readFile(this.filePath, 'utf8');
+          const cleanedData = data.replace(/[^\x20-\x7E]/g, '');
+          this.items = JSON.parse(cleanedData);
+          console.log(`Queue recovered from disk, items: ${this.items.length}`);
+        } catch (recoverError) {
+          console.error('Failed to recover queue data:', recoverError);
+          this.items = [];
+        }
+      } else {
+        console.log(
+          'No existing queue file found. Starting with an empty queue.'
+        );
+        this.items = [];
+      }
+    }
+  }
+
+  push(task) {
+    // Define a function to compare tasks
+    const areTasksEqual = (task1, task2) => {
+      // Compare task type
+      if (task1.type !== task2.type) return false;
+
+      // Compare essential task data, ignoring timestamps or other volatile fields
+      const essentialData1 = this.getEssentialTaskData(task1.data);
+      const essentialData2 = this.getEssentialTaskData(task2.data);
+
+      return JSON.stringify(essentialData1) === JSON.stringify(essentialData2);
+    };
+
+    // Check if an identical task already exists in the queue
+    const existingTask = this.items.find((item) => areTasksEqual(item, task));
+
+    if (existingTask) {
+      console.log(`Identical task already in queue: ${task.type}. Skipping.`);
+      return;
+    }
+
+    this.items.push(task);
+    console.log(`Task added to queue: ${task.type}`);
+    this.saveToFile();
+    if (!this.paused) {
+      this.process();
+    }
+  }
+
+  getEssentialTaskData(data) {
+    // Create a copy of the data object
+    const essentialData = { ...data };
+
+    // Remove timestamp or other volatile fields
+    delete essentialData.timestamp;
+    delete essentialData.addedAt;
+    // Add any other fields that should be ignored in the comparison
+
+    return essentialData;
   }
 
   pause() {
     this.paused = true;
-    this.stopPolling();
     console.log('Queue processing paused');
   }
 
   resume() {
     this.paused = false;
-    this.startPolling();
     console.log('Queue processing resumed');
     this.process();
   }
 
   async process() {
-    if (this.processing || this.paused) return;
+    if (this.processing || this.items.length === 0 || this.paused) return;
 
     this.processing = true;
     const task = this.items[0];
@@ -64,8 +124,6 @@ class Queue {
     } catch (error) {
       console.error(`Error processing task (${task.type}):`, error);
       task.retries = (task.retries || 0) + 1;
-      task.error = error.message;
-
       if (task.retries <= this.maxRetries) {
         console.log(
           `Retrying task: ${task.type} (Attempt ${task.retries}/${this.maxRetries})`
@@ -73,9 +131,8 @@ class Queue {
         this.items.push(this.items.shift());
       } else {
         console.log(
-          `Moving task to failed jobs: ${task.type} after ${this.maxRetries} failed attempts`
+          `Skipping task: ${task.type} after ${this.maxRetries} failed attempts`
         );
-        await this.saveFailedJob(task);
         this.items.shift();
       }
     }
@@ -90,12 +147,7 @@ class Queue {
       throw new Error('WhatsApp connection is not established');
     }
 
-    try {
-      await this.applyRateLimit();
-    } catch (error) {
-      console.error('Error applying rate limit:', error);
-      // Continue with task execution even if rate limiting fails
-    }
+    await this.applyRateLimit();
 
     switch (task.type) {
       case 'send_message':
@@ -125,13 +177,6 @@ class Queue {
 
   async applyRateLimit() {
     const now = Date.now();
-
-    // Initialize the array if it's undefined
-    if (!this.messagesSentTimestamps) {
-      this.messagesSentTimestamps = [];
-    }
-
-    // Filter out old timestamps
     this.messagesSentTimestamps = this.messagesSentTimestamps.filter(
       (timestamp) => now - timestamp < RATE_LIMIT_WINDOW
     );
@@ -271,32 +316,6 @@ class Queue {
       });
     }
     console.log(`Total tasks in queue: ${this.items.length}`);
-  }
-
-  async saveFailedJob(task) {
-    try {
-      let failedJobs = [];
-      try {
-        const data = await fs.readFile(this.failedJobsPath, 'utf8');
-        failedJobs = JSON.parse(data);
-      } catch (error) {
-        if (error.code !== 'ENOENT') {
-          console.error('Error reading failed jobs file:', error);
-        }
-      }
-
-      task.failedAt = new Date().toISOString();
-      task.error = task.error?.toString() || 'Unknown error';
-      failedJobs.push(task);
-
-      await fs.writeFile(
-        this.failedJobsPath,
-        JSON.stringify(failedJobs, null, 2)
-      );
-      console.log(`Failed job saved: ${task.type}`);
-    } catch (error) {
-      console.error('Error saving failed job:', error);
-    }
   }
 }
 

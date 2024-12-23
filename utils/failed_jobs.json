@@ -1,0 +1,62 @@
+[
+  {
+    "type": "send_message",
+    "data": {
+      "to": "@s.whatsapp.net",
+      "message": "*Selamat Pagi*:\nYth. Pelanggan Setia Lab CBI\nProgress Sampel anda telah Terupdate dengan:\n*No. Surat* : 111/MMS-SYM/XI/2024\n*Departemen* : PKS Suayap\n*Jenis Sampel* : Air\n*Jumlah Sampel* : 1\n*Progress saat ini* : Penerimaan dan Registrasi Sampel,Antrean Analisa,Preparasi & Analisa,Recheck,Penginputan Hasil Analisa & Pembuatan Draft,Penerbitan Sertifikat,Rilis Sertifikat\nProgress anda dapat dilihat di website:https://smartlab.srs-ssms.com\nDengan kode tracking  *3K5I02WP*\nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.\n"
+    },
+    "retries": 4,
+    "error": "Timed Out",
+    "failedAt": "2024-11-28T02:10:53.610Z"
+  },
+  {
+    "type": "send_message",
+    "data": {
+      "to": "@s.whatsapp.net",
+      "message": "*Selamat Pagi*:\nYth. Pelanggan Setia Lab CBI\nProgress Sampel anda telah Terupdate dengan:\n*No. Surat* : 254/CBI-SKM/MM/XI/2024\n*Departemen* : PKS Sungai Kuning\n*Jenis Sampel* : Air\n*Jumlah Sampel* : 1\n*Progress saat ini* : Penerimaan dan Registrasi Sampel,Antrean Analisa,Preparasi & Analisa,Recheck,Penginputan Hasil Analisa & Pembuatan Draft,Penerbitan Sertifikat,Rilis Sertifikat\nProgress anda dapat dilihat di website:https://smartlab.srs-ssms.com\nDengan kode tracking  *EH75OTNE*\nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.\n"
+    },
+    "retries": 4,
+    "error": "Timed Out",
+    "failedAt": "2024-11-28T02:11:57.947Z"
+  },
+  {
+    "type": "send_message",
+    "data": {
+      "to": "@s.whatsapp.net",
+      "message": "*Selamat Pagi*:\nYth. Pelanggan Setia Lab CBI\nProgress Sampel anda telah Terupdate dengan:\n*No. Surat* : 252/CBI-SKM/MM/XI/2024\n*Departemen* : PKS Sungai Kuning\n*Jenis Sampel* : Air\n*Jumlah Sampel* : 2\n*Progress saat ini* : Penerimaan dan Registrasi Sampel,Antrean Analisa,Preparasi & Analisa,Recheck,Penginputan Hasil Analisa & Pembuatan Draft,Penerbitan Sertifikat,Rilis Sertifikat\nProgress anda dapat dilihat di website:https://smartlab.srs-ssms.com\nDengan kode tracking  *XBR70A3G*\nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.\n"
+    },
+    "retries": 4,
+    "error": "Timed Out",
+    "failedAt": "2024-11-28T02:13:06.695Z"
+  },
+  {
+    "type": "send_message",
+    "data": {
+      "to": "@s.whatsapp.net",
+      "message": "*Selamat Pagi*:\nYth. Pelanggan Setia Lab CBI\nProgress Sampel anda telah Terupdate dengan:\n*No. Surat* : 094/MMS-SYM/X/2024\n*Departemen* : PKS Suayap\n*Jenis Sampel* : Daun\n*Jumlah Sampel* : 1\n*Progress saat ini* : Penerimaan dan Registrasi Sampel,Antrean Analisa,Preparasi & Analisa,Recheck,Penginputan Hasil Analisa & Pembuatan Draft,Penerbitan Sertifikat,Rilis Sertifikat\nProgress anda dapat dilihat di website:https://smartlab.srs-ssms.com\nDengan kode tracking  *SNI7RJXT*\nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.\n"
+    },
+    "retries": 4,
+    "error": "Timed Out",
+    "failedAt": "2024-11-28T04:09:22.324Z"
+  },
+  {
+    "type": "send_message",
+    "data": {
+      "to": "undefined@s.whatsapp.net",
+      "message": "*Izin Keluar Kebun Anda Telah Disetujui Atasan Pertama*\n\nHallo Selamat Siang Bapak/Ibu Linda Septiani W,\n\nKami ingin menginformasikan bahwa permintaan izin keluar kebun Anda telah Disetujui.\n\nSilahkan tunggu notifikasi  berikutnya untuk persetujuan dari atasan kedua.\n\nTerima kasih,\nTim Digital Architect SRS Bot"
+    },
+    "retries": 4,
+    "error": "Timed Out",
+    "failedAt": "2024-12-13T00:30:03.554Z"
+  },
+  {
+    "type": "send_message",
+    "data": {
+      "to": "undefined@s.whatsapp.net",
+      "message": "*Izin Keluar Kebun Anda Telah Disetujui Atasan Pertama*\n\nHallo Selamat Siang Bapak/Ibu TAUFIK HADIANTO,\n\nKami ingin menginformasikan bahwa permintaan izin keluar kebun Anda telah Disetujui.\n\nSilahkan tunggu notifikasi  berikutnya untuk persetujuan dari atasan kedua.\n\nTerima kasih,\nTim Digital Architect SRS Bot"
+    },
+    "retries": 4,
+    "error": "Timed Out",
+    "failedAt": "2024-12-14T06:29:10.729Z"
+  }
+]

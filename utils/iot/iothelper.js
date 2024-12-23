@@ -4,7 +4,8 @@ const idgroupiot = '120363339511378953@g.us';
 const idgroupiot_sge = '120363347403672053@g.us';
 const idgroupiot_rge = '120363329617301042@g.us';
 const idgroupiot_sulung = '120363349319318472@g.us';
-
+const idgroupiot_nke = '120363339978223243@g.us';
+const idgroupiot_sje = '120363343703891310@g.us';
 // grup testing
 // const idgroupiot = '120363205553012899@g.us';
 
@@ -52,7 +53,16 @@ async function get_iot_weatherstation(sock) {
               type: 'send_message',
               data: { to: idgroupiot_sulung, message: message },
             });
-            // await sock.sendMessage(idgroupiot_sulung, { text: message });
+          } else if (itemdata.loc === 'NKE') {
+            queue.push({
+              type: 'send_message',
+              data: { to: idgroupiot_nke, message: message },
+            });
+          } else if (itemdata.loc === 'SJE') {
+            queue.push({
+              type: 'send_message',
+              data: { to: idgroupiot_sje, message: message },
+            });
           }
           global.queue.push({
             type: 'send_message',
@@ -126,7 +136,7 @@ async function get_iot_weatherstation_data_gap(sock) {
             try {
               await sock.sendMessage(idgroupiot, { text: message });
             } catch (error) {
-              console.log(error);
+              // console.log(error);
               await catcherror(gapData.id, 'error_cronjob', 'bot_iot');
             }
           });
@@ -141,7 +151,82 @@ async function get_iot_weatherstation_data_gap(sock) {
   }
 }
 
+async function get_data_harian_aws(sock) {
+  try {
+    const response = await axios.get(
+      'https://management.srs-ssms.com/api/get_weather_data_harian',
+      {
+        params: {
+          email: 'j',
+          password: 'j',
+        },
+      }
+    );
+
+    const data = response.data;
+
+    if (response.status === 200 && data.data) {
+      const stations = data.data;
+
+      for (const [id, station] of Object.entries(stations)) {
+        let message = `Laporan Harian Weather Station\n\n`;
+        message += `Lokasi: ${station.desc} (${station.loc})\n`;
+        message += `Tanggal: ${station.date}\n`;
+        message += `Suhu: ${station.temp_out.toFixed(1)}°C\n`;
+        message += `Kelembaban: ${station.hum_out.toFixed(1)}%\n`;
+        message += `Curah Hujan: ${station.rain_rate} mm\n`;
+        message += `Kecepatan Angin: ${station.windspeedkmh.toFixed(1)} km/h\n`;
+        try {
+          // Send to specific estate group
+          if (station.loc === 'SGE') {
+            queue.push({
+              type: 'send_message',
+              data: { to: idgroupiot_sge, message: message },
+            });
+          } else if (station.loc === 'RGE') {
+            queue.push({
+              type: 'send_message',
+              data: { to: idgroupiot_rge, message: message },
+            });
+          } else if (station.loc === 'Sulung Ranch') {
+            queue.push({
+              type: 'send_message',
+              data: { to: idgroupiot_sulung, message: message },
+            });
+          } else if (station.loc === 'NKE') {
+            queue.push({
+              type: 'send_message',
+              data: { to: idgroupiot_nke, message: message },
+            });
+          } else if (station.loc === 'SJE') {
+            queue.push({
+              type: 'send_message',
+              data: { to: idgroupiot_sje, message: message },
+            });
+          }
+
+          // Send to main IOT group
+          queue.push({
+            type: 'send_message',
+            data: { to: idgroupiot, message: message },
+          });
+        } catch (error) {
+          console.log(error);
+          await catcherror(station.idws, 'error_cronjob', 'bot_iot');
+        }
+      }
+    } else {
+      console.log('Data AWS harian kosong');
+    }
+    return response;
+  } catch (error) {
+    console.error('Error fetching AWS daily data:', error);
+    // await catcherror('error_cronjob', 'bot_iot');
+  }
+}
+
 module.exports = {
   get_iot_weatherstation,
   get_iot_weatherstation_data_gap,
+  get_data_harian_aws,
 };

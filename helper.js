@@ -18,11 +18,15 @@ const {
   Generateandsendtaksasi,
   Sendverificationtaksasi,
 } = require('./utils/taksasi/taksasihelper');
-const { get_mill_data } = require('./utils/grading/gradinghelper');
+const {
+  get_mill_data,
+  run_jobs_mill,
+} = require('./utils/grading/gradinghelper');
 const { pingGoogle, sendSummary } = require('./utils/rekap_harian_uptime');
 const {
   get_iot_weatherstation,
   get_iot_weatherstation_data_gap,
+  get_data_harian_aws,
 } = require('./utils/iot/iothelper');
 const { get_outstadingdata } = require('./utils/marcom/marcomhelper');
 const {
@@ -46,12 +50,7 @@ function formatDate(date) {
 
 // Get the current date
 const today = new Date();
-
-const datetimeValue = formatDate(today);
-const idgroup = '120363205553012899@g.us';
 const idgroup_testing = '120363204285862734@g.us';
-const idgroup_da = '120363303562042176@g.us';
-
 function formatPhoneNumber(phoneNumber) {
   if (phoneNumber.startsWith('08')) {
     return '628' + phoneNumber.substring(2);
@@ -74,156 +73,6 @@ if (hour >= 4 && hour < 12) {
 } else {
   greeting = 'Selamat Malam';
 }
-function readLatestId() {
-  try {
-    if (fs.existsSync('latest_id.txt')) {
-      const data = fs.readFileSync('latest_id.txt', 'utf8');
-      return parseInt(data.trim()); // Parse the ID as an integer
-    } else {
-      // If the file doesn't exist, set the initial latest_id to 9
-      writeLatestId(9);
-      return 9;
-    }
-  } catch (err) {
-    console.log('Error reading latest ID:', err);
-    return null;
-  }
-}
-function writeLatestId(id) {
-  try {
-    fs.writeFileSync('latest_id.txt', id.toString()); // Write the ID to the file
-  } catch (err) {
-    console.log('Error writing latest ID:', err);
-  }
-}
-async function statusHistory(sock) {
-  try {
-    // Get the latest ID from the file
-    let latestId = readLatestId();
-
-    // Fetch new data from the API using the latest ID
-    const response = await axios.get(
-      'https://qc-apps.srs-ssms.com/api/history',
-      {
-        params: {
-          id: latestId, // Change the parameter name to "id"
-        },
-      }
-    );
-    const numberData = response.data;
-
-    if (Array.isArray(numberData) && numberData.length > 0) {
-      for (const data of numberData) {
-        const maxId = Math.max(...response.data.map((item) => item.id));
-        writeLatestId(maxId);
-
-        const pesankirim = data.menu;
-        const groupId = '120363205553012899@g.us'; // Update with your actual group ID
-        let existIdGroup = await sock.groupMetadata(groupId);
-        // console.log(existIdGroup.id);
-        // console.log("isConnected");
-
-        if (existIdGroup?.id || (existIdGroup && existIdGroup[0]?.id)) {
-          global.queue.push({
-            type: 'send_message',
-            data: {
-              to: groupId,
-              message: `User ${data.nama_user} melakukan ${data.menu} pada ${data.tanggal}`,
-            },
-          });
-
-          // await sock.sendMessage(groupId, {
-          //   text: `User ${data.nama_user} melakukan ${data.menu} pada ${data.tanggal}`,
-          // });
-          // console.log('Message sent successfully.');
-        } else {
-          console.log(`ID Group ${groupId} tidak terdaftar.`);
-        }
-        break;
-      }
-    } else {
-      console.log('No data or invalid data received from the API.');
-    }
-  } catch (error) {
-    console.log('Error fetching data:', error);
-    // Handle the error accordingly
-  }
-}
-//end func
-
-// function send notif ke pelanggan bot smartlabs
-
-async function sendMessagesBasedOnData(sock) {
-  try {
-    const response = await axios.get(
-      'https://qc-apps.srs-ssms.com/api/getmsgsmartlabs'
-    );
-    const numberData = response.data;
-
-    if (numberData.data === 'kosong') {
-      // Send a specific message when data is "kosong"
-      // console.log('Smartlabs Kosong'); // Log the result for debugging
-    } else {
-      // Process the data array as usual
-      for (const data of numberData.data) {
-        const numberWA = data.penerima + '@s.whatsapp.net';
-        const currentTime = moment().tz('Asia/Jakarta');
-        const currentHour = currentTime.hours();
-        let greeting;
-
-        if (currentHour < 10) {
-          greeting = 'Selamat Pagi';
-        } else if (currentHour < 15) {
-          greeting = 'Selamat Siang';
-        } else if (currentHour < 19) {
-          greeting = 'Selamat Sore';
-        } else {
-          greeting = 'Selamat Malam';
-        }
-
-        let chatContent;
-        if (data.type === 'input') {
-          chatContent = `Yth. Pelanggan Setia Lab CBI,\n\nSampel anda telah kami terima dengan no surat *${data.no_surat}*. \nprogress saat ini: *${data.progres}*. Progress anda dapat dilihat di website https://smartlab.srs-ssms.com/tracking_sampel dengan kode tracking sample : *${data.kodesample}*\nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.`;
-        } else {
-          chatContent = `Yth. Pelanggan Setia Lab CBI,\n\nProgress Sampel anda telah *Terupdate* dengan no surat *${data.no_surat}*. \nProgress saat ini: *${data.progres}*. Progress anda dapat dilihat di website https://smartlab.srs-ssms.com/tracking_sampel dengan kode tracking sample : *${data.kodesample}*\nTerima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.`;
-        }
-
-        const message = `${greeting}\n${chatContent}`;
-        global.queue.push({
-          type: 'send_message',
-          data: {
-            to: numberWA,
-            message: message,
-          },
-        });
-        // await sock.sendMessage(numberWA, { text: message });
-
-        console.log('Message sent: smartlab', data.id); // Log the result for debugging
-        await deletemsg(data.id); // Ensure this function is defined elsewhere in your code
-      }
-    }
-  } catch (error) {
-    console.log('Error fetching data or sending messages smartlab:', error); // Log the error if any occurs
-  }
-}
-
-async function deletemsg(idmsg) {
-  try {
-    const response = await axios.post(
-      'https://qc-apps.srs-ssms.com/api/deletemsgsmartlabs',
-      {
-        id: idmsg,
-      }
-    );
-
-    let responses = response.data;
-    // console.log(`Message ID '${idmsg}' deleted successfully.`);
-  } catch (error) {
-    console.log(`Error deleting message ID '${idmsg}':`, error);
-  }
-}
-//end func
-// function send notifikasi bot web maintence
 
 async function maintencweget(sock) {
   try {
@@ -307,10 +156,6 @@ async function statusAWS() {
     console.log(`Error fetching files: aws`, error);
   }
 }
-
-// endfunction
-
-// endfunction
 
 // function bot pengawasan operator AI
 async function handleBotDailyPengawasanOperatorAI(sock) {
@@ -1007,7 +852,7 @@ const setupCronJobs = (sock) => {
             'cron job statusAWS,statusHistory,get_iot_weatherstation'
           );
 
-          await statusAWS();
+          // await statusAWS();
           // await statusHistory(sock);
           await get_iot_weatherstation();
           // await get_iot_weatherstation_data_gap(sock);
@@ -1020,6 +865,18 @@ const setupCronJobs = (sock) => {
         timezone: 'Asia/Jakarta', // Set the timezone according to your location
       }
     );
+    // cronjob evryday at 5 PM
+    cron.schedule(
+      '0 17 * * *',
+      async () => {
+        await get_data_harian_aws();
+      },
+      {
+        scheduled: true,
+        timezone: 'Asia/Jakarta',
+      }
+    );
+
     cron.schedule(
       '0 9 * * *',
       async () => {
@@ -1050,10 +907,11 @@ const setupCronJobs = (sock) => {
       }
     );
     cron.schedule(
-      '*/5 * * * *',
+      '*/1 * * * *',
       async () => {
-        console.log('cron job get_mill_data');
-        await get_mill_data(sock);
+        // console.log('cron job get_mill_data');
+        await run_jobs_mill(sock);
+        // dada
       },
       {
         scheduled: true,
@@ -1061,16 +919,26 @@ const setupCronJobs = (sock) => {
       }
     );
     cron.schedule(
-      '0 7 * * 1-6', // 0 7 = Jam 07:00, 1-6 = Senin-Sabtu
+      '*/5 * * * *',
       async () => {
-        console.log('cron job get_mill_data');
-        await reminder_izin_kebun(sock);
+        await get_mill_data(sock);
       },
       {
         scheduled: true,
         timezone: 'Asia/Jakarta',
       }
     );
+    // cron.schedule(
+    //   '0 7 * * 1-6', // 0 7 = Jam 07:00, 1-6 = Senin-Sabtu
+    //   async () => {
+    //     console.log('cron job get_mill_data');
+    //     await reminder_izin_kebun(sock);
+    //   },
+    //   {
+    //     scheduled: true,
+    //     timezone: 'Asia/Jakarta',
+    //   }
+    // );
     cron.schedule(
       '*/15 * * * *',
       async () => {
@@ -1301,80 +1169,6 @@ const setupCronJobs = (sock) => {
       } catch (error) {
         console.log('Error fetching base64 image:', error);
       }
-    });
-    channel.bind('Smartlabsnotification', async (itemdata) => {
-      if (!itemdata || !itemdata.data) {
-        console.log('Event data, data, or bot_data is undefined.');
-        return;
-      }
-      // Loop through each item in the data array
-      itemdata.data.forEach(async (dataitem) => {
-        let message = `*${greeting}*:\n`;
-        message += `Yth. Pelanggan Setia Lab CBI\n`;
-        if (dataitem.type === 'input') {
-          message += `Progress Sampel anda telah kami terima dengan:\n`;
-        } else {
-          message += `Progress Sampel anda telah Terupdate dengan:\n`;
-        }
-        message += `*No. Surat* : ${dataitem.no_surat}\n`;
-        message += `*Departemen* : ${dataitem.nama_departemen}\n`;
-        message += `*Jenis Sampel* : ${dataitem.jenis_sampel}\n`;
-        message += `*Jumlah Sampel* : ${dataitem.jumlah_sampel}\n`;
-        message += `*Progress saat ini* : ${dataitem.progresss}\n`;
-        message += `Progress anda dapat dilihat di website:https://smartlab.srs-ssms.com\n`;
-        message += `Dengan kode tracking  *${dataitem.kodesample}*\n`;
-        message += `Terima kasih telah mempercayakan sampel anda untuk dianalisa di Lab kami.\n`;
-        // console.log(message);
-        global.queue.push({
-          type: 'send_message',
-          data: { to: dataitem.penerima + '@s.whatsapp.net', message: message },
-        });
-        // await sock.sendMessage(`${dataitem.penerima}@s.whatsapp.net`, {
-        //   text: message,
-        // });
-        if (dataitem.asal === 'Eksternal') {
-          const response = await axios.get(
-            'https://management.srs-ssms.com/api/invoices_smartlabs',
-            {
-              params: {
-                email: 'j',
-                password: 'j',
-                id_data: dataitem.id_invoice,
-              },
-            }
-          );
-          const responseData = response.data;
-          if (responseData.pdf) {
-            // Step 2: Decode the base64 PDF
-            const pdfBuffer = Buffer.from(responseData.pdf, 'base64');
-            const pdfFilename = responseData.filename || 'Invoice.pdf';
-            // Step 3: Send the PDF as a document via WhatsApp
-            // const messageOptions = {
-            //   document: pdfBuffer,
-            //   mimetype: 'application/pdf',
-            //   fileName: pdfFilename,
-            //   caption: 'Invoice Smartlabs',
-            // };
-            global.queue.push({
-              type: 'send_document',
-              data: {
-                to: dataitem.penerima + '@s.whatsapp.net',
-                document: pdfBuffer,
-                mimetype: 'application/pdf',
-                fileName: pdfFilename,
-                caption: 'Invoice Smartlabs',
-              },
-            });
-            // await sock.sendMessage(
-            //   dataitem.penerima + '@s.whatsapp.net',
-            //   messageOptions
-            // );
-            // console.log('PDF sent successfully!');
-          } else {
-            console.log('PDF not found in the API response smartlab.');
-          }
-        }
-      });
     });
   } else {
     console.log('WhatsApp belum terhubung');

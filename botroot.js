@@ -28,7 +28,11 @@ const {
 const { Generateandsendtaksasi } = require('./utils/taksasi/taksasihelper');
 const { handlePrivateMessage } = require('./utils/private_messages');
 const { function_rapidresponse } = require('./utils/rapiprespons/helper');
-const { get_mill_data } = require('./utils/grading/gradinghelper');
+const {
+  get_mill_data,
+  run_jobs_mill,
+  broadcast_grading_mill,
+} = require('./utils/grading/gradinghelper');
 const { pingGoogle, sendSummary } = require('./utils/rekap_harian_uptime');
 const { get_iot_weatherstation } = require('./utils/iot/iothelper');
 const {
@@ -38,7 +42,7 @@ const {
 const { handleReplyNoDocMessage } = require('./utils/repply_no_doc_messages');
 const { handleReplyDocMessage } = require('./utils/repply_with_doc_messages');
 const { handleGroupMessage } = require('./utils/group_messages');
-
+const { helperfunctionSmartlabs } = require('./utils/smartlabs/smartlabs');
 // App Initialization
 const app = express();
 const server = http.createServer(app);
@@ -263,7 +267,29 @@ app.get('/testing', async (req, res) => {
   }
 });
 // Create a global queue instance
-global.queue = new Queue(BOT_ID);
+global.queue = new Queue();
+console.log('Queue created');
+
+// Check and clear logs if they exceed 2MB
+const MB_IN_BYTES = 2 * 1024 * 1024; // 2MB in bytes
+
+function clearLogIfNeeded(filePath) {
+  try {
+    if (fs.existsSync(filePath)) {
+      const stats = fs.statSync(filePath);
+      if (stats.size > MB_IN_BYTES) {
+        fs.writeFileSync(filePath, '');
+        console.log(`${filePath} exceeded 2MB and was cleared`);
+      }
+    }
+  } catch (error) {
+    console.error(`Error handling ${filePath}:`, error);
+  }
+}
+
+clearLogIfNeeded('./bot_grading_error.log');
+clearLogIfNeeded('./bot_grading.log');
+console.log('bot_grading_error.log and bot_grading.log cleared');
 
 connectToWhatsApp().catch((err) =>
   logger.error('Error connecting to WhatsApp:', err)
@@ -272,6 +298,8 @@ runfunction();
 setupCronJobs();
 function_rapidresponse();
 function_marcom();
+broadcast_grading_mill();
+helperfunctionSmartlabs();
 // ... other function calls
 const port = process.env.PORT || 8000;
 server.listen(port, () => logger.info(`Server running on port ${port}`));
