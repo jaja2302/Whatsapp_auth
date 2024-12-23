@@ -12,6 +12,7 @@ const {
   Report_group_izinkebun,
   Fail_send_pdf,
 } = require('./izinkebun/helper.js');
+const { get_data_harian_aws } = require('./iot/iothelper.js');
 const axios = require('axios');
 const handleGroupMessage = async (
   lowerCaseMessage,
@@ -100,7 +101,7 @@ const handleGroupMessage = async (
     await sock.sendMessage(
       noWa,
       {
-        text: 'Perintah Bot Yang tersedia \n1 = !tarik (Menarik Estate yang di pilih untuk di generate ke dalam grup yang sudah di tentukan) \n2.!getgrup (Menampilkan semua isi list group yang ada) \n3.!cast (melakukan broadcast pesan ke semua grup taksasi) \n4.!taksasi = Menarik Banyak laporar taksasi sekaligus berdasarkan waktu yang di pilih\n5.!laporan izinkebun Menarik laporan izin kebun (Harap gunakan hanya di hari sabtu atau minggu)!\n6.failcronjob = Mrnjalankan semua fail cronjob yang ada di server\n7.!failizinkebun = Mengirip pdf yang gagal terkirim izin kebun\n8.!failgrading kirim ulang grading mill fail',
+        text: 'Perintah Bot Yang tersedia \n1 = !tarik (Menarik Estate yang di pilih untuk di generate ke dalam grup yang sudah di tentukan) \n2.!getgrup (Menampilkan semua isi list group yang ada) \n3.!cast (melakukan broadcast pesan ke semua grup taksasi) \n4.!taksasi = Menarik Banyak laporar taksasi sekaligus berdasarkan waktu yang di pilih\n5.!laporan izinkebun Menarik laporan izin kebun (Harap gunakan hanya di hari sabtu atau minggu)!\n6.failcronjob = Mrnjalankan semua fail cronjob yang ada di server\n7.!failizinkebun = Mengirip pdf yang gagal terkirim izin kebun\n8.!failgrading kirim ulang grading mill fail\n9.!laporanaws = Mengirim laporan AWS harian',
       },
       { quoted: message }
     );
@@ -265,6 +266,15 @@ const handleGroupMessage = async (
     await handleChatSnoozePengawasanOperatorAi(noWa, text, sock, phoneNumber);
   } else if (lowerCaseMessage === '!laporan izinkebun') {
     await Report_group_izinkebun(sock);
+  } else if (lowerCaseMessage === '!laporanaws') {
+    await get_data_harian_aws();
+    await sock.sendMessage(
+      noWa,
+      {
+        text: 'Laporan AWS berhasil di kirim',
+      },
+      { quoted: message }
+    );
   }
 };
 
