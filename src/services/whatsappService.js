@@ -14,16 +14,6 @@ const retryDelay = 5000; // 5 seconds
 const AUTH_FOLDER = 'auth_info';
 let currentQR = null;
 
-async function generateQR(qr) {
-  try {
-    // Generate QR code as data URL
-    return await qrcode.toDataURL(qr);
-  } catch (error) {
-    console.error('QR Generation Error:', error);
-    throw error;
-  }
-}
-
 async function clearAuthInfo() {
   try {
     const authPath = path.join(process.cwd(), AUTH_FOLDER);

@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for log entries */
+.log-entry {
+  @apply p-2 border-b border-gray-100 last:border-0;
+}
+
+.log-entry.error {
+  @apply bg-red-50 text-red-700;
+}
+
+.log-entry.warn {
+  @apply bg-yellow-50 text-yellow-700;
+}
+
+.log-entry.info {
+  @apply bg-blue-50 text-blue-700;
+}
+
+.log-entry.debug {
+  @apply bg-gray-50 text-gray-700;
+}
+
+.log-time {
+  @apply text-gray-500 mr-3;
+}
+
+.log-message {
+  @apply whitespace-pre-wrap break-words;
+}

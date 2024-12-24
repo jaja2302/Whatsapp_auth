@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon --ignore 'src/web/public/*' --ignore 'auth_info/*' --ignore 'node_modules/*' app.js"
+    "dev": "nodemon app.js",
+    "build:css": "npx tailwindcss -i ./src/web/public/css/input.css -o ./src/web/public/css/output.css --watch"
   },
   "dependencies": {
     "@sparticuz/chromium": "^92.0.0",
@@ -45,6 +46,7 @@
   "devDependencies": {
     "nodemon": "^3.1.9",
     "pino-pretty": "^13.0.0",
-    "prettier": "^3.3.3"
+    "prettier": "^3.3.3",
+    "tailwindcss": "^3.4.17"
   }
 }
