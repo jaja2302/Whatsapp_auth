@@ -16,9 +16,14 @@ global.io = io;
 // Serve static files from the public directory
 app.use(express.static(path.join(__dirname, 'src/web/public')));
 
-// Serve the main HTML file
+// Define routes
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'src/web/views/dashboard.html'));
+});
+
+// Add this new route for the grading page
+app.get('/grading', (req, res) => {
+  res.sendFile(path.join(__dirname, 'src/web/views/grading.html'));
 });
 
 // API routes
