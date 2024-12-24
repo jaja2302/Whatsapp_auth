@@ -169,36 +169,52 @@ async function get_data_harian_aws(sock) {
       const stations = data.data;
 
       for (const [id, station] of Object.entries(stations)) {
-        let message = `Laporan Harian Weather Station\n\n`;
-        message += `Lokasi: ${station.desc} (${station.loc})\n`;
-        message += `Tanggal: ${station.date}\n`;
-        message += `Suhu: ${station.temp_out.toFixed(1)}°C\n`;
-        message += `Kelembaban: ${station.hum_out.toFixed(1)}%\n`;
-        message += `Curah Hujan: ${station.rain_rate} mm\n`;
-        message += `Kecepatan Angin: ${station.windspeedkmh.toFixed(1)} km/h\n`;
+        // Get weather prediction based on rainfall data
+        const weatherEmoji =
+          station.rainfall.total > 0
+            ? '☔'
+            : station.temperature.average > 28
+              ? '🌞'
+              : '☁';
+
+        let message = `🌦 DAILY REPORT AWS ${station.station_name}\n\n`;
+        message += `🌧 CURAH HUJAN tgl ${station.date}\n`;
+        message += `Total: ${station.rainfall.total} mm\n`;
+        message += `SBI: ${station.rainfall.sbi} mm (rata-rata harian ${(station.rainfall.sbi / 30).toFixed(2)}mm)\n`;
+        message += `Tertinggi: ${station.rainfall.highest.value} mm/Jam (${station.rainfall.highest.hour})\n`;
+        message += `Total durasi: ${station.rainfall.duration_minutes} menit\n\n`;
+
+        message += `🌡 CUACA\n`;
+        message += `Suhu rata-rata: ${station.temperature.average}°C\n`;
+        message += `Suhu tertinggi: ${station.temperature.highest.value}°C (${station.temperature.highest.hour})\n`;
+        message += `Suhu terendah: ${station.temperature.lowest.value}°C (${station.temperature.lowest.hour})\n`;
+        message += `⛅ PERKIRAAN CUACA HARI INI:\n`;
+        message += `${weatherEmoji}\n\n`;
+        message += `📥 Download data AWS bulan ini: https://iot.srs-ssms.com/dashboardaws\n`;
+
         try {
           // Send to specific estate group
-          if (station.loc === 'SGE') {
+          if (station.station_name === 'SGE') {
             queue.push({
               type: 'send_message',
               data: { to: idgroupiot_sge, message: message },
             });
-          } else if (station.loc === 'RGE') {
+          } else if (station.station_name === 'RGE') {
             queue.push({
               type: 'send_message',
               data: { to: idgroupiot_rge, message: message },
             });
-          } else if (station.loc === 'Sulung Ranch') {
+          } else if (station.station_name === 'Sulung Ranch') {
             queue.push({
               type: 'send_message',
               data: { to: idgroupiot_sulung, message: message },
             });
-          } else if (station.loc === 'NKE') {
+          } else if (station.station_name === 'NKE') {
             queue.push({
               type: 'send_message',
               data: { to: idgroupiot_nke, message: message },
             });
-          } else if (station.loc === 'SJE') {
+          } else if (station.station_name === 'SJE') {
             queue.push({
               type: 'send_message',
               data: { to: idgroupiot_sje, message: message },
@@ -212,7 +228,7 @@ async function get_data_harian_aws(sock) {
           });
         } catch (error) {
           console.log(error);
-          await catcherror(station.idws, 'error_cronjob', 'bot_iot');
+          await catcherror(id, 'error_cronjob', 'bot_iot');
         }
       }
     } else {
@@ -221,7 +237,6 @@ async function get_data_harian_aws(sock) {
     return response;
   } catch (error) {
     console.error('Error fetching AWS daily data:', error);
-    // await catcherror('error_cronjob', 'bot_iot');
   }
 }
 
