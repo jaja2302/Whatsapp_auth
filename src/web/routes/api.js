@@ -11,5 +11,11 @@ router.post('/whatsapp/reconnect', (req, res) =>
 router.post('/whatsapp/disconnect', (req, res) =>
   dashboardController.disconnectWhatsApp(req, res)
 );
+router.post('/queue/start', (req, res) =>
+  dashboardController.startQueue(req, res)
+);
+router.post('/queue/pause', (req, res) =>
+  dashboardController.pauseQueue(req, res)
+);
 
 module.exports = router;

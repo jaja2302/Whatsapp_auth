@@ -49,3 +49,32 @@
 {"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T03:58:57.577Z"}
 {"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-24T04:04:22.152Z"}
 {"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-24T04:04:22.157Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-24T04:07:10.120Z"}
+{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-24T04:07:15.187Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T04:07:15.188Z"}
+{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-24T04:07:15.189Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T04:07:15.189Z"}
+{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-24T04:10:58.409Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T04:10:58.410Z"}
+{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-24T04:10:58.410Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T04:10:58.410Z"}
+{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-24T04:11:00.310Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T04:11:00.311Z"}
+{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-24T04:11:00.312Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T04:11:00.312Z"}
+{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-24T04:11:01.854Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T04:11:01.855Z"}
+{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-24T04:11:01.856Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T04:11:01.856Z"}
+{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-24T04:11:03.403Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T04:11:03.405Z"}
+{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-24T04:11:03.405Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T04:11:03.405Z"}
+{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-24T04:11:05.343Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T04:11:05.344Z"}
+{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-24T04:11:05.345Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T04:11:05.346Z"}
+{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-24T04:11:50.832Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T04:11:50.833Z"}
+{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-24T04:11:50.834Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T04:11:50.834Z"}

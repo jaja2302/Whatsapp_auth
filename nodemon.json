@@ -1,0 +1,18 @@
+{
+  "ignore": [
+    "node_modules/*",
+    "src/web/public/*",
+    "src/web/data/*",
+    ".git",
+    "*.test.js",
+    "auth_info/*",
+    "logs/*"
+  ],
+  "watch": [
+    "src/services/*",
+    "src/web/controllers/*",
+    "src/web/routes/*",
+    "app.js"
+  ],
+  "ext": "js,json"
+}

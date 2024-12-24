@@ -2,6 +2,8 @@ const {
   connectToWhatsApp,
   disconnectAndClearAuth,
 } = require('../../services/whatsappService');
+const queue = require('../../services/queue');
+const logger = require('../../services/logger');
 
 class DashboardController {
   constructor(io) {
@@ -105,6 +107,52 @@ class DashboardController {
       res.json(status);
     } catch (error) {
       res.status(500).json({ error: error.message });
+    }
+  }
+
+  async startQueue(req, res) {
+    try {
+      queue.resume();
+      logger.info('Queue started');
+
+      this.io.emit('connection-status', {
+        whatsappConnected: !!global.sock?.user,
+        queueStatus: {
+          isPaused: false,
+          total: queue.queue.length,
+          completed: queue.completed,
+          failed: queue.failed,
+        },
+        reconnecting: false,
+      });
+
+      res.json({ success: true, message: 'Queue started successfully' });
+    } catch (error) {
+      logger.error('Error starting queue:', error);
+      res.status(500).json({ success: false, error: error.message });
+    }
+  }
+
+  async pauseQueue(req, res) {
+    try {
+      queue.pause();
+      logger.info('Queue paused');
+
+      this.io.emit('connection-status', {
+        whatsappConnected: !!global.sock?.user,
+        queueStatus: {
+          isPaused: true,
+          total: queue.queue.length,
+          completed: queue.completed,
+          failed: queue.failed,
+        },
+        reconnecting: false,
+      });
+
+      res.json({ success: true, message: 'Queue paused successfully' });
+    } catch (error) {
+      logger.error('Error pausing queue:', error);
+      res.status(500).json({ success: false, error: error.message });
     }
   }
 }
