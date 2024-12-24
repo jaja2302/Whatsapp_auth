@@ -1,3 +1,0 @@
-pm2 start "C:\Users\Digital Architect SR\Desktop\bot_da\bot_seconds.js" --name bot_da --log "C:\Users\Digital Architect SR\Desktop\bot_grading\bot_da.log" --error "C:\Users\Digital Architect SR\Desktop\bot_grading\bot_da_error.log"
-pm2 start "C:\Users\Digital Architect SR\Desktop\\bot_grading\botroot.js" --name bot_grading --log "C:\Users\Digital Architect SR\Desktop\bot_grading\bot_grading.log" --error "C:\Users\Digital Architect SR\Desktop\bot_grading\bot_grading_error.log"
-

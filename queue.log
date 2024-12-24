@@ -1,135 +1,51 @@
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:07:59.019Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:07:59.050Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:07:59.050Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:10:38.663Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:10:38.664Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:12:18.511Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:12:18.555Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:12:18.555Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T09:15:00.041Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T09:18:00.355Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T09:21:00.575Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T09:24:00.017Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:24:07.269Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:24:07.270Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:24:15.345Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:24:15.373Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:24:15.373Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:26:46.629Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:26:46.630Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:26:50.846Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:26:50.876Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:26:50.876Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T09:27:00.966Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:27:50.468Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:27:50.470Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:28:20.603Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:28:20.635Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:28:20.635Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T09:30:00.337Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:30:03.514Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:30:03.516Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:30:07.899Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:30:07.928Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:30:07.928Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:31:06.628Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:31:06.629Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:31:09.928Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:31:09.958Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:31:09.958Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:31:40.457Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:31:40.457Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:31:44.513Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:31:44.544Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:31:44.544Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:32:43.987Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:32:43.989Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:47:20.659Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:47:20.688Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:47:20.688Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:47:43.338Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T09:47:43.353Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T09:47:59.325Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T09:47:59.326Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T09:48:00.164Z"}
-{"level":"info","message":"Message sent successfully to 6287777909185@s.whatsapp.net","timestamp":"2024-12-18T09:48:03.593Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:48:03.599Z"}
-{"level":"info","message":"Loaded 1 messages from queue","timestamp":"2024-12-18T09:48:03.602Z"}
-{"level":"info","message":"Message sent successfully to 6287777909185@s.whatsapp.net","timestamp":"2024-12-18T09:48:07.837Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:48:07.840Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:48:07.840Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T09:51:00.481Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:51:19.889Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:51:19.890Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:51:40.838Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:51:40.869Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:51:40.870Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:51:42.052Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:51:42.053Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:53:38.255Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:53:38.285Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:53:38.285Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:54:36.558Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:54:36.559Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:54:39.556Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:54:39.585Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:54:39.586Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:56:29.973Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:56:29.974Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:56:33.838Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:56:33.867Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:56:33.867Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:58:05.272Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:58:05.272Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:58:10.492Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:58:10.522Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:58:10.522Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:58:51.413Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:58:51.413Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:58:55.288Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:58:55.319Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:58:55.320Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:59:13.364Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:59:13.365Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:59:18.928Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:59:18.962Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:59:18.963Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T09:59:41.375Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T09:59:41.375Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T09:59:46.379Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T09:59:46.408Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T09:59:46.409Z"}
-{"level":"info","message":"Auto process is disabled","timestamp":"2024-12-18T10:00:00.445Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T10:00:12.745Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T10:00:12.746Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T10:00:18.301Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T10:00:18.329Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T10:00:18.329Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T10:00:45.936Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T10:00:45.940Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T10:00:49.269Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T10:00:49.298Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T10:00:49.299Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T10:03:03.895Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T10:03:03.896Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T10:03:08.479Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T10:03:08.507Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T10:03:08.507Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T10:04:03.202Z"}
-{"level":"info","message":"Queue saved to file successfully","timestamp":"2024-12-18T10:04:03.204Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T10:04:07.375Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T10:04:07.405Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T10:04:07.406Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T10:04:31.001Z"}
-{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-18T10:04:31.016Z"}
-{"level":"info","message":"Queue processing resumed","timestamp":"2024-12-18T10:04:36.156Z"}
-{"level":"info","message":"Processing queue...","timestamp":"2024-12-18T10:04:36.157Z"}
-{"level":"info","message":"Message sent successfully to 6287777909185@s.whatsapp.net","timestamp":"2024-12-18T10:04:40.728Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T10:04:40.735Z"}
-{"level":"info","message":"Loaded 1 messages from queue","timestamp":"2024-12-18T10:04:40.735Z"}
-{"level":"info","message":"Message sent successfully to 6287777909185@s.whatsapp.net","timestamp":"2024-12-18T10:04:45.517Z"}
-{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-18T10:04:45.520Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T10:04:45.521Z"}
-{"level":"info","message":"Socket.IO initialized for queue","timestamp":"2024-12-18T10:06:47.247Z"}
-{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-18T10:06:47.278Z"}
-{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-18T10:06:47.278Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-24T03:29:03.567Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T03:29:03.568Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-24T03:29:03.568Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T03:29:03.569Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-24T03:31:36.535Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-24T03:31:40.562Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T03:31:40.563Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-24T03:31:40.564Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T03:31:40.564Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-24T03:34:00.829Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-24T03:34:06.883Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T03:34:06.884Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-24T03:34:06.884Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T03:34:06.885Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-24T03:36:28.572Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-24T03:36:34.018Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T03:36:34.019Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-24T03:36:34.019Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T03:36:34.019Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-24T03:37:30.732Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-24T03:39:33.668Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T03:39:33.669Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-24T03:39:33.670Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T03:39:33.670Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-24T03:39:53.965Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-24T03:42:21.457Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T03:42:21.458Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-24T03:42:21.458Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T03:42:21.459Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-24T03:47:13.163Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-24T03:47:18.418Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T03:47:18.419Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-24T03:47:18.419Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T03:47:18.419Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-24T03:53:44.372Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-24T03:53:48.913Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T03:53:48.914Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-24T03:53:48.915Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T03:53:48.915Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-24T03:56:13.863Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-24T03:56:17.585Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T03:56:17.587Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-24T03:56:17.587Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T03:56:17.587Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-24T03:58:30.569Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-24T03:58:57.575Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T03:58:57.576Z"}
+{"level":"info","message":"Loaded 0 messages from queue","timestamp":"2024-12-24T03:58:57.577Z"}
+{"level":"info","message":"Queue initialized successfully","timestamp":"2024-12-24T03:58:57.577Z"}
+{"level":"info","message":"Detected change in message_queue.json, reloading queue...","timestamp":"2024-12-24T04:04:22.152Z"}
+{"level":"info","message":"Loaded 2 messages from queue","timestamp":"2024-12-24T04:04:22.157Z"}

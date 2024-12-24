@@ -5,7 +5,7 @@ const {
   sendImageWithCaption,
 } = require('./izinkebun/helper');
 const axios = require('axios');
-const { handleIotInput } = require('../helper');
+// const { handleIotInput } = require('../helper');
 const userIotChoice = {};
 const handlePrivateMessage = async (lowerCaseMessage, noWa, text, sock) => {
   if (lowerCaseMessage === '!izin') {

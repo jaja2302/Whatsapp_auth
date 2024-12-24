@@ -4,8 +4,8 @@ const fsSync = require('fs');
 const winston = require('winston');
 const stream = require('stream');
 const https = require('https');
-const { updatestatus_sock_vbot } = require('../web/programs/izinkebun/helper');
-const { updateDataMill } = require('../web/programs/grading/gradingMill');
+// const { updatestatus_sock_vbot } = require('../web/programs/izinkebun/helper');
+// const { updateDataMill } = require('../web/programs/grading/gradingMill');
 const { connectToWhatsApp } = require('./whatsappService');
 const chokidar = require('chokidar');
 

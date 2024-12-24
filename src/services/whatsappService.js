@@ -1,197 +1,167 @@
 const {
   default: makeWASocket,
   DisconnectReason,
-  fetchLatestBaileysVersion,
-  isJidBroadcast,
   useMultiFileAuthState,
 } = require('@whiskeysockets/baileys');
 const pino = require('pino');
-const { promisify } = require('util');
-const sleep = promisify(setTimeout);
-const { handleGroupMessage } = require('../../utils/group_messages');
-const { handlePrivateMessage } = require('../../utils/private_messages');
-const {
-  handleReplyNoDocMessage,
-} = require('../../utils/repply_no_doc_messages');
-const {
-  handleReplyDocMessage,
-} = require('../../utils/repply_with_doc_messages');
+const fs = require('fs').promises;
+const path = require('path');
+const qrcode = require('qrcode');
 
-// Keep track of connection state
-let isConnected = false;
-let isReconnecting = false;
+let retryCount = 0;
+const maxRetries = 5;
+const retryDelay = 5000; // 5 seconds
+const AUTH_FOLDER = 'auth_info';
+let currentQR = null;
 
-// Add handler state management
-const messageHandlers = {
-  groupMessages: { enabled: true, name: 'Group Messages' },
-  privateMessages: { enabled: true, name: 'Private Messages' },
-  replyNoDoc: { enabled: true, name: 'Reply (No Doc)' },
-  replyWithDoc: { enabled: true, name: 'Reply (With Doc)' },
-};
-
-async function connectToWhatsApp() {
+async function generateQR(qr) {
   try {
-    if (isReconnecting) {
-      console.log('Already attempting to reconnect...');
-      return;
-    }
-
-    isReconnecting = true;
-    global.io?.emit('reconnecting', true);
-
-    const { state, saveCreds } =
-      await useMultiFileAuthState('baileys_auth_info');
-    let { version } = await fetchLatestBaileysVersion();
-
-    // If we already have a socket, remove all listeners before creating a new one
-    if (global.sock) {
-      try {
-        global.sock.ev.removeAllListeners();
-        await global.sock.end();
-      } catch (err) {
-        console.log('Error closing existing connection:', err);
-        // Continue with new connection even if there's an error closing the old one
-      }
-    }
-
-    global.sock = makeWASocket({
-      printQRInTerminal: true,
-      auth: state,
-      logger: pino({ level: 'silent' }),
-      version,
-      shouldIgnoreJid: (jid) => isJidBroadcast(jid),
-    });
-
-    // Set up connection event handlers
-    global.sock.ev.on('connection.update', (update) => {
-      const { connection, lastDisconnect, qr } = update;
-
-      if (qr) {
-        // Convert QR code to data URL
-        const qrUrl = `data:image/png;base64,${qr}`;
-        console.log('New QR code generated');
-        global.io?.emit('qr', qrUrl);
-      }
-
-      if (connection === 'close') {
-        isConnected = false;
-        isReconnecting = false;
-        console.log('WhatsApp disconnected');
-        global.io?.emit('connection-status', {
-          connected: false,
-          isReconnecting: false,
-        });
-
-        const shouldReconnect =
-          lastDisconnect?.error?.output?.statusCode !==
-          DisconnectReason.loggedOut;
-        if (shouldReconnect) {
-          console.log('Attempting to reconnect...');
-          connectToWhatsApp();
-        }
-      } else if (connection === 'open') {
-        isConnected = true;
-        isReconnecting = false;
-        console.log('WhatsApp connected successfully');
-        global.io?.emit('connection-status', {
-          connected: true,
-          isReconnecting: false,
-        });
-      }
-    });
-
-    global.sock.ev.on('creds.update', saveCreds);
-
-    global.sock.ev.on('messages.upsert', async ({ messages, type }) => {
-      for (const message of messages) {
-        console.log(message);
-
-        if (!message.key.fromMe) {
-          const noWa = message.key.remoteJid;
-          const isGroup = noWa.endsWith('@g.us');
-          const isPrivate = noWa.endsWith('@s.whatsapp.net');
-          const text =
-            message.message?.conversation ||
-            message.message?.extendedTextMessage?.text ||
-            message.message?.documentWithCaptionMessage?.message
-              ?.documentMessage?.caption ||
-            'No message text available';
-          const lowerCaseMessage = text.toLowerCase();
-          const contextInfo = message.message?.extendedTextMessage?.contextInfo;
-          const isReply = !!contextInfo?.quotedMessage;
-          // console.log(
-          //   `remoteJid: ${noWa}, isReply: ${isReply}, isGroup: ${isGroup}, isPrivate: ${isPrivate}`
-          // );
-          try {
-            if (isGroup && messageHandlers.groupMessages.enabled) {
-              await handleGroupMessage(message);
-            } else if (isPrivate && messageHandlers.privateMessages.enabled) {
-              await handlePrivateMessage(message);
-            }
-
-            if (isReply) {
-              if (
-                quotedMessage?.documentMessage &&
-                messageHandlers.replyWithDoc.enabled
-              ) {
-                await handleReplyDocMessage(message);
-              } else if (messageHandlers.replyNoDoc.enabled) {
-                await handleReplyNoDocMessage(message);
-              }
-            }
-          } catch (error) {
-            console.error('Error handling message:', error);
-          }
-          // Handle document messages (both in private and group)
-          if (message.message?.documentWithCaptionMessage) {
-            const documentMessage =
-              message.message.documentWithCaptionMessage.message
-                .documentMessage;
-            console.log(
-              'This message contains a document:',
-              documentMessage.fileName,
-              documentMessage.caption
-            );
-            // Handle document message
-          }
-        }
-      }
-    });
-    await sleep(1000);
-    return global.sock;
+    // Generate QR code as data URL
+    return await qrcode.toDataURL(qr);
   } catch (error) {
-    console.error('Error in connectToWhatsApp:', error);
-    isReconnecting = false;
-    global.io?.emit('reconnecting', false);
+    console.error('QR Generation Error:', error);
     throw error;
   }
 }
 
-// Add a function to check connection status
-function isWhatsAppConnected() {
+async function clearAuthInfo() {
+  try {
+    const authPath = path.join(process.cwd(), AUTH_FOLDER);
+    await fs.rm(authPath, { recursive: true, force: true });
+    console.log('Auth info cleared successfully');
+  } catch (error) {
+    console.error('Error clearing auth info:', error);
+    // Don't throw error here, just log it
+  }
+}
+
+async function disconnectAndClearAuth() {
+  try {
+    if (global.sock) {
+      try {
+        await global.sock.logout();
+      } catch (error) {
+        console.log('Logout error (expected):', error.message);
+      }
+      await global.sock.end();
+      global.sock = null;
+    }
+    await clearAuthInfo();
+    return true;
+  } catch (error) {
+    console.error('Error during disconnect:', error);
+    // Don't throw error, return false instead
+    return false;
+  }
+}
+
+async function connectToWhatsApp() {
+  try {
+    const { state, saveCreds } = await useMultiFileAuthState(AUTH_FOLDER);
+
+    const sock = makeWASocket({
+      printQRInTerminal: true,
+      auth: state,
+      logger: pino({ level: 'silent' }),
+      retryRequestDelayMs: 3000,
+      qrTimeout: 60000,
+      connectTimeoutMs: 60000,
+      browser: ['WhatsApp Bot', 'Chrome', '4.0.0'],
+    });
+
+    global.sock = sock;
+
+    // Handle connection updates
+    sock.ev.on('connection.update', async (update) => {
+      const { connection, lastDisconnect, qr } = update;
+
+      if (qr) {
+        try {
+          console.log('New QR Code received, converting to data URL...');
+          const qrDataURL = await qrcode.toDataURL(qr);
+          currentQR = qrDataURL; // Cache the QR code
+          console.log('QR Code converted, sending to client...');
+          // Emit to all connected clients
+          global.io?.emit('qr', qrDataURL);
+        } catch (err) {
+          console.error('QR code generation error:', err);
+        }
+      }
+
+      if (connection === 'close') {
+        currentQR = null; // Clear QR cache on disconnect
+        const statusCode = lastDisconnect?.error?.output?.statusCode;
+        const shouldReconnect =
+          statusCode !== DisconnectReason.loggedOut && statusCode !== 401; // Don't reconnect on intentional logout
+
+        console.log(
+          'Connection closed due to ',
+          lastDisconnect?.error?.message
+        );
+
+        // Emit connection status
+        global.io?.emit('connection-status', {
+          whatsappConnected: false,
+          queueStatus: global.queue?.getStatus(),
+          reconnecting: shouldReconnect,
+          error: lastDisconnect?.error?.message,
+        });
+
+        if (shouldReconnect && retryCount < maxRetries) {
+          retryCount++;
+          console.log(`Reconnecting... Attempt ${retryCount} of ${maxRetries}`);
+          setTimeout(connectToWhatsApp, retryDelay);
+        } else {
+          retryCount = 0;
+          if (!shouldReconnect) {
+            await clearAuthInfo();
+          }
+        }
+      } else if (connection === 'open') {
+        console.log('WhatsApp connected successfully');
+        retryCount = 0;
+
+        global.io?.emit('connection-status', {
+          whatsappConnected: true,
+          queueStatus: global.queue?.getStatus(),
+          reconnecting: false,
+        });
+
+        global.io?.emit('clear-qr');
+      }
+    });
+
+    sock.ev.on('creds.update', saveCreds);
+
+    return sock;
+  } catch (error) {
+    console.error('Error in connectToWhatsApp:', error);
+    global.io?.emit('connection-status', {
+      whatsappConnected: false,
+      queueStatus: global.queue?.getStatus(),
+      reconnecting: false,
+      error: error.message,
+    });
+    throw error;
+  }
+}
+
+// Add function to check connection status
+function isConnected() {
   return {
-    isConnected: isConnected && !!global.sock?.user,
-    isReconnecting,
+    connected: !!global.sock?.user && global.sock.ws.readyState === 1,
+    reconnecting: retryCount > 0,
   };
 }
 
-// Add function to toggle handlers
-function toggleMessageHandler(handlerId, enabled) {
-  if (messageHandlers[handlerId] !== undefined) {
-    messageHandlers[handlerId].enabled = enabled;
-    return true;
-  }
-  return false;
-}
-
-// Add function to get handler states
-function getMessageHandlerStates() {
-  return messageHandlers;
+// Add new function to get current QR
+function getCurrentQR() {
+  return currentQR;
 }
 
 module.exports = {
   connectToWhatsApp,
-  isWhatsAppConnected,
-  toggleMessageHandler,
-  getMessageHandlerStates,
+  isConnected,
+  disconnectAndClearAuth,
+  getCurrentQR, // Export the new function
 };
