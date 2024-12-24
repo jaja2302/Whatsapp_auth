@@ -865,9 +865,9 @@ const setupCronJobs = (sock) => {
         timezone: 'Asia/Jakarta', // Set the timezone according to your location
       }
     );
-    // cronjob evryday at 5 PM
+    // cronjob everyday at 7 AM
     cron.schedule(
-      '0 17 * * *',
+      '0 7 * * *',
       async () => {
         await get_data_harian_aws();
       },
