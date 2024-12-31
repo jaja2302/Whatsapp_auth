@@ -78,4 +78,9 @@ router.use((err, req, res, next) => {
   res.status(500).json({ success: false, error: err.message });
 });
 
+router.get('/whatsapp/get-participants', (req, res) => {
+  logger.info.whatsapp('Get participants request received');
+  dashboardController.getParticipants(req, res);
+});
+
 module.exports = router;

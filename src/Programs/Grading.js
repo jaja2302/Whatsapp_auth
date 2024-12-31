@@ -122,35 +122,35 @@ class GradingProgram {
 
       const groups = settings.grading.groups;
 
-      // for (const itemdata of data) {
-      //   const message = this.formatGradingMessage(itemdata);
-      //   const targetGroup = this.getTargetGroup(itemdata.mill, groups);
+      for (const itemdata of data) {
+        const message = this.formatGradingMessage(itemdata);
+        const targetGroup = this.getTargetGroup(itemdata.mill, groups);
 
-      //   if (targetGroup) {
-      //     global.queue.push({
-      //       type: 'send_image',
-      //       data: {
-      //         to: targetGroup,
-      //         image: itemdata.collage_url,
-      //         caption: message,
-      //       },
-      //     });
+        if (targetGroup) {
+          global.queue.push({
+            type: 'send_image',
+            data: {
+              to: targetGroup,
+              image: itemdata.collage_url,
+              caption: message,
+            },
+          });
 
-      //     global.queue.push({
-      //       type: 'send_document',
-      //       data: {
-      //         to: targetGroup,
-      //         document: itemdata.pdf_url,
-      //         filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
-      //         caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
-      //       },
-      //     });
-      //   }
-      // }
+          global.queue.push({
+            type: 'send_document',
+            data: {
+              to: targetGroup,
+              document: itemdata.pdf_url,
+              filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
+              caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
+            },
+          });
+        }
+      }
 
-      // if (id_jobs.length > 0 && pdf_name.length > 0) {
-      //   await this.updateDataMill({ id: id_jobs, pdf_name, image_name });
-      // }
+      if (id_jobs.length > 0 && pdf_name.length > 0) {
+        await this.updateDataMill({ id: id_jobs, pdf_name, image_name });
+      }
 
       return { success: true, message: 'mill data berhasil diambil' };
     } catch (error) {

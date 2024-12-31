@@ -7,6 +7,7 @@ class Dashboard {
       startQueue: document.getElementById('start-queue'),
       pauseQueue: document.getElementById('pause-queue'),
       clearLogs: document.getElementById('clear-logs'),
+      getParticipants: document.getElementById('get-participants'),
     };
 
     // Initialize container references
@@ -127,6 +128,12 @@ class Dashboard {
     if (this.buttons.pauseQueue) {
       this.buttons.pauseQueue.addEventListener('click', () =>
         this.toggleQueue(false)
+      );
+    }
+
+    if (this.buttons.getParticipants) {
+      this.buttons.getParticipants.addEventListener('click', () =>
+        this.handleGetParticipants()
       );
     }
   }
@@ -280,6 +287,36 @@ class Dashboard {
       this.addToLog(data.message);
     } catch (error) {
       this.addToLog(`Error: ${error.message}`, 'error');
+    }
+  }
+
+  async handleGetParticipants() {
+    try {
+      this.addToLog('Fetching group participants...');
+      const response = await fetch('/api/whatsapp/get-participants');
+      const data = await response.json();
+
+      const participantsList = document.getElementById('participants-list');
+      participantsList.innerHTML = ''; // Clear existing content
+
+      // Convert the participants object into a more readable format
+      Object.entries(data).forEach(([groupId, group]) => {
+        const groupDiv = document.createElement('div');
+        groupDiv.className = 'mb-4 p-3 border rounded';
+
+        const groupName = group.subject || groupId;
+        groupDiv.innerHTML = `
+                <h3 class="font-bold mb-2">${groupName}</h3>
+                <p class="text-sm text-gray-600">ID: ${groupId}</p>
+                <p class="text-sm text-gray-600">Participants: ${Object.keys(group.participants).length}</p>
+            `;
+
+        participantsList.appendChild(groupDiv);
+      });
+
+      this.addToLog('Group participants fetched successfully');
+    } catch (error) {
+      this.addToLog(`Error fetching participants: ${error.message}`, 'error');
     }
   }
 }

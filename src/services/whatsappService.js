@@ -148,9 +148,23 @@ function getCurrentQR() {
   return currentQR;
 }
 
+async function getParticipants() {
+  try {
+    if (!global.sock?.user) {
+      throw new Error('WhatsApp is not connected');
+    }
+    const participants = await global.sock.groupFetchAllParticipating();
+    return participants;
+  } catch (error) {
+    logger.error.whatsapp('Error fetching participants:', error);
+    throw error;
+  }
+}
+
 module.exports = {
   connectToWhatsApp,
   isConnected,
   disconnectAndClearAuth,
   getCurrentQR,
+  getParticipants,
 };

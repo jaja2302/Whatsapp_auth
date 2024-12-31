@@ -1,6 +1,7 @@
 const {
   connectToWhatsApp,
   disconnectAndClearAuth,
+  getParticipants,
 } = require('../../services/whatsappService');
 const queue = require('../../services/queue');
 const logger = require('../../services/logger');
@@ -158,6 +159,11 @@ class DashboardController {
       logger.error.whatsapp('Error pausing queue:', error);
       res.status(500).json({ success: false, error: error.message });
     }
+  }
+
+  async getParticipants(req, res) {
+    const participants = await getParticipants();
+    res.json(participants);
   }
 }
 
