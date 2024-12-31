@@ -19,7 +19,7 @@ class MessageQueue {
     this.queue = [];
     this.completed = 0;
     this.failed = 0;
-    this.paused = true;
+    this.paused = false;
     this.processing = false;
     this.currentSave = Promise.resolve();
     this.filePath = path.join(__dirname, '../web/data/message_queue.json');
@@ -44,6 +44,15 @@ class MessageQueue {
       await this.loadQueueState();
       // Then load queue items
       await this.loadFromDisk();
+
+      // Start processing queue if not paused and there are items
+      if (!this.paused && this.queue.length > 0) {
+        logger.info.whatsapp(
+          `Starting queue processing for ${this.queue.length} items`
+        );
+        this.processQueue();
+      }
+
       return Promise.resolve();
     } catch (error) {
       return Promise.reject(error);
@@ -60,14 +69,14 @@ class MessageQueue {
         const dir = path.dirname(this.queueStatePath);
         await fs.mkdir(dir, { recursive: true });
 
-        // Create default state file
+        // Create default state file with running state
         await fs.writeFile(
           this.queueStatePath,
-          JSON.stringify({ paused: true }, null, 2)
+          JSON.stringify({ paused: false }, null, 2)
         );
 
         logger.info.whatsapp(
-          'Created new queue state file with default state (paused)'
+          'Created new queue state file with default state (running)'
         );
       }
 

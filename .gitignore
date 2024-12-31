@@ -4,8 +4,7 @@
 /auth_info_baileys
 /up_time_log
 /uploads
-.latest_id.txt
-.bot_grading_error.log
-.bot_grading.log
-/utils/queue_backup.json
+/src/web/data/failed_jobs.json
+/src/web/data/message_queue.json
+/src/web/data/queue_state.json
 /auth_info

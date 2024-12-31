@@ -33,10 +33,10 @@ class DashboardController {
 
   getQueueStatus() {
     return {
-      isPaused: global.queue?.paused || true,
-      total: global.queue?.queue.length || 0,
-      completed: global.queue?.completed || 0,
-      failed: global.queue?.failed || 0,
+      isPaused: queue.paused,
+      total: queue.queue.length || 0,
+      completed: queue.completed || 0,
+      failed: queue.failed || 0,
     };
   }
 
@@ -107,6 +107,7 @@ class DashboardController {
       const status = {
         whatsappConnected: !!global.sock?.user,
         queueStatus: this.getQueueStatus(),
+        reconnecting: false,
       };
       res.json(status);
     } catch (error) {
