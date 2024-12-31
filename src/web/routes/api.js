@@ -44,13 +44,10 @@ router.post('/queue/pause', (req, res) => {
 });
 
 // Grading routes
-router.get('/grading/mill-status', (req, res) => {
-  logger.debug.grading('Getting mill status');
-  gradingController.getMillStatus(req, res);
-});
+router.get('/grading/fetch-mill-data', (req, res) => {
+  // console.log(req.body, res);
 
-router.post('/grading/fetch-mill-data', (req, res) => {
-  logger.info.grading('Fetch mill data request received');
+  // logger.info.grading('Fetch mill data request received');
   gradingController.fetchMillData(req, res);
 });
 

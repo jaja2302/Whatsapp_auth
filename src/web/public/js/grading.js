@@ -10,43 +10,16 @@ document.addEventListener('DOMContentLoaded', function () {
   fetchMillDataBtn.addEventListener('click', async () => {
     try {
       const response = await fetch('/api/grading/fetch-mill-data', {
-        method: 'POST',
+        method: 'GET',
       });
+
       const data = await response.json();
 
-      if (data.success) {
-        addLog('Mill data fetch initiated successfully');
-      } else {
-        addLog('Error fetching mill data: ' + data.error);
-      }
+      // console.log(data);
+      addLog(data.message);
     } catch (error) {
       addLog('Error: ' + error.message);
     }
-  });
-
-  // Fetch initial mill status
-  async function updateMillStatus() {
-    try {
-      const response = await fetch('/api/grading/mill-status');
-      const data = await response.json();
-
-      if (data.success) {
-        millStatus.textContent = `Last Updated: ${new Date().toLocaleString()}`;
-        // Update any other relevant UI elements with data.data
-      }
-    } catch (error) {
-      addLog('Error fetching status: ' + error.message);
-    }
-  }
-
-  // Update status every minute
-  updateMillStatus();
-  setInterval(updateMillStatus, 60000);
-
-  // Socket Events
-  socket.on('mill_data_update', (data) => {
-    addLog(`Mill data update: ${data.message}`);
-    updateMillStatus();
   });
 
   // Helper function to add logs
@@ -229,7 +202,15 @@ document.addEventListener('DOMContentLoaded', function () {
   socket.on('log-grading', (data) => {
     const logEntry = document.createElement('div');
     logEntry.className = 'p-2 border-b border-gray-100';
-    logEntry.textContent = `${data.timestamp} - ${data.message}`;
+
+    // Check if the message is an array and join its elements into a string
+    const message = Array.isArray(data.message)
+      ? data.message.join(' ')
+      : data.message;
+
+    logEntry.textContent = `${data.timestamp} - ${message}`;
+
+    // console.log(data);
 
     // Add color based on log level
     if (data.level === 'error') {

@@ -1,30 +1,19 @@
-const {
-  get_mill_data,
-  updateDataMill,
-  run_jobs_mill,
-} = require('../../utils/grading/gradinghelper');
 const cronJobSettings = require('../../services/CronJobSettings');
 const logger = require('../../services/logger');
-
+const GradingProgram = require('../../Programs/Grading');
+const gradingProgram = new GradingProgram();
 class GradingController {
   constructor(io) {
     this.io = io;
+    this.gradingProgram = null;
   }
 
   async fetchMillData(req, res) {
     try {
-      await get_mill_data();
-      res.json({ success: true, message: 'Mill data fetch initiated' });
+      const data = await gradingProgram.getMillData();
+      res.json(data);
     } catch (error) {
-      res.status(500).json({ success: false, error: error.message });
-    }
-  }
-
-  async getMillStatus(req, res) {
-    try {
-      const status = await run_jobs_mill();
-      res.json({ success: true, data: status });
-    } catch (error) {
+      // logger.error.grading('Error fetching mill data: ada', error);
       res.status(500).json({ success: false, error: error.message });
     }
   }
