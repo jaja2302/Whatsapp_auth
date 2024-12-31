@@ -4,99 +4,59 @@ const logger = require('./logger');
 
 class CronJobSettings {
   constructor() {
-    this.settings = {};
-    this.configPath = path.join(
-      __dirname,
-      '../../config/cronjob-settings.json'
-    );
-
-    // Default intervals for selection
-    this.availableIntervals = {
-      '1min': '*/1 * * * *',
-      '5min': '*/5 * * * *',
-      '10min': '*/10 * * * *',
-      '15min': '*/15 * * * *',
-      '30min': '*/30 * * * *',
-      '1hour': '0 * * * *',
-      '2hours': '0 */2 * * *',
-      '4hours': '0 */4 * * *',
-      '6hours': '0 */6 * * *',
-      '12hours': '0 */12 * * *',
-      daily: '0 0 * * *',
+    this.settingsPath = path.join(__dirname, '../web/data/settings.json');
+    this.settings = {
+      timezone: 'Asia/Jakarta',
+      grading: {
+        runJobsMill: '*/5 * * * *', // Every 5 minutes
+        getMillData: '*/5 * * * *', // Every 5 minutes
+      },
     };
-
-    // Default timezones
-    this.availableTimezones = [
+    this.intervals = {
+      '5 minutes': '*/5 * * * *',
+      '10 minutes': '*/10 * * * *',
+      '15 minutes': '*/15 * * * *',
+      '30 minutes': '*/30 * * * *',
+      '1 hour': '0 * * * *',
+      '2 hours': '0 */2 * * *',
+      '3 hours': '0 */3 * * *',
+      '4 hours': '0 */4 * * *',
+      '6 hours': '0 */6 * * *',
+      '12 hours': '0 */12 * * *',
+      '24 hours': '0 0 * * *',
+    };
+    this.timezones = [
       'Asia/Jakarta',
-      'Asia/Makassar',
-      'Asia/Jayapura',
+      'Asia/Singapore',
+      'Asia/Kuala_Lumpur',
+      'UTC',
     ];
-  }
-
-  async init() {
-    await this.loadSettings();
   }
 
   async loadSettings() {
     try {
-      // Check if config file exists
-      try {
-        await fs.access(this.configPath);
-      } catch {
-        // If file doesn't exist, create it with default settings
-        const defaultSettings = {
-          grading: {
-            runJobsMill: '*/1 * * * *',
-            getMillData: '*/5 * * * *',
-          },
-          timezone: 'Asia/Jakarta',
-        };
-        await this.saveSettings(defaultSettings);
-      }
-
-      // Read the config file
-      const data = await fs.readFile(this.configPath, 'utf8');
+      const data = await fs.readFile(this.settingsPath, 'utf8');
       this.settings = JSON.parse(data);
-      logger.info('Loaded cron job settings from file');
+      logger.info.grading('Settings loaded successfully');
     } catch (error) {
-      logger.error('Error loading settings:', error);
-      throw error;
+      if (error.code === 'ENOENT') {
+        // If file doesn't exist, create it with default settings
+        await this.saveSettings(this.settings);
+        logger.info.grading('Created new settings file with defaults');
+      } else {
+        logger.error.grading('Error loading settings:', error);
+        throw error;
+      }
     }
   }
 
-  async saveSettings(settings = this.settings) {
+  async saveSettings(settings) {
     try {
-      // Ensure config directory exists
-      await fs.mkdir(path.dirname(this.configPath), { recursive: true });
-
-      // Write settings to file using the provided settings or current settings
-      await fs.writeFile(this.configPath, JSON.stringify(settings, null, 2));
-      logger.info('Saved cron job settings to file');
+      await fs.writeFile(this.settingsPath, JSON.stringify(settings, null, 2));
+      this.settings = settings;
+      logger.info.grading('Settings saved successfully');
     } catch (error) {
-      logger.error('Error saving settings:', error);
-      throw error;
-    }
-  }
-
-  async updateSettings(program, newSettings) {
-    try {
-      // Load latest settings from file
-      await this.loadSettings();
-
-      // Update settings
-      this.settings[program] = {
-        ...this.settings[program],
-        ...newSettings,
-      };
-
-      // Save to file
-      await this.saveSettings(this.settings);
-
-      logger.info(`Updated ${program} settings:`, this.settings[program]);
-
-      return this.settings[program];
-    } catch (error) {
-      logger.error('Error updating settings:', error);
+      logger.error.grading('Error saving settings:', error);
       throw error;
     }
   }
@@ -106,14 +66,50 @@ class CronJobSettings {
   }
 
   getAvailableIntervals() {
-    return this.availableIntervals;
+    return this.intervals;
   }
 
   getAvailableTimezones() {
-    return this.availableTimezones;
+    return this.timezones;
+  }
+
+  async updateSettings(path, newSettings) {
+    try {
+      await this.loadSettings();
+
+      // Handle nested paths (e.g., 'grading.groups')
+      const parts = path.split('.');
+      let current = this.settings;
+
+      for (let i = 0; i < parts.length - 1; i++) {
+        if (!current[parts[i]]) {
+          current[parts[i]] = {};
+        }
+        current = current[parts[i]];
+      }
+
+      current[parts[parts.length - 1]] = newSettings;
+
+      await this.saveSettings(this.settings);
+      return current[parts[parts.length - 1]];
+    } catch (error) {
+      logger.error.grading('Error updating settings:', error);
+      throw error;
+    }
+  }
+
+  isValidCronPattern(pattern) {
+    // Check if pattern is one of our predefined intervals
+    return Object.values(this.intervals).includes(pattern);
   }
 }
 
-// Create and export a single instance
+// Create singleton instance
 const cronJobSettings = new CronJobSettings();
+
+// Initialize settings on startup
+cronJobSettings.loadSettings().catch((error) => {
+  logger.error.grading('Error initializing settings:', error);
+});
+
 module.exports = cronJobSettings;

@@ -1,41 +1,27 @@
-const axios = require('axios');
 const cron = require('node-cron');
-const logger = require('../services/logger');
+const axios = require('axios');
 const cronJobSettings = require('../services/CronJobSettings');
+const logger = require('../services/logger');
 
 class GradingProgram {
   constructor() {
-    // WhatsApp group IDs
-    this.groups = {
-      default: '120363164751475851@g.us',
-      SYM: '6281397270799-1635156024@g.us',
-      SGM: '6282257572112-1635223872@g.us',
-      SLM: '6281397270799-1565316655@g.us',
-      NBM: '6285655573821-1566449850@g.us',
-      MLM: '120363332857987276@g.us',
-      NKM: '120363046524351245@g.us',
-      SCM: '120363332360538214@g.us',
-      SKM: '120363283953366418@g.us',
-    };
-
-    this.credentials = {
-      email: 'j',
-      password: 'j',
-    };
-
     this.runJobsSchedule = null;
     this.getDataSchedule = null;
-
-    // Initialize cron jobs
-    this.init();
   }
 
-  async init() {
-    await cronJobSettings.init();
-    this.initCronJobs();
+  static async init() {
+    try {
+      logger.info.grading('Initializing grading program');
+      const instance = new GradingProgram();
+      await instance.initCronJobs();
+      return instance;
+    } catch (error) {
+      logger.error.grading('Error initializing grading program:', error);
+      throw error;
+    }
   }
 
-  initCronJobs() {
+  async initCronJobs() {
     // Stop existing cron jobs if they exist
     if (this.runJobsSchedule) {
       this.runJobsSchedule.stop();
@@ -45,19 +31,15 @@ class GradingProgram {
     }
 
     const settings = cronJobSettings.getSettings('grading');
-    const timezone = cronJobSettings.settings.timezone;
+    const timezone = cronJobSettings.settings.timezone || 'Asia/Jakarta';
 
-    logger.info('Initializing cron jobs with settings:', settings);
-
-    // Run Jobs Mill cron
     this.runJobsSchedule = cron.schedule(
       settings.runJobsMill,
       async () => {
         try {
-          logger.info('Running mill jobs cron');
           await this.runJobsMill();
         } catch (error) {
-          logger.error('Error in runJobsMill cron:', error);
+          logger.error.grading('Error in runJobsMill cron:', error);
         }
       },
       {
@@ -66,15 +48,13 @@ class GradingProgram {
       }
     );
 
-    // Get Mill Data cron
     this.getDataSchedule = cron.schedule(
       settings.getMillData,
       async () => {
         try {
-          logger.info('Running get mill data cron');
           await this.getMillData();
         } catch (error) {
-          logger.error('Error in getMillData cron:', error);
+          logger.error.grading('Error in getMillData cron:', error);
         }
       },
       {
@@ -83,52 +63,54 @@ class GradingProgram {
       }
     );
 
-    logger.info('Cron jobs initialized successfully');
-  }
-
-  // Method to update cron settings
-  updateCronSettings(newSettings) {
-    this.cronSettings = {
-      ...this.cronSettings,
-      ...newSettings,
-    };
-    // Reinitialize cron jobs with new settings
-    this.initCronJobs();
+    logger.info.grading('Cron jobs initialized successfully');
   }
 
   async runJobsMill() {
     try {
+      logger.info.grading('Fetching mill data...');
+      const credentials =
+        cronJobSettings.getSettings('grading.credentials') || {};
       const response = await axios.get(
         'https://management.srs-ssms.com/api/getdatamill',
-        { params: this.credentials }
+        { params: credentials }
       );
+      logger.info.grading('Mill data fetched successfully');
       return response.data;
     } catch (error) {
-      console.error('Error fetching mill data:', error);
+      logger.error.grading(
+        'Error fetching mill data:',
+        error.response?.data || error.message
+      );
       throw error;
     }
   }
 
   async getMillData() {
     try {
+      logger.info.grading('Fetching mill jobs data...');
+      const credentials =
+        cronJobSettings.getSettings('grading.credentials') || {};
       const response = await axios.get(
         'https://management.srs-ssms.com/api/getdatamilljobs',
-        { params: this.credentials }
+        { params: credentials }
       );
 
       const { data, id_jobs, pdf_name, image_name } = response.data;
 
       if (!data || data.length === 0) {
-        console.log('No mill data available to process');
+        logger.info.grading('No mill data available to process');
         return;
       }
 
+      logger.info.grading(`Processing ${data.length} mill data items`);
+      const groups = cronJobSettings.getSettings('grading.groups') || {};
+
       for (const itemdata of data) {
         const message = this.formatGradingMessage(itemdata);
-        const targetGroup = this.groups[itemdata.mill] || this.groups.default;
+        const targetGroup = this.getTargetGroup(itemdata.mill, groups);
 
-        try {
-          // Add to global queue
+        if (targetGroup) {
           global.queue.push({
             type: 'send_image',
             data: {
@@ -147,49 +129,90 @@ class GradingProgram {
               caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
             },
           });
-        } catch (error) {
-          // You'll need to implement or import catcherror
-          await catcherror(
-            itemdata.id,
-            'error_sending_message',
-            'bot_grading_mill'
-          );
         }
       }
 
       if (id_jobs.length > 0 && pdf_name.length > 0) {
-        global.queue.push({
-          type: 'update_data_mill',
-          data: { id: id_jobs, pdf_name, image_name },
-        });
+        await this.updateDataMill({ id: id_jobs, pdf_name, image_name });
       }
     } catch (error) {
-      console.log('Error fetching data:', error);
+      logger.error.grading(
+        'Error fetching data:',
+        error.response?.data || error.message
+      );
+      throw error;
     }
-  }
-
-  formatGradingMessage(itemdata) {
-    // ... [keeping the same formatting logic] ...
-    // I'll skip this for brevity, but it should be the same as your original code
   }
 
   async updateDataMill(data) {
     try {
+      logger.info.grading('Updating mill data...');
+      const credentials =
+        cronJobSettings.getSettings('grading.credentials') || {};
       const response = await axios.post(
         'https://management.srs-ssms.com/api/updatedatamill',
         {
-          ...this.credentials,
+          ...credentials,
           id: data.id,
           pdf_name: data.pdf_name,
           image_name: data.image_name,
         }
       );
-      console.log('Cleanup successful:', response.data);
-    } catch (updateError) {
-      console.error('Error cleaning up data:', updateError);
-      throw updateError;
+      logger.info.grading('Mill data updated successfully');
+      return response.data;
+    } catch (error) {
+      logger.error.grading(
+        'Error updating mill data:',
+        error.response?.data || error.message
+      );
+      throw error;
     }
+  }
+
+  getTargetGroup(mill, groups) {
+    return groups[mill] || groups.default || '';
+  }
+
+  formatGradingMessage(itemdata) {
+    let message = `*Berikut Hasil Grading Total ${itemdata.estate} ${itemdata.afdeling}*:\n`;
+    message += `*Tanggal*: ${itemdata.Tanggal}\n`;
+    message += `*Jam*: ${itemdata.waktu_grading}\n`;
+    message += `*Ripeness*: ${itemdata.Ripeness} jjg (${itemdata.percentase_ripenes}%)\n`;
+    message += `*Unripe*: ${itemdata.Unripe} jjg (${itemdata.persenstase_unripe}%)\n`;
+    message += `•0 brondol: ${itemdata.nol_brondol} jjg (${itemdata.persentase_nol_brondol}%)\n`;
+
+    itemdata.pemanen_list_tanpabrondol?.tanpaBrondol_list?.forEach(
+      (item, index) => {
+        message += `${index + 1}. No. Pemanen : ${item.no_pemanen} = ${item.tanpaBrondol} jjg\n`;
+      }
+    );
+
+    message += `•< brondol: ${itemdata.kurang_brondol} jjg (${itemdata.persentase_brondol}%)\n`;
+
+    itemdata.pemanen_list_kurangbrondol?.kurangBrondol_list?.forEach(
+      (item, index) => {
+        message += `${index + 1}. No. Pemanen : ${item.no_pemanen} = ${item.kurangBrondol} jjg\n`;
+      }
+    );
+
+    message += `*Overripe*:  ${itemdata.Overripe} jjg (${itemdata.persentase_overripe}%)\n`;
+    message += `*Empty bunch*: ${itemdata.empty_bunch} jjg (${itemdata.persentase_empty_bunch}%)\n`;
+    message += `*Rotten bunch*: ${itemdata.rotten_bunch} jjg (${itemdata.persentase_rotten_bunce}%)\n`;
+    message += `*Abnormal*: ${itemdata.Abnormal} jjg (${itemdata.persentase_abnormal}%)\n`;
+    message += `*Dirt*: ${itemdata.Dirt} Kg (${itemdata.persentase}%)\n`;
+    message += `*Loose Fruit*: ${itemdata.loose_fruit} Kg (${itemdata.persentase_lose_fruit}%)\n\n`;
+    message += `Jumlah janjang di Grading: ${itemdata.jjg_grading} jjg\n`;
+    message += `Jumlah janjang di SPB: ${itemdata.jjg_spb} jjg\n`;
+    message += `Jumlah Selisih janjang: ${itemdata.jjg_selisih} jjg (${itemdata.persentase_selisih}%)\n`;
+
+    if (itemdata.update_by !== null) {
+      message += `Laporan diperbaharui\n`;
+      message += `*Telah diedit oleh*: ${itemdata.status_edit}\n`;
+    }
+    message += `Generated by Digital Architect SRS bot`;
+
+    return message;
   }
 }
 
-module.exports = new GradingProgram();
+module.exports = GradingProgram;

@@ -7,10 +7,11 @@ const pino = require('pino');
 const fs = require('fs').promises;
 const path = require('path');
 const qrcode = require('qrcode');
+const logger = require('./logger');
 
 let retryCount = 0;
 const maxRetries = 5;
-const retryDelay = 5000; // 5 seconds
+const retryDelay = 5000;
 const AUTH_FOLDER = 'auth_info';
 let currentQR = null;
 
@@ -18,10 +19,9 @@ async function clearAuthInfo() {
   try {
     const authPath = path.join(process.cwd(), AUTH_FOLDER);
     await fs.rm(authPath, { recursive: true, force: true });
-    console.log('Auth info cleared successfully');
+    logger.info.whatsapp('Auth info cleared successfully');
   } catch (error) {
-    console.error('Error clearing auth info:', error);
-    // Don't throw error here, just log it
+    logger.error.whatsapp('Error clearing auth info:', error);
   }
 }
 
@@ -31,7 +31,7 @@ async function disconnectAndClearAuth() {
       try {
         await global.sock.logout();
       } catch (error) {
-        console.log('Logout error (expected):', error.message);
+        logger.info.whatsapp('Logout error (expected):', error.message);
       }
       await global.sock.end();
       global.sock = null;
@@ -39,8 +39,7 @@ async function disconnectAndClearAuth() {
     await clearAuthInfo();
     return true;
   } catch (error) {
-    console.error('Error during disconnect:', error);
-    // Don't throw error, return false instead
+    logger.error.whatsapp('Error during disconnect:', error);
     return false;
   }
 }
@@ -67,29 +66,29 @@ async function connectToWhatsApp() {
 
       if (qr) {
         try {
-          console.log('New QR Code received, converting to data URL...');
+          logger.info.whatsapp(
+            'New QR Code received, converting to data URL...'
+          );
           const qrDataURL = await qrcode.toDataURL(qr);
-          currentQR = qrDataURL; // Cache the QR code
-          console.log('QR Code converted, sending to client...');
-          // Emit to all connected clients
+          currentQR = qrDataURL;
+          logger.info.whatsapp('QR Code converted, sending to client...');
           global.io?.emit('qr', qrDataURL);
         } catch (err) {
-          console.error('QR code generation error:', err);
+          logger.error.whatsapp('QR code generation error:', err);
         }
       }
 
       if (connection === 'close') {
-        currentQR = null; // Clear QR cache on disconnect
+        currentQR = null;
         const statusCode = lastDisconnect?.error?.output?.statusCode;
         const shouldReconnect =
-          statusCode !== DisconnectReason.loggedOut && statusCode !== 401; // Don't reconnect on intentional logout
+          statusCode !== DisconnectReason.loggedOut && statusCode !== 401;
 
-        console.log(
-          'Connection closed due to ',
+        logger.info.whatsapp(
+          'Connection closed due to:',
           lastDisconnect?.error?.message
         );
 
-        // Emit connection status
         global.io?.emit('connection-status', {
           whatsappConnected: false,
           queueStatus: global.queue?.getStatus(),
@@ -99,7 +98,9 @@ async function connectToWhatsApp() {
 
         if (shouldReconnect && retryCount < maxRetries) {
           retryCount++;
-          console.log(`Reconnecting... Attempt ${retryCount} of ${maxRetries}`);
+          logger.info.whatsapp(
+            `Reconnecting... Attempt ${retryCount} of ${maxRetries}`
+          );
           setTimeout(connectToWhatsApp, retryDelay);
         } else {
           retryCount = 0;
@@ -108,7 +109,7 @@ async function connectToWhatsApp() {
           }
         }
       } else if (connection === 'open') {
-        console.log('WhatsApp connected successfully');
+        logger.info.whatsapp('WhatsApp connected successfully');
         retryCount = 0;
 
         global.io?.emit('connection-status', {
@@ -125,7 +126,7 @@ async function connectToWhatsApp() {
 
     return sock;
   } catch (error) {
-    console.error('Error in connectToWhatsApp:', error);
+    logger.error.whatsapp('Error in connectToWhatsApp:', error);
     global.io?.emit('connection-status', {
       whatsappConnected: false,
       queueStatus: global.queue?.getStatus(),
@@ -136,7 +137,6 @@ async function connectToWhatsApp() {
   }
 }
 
-// Add function to check connection status
 function isConnected() {
   return {
     connected: !!global.sock?.user && global.sock.ws.readyState === 1,
@@ -144,7 +144,6 @@ function isConnected() {
   };
 }
 
-// Add new function to get current QR
 function getCurrentQR() {
   return currentQR;
 }
@@ -153,5 +152,5 @@ module.exports = {
   connectToWhatsApp,
   isConnected,
   disconnectAndClearAuth,
-  getCurrentQR, // Export the new function
+  getCurrentQR,
 };

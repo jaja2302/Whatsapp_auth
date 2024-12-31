@@ -1,7 +1,0 @@
-{
-  "grading": {
-    "runJobsMill": "*/15 * * * *",
-    "getMillData": "*/1 * * * *"
-  },
-  "timezone": "Asia/Jakarta"
-}

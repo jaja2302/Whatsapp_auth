@@ -33,11 +33,6 @@ class Dashboard {
     this.setupSocketHandlers();
     this.setupEventListeners();
     this.startStatusCheck();
-
-    // Add log event handler
-    this.socket.on('log', (logData) => {
-      this.addToLog(logData.message, logData.level);
-    });
   }
 
   validateElements() {
@@ -63,13 +58,12 @@ class Dashboard {
       this.updateStatus(status);
       this.updateButtonStates(status.whatsappConnected);
     } catch (error) {
-      console.error('Error checking initial state:', error);
+      this.addToLog(`Error checking initial state: ${error.message}`, 'error');
     }
   }
 
   setupSocketHandlers() {
     this.socket.on('connect', () => {
-      console.log('Connected to server');
       this.addToLog('Connected to server');
 
       // Request QR code if we're in disconnected state
@@ -86,7 +80,6 @@ class Dashboard {
     });
 
     this.socket.on('qr', (qrDataURL) => {
-      console.log('Received QR code');
       const qrElement = document.getElementById('qr-code');
       qrElement.innerHTML = `<img src="${qrDataURL}" alt="QR Code" style="max-width: 300px;">`;
       this.addToLog('New QR code received. Please scan!');
@@ -97,9 +90,13 @@ class Dashboard {
     });
 
     this.socket.on('connection-status', (status) => {
-      console.log('Received status update:', status);
       this.updateStatus(status);
       this.updateButtonStates(status.whatsappConnected);
+    });
+
+    // Listen specifically for WhatsApp logs
+    this.socket.on('log-whatsapp', (data) => {
+      this.addToLog(data.message, data.level);
     });
   }
 
@@ -119,6 +116,18 @@ class Dashboard {
 
     if (this.buttons.clearLogs) {
       this.buttons.clearLogs.addEventListener('click', () => this.clearLogs());
+    }
+
+    if (this.buttons.startQueue) {
+      this.buttons.startQueue.addEventListener('click', () =>
+        this.toggleQueue(true)
+      );
+    }
+
+    if (this.buttons.pauseQueue) {
+      this.buttons.pauseQueue.addEventListener('click', () =>
+        this.toggleQueue(false)
+      );
     }
   }
 
@@ -154,59 +163,38 @@ class Dashboard {
   updateStatus(status) {
     if (!status) return;
 
-    const statusElement = document.getElementById('connection-status');
-    const qrElement = document.getElementById('qr-code');
-
-    if (statusElement) {
+    if (this.containers.connectionStatus) {
       if (status.whatsappConnected) {
-        statusElement.innerHTML =
+        this.containers.connectionStatus.innerHTML =
           '<span class="badge bg-success">Connected</span>';
-        if (qrElement) {
-          qrElement.innerHTML = '';
+        if (this.containers.qrCode) {
+          this.containers.qrCode.innerHTML = '';
         }
       } else if (status.reconnecting) {
-        statusElement.innerHTML =
+        this.containers.connectionStatus.innerHTML =
           '<span class="badge bg-warning">Reconnecting...</span>';
       } else {
-        statusElement.innerHTML =
+        this.containers.connectionStatus.innerHTML =
           '<span class="badge bg-danger">Disconnected</span>';
       }
     }
 
     this.updateButtonStates(status.whatsappConnected);
 
-    if (status.queueStatus) {
-      const queueStatusElement = document.getElementById('queue-status');
-      if (queueStatusElement) {
-        queueStatusElement.innerHTML = `
-          <div>Status: ${
-            status.queueStatus.isPaused
-              ? '<span class="badge bg-warning">Paused</span>'
-              : '<span class="badge bg-success">Running</span>'
-          }
-          </div>
-          <div class="mt-2">
-            <span class="badge bg-primary">Total: ${status.queueStatus.total}</span>
-            <span class="badge bg-success">Completed: ${status.queueStatus.completed}</span>
-            <span class="badge bg-danger">Failed: ${status.queueStatus.failed}</span>
-          </div>
-          <div class="mt-2">
-            <button id="start-queue" class="btn btn-success btn-sm">Start Queue</button>
-            <button id="pause-queue" class="btn btn-warning btn-sm">Pause Queue</button>
-          </div>
-        `;
-        this.updateQueueButtons(status.queueStatus.isPaused);
-
-        // Re-attach event listeners since we replaced the buttons
-        const startQueueBtn = document.getElementById('start-queue');
-        const pauseQueueBtn = document.getElementById('pause-queue');
-        if (startQueueBtn && pauseQueueBtn) {
-          startQueueBtn.addEventListener('click', () => this.toggleQueue(true));
-          pauseQueueBtn.addEventListener('click', () =>
-            this.toggleQueue(false)
-          );
-        }
-      }
+    if (status.queueStatus && this.containers.queueStatus) {
+      this.containers.queueStatus.innerHTML = `
+        <div>Status: ${
+          status.queueStatus.isPaused
+            ? '<span class="badge bg-warning">Paused</span>'
+            : '<span class="badge bg-success">Running</span>'
+        }</div>
+        <div class="mt-2">
+          <span class="badge bg-primary">Total: ${status.queueStatus.total}</span>
+          <span class="badge bg-success">Completed: ${status.queueStatus.completed}</span>
+          <span class="badge bg-danger">Failed: ${status.queueStatus.failed}</span>
+        </div>
+      `;
+      this.updateQueueButtons(status.queueStatus.isPaused);
     }
   }
 
@@ -214,21 +202,21 @@ class Dashboard {
     if (!this.containers.logContainer) return;
 
     const logEntry = document.createElement('div');
-    logEntry.className = `log-entry ${level}`;
+    logEntry.className = 'p-2 border-b border-gray-100';
     const timestamp = new Date().toLocaleTimeString();
-    logEntry.innerHTML = `
-      <span class="log-time">${timestamp}</span>
-      <span class="log-message">${message}</span>
-    `;
+    logEntry.textContent = `${timestamp} - ${message}`;
 
-    if (this.containers.logContainer.firstChild) {
-      this.containers.logContainer.insertBefore(
-        logEntry,
-        this.containers.logContainer.firstChild
-      );
-    } else {
-      this.containers.logContainer.appendChild(logEntry);
+    // Add color based on log level
+    if (level === 'error') {
+      logEntry.classList.add('text-red-600');
+    } else if (level === 'warn') {
+      logEntry.classList.add('text-yellow-600');
     }
+
+    this.containers.logContainer.insertBefore(
+      logEntry,
+      this.containers.logContainer.firstChild
+    );
 
     // Limit the number of log entries to prevent memory issues
     while (this.containers.logContainer.children.length > 100) {
@@ -252,7 +240,7 @@ class Dashboard {
         const status = await response.json();
         this.updateStatus(status);
       } catch (error) {
-        console.error('Error checking status:', error);
+        this.addToLog(`Error checking status: ${error.message}`, 'error');
       }
     }, 5000);
   }
@@ -270,24 +258,17 @@ class Dashboard {
     }
   }
 
-  setupQueueControls() {
-    // Add queue control buttons
-    const queueStatusDiv = document.getElementById('queue-status');
-    const controlsHtml = `
-      <div class="mt-2">
-        <button id="start-queue" class="btn btn-success btn-sm">Start Queue</button>
-        <button id="pause-queue" class="btn btn-warning btn-sm">Pause Queue</button>
-      </div>
-    `;
-    queueStatusDiv.insertAdjacentHTML('beforeend', controlsHtml);
-
-    // Add event listeners
-    document
-      .getElementById('start-queue')
-      .addEventListener('click', () => this.toggleQueue(true));
-    document
-      .getElementById('pause-queue')
-      .addEventListener('click', () => this.toggleQueue(false));
+  async handleDisconnect() {
+    try {
+      this.addToLog('Initiating disconnect...');
+      const response = await fetch('/api/whatsapp/disconnect', {
+        method: 'POST',
+      });
+      const data = await response.json();
+      this.addToLog(data.message);
+    } catch (error) {
+      this.addToLog(`Error: ${error.message}`, 'error');
+    }
   }
 
   async toggleQueue(start) {

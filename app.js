@@ -32,7 +32,7 @@ app.use('/api', apiRoutes);
 
 // Socket.IO connection handling
 io.on('connection', (socket) => {
-  logger.info(`Client connected: ${socket.id}`);
+  logger.info.whatsapp(`Client connected: ${socket.id}`);
 
   // Send initial status
   socket.emit('connection-status', {
@@ -42,37 +42,41 @@ io.on('connection', (socket) => {
   });
 
   socket.on('disconnect', (reason) => {
-    logger.info(`Client disconnected: ${socket.id}, Reason: ${reason}`);
+    logger.info.whatsapp(
+      `Client disconnected: ${socket.id}, Reason: ${reason}`
+    );
   });
 });
 
 // Initialize WhatsApp connection
 connectToWhatsApp()
   .then(() => {
-    logger.info('WhatsApp initialized successfully');
+    logger.info.whatsapp('WhatsApp initialized successfully');
   })
   .catch((err) => {
-    logger.error('Error initializing WhatsApp:', err);
+    logger.error.whatsapp('Error initializing WhatsApp:', err);
   });
 
 // Initialize message queue
 queue
   .init()
   .then(() => {
-    logger.info(`Queue initialized with ${queue.queue.length} messages`);
+    logger.info.whatsapp(
+      `Queue initialized with ${queue.queue.length} messages`
+    );
   })
   .catch((err) => {
-    logger.error('Error initializing queue:', err);
+    logger.error.whatsapp('Error initializing queue:', err);
   });
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-  logger.info(`Server running on port ${PORT}`);
+  logger.info.whatsapp(`Server running on port ${PORT}`);
 });
 
 // Handle graceful shutdown
 process.on('SIGINT', async () => {
-  logger.info('Shutting down...');
+  logger.info.whatsapp('Shutting down...');
   await queue.init(); // Save queue state if needed
   process.exit(0);
 });

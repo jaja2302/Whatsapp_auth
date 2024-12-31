@@ -12,9 +12,24 @@ class Logger {
         },
       },
     });
+
+    // Create methods for each log level
+    ['info', 'error', 'warn', 'debug'].forEach((level) => {
+      this[level] = {
+        // Create source-specific logging methods
+        grading: (message, ...args) =>
+          this.broadcast(level, 'grading', message, ...args),
+        whatsapp: (message, ...args) =>
+          this.broadcast(level, 'whatsapp', message, ...args),
+        general: (message, ...args) =>
+          this.broadcast(level, 'general', message, ...args),
+        // Add more sources as needed
+        // another: (message, ...args) => this.broadcast(level, 'another', message, ...args)
+      };
+    });
   }
 
-  broadcast(level, message, ...args) {
+  broadcast(level, source, message, ...args) {
     // Log to terminal
     this.pino[level](message, ...args);
 
@@ -24,28 +39,12 @@ class Logger {
 
     // Broadcast to web clients if socket.io is available
     if (global.io) {
-      global.io.emit('log', {
+      global.io.emit(`log-${source}`, {
         timestamp: new Date().toLocaleTimeString(),
         message: formattedMessage,
         level,
       });
     }
-  }
-
-  info(message, ...args) {
-    this.broadcast('info', message, ...args);
-  }
-
-  error(message, ...args) {
-    this.broadcast('error', message, ...args);
-  }
-
-  warn(message, ...args) {
-    this.broadcast('warn', message, ...args);
-  }
-
-  debug(message, ...args) {
-    this.broadcast('debug', message, ...args);
   }
 }
 

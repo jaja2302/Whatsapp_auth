@@ -3,46 +3,67 @@ const axios = require('axios');
 const fs = require('fs');
 const https = require('https');
 const { catcherror } = require('../izinkebun/helper');
-const testingbotda = '120363205553012899@g.us';
-const testingbotsampenikah = '120363204285862734@g.us';
-const noWa_grading = '120363164751475851@g.us';
-const noWa_grading_suayap = '6281397270799-1635156024@g.us';
-const noWa_grading_sgm = '6282257572112-1635223872@g.us';
-const noWa_grading_slm = '6281397270799-1565316655@g.us';
-const noWa_grading_nbm = '6285655573821-1566449850@g.us';
-const noWa_grading_mlm = '120363332857987276@g.us';
-const noWa_grading_nkm = '120363046524351245@g.us';
-const noWa_grading_scm = '120363332360538214@g.us';
-const no_grup_skm = '120363283953366418@g.us';
+const logger = require('../../src/services/logger');
+const settings = require('../../src/web/data/settings.json');
+
+// Get groups from settings with default values
+const {
+  grading: {
+    groups = {
+      SYM: '',
+      SGM: '',
+      SLM: '',
+      NBM: '',
+      MLM: '',
+      NKM: '',
+      SCM: '',
+      SKM: '',
+      default: '',
+    },
+    testing = {
+      testingbotda: '',
+      testingbotsampenikah: '',
+    },
+    credentials = {},
+  } = {},
+} = settings;
+
+// Destructure with default values
+const {
+  SYM: noWa_grading_suayap = '',
+  SGM: noWa_grading_sgm = '',
+  SLM: noWa_grading_slm = '',
+  NBM: noWa_grading_nbm = '',
+  MLM: noWa_grading_mlm = '',
+  NKM: noWa_grading_nkm = '',
+  SCM: noWa_grading_scm = '',
+  SKM: no_grup_skm = '',
+  default: noWa_grading = '',
+} = groups;
 
 async function run_jobs_mill() {
-  const credentials = {
-    email: 'j',
-    password: 'j',
-  };
-
   try {
+    logger.info.grading('Fetching mill data...');
     const response = await axios.get(
       'https://management.srs-ssms.com/api/getdatamill',
-      // 'http://erpda.test/api/getdatamill',
       {
         params: credentials,
       }
     );
+    logger.info.grading('Mill data fetched successfully');
     return response.data;
   } catch (error) {
-    console.error('Error fetching mill data:', error);
+    logger.error.grading(
+      'Error fetching mill data:',
+      error.response?.data || error.message
+    );
     throw error;
   }
 }
 
 async function get_mill_data() {
-  const credentials = {
-    email: 'j',
-    password: 'j',
-  };
-
   try {
+    logger.info.grading('Fetching mill jobs data...');
     const response = await axios.get(
       'https://management.srs-ssms.com/api/getdatamilljobs',
       {
@@ -52,15 +73,14 @@ async function get_mill_data() {
 
     const { data, id_jobs, pdf_name, image_name } = response.data;
 
-    // Check if data exists and is not empty
     if (!data || data.length === 0) {
-      console.log('No mill data available to process');
-      return; // Exit the function early if no data
+      logger.info.grading('No mill data available to process');
+      return;
     }
 
-    // Process data only if we have items
-    for (let i = 0; i < data.length; i++) {
-      const itemdata = data[i];
+    logger.info.grading(`Processing ${data.length} mill data items`);
+
+    for (const itemdata of data) {
       const message = formatGradingMessage(itemdata);
 
       try {
@@ -86,6 +106,7 @@ async function get_mill_data() {
               return noWa_grading;
           }
         })();
+
         global.queue.push({
           type: 'send_image',
           data: {
@@ -94,6 +115,7 @@ async function get_mill_data() {
             caption: message,
           },
         });
+
         global.queue.push({
           type: 'send_document',
           data: {
@@ -103,7 +125,15 @@ async function get_mill_data() {
             caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
           },
         });
+
+        logger.info.grading(
+          `Queued messages for ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}`
+        );
       } catch (error) {
+        logger.error.grading(
+          `Error processing mill data for ${itemdata.mill}:`,
+          error
+        );
         await catcherror(
           itemdata.id,
           'error_sending_message',
@@ -112,7 +142,6 @@ async function get_mill_data() {
       }
     }
 
-    // Only push update if we have data to update
     if (id_jobs.length > 0 && pdf_name.length > 0) {
       global.queue.push({
         type: 'update_data_mill',
@@ -122,9 +151,14 @@ async function get_mill_data() {
           image_name: image_name,
         },
       });
+      logger.info.grading('Queued mill data update');
     }
   } catch (error) {
-    console.log('Error fetching data:', error);
+    logger.error.grading(
+      'Error fetching data:',
+      error.response?.data || error.message
+    );
+    throw error;
   }
 }
 
@@ -169,16 +203,10 @@ function formatGradingMessage(itemdata) {
 }
 
 async function updateDataMill(data) {
-  const credentials = {
-    email: 'j',
-    password: 'j',
-  };
-  console.log('updateDataMill', data);
-
   try {
+    logger.info.grading('Updating mill data...');
     const response = await axios.post(
       'https://management.srs-ssms.com/api/updatedatamill',
-      // 'http://erpda.test/api/updatedatamill',
       {
         ...credentials,
         id: data.id,
@@ -186,10 +214,14 @@ async function updateDataMill(data) {
         image_name: data.image_name,
       }
     );
-    console.log('Cleanup successful:', response.data);
-  } catch (updateError) {
-    console.error('Error cleaning up data:', updateError);
-    throw updateError;
+    logger.info.grading('Mill data updated successfully');
+    return response.data;
+  } catch (error) {
+    logger.error.grading(
+      'Error updating mill data:',
+      error.response?.data || error.message
+    );
+    throw error;
   }
 }
 

@@ -3,6 +3,7 @@ const chokidar = require('chokidar');
 const path = require('path');
 const stream = require('stream');
 const https = require('https');
+const logger = require('./logger');
 
 // Increase the default max listeners for Readable streams
 stream.Readable.defaultMaxListeners = 15;
@@ -59,15 +60,15 @@ class MessageQueue {
 
       if (newItems.length > 0) {
         this.queue.push(...newItems);
-        global.logger?.info(`Added ${newItems.length} new items to queue`);
+        logger.info.whatsapp(`Added ${newItems.length} new items to queue`);
       }
 
-      global.logger?.info(
+      logger.info.whatsapp(
         `Queue loaded from disk, total items: ${this.queue.length}`
       );
     } catch (error) {
       if (error.code !== 'ENOENT') {
-        global.logger?.error('Error loading queue from disk:', error);
+        logger.error.whatsapp('Error loading queue from disk:', error);
       }
       this.queue = [];
     }
@@ -76,20 +77,20 @@ class MessageQueue {
   async saveToFile() {
     try {
       await fs.writeFile(this.filePath, JSON.stringify(this.queue, null, 2));
-      global.logger?.info('Queue saved to disk');
+      logger.info.whatsapp('Queue saved to disk');
     } catch (error) {
-      global.logger?.error('Error saving queue to disk:', error);
+      logger.error.whatsapp('Error saving queue to disk:', error);
     }
   }
 
   pause() {
     this.paused = true;
-    global.logger?.info('Queue paused');
+    logger.info.whatsapp('Queue paused');
   }
 
   resume() {
     this.paused = false;
-    global.logger?.info('Queue resumed');
+    logger.info.whatsapp('Queue resumed');
     this.processQueue();
   }
 
@@ -103,11 +104,11 @@ class MessageQueue {
       this.queue.shift();
       this.completed++;
       await this.saveToFile();
-      global.logger?.info(
+      logger.info.whatsapp(
         `Processed queue item. Remaining: ${this.queue.length}`
       );
     } catch (error) {
-      global.logger?.error('Error processing queue item:', error);
+      logger.error.whatsapp('Error processing queue item:', error);
       this.failed++;
       await this.saveFailedJob(this.queue[0]);
     } finally {
@@ -150,7 +151,7 @@ class MessageQueue {
     if (!result || !result.key) {
       throw new Error('Failed to send WhatsApp message');
     }
-    global.logger?.info(`Message sent successfully to ${to}`);
+    logger.info.whatsapp(`Message sent successfully to ${to}`);
     return result;
   }
 
@@ -163,7 +164,7 @@ class MessageQueue {
     if (!result || !result.key) {
       throw new Error('Failed to send WhatsApp image');
     }
-    global.logger?.info(`Image sent successfully to ${to}`);
+    logger.info.whatsapp(`Image sent successfully to ${to}`);
     return result;
   }
 
@@ -178,7 +179,7 @@ class MessageQueue {
     if (!result || !result.key) {
       throw new Error('Failed to send WhatsApp document');
     }
-    global.logger?.info(`Document sent successfully to ${to}`);
+    logger.info.whatsapp(`Document sent successfully to ${to}`);
     return result;
   }
 
@@ -241,7 +242,7 @@ class MessageQueue {
         failedJobs = JSON.parse(data);
       } catch (error) {
         if (error.code !== 'ENOENT') {
-          global.logger?.error('Error reading failed jobs file:', error);
+          logger.error.whatsapp('Error reading failed jobs file:', error);
         }
       }
 
@@ -252,9 +253,9 @@ class MessageQueue {
         this.failedJobsPath,
         JSON.stringify(failedJobs, null, 2)
       );
-      global.logger?.info(`Failed job saved: ${task.type}`);
+      logger.info.whatsapp(`Failed job saved: ${task.type}`);
     } catch (error) {
-      global.logger?.error('Error saving failed job:', error);
+      logger.error.whatsapp('Error saving failed job:', error);
     }
   }
 
@@ -278,7 +279,7 @@ class MessageQueue {
     });
 
     watcher.on('change', async (path) => {
-      global.logger?.info('Queue file changed, reloading...');
+      logger.info.whatsapp('Queue file changed, reloading...');
       await this.loadFromDisk();
 
       // Update web clients with new queue status
@@ -297,7 +298,7 @@ class MessageQueue {
     });
 
     watcher.on('error', (error) => {
-      global.logger?.error('Error watching queue file:', error);
+      logger.error.whatsapp('Error watching queue file:', error);
     });
   }
 }
