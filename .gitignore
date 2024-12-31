@@ -8,3 +8,8 @@
 .bot_grading_error.log
 .bot_grading.log
 /utils/queue_backup.json
+/auth_info_baileys
+/auth_info
+.bot_grading_error
+.bot_grading_error.log
+.bot_grading.log

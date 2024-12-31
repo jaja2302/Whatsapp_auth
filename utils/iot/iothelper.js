@@ -36,39 +36,19 @@ async function get_iot_weatherstation(sock) {
         message += `Ip address : ${itemdata.ip_address}\n`;
 
         try {
-          if (itemdata.loc === 'SGE') {
+          // Send to station's specific group
+          if (itemdata.group_notif_mati) {
             queue.push({
               type: 'send_message',
-              data: { to: idgroupiot_sge, message: message },
-            });
-            // await sock.sendMessage(idgroupiot_sge, { text: message });
-          } else if (itemdata.loc === 'RGE') {
-            queue.push({
-              type: 'send_message',
-              data: { to: idgroupiot_rge, message: message },
-            });
-            // await sock.sendMessage(idgroupiot_rge, { text: message });
-          } else if (itemdata.loc === 'Sulung Ranch') {
-            queue.push({
-              type: 'send_message',
-              data: { to: idgroupiot_sulung, message: message },
-            });
-          } else if (itemdata.loc === 'NKE') {
-            queue.push({
-              type: 'send_message',
-              data: { to: idgroupiot_nke, message: message },
-            });
-          } else if (itemdata.loc === 'SJE') {
-            queue.push({
-              type: 'send_message',
-              data: { to: idgroupiot_sje, message: message },
+              data: { to: itemdata.group_notif_mati, message: message },
             });
           }
+
+          // Send to main IOT group
           queue.push({
             type: 'send_message',
             data: { to: idgroupiot, message: message },
           });
-          // await sock.sendMessage(idgroupiot, { text: message });
         } catch (error) {
           console.log(error);
           await catcherror(itemdata.id, 'error_cronjob', 'bot_iot');
@@ -170,12 +150,6 @@ async function get_data_harian_aws(sock) {
 
       for (const [id, station] of Object.entries(stations)) {
         // Get weather prediction based on rainfall data
-        const weatherEmoji =
-          station.rainfall.total > 0
-            ? '☔'
-            : station.temperature.average > 28
-              ? '🌞'
-              : '☁';
 
         let message = `🌦 DAILY REPORT AWS ${station.station_name}\n\n`;
         message += `🌧 CURAH HUJAN tgl ${station.date}\n`;
@@ -189,35 +163,15 @@ async function get_data_harian_aws(sock) {
         message += `Suhu tertinggi: ${station.temperature.highest.value}°C (${station.temperature.highest.hour})\n`;
         message += `Suhu terendah: ${station.temperature.lowest.value}°C (${station.temperature.lowest.hour})\n`;
         message += `⛅ PERKIRAAN CUACA HARI INI:\n`;
-        message += `${weatherEmoji}\n\n`;
+        message += `${station.tomorrow_forecast.weather_description}\n\n`;
         message += `📥 Download data AWS bulan ini: https://iot.srs-ssms.com/dashboardaws\n`;
 
         try {
-          // Send to specific estate group
-          if (station.station_name === 'SGE') {
+          // Send to station's specific group
+          if (station.group_wa) {
             queue.push({
               type: 'send_message',
-              data: { to: idgroupiot_sge, message: message },
-            });
-          } else if (station.station_name === 'RGE') {
-            queue.push({
-              type: 'send_message',
-              data: { to: idgroupiot_rge, message: message },
-            });
-          } else if (station.station_name === 'Sulung Ranch') {
-            queue.push({
-              type: 'send_message',
-              data: { to: idgroupiot_sulung, message: message },
-            });
-          } else if (station.station_name === 'NKE') {
-            queue.push({
-              type: 'send_message',
-              data: { to: idgroupiot_nke, message: message },
-            });
-          } else if (station.station_name === 'SJE') {
-            queue.push({
-              type: 'send_message',
-              data: { to: idgroupiot_sje, message: message },
+              data: { to: station.group_wa, message: message },
             });
           }
 
