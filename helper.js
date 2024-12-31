@@ -887,7 +887,7 @@ const setupCronJobs = (sock) => {
         await handleBotLaporanHarianFleetManagement();
         await handleBotDailyPengawasanOperatorAI();
         await sendSummary();
-        await get_outstadingdata();
+        // await get_outstadingdata();
       },
       {
         scheduled: true,

@@ -83,3 +83,118 @@ Task completed: update_status_izinkebun
 Queue saved to disk
 No mill data available to process
 cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+No mill data available to process
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+No mill data available to process
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI
+cron job statusAWS,statusHistory,get_iot_weatherstation
+cron job handleBotLaporanHarianFleetManagement,handleBotDailyPengawasanOperatorAI,sendSummary,get_outstadingdata
+memulai cronjob  taksasi fail,pdf izin kebun,iot gap
+Task added to queue: send_message
+Queue saved to disk
+data kosong iot
+No mill data available to process
+Task added to queue: send_message
+Error sending WhatsApp message: TypeError: Cannot read properties of undefined (reading 'sendMessage')
+    at sendSummary (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\rekap_harian_uptime.js:102:16)
+    at cron.schedule.scheduled [as _execution] (C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:889:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Queue saved to disk
+{ message: 'Fail pdf izin kebun succes terkirim', data: [] }
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Task added to queue: send_message
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Queue saved to disk
+Message sent successfully to 120363264196563911@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363321959291717@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
+Message sent successfully to 120363346145146382@g.us
+Task completed: send_message
+Queue saved to disk
