@@ -112,6 +112,18 @@
           </div>
         </div>
 
+        <!-- Failed Jobs Card -->
+        <div class="bg-white rounded-lg shadow-md mt-6">
+          <div class="border-b px-4 py-3">
+            <h2 class="text-xl font-semibold text-gray-700">Failed Jobs</h2>
+          </div>
+          <div class="p-4">
+            <div id="failed-jobs" class="space-y-4 w-full">
+              <!-- Failed jobs will be populated here -->
+            </div>
+          </div>
+        </div>
+
         <!-- Group Participants Card -->
         <div class="bg-white rounded-lg shadow-md">
           <div class="border-b px-4 py-3">
@@ -151,5 +163,21 @@
         </div>
       </div>
     </div>
+
+    <style>
+      /* Add these styles to handle long content */
+      #failed-jobs pre,
+      #failed-jobs code {
+        max-width: 100%;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        word-break: break-word;
+      }
+
+      #failed-jobs .bg-gray-50 {
+        max-width: 100%;
+        overflow-x: auto;
+      }
+    </style>
   </body>
 </html>

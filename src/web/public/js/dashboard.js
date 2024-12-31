@@ -16,6 +16,7 @@ class Dashboard {
       qrCode: document.getElementById('qr-code'),
       connectionStatus: document.getElementById('connection-status'),
       queueStatus: document.getElementById('queue-status'),
+      failedJobs: document.getElementById('failed-jobs'),
     };
 
     // Make sure critical elements exist before continuing
@@ -34,6 +35,12 @@ class Dashboard {
     this.setupSocketHandlers();
     this.setupEventListeners();
     this.startStatusCheck();
+
+    // Add method to load failed jobs
+    this.loadFailedJobs();
+
+    // Reload failed jobs every 10 seconds
+    setInterval(() => this.loadFailedJobs(), 10000);
   }
 
   validateElements() {
@@ -163,8 +170,17 @@ class Dashboard {
   updateQueueButtons(isPaused) {
     if (!this.buttons.startQueue || !this.buttons.pauseQueue) return;
 
-    this.buttons.startQueue.disabled = !isPaused;
-    this.buttons.pauseQueue.disabled = isPaused;
+    // Show both buttons but disable/enable based on state
+    this.buttons.startQueue.style.display = 'inline-block';
+    this.buttons.pauseQueue.style.display = 'inline-block';
+
+    // Enable/disable based on current state
+    this.buttons.startQueue.disabled = !isPaused; // Disable start if not paused
+    this.buttons.pauseQueue.disabled = isPaused; // Disable pause if paused
+
+    // Update button appearance based on disabled state
+    this.buttons.startQueue.classList.toggle('opacity-50', !isPaused);
+    this.buttons.pauseQueue.classList.toggle('opacity-50', isPaused);
   }
 
   updateStatus(status) {
@@ -173,36 +189,77 @@ class Dashboard {
     if (this.containers.connectionStatus) {
       if (status.whatsappConnected) {
         this.containers.connectionStatus.innerHTML =
-          '<span class="badge bg-success">Connected</span>';
+          '<span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-200 text-green-800">Connected</span>';
         if (this.containers.qrCode) {
           this.containers.qrCode.innerHTML = '';
         }
       } else if (status.reconnecting) {
         this.containers.connectionStatus.innerHTML =
-          '<span class="badge bg-warning">Reconnecting...</span>';
+          '<span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-200 text-yellow-800">Reconnecting...</span>';
       } else {
         this.containers.connectionStatus.innerHTML =
-          '<span class="badge bg-danger">Disconnected</span>';
+          '<span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-200 text-red-800">Disconnected</span>';
       }
     }
 
-    this.updateButtonStates(status.whatsappConnected);
-
     if (status.queueStatus && this.containers.queueStatus) {
+      const statusClass = status.queueStatus.isPaused
+        ? 'bg-yellow-200 text-yellow-800'
+        : 'bg-green-200 text-green-800';
       this.containers.queueStatus.innerHTML = `
-        <div>Status: ${
-          status.queueStatus.isPaused
-            ? '<span class="badge bg-warning">Paused</span>'
-            : '<span class="badge bg-success">Running</span>'
-        }</div>
-        <div class="mt-2">
-          <span class="badge bg-primary">Total: ${status.queueStatus.total}</span>
-          <span class="badge bg-success">Completed: ${status.queueStatus.completed}</span>
-          <span class="badge bg-danger">Failed: ${status.queueStatus.failed}</span>
+        <div class="mb-3">
+          Status: 
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${statusClass}">
+            ${status.queueStatus.isPaused ? 'Paused' : 'Running'}
+          </span>
+        </div>
+        <div class="space-x-2">
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+            Total: ${status.queueStatus.total}
+          </span>
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+            Completed: ${status.queueStatus.completed}
+          </span>
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">
+            Failed: ${status.queueStatus.failed}
+          </span>
+        </div>
+        <div class="mt-4 space-x-2">
+          <button
+            id="start-queue"
+            class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
+            ${status.queueStatus.isPaused ? '' : 'disabled'}
+          >
+            Start Queue
+          </button>
+          <button
+            id="pause-queue"
+            class="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
+            ${status.queueStatus.isPaused ? 'disabled' : ''}
+          >
+            Pause Queue
+          </button>
         </div>
       `;
+
+      // Re-attach event listeners to new buttons
+      const startQueueBtn = document.getElementById('start-queue');
+      const pauseQueueBtn = document.getElementById('pause-queue');
+
+      if (startQueueBtn) {
+        startQueueBtn.addEventListener('click', () => this.toggleQueue(true));
+      }
+      if (pauseQueueBtn) {
+        pauseQueueBtn.addEventListener('click', () => this.toggleQueue(false));
+      }
+
+      // Update button states
+      this.buttons.startQueue = startQueueBtn;
+      this.buttons.pauseQueue = pauseQueueBtn;
       this.updateQueueButtons(status.queueStatus.isPaused);
     }
+
+    this.updateButtonStates(status.whatsappConnected);
   }
 
   addToLog(message, level = 'info') {
@@ -317,6 +374,168 @@ class Dashboard {
       this.addToLog('Group participants fetched successfully');
     } catch (error) {
       this.addToLog(`Error fetching participants: ${error.message}`, 'error');
+    }
+  }
+
+  async loadFailedJobs() {
+    try {
+      const response = await fetch('/api/failed-jobs');
+      const failedJobs = await response.json();
+      this.updateFailedJobsDisplay(failedJobs);
+    } catch (error) {
+      this.addToLog('Error loading failed jobs: ' + error.message, 'error');
+    }
+  }
+
+  updateFailedJobsDisplay(failedJobs) {
+    if (!this.containers.failedJobs) return;
+
+    this.containers.failedJobs.innerHTML = `
+      <div class="max-h-[500px] overflow-y-auto">
+        <div class="sticky top-0 z-10 bg-white py-2 space-y-2">
+          <div class="flex justify-between items-center">
+            <div class="relative flex-1 max-w-xs">
+              <input 
+                type="text" 
+                id="failed-jobs-search" 
+                placeholder="Search failed jobs..." 
+                class="w-full pl-8 pr-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+              <div class="absolute left-3 top-2.5 text-gray-400">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+              </div>
+            </div>
+            ${
+              failedJobs.length > 0
+                ? `
+              <button id="clear-failed-jobs" 
+                class="px-3 py-2 bg-red-500 text-white text-sm rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">
+                Clear Failed Jobs
+              </button>
+            `
+                : ''
+            }
+          </div>
+        </div>
+
+        ${
+          failedJobs.length === 0
+            ? `
+          <div class="text-gray-500 text-center py-4">
+            No failed jobs
+          </div>
+        `
+            : `
+          <div class="mt-2 overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50 sticky top-16">
+                <tr>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Error</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data</th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200" id="failed-jobs-table-body">
+                ${failedJobs
+                  .map(
+                    (job) => `
+                  <tr class="failed-job-row">
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                        ${job.type}
+                      </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      ${new Date(job.failed_at).toLocaleString()}
+                    </td>
+                    <td class="px-6 py-4 text-sm text-red-600">
+                      ${job.error.message}
+                    </td>
+                    <td class="px-6 py-4">
+                      <button class="text-blue-600 hover:text-blue-800 text-sm" onclick="toggleData(this)">
+                        Show Data
+                      </button>
+                      <pre class="hidden mt-2 text-xs bg-gray-50 p-2 rounded overflow-x-auto">${JSON.stringify(job.data, null, 2)}</pre>
+                    </td>
+                  </tr>
+                `
+                  )
+                  .join('')}
+              </tbody>
+            </table>
+          </div>
+        `
+        }
+      </div>
+    `;
+
+    // Add toggle data function
+    window.toggleData = function (button) {
+      const pre = button.nextElementSibling;
+      const isHidden = pre.classList.contains('hidden');
+      pre.classList.toggle('hidden');
+      button.textContent = isHidden ? 'Hide Data' : 'Show Data';
+    };
+
+    // Add search functionality
+    const searchInput = document.getElementById('failed-jobs-search');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        const rows = document.querySelectorAll('.failed-job-row');
+
+        rows.forEach((row) => {
+          const text = row.textContent.toLowerCase();
+          row.style.display = text.includes(searchTerm) ? '' : 'none';
+        });
+      });
+    }
+
+    // Add custom scrollbar styles
+    const style = document.createElement('style');
+    style.textContent = `
+      #failed-jobs .overflow-y-auto::-webkit-scrollbar {
+        width: 6px;
+      }
+      #failed-jobs .overflow-y-auto::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 3px;
+      }
+      #failed-jobs .overflow-y-auto::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 3px;
+      }
+      #failed-jobs .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+        background: #666;
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Add event listener for clear button
+    const clearFailedJobsBtn = document.getElementById('clear-failed-jobs');
+    if (clearFailedJobsBtn) {
+      clearFailedJobsBtn.addEventListener('click', async () => {
+        try {
+          const response = await fetch('/api/failed-jobs', {
+            method: 'DELETE',
+          });
+
+          if (response.ok) {
+            this.loadFailedJobs();
+            this.addToLog('Failed jobs cleared successfully');
+          } else {
+            throw new Error('Failed to clear jobs');
+          }
+        } catch (error) {
+          this.addToLog(
+            'Error clearing failed jobs: ' + error.message,
+            'error'
+          );
+        }
+      });
     }
   }
 }

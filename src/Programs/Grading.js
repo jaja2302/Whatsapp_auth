@@ -12,12 +12,16 @@ class GradingProgram {
     this.runJobsSchedule = null;
     this.getDataSchedule = null;
     this.initBroadcastListener();
+    if (!global.queue) {
+      global.queue = require('../services/queue');
+    }
   }
 
   static async init() {
     try {
       logger.info.grading('Initializing grading program');
       const instance = new GradingProgram();
+      await global.queue.init();
       await instance.initCronJobs();
       return instance;
     } catch (error) {
@@ -105,56 +109,67 @@ class GradingProgram {
 
       if (!data || data.length === 0) {
         logger.info.grading('No mill data available to process');
-        return;
+        return { success: true, message: 'No mill data to process' };
       }
 
       logger.info.grading(`Processing ${data.length} mill data items`);
 
-      data.forEach((item, index) => {
-        logger.info.grading(`Data item ${index + 1}:`);
-        logger.info.grading(`- Mill: ${item.mill}`);
-        logger.info.grading(`- Estate: ${item.estate}`);
-        logger.info.grading(`- Afdeling: ${item.afdeling}`);
-        logger.info.grading(`- Tanggal: ${item.Tanggal}`);
-        logger.info.grading(`- Waktu Grading: ${item.waktu_grading}`);
-        logger.info.grading('------------------------');
-      });
-
-      const groups = settings.grading.groups;
+      if (!global.queue) {
+        throw new Error('Message queue is not initialized');
+      }
 
       for (const itemdata of data) {
         const message = this.formatGradingMessage(itemdata);
         const targetGroup = this.getTargetGroup(itemdata.mill, groups);
 
         if (targetGroup) {
-          global.queue.push({
-            type: 'send_image',
-            data: {
-              to: targetGroup,
-              image: itemdata.collage_url,
-              caption: message,
-            },
-          });
+          logger.info.grading(
+            `Adding message to queue for group ${targetGroup}`
+          );
 
-          global.queue.push({
-            type: 'send_document',
-            data: {
-              to: targetGroup,
-              document: itemdata.pdf_url,
-              filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
-              caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
-            },
-          });
+          if (itemdata.collage_url) {
+            global.queue.push({
+              type: 'send_image',
+              data: {
+                to: targetGroup,
+                image: itemdata.collage_url,
+                caption: message,
+              },
+            });
+          }
+
+          if (itemdata.pdf_url) {
+            global.queue.push({
+              type: 'send_document',
+              data: {
+                to: targetGroup,
+                document: itemdata.pdf_url,
+                filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
+                caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
+              },
+            });
+          }
+        } else {
+          logger.warn.grading(
+            `No target group found for mill: ${itemdata.mill}`
+          );
         }
       }
 
-      if (id_jobs.length > 0 && pdf_name.length > 0) {
-        await this.updateDataMill({ id: id_jobs, pdf_name, image_name });
+      // if (id_jobs.length > 0 && pdf_name.length > 0) {
+      //   await this.updateDataMill({ id: id_jobs, pdf_name, image_name });
+      // }
+
+      if (!global.queue.paused) {
+        global.queue.processQueue();
       }
 
-      return { success: true, message: 'mill data berhasil diambil' };
+      return {
+        success: true,
+        message: `Successfully processed ${data.length} mill data items`,
+      };
     } catch (error) {
-      console.log(error);
+      logger.error.grading('Error in getMillData:', error);
       return { success: false, message: error.message };
     }
   }

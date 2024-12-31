@@ -4,6 +4,7 @@ const path = require('path');
 const stream = require('stream');
 const https = require('https');
 const logger = require('./logger');
+const axios = require('axios');
 
 // Increase the default max listeners for Readable streams
 stream.Readable.defaultMaxListeners = 15;
@@ -20,12 +21,13 @@ class MessageQueue {
     this.failed = 0;
     this.paused = true;
     this.processing = false;
-    this.messagesSentTimestamps = [];
-    this.maxRetries = 3;
+    this.currentSave = Promise.resolve();
     this.filePath = path.join(__dirname, '../web/data/message_queue.json');
     this.failedJobsPath = path.join(__dirname, '../web/data/failed_jobs.json');
+    this.queueStatePath = path.join(__dirname, '../web/data/queue_state.json');
+    this.maxRetries = 3;
+    this.messagesSentTimestamps = [];
 
-    // Setup file watcher
     this.setupFileWatcher();
   }
 
@@ -38,6 +40,9 @@ class MessageQueue {
 
   async init() {
     try {
+      // Load queue state first
+      await this.loadQueueState();
+      // Then load queue items
       await this.loadFromDisk();
       return Promise.resolve();
     } catch (error) {
@@ -45,53 +50,132 @@ class MessageQueue {
     }
   }
 
-  async loadFromDisk() {
+  async loadQueueState() {
     try {
-      const data = await fs.readFile(this.filePath, 'utf8');
-      const newQueue = JSON.parse(data);
+      // Check if file exists
+      try {
+        await fs.access(this.queueStatePath);
+      } catch (error) {
+        // If file doesn't exist, create directory if needed
+        const dir = path.dirname(this.queueStatePath);
+        await fs.mkdir(dir, { recursive: true });
 
-      // Compare with current queue to avoid duplicate processing
-      const currentIds = new Set(
-        this.queue.map((item) => JSON.stringify(item))
-      );
-      const newItems = newQueue.filter(
-        (item) => !currentIds.has(JSON.stringify(item))
-      );
+        // Create default state file
+        await fs.writeFile(
+          this.queueStatePath,
+          JSON.stringify({ paused: true }, null, 2)
+        );
 
-      if (newItems.length > 0) {
-        this.queue.push(...newItems);
-        logger.info.whatsapp(`Added ${newItems.length} new items to queue`);
+        logger.info.whatsapp(
+          'Created new queue state file with default state (paused)'
+        );
       }
 
+      // Read the state file
+      const data = await fs.readFile(this.queueStatePath, 'utf8');
+      const state = JSON.parse(data);
+      this.paused = state.paused;
+      logger.info.whatsapp(
+        `Queue state loaded: ${this.paused ? 'paused' : 'running'}`
+      );
+    } catch (error) {
+      // If any error occurs, use default state (paused)
+      logger.error.whatsapp('Error loading queue state:', error);
+      this.paused = true;
+      await this.saveQueueState();
+    }
+  }
+
+  async saveQueueState() {
+    try {
+      // Ensure directory exists
+      const dir = path.dirname(this.queueStatePath);
+      await fs.mkdir(dir, { recursive: true });
+
+      // Save state
+      await fs.writeFile(
+        this.queueStatePath,
+        JSON.stringify({ paused: this.paused }, null, 2)
+      );
+      logger.info.whatsapp(
+        `Queue state saved: ${this.paused ? 'paused' : 'running'}`
+      );
+    } catch (error) {
+      logger.error.whatsapp('Error saving queue state:', error);
+    }
+  }
+
+  async loadFromDisk() {
+    if (this.processing) {
+      logger.info.whatsapp('Queue load already in progress, skipping...');
+      return;
+    }
+
+    this.processing = true;
+    try {
+      const data = await fs.readFile(this.filePath, 'utf8');
+      const loadedQueue = JSON.parse(data);
+
+      if (!Array.isArray(loadedQueue)) {
+        throw new Error('Invalid queue format');
+      }
+
+      this.queue = loadedQueue;
       logger.info.whatsapp(
         `Queue loaded from disk, total items: ${this.queue.length}`
       );
     } catch (error) {
-      if (error.code !== 'ENOENT') {
+      if (error.code === 'ENOENT') {
+        logger.info.whatsapp('No existing queue file, starting fresh');
+        this.queue = [];
+      } else {
         logger.error.whatsapp('Error loading queue from disk:', error);
+        throw error;
       }
-      this.queue = [];
+    } finally {
+      this.processing = false;
     }
   }
 
   async saveToFile() {
-    try {
-      await fs.writeFile(this.filePath, JSON.stringify(this.queue, null, 2));
-      logger.info.whatsapp('Queue saved to disk');
-    } catch (error) {
-      logger.error.whatsapp('Error saving queue to disk:', error);
-    }
+    // Instead of throwing error, wait for current save to complete
+    this.currentSave = this.currentSave.then(async () => {
+      try {
+        // Ensure queue is an array
+        if (!Array.isArray(this.queue)) {
+          this.queue = [];
+        }
+
+        const tempPath = `${this.filePath}.tmp`;
+        const jsonContent = JSON.stringify(this.queue, null, 2) + '\n';
+
+        // Write to temporary file first
+        await fs.writeFile(tempPath, jsonContent, 'utf8');
+
+        // Atomic rename
+        await fs.rename(tempPath, this.filePath);
+
+        logger.info.whatsapp('Queue saved to disk successfully');
+      } catch (error) {
+        logger.error.whatsapp('Error saving queue to disk:', error);
+        // Don't throw here, just log the error
+      }
+    });
+
+    return this.currentSave; // Return the promise
   }
 
   pause() {
     this.paused = true;
-    logger.info.whatsapp('Queue paused');
+    this.saveQueueState();
   }
 
   resume() {
     this.paused = false;
-    logger.info.whatsapp('Queue resumed');
-    this.processQueue();
+    this.saveQueueState();
+    if (!this.processing) {
+      this.processQueue();
+    }
   }
 
   async processQueue() {
@@ -99,50 +183,86 @@ class MessageQueue {
 
     this.processing = true;
     try {
-      const item = this.queue[0];
-      await this.executeTask(item);
-      this.queue.shift();
-      this.completed++;
+      const item = this.queue[0]; // Get first item but don't remove it yet
+
+      logger.info.whatsapp(`Processing queue item: ${item.type}`);
+
+      try {
+        const success = await this.executeTask(item);
+
+        if (success) {
+          this.completed++;
+          logger.info.whatsapp(`Successfully processed ${item.type}`);
+          this.queue.shift(); // Only remove if successful
+        } else {
+          throw new Error('Task execution returned false');
+        }
+      } catch (error) {
+        logger.error.whatsapp(`Error processing queue item:`, error);
+        this.failed++;
+
+        // Save to failed jobs before removing from queue
+        await this.saveFailedJob({
+          ...this.queue[0],
+          error: {
+            message: error.message,
+            stack: error.stack,
+          },
+        });
+
+        this.queue.shift(); // Remove failed item
+      }
+
+      // Save queue state after processing
       await this.saveToFile();
+
       logger.info.whatsapp(
-        `Processed queue item. Remaining: ${this.queue.length}`
+        `Queue status - Remaining: ${this.queue.length}, Completed: ${this.completed}, Failed: ${this.failed}`
       );
-    } catch (error) {
-      logger.error.whatsapp('Error processing queue item:', error);
-      this.failed++;
-      await this.saveFailedJob(this.queue[0]);
     } finally {
       this.processing = false;
       if (!this.paused && this.queue.length > 0) {
-        setTimeout(() => this.processQueue(), RATE_LIMIT_DELAY);
+        setTimeout(() => this.processQueue(), 5000); // 5 second delay between items
       }
     }
   }
 
   async executeTask(task) {
-    if (!global.sock || !global.sock.user) {
-      throw new Error('WhatsApp connection is not established');
+    if (!global.sock?.user) {
+      throw new Error('WhatsApp is not connected');
     }
 
     await this.applyRateLimit();
 
-    switch (task.type) {
-      case 'send_message':
-        await this.sendMessage(task.data.to, task.data.message);
-        break;
-      case 'send_image':
-        await this.sendImage(task.data.to, task.data.image, task.data.caption);
-        break;
-      case 'send_document':
-        await this.sendDocument(
-          task.data.to,
-          task.data.filename,
-          task.data.document,
-          task.data.caption
-        );
-        break;
-      default:
-        throw new Error(`Unknown task type: ${task.type}`);
+    try {
+      logger.info.whatsapp(`Executing task: ${task.type}`);
+
+      switch (task.type) {
+        case 'send_document':
+          return await this.sendDocument(
+            task.data.to,
+            task.data.filename,
+            task.data.document,
+            task.data.caption
+          );
+
+        case 'send_image':
+          return await this.sendImage(
+            task.data.to,
+            task.data.image,
+            task.data.caption
+          );
+
+        case 'send_message':
+          return await this.sendMessage(task.data.to, task.data.message);
+
+        // Add other task types as needed
+        default:
+          throw new Error(`Unknown task type: ${task.type}`);
+      }
+    } catch (error) {
+      logger.error.whatsapp(`Failed to execute task ${task.type}:`, error);
+      throw error;
     }
   }
 
@@ -156,47 +276,86 @@ class MessageQueue {
   }
 
   async sendImage(to, image, caption) {
-    let imageBuffer = await this.getFileBuffer(image);
-    const result = await global.sock.sendMessage(to, {
-      image: imageBuffer,
-      caption: caption,
-    });
-    if (!result || !result.key) {
-      throw new Error('Failed to send WhatsApp image');
+    let imageBuffer;
+
+    try {
+      // Check if image is a URL
+      if (
+        typeof image === 'string' &&
+        (image.startsWith('http://') || image.startsWith('https://'))
+      ) {
+        imageBuffer = await this.downloadFile(image);
+      }
+      // Check if image is base64
+      else if (typeof image === 'string') {
+        imageBuffer = Buffer.from(image, 'base64');
+      }
+      // Check if image is already a Buffer
+      else if (Buffer.isBuffer(image)) {
+        imageBuffer = image;
+      } else {
+        throw new Error(
+          'Invalid image parameter. Expected a URL, base64 string, or Buffer object.'
+        );
+      }
+
+      const result = await global.sock.sendMessage(to, {
+        image: imageBuffer,
+        caption: caption,
+      });
+
+      if (!result || !result.key) {
+        throw new Error('Failed to send WhatsApp image');
+      }
+
+      logger.info.whatsapp(`Image sent successfully to ${to}`);
+      return true;
+    } catch (error) {
+      throw new Error(`Failed to send WhatsApp image: ${error.message}`);
     }
-    logger.info.whatsapp(`Image sent successfully to ${to}`);
-    return result;
   }
 
   async sendDocument(to, filename, document, caption) {
-    let documentBuffer = await this.getFileBuffer(document);
-    const result = await global.sock.sendMessage(to, {
-      document: documentBuffer,
-      mimetype: 'application/pdf',
-      fileName: filename || 'document.pdf',
-      caption: caption,
-    });
-    if (!result || !result.key) {
-      throw new Error('Failed to send WhatsApp document');
-    }
-    logger.info.whatsapp(`Document sent successfully to ${to}`);
-    return result;
-  }
+    let documentBuffer;
 
-  async getFileBuffer(file) {
-    if (
-      typeof file === 'string' &&
-      (file.startsWith('http://') || file.startsWith('https://'))
-    ) {
-      return await this.downloadFile(file);
-    } else if (typeof file === 'string') {
-      return Buffer.from(file, 'base64');
-    } else if (Buffer.isBuffer(file)) {
-      return file;
+    try {
+      // Check if document is a URL
+      if (
+        typeof document === 'string' &&
+        (document.startsWith('http://') || document.startsWith('https://'))
+      ) {
+        documentBuffer = await this.downloadFile(document);
+      }
+      // Check if document is base64
+      else if (typeof document === 'string') {
+        documentBuffer = Buffer.from(document, 'base64');
+      }
+      // Check if document is already a Buffer
+      else if (Buffer.isBuffer(document)) {
+        documentBuffer = document;
+      } else {
+        throw new Error(
+          'Invalid document parameter. Expected a URL, base64 string, or Buffer object.'
+        );
+      }
+
+      const result = await global.sock.sendMessage(to, {
+        document: documentBuffer,
+        mimetype: 'application/pdf',
+        fileName: filename || 'document.pdf',
+        caption: caption,
+      });
+
+      if (!result || !result.key) {
+        throw new Error('Failed to send WhatsApp document');
+      }
+
+      logger.info.whatsapp(`Document sent successfully to ${to}`);
+      return true;
+    } catch (error) {
+      logger.error.whatsapp('Error sending document:', error);
+      throw new Error(`Failed to send document: ${error.message}`);
     }
-    throw new Error(
-      'Invalid file parameter. Expected URL, base64 string, or Buffer.'
-    );
   }
 
   async downloadFile(url) {
@@ -209,6 +368,7 @@ class MessageQueue {
             );
             return;
           }
+
           const chunks = [];
           response.on('data', (chunk) => chunks.push(chunk));
           response.on('end', () => resolve(Buffer.concat(chunks)));
@@ -227,6 +387,7 @@ class MessageQueue {
     if (this.messagesSentTimestamps.length >= MAX_MESSAGES_PER_WINDOW) {
       const oldestTimestamp = this.messagesSentTimestamps[0];
       const timeToWait = RATE_LIMIT_WINDOW - (now - oldestTimestamp);
+      logger.info.whatsapp(`Rate limit reached. Waiting for ${timeToWait}ms`);
       await new Promise((resolve) => setTimeout(resolve, timeToWait));
     }
 
@@ -234,26 +395,34 @@ class MessageQueue {
     await new Promise((resolve) => setTimeout(resolve, RATE_LIMIT_DELAY));
   }
 
-  async saveFailedJob(task) {
+  async saveFailedJob(job) {
     try {
+      // Ensure directory exists
+      const dir = path.dirname(this.failedJobsPath);
+      await fs.mkdir(dir, { recursive: true });
+
+      // Read existing failed jobs or create new array
       let failedJobs = [];
       try {
         const data = await fs.readFile(this.failedJobsPath, 'utf8');
         failedJobs = JSON.parse(data);
       } catch (error) {
-        if (error.code !== 'ENOENT') {
-          logger.error.whatsapp('Error reading failed jobs file:', error);
-        }
+        // File doesn't exist or is corrupted, start with empty array
       }
 
-      task.failedAt = new Date().toISOString();
-      failedJobs.push(task);
+      // Add new failed job with timestamp
+      failedJobs.push({
+        ...job,
+        failed_at: new Date().toISOString(),
+      });
 
+      // Save failed jobs
       await fs.writeFile(
         this.failedJobsPath,
         JSON.stringify(failedJobs, null, 2)
       );
-      logger.info.whatsapp(`Failed job saved: ${task.type}`);
+
+      logger.info.whatsapp(`Failed job saved to failed_jobs: ${job.type}`);
     } catch (error) {
       logger.error.whatsapp('Error saving failed job:', error);
     }
@@ -271,35 +440,46 @@ class MessageQueue {
   setupFileWatcher() {
     const watcher = chokidar.watch(this.filePath, {
       persistent: true,
-      ignoreInitial: false,
+      ignoreInitial: true,
       awaitWriteFinish: {
-        stabilityThreshold: 100,
+        stabilityThreshold: 500,
         pollInterval: 100,
       },
     });
 
-    watcher.on('change', async (path) => {
-      logger.info.whatsapp('Queue file changed, reloading...');
+    watcher.on('change', async () => {
+      logger.info.whatsapp(
+        'Queue file changed, waiting for current operations to complete...'
+      );
+      await this.currentSave; // Wait for any ongoing saves to complete
       await this.loadFromDisk();
+    });
+  }
 
-      // Update web clients with new queue status
-      if (global.io) {
-        global.io.emit('connection-status', {
-          whatsappConnected: !!global.sock?.user,
-          queueStatus: this.getStatus(),
-          reconnecting: false,
-        });
+  async push(item) {
+    try {
+      logger.info.whatsapp(`Adding new item to queue: ${item.type}`);
+
+      // Ensure queue is initialized as array
+      if (!Array.isArray(this.queue)) {
+        this.queue = [];
       }
+
+      this.queue.push(item);
+
+      // Save queue state after adding new item
+      await this.saveToFile();
 
       // Start processing if queue is not paused
-      if (!this.paused) {
-        this.processQueue();
+      if (!this.paused && !this.processing) {
+        setTimeout(() => this.processQueue(), 100);
       }
-    });
 
-    watcher.on('error', (error) => {
-      logger.error.whatsapp('Error watching queue file:', error);
-    });
+      return this.queue.length;
+    } catch (error) {
+      logger.error.whatsapp('Error in push operation:', error);
+      throw error;
+    }
   }
 }
 

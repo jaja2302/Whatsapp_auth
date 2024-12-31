@@ -3,6 +3,8 @@ const router = express.Router();
 const DashboardController = require('../controllers/dashboardController');
 const GradingController = require('../controllers/gradingController');
 const logger = require('../../services/logger');
+const fs = require('fs').promises;
+const path = require('path');
 
 // Add body parser middleware
 router.use(express.json());
@@ -81,6 +83,37 @@ router.use((err, req, res, next) => {
 router.get('/whatsapp/get-participants', (req, res) => {
   logger.info.whatsapp('Get participants request received');
   dashboardController.getParticipants(req, res);
+});
+
+router.get('/failed-jobs', async (req, res) => {
+  try {
+    const failedJobsPath = path.join(__dirname, '../data/failed_jobs.json');
+    let failedJobs = [];
+
+    try {
+      const data = await fs.readFile(failedJobsPath, 'utf8');
+      failedJobs = JSON.parse(data);
+    } catch (error) {
+      // If file doesn't exist or is corrupted, return empty array
+    }
+
+    res.json(failedJobs);
+  } catch (error) {
+    logger.error.whatsapp('Error getting failed jobs:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.delete('/failed-jobs', async (req, res) => {
+  try {
+    const failedJobsPath = path.join(__dirname, '../data/failed_jobs.json');
+    await fs.writeFile(failedJobsPath, '[]', 'utf8');
+    logger.info.whatsapp('Failed jobs cleared');
+    res.json({ success: true });
+  } catch (error) {
+    logger.error.whatsapp('Error clearing failed jobs:', error);
+    res.status(500).json({ error: error.message });
+  }
 });
 
 module.exports = router;
