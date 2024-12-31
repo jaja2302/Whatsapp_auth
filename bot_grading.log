@@ -71,3 +71,15 @@ No mill data available to process
 memulai cronjob  taksasi fail,pdf izin kebun,iot gap
 { message: 'Fail pdf izin kebun succes terkirim', data: [] }
 No mill data available to process
+Task added to queue: send_message
+Task added to queue: update_status_izinkebun
+Queue saved to disk
+Queue saved to disk
+Message sent successfully to 6282226421288@s.whatsapp.net
+Task completed: send_message
+Queue saved to disk
+{ message: 'Status sock updated successfully' }
+Task completed: update_status_izinkebun
+Queue saved to disk
+No mill data available to process
+cron job updatePCStatus,triggerStatusPCPengawasanOperatorAI

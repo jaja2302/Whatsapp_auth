@@ -150,7 +150,7 @@ async function get_iot_weatherstation_data_gap(sock) {
     console.log('Error fetching data:', error);
   }
 }
-
+// lool
 async function get_data_harian_aws(sock) {
   try {
     const response = await axios.get(
