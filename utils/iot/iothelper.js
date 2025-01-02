@@ -152,18 +152,22 @@ async function get_data_harian_aws(sock) {
         // Get weather prediction based on rainfall data
 
         let message = `🌦 DAILY REPORT AWS ${station.station_name}\n\n`;
-        message += `🌧 CURAH HUJAN tgl ${station.date}\n`;
-        message += `Total: ${station.rainfall.total} mm\n`;
-        message += `SBI: ${station.rainfall.sbi} mm (rata-rata harian ${(station.rainfall.sbi / 30).toFixed(2)}mm)\n`;
-        message += `Tertinggi: ${station.rainfall.highest.value} mm/Jam (${station.rainfall.highest.hour})\n`;
-        message += `Total durasi: ${station.rainfall.duration_minutes} menit\n\n`;
+
+        // Only show rainfall data if total is not 0
+        if (Number(station.rainfall.total) > 0) {
+          message += `🌧 CURAH HUJAN tgl ${station.date}\n`;
+          message += `Total: ${Number(station.rainfall.total).toFixed(2)} mm\n`;
+          message += `SBI: ${Number(station.rainfall.sbi).toFixed(2)} mm (rata-rata harian ${(station.rainfall.sbi / 30).toFixed(2)}mm)\n`;
+          message += `Tertinggi: ${Number(station.rainfall.highest.value).toFixed(2)} mm/Jam (${station.rainfall.highest.hour})\n`;
+          message += `Total durasi: ${station.rainfall.duration_minutes} menit\n\n`;
+        }
 
         message += `🌡 CUACA\n`;
-        message += `Suhu rata-rata: ${station.temperature.average}°C\n`;
-        message += `Suhu tertinggi: ${station.temperature.highest.value}°C (${station.temperature.highest.hour})\n`;
-        message += `Suhu terendah: ${station.temperature.lowest.value}°C (${station.temperature.lowest.hour})\n`;
-        message += `⛅ PERKIRAAN CUACA HARI INI:\n`;
-        message += `${station.tomorrow_forecast.weather_description}\n\n`;
+        message += `Suhu rata-rata: ${Number(station.temperature.average).toFixed(2)}°C\n`;
+        message += `Suhu tertinggi: ${Number(station.temperature.highest.value).toFixed(2)}°C (${station.temperature.highest.hour})\n`;
+        message += `Suhu terendah: ${Number(station.temperature.lowest.value).toFixed(2)}°C (${station.temperature.lowest.hour})\n`;
+        // message += `⛅ PERKIRAAN CUACA HARI INI:\n`;
+        // message += `${station.tomorrow_forecast.weather_description}\n\n`;
         message += `📥 Download data AWS bulan ini: https://iot.srs-ssms.com/dashboardaws\n`;
 
         try {
