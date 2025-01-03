@@ -1,188 +1,148 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WhatsApp Bot Control Panel</title>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/js/dashboard.js" defer></script>
-    <link href="/css/output.css" rel="stylesheet" />
-  </head>
-  <body class="bg-gray-100">
-    <!-- Add Navigation Bar -->
-    <nav class="bg-white shadow-md">
-      <div class="container mx-auto px-4">
-        <div class="flex items-center justify-between h-16">
-          <div class="flex items-center space-x-8">
-            <a href="/" class="text-gray-800 hover:text-blue-600 font-medium"
-              >Home</a
-            >
-            <a
-              href="/grading"
-              class="text-gray-800 hover:text-blue-600 font-medium"
-              >Grading</a
-            >
-            <a
-              href="/smartlabs"
-              class="text-gray-800 hover:text-blue-600 font-medium"
-              >Smartlabs</a
-            >
-          </div>
-        </div>
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-3xl font-bold text-gray-800 mb-8">
+    WhatsApp Bot Control Panel
+  </h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Connection Status Card -->
+    <div class="bg-white rounded-lg shadow-md">
+      <div class="border-b px-4 py-3">
+        <h2 class="text-xl font-semibold text-gray-700">Connection Status</h2>
       </div>
-    </nav>
-
-    <div class="container mx-auto px-4 py-8">
-      <h1 class="text-3xl font-bold text-gray-800 mb-8">
-        WhatsApp Bot Control Panel
-      </h1>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Connection Status Card -->
-        <div class="bg-white rounded-lg shadow-md">
-          <div class="border-b px-4 py-3">
-            <h2 class="text-xl font-semibold text-gray-700">
-              Connection Status
-            </h2>
-          </div>
-          <div class="p-4">
-            <div id="connection-status">
-              <span
-                class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-200 text-gray-800"
-              >
-                Checking...
-              </span>
-            </div>
-            <div class="mt-4 space-x-2">
-              <button
-                id="reconnect-btn"
-                class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                Reconnect
-              </button>
-              <button
-                id="disconnect-btn"
-                class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                Disconnect
-              </button>
-            </div>
-            <div id="qr-code" class="mt-4"></div>
-          </div>
-        </div>
-
-        <!-- Queue Status Card -->
-        <div class="bg-white rounded-lg shadow-md">
-          <div class="border-b px-4 py-3">
-            <h2 class="text-xl font-semibold text-gray-700">Queue Status</h2>
-          </div>
-          <div class="p-4">
-            <div id="queue-status">
-              <div class="mb-3">
-                Status:
-                <span
-                  class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-200 text-yellow-800"
-                  >Paused</span
-                >
-              </div>
-              <div class="space-x-2">
-                <span
-                  class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800"
-                  >Total: 0</span
-                >
-                <span
-                  class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800"
-                  >Completed: 0</span
-                >
-                <span
-                  class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800"
-                  >Failed: 0</span
-                >
-              </div>
-              <div class="mt-4 space-x-2">
-                <button
-                  id="start-queue"
-                  class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  Start Queue
-                </button>
-                <button
-                  id="pause-queue"
-                  class="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  Pause Queue
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Failed Jobs Card -->
-        <div class="bg-white rounded-lg shadow-md mt-6">
-          <div class="border-b px-4 py-3">
-            <h2 class="text-xl font-semibold text-gray-700">Failed Jobs</h2>
-          </div>
-          <div class="p-4">
-            <div id="failed-jobs" class="space-y-4 w-full">
-              <!-- Failed jobs will be populated here -->
-            </div>
-          </div>
-        </div>
-
-        <!-- Group Participants Card -->
-        <div class="bg-white rounded-lg shadow-md">
-          <div class="border-b px-4 py-3">
-            <h2 class="text-xl font-semibold text-gray-700">
-              Group Participants
-            </h2>
-          </div>
-          <div class="p-4">
-            <button
-              id="get-participants"
-              class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-            >
-              Get Participants
-            </button>
-            <!-- Add this div to show the participants list -->
-            <div id="participants-list" class="mt-4 space-y-2"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Activity Logs Card -->
-      <div class="mt-6 bg-white rounded-lg shadow-md">
-        <div class="border-b px-4 py-3 flex justify-between items-center">
-          <h2 class="text-xl font-semibold text-gray-700">Activity Logs</h2>
-          <button
-            id="clear-logs"
-            class="px-3 py-1 bg-gray-500 text-white text-sm rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50"
+      <div class="p-4">
+        <div id="connection-status">
+          <span
+            class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-200 text-gray-800"
           >
-            Clear Logs
+            Checking...
+          </span>
+        </div>
+        <div class="mt-4 space-x-2">
+          <button
+            id="reconnect-btn"
+            class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Reconnect
+          </button>
+          <button
+            id="disconnect-btn"
+            class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Disconnect
           </button>
         </div>
-        <div class="p-4">
-          <div
-            id="activity-logs"
-            class="h-96 overflow-y-auto space-y-2 font-mono text-sm"
-          ></div>
+        <div id="qr-code" class="mt-4"></div>
+      </div>
+    </div>
+
+    <!-- Queue Status Card -->
+    <div class="bg-white rounded-lg shadow-md">
+      <div class="border-b px-4 py-3">
+        <h2 class="text-xl font-semibold text-gray-700">Queue Status</h2>
+      </div>
+      <div class="p-4">
+        <div id="queue-status">
+          <div class="mb-3">
+            Status:
+            <span
+              class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-200 text-yellow-800"
+              >Paused</span
+            >
+          </div>
+          <div class="space-x-2">
+            <span
+              class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800"
+              >Total: 0</span
+            >
+            <span
+              class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800"
+              >Completed: 0</span
+            >
+            <span
+              class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800"
+              >Failed: 0</span
+            >
+          </div>
+          <div class="mt-4 space-x-2">
+            <button
+              id="start-queue"
+              class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Start Queue
+            </button>
+            <button
+              id="pause-queue"
+              class="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Pause Queue
+            </button>
+          </div>
         </div>
       </div>
     </div>
 
-    <style>
-      /* Add these styles to handle long content */
-      #failed-jobs pre,
-      #failed-jobs code {
-        max-width: 100%;
-        overflow-wrap: break-word;
-        word-wrap: break-word;
-        word-break: break-word;
-      }
+    <!-- Failed Jobs Card -->
+    <div class="bg-white rounded-lg shadow-md mt-6">
+      <div class="border-b px-4 py-3">
+        <h2 class="text-xl font-semibold text-gray-700">Failed Jobs</h2>
+      </div>
+      <div class="p-4">
+        <div id="failed-jobs" class="space-y-4 w-full">
+          <!-- Failed jobs will be populated here -->
+        </div>
+      </div>
+    </div>
 
-      #failed-jobs .bg-gray-50 {
-        max-width: 100%;
-        overflow-x: auto;
-      }
-    </style>
-  </body>
-</html>
+    <!-- Group Participants Card -->
+    <div class="bg-white rounded-lg shadow-md">
+      <div class="border-b px-4 py-3">
+        <h2 class="text-xl font-semibold text-gray-700">Group Participants</h2>
+      </div>
+      <div class="p-4">
+        <button
+          id="get-participants"
+          class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+        >
+          Get Participants
+        </button>
+        <!-- Add this div to show the participants list -->
+        <div id="participants-list" class="mt-4 space-y-2"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Activity Logs Card -->
+  <div class="mt-6 bg-white rounded-lg shadow-md">
+    <div class="border-b px-4 py-3 flex justify-between items-center">
+      <h2 class="text-xl font-semibold text-gray-700">Activity Logs</h2>
+      <button
+        id="clear-logs"
+        class="px-3 py-1 bg-gray-500 text-white text-sm rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50"
+      >
+        Clear Logs
+      </button>
+    </div>
+    <div class="p-4">
+      <div
+        id="activity-logs"
+        class="h-96 overflow-y-auto space-y-2 font-mono text-sm"
+      ></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Add these styles to handle long content */
+  #failed-jobs pre,
+  #failed-jobs code {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+  }
+
+  #failed-jobs .bg-gray-50 {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+</style>

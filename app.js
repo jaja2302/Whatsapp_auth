@@ -6,6 +6,7 @@ const logger = require('./src/services/logger');
 const queue = require('./src/services/queue');
 const { connectToWhatsApp } = require('./src/services/whatsappService');
 const cronJobRunner = require('./src/services/CronJobRunner');
+const templateEngine = require('./src/services/templateEngine');
 
 const app = express();
 const server = http.createServer(app);
@@ -18,13 +19,29 @@ global.io = io;
 app.use(express.static(path.join(__dirname, 'src/web/public')));
 
 // Define routes
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'src/web/views/dashboard.html'));
+app.get('/', async (req, res) => {
+  try {
+    const html = await templateEngine.render('dashboard', {
+      title: 'Dashboard',
+      scripts: '<script src="/js/dashboard.js" defer></script>',
+    });
+    res.send(html);
+  } catch (error) {
+    res.status(500).send('Error rendering template');
+  }
 });
 
 // Add this new route for the grading page
-app.get('/grading', (req, res) => {
-  res.sendFile(path.join(__dirname, 'src/web/views/grading.html'));
+app.get('/grading', async (req, res) => {
+  try {
+    const html = await templateEngine.render('grading', {
+      title: 'Grading Programs',
+      scripts: '<script src="/js/grading.js" defer></script>',
+    });
+    res.send(html);
+  } catch (error) {
+    res.status(500).send('Error rendering template');
+  }
 });
 
 // API routes

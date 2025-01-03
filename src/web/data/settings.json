@@ -3,7 +3,7 @@
     "timezone": "Asia/Jakarta",
     "status": "active",
     "cronjobs": {
-      "runJobsMill": "*/5 * * * *",
+      "runJobsMill": "0 * * * *",
       "getMillData": "0 */2 * * *"
     },
     "cronjob_status": {

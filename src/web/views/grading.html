@@ -1,305 +1,262 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Grading Programs - WhatsApp Bot</title>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/js/grading.js" defer></script>
-    <link href="/css/output.css" rel="stylesheet" />
-  </head>
-  <body class="bg-gray-100">
-    <!-- Navigation Bar -->
-    <nav class="bg-white shadow-md">
-      <div class="container mx-auto px-4">
-        <div class="flex items-center justify-between h-16">
-          <div class="flex items-center space-x-8">
-            <a href="/" class="text-gray-800 hover:text-blue-600 font-medium"
-              >Home</a
-            >
-            <a
-              href="/grading"
-              class="text-gray-800 hover:text-blue-600 font-medium"
-              >Grading</a
-            >
-          </div>
-        </div>
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-3xl font-bold text-gray-800 mb-8">Grading Programs</h1>
+
+  <!-- Grading Control Panel -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Mill Data Status -->
+    <div class="bg-white rounded-lg shadow-md">
+      <div class="border-b px-4 py-3">
+        <h2 class="text-xl font-semibold text-gray-700">Mill Data Status</h2>
       </div>
-    </nav>
-
-    <div class="container mx-auto px-4 py-8">
-      <h1 class="text-3xl font-bold text-gray-800 mb-8">Grading Programs</h1>
-
-      <!-- Grading Control Panel -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Mill Data Status -->
-        <div class="bg-white rounded-lg shadow-md">
-          <div class="border-b px-4 py-3">
-            <h2 class="text-xl font-semibold text-gray-700">
-              Mill Data Status
-            </h2>
-          </div>
-          <div class="p-4">
-            <div class="space-y-4">
-              <button
-                id="fetch-mill-data"
-                class="w-full px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2"
-              >
-                Fetch Mill Data
-              </button>
-              <div id="mill-status" class="text-sm text-gray-600">
-                Last Updated: Never
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Grading Statistics -->
-        <div class="bg-white rounded-lg shadow-md">
-          <div class="border-b px-4 py-3">
-            <h2 class="text-xl font-semibold text-gray-700">Statistics</h2>
-          </div>
-          <div class="p-4">
-            <div class="grid grid-cols-2 gap-4">
-              <div class="text-center p-4 bg-gray-50 rounded">
-                <div
-                  class="text-2xl font-bold text-blue-600"
-                  id="total-processed"
-                >
-                  0
-                </div>
-                <div class="text-sm text-gray-600">Total Processed</div>
-              </div>
-              <div class="text-center p-4 bg-gray-50 rounded">
-                <div
-                  class="text-2xl font-bold text-green-600"
-                  id="success-rate"
-                >
-                  0%
-                </div>
-                <div class="text-sm text-gray-600">Success Rate</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Recent Activity -->
-      <div class="mt-6 bg-white rounded-lg shadow-md">
-        <div class="border-b px-4 py-3">
-          <h2 class="text-xl font-semibold text-gray-700">
-            Recent Grading Activity
-          </h2>
-        </div>
-        <div class="p-4">
-          <div
-            id="grading-logs"
-            class="h-96 overflow-y-auto space-y-2 font-mono text-sm"
+      <div class="p-4">
+        <div class="space-y-4">
+          <button
+            id="fetch-mill-data"
+            class="w-full px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2"
           >
-            <!-- Logs will be inserted here -->
+            Fetch Mill Data
+          </button>
+          <div id="mill-status" class="text-sm text-gray-600">
+            Last Updated: Never
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- Add this inside your grading page, perhaps after the existing cards -->
-      <div class="mt-6 bg-white rounded-lg shadow-md">
-        <div class="border-b px-4 py-3">
-          <h2 class="text-xl font-semibold text-gray-700">Cron Job Settings</h2>
+    <!-- Grading Statistics -->
+    <div class="bg-white rounded-lg shadow-md">
+      <div class="border-b px-4 py-3">
+        <h2 class="text-xl font-semibold text-gray-700">Statistics</h2>
+      </div>
+      <div class="p-4">
+        <div class="grid grid-cols-2 gap-4">
+          <div class="text-center p-4 bg-gray-50 rounded">
+            <div class="text-2xl font-bold text-blue-600" id="total-processed">
+              0
+            </div>
+            <div class="text-sm text-gray-600">Total Processed</div>
+          </div>
+          <div class="text-center p-4 bg-gray-50 rounded">
+            <div class="text-2xl font-bold text-green-600" id="success-rate">
+              0%
+            </div>
+            <div class="text-sm text-gray-600">Success Rate</div>
+          </div>
         </div>
-        <div class="p-4">
-          <form id="cron-settings-form" class="space-y-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-sm font-medium text-gray-700"
-                  >Run Jobs Mill Schedule</label
-                >
-                <select
-                  id="runJobsMill"
-                  name="runJobsMill"
-                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                >
-                  <option value="*/1 * * * *">Every 1 minute</option>
-                  <option value="*/5 * * * *">Every 5 minutes</option>
-                  <option value="*/10 * * * *">Every 10 minutes</option>
-                  <option value="*/15 * * * *">Every 15 minutes</option>
-                  <option value="*/30 * * * *">Every 30 minutes</option>
-                  <option value="0 * * * *">Every hour</option>
-                  <option value="0 */2 * * *">Every 2 hours</option>
-                  <option value="0 */4 * * *">Every 4 hours</option>
-                  <option value="0 */6 * * *">Every 6 hours</option>
-                  <option value="0 */12 * * *">Every 12 hours</option>
-                  <option value="0 0 * * *">Every day at midnight</option>
-                </select>
-                <p class="mt-1 text-sm text-gray-500">
-                  Current: Every 1 minute
-                </p>
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700"
-                  >Get Mill Data Schedule</label
-                >
-                <select
-                  id="getMillData"
-                  name="getMillData"
-                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                >
-                  <option value="*/1 * * * *">Every 1 minute</option>
-                  <option value="*/5 * * * *">Every 5 minutes</option>
-                  <option value="*/10 * * * *">Every 10 minutes</option>
-                  <option value="*/15 * * * *">Every 15 minutes</option>
-                  <option value="*/30 * * * *">Every 30 minutes</option>
-                  <option value="0 * * * *">Every hour</option>
-                  <option value="0 */2 * * *">Every 2 hours</option>
-                  <option value="0 */4 * * *">Every 4 hours</option>
-                  <option value="0 */6 * * *">Every 6 hours</option>
-                  <option value="0 */12 * * *">Every 12 hours</option>
-                  <option value="0 0 * * *">Every day at midnight</option>
-                </select>
-                <p class="mt-1 text-sm text-gray-500">
-                  Current: Every 5 minutes
-                </p>
-              </div>
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-700"
-                >Timezone</label
-              >
-              <select
-                id="timezone"
-                name="timezone"
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-              >
-                <option value="Asia/Jakarta">Asia/Jakarta (WIB)</option>
-                <option value="Asia/Makassar">Asia/Makassar (WITA)</option>
-                <option value="Asia/Jayapura">Asia/Jayapura (WIT)</option>
-              </select>
-            </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Activity -->
+  <div class="mt-6 bg-white rounded-lg shadow-md">
+    <div class="border-b px-4 py-3">
+      <h2 class="text-xl font-semibold text-gray-700">
+        Recent Grading Activity
+      </h2>
+    </div>
+    <div class="p-4">
+      <div
+        id="grading-logs"
+        class="h-96 overflow-y-auto space-y-2 font-mono text-sm"
+      >
+        <!-- Logs will be inserted here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Add this inside your grading page, perhaps after the existing cards -->
+  <div class="mt-6 bg-white rounded-lg shadow-md">
+    <div class="border-b px-4 py-3">
+      <h2 class="text-xl font-semibold text-gray-700">Cron Job Settings</h2>
+    </div>
+    <div class="p-4">
+      <form id="cron-settings-form" class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700"
+              >Run Jobs Mill Schedule</label
+            >
+            <select
+              id="runJobsMill"
+              name="runJobsMill"
+              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            >
+              <option value="*/1 * * * *">Every 1 minute</option>
+              <option value="*/5 * * * *">Every 5 minutes</option>
+              <option value="*/10 * * * *">Every 10 minutes</option>
+              <option value="*/15 * * * *">Every 15 minutes</option>
+              <option value="*/30 * * * *">Every 30 minutes</option>
+              <option value="0 * * * *">Every hour</option>
+              <option value="0 */2 * * *">Every 2 hours</option>
+              <option value="0 */4 * * *">Every 4 hours</option>
+              <option value="0 */6 * * *">Every 6 hours</option>
+              <option value="0 */12 * * *">Every 12 hours</option>
+              <option value="0 0 * * *">Every day at midnight</option>
+            </select>
+            <p class="mt-1 text-sm text-gray-500">Current: Every 1 minute</p>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700"
+              >Get Mill Data Schedule</label
+            >
+            <select
+              id="getMillData"
+              name="getMillData"
+              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            >
+              <option value="*/1 * * * *">Every 1 minute</option>
+              <option value="*/5 * * * *">Every 5 minutes</option>
+              <option value="*/10 * * * *">Every 10 minutes</option>
+              <option value="*/15 * * * *">Every 15 minutes</option>
+              <option value="*/30 * * * *">Every 30 minutes</option>
+              <option value="0 * * * *">Every hour</option>
+              <option value="0 */2 * * *">Every 2 hours</option>
+              <option value="0 */4 * * *">Every 4 hours</option>
+              <option value="0 */6 * * *">Every 6 hours</option>
+              <option value="0 */12 * * *">Every 12 hours</option>
+              <option value="0 0 * * *">Every day at midnight</option>
+            </select>
+            <p class="mt-1 text-sm text-gray-500">Current: Every 5 minutes</p>
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700"
+            >Timezone</label
+          >
+          <select
+            id="timezone"
+            name="timezone"
+            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+          >
+            <option value="Asia/Jakarta">Asia/Jakarta (WIB)</option>
+            <option value="Asia/Makassar">Asia/Makassar (WITA)</option>
+            <option value="Asia/Jayapura">Asia/Jayapura (WIT)</option>
+          </select>
+        </div>
+        <button
+          type="submit"
+          class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2"
+        >
+          Update Cron Settings
+        </button>
+      </form>
+      <div class="mt-6 border p-4 rounded-lg">
+        <h3 class="text-lg font-medium mb-2">Grading Program Status</h3>
+
+        <!-- Program Status -->
+        <div class="flex items-center justify-between mb-4">
+          <div class="text-sm text-gray-600" id="program-status">
+            Status: Checking...
+          </div>
+          <div class="space-x-2">
             <button
-              type="submit"
+              type="button"
+              id="refresh-status"
               class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2"
             >
-              Update Cron Settings
+              <span class="flex items-center">
+                <svg
+                  class="w-4 h-4 mr-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                  />
+                </svg>
+                Refresh Status
+              </span>
             </button>
-          </form>
-          <div class="mt-6 border p-4 rounded-lg">
-            <h3 class="text-lg font-medium mb-2">Grading Program Status</h3>
+          </div>
+        </div>
 
-            <!-- Program Status -->
-            <div class="flex items-center justify-between mb-4">
-              <div class="text-sm text-gray-600" id="program-status">
-                Status: Checking...
+        <!-- Individual Job Controls -->
+        <div class="space-y-4">
+          <!-- Run Jobs Mill Controls -->
+          <div class="border p-3 rounded">
+            <div class="flex justify-between items-center">
+              <div>
+                <h4 class="font-medium">Run Jobs Mill</h4>
+                <p class="text-sm text-gray-600" id="status-runJobsMill">
+                  Status: Checking...
+                </p>
               </div>
               <div class="space-x-2">
                 <button
                   type="button"
-                  id="refresh-status"
-                  class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2"
+                  id="stop-runJobsMill"
+                  class="px-3 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600 focus:outline-none focus:ring-2"
                 >
-                  <span class="flex items-center">
-                    <svg
-                      class="w-4 h-4 mr-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                      />
-                    </svg>
-                    Refresh Status
-                  </span>
+                  Stop
+                </button>
+                <button
+                  type="button"
+                  id="start-runJobsMill"
+                  class="px-3 py-1 bg-green-500 text-white text-sm rounded hover:bg-green-600 focus:outline-none focus:ring-2"
+                >
+                  Start
                 </button>
               </div>
             </div>
+          </div>
 
-            <!-- Individual Job Controls -->
-            <div class="space-y-4">
-              <!-- Run Jobs Mill Controls -->
-              <div class="border p-3 rounded">
-                <div class="flex justify-between items-center">
-                  <div>
-                    <h4 class="font-medium">Run Jobs Mill</h4>
-                    <p class="text-sm text-gray-600" id="status-runJobsMill">
-                      Status: Checking...
-                    </p>
-                  </div>
-                  <div class="space-x-2">
-                    <button
-                      type="button"
-                      id="stop-runJobsMill"
-                      class="px-3 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600 focus:outline-none focus:ring-2"
-                    >
-                      Stop
-                    </button>
-                    <button
-                      type="button"
-                      id="start-runJobsMill"
-                      class="px-3 py-1 bg-green-500 text-white text-sm rounded hover:bg-green-600 focus:outline-none focus:ring-2"
-                    >
-                      Start
-                    </button>
-                  </div>
-                </div>
+          <!-- Get Mill Data Controls -->
+          <div class="border p-3 rounded">
+            <div class="flex justify-between items-center">
+              <div>
+                <h4 class="font-medium">Get Mill Data</h4>
+                <p class="text-sm text-gray-600" id="status-getMillData">
+                  Status: Checking...
+                </p>
               </div>
-
-              <!-- Get Mill Data Controls -->
-              <div class="border p-3 rounded">
-                <div class="flex justify-between items-center">
-                  <div>
-                    <h4 class="font-medium">Get Mill Data</h4>
-                    <p class="text-sm text-gray-600" id="status-getMillData">
-                      Status: Checking...
-                    </p>
-                  </div>
-                  <div class="space-x-2">
-                    <button
-                      type="button"
-                      id="stop-getMillData"
-                      class="px-3 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600 focus:outline-none focus:ring-2"
-                    >
-                      Stop
-                    </button>
-                    <button
-                      type="button"
-                      id="start-getMillData"
-                      class="px-3 py-1 bg-green-500 text-white text-sm rounded hover:bg-green-600 focus:outline-none focus:ring-2"
-                    >
-                      Start
-                    </button>
-                  </div>
-                </div>
+              <div class="space-x-2">
+                <button
+                  type="button"
+                  id="stop-getMillData"
+                  class="px-3 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600 focus:outline-none focus:ring-2"
+                >
+                  Stop
+                </button>
+                <button
+                  type="button"
+                  id="start-getMillData"
+                  class="px-3 py-1 bg-green-500 text-white text-sm rounded hover:bg-green-600 focus:outline-none focus:ring-2"
+                >
+                  Start
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <!-- Add this after the Cron Job Settings section -->
-      <div class="mt-6 bg-white rounded-lg shadow-md">
-        <div class="border-b px-4 py-3">
-          <h2 class="text-xl font-semibold text-gray-700">Group Settings</h2>
-        </div>
-        <div class="p-4">
-          <div id="group-list" class="space-y-4">
-            <!-- Groups will be inserted here -->
-          </div>
-          <button
-            id="add-group"
-            class="mt-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 focus:outline-none focus:ring-2"
-          >
-            Add New Group
-          </button>
-          <button
-            id="save-groups"
-            class="mt-4 ml-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2"
-          >
-            Save Changes
-          </button>
-        </div>
-      </div>
     </div>
-  </body>
-</html>
+  </div>
+
+  <!-- Add this after the Cron Job Settings section -->
+  <div class="mt-6 bg-white rounded-lg shadow-md">
+    <div class="border-b px-4 py-3">
+      <h2 class="text-xl font-semibold text-gray-700">Group Settings</h2>
+    </div>
+    <div class="p-4">
+      <div id="group-list" class="space-y-4">
+        <!-- Groups will be inserted here -->
+      </div>
+      <button
+        id="add-group"
+        class="mt-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 focus:outline-none focus:ring-2"
+      >
+        Add New Group
+      </button>
+      <button
+        id="save-groups"
+        class="mt-4 ml-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2"
+      >
+        Save Changes
+      </button>
+    </div>
+  </div>
+</div>
