@@ -7,6 +7,8 @@ const queue = require('./src/services/queue');
 const { connectToWhatsApp } = require('./src/services/whatsappService');
 const cronJobRunner = require('./src/services/CronJobRunner');
 const templateEngine = require('./src/services/templateEngine');
+const pusherService = require('./src/services/pusher');
+const SmartlabsProgram = require('./src/Programs/Smartlabs');
 
 const app = express();
 const server = http.createServer(app);
@@ -37,6 +39,18 @@ app.get('/grading', async (req, res) => {
     const html = await templateEngine.render('grading', {
       title: 'Grading Programs',
       scripts: '<script src="/js/grading.js" defer></script>',
+    });
+    res.send(html);
+  } catch (error) {
+    res.status(500).send('Error rendering template');
+  }
+});
+
+app.get('/smartlabs', async (req, res) => {
+  try {
+    const html = await templateEngine.render('smartlabs', {
+      title: 'Smartlabs',
+      scripts: '<script src="/js/smartlabs.js" defer></script>',
     });
     res.send(html);
   } catch (error) {
@@ -91,6 +105,9 @@ queue
 cronJobRunner.initialize().catch((error) => {
   logger.error.grading('Error initializing cron jobs:', error);
 });
+
+// Initialize programs that use Pusher
+const smartlabs = new SmartlabsProgram();
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {

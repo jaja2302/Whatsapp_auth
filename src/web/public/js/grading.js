@@ -1,16 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
   const socket = io();
   const fetchMillDataBtn = document.getElementById('fetch-mill-data');
-  const millStatus = document.getElementById('mill-status');
   const gradingLogs = document.getElementById('grading-logs');
-  const totalProcessed = document.getElementById('total-processed');
-  const successRate = document.getElementById('success-rate');
-  const cronStatusDiv = document.getElementById('cron-status');
   const programStatusDiv = document.getElementById('program-status');
-  const jobStatusElements = {
-    'Run Jobs Mill': document.getElementById('status-runJobsMill'),
-    'Get Mill Data': document.getElementById('status-getMillData'),
-  };
 
   // Handle Mill Data Fetching
   fetchMillDataBtn.addEventListener('click', async () => {

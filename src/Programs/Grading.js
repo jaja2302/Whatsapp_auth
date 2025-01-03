@@ -1,13 +1,14 @@
 const axios = require('axios');
 const cronJobSettings = require('../services/CronJobSettings');
 const logger = require('../services/logger');
-const { channel } = require('../services/pusher');
+const pusherService = require('../services/pusher');
 const settings = require('../web/data/settings.json');
 const credentials = settings.grading.credentials;
 const groups = settings.grading.groups;
 
 class GradingProgram {
   constructor() {
+    this.channel = pusherService.subscribeToChannel('my-channel', 'grading');
     this.initBroadcastListener();
     if (!global.queue) {
       global.queue = require('../services/queue');
@@ -167,7 +168,7 @@ class GradingProgram {
   }
 
   initBroadcastListener() {
-    channel.bind('gradingmillpdf', async (data) => {
+    this.channel.bind('gradingmillpdf', async (data) => {
       logger.info.grading(
         `Broadcast Grading received: ${JSON.stringify(data)}`
       );
@@ -193,8 +194,6 @@ class GradingProgram {
             }
           } catch (error) {
             logger.error.grading('Error in broadcast_grading_mill:', error);
-            // If you want to keep the error catching functionality:
-            // await catcherror(itemdata.id, 'error_sending_message', 'bot_grading_mill');
           }
         }
       }

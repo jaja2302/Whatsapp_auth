@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const DashboardController = require('../controllers/dashboardController');
 const GradingController = require('../controllers/gradingController');
+const SmartlabsController = require('../controllers/smartlabsController');
 const logger = require('../../services/logger');
 const fs = require('fs').promises;
 const path = require('path');
@@ -18,6 +19,7 @@ router.use((req, res, next) => {
 
 const dashboardController = new DashboardController(global.io);
 const gradingController = new GradingController(global.io);
+const smartlabsController = new SmartlabsController(global.io);
 
 // Dashboard routes
 router.get('/status', (req, res) => {
@@ -72,6 +74,22 @@ router.get('/grading/get-group-settings', (req, res) => {
 router.post('/grading/update-group-settings', (req, res) => {
   logger.info.grading('Update group settings request received');
   gradingController.updateGroupSettings(req, res);
+});
+
+// Add these Smartlabs routes
+router.get('/smartlabs/get-status', (req, res) => {
+  logger.debug.smartlabs('Getting Smartlabs status');
+  smartlabsController.getStatus(req, res);
+});
+
+router.post('/smartlabs/start', (req, res) => {
+  logger.info.smartlabs('Start Smartlabs program request received');
+  smartlabsController.startProgram(req, res);
+});
+
+router.post('/smartlabs/stop', (req, res) => {
+  logger.info.smartlabs('Stop Smartlabs program request received');
+  smartlabsController.stopProgram(req, res);
 });
 
 // Error handling middleware
