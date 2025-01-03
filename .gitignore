@@ -8,3 +8,5 @@
 /src/web/data/message_queue.json
 /src/web/data/queue_state.json
 /auth_info
+
+.codegpt

@@ -1,8 +1,8 @@
 {
   "grading": {
     "timezone": "Asia/Jakarta",
-    "runJobsMill": "*/5 * * * *",
-    "getMillData": "*/5 * * * *",
+    "runJobsMill": "*/10 * * * *",
+    "getMillData": "0 */2 * * *",
     "groups": {
       "SYM": "120363384470022318@g.us",
       "SGM": "120363384470022318@g.us",
@@ -12,7 +12,8 @@
       "NKM": "120363384470022318@g.us",
       "SCM": "120363384470022318@g.us",
       "SKM": "120363384470022318@g.us",
-      "default": "120363384470022318@g.us"
+      "default": "120363384470022318@g.us",
+      "nyaw": "123123@g.us"
     },
     "credentials": {
       "email": "j",
