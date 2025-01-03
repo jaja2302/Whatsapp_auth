@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "type": "send_message",
+    "data": {
+      "to": "6281364362210@s.whatsapp.net",
+      "message": "Permintaan Persetujuan Izin Baru:\nHalo, Selamat Siang Bapak/Ibu LUJIAN KURNIAWAN,\nAnda memiliki permintaan izin keluar kebun yang membutuhkan persetujuan dengan rincian sebagai berikut:\nID Pemohon: 900/1067\nNama : *IVO MAILISA*\nAlasan : belanja\nTanggal keluar izin : *2025-01-04 13:00:00*\n Anda juga bisa membalas dengan *Ya*/*Tidak* untuk menyetujui/menolak semua permintaan yang terkait dengan Anda dengan cara menahan pesan ini dan harap di reply .\n Anda juga bisa membalas dengan *Ya semua*/*Tidak semua* untuk menyetujui/menolak semua permintaan yang terkait dengan anda tanpa perlu menahan pesan ini\nPesan otomatis oleh Digital Architect SRS Bot."
+    }
+  },
+  {
+    "type": "send_message",
+    "data": {
+      "to": "6281382820576@s.whatsapp.net",
+      "message": "*Izin Keluar Kebun Anda Telah Disetujui Atasan Pertama*\n\nHallo Selamat Siang Bapak/Ibu IVO MAILISA,\n\nKami ingin menginformasikan bahwa permintaan izin keluar kebun Anda telah Disetujui.\n\nSilahkan tunggu notifikasi  berikutnya untuk persetujuan dari atasan kedua.\n\nTerima kasih,\nTim Digital Architect SRS Bot"
+    }
+  },
+  {
+    "type": "update_status_izinkebun",
+    "data": {
+      "id_db": 900,
+      "type": "send_atasan_dua"
+    }
+  }
+]
