@@ -5,6 +5,7 @@ const path = require('path');
 const logger = require('./src/services/logger');
 const queue = require('./src/services/queue');
 const { connectToWhatsApp } = require('./src/services/whatsappService');
+const cronJobRunner = require('./src/services/CronJobRunner');
 
 const app = express();
 const server = http.createServer(app);
@@ -68,6 +69,11 @@ queue
   .catch((err) => {
     logger.error.whatsapp('Error initializing queue:', err);
   });
+
+// Initialize Cron Job Runner
+cronJobRunner.initialize().catch((error) => {
+  logger.error.grading('Error initializing cron jobs:', error);
+});
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {

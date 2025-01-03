@@ -1,4 +1,3 @@
-const cron = require('node-cron');
 const axios = require('axios');
 const cronJobSettings = require('../services/CronJobSettings');
 const logger = require('../services/logger');
@@ -9,8 +8,6 @@ const groups = settings.grading.groups;
 
 class GradingProgram {
   constructor() {
-    this.runJobsSchedule = null;
-    this.getDataSchedule = null;
     this.initBroadcastListener();
     if (!global.queue) {
       global.queue = require('../services/queue');
@@ -22,57 +19,11 @@ class GradingProgram {
       logger.info.grading('Initializing grading program');
       const instance = new GradingProgram();
       await global.queue.init();
-      await instance.initCronJobs();
       return instance;
     } catch (error) {
       logger.error.grading('Error initializing grading program:', error);
       throw error;
     }
-  }
-
-  async initCronJobs() {
-    // Stop existing cron jobs if they exist
-    if (this.runJobsSchedule) {
-      this.runJobsSchedule.stop();
-    }
-    if (this.getDataSchedule) {
-      this.getDataSchedule.stop();
-    }
-
-    const settings = cronJobSettings.getSettings('grading');
-    const timezone = cronJobSettings.settings.timezone || 'Asia/Jakarta';
-
-    this.runJobsSchedule = cron.schedule(
-      settings.runJobsMill,
-      async () => {
-        try {
-          await this.runJobsMill();
-        } catch (error) {
-          logger.error.grading('Error in runJobsMill cron:', error);
-        }
-      },
-      {
-        scheduled: true,
-        timezone,
-      }
-    );
-
-    this.getDataSchedule = cron.schedule(
-      settings.getMillData,
-      async () => {
-        try {
-          await this.getMillData();
-        } catch (error) {
-          logger.error.grading('Error in getMillData cron:', error);
-        }
-      },
-      {
-        scheduled: true,
-        timezone,
-      }
-    );
-
-    logger.info.grading('Cron jobs initialized successfully');
   }
 
   async runJobsMill() {
@@ -97,7 +48,6 @@ class GradingProgram {
   async getMillData() {
     try {
       logger.info.grading('Fetching mill jobs data...');
-
       const response = await axios.get(
         'http://erpda.test/api/getdatamilljobs',
         {
@@ -156,10 +106,6 @@ class GradingProgram {
         }
       }
 
-      // if (id_jobs.length > 0 && pdf_name.length > 0) {
-      //   await this.updateDataMill({ id: id_jobs, pdf_name, image_name });
-      // }
-
       if (!global.queue.paused) {
         global.queue.processQueue();
       }
@@ -171,29 +117,6 @@ class GradingProgram {
     } catch (error) {
       logger.error.grading('Error in getMillData:', error);
       return { success: false, message: error.message };
-    }
-  }
-
-  async updateDataMill(data) {
-    try {
-      logger.info.grading('Updating mill data...');
-      const response = await axios.post(
-        'http://erpda.test/api/updatedatamill',
-        {
-          ...credentials,
-          id: data.id,
-          pdf_name: data.pdf_name,
-          image_name: data.image_name,
-        }
-      );
-      logger.info.grading('Mill data updated successfully');
-      return response.data;
-    } catch (error) {
-      logger.error.grading(
-        'Error updating mill data:',
-        error.response?.data || error.message
-      );
-      throw error;
     }
   }
 

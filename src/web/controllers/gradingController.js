@@ -1,3 +1,4 @@
+const cronJobRunner = require('../../services/CronJobRunner');
 const cronJobSettings = require('../../services/CronJobSettings');
 const logger = require('../../services/logger');
 const GradingProgram = require('../../Programs/Grading');
@@ -19,56 +20,25 @@ class GradingController {
     }
   }
 
-  async updateCronSettings(req, res) {
-    try {
-      const settings = req.body || {};
-      const { timezone, ...newSettings } = settings;
-
-      // Fetch current settings from the database
-      const currentSettings = await cronJobSettings.getSettings('grading');
-
-      if (currentSettings) {
-        // Merge new settings with the existing settings
-        const updatedSettings = {
-          ...currentSettings,
-          ...newSettings,
-        };
-
-        // Update the settings in the database
-        await cronJobSettings.updateSettings('grading', updatedSettings);
-
-        logger.info.grading('Cron settings updated successfully');
-        res.json({
-          success: true,
-          message: 'Cron settings updated successfully',
-        });
-      } else {
-        res.status(404).json({
-          success: false,
-          message: 'Current settings not found.',
-        });
-      }
-    } catch (error) {
-      logger.error.grading('Error updating cron settings:', error);
-      res.status(500).json({ success: false, error: error.message });
-    }
-  }
-
   async getCronSettings(req, res) {
     try {
-      await cronJobSettings.loadSettings();
-      const settings = cronJobSettings.getSettings('grading');
+      const program = 'grading';
+      const settings = await cronJobSettings.loadSettings(program);
+
       const intervals = cronJobSettings.getAvailableIntervals();
       const timezones = cronJobSettings.getAvailableTimezones();
+
+      // Mengambil cronjobs dari settings
+      const cronSettings = settings.cronjobs || {};
 
       logger.info.grading('Cron settings fetched successfully');
       res.json({
         success: true,
         data: {
-          settings,
+          settings: cronSettings, // Mengirim cronjobs settings
           intervals,
           timezones,
-          timezone: cronJobSettings.settings.timezone,
+          timezone: settings.timezone,
         },
       });
     } catch (error) {
@@ -76,6 +46,73 @@ class GradingController {
       res.status(500).json({ success: false, error: error.message });
     }
   }
+  async getGroupSettings(req, res) {
+    try {
+      const program = 'grading';
+      const settings = await cronJobSettings.loadSettings(program);
+
+      res.json({
+        success: true,
+        data: settings.groups || {},
+      });
+      logger.info.grading('Group settings fetched successfully');
+    } catch (error) {
+      logger.error.grading('Error getting group settings:', error);
+      res.status(500).json({ success: false, error: error.message });
+    }
+  }
+
+  async updateCronSettings(req, res) {
+    try {
+      const { runJobsMill, getMillData, timezone } = req.body;
+
+      if (!runJobsMill || !getMillData || !timezone) {
+        return res.status(400).json({
+          success: false,
+          message: 'Missing required fields',
+        });
+      }
+
+      // Fetch current settings
+      const currentSettings = await cronJobSettings.loadSettings('grading');
+
+      // Update the settings with new values
+      const updatedSettings = {
+        ...currentSettings,
+        timezone: timezone,
+        cronjobs: {
+          ...currentSettings.cronjobs,
+          runJobsMill: runJobsMill,
+          getMillData: getMillData,
+        },
+      };
+
+      // Save the updated settings
+      await cronJobSettings.updateSettings('grading', updatedSettings);
+
+      // Langsung update schedule untuk setiap job yang diubah
+      await cronJobRunner.updateJobSchedule(
+        'grading',
+        'runJobsMill',
+        runJobsMill
+      );
+      await cronJobRunner.updateJobSchedule(
+        'grading',
+        'getMillData',
+        getMillData
+      );
+
+      logger.info.grading('Cron settings updated successfully');
+      res.json({
+        success: true,
+        message: 'Cron settings updated and applied successfully',
+      });
+    } catch (error) {
+      logger.error.grading('Error updating cron settings:', error);
+      res.status(500).json({ success: false, error: error.message });
+    }
+  }
+
   async updateGroupSettings(req, res) {
     try {
       const { groups } = req.body;
@@ -107,20 +144,6 @@ class GradingController {
       });
     } catch (error) {
       logger.error.grading('Error updating group settings:', error);
-      res.status(500).json({ success: false, error: error.message });
-    }
-  }
-
-  async getGroupSettings(req, res) {
-    try {
-      const settings = cronJobSettings.getSettings('grading');
-      res.json({
-        success: true,
-        data: settings.groups || {},
-      });
-      logger.info.grading('Group settings fetched successfully');
-    } catch (error) {
-      logger.error.grading('Error getting group settings:', error);
       res.status(500).json({ success: false, error: error.message });
     }
   }

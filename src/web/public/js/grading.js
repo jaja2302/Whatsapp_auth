@@ -137,9 +137,10 @@ document.addEventListener('DOMContentLoaded', function () {
           populateTimezoneOptions(timezones);
           document.getElementById('timezone').value = timezone;
         }
+      } else {
+        addLog('Failed to load cron settings', 'error');
       }
     } catch (error) {
-      logger.error.grading('Error loading current settings:', error);
       addLog('Error loading current settings: ' + error.message, 'error');
     }
   }

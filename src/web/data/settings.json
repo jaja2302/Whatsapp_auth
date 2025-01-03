@@ -1,8 +1,10 @@
 {
   "grading": {
     "timezone": "Asia/Jakarta",
-    "runJobsMill": "*/10 * * * *",
-    "getMillData": "0 */2 * * *",
+    "cronjobs": {
+      "runJobsMill": "*/15 * * * *",
+      "getMillData": "0 */2 * * *"
+    },
     "groups": {
       "SYM": "120363384470022318@g.us",
       "SGM": "120363384470022318@g.us",
@@ -26,7 +28,8 @@
   },
   "smartlabs": {
     "timezone": "Asia/Jakarta",
-    "runJobsMill": "*/5 * * * *",
-    "getMillData": "*/5 * * * *"
+    "cronjobs": {
+      "getdataSmartlabs": "*/5 * * * *"
+    }
   }
 }
