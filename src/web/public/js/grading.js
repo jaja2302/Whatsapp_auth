@@ -5,6 +5,12 @@ document.addEventListener('DOMContentLoaded', function () {
   const gradingLogs = document.getElementById('grading-logs');
   const totalProcessed = document.getElementById('total-processed');
   const successRate = document.getElementById('success-rate');
+  const cronStatusDiv = document.getElementById('cron-status');
+  const programStatusDiv = document.getElementById('program-status');
+  const jobStatusElements = {
+    'Run Jobs Mill': document.getElementById('status-runJobsMill'),
+    'Get Mill Data': document.getElementById('status-getMillData'),
+  };
 
   // Handle Mill Data Fetching
   fetchMillDataBtn.addEventListener('click', async () => {
@@ -311,4 +317,110 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Load groups on page load
   loadGroups();
+
+  // Function to update status display
+  async function updateCronStatus() {
+    try {
+      console.log('Fetching cron status...'); // Debug log
+      const response = await fetch('/api/grading/get-cron-status');
+      const data = await response.json();
+      console.log('Received status data:', data); // Debug log
+
+      if (data.success) {
+        const { program_status, jobs } = data.data;
+
+        // Update program status
+        programStatusDiv.innerHTML = `
+          <div class="flex items-center">
+            <span class="mr-2">Program Status:</span>
+            <span class="${program_status === 'active' ? 'text-green-600' : 'text-red-600'} font-medium">
+              ${program_status}
+            </span>
+          </div>
+        `;
+
+        // Update individual job statuses
+        Object.entries(jobs).forEach(([jobName, status]) => {
+          const statusElement = document.getElementById(`status-${jobName}`);
+          if (statusElement) {
+            statusElement.innerHTML = `Status: <span class="${status === 'active' ? 'text-green-600' : 'text-red-600'} font-medium">${status}</span>`;
+          }
+        });
+      } else {
+        throw new Error(data.error || 'Failed to fetch status');
+      }
+    } catch (error) {
+      console.error('Error updating status:', error);
+      programStatusDiv.innerHTML = `
+        <div class="text-red-600">
+          Error fetching status: ${error.message}
+        </div>
+      `;
+    }
+  }
+
+  // Setup individual job controls
+  const jobs = ['runJobsMill', 'getMillData'];
+
+  jobs.forEach((jobName) => {
+    const startBtn = document.getElementById(`start-${jobName}`);
+    const stopBtn = document.getElementById(`stop-${jobName}`);
+
+    startBtn.addEventListener('click', async () => {
+      try {
+        startBtn.disabled = true;
+        const response = await fetch(`/api/grading/jobs/${jobName}/start`, {
+          method: 'POST',
+        });
+        const data = await response.json();
+        if (data.success) {
+          addLog(`${jobName} started successfully`);
+          await updateCronStatus();
+        } else {
+          throw new Error(data.error);
+        }
+      } catch (error) {
+        addLog(`Error starting ${jobName}: ${error.message}`, 'error');
+      } finally {
+        startBtn.disabled = false;
+      }
+    });
+
+    stopBtn.addEventListener('click', async () => {
+      try {
+        stopBtn.disabled = true;
+        const response = await fetch(`/api/grading/jobs/${jobName}/stop`, {
+          method: 'POST',
+        });
+        const data = await response.json();
+        if (data.success) {
+          addLog(`${jobName} stopped successfully`);
+          await updateCronStatus();
+        } else {
+          throw new Error(data.error);
+        }
+      } catch (error) {
+        addLog(`Error stopping ${jobName}: ${error.message}`, 'error');
+      } finally {
+        stopBtn.disabled = false;
+      }
+    });
+  });
+
+  // Setup refresh button
+  const refreshBtn = document.getElementById('refresh-status');
+  refreshBtn.addEventListener('click', async () => {
+    try {
+      refreshBtn.disabled = true;
+      await updateCronStatus();
+      addLog('Status refreshed successfully');
+    } catch (error) {
+      addLog('Error refreshing status: ' + error.message, 'error');
+    } finally {
+      refreshBtn.disabled = false;
+    }
+  });
+
+  // Initial status update
+  updateCronStatus();
 });

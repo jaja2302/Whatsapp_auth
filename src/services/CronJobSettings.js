@@ -34,7 +34,7 @@ class CronJobSettings {
       this.settings = JSON.parse(data);
 
       // Log the specific program settings
-      console.log(this.settings[program]);
+      // console.log(this.settings[program]);
 
       logger.info.whatsapp(`Settings for ${program} loaded successfully`);
 

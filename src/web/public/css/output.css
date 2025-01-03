@@ -665,6 +665,14 @@ video {
   margin-top: 1.5rem;
 }
 
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
+.mr-1 {
+  margin-right: 0.25rem;
+}
+
 .block {
   display: block;
 }
@@ -1010,6 +1018,11 @@ video {
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 .text-sm {

@@ -116,4 +116,27 @@ router.delete('/failed-jobs', async (req, res) => {
   }
 });
 
+router.get(
+  '/grading/get-cron-status',
+  gradingController.getCronJobStatus.bind(gradingController)
+);
+router.post(
+  '/grading/stop-cron-jobs',
+  gradingController.stopCronJobs.bind(gradingController)
+);
+router.post(
+  '/grading/start-cron-jobs',
+  gradingController.startCronJobs.bind(gradingController)
+);
+
+// Individual job control routes
+router.post(
+  '/grading/jobs/:jobName/start',
+  gradingController.startJob.bind(gradingController)
+);
+router.post(
+  '/grading/jobs/:jobName/stop',
+  gradingController.stopJob.bind(gradingController)
+);
+
 module.exports = router;

@@ -152,6 +152,210 @@ class CronJobRunner {
       throw error;
     }
   }
+
+  // Menghentikan semua job untuk program tertentu
+  async stopProgramJobs(programName) {
+    try {
+      const settings = await cronJobSettings.loadSettings(programName);
+
+      Object.keys(this.jobs).forEach(async (jobKey) => {
+        if (jobKey.startsWith(`${programName}-`)) {
+          if (
+            this.jobs[jobKey] &&
+            typeof this.jobs[jobKey].stop === 'function'
+          ) {
+            this.jobs[jobKey].stop();
+            delete this.jobs[jobKey];
+
+            // Update status in settings
+            const jobName = jobKey.split('-')[1];
+            await this.updateJobStatus(programName, jobName, 'stopped');
+
+            logger.info.whatsapp(`Stopped job: ${jobKey}`);
+          }
+        }
+      });
+
+      // Update program status
+      settings.status = 'stopped';
+      await cronJobSettings.updateSettings(programName, settings);
+
+      logger.info.whatsapp(
+        `All jobs for program ${programName} stopped successfully`
+      );
+      return true;
+    } catch (error) {
+      logger.error.whatsapp(
+        `Error stopping jobs for program ${programName}:`,
+        error
+      );
+      throw error;
+    }
+  }
+
+  // Memulai kembali semua job untuk program tertentu
+  async startProgramJobs(programName) {
+    try {
+      const settings = await cronJobSettings.loadSettings(programName);
+
+      if (settings && settings.cronjobs) {
+        Object.entries(settings.cronjobs).forEach(
+          async ([jobName, schedule]) => {
+            if (cron.validate(schedule)) {
+              const jobKey = `${programName}-${jobName}`;
+
+              if (this.jobs[jobKey]) {
+                this.jobs[jobKey].stop();
+              }
+
+              this.jobs[jobKey] = cron.schedule(
+                schedule,
+                () => this.runJob(programName, jobName),
+                {
+                  timezone: settings.timezone || 'Asia/Jakarta',
+                }
+              );
+
+              // Update status in settings
+              await this.updateJobStatus(programName, jobName, 'active');
+
+              logger.info.whatsapp(
+                `Started job ${jobKey} with schedule: ${schedule}`
+              );
+            }
+          }
+        );
+
+        // Update program status
+        settings.status = 'active';
+        await cronJobSettings.updateSettings(programName, settings);
+
+        logger.info.whatsapp(
+          `All jobs for program ${programName} started successfully`
+        );
+        return true;
+      }
+    } catch (error) {
+      logger.error.whatsapp(
+        `Error starting jobs for program ${programName}:`,
+        error
+      );
+      throw error;
+    }
+  }
+
+  // Get status of all jobs for a program
+  async getProgramJobStatus(programName) {
+    try {
+      const settings = await cronJobSettings.loadSettings(programName);
+      //   console.log('Current settings:', settings); // Debug log
+
+      // Buat object jobs status dari cronjobs yang terdaftar
+      const jobStatus = {};
+      if (settings.cronjobs) {
+        // Mengambil nama job dari cronjobs yang terdaftar
+        Object.keys(settings.cronjobs).forEach((jobName) => {
+          // Mengambil status dari cronjob_status jika ada, atau 'unknown' jika tidak ada
+          jobStatus[jobName] = settings.cronjob_status?.[jobName] || 'unknown';
+        });
+      }
+
+      return {
+        program_status: settings.status || 'unknown',
+        jobs: jobStatus, // Menggunakan status job yang diambil dari settings
+      };
+    } catch (error) {
+      logger.error.whatsapp(
+        `Error getting job status for program ${programName}:`,
+        error
+      );
+      throw error;
+    }
+  }
+
+  async updateJobStatus(programName, jobName, status) {
+    try {
+      const settings = await cronJobSettings.loadSettings(programName);
+      if (!settings.cronjob_status) {
+        settings.cronjob_status = {};
+      }
+      settings.cronjob_status[jobName] = status;
+      await cronJobSettings.updateSettings(programName, settings);
+    } catch (error) {
+      logger.error.whatsapp(`Error updating job status: ${error}`);
+    }
+  }
+
+  async startJob(programName, jobName) {
+    try {
+      const settings = await cronJobSettings.loadSettings(programName);
+      const schedule = settings.cronjobs[jobName];
+
+      if (!schedule) {
+        throw new Error(`Job ${jobName} not found in settings`);
+      }
+
+      const jobKey = `${programName}-${jobName}`;
+
+      // Stop existing job if running
+      if (this.jobs[jobKey]) {
+        this.jobs[jobKey].stop();
+      }
+
+      // Start new job
+      this.jobs[jobKey] = cron.schedule(
+        schedule,
+        () => this.runJob(programName, jobName),
+        {
+          timezone: settings.timezone || 'Asia/Jakarta',
+        }
+      );
+
+      // Update job status
+      if (!settings.cronjob_status) {
+        settings.cronjob_status = {};
+      }
+      settings.cronjob_status[jobName] = 'active';
+      await cronJobSettings.updateSettings(programName, settings);
+
+      logger.info.whatsapp(`Started job ${jobKey} with schedule: ${schedule}`);
+      return true;
+    } catch (error) {
+      logger.error.whatsapp(
+        `Error starting job ${programName}-${jobName}:`,
+        error
+      );
+      throw error;
+    }
+  }
+
+  async stopJob(programName, jobName) {
+    try {
+      const jobKey = `${programName}-${jobName}`;
+
+      if (this.jobs[jobKey]) {
+        this.jobs[jobKey].stop();
+        delete this.jobs[jobKey];
+      }
+
+      // Update job status in settings
+      const settings = await cronJobSettings.loadSettings(programName);
+      if (!settings.cronjob_status) {
+        settings.cronjob_status = {};
+      }
+      settings.cronjob_status[jobName] = 'stopped';
+      await cronJobSettings.updateSettings(programName, settings);
+
+      logger.info.whatsapp(`Stopped job ${jobKey}`);
+      return true;
+    } catch (error) {
+      logger.error.whatsapp(
+        `Error stopping job ${programName}-${jobName}:`,
+        error
+      );
+      throw error;
+    }
+  }
 }
 
 // Export singleton instance

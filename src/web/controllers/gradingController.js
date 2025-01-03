@@ -147,6 +147,78 @@ class GradingController {
       res.status(500).json({ success: false, error: error.message });
     }
   }
+
+  async stopCronJobs(req, res) {
+    try {
+      await cronJobRunner.stopProgramJobs('grading');
+      logger.info.grading('Grading cron jobs stopped successfully');
+      res.json({
+        success: true,
+        message: 'Grading cron jobs stopped successfully',
+      });
+    } catch (error) {
+      logger.error.grading('Error stopping grading cron jobs:', error);
+      res.status(500).json({ success: false, error: error.message });
+    }
+  }
+
+  async startCronJobs(req, res) {
+    try {
+      await cronJobRunner.startProgramJobs('grading');
+      logger.info.grading('Grading cron jobs started successfully');
+      res.json({
+        success: true,
+        message: 'Grading cron jobs started successfully',
+      });
+    } catch (error) {
+      logger.error.grading('Error starting grading cron jobs:', error);
+      res.status(500).json({ success: false, error: error.message });
+    }
+  }
+
+  async getCronJobStatus(req, res) {
+    try {
+      const status = await cronJobRunner.getProgramJobStatus('grading');
+      logger.info.grading('Status:', status); // Debug log
+      res.json({
+        success: true,
+        data: status,
+      });
+    } catch (error) {
+      logger.error.grading('Error getting grading cron job status:', error);
+      res.status(500).json({ success: false, error: error.message });
+    }
+  }
+
+  async startJob(req, res) {
+    try {
+      const { jobName } = req.params;
+      await cronJobRunner.startJob('grading', jobName);
+      logger.info.grading(`Job ${jobName} started successfully`);
+      res.json({
+        success: true,
+        message: `Job ${jobName} started successfully`,
+      });
+    } catch (error) {
+      logger.error.grading(`Error starting job ${req.params.jobName}:`, error);
+      res.status(500).json({ success: false, error: error.message });
+    }
+  }
+
+  async stopJob(req, res) {
+    try {
+      const { jobName } = req.params;
+      await cronJobRunner.stopJob('grading', jobName);
+      logger.info.grading(`Job ${jobName} stopped successfully`);
+      res.json({
+        success: true,
+        message: `Job ${jobName} stopped successfully`,
+      });
+    } catch (error) {
+      logger.error.grading(`Error stopping job ${req.params.jobName}:`, error);
+      res.status(500).json({ success: false, error: error.message });
+    }
+  }
 }
 
 module.exports = GradingController;
