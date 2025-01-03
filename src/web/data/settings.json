@@ -3,12 +3,12 @@
     "timezone": "Asia/Jakarta",
     "status": "active",
     "cronjobs": {
-      "runJobsMill": "0 */6 * * *",
+      "runJobsMill": "*/5 * * * *",
       "getMillData": "0 */2 * * *"
     },
     "cronjob_status": {
-      "runJobsMill": "active",
-      "getMillData": "active"
+      "runJobsMill": "stopped",
+      "getMillData": "stopped"
     },
     "groups": {
       "SYM": "120363384470022318@g.us",
@@ -19,8 +19,7 @@
       "NKM": "120363384470022318@g.us",
       "SCM": "120363384470022318@g.us",
       "SKM": "120363384470022318@g.us",
-      "default": "120363384470022318@g.us",
-      "nyaw": "123123@g.us"
+      "default": "120363384470022318@g.us"
     },
     "credentials": {
       "email": "j",

@@ -125,7 +125,7 @@ class GradingController {
       }
 
       // Fetch existing 'grading' settings
-      const currentSettings = await cronJobSettings.getSettings('grading');
+      const currentSettings = await cronJobSettings.loadSettings('grading');
 
       // Replace 'groups' with the new one
       const updatedSettings = {
