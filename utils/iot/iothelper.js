@@ -160,7 +160,7 @@ async function get_data_harian_aws(sock) {
           message += `Total: ${Number(station.rainfall.total).toFixed(2)} mm\n`;
         }
         message += `SBI: ${Number(station.rainfall.sbi).toFixed(2)} mm (rata-rata harian ${(station.rainfall.sbi / 30).toFixed(2)}mm)\n`;
-        if (Number(station.rainfall.total) > 0) {
+        if (Number(station.rainfall.highest.value) > 0) {
           message += `Tertinggi: ${Number(station.rainfall.highest.value).toFixed(2)} mm/Jam (${station.rainfall.highest.hour})\n`;
           message += `Total durasi: ${station.rainfall.duration_minutes} menit\n\n`;
         }
