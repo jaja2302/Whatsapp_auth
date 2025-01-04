@@ -15,6 +15,10 @@ const noWa_grading_nkm = '120363046524351245@g.us';
 const noWa_grading_scm = '120363332360538214@g.us';
 const no_grup_skm = '120363283953366418@g.us';
 const no_grup_sjm = '120363349956616448@g.us';
+const no_grup_pkm = '120363330829401350@g.us';
+const no_grup_ktm = '120363310706348174@g.us';
+// id_group: 120363310706348174@g.us || Nama Group: GRADING INTI KTM
+// id_group: 120363330829401350@g.us || Nama Group: GRADING PKM
 // id_group: 120363349956616448@g.us || Nama Group: Team Grading SUJA MILL
 
 const { channel } = require('../../utils/pusher');
@@ -101,6 +105,12 @@ async function get_mill_data(sock) {
             case 'SJM':
               // send_image = true;
               return no_grup_sjm;
+            case 'PKM':
+              // send_image = true;
+              return no_grup_pkm;
+            case 'KTM':
+              // send_image = true;
+              return no_grup_ktm;
             default:
               // send_images = true;
               return noWa_grading;
