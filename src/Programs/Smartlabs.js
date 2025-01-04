@@ -4,18 +4,29 @@ const logger = require('../services/logger');
 
 class SmartlabsProgram {
   constructor() {
-    this.channel = null;
     this.running = false;
+    this.CHANNEL_NAME = 'my-channel';
+    this.EVENT_NAME = 'Smartlabsnotificationtest';
+    this.pusherWatcher = null;
   }
 
   start() {
     if (!this.running) {
       this.running = true;
-      this.channel = pusherService.subscribeToChannel(
-        'my-channel',
-        'smartlabs'
+
+      this.pusherWatcher = pusherService.getDataPusher(
+        this.CHANNEL_NAME,
+        this.EVENT_NAME,
+        'smartlabs',
+        (data) => {
+          if (!this.running) {
+            logger.info.smartlabs('Ignoring event: Program is stopped');
+            return;
+          }
+          this.handleSmartlabsNotification(data);
+        }
       );
-      this.setupPusherBindings();
+
       logger.info.smartlabs('Smartlabs program started');
     }
   }
@@ -23,10 +34,9 @@ class SmartlabsProgram {
   stop() {
     if (this.running) {
       this.running = false;
-      if (this.channel) {
-        this.channel.unbind_all();
-        pusherService.pusher.unsubscribe('my-channel');
-        this.channel = null;
+      if (this.pusherWatcher) {
+        this.pusherWatcher.stop();
+        this.pusherWatcher = null;
       }
       logger.info.smartlabs('Smartlabs program stopped');
     }
@@ -38,24 +48,6 @@ class SmartlabsProgram {
     if (hour >= 12 && hour < 15) return 'Selamat Siang';
     if (hour >= 15 && hour < 18) return 'Selamat Sore';
     return 'Selamat Malam';
-  }
-
-  setupPusherBindings() {
-    if (!this.channel) {
-      logger.error.smartlabs('Cannot setup bindings: Channel not initialized');
-      return;
-    }
-
-    logger.info.smartlabs('Setting up Pusher bindings...');
-
-    this.channel.bind('Smartlabsnotificationtest', (data) => {
-      if (!this.running) {
-        logger.info.smartlabs('Ignoring event: Program is stopped');
-        return;
-      }
-      logger.info.smartlabs('Received Pusher event:', data);
-      this.handleSmartlabsNotification(data);
-    });
   }
 
   async handleSmartlabsNotification(itemdata) {
