@@ -1,0 +1,843 @@
+Error processing task (send_document): Error: Failed to send WhatsApp document: Media upload failed on all hosts
+    at Queue.sendDocument (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:288:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Queue.executeTask (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:167:9)
+    at async Queue.process (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:122:7)
+Error processing task (send_image): Error: Failed to send WhatsApp image: Connection Closed
+    at Queue.sendImage (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:246:13)
+    at async Queue.executeTask (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:164:9)
+    at async Queue.process (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:122:7)
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:145:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:140:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:119:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:141:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:323:47\n' +
+      '    at async Promise.all (index 0)\n' +
+      '    at async C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:316:51\n' +
+      '    at async Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:26)\n' +
+      '    at async relayMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:306:9)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+Error fetching mill data: AxiosError: Client network socket disconnected before secure TLS connection was established
+    at AxiosError.from (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:876:14)
+    at RedirectableRequest.handleRequestError (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:3156:25)
+    at RedirectableRequest.emit (node:events:518:28)
+    at eventHandlers.<computed> (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\follow-redirects\index.js:49:24)
+    at ClientRequest.emit (node:events:518:28)
+    at TLSSocket.socketErrorListener (node:_http_client:500:9)
+    at TLSSocket.emit (node:events:518:28)
+    at emitErrorNT (node:internal/streams/destroy:169:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:128:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+    at Axios.request (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:4287:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async run_jobs_mill (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\grading\gradinghelper.js:37:22)
+    at async cron.schedule.scheduled [as _execution] (C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:913:9) {
+  localAddress: undefined,
+  port: 443,
+  host: 'management.srs-ssms.com',
+  path: null,
+  code: 'ECONNRESET',
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false
+    },
+    adapter: [ 'xhr', 'http', 'fetch' ],
+    transformRequest: [ [Function: transformRequest] ],
+    transformResponse: [ [Function: transformResponse] ],
+    timeout: 0,
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    env: { FormData: [Function], Blob: [class Blob] },
+    validateStatus: [Function: validateStatus],
+    headers: Object [AxiosHeaders] {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': undefined,
+      'User-Agent': 'axios/1.7.7',
+      'Accept-Encoding': 'gzip, compress, deflate, br'
+    },
+    params: { email: 'j', password: 'j' },
+    method: 'get',
+    url: 'https://management.srs-ssms.com/api/getdatamill',
+    data: undefined
+  },
+  request: <ref *1> Writable {
+    _events: {
+      close: undefined,
+      error: [Function: handleRequestError],
+      prefinish: undefined,
+      finish: undefined,
+      drain: undefined,
+      response: [Function: handleResponse],
+      socket: [Function: handleRequestSocket]
+    },
+    _writableState: WritableState {
+      highWaterMark: 16384,
+      length: 0,
+      corked: 0,
+      onwrite: [Function: bound onwrite],
+      writelen: 0,
+      bufferedIndex: 0,
+      pendingcb: 0,
+      [Symbol(kState)]: 17580812,
+      [Symbol(kBufferedValue)]: null
+    },
+    _maxListeners: undefined,
+    _options: {
+      maxRedirects: 21,
+      maxBodyLength: Infinity,
+      protocol: 'https:',
+      path: '/api/getdatamill?email=j&password=j',
+      method: 'GET',
+      headers: [Object: null prototype],
+      agents: [Object],
+      auth: undefined,
+      family: undefined,
+      beforeRedirect: [Function: dispatchBeforeRedirect],
+      beforeRedirects: [Object],
+      hostname: 'management.srs-ssms.com',
+      port: '',
+      agent: undefined,
+      nativeProtocols: [Object],
+      pathname: '/api/getdatamill',
+      search: '?email=j&password=j'
+    },
+    _ended: true,
+    _ending: true,
+    _redirectCount: 0,
+    _redirects: [],
+    _requestBodyLength: 0,
+    _requestBodyBuffers: [],
+    _eventsCount: 3,
+    _onNativeResponse: [Function (anonymous)],
+    _currentRequest: ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 7,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: false,
+      _last: true,
+      chunkedEncoding: false,
+      shouldKeepAlive: true,
+      maxRequestsOnConnectionReached: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: false,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      strictContentLength: false,
+      _contentLength: 0,
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      _closed: false,
+      socket: [TLSSocket],
+      _header: 'GET /api/getdatamill?email=j&password=j HTTP/1.1\r\n' +
+        'Accept: application/json, text/plain, */*\r\n' +
+        'User-Agent: axios/1.7.7\r\n' +
+        'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+        'Host: management.srs-ssms.com\r\n' +
+        'Connection: keep-alive\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: nop],
+      agent: [Agent],
+      socketPath: undefined,
+      method: 'GET',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      joinDuplicateHeaders: undefined,
+      path: '/api/getdatamill?email=j&password=j',
+      _ended: false,
+      res: null,
+      aborted: false,
+      timeoutCb: [Function: emitRequestTimeout],
+      upgradeOrConnect: false,
+      parser: null,
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: 'management.srs-ssms.com',
+      protocol: 'https:',
+      _redirectable: [Circular *1],
+      [Symbol(shapeMode)]: false,
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(kNeedDrain)]: false,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype],
+      [Symbol(errored)]: null,
+      [Symbol(kHighWaterMark)]: 16384,
+      [Symbol(kRejectNonStandardBodyWrites)]: false,
+      [Symbol(kUniqueHeaders)]: null
+    },
+    _currentUrl: 'https://management.srs-ssms.com/api/getdatamill?email=j&password=j',
+    [Symbol(shapeMode)]: true,
+    [Symbol(kCapture)]: false
+  },
+  cause: Error: Client network socket disconnected before secure TLS connection was established
+      at TLSSocket.onConnectEnd (node:_tls_wrap:1727:19)
+      at TLSSocket.emit (node:events:530:35)
+      at endReadableNT (node:internal/streams/readable:1696:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+    code: 'ECONNRESET',
+    path: null,
+    host: 'management.srs-ssms.com',
+    port: 443,
+    localAddress: undefined
+  }
+}
+Error processing task (send_document): Error: Failed to send WhatsApp document: aborted
+    at Queue.sendDocument (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:288:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Queue.executeTask (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:167:9)
+    at async Queue.process (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:122:7)
+Error processing task (send_document): Error: Failed to send WhatsApp document: Connection Closed
+    at Queue.sendDocument (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:288:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Queue.executeTask (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:167:9)
+    at async Queue.process (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:122:7)
+Error: Timed Out
+    at C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\@whiskeysockets\baileys\lib\Utils\generics.js:145:32 {
+  data: {
+    stack: 'Error\n' +
+      '    at promiseTimeout (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:140:19)\n' +
+      '    at waitForMessage (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:119:53)\n' +
+      '    at query (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:141:22)\n' +
+      '    at groupQuery (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n' +
+      '    at groupMetadata (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n' +
+      '    at C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:323:47\n' +
+      '    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n' +
+      '    at async Promise.all (index 0)\n' +
+      '    at async C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:316:51\n' +
+      '    at async Object.transaction (C:\\Users\\Digital Architect SR\\Desktop\\bot_grading\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:136:26)'
+  },
+  isBoom: true,
+  isServer: false,
+  output: {
+    statusCode: 408,
+    payload: {
+      statusCode: 408,
+      error: 'Request Time-out',
+      message: 'Timed Out'
+    },
+    headers: {}
+  }
+}
+Error processing task (send_image): Error: Failed to send WhatsApp image: Timed Out
+    at Queue.sendImage (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:246:13)
+    at async Queue.executeTask (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:164:9)
+    at async Queue.process (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:122:7)
+Error processing task (send_image): Error: Failed to send WhatsApp image: Timed Out
+    at Queue.sendImage (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:246:13)
+    at async Queue.executeTask (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:164:9)
+    at async Queue.process (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:122:7)
+Error processing task (send_image): Error: Failed to send WhatsApp image: read ECONNRESET
+    at Queue.sendImage (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:246:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Queue.executeTask (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:164:9)
+    at async Queue.process (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:122:7)
+Error fetching mill data: AxiosError: socket hang up
+    at AxiosError.from (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:876:14)
+    at RedirectableRequest.handleRequestError (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:3156:25)
+    at RedirectableRequest.emit (node:events:518:28)
+    at eventHandlers.<computed> (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\follow-redirects\index.js:49:24)
+    at ClientRequest.emit (node:events:518:28)
+    at TLSSocket.socketOnEnd (node:_http_client:524:9)
+    at TLSSocket.emit (node:events:530:35)
+    at endReadableNT (node:internal/streams/readable:1696:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+    at Axios.request (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:4287:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async run_jobs_mill (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\grading\gradinghelper.js:37:22)
+    at async cron.schedule.scheduled [as _execution] (C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:913:9) {
+  code: 'ECONNRESET',
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false
+    },
+    adapter: [ 'xhr', 'http', 'fetch' ],
+    transformRequest: [ [Function: transformRequest] ],
+    transformResponse: [ [Function: transformResponse] ],
+    timeout: 0,
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    env: { FormData: [Function], Blob: [class Blob] },
+    validateStatus: [Function: validateStatus],
+    headers: Object [AxiosHeaders] {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': undefined,
+      'User-Agent': 'axios/1.7.7',
+      'Accept-Encoding': 'gzip, compress, deflate, br'
+    },
+    params: { email: 'j', password: 'j' },
+    method: 'get',
+    url: 'https://management.srs-ssms.com/api/getdatamill',
+    data: undefined
+  },
+  request: <ref *1> Writable {
+    _events: {
+      close: undefined,
+      error: [Function: handleRequestError],
+      prefinish: undefined,
+      finish: undefined,
+      drain: undefined,
+      response: [Function: handleResponse],
+      socket: [Function: handleRequestSocket]
+    },
+    _writableState: WritableState {
+      highWaterMark: 16384,
+      length: 0,
+      corked: 0,
+      onwrite: [Function: bound onwrite],
+      writelen: 0,
+      bufferedIndex: 0,
+      pendingcb: 0,
+      [Symbol(kState)]: 17580812,
+      [Symbol(kBufferedValue)]: null
+    },
+    _maxListeners: undefined,
+    _options: {
+      maxRedirects: 21,
+      maxBodyLength: Infinity,
+      protocol: 'https:',
+      path: '/api/getdatamill?email=j&password=j',
+      method: 'GET',
+      headers: [Object: null prototype],
+      agents: [Object],
+      auth: undefined,
+      family: undefined,
+      beforeRedirect: [Function: dispatchBeforeRedirect],
+      beforeRedirects: [Object],
+      hostname: 'management.srs-ssms.com',
+      port: '',
+      agent: undefined,
+      nativeProtocols: [Object],
+      pathname: '/api/getdatamill',
+      search: '?email=j&password=j'
+    },
+    _ended: true,
+    _ending: true,
+    _redirectCount: 0,
+    _redirects: [],
+    _requestBodyLength: 0,
+    _requestBodyBuffers: [],
+    _eventsCount: 3,
+    _onNativeResponse: [Function (anonymous)],
+    _currentRequest: ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 7,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: false,
+      _last: true,
+      chunkedEncoding: false,
+      shouldKeepAlive: true,
+      maxRequestsOnConnectionReached: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: false,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      strictContentLength: false,
+      _contentLength: 0,
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      _closed: false,
+      socket: [TLSSocket],
+      _header: 'GET /api/getdatamill?email=j&password=j HTTP/1.1\r\n' +
+        'Accept: application/json, text/plain, */*\r\n' +
+        'User-Agent: axios/1.7.7\r\n' +
+        'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+        'Host: management.srs-ssms.com\r\n' +
+        'Connection: keep-alive\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: nop],
+      agent: [Agent],
+      socketPath: undefined,
+      method: 'GET',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      joinDuplicateHeaders: undefined,
+      path: '/api/getdatamill?email=j&password=j',
+      _ended: false,
+      res: null,
+      aborted: false,
+      timeoutCb: [Function: emitRequestTimeout],
+      upgradeOrConnect: false,
+      parser: null,
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: 'management.srs-ssms.com',
+      protocol: 'https:',
+      _redirectable: [Circular *1],
+      [Symbol(shapeMode)]: false,
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(kNeedDrain)]: false,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype],
+      [Symbol(errored)]: null,
+      [Symbol(kHighWaterMark)]: 16384,
+      [Symbol(kRejectNonStandardBodyWrites)]: false,
+      [Symbol(kUniqueHeaders)]: null
+    },
+    _currentUrl: 'https://management.srs-ssms.com/api/getdatamill?email=j&password=j',
+    [Symbol(shapeMode)]: true,
+    [Symbol(kCapture)]: false
+  },
+  cause: Error: socket hang up
+      at TLSSocket.socketOnEnd (node:_http_client:524:23)
+      at TLSSocket.emit (node:events:530:35)
+      at endReadableNT (node:internal/streams/readable:1696:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+    code: 'ECONNRESET'
+  }
+}
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Error fetching mill data: AxiosError: socket hang up
+    at AxiosError.from (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:876:14)
+    at RedirectableRequest.handleRequestError (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:3156:25)
+    at RedirectableRequest.emit (node:events:518:28)
+    at eventHandlers.<computed> (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\follow-redirects\index.js:49:24)
+    at ClientRequest.emit (node:events:518:28)
+    at TLSSocket.socketOnEnd (node:_http_client:524:9)
+    at TLSSocket.emit (node:events:530:35)
+    at endReadableNT (node:internal/streams/readable:1696:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+    at Axios.request (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:4287:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async run_jobs_mill (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\grading\gradinghelper.js:37:22)
+    at async cron.schedule.scheduled [as _execution] (C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:913:9) {
+  code: 'ECONNRESET',
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false
+    },
+    adapter: [ 'xhr', 'http', 'fetch' ],
+    transformRequest: [ [Function: transformRequest] ],
+    transformResponse: [ [Function: transformResponse] ],
+    timeout: 0,
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    env: { FormData: [Function], Blob: [class Blob] },
+    validateStatus: [Function: validateStatus],
+    headers: Object [AxiosHeaders] {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': undefined,
+      'User-Agent': 'axios/1.7.7',
+      'Accept-Encoding': 'gzip, compress, deflate, br'
+    },
+    params: { email: 'j', password: 'j' },
+    method: 'get',
+    url: 'https://management.srs-ssms.com/api/getdatamill',
+    data: undefined
+  },
+  request: <ref *1> Writable {
+    _events: {
+      close: undefined,
+      error: [Function: handleRequestError],
+      prefinish: undefined,
+      finish: undefined,
+      drain: undefined,
+      response: [Function: handleResponse],
+      socket: [Function: handleRequestSocket]
+    },
+    _writableState: WritableState {
+      highWaterMark: 16384,
+      length: 0,
+      corked: 0,
+      onwrite: [Function: bound onwrite],
+      writelen: 0,
+      bufferedIndex: 0,
+      pendingcb: 0,
+      [Symbol(kState)]: 17580812,
+      [Symbol(kBufferedValue)]: null
+    },
+    _maxListeners: undefined,
+    _options: {
+      maxRedirects: 21,
+      maxBodyLength: Infinity,
+      protocol: 'https:',
+      path: '/api/getdatamill?email=j&password=j',
+      method: 'GET',
+      headers: [Object: null prototype],
+      agents: [Object],
+      auth: undefined,
+      family: undefined,
+      beforeRedirect: [Function: dispatchBeforeRedirect],
+      beforeRedirects: [Object],
+      hostname: 'management.srs-ssms.com',
+      port: '',
+      agent: undefined,
+      nativeProtocols: [Object],
+      pathname: '/api/getdatamill',
+      search: '?email=j&password=j'
+    },
+    _ended: true,
+    _ending: true,
+    _redirectCount: 0,
+    _redirects: [],
+    _requestBodyLength: 0,
+    _requestBodyBuffers: [],
+    _eventsCount: 3,
+    _onNativeResponse: [Function (anonymous)],
+    _currentRequest: ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 7,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: false,
+      _last: true,
+      chunkedEncoding: false,
+      shouldKeepAlive: true,
+      maxRequestsOnConnectionReached: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: false,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      strictContentLength: false,
+      _contentLength: 0,
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      _closed: false,
+      socket: [TLSSocket],
+      _header: 'GET /api/getdatamill?email=j&password=j HTTP/1.1\r\n' +
+        'Accept: application/json, text/plain, */*\r\n' +
+        'User-Agent: axios/1.7.7\r\n' +
+        'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+        'Host: management.srs-ssms.com\r\n' +
+        'Connection: keep-alive\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: nop],
+      agent: [Agent],
+      socketPath: undefined,
+      method: 'GET',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      joinDuplicateHeaders: undefined,
+      path: '/api/getdatamill?email=j&password=j',
+      _ended: false,
+      res: null,
+      aborted: false,
+      timeoutCb: [Function: emitRequestTimeout],
+      upgradeOrConnect: false,
+      parser: null,
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: 'management.srs-ssms.com',
+      protocol: 'https:',
+      _redirectable: [Circular *1],
+      [Symbol(shapeMode)]: false,
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(kNeedDrain)]: false,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype],
+      [Symbol(errored)]: null,
+      [Symbol(kHighWaterMark)]: 16384,
+      [Symbol(kRejectNonStandardBodyWrites)]: false,
+      [Symbol(kUniqueHeaders)]: null
+    },
+    _currentUrl: 'https://management.srs-ssms.com/api/getdatamill?email=j&password=j',
+    [Symbol(shapeMode)]: true,
+    [Symbol(kCapture)]: false
+  },
+  cause: Error: socket hang up
+      at TLSSocket.socketOnEnd (node:_http_client:524:23)
+      at TLSSocket.emit (node:events:530:35)
+      at endReadableNT (node:internal/streams/readable:1696:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+    code: 'ECONNRESET'
+  }
+}
+Error fetching mill data: AxiosError: Client network socket disconnected before secure TLS connection was established
+    at AxiosError.from (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:876:14)
+    at RedirectableRequest.handleRequestError (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:3156:25)
+    at RedirectableRequest.emit (node:events:518:28)
+    at eventHandlers.<computed> (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\follow-redirects\index.js:49:24)
+    at ClientRequest.emit (node:events:518:28)
+    at TLSSocket.socketErrorListener (node:_http_client:500:9)
+    at TLSSocket.emit (node:events:518:28)
+    at emitErrorNT (node:internal/streams/destroy:169:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:128:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+    at Axios.request (C:\Users\Digital Architect SR\Desktop\bot_grading\node_modules\axios\dist\node\axios.cjs:4287:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async run_jobs_mill (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\grading\gradinghelper.js:37:22)
+    at async cron.schedule.scheduled [as _execution] (C:\Users\Digital Architect SR\Desktop\bot_grading\helper.js:913:9) {
+  localAddress: undefined,
+  port: 443,
+  host: 'management.srs-ssms.com',
+  path: null,
+  code: 'ECONNRESET',
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false
+    },
+    adapter: [ 'xhr', 'http', 'fetch' ],
+    transformRequest: [ [Function: transformRequest] ],
+    transformResponse: [ [Function: transformResponse] ],
+    timeout: 0,
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    env: { FormData: [Function], Blob: [class Blob] },
+    validateStatus: [Function: validateStatus],
+    headers: Object [AxiosHeaders] {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': undefined,
+      'User-Agent': 'axios/1.7.7',
+      'Accept-Encoding': 'gzip, compress, deflate, br'
+    },
+    params: { email: 'j', password: 'j' },
+    method: 'get',
+    url: 'https://management.srs-ssms.com/api/getdatamill',
+    data: undefined
+  },
+  request: <ref *1> Writable {
+    _events: {
+      close: undefined,
+      error: [Function: handleRequestError],
+      prefinish: undefined,
+      finish: undefined,
+      drain: undefined,
+      response: [Function: handleResponse],
+      socket: [Function: handleRequestSocket]
+    },
+    _writableState: WritableState {
+      highWaterMark: 16384,
+      length: 0,
+      corked: 0,
+      onwrite: [Function: bound onwrite],
+      writelen: 0,
+      bufferedIndex: 0,
+      pendingcb: 0,
+      [Symbol(kState)]: 17580812,
+      [Symbol(kBufferedValue)]: null
+    },
+    _maxListeners: undefined,
+    _options: {
+      maxRedirects: 21,
+      maxBodyLength: Infinity,
+      protocol: 'https:',
+      path: '/api/getdatamill?email=j&password=j',
+      method: 'GET',
+      headers: [Object: null prototype],
+      agents: [Object],
+      auth: undefined,
+      family: undefined,
+      beforeRedirect: [Function: dispatchBeforeRedirect],
+      beforeRedirects: [Object],
+      hostname: 'management.srs-ssms.com',
+      port: '',
+      agent: undefined,
+      nativeProtocols: [Object],
+      pathname: '/api/getdatamill',
+      search: '?email=j&password=j'
+    },
+    _ended: true,
+    _ending: true,
+    _redirectCount: 0,
+    _redirects: [],
+    _requestBodyLength: 0,
+    _requestBodyBuffers: [],
+    _eventsCount: 3,
+    _onNativeResponse: [Function (anonymous)],
+    _currentRequest: ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 7,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: false,
+      _last: true,
+      chunkedEncoding: false,
+      shouldKeepAlive: true,
+      maxRequestsOnConnectionReached: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: false,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      strictContentLength: false,
+      _contentLength: 0,
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      _closed: false,
+      socket: [TLSSocket],
+      _header: 'GET /api/getdatamill?email=j&password=j HTTP/1.1\r\n' +
+        'Accept: application/json, text/plain, */*\r\n' +
+        'User-Agent: axios/1.7.7\r\n' +
+        'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+        'Host: management.srs-ssms.com\r\n' +
+        'Connection: keep-alive\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: nop],
+      agent: [Agent],
+      socketPath: undefined,
+      method: 'GET',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      joinDuplicateHeaders: undefined,
+      path: '/api/getdatamill?email=j&password=j',
+      _ended: false,
+      res: null,
+      aborted: false,
+      timeoutCb: [Function: emitRequestTimeout],
+      upgradeOrConnect: false,
+      parser: null,
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: 'management.srs-ssms.com',
+      protocol: 'https:',
+      _redirectable: [Circular *1],
+      [Symbol(shapeMode)]: false,
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(kNeedDrain)]: false,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype],
+      [Symbol(errored)]: null,
+      [Symbol(kHighWaterMark)]: 16384,
+      [Symbol(kRejectNonStandardBodyWrites)]: false,
+      [Symbol(kUniqueHeaders)]: null
+    },
+    _currentUrl: 'https://management.srs-ssms.com/api/getdatamill?email=j&password=j',
+    [Symbol(shapeMode)]: true,
+    [Symbol(kCapture)]: false
+  },
+  cause: Error: Client network socket disconnected before secure TLS connection was established
+      at TLSSocket.onConnectEnd (node:_tls_wrap:1727:19)
+      at TLSSocket.emit (node:events:530:35)
+      at endReadableNT (node:internal/streams/readable:1696:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+    code: 'ECONNRESET',
+    path: null,
+    host: 'management.srs-ssms.com',
+    port: 443,
+    localAddress: undefined
+  }
+}
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Closing stale open session for new outgoing prekey bundle
+Error processing task (send_document): Error: Failed to send WhatsApp document: Invalid document parameter. Expected a URL, base64 string, or Buffer object.
+    at Queue.sendDocument (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:288:13)
+    at Queue.executeTask (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:167:20)
+    at async Queue.process (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:122:7)
+Error processing task (send_document): Error: Failed to send WhatsApp document: Invalid document parameter. Expected a URL, base64 string, or Buffer object.
+    at Queue.sendDocument (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:288:13)
+    at Queue.executeTask (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:167:20)
+    at async Queue.process (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:122:7)
+Error processing task (send_document): Error: Failed to send WhatsApp document: Invalid document parameter. Expected a URL, base64 string, or Buffer object.
+    at Queue.sendDocument (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:288:13)
+    at Queue.executeTask (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:167:20)
+    at async Queue.process (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:122:7)
+Error processing task (send_document): Error: Failed to send WhatsApp document: Invalid document parameter. Expected a URL, base64 string, or Buffer object.
+    at Queue.sendDocument (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:288:13)
+    at Queue.executeTask (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:167:20)
+    at async Queue.process (C:\Users\Digital Architect SR\Desktop\bot_grading\utils\queue.js:122:7)
