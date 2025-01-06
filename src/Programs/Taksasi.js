@@ -157,11 +157,18 @@ class TaksasiProgram {
             await axios.post(apiUrl, formData);
           }
 
+          // console.log(responseData, estate, newdate);
+          logger.info.taksasi(
+            `PDF taksasi ${estate} tanggal ${newdate} Berhasil dikirim`
+          );
           return {
             status: 200,
             message: `PDF taksasi ${estate} Berhasil dikirim`,
           };
         } else {
+          logger.info.taksasi(
+            `PDF taksasi ${estate} tanggal ${newdate} Tidak Ditemukan`
+          );
           return {
             status: 404,
             message: `PDF taksasi Tidak Ditemukan`,
@@ -185,41 +192,36 @@ class TaksasiProgram {
   async sendfailcronjob() {
     try {
       const apiUrl = 'http://qc-apps2.test/api/checkcronjob';
-      // const apiUrl = 'https://qc-apps.srs-ssms.com/api/checkcronjob';
       const response = await axios.get(apiUrl);
 
       let data = response.data.cronfail;
       // console.log(data);
 
-      logger.info.taksasi('Cronjob fail:', JSON.stringify(data));
-      // console.log(data);
-      // if (data.length === 0) {
-      //   return {
-      //     status: 200,
-      //     message: 'TIdak ada Fail Cronjob',
-      //   };
-      // } else {
-      //   for (const task of data) {
-      //     try {
-      //       await sendtaksasiest(
-      //         task.estate,
-      //         task.group_id,
-      //         'null',
-      //         sock,
-      //         task.id,
-      //         'null'
-      //       );
-      //       // Task completed successfully
-      //     } catch (error) {
-      //       // Handle error here if needed
-      //       console.log(error);
-      //       return {
-      //         status: 500,
-      //         message: 'Mengirim fail Cronjob gagal',
-      //       };
-      //     }
-      //   }
-      // }
+      // logger.info.taksasi('Cronjob fail:', data);
+
+      if (data.length === 0) {
+        return {
+          status: 200,
+          message: 'TIdak ada Fail Cronjob',
+        };
+      } else {
+        for (const task of data) {
+          try {
+            await this.sendtaksasiest(
+              task.estate,
+              '120363384470022318@g.us',
+              'null',
+              'null'
+            );
+          } catch (error) {
+            console.log(error);
+            return {
+              status: 500,
+              message: 'Mengirim fail Cronjob gagal',
+            };
+          }
+        }
+      }
       return {
         status: 200,
         message: 'Menggirim Fail Cronjob Berhasil',
