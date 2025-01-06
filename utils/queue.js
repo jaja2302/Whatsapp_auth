@@ -262,9 +262,17 @@ class Queue {
       else if (typeof document === 'string') {
         documentBuffer = Buffer.from(document, 'base64');
       }
-      // Check if document is already a Buffer
+      // Check if document is a Buffer or has Buffer-like structure
       else if (Buffer.isBuffer(document)) {
         documentBuffer = document;
+      }
+      // Handle case where document is a Buffer-like object
+      else if (
+        document &&
+        document.type === 'Buffer' &&
+        Array.isArray(document.data)
+      ) {
+        documentBuffer = Buffer.from(document.data);
       } else {
         throw new Error(
           'Invalid document parameter. Expected a URL, base64 string, or Buffer object.'
