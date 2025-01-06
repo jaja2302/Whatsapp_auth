@@ -184,12 +184,14 @@ class TaksasiProgram {
 
   async sendfailcronjob() {
     try {
-      // const apiUrl = 'http://qc-apps2.test/api/checkcronjob';
-      const apiUrl = 'https://qc-apps.srs-ssms.com/api/checkcronjob';
+      const apiUrl = 'http://qc-apps2.test/api/checkcronjob';
+      // const apiUrl = 'https://qc-apps.srs-ssms.com/api/checkcronjob';
       const response = await axios.get(apiUrl);
 
       let data = response.data.cronfail;
-      logger.info.taksasi('Cronjob fail:', data);
+      // console.log(data);
+
+      logger.info.taksasi('Cronjob fail:', JSON.stringify(data));
       // console.log(data);
       // if (data.length === 0) {
       //   return {

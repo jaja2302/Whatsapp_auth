@@ -46,7 +46,7 @@
       "sendfailcronjob": "*/1 * * * *"
     },
     "cronjob_status": {
-      "sendfailcronjob": "stopped"
+      "sendfailcronjob": "active"
     },
     "groups": {
       "default": "120363384470022318@g.us"

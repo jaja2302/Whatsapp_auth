@@ -95,24 +95,24 @@ class CronJobRunner {
 
   async runJob(program, jobName) {
     try {
-      const programInstance = this.programs[program];
+      // Periksa status job dari settings
+      const settings = await cronJobSettings.loadSettings(program);
+      const jobStatus = settings.cronjob_status?.[jobName];
 
-      if (!programInstance) {
-        throw new Error(`Program ${program} not found`);
+      // Jika status 'stopped', jangan jalankan job
+      if (jobStatus === 'stopped') {
+        logger.info.whatsapp(`Skipping ${program}-${jobName}: Job is stopped`);
+        return;
       }
 
+      const programInstance = this.programs[program];
       if (typeof programInstance[jobName] === 'function') {
-        logger.info[program](`Running ${program} - ${jobName}`);
         await programInstance[jobName]();
-        logger.info[program](`Completed ${program} - ${jobName}`);
       } else {
         throw new Error(`Method ${jobName} not found in ${program} program`);
       }
     } catch (error) {
-      logger.error[program](
-        `Error running job ${program} - ${jobName}:`,
-        error
-      );
+      logger.error.whatsapp(`Error running job ${program}-${jobName}:`, error);
     }
   }
 
@@ -289,20 +289,20 @@ class CronJobRunner {
   async startJob(programName, jobName) {
     try {
       const settings = await cronJobSettings.loadSettings(programName);
-      const schedule = settings.cronjobs[jobName];
+      const schedule = settings.cronjobs?.[jobName];
 
       if (!schedule) {
-        throw new Error(`Job ${jobName} not found in settings`);
+        throw new Error(`No schedule found for job ${jobName}`);
       }
 
       const jobKey = `${programName}-${jobName}`;
 
-      // Stop existing job if running
+      // Stop existing job if any
       if (this.jobs[jobKey]) {
         this.jobs[jobKey].stop();
       }
 
-      // Start new job
+      // Create new job
       this.jobs[jobKey] = cron.schedule(
         schedule,
         () => this.runJob(programName, jobName),

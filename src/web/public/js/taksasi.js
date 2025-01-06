@@ -3,11 +3,40 @@ document.addEventListener('DOMContentLoaded', function () {
   const taksasiLogs = document.getElementById('taksasi-logs');
   const programStatusDiv = document.getElementById('program-status');
 
-  // Helper function to add logs
+  // Helper function untuk flatten object
+  function formatLogMessage(message) {
+    if (typeof message === 'object') {
+      if (Array.isArray(message)) {
+        // Jika array, format setiap item
+        return message
+          .map((item) => {
+            if (typeof item === 'object') {
+              return Object.entries(item)
+                .map(([key, value]) => `${key}: ${value}`)
+                .join(', ');
+            }
+            return item;
+          })
+          .join('\n');
+      } else {
+        // Jika single object
+        return Object.entries(message)
+          .map(([key, value]) => `${key}: ${value}`)
+          .join(', ');
+      }
+    }
+    return message;
+  }
+
+  // Helper function untuk add logs dengan format yang lebih baik
   function addLog(message, level = 'info') {
     const logEntry = document.createElement('div');
     logEntry.className = 'p-2 border-b border-gray-100';
-    logEntry.textContent = `${new Date().toLocaleTimeString()} - ${message}`;
+
+    // Format message jika object
+    const formattedMessage = formatLogMessage(message);
+
+    logEntry.textContent = `${new Date().toLocaleTimeString()} - ${formattedMessage}`;
 
     if (level === 'error') {
       logEntry.classList.add('text-red-600');
@@ -215,11 +244,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // Listen for taksasi logs
+  // Listen for taksasi logs dengan format yang lebih baik
   socket.on('log-taksasi', (data) => {
     const message = Array.isArray(data.message)
-      ? data.message.join(' ')
-      : data.message;
+      ? data.message.map(formatLogMessage).join(' ')
+      : formatLogMessage(data.message);
     addLog(message, data.level);
   });
 
