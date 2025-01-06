@@ -472,9 +472,6 @@ async function handleTaksasi(data, sock) {
 
 module.exports = {
   handleTaksasi,
-  // botTaksasi,
-  // userTalsasiChoice,
-  // timeoutHandlestaksasi,
   sendtaksasiest,
   sendfailcronjob,
   Generateandsendtaksasi,

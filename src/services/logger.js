@@ -23,6 +23,8 @@ class Logger {
           this.broadcast(level, 'whatsapp', message, ...args),
         smartlabs: (message, ...args) =>
           this.broadcast(level, 'smartlabs', message, ...args),
+        taksasi: (message, ...args) =>
+          this.broadcast(level, 'taksasi', message, ...args),
         general: (message, ...args) =>
           this.broadcast(level, 'general', message, ...args),
         // Add more sources as needed

@@ -7,6 +7,7 @@
 /src/web/data/failed_jobs.json
 /src/web/data/message_queue.json
 /src/web/data/queue_state.json
+/src/web/public/css/output.css
 /auth_info
 
 .codegpt

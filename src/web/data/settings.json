@@ -39,5 +39,17 @@
     "cronjob_status": {
       "getdataSmartlabs": "active"
     }
+  },
+  "taksasi": {
+    "status": "active",
+    "cronjobs": {
+      "sendfailcronjob": "*/1 * * * *"
+    },
+    "cronjob_status": {
+      "sendfailcronjob": "stopped"
+    },
+    "groups": {
+      "default": "120363384470022318@g.us"
+    }
   }
 }

@@ -3,7 +3,8 @@ const { DateTime } = require('luxon');
 const logger = require('../services/logger');
 const pusherService = require('../services/pusher');
 const puppeteer = require('puppeteer');
-
+const settings = require('../web/data/settings.json');
+const cronjobSettings = require('../services/CronJobSettings');
 class TaksasiProgram {
   constructor() {
     this.running = false;
@@ -181,8 +182,60 @@ class TaksasiProgram {
     }
   }
 
+  async sendfailcronjob() {
+    try {
+      // const apiUrl = 'http://qc-apps2.test/api/checkcronjob';
+      const apiUrl = 'https://qc-apps.srs-ssms.com/api/checkcronjob';
+      const response = await axios.get(apiUrl);
+
+      let data = response.data.cronfail;
+      logger.info.taksasi('Cronjob fail:', data);
+      // console.log(data);
+      // if (data.length === 0) {
+      //   return {
+      //     status: 200,
+      //     message: 'TIdak ada Fail Cronjob',
+      //   };
+      // } else {
+      //   for (const task of data) {
+      //     try {
+      //       await sendtaksasiest(
+      //         task.estate,
+      //         task.group_id,
+      //         'null',
+      //         sock,
+      //         task.id,
+      //         'null'
+      //       );
+      //       // Task completed successfully
+      //     } catch (error) {
+      //       // Handle error here if needed
+      //       console.log(error);
+      //       return {
+      //         status: 500,
+      //         message: 'Mengirim fail Cronjob gagal',
+      //       };
+      //     }
+      //   }
+      // }
+      return {
+        status: 200,
+        message: 'Menggirim Fail Cronjob Berhasil',
+      };
+    } catch (error) {
+      return {
+        status: 500,
+        message: 'Mengirim fail Cronjob gagal',
+      };
+    }
+  }
+
   async handleTaksasiNotification(data) {
     logger.info.taksasi('Processing taksasi notification:', data);
+    // const groups = cronjobSettings.getSettings('taksasi.groups') || {};
+    // for (const itemdata of data.data) {
+    //   const targetGroup = this.getTargetGroup(itemdata.mill, groups);
+    // }
     // Implement notification handling logic here
     // This will depend on the structure of your taksasi notifications
   }

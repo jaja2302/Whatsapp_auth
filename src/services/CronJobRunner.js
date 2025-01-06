@@ -2,6 +2,7 @@ const cron = require('node-cron');
 const cronJobSettings = require('./CronJobSettings');
 const GradingProgram = require('../Programs/Grading');
 const logger = require('./logger');
+const TaksasiProgram = require('../Programs/Taksasi');
 
 class CronJobRunner {
   constructor() {
@@ -14,8 +15,7 @@ class CronJobRunner {
   initializePrograms() {
     this.programs = {
       grading: new GradingProgram(),
-      // Tambahkan program lain di sini
-      // smartlabs: new SmartLabsProgram(),
+      taksasi: new TaksasiProgram(),
       // dll
     };
   }

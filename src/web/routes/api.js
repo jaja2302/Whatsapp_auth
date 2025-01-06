@@ -3,6 +3,7 @@ const router = express.Router();
 const DashboardController = require('../controllers/dashboardController');
 const GradingController = require('../controllers/gradingController');
 const SmartlabsController = require('../controllers/smartlabsController');
+const TaksasiController = require('../controllers/taksasiController');
 const logger = require('../../services/logger');
 const fs = require('fs').promises;
 const path = require('path');
@@ -20,6 +21,7 @@ router.use((req, res, next) => {
 const dashboardController = new DashboardController(global.io);
 const gradingController = new GradingController(global.io);
 const smartlabsController = new SmartlabsController(global.io);
+const taksasiController = new TaksasiController(global.io);
 
 // Dashboard routes
 router.get('/status', (req, res) => {
@@ -90,6 +92,33 @@ router.post('/smartlabs/start', (req, res) => {
 router.post('/smartlabs/stop', (req, res) => {
   logger.info.smartlabs('Stop Smartlabs program request received');
   smartlabsController.stopProgram(req, res);
+});
+
+// Taksasi routes
+router.get('/taksasi/get-cron-settings', (req, res) => {
+  logger.debug.taksasi('Getting cron settings');
+  taksasiController.getCronSettings(req, res);
+});
+
+router.post('/taksasi/update-cron-settings', (req, res) => {
+  logger.info.taksasi('Update cron settings request received');
+  taksasiController.updateCronSettings(req, res);
+});
+
+router.get('/taksasi/get-cron-status', (req, res) => {
+  logger.debug.taksasi('Getting cron status');
+  taksasiController.getCronJobStatus(req, res);
+});
+
+// Individual job control routes for Taksasi
+router.post('/taksasi/jobs/:jobName/start', (req, res) => {
+  logger.info.taksasi(`Start job ${req.params.jobName} request received`);
+  taksasiController.startJob(req, res);
+});
+
+router.post('/taksasi/jobs/:jobName/stop', (req, res) => {
+  logger.info.taksasi(`Stop job ${req.params.jobName} request received`);
+  taksasiController.stopJob(req, res);
 });
 
 // Error handling middleware
