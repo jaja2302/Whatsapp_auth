@@ -3,6 +3,7 @@ const cronJobSettings = require('./CronJobSettings');
 const GradingProgram = require('../Programs/Grading');
 const logger = require('./logger');
 const TaksasiProgram = require('../Programs/Taksasi');
+const IotProgram = require('../Programs/Iot');
 
 class CronJobRunner {
   constructor() {
@@ -16,6 +17,7 @@ class CronJobRunner {
     this.programs = {
       grading: new GradingProgram(),
       taksasi: new TaksasiProgram(),
+      iot: new IotProgram(),
       // dll
     };
   }

@@ -54,5 +54,32 @@
   },
   "izinkebun": {
     "status": "stopped"
+  },
+  "iot": {
+    "status": "stopped",
+    "cronjobs": {
+      "get_iot_weatherstation": "*/1 * * * *",
+      "get_data_harian_aws": "*/1 * * * *",
+      "get_iot_weatherstation_data_gap": "*/5 * * * *"
+    },
+    "cronjob_status": {
+      "get_iot_weatherstation": "active",
+      "get_data_harian_aws": "active",
+      "get_iot_weatherstation_data_gap": "stopped"
+    },
+    "groups": {
+      "idgroupiot": "120363339511378953@g.us",
+      "idgroupiot_sge": "120363347403672053@g.us",
+      "idgroupiot_rge": "120363329617301042@g.us",
+      "idgroupiot_sulung": "120363349319318472@g.us",
+      "idgroupiot_nke": "120363339978223243@g.us",
+      "idgroupiot_sje": "120363343703891310@g.us",
+      "default": "120363384470022318@g.us"
+    },
+    "credentials": {
+      "email": "j",
+      "password": "j"
+    },
+    "timezone": "Asia/Jakarta"
   }
 }

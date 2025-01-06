@@ -15,6 +15,7 @@ class DashboardController {
       izinkebun: require('../../Programs/Izinkebun'),
       grading: require('../../Programs/Grading'),
       taksasi: require('../../Programs/Taksasi'),
+      iot: require('../../Programs/Iot'),
     };
 
     this.instances = {};

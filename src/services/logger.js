@@ -27,6 +27,8 @@ class Logger {
           this.broadcast(level, 'taksasi', message, ...args),
         izinkebun: (message, ...args) =>
           this.broadcast(level, 'izinkebun', message, ...args),
+        iot: (message, ...args) =>
+          this.broadcast(level, 'iot', message, ...args),
         general: (message, ...args) =>
           this.broadcast(level, 'general', message, ...args),
         // Add more sources as needed

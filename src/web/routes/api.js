@@ -5,6 +5,7 @@ const GradingController = require('../controllers/gradingController');
 const SmartlabsController = require('../controllers/smartlabsController');
 const TaksasiController = require('../controllers/taksasiController');
 const IzinKebunController = require('../controllers/izinkebunController');
+const IotController = require('../controllers/iotController');
 const logger = require('../../services/logger');
 const fs = require('fs').promises;
 const path = require('path');
@@ -24,6 +25,7 @@ const gradingController = new GradingController(global.io);
 const smartlabsController = new SmartlabsController(global.io);
 const taksasiController = new TaksasiController(global.io);
 const izinkebunController = new IzinKebunController(global.io);
+const iotController = new IotController(global.io);
 
 // Dashboard routes
 router.get('/status', (req, res) => {
@@ -150,6 +152,37 @@ router.post('/izinkebun/start', (req, res) => {
 router.post('/izinkebun/stop', (req, res) => {
   logger.info.izinkebun('Stop Izin Kebun program request received');
   izinkebunController.stopProgram(req, res);
+});
+
+// Add IOT routes
+router.get('/iot/get-cron-settings', (req, res) => {
+  logger.debug.iot('Getting cron settings');
+  iotController.getCronSettings(req, res);
+});
+
+router.post('/iot/update-cron-settings', (req, res) => {
+  logger.info.iot('Update cron settings request received');
+  iotController.updateCronSettings(req, res);
+});
+
+router.get('/iot/get-cron-status', (req, res) => {
+  logger.debug.iot('Getting cron status');
+  iotController.getCronJobStatus(req, res);
+});
+
+router.post('/iot/jobs/:jobName/start', (req, res) => {
+  logger.info.iot(`Start job ${req.params.jobName} request received`);
+  iotController.startJob(req, res);
+});
+
+router.post('/iot/jobs/:jobName/stop', (req, res) => {
+  logger.info.iot(`Stop job ${req.params.jobName} request received`);
+  iotController.stopJob(req, res);
+});
+
+router.get('/iot/fetch-weather-data', (req, res) => {
+  logger.info.iot('Fetch weather data request received');
+  iotController.fetchWeatherData(req, res);
 });
 
 // Error handling middleware

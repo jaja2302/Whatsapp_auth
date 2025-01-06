@@ -1,7 +1,7 @@
 class Dashboard {
   constructor() {
     // Initialize program controls
-    this.programs = ['smartlabs', 'izinkebun', 'grading', 'taksasi'];
+    this.programs = ['smartlabs', 'izinkebun', 'grading', 'taksasi', 'iot'];
 
     // Program specific elements
     this.programButtons = {};

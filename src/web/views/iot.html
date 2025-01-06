@@ -1,0 +1,275 @@
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-3xl font-bold text-gray-800 mb-8">IOT Programs</h1>
+
+  <!-- IOT Control Panel -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Weather Station Status -->
+    <div class="bg-white rounded-lg shadow-md">
+      <div class="border-b px-4 py-3">
+        <h2 class="text-xl font-semibold text-gray-700">
+          Weather Station Status
+        </h2>
+      </div>
+      <div class="p-4">
+        <div class="space-y-4">
+          <button
+            id="fetch-weather-data"
+            class="w-full px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2"
+          >
+            Fetch Weather Station Data
+          </button>
+          <div id="weather-status" class="text-sm text-gray-600">
+            Last Updated: Never
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IOT Statistics -->
+    <div class="bg-white rounded-lg shadow-md">
+      <div class="border-b px-4 py-3">
+        <h2 class="text-xl font-semibold text-gray-700">Statistics</h2>
+      </div>
+      <div class="p-4">
+        <div class="grid grid-cols-2 gap-4">
+          <div class="text-center p-4 bg-gray-50 rounded">
+            <div class="text-2xl font-bold text-blue-600" id="total-processed">
+              0
+            </div>
+            <div class="text-sm text-gray-600">Total Processed</div>
+          </div>
+          <div class="text-center p-4 bg-gray-50 rounded">
+            <div class="text-2xl font-bold text-green-600" id="success-rate">
+              0%
+            </div>
+            <div class="text-sm text-gray-600">Success Rate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Activity -->
+  <div class="mt-6 bg-white rounded-lg shadow-md">
+    <div class="border-b px-4 py-3">
+      <h2 class="text-xl font-semibold text-gray-700">Recent IOT Activity</h2>
+    </div>
+    <div class="p-4">
+      <div
+        id="iot-logs"
+        class="h-96 overflow-y-auto space-y-2 font-mono text-sm"
+      >
+        <!-- Logs will be inserted here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Cron Job Settings -->
+  <div class="mt-6 bg-white rounded-lg shadow-md">
+    <div class="border-b px-4 py-3">
+      <h2 class="text-xl font-semibold text-gray-700">Cron Job Settings</h2>
+    </div>
+    <div class="p-4">
+      <form id="cron-settings-form" class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- Weather Station Schedule -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700"
+              >Weather Station Schedule</label
+            >
+            <select
+              id="get_iot_weatherstation"
+              name="get_iot_weatherstation"
+              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            >
+              <!-- Options will be populated by JavaScript -->
+            </select>
+            <p class="mt-1 text-sm text-gray-500">Current: Every 5 minutes</p>
+          </div>
+
+          <!-- Weather Station Gap Schedule -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700"
+              >Weather Station Gap Schedule</label
+            >
+            <select
+              id="get_iot_weatherstation_data_gap"
+              name="get_iot_weatherstation_data_gap"
+              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            >
+              <!-- Options will be populated by JavaScript -->
+            </select>
+            <p class="mt-1 text-sm text-gray-500">Current: Every 15 minutes</p>
+          </div>
+
+          <!-- Daily AWS Schedule -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700"
+              >Daily AWS Schedule</label
+            >
+            <select
+              id="get_data_harian_aws"
+              name="get_data_harian_aws"
+              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            >
+              <!-- Options will be populated by JavaScript -->
+            </select>
+            <p class="mt-1 text-sm text-gray-500">Current: Every hour</p>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700"
+            >Timezone</label
+          >
+          <select
+            id="timezone"
+            name="timezone"
+            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+          >
+            <!-- Options will be populated by JavaScript -->
+          </select>
+        </div>
+
+        <button
+          type="submit"
+          class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2"
+        >
+          Update Cron Settings
+        </button>
+      </form>
+
+      <!-- Program Status and Controls -->
+      <div class="mt-6 border p-4 rounded-lg">
+        <h3 class="text-lg font-medium mb-2">IOT Program Status</h3>
+
+        <!-- Program Status -->
+        <div class="flex items-center justify-between mb-4">
+          <div class="text-sm text-gray-600" id="program-status">
+            Status: Checking...
+          </div>
+          <div class="space-x-2">
+            <button
+              type="button"
+              id="refresh-status"
+              class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2"
+            >
+              <span class="flex items-center">
+                <svg
+                  class="w-4 h-4 mr-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                  />
+                </svg>
+                Refresh Status
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Individual Job Controls -->
+        <div class="space-y-4">
+          <!-- Weather Station Controls -->
+          <div class="border p-3 rounded">
+            <div class="flex justify-between items-center">
+              <div>
+                <h4 class="font-medium">Weather Station</h4>
+                <p
+                  class="text-sm text-gray-600"
+                  id="status-get_iot_weatherstation"
+                >
+                  Status: Checking...
+                </p>
+              </div>
+              <div class="space-x-2">
+                <button
+                  type="button"
+                  id="stop-get_iot_weatherstation"
+                  class="px-3 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600 focus:outline-none focus:ring-2"
+                >
+                  Stop
+                </button>
+                <button
+                  type="button"
+                  id="start-get_iot_weatherstation"
+                  class="px-3 py-1 bg-green-500 text-white text-sm rounded hover:bg-green-600 focus:outline-none focus:ring-2"
+                >
+                  Start
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Weather Station Gap Controls -->
+          <div class="border p-3 rounded">
+            <div class="flex justify-between items-center">
+              <div>
+                <h4 class="font-medium">Weather Station Gap</h4>
+                <p
+                  class="text-sm text-gray-600"
+                  id="status-get_iot_weatherstation_data_gap"
+                >
+                  Status: Checking...
+                </p>
+              </div>
+              <div class="space-x-2">
+                <button
+                  type="button"
+                  id="stop-get_iot_weatherstation_data_gap"
+                  class="px-3 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600 focus:outline-none focus:ring-2"
+                >
+                  Stop
+                </button>
+                <button
+                  type="button"
+                  id="start-get_iot_weatherstation_data_gap"
+                  class="px-3 py-1 bg-green-500 text-white text-sm rounded hover:bg-green-600 focus:outline-none focus:ring-2"
+                >
+                  Start
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Daily AWS Controls -->
+          <div class="border p-3 rounded">
+            <div class="flex justify-between items-center">
+              <div>
+                <h4 class="font-medium">Daily AWS</h4>
+                <p
+                  class="text-sm text-gray-600"
+                  id="status-get_data_harian_aws"
+                >
+                  Status: Checking...
+                </p>
+              </div>
+              <div class="space-x-2">
+                <button
+                  type="button"
+                  id="stop-get_data_harian_aws"
+                  class="px-3 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600 focus:outline-none focus:ring-2"
+                >
+                  Stop
+                </button>
+                <button
+                  type="button"
+                  id="start-get_data_harian_aws"
+                  class="px-3 py-1 bg-green-500 text-white text-sm rounded hover:bg-green-600 focus:outline-none focus:ring-2"
+                >
+                  Start
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
