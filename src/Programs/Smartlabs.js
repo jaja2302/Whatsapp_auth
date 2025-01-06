@@ -1,6 +1,7 @@
 const pusherService = require('../services/pusher');
 const queue = require('../services/queue');
 const logger = require('../services/logger');
+const { isProgramActive } = require('../utils/programHelper');
 
 class SmartlabsProgram {
   constructor() {
@@ -52,6 +53,10 @@ class SmartlabsProgram {
 
   async handleSmartlabsNotification(itemdata) {
     logger.info.smartlabs('Received Smartlabs notification:', itemdata);
+
+    if (!isProgramActive('smartlabs')) {
+      return 'smartlabs program not started: Status is not active';
+    }
 
     // Handle test data
     if (itemdata === 'testing' || typeof itemdata === 'string') {
@@ -158,6 +163,10 @@ class SmartlabsProgram {
   }
 
   async sendInvoice(dataitem) {
+    if (!isProgramActive('smartlabs')) {
+      return 'smartlabs program not started: Status is not active';
+    }
+
     try {
       const response = await axios.get(
         'https://management.srs-ssms.com/api/invoices_smartlabs',
@@ -184,11 +193,16 @@ class SmartlabsProgram {
             caption: 'Invoice Smartlabs',
           },
         });
+
+        logger.info.smartlabs('Invoice Smartlabs sent successfully');
+        return 'Invoice Smartlabs sent successfully';
       } else {
         logger.error.smartlabs('PDF not found in the API response smartlab.');
+        return 'PDF not found in the API response smartlab.';
       }
     } catch (error) {
       logger.error.smartlabs('Error sending invoice:', error);
+      return 'Error sending invoice: ' + error;
     }
   }
 }

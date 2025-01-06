@@ -13,7 +13,7 @@ class GradingController {
     try {
       const data = await gradingProgram.getMillData();
       logger.info.grading('Mill data fetched successfully:', data);
-      res.json(data);
+      res.json({ success: true, data: data });
     } catch (error) {
       // logger.error.grading('Error fetching mill data: ada', error);
       res.status(500).json({ success: false, error: error.message });

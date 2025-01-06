@@ -5,6 +5,7 @@ const pusherService = require('../services/pusher');
 const puppeteer = require('puppeteer');
 const settings = require('../web/data/settings.json');
 const cronjobSettings = require('../services/CronJobSettings');
+const { isProgramActive } = require('../utils/programHelper');
 class TaksasiProgram {
   constructor() {
     this.running = false;
@@ -119,6 +120,10 @@ class TaksasiProgram {
   }
 
   async sendtaksasiest(estate, group_id, taskid, tanggal) {
+    if (!isProgramActive('taksasi')) {
+      return 'taksasi program not started: Status is not active';
+    }
+
     try {
       const newdate =
         tanggal === 'null' || tanggal === null
@@ -190,6 +195,10 @@ class TaksasiProgram {
   }
 
   async sendfailcronjob() {
+    if (!isProgramActive('taksasi')) {
+      return 'taksasi program not started: Status is not active';
+    }
+
     try {
       const apiUrl = 'http://qc-apps2.test/api/checkcronjob';
       const response = await axios.get(apiUrl);

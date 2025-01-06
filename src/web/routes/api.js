@@ -53,9 +53,6 @@ router.post('/queue/pause', (req, res) => {
 
 // Grading routes
 router.get('/grading/fetch-mill-data', (req, res) => {
-  // console.log(req.body, res);
-
-  // logger.info.grading('Fetch mill data request received');
   gradingController.fetchMillData(req, res);
 });
 
@@ -121,6 +118,22 @@ router.post('/taksasi/jobs/:jobName/start', (req, res) => {
 router.post('/taksasi/jobs/:jobName/stop', (req, res) => {
   logger.info.taksasi(`Stop job ${req.params.jobName} request received`);
   taksasiController.stopJob(req, res);
+});
+
+// Add these new routes for taksasi program control
+router.get('/taksasi/get-status', (req, res) => {
+  logger.debug.taksasi('Getting Taksasi status');
+  taksasiController.getStatus(req, res);
+});
+
+router.post('/taksasi/start', (req, res) => {
+  logger.info.taksasi('Start Taksasi program request received');
+  taksasiController.startProgram(req, res);
+});
+
+router.post('/taksasi/stop', (req, res) => {
+  logger.info.taksasi('Stop Taksasi program request received');
+  taksasiController.stopProgram(req, res);
 });
 
 // Izin Kebun routes
@@ -204,4 +217,16 @@ router.post(
   gradingController.stopJob.bind(gradingController)
 );
 
+// Generic program control routes
+router.get('/program/:program/status', (req, res) => {
+  dashboardController.getProgramStatus(req, res);
+});
+
+router.post('/program/:program/start', (req, res) => {
+  dashboardController.startProgram(req, res);
+});
+
+router.post('/program/:program/stop', (req, res) => {
+  dashboardController.stopProgram(req, res);
+});
 module.exports = router;

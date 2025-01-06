@@ -5,6 +5,7 @@ const pusherService = require('../services/pusher');
 const settings = require('../web/data/settings.json');
 const credentials = settings.grading.credentials;
 const groups = settings.grading.groups;
+const { isProgramActive } = require('../utils/programHelper');
 
 class GradingProgram {
   constructor() {
@@ -12,6 +13,8 @@ class GradingProgram {
     this.CHANNEL_NAME = 'my-channel';
     this.EVENT_NAME = 'gradingmillpdf'; // event name untuk grading
     this.pusherWatcher = null;
+    this.credentials = credentials;
+    this.groups = groups;
     if (!global.queue) {
       global.queue = require('../services/queue');
     }
@@ -92,25 +95,28 @@ class GradingProgram {
   }
 
   async runJobsMill() {
+    if (!isProgramActive('grading')) {
+      return 'Grading program not started: Status is not active';
+    }
+
     try {
-      logger.info.grading('Fetching mill data...');
-      const credentials =
-        cronJobSettings.getSettings('grading.credentials') || {};
-      const response = await axios.get('http://erpda.test/api/getdatamill', {
-        params: credentials,
-      });
-      logger.info.grading('Mill data fetched successfully');
+      const response = await axios.get(
+        'https://management.srs-ssms.com/api/getdatamill',
+        {
+          params: this.credentials,
+        }
+      );
       return response.data;
     } catch (error) {
-      logger.error.grading(
-        'Error fetching mill data:',
-        error.response?.data || error.message
-      );
+      logger.error.grading('Error fetching mill data:', error);
       throw error;
     }
   }
 
   async getMillData() {
+    if (!isProgramActive('grading')) {
+      return 'Grading program not started: Status is not active';
+    }
     try {
       logger.info.grading('Fetching mill jobs data...');
       const response = await axios.get(

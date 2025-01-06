@@ -1,6 +1,7 @@
 const axios = require('axios');
 const logger = require('../services/logger');
 const pusherService = require('../services/pusher');
+const { isProgramActive } = require('../utils/programHelper');
 
 class IzinKebunProgram {
   constructor() {
