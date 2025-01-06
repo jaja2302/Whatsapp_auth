@@ -8,6 +8,7 @@ const fs = require('fs').promises;
 const path = require('path');
 const qrcode = require('qrcode');
 const logger = require('./logger');
+const MessageUpsert = require('./messageUpsert');
 
 let retryCount = 0;
 const maxRetries = 5;
@@ -47,6 +48,7 @@ async function disconnectAndClearAuth() {
 async function connectToWhatsApp() {
   try {
     const { state, saveCreds } = await useMultiFileAuthState(AUTH_FOLDER);
+    const messageUpsertInstance = await MessageUpsert;
 
     const sock = makeWASocket({
       printQRInTerminal: true,
@@ -119,6 +121,67 @@ async function connectToWhatsApp() {
         });
 
         global.io?.emit('clear-qr');
+      }
+    });
+
+    // Add message handler
+    sock.ev.on('messages.upsert', async ({ messages, type }) => {
+      for (const message of messages) {
+        if (!message.key.fromMe) {
+          const noWa = message.key.remoteJid;
+          const isGroup = noWa.endsWith('@g.us');
+          const isPrivate = noWa.endsWith('@s.whatsapp.net');
+          const text =
+            message.message?.conversation ||
+            message.message?.extendedTextMessage?.text ||
+            message.message?.documentWithCaptionMessage?.message
+              ?.documentMessage?.caption ||
+            'No message text available';
+          const lowerCaseMessage = text.toLowerCase();
+          const contextInfo = message.message?.extendedTextMessage?.contextInfo;
+          const isReply = !!contextInfo?.quotedMessage;
+
+          try {
+            if (isReply) {
+              const text_repply = message.message.extendedTextMessage.text;
+              const quotedMessage = contextInfo.quotedMessage;
+              const conversation = contextInfo.quotedMessage.conversation;
+              const respon_atasan = text_repply;
+
+              if (quotedMessage.conversation) {
+                // await handleReplyNoDocMessage(
+                //   conversation,
+                //   noWa,
+                //   sock,
+                //   respon_atasan,
+                //   message
+                // );
+              } else if (quotedMessage.documentWithCaptionMessage) {
+                // await handleReplyDocMessage(
+                //   conversation,
+                //   noWa,
+                //   sock,
+                //   respon_atasan,
+                //   quotedMessage
+                // );
+              }
+            } else {
+              if (isGroup) {
+                await messageUpsertInstance.handleGroupMessage(
+                  lowerCaseMessage,
+                  noWa,
+                  text,
+                  sock,
+                  message
+                );
+              } else if (isPrivate) {
+                // await handlePrivateMessage(lowerCaseMessage, noWa, text, sock);
+              }
+            }
+          } catch (error) {
+            logger.error.whatsapp('Error handling message:', error);
+          }
+        }
       }
     });
 
