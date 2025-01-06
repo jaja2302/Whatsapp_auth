@@ -1,13 +1,13 @@
 {
   "grading": {
     "timezone": "Asia/Jakarta",
-    "status": "active",
+    "status": "stopped",
     "cronjobs": {
       "runJobsMill": "0 * * * *",
       "getMillData": "0 */2 * * *"
     },
     "cronjob_status": {
-      "runJobsMill": "stopped",
+      "runJobsMill": "active",
       "getMillData": "stopped"
     },
     "groups": {
@@ -32,7 +32,7 @@
   },
   "smartlabs": {
     "timezone": "Asia/Jakarta",
-    "status": "active",
+    "status": "stopped",
     "cronjobs": {
       "getdataSmartlabs": "*/5 * * * *"
     },
@@ -41,7 +41,7 @@
     }
   },
   "taksasi": {
-    "status": "active",
+    "status": "stopped",
     "cronjobs": {
       "sendfailcronjob": "0 * * * *"
     },
@@ -51,5 +51,8 @@
     "groups": {
       "default": "120363384470022318@g.us"
     }
+  },
+  "izinkebun": {
+    "status": "stopped"
   }
 }

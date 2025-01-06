@@ -5,11 +5,113 @@ const {
 } = require('../../services/whatsappService');
 const queue = require('../../services/queue');
 const logger = require('../../services/logger');
+const cronJobSettings = require('../../services/CronJobSettings');
 
 class DashboardController {
   constructor(io) {
     this.io = io;
+    this.programs = {
+      smartlabs: require('../../Programs/Smartlabs'),
+      izinkebun: require('../../Programs/Izinkebun'),
+      grading: require('../../Programs/Grading'),
+      taksasi: require('../../Programs/Taksasi'),
+    };
+
+    this.instances = {};
+    this.setupPrograms();
     this.setupSocketHandlers();
+  }
+
+  async setupPrograms() {
+    // Initialize all program instances
+    for (const [name, Program] of Object.entries(this.programs)) {
+      try {
+        this.instances[name] = new Program();
+        const settings = await cronJobSettings.loadSettings(name);
+        if (settings.status === 'active') {
+          this.instances[name].start();
+        }
+      } catch (error) {
+        logger.error[name](`Error initializing ${name} program:`, error);
+      }
+    }
+  }
+
+  // Generic program status getter
+  async getProgramStatus(req, res) {
+    const { program } = req.params;
+
+    if (!this.instances[program]) {
+      return res.status(404).json({ error: 'Program not found' });
+    }
+
+    try {
+      const settings = await cronJobSettings.loadSettings(program);
+      res.json({ running: settings.status === 'active' });
+    } catch (error) {
+      logger.error[program](`Error getting ${program} status:`, error);
+      res.status(500).json({ error: error.message });
+    }
+  }
+
+  // Generic program starter
+  async startProgram(req, res) {
+    const { program } = req.params;
+
+    if (!this.instances[program]) {
+      return res.status(404).json({ error: 'Program not found' });
+    }
+
+    try {
+      // Update settings
+      const settings = await cronJobSettings.loadSettings(program);
+      await cronJobSettings.updateSettings(program, {
+        ...settings,
+        status: 'active',
+      });
+
+      // Start the program
+      this.instances[program].start();
+
+      // Log and notify
+      logger.info[program](`${program} program started`);
+      this.io.emit(`${program}-status`, { running: true });
+
+      res.json({ success: true, running: true });
+    } catch (error) {
+      logger.error[program](`Error starting ${program}:`, error);
+      res.status(500).json({ error: error.message });
+    }
+  }
+
+  // Generic program stopper
+  async stopProgram(req, res) {
+    const { program } = req.params;
+
+    if (!this.instances[program]) {
+      return res.status(404).json({ error: 'Program not found' });
+    }
+
+    try {
+      // Update settings
+      const settings = await cronJobSettings.loadSettings(program);
+      await cronJobSettings.updateSettings(program, {
+        ...settings,
+        status: 'stopped',
+      });
+
+      // Stop the program
+      this.instances[program].stop();
+
+      // Log and notify
+      logger.info[program](`${program} program stopped`);
+      this.io.emit(`${program}-status`, { running: false });
+
+      res.json({ success: true, running: false });
+    } catch (error) {
+      logger.error[program](`Error stopping ${program}:`, error);
+      res.status(500).json({ error: error.message });
+    }
   }
 
   setupSocketHandlers() {

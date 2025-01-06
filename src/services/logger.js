@@ -25,6 +25,8 @@ class Logger {
           this.broadcast(level, 'smartlabs', message, ...args),
         taksasi: (message, ...args) =>
           this.broadcast(level, 'taksasi', message, ...args),
+        izinkebun: (message, ...args) =>
+          this.broadcast(level, 'izinkebun', message, ...args),
         general: (message, ...args) =>
           this.broadcast(level, 'general', message, ...args),
         // Add more sources as needed

@@ -68,6 +68,18 @@ app.get('/taksasi', async (req, res) => {
   }
 });
 
+app.get('/izinkebun', async (req, res) => {
+  try {
+    const html = await templateEngine.render('izinkebun', {
+      title: 'Izin Kebun',
+      scripts: '<script src="/js/izinkebun.js" defer></script>',
+    });
+    res.send(html);
+  } catch (error) {
+    res.status(500).send('Error rendering template');
+  }
+});
+
 // API routes
 const apiRoutes = require('./src/web/routes/api');
 app.use('/api', apiRoutes);

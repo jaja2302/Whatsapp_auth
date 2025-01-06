@@ -1,17 +1,9 @@
-const { DateTime } = require('luxon');
 const axios = require('axios');
 const { channel } = require('../../utils/pusher');
 const idgroup = '120363205553012899@g.us';
-const idgroup_testing = '120363204285862734@g.us';
-const idgroup_da = '120363303562042176@g.us';
-const { shortenURL } = require('../../utils/shortenurl');
 const userchoice = {};
 const botpromt = {};
 const timeoutHandles = {};
-const fs = require('fs');
-const https = require('https');
-
-// Use the global queue directly
 
 // function surat izin bot
 

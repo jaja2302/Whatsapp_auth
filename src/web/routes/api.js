@@ -4,6 +4,7 @@ const DashboardController = require('../controllers/dashboardController');
 const GradingController = require('../controllers/gradingController');
 const SmartlabsController = require('../controllers/smartlabsController');
 const TaksasiController = require('../controllers/taksasiController');
+const IzinKebunController = require('../controllers/izinkebunController');
 const logger = require('../../services/logger');
 const fs = require('fs').promises;
 const path = require('path');
@@ -22,6 +23,7 @@ const dashboardController = new DashboardController(global.io);
 const gradingController = new GradingController(global.io);
 const smartlabsController = new SmartlabsController(global.io);
 const taksasiController = new TaksasiController(global.io);
+const izinkebunController = new IzinKebunController(global.io);
 
 // Dashboard routes
 router.get('/status', (req, res) => {
@@ -119,6 +121,22 @@ router.post('/taksasi/jobs/:jobName/start', (req, res) => {
 router.post('/taksasi/jobs/:jobName/stop', (req, res) => {
   logger.info.taksasi(`Stop job ${req.params.jobName} request received`);
   taksasiController.stopJob(req, res);
+});
+
+// Izin Kebun routes
+router.get('/izinkebun/get-status', (req, res) => {
+  logger.debug.izinkebun('Getting Izin Kebun status');
+  izinkebunController.getStatus(req, res);
+});
+
+router.post('/izinkebun/start', (req, res) => {
+  logger.info.izinkebun('Start Izin Kebun program request received');
+  izinkebunController.startProgram(req, res);
+});
+
+router.post('/izinkebun/stop', (req, res) => {
+  logger.info.izinkebun('Stop Izin Kebun program request received');
+  izinkebunController.stopProgram(req, res);
 });
 
 // Error handling middleware
