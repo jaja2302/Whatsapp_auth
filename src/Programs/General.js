@@ -6,6 +6,8 @@ const settings = require('../web/data/settings.json');
 const credentials = settings.grading.credentials;
 const groups = settings.grading.groups;
 const { isProgramActive } = require('../utils/programHelper');
+const path = require('path');
+const fs = require('fs');
 
 class GeneralProgram {
   constructor() {
@@ -18,6 +20,16 @@ class GeneralProgram {
     if (!global.queue) {
       global.queue = require('../services/queue');
     }
+
+    this.imagePathizinkebun = path.join(
+      process.cwd(),
+      'src',
+      'web',
+      'public',
+      'assets',
+      'images',
+      'izinkebun'
+    );
   }
 
   static async init() {
@@ -169,6 +181,37 @@ class GeneralProgram {
           }
         }
       }
+    }
+  }
+
+  async sendImageWithCaption(sock, noWa, imagePath, caption) {
+    try {
+      const absoluteImagePath = path.join(
+        process.cwd(),
+        'src',
+        'web',
+        'public',
+        'assets',
+        'images',
+        imagePath
+      );
+
+      if (!fs.existsSync(absoluteImagePath)) {
+        logger.error.whatsapp(`Image file not found: ${absoluteImagePath}`);
+        throw new Error(`Image file not found: ${absoluteImagePath}`);
+      }
+
+      const imageBuffer = fs.readFileSync(absoluteImagePath);
+
+      await sock.sendMessage(noWa, {
+        image: imageBuffer,
+        caption: caption,
+      });
+    } catch (error) {
+      logger.error.whatsapp('Error sending image with caption:', error);
+      await sock.sendMessage(noWa, {
+        text: 'Sorry, there was an error sending the image.',
+      });
     }
   }
 }

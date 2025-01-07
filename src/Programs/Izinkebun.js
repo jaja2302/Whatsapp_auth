@@ -2,6 +2,7 @@ const axios = require('axios');
 const logger = require('../services/logger');
 const pusherService = require('../services/pusher');
 const { isProgramActive } = require('../utils/programHelper');
+const { log } = require('console');
 
 class IzinKebunProgram {
   constructor() {
@@ -9,11 +10,10 @@ class IzinKebunProgram {
     this.CHANNEL_NAME = 'my-channel';
     this.EVENT_NAME = 'izinkebunnotif_test';
     this.pusherWatcher = null;
+    this.idgroup = '120363384470022318@g.us';
     this.userchoice = {};
     this.botpromt = {};
     this.timeoutHandles = {};
-    this.idgroup = '120363384470022318@g.us';
-
     if (!global.queue) {
       global.queue = require('../services/queue');
     }
@@ -26,6 +26,7 @@ class IzinKebunProgram {
       await global.queue.init();
       return instance;
     } catch (error) {
+      console.log(error);
       logger.error.izinkebun('Error initializing izin kebun program:', error);
       throw error;
     }
@@ -294,23 +295,6 @@ class IzinKebunProgram {
     }
   }
 
-  async sendImageWithCaption(sock, noWa, imagePath, caption) {
-    try {
-      const imageBuffer = require('fs').readFileSync(imagePath);
-
-      // Send the image with a caption
-
-      await sock.sendMessage(noWa, {
-        image: imageBuffer,
-        caption: caption,
-      });
-
-      console.log('Image sent with caption successfully.');
-    } catch (error) {
-      console.log('Error sending image with caption:', error);
-    }
-  }
-
   async updatestatus_sock_vbot(id, type_atasan) {
     try {
       const response = await axios.post(
@@ -348,19 +332,19 @@ class IzinKebunProgram {
     }
   }
   async handleTimeout(noWa, sock) {
-    if (timeoutHandles[noWa]) {
-      clearTimeout(timeoutHandles[noWa]);
+    if (this.timeoutHandles[noWa]) {
+      clearTimeout(this.timeoutHandles[noWa]);
     }
 
-    timeoutHandles[noWa] = setTimeout(
+    this.timeoutHandles[noWa] = setTimeout(
       async () => {
         console.log(`Timeout triggered for ${noWa}`);
         await sock.sendMessage(noWa, {
           text: 'Waktu Anda telah habis. Silakan mulai kembali dengan mengetikkan !izin.',
         });
-        delete userchoice[noWa];
-        delete botpromt[noWa];
-        delete timeoutHandles[noWa];
+        delete this.userchoice[noWa];
+        delete this.botpromt[noWa];
+        delete this.timeoutHandles[noWa];
       },
       5 * 60 * 1000
     );
@@ -368,10 +352,17 @@ class IzinKebunProgram {
     // console.log(`Timeout set for ${noWa}`);
   }
 
+  async clearedhandleTimeout(noWa) {
+    delete this.userchoice[noWa];
+    delete this.botpromt[noWa];
+    clearTimeout(this.timeoutHandles[noWa]);
+    delete this.timeoutHandles[noWa];
+  }
+
   async handleijinmsg(noWa, text, sock) {
-    if (!userchoice[noWa]) {
-      userchoice[noWa] = 'name';
-      botpromt[noWa] = { attempts: 0 };
+    if (!this.userchoice[noWa]) {
+      this.userchoice[noWa] = 'name';
+      this.botpromt[noWa] = { attempts: 0 };
       await sock.sendMessage(noWa, {
         text: 'Anda dapat membatalkan kapan saja permintaan izin dengan menjawab batal pada pertanyaan.',
       });
@@ -380,725 +371,626 @@ class IzinKebunProgram {
         text: 'Silakan masukkan *nama lengkap anda* atau *nama depan Anda* untuk pencarian di database.Balas batal untuk membatalkan.',
       });
 
-      handleTimeout(noWa, sock);
-    } else {
-      handleTimeout(noWa, sock); // Reset timeout with every interaction
-      const step = userchoice[noWa];
+      this.handleTimeout(noWa, sock);
+      return;
+    }
 
-      if (step === 'name') {
-        if (text.toLowerCase() === 'batal') {
+    this.handleTimeout(noWa, sock);
+    const step = this.userchoice[noWa];
+
+    if (text.toLowerCase() === 'batal') {
+      await sock.sendMessage(noWa, {
+        text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
+      });
+      this.clearedhandleTimeout(noWa);
+      return;
+    }
+
+    if (step === 'name') {
+      this.botpromt[noWa].name = text;
+      this.userchoice[noWa] = 'check_user';
+      await sock.sendMessage(noWa, {
+        text: 'Memeriksa nama pengguna di database...',
+      });
+
+      const result = await this.getuserinfo(text);
+
+      // console.log(result);
+      if (result.message && result.message === 'Nama User tidak ditemukan') {
+        this.botpromt[noWa].attempts += 1;
+        if (this.botpromt[noWa].attempts >= 3) {
           await sock.sendMessage(noWa, {
-            text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
+            text: 'Anda telah mencoba 3 kali. Silakan coba lagi nanti.',
           });
-          delete userchoice[noWa];
-          delete botpromt[noWa];
-          clearTimeout(timeoutHandles[noWa]);
-          delete timeoutHandles[noWa];
-          return;
+          this.clearedhandleTimeout(noWa);
+        } else {
+          await sock.sendMessage(noWa, {
+            text: 'Pengguna tidak ditemukan di database. Harap masukkan ulang:',
+          });
+          this.userchoice[noWa] = 'name';
         }
-        botpromt[noWa].name = text;
-        userchoice[noWa] = 'check_user';
-        await sock.sendMessage(noWa, {
-          text: 'Memeriksa nama pengguna di database...',
+      } else if (result !== null && result.length > 0) {
+        this.botpromt[noWa].user_id_option = result;
+
+        let message =
+          'Silakan pilih pengguna dari daftar berikut ,*HARAP MASUKAN ANGKA SAJA DARI PILIHAN TERSEDIA*:\n';
+        result.forEach((item, index) => {
+          message += `${index + 1}. ${item.nama} (${item.departemen})\n`;
         });
+        message += `${
+          result.length + 1
+        }. Pengguna tidak tersedia dalam daftar.\n`;
+        message += `${result.length + 2}. Coba masukan nama kembali`;
 
-        const result = await getuserinfo(text);
+        this.userchoice[noWa] = 'choose_name';
+        await sock.sendMessage(noWa, { text: message });
+      }
+    } else if (step === 'choose_name') {
+      if (text.toLowerCase() === 'batal') {
+        await sock.sendMessage(noWa, {
+          text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
+        });
+        this.clearedhandleTimeout(noWa);
+      }
+      const chosenIndex = parseInt(text) - 1;
+      const options = botpromt[noWa].user_id_option;
 
-        // console.log(result);
-        if (result.message && result.message === 'Nama User tidak ditemukan') {
-          botpromt[noWa].attempts += 1;
-          if (botpromt[noWa].attempts >= 3) {
+      if (
+        isNaN(chosenIndex) ||
+        !options ||
+        chosenIndex < 0 ||
+        chosenIndex >= options.length + 2
+      ) {
+        await sock.sendMessage(noWa, {
+          text: 'Pilihan tidak valid. Silakan masukkan nomor yang sesuai:',
+        });
+        return;
+      }
+
+      if (chosenIndex === options.length) {
+        await sock.sendMessage(noWa, {
+          text: 'Nama tidak tersedia.Silakan hubungi admin Digital Architect untuk penambahan nama.',
+        });
+        this.clearedhandleTimeout(noWa);
+      } else if (chosenIndex === options.length + 1) {
+        this.userchoice[noWa] = 'name';
+        await sock.sendMessage(noWa, {
+          text: 'Silakan masukkan *nama lengkap anda* atau *nama depan Anda* untuk pencarian di database.',
+        });
+      } else {
+        try {
+          const response = await axios.post(
+            'https://qc-apps.srs-ssms.com/api/formdataizin',
+            {
+              name: options[chosenIndex].id,
+              type: 'check_user',
+              no_hp: noWa,
+            }
+          );
+          let responses = response.data;
+
+          const responseKey = Object.keys(responses)[0];
+
+          // console.log(responses);
+          await sock.sendMessage(noWa, {
+            text: 'Mohon tunggu, server sedang melakukan validasi.',
+          });
+          if (responseKey === 'error_validasi') {
             await sock.sendMessage(noWa, {
-              text: 'Anda telah mencoba 3 kali. Silakan coba lagi nanti.',
+              text: `Verifikasi data gagal karena: ${responses[responseKey]}`,
             });
-            delete userchoice[noWa];
-            delete botpromt[noWa];
-            clearTimeout(timeoutHandles[noWa]);
-            delete timeoutHandles[noWa];
+            await sock.sendMessage(noWa, {
+              text: `Session Berakhir, Silahkan Izin Ulang dengan perintah !izin`,
+            });
+            this.clearedhandleTimeout(noWa);
+          } else {
+            this.botpromt[noWa].user_nama = options[chosenIndex].nama;
+            this.botpromt[noWa].user_nama_id = options[chosenIndex].id;
+            this.userchoice[noWa] = 'location';
+            await sock.sendMessage(noWa, {
+              text: 'Mohon tentukan *LOKASI* yang akan Anda kunjungi untuk pengajuan izin.',
+            });
+          }
+        } catch (error) {
+          console.log(error);
+
+          if (error.response && error.response.status === 404) {
+            console.log(error);
+
+            await sock.sendMessage(noWa, {
+              text: 'Terjadi error tidak terduga',
+            });
+            this.clearedhandleTimeout(noWa);
           } else {
             await sock.sendMessage(noWa, {
-              text: 'Pengguna tidak ditemukan di database. Harap masukkan ulang:',
+              text: 'Terjadi kesalahan saat mengirim data. Mohon coba lagi.',
             });
-            userchoice[noWa] = 'name';
+            this.clearedhandleTimeout(noWa);
           }
-        } else if (result !== null && result.length > 0) {
-          botpromt[noWa].user_id_option = result;
-
-          let message =
-            'Silakan pilih pengguna dari daftar berikut ,*HARAP MASUKAN ANGKA SAJA DARI PILIHAN TERSEDIA*:\n';
-          result.forEach((item, index) => {
-            message += `${index + 1}. ${item.nama} (${item.departemen})\n`;
-          });
-          message += `${
-            result.length + 1
-          }. Pengguna tidak tersedia dalam daftar.\n`;
-          message += `${result.length + 2}. Coba masukan nama kembali`;
-
-          userchoice[noWa] = 'choose_name';
-          await sock.sendMessage(noWa, { text: message });
         }
-      } else if (step === 'choose_name') {
-        if (text.toLowerCase() === 'batal') {
+      }
+    } else if (step === 'location') {
+      if (text.toLowerCase() === 'batal') {
+        await sock.sendMessage(noWa, {
+          text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
+        });
+        this.clearedhandleTimeout(noWa);
+      }
+      this.botpromt[noWa].location = text;
+      this.userchoice[noWa] = 'kendaraan';
+      await sock.sendMessage(noWa, {
+        text: 'Harap masukkan jenis kendaraan *UNTUK KELUAR KEBUN*',
+      });
+    } else if (step === 'kendaraan') {
+      if (text.toLowerCase() === 'batal') {
+        await sock.sendMessage(noWa, {
+          text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
+        });
+        this.clearedhandleTimeout(noWa);
+      }
+      this.botpromt[noWa].kendaraan = text;
+      this.userchoice[noWa] = 'plat_nomor';
+      await sock.sendMessage(noWa, {
+        text: 'Harap masukkan Plat nomor Kendaraan *UNTUK KELUAR KEBUN*, Anda bisa melewatkan pertanyaan ini dengan menjawab *skip*',
+      });
+    } else if (step === 'plat_nomor') {
+      if (text.toLowerCase() === 'batal') {
+        await sock.sendMessage(noWa, {
+          text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
+        });
+        this.clearedhandleTimeout(noWa);
+      }
+
+      if (text.toLowerCase() === 'skip') {
+        this.botpromt[noWa].plat_nomor = text.toLowerCase();
+      } else {
+        this.botpromt[noWa].plat_nomor = text.toUpperCase();
+      }
+      this.userchoice[noWa] = 'date';
+      await sock.sendMessage(noWa, {
+        text: 'Harap masukkan tanggal *UNTUK KELUAR KEBUN* dengan format (DD-MM-YYYY)(23-02-2024) yang benar:',
+      });
+    } else if (step === 'date') {
+      if (text.toLowerCase() === 'batal') {
+        await sock.sendMessage(noWa, {
+          text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
+        });
+        this.clearedhandleTimeout(noWa);
+      }
+      const dateRegex = /^\d{2}-\d{2}-\d{4}$/;
+      if (!dateRegex.test(text)) {
+        await sock.sendMessage(noWa, {
+          text: 'Tanggal Tidak sesuai harap masukkan kembali (Format:Hari-Bulan-Tahun):',
+        });
+        return;
+      }
+
+      const [day, month, year] = text.split('-').map(Number);
+
+      if (month < 1 || month > 12 || day < 1 || day > 31) {
+        await sock.sendMessage(noWa, {
+          text: 'Tanggal atau bulan tidak valid. Harap masukkan kembali (Format:Hari-Bulan-Tahun):',
+        });
+        return;
+      }
+
+      const inputDate = new Date(year, month - 1, day);
+      if (
+        inputDate.getDate() !== day ||
+        inputDate.getMonth() !== month - 1 ||
+        inputDate.getFullYear() !== year
+      ) {
+        await sock.sendMessage(noWa, {
+          text: 'Tanggal tidak valid. Harap masukkan kembali (Format:Hari-Bulan-Tahun):',
+        });
+        return;
+      }
+
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      if (inputDate < today) {
+        await sock.sendMessage(noWa, {
+          text: 'Tanggal Tidak boleh di masa lalu. Harap masukkan tanggal yang valid (Format:Hari-Bulan-Tahun):',
+        });
+        return;
+      }
+
+      this.botpromt[noWa].date = text;
+      this.userchoice[noWa] = 'jam_keluar';
+      await sock.sendMessage(noWa, {
+        text: 'Mohon masukan waktu *jam keluar* dari kebun dengan format (HH:MM)(10:00):',
+      });
+    } else if (step === 'jam_keluar') {
+      if (text.toLowerCase() === 'batal') {
+        await sock.sendMessage(noWa, {
+          text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
+        });
+        this.clearedhandleTimeout(noWa);
+      }
+      const timeRegex = /^([01]\d|2[0-3]):([0-5]\d)$/;
+      if (!timeRegex.test(text)) {
+        await sock.sendMessage(noWa, {
+          text: 'Waktu tidak valid. Harap masukkan waktu dalam format 24 jam (HH:MM), contoh: 11:00 atau 23:30',
+        });
+        return;
+      }
+      this.botpromt[noWa].jam_keluar = text;
+      this.userchoice[noWa] = 'date_2';
+      await sock.sendMessage(noWa, {
+        text: 'Harap masukkan tanggal *UNTUK KEMBALI* dengan format (DD-MM-YYYY)(23-02-2024) yang benar:',
+      });
+    } else if (step === 'date_2') {
+      if (text.toLowerCase() === 'batal') {
+        await sock.sendMessage(noWa, {
+          text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
+        });
+        this.clearedhandleTimeout(noWa);
+      }
+      const dateRegex = /^\d{2}-\d{2}-\d{4}$/;
+      if (!dateRegex.test(text)) {
+        await sock.sendMessage(noWa, {
+          text: 'Tanggal Tidak sesuai harap masukkan kembali (Format:Hari-Bulan-Tahun):',
+        });
+        return;
+      }
+
+      const [day, month, year] = text.split('-').map(Number);
+
+      if (month < 1 || month > 12 || day < 1 || day > 31) {
+        await sock.sendMessage(noWa, {
+          text: 'Tanggal atau bulan tidak valid. Harap masukkan kembali (Format:Hari-Bulan-Tahun):',
+        });
+        return;
+      }
+
+      const inputDate = new Date(year, month - 1, day);
+      if (
+        inputDate.getDate() !== day ||
+        inputDate.getMonth() !== month - 1 ||
+        inputDate.getFullYear() !== year
+      ) {
+        await sock.sendMessage(noWa, {
+          text: 'Tanggal tidak valid. Harap masukkan kembali (Format:Hari-Bulan-Tahun):',
+        });
+        return;
+      }
+
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      if (inputDate < today) {
+        await sock.sendMessage(noWa, {
+          text: 'Tanggal Tidak boleh di masa lalu. Harap masukkan tanggal yang valid (Format:Hari-Bulan-Tahun):',
+        });
+        return;
+      }
+
+      this.botpromt[noWa].date_2 = text;
+      this.userchoice[noWa] = 'jam_kembali';
+      await sock.sendMessage(noWa, {
+        text: 'Mohon masukan waktu *jam kembali* ke kebun dengan format (HH:MM)(10:00):',
+      });
+    } else if (step === 'jam_kembali') {
+      if (text.toLowerCase() === 'batal') {
+        await sock.sendMessage(noWa, {
+          text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
+        });
+        this.clearedhandleTimeout(noWa);
+      }
+      const timeRegex = /^([01]\d|2[0-3]):([0-5]\d)$/;
+      if (!timeRegex.test(text)) {
+        await sock.sendMessage(noWa, {
+          text: 'Waktu tidak valid. Harap masukkan waktu dalam format 24 jam (HH:MM), contoh: 11:00 atau 23:30',
+        });
+        return;
+      }
+      this.botpromt[noWa].jam_kembali = text;
+      this.userchoice[noWa] = 'needs';
+      await sock.sendMessage(noWa, {
+        text: 'Mohon jelaskan keperluan Anda untuk keluar dari kebun:',
+      });
+    } else if (step === 'needs') {
+      if (text.toLowerCase() === 'batal') {
+        await sock.sendMessage(noWa, {
+          text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
+        });
+        this.clearedhandleTimeout(noWa);
+      }
+      this.botpromt[noWa].needs = text;
+      this.userchoice[noWa] = 'atasan_satu';
+      await sock.sendMessage(noWa, {
+        text: 'Silakan masukkan nama lengkap *ATASAN PERTAMA* atau nama depan saja tanpa tanda titik/koma/backtip (./,/`) untuk pencarian didatabase',
+      });
+    } else if (step === 'atasan_satu') {
+      if (text.toLowerCase() === 'batal') {
+        await sock.sendMessage(noWa, {
+          text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
+        });
+        this.clearedhandleTimeout(noWa);
+      }
+      this.botpromt[noWa].atasan_satu = text;
+      const nama_atasansatu = text;
+      const result = await checkatasan(nama_atasansatu);
+
+      if (result.message && result.message === 'Nama Atasan tidak ditemukan') {
+        this.botpromt[noWa].attempts = (this.botpromt[noWa].attempts || 0) + 1;
+        if (this.botpromt[noWa].attempts >= 3) {
           await sock.sendMessage(noWa, {
-            text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
+            text: 'Anda sudah melakukan percobaan 3 kali. Silahkan coba kembali nanti.',
           });
-          delete userchoice[noWa];
-          delete botpromt[noWa];
-          clearTimeout(timeoutHandles[noWa]);
-          delete timeoutHandles[noWa];
-          return;
+          this.clearedhandleTimeout(noWa);
+        } else {
+          await sock.sendMessage(noWa, {
+            text: 'Nama Atasan Tidak ditemukan di database. Harap input ulang:',
+          });
         }
-        const chosenIndex = parseInt(text) - 1;
-        const options = botpromt[noWa].user_id_option;
+      } else if (result && result.length > 0) {
+        this.botpromt[noWa].atasan_options_satu = result;
 
-        if (
-          isNaN(chosenIndex) ||
-          !options ||
-          chosenIndex < 0 ||
-          chosenIndex >= options.length + 2
-        ) {
+        let message =
+          'Pilih Nama Atasan Pertama.*HARAP MASUKAN ANGKA SAJA DARI PILIHAN TERSEDIA*:\n';
+        result.forEach((item, index) => {
+          message += `${index + 1}. ${item.nama} (${item.departemen})\n`;
+        });
+        message += `${
+          result.length + 1
+        }. Nama tidak tersedia di dalam pilihan\n`;
+        message += `${result.length + 2}. Coba masukan nama kembali`;
+
+        this.userchoice[noWa] = 'choose_atasan_satu';
+        await sock.sendMessage(noWa, { text: message });
+      } else {
+        await sock.sendMessage(noWa, {
+          text: 'Nama Atasan Tidak ditemukan di database. Harap input ulang:',
+        });
+      }
+    } else if (step === 'choose_atasan_satu') {
+      if (text.toLowerCase() === 'batal') {
+        await sock.sendMessage(noWa, {
+          text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
+        });
+        this.clearedhandleTimeout(noWa);
+      }
+      const chosenIndex = parseInt(text) - 1;
+      const options = this.botpromt[noWa].atasan_options_satu;
+
+      if (
+        isNaN(chosenIndex) ||
+        !options ||
+        chosenIndex < 0 ||
+        chosenIndex >= options.length + 2
+      ) {
+        this.botpromt[noWa].attempts = (this.botpromt[noWa].attempts || 0) + 1;
+        if (this.botpromt[noWa].attempts >= 3) {
+          await sock.sendMessage(noWa, {
+            text: 'Anda sudah melakukan percobaan 3 kali. Silahkan coba kembali nanti.',
+          });
+          this.clearedhandleTimeout(noWa);
+        } else {
           await sock.sendMessage(noWa, {
             text: 'Pilihan tidak valid. Silakan masukkan nomor yang sesuai:',
           });
           return;
         }
+      }
 
-        if (chosenIndex === options.length) {
-          await sock.sendMessage(noWa, {
-            text: 'Nama tidak tersedia.Silakan hubungi admin Digital Architect untuk penambahan nama.',
-          });
-          delete userchoice[noWa];
-          delete botpromt[noWa];
-          clearTimeout(timeoutHandles[noWa]);
-          delete timeoutHandles[noWa];
-        } else if (chosenIndex === options.length + 1) {
-          userchoice[noWa] = 'name';
-          await sock.sendMessage(noWa, {
-            text: 'Silakan masukkan *nama lengkap anda* atau *nama depan Anda* untuk pencarian di database.',
-          });
-        } else {
-          try {
-            const response = await axios.post(
-              'https://qc-apps.srs-ssms.com/api/formdataizin',
-              {
-                name: options[chosenIndex].id,
-                type: 'check_user',
-                no_hp: noWa,
-              }
-            );
-            let responses = response.data;
-
-            const responseKey = Object.keys(responses)[0];
-
-            // console.log(responses);
-            await sock.sendMessage(noWa, {
-              text: 'Mohon tunggu, server sedang melakukan validasi.',
-            });
-            if (responseKey === 'error_validasi') {
-              await sock.sendMessage(noWa, {
-                text: `Verifikasi data gagal karena: ${responses[responseKey]}`,
-              });
-              await sock.sendMessage(noWa, {
-                text: `Session Berakhir, Silahkan Izin Ulang dengan perintah !izin`,
-              });
-              delete userchoice[noWa];
-              delete botpromt[noWa];
-              clearTimeout(timeoutHandles[noWa]);
-              delete timeoutHandles[noWa];
-            } else {
-              botpromt[noWa].user_nama = options[chosenIndex].nama;
-              botpromt[noWa].user_nama_id = options[chosenIndex].id;
-              userchoice[noWa] = 'location';
-              await sock.sendMessage(noWa, {
-                text: 'Mohon tentukan *LOKASI* yang akan Anda kunjungi untuk pengajuan izin.',
-              });
-            }
-          } catch (error) {
-            console.log(error);
-
-            if (error.response && error.response.status === 404) {
-              console.log(error);
-
-              await sock.sendMessage(noWa, {
-                text: 'Terjadi error tidak terduga',
-              });
-              delete userchoice[noWa];
-              delete botpromt[noWa];
-              clearTimeout(timeoutHandles[noWa]);
-              delete timeoutHandles[noWa];
-            } else {
-              await sock.sendMessage(noWa, {
-                text: 'Terjadi kesalahan saat mengirim data. Mohon coba lagi.',
-              });
-              delete userchoice[noWa];
-              delete botpromt[noWa];
-              clearTimeout(timeoutHandles[noWa]);
-              delete timeoutHandles[noWa];
-            }
-          }
-        }
-      } else if (step === 'location') {
-        if (text.toLowerCase() === 'batal') {
-          await sock.sendMessage(noWa, {
-            text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
-          });
-          delete userchoice[noWa];
-          delete botpromt[noWa];
-          clearTimeout(timeoutHandles[noWa]);
-          delete timeoutHandles[noWa];
-          return;
-        }
-        botpromt[noWa].location = text;
-        userchoice[noWa] = 'kendaraan';
+      if (chosenIndex === options.length) {
         await sock.sendMessage(noWa, {
-          text: 'Harap masukkan jenis kendaraan *UNTUK KELUAR KEBUN*',
+          text: 'Nama Atasan tidak tersedia. Silakan hubungi admin Digital Architect untuk penambahan nama atasan.',
         });
-      } else if (step === 'kendaraan') {
-        if (text.toLowerCase() === 'batal') {
-          await sock.sendMessage(noWa, {
-            text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
-          });
-          delete userchoice[noWa];
-          delete botpromt[noWa];
-          clearTimeout(timeoutHandles[noWa]);
-          delete timeoutHandles[noWa];
-          return;
-        }
-        botpromt[noWa].kendaraan = text;
-        userchoice[noWa] = 'plat_nomor';
+        this.clearedhandleTimeout(noWa);
+      } else if (chosenIndex === options.length + 1) {
+        this.userchoice[noWa] = 'atasan_satu';
         await sock.sendMessage(noWa, {
-          text: 'Harap masukkan Plat nomor Kendaraan *UNTUK KELUAR KEBUN*, Anda bisa melewatkan pertanyaan ini dengan menjawab *skip*',
+          text: 'Silakan masukkan nama lengkap atasan *PERTAMA* atau nama depan saja tanpa tanda titik/koma/backtip (./,/`) untuk pencarian didatabase',
         });
-      } else if (step === 'plat_nomor') {
-        if (text.toLowerCase() === 'batal') {
-          await sock.sendMessage(noWa, {
-            text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
-          });
-          delete userchoice[noWa];
-          delete botpromt[noWa];
-          clearTimeout(timeoutHandles[noWa]);
-          delete timeoutHandles[noWa];
-          return;
-        }
+      } else {
+        this.botpromt[noWa].atasan_satu = options[chosenIndex].nama;
+        this.botpromt[noWa].atasan_satu_id = options[chosenIndex].id;
+        delete this.botpromt[noWa].atasan_options_satu;
 
-        if (text.toLowerCase() === 'skip') {
-          botpromt[noWa].plat_nomor = text.toLowerCase();
-        } else {
-          botpromt[noWa].plat_nomor = text.toUpperCase();
-        }
-        userchoice[noWa] = 'date';
+        this.userchoice[noWa] = 'atasan_dua';
+        // botpromt[noWa] = { attempts: 0 };
         await sock.sendMessage(noWa, {
-          text: 'Harap masukkan tanggal *UNTUK KELUAR KEBUN* dengan format (DD-MM-YYYY)(23-02-2024) yang benar:',
+          text: 'Silakan masukkan nama lengkap *ATASAN KEDUA* atau nama depan saja tanpa tanda titik/koma/backtip (./,/`) untuk pencarian didatabase',
         });
-      } else if (step === 'date') {
-        if (text.toLowerCase() === 'batal') {
-          await sock.sendMessage(noWa, {
-            text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
-          });
-          delete userchoice[noWa];
-          delete botpromt[noWa];
-          clearTimeout(timeoutHandles[noWa]);
-          delete timeoutHandles[noWa];
-          return;
-        }
-        const dateRegex = /^\d{2}-\d{2}-\d{4}$/;
-        if (!dateRegex.test(text)) {
-          await sock.sendMessage(noWa, {
-            text: 'Tanggal Tidak sesuai harap masukkan kembali (Format:Hari-Bulan-Tahun):',
-          });
-          return;
-        }
-
-        const [day, month, year] = text.split('-').map(Number);
-
-        if (month < 1 || month > 12 || day < 1 || day > 31) {
-          await sock.sendMessage(noWa, {
-            text: 'Tanggal atau bulan tidak valid. Harap masukkan kembali (Format:Hari-Bulan-Tahun):',
-          });
-          return;
-        }
-
-        const inputDate = new Date(year, month - 1, day);
-        if (
-          inputDate.getDate() !== day ||
-          inputDate.getMonth() !== month - 1 ||
-          inputDate.getFullYear() !== year
-        ) {
-          await sock.sendMessage(noWa, {
-            text: 'Tanggal tidak valid. Harap masukkan kembali (Format:Hari-Bulan-Tahun):',
-          });
-          return;
-        }
-
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-
-        if (inputDate < today) {
-          await sock.sendMessage(noWa, {
-            text: 'Tanggal Tidak boleh di masa lalu. Harap masukkan tanggal yang valid (Format:Hari-Bulan-Tahun):',
-          });
-          return;
-        }
-
-        botpromt[noWa].date = text;
-        userchoice[noWa] = 'jam_keluar';
+      }
+    } else if (step === 'atasan_dua') {
+      if (text.toLowerCase() === 'batal') {
         await sock.sendMessage(noWa, {
-          text: 'Mohon masukan waktu *jam keluar* dari kebun dengan format (HH:MM)(10:00):',
+          text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
         });
-      } else if (step === 'jam_keluar') {
-        if (text.toLowerCase() === 'batal') {
+        this.clearedhandleTimeout(noWa);
+      }
+      this.botpromt[noWa].atasan_dua = text;
+      const nama_atasandua = text;
+      const result = await checkatasan(nama_atasandua);
+      if (result.message && result.message === 'Nama Atasan tidak ditemukan') {
+        this.botpromt[noWa].attempts += 1;
+        if (this.botpromt[noWa].attempts >= 3) {
           await sock.sendMessage(noWa, {
-            text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
+            text: 'Anda sudah melakukan percobaan *3 kali*. Silahkan coba kembali nanti.',
           });
-          delete userchoice[noWa];
-          delete botpromt[noWa];
-          clearTimeout(timeoutHandles[noWa]);
-          delete timeoutHandles[noWa];
-          return;
-        }
-        const timeRegex = /^([01]\d|2[0-3]):([0-5]\d)$/;
-        if (!timeRegex.test(text)) {
-          await sock.sendMessage(noWa, {
-            text: 'Waktu tidak valid. Harap masukkan waktu dalam format 24 jam (HH:MM), contoh: 11:00 atau 23:30',
-          });
-          return;
-        }
-        botpromt[noWa].jam_keluar = text;
-        userchoice[noWa] = 'date_2';
-        await sock.sendMessage(noWa, {
-          text: 'Harap masukkan tanggal *UNTUK KEMBALI* dengan format (DD-MM-YYYY)(23-02-2024) yang benar:',
-        });
-      } else if (step === 'date_2') {
-        if (text.toLowerCase() === 'batal') {
-          await sock.sendMessage(noWa, {
-            text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
-          });
-          delete userchoice[noWa];
-          delete botpromt[noWa];
-          clearTimeout(timeoutHandles[noWa]);
-          delete timeoutHandles[noWa];
-          return;
-        }
-        const dateRegex = /^\d{2}-\d{2}-\d{4}$/;
-        if (!dateRegex.test(text)) {
-          await sock.sendMessage(noWa, {
-            text: 'Tanggal Tidak sesuai harap masukkan kembali (Format:Hari-Bulan-Tahun):',
-          });
-          return;
-        }
-
-        const [day, month, year] = text.split('-').map(Number);
-
-        if (month < 1 || month > 12 || day < 1 || day > 31) {
-          await sock.sendMessage(noWa, {
-            text: 'Tanggal atau bulan tidak valid. Harap masukkan kembali (Format:Hari-Bulan-Tahun):',
-          });
-          return;
-        }
-
-        const inputDate = new Date(year, month - 1, day);
-        if (
-          inputDate.getDate() !== day ||
-          inputDate.getMonth() !== month - 1 ||
-          inputDate.getFullYear() !== year
-        ) {
-          await sock.sendMessage(noWa, {
-            text: 'Tanggal tidak valid. Harap masukkan kembali (Format:Hari-Bulan-Tahun):',
-          });
-          return;
-        }
-
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-
-        if (inputDate < today) {
-          await sock.sendMessage(noWa, {
-            text: 'Tanggal Tidak boleh di masa lalu. Harap masukkan tanggal yang valid (Format:Hari-Bulan-Tahun):',
-          });
-          return;
-        }
-
-        botpromt[noWa].date_2 = text;
-        userchoice[noWa] = 'jam_kembali';
-        await sock.sendMessage(noWa, {
-          text: 'Mohon masukan waktu *jam kembali* ke kebun dengan format (HH:MM)(10:00):',
-        });
-      } else if (step === 'jam_kembali') {
-        if (text.toLowerCase() === 'batal') {
-          await sock.sendMessage(noWa, {
-            text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
-          });
-          delete userchoice[noWa];
-          delete botpromt[noWa];
-          clearTimeout(timeoutHandles[noWa]);
-          delete timeoutHandles[noWa];
-          return;
-        }
-        const timeRegex = /^([01]\d|2[0-3]):([0-5]\d)$/;
-        if (!timeRegex.test(text)) {
-          await sock.sendMessage(noWa, {
-            text: 'Waktu tidak valid. Harap masukkan waktu dalam format 24 jam (HH:MM), contoh: 11:00 atau 23:30',
-          });
-          return;
-        }
-        botpromt[noWa].jam_kembali = text;
-        userchoice[noWa] = 'needs';
-        await sock.sendMessage(noWa, {
-          text: 'Mohon jelaskan keperluan Anda untuk keluar dari kebun:',
-        });
-      } else if (step === 'needs') {
-        if (text.toLowerCase() === 'batal') {
-          await sock.sendMessage(noWa, {
-            text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
-          });
-          delete userchoice[noWa];
-          delete botpromt[noWa];
-          clearTimeout(timeoutHandles[noWa]);
-          delete timeoutHandles[noWa];
-          return;
-        }
-        botpromt[noWa].needs = text;
-        userchoice[noWa] = 'atasan_satu';
-        await sock.sendMessage(noWa, {
-          text: 'Silakan masukkan nama lengkap *ATASAN PERTAMA* atau nama depan saja tanpa tanda titik/koma/backtip (./,/`) untuk pencarian didatabase',
-        });
-      } else if (step === 'atasan_satu') {
-        if (text.toLowerCase() === 'batal') {
-          await sock.sendMessage(noWa, {
-            text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
-          });
-          delete userchoice[noWa];
-          delete botpromt[noWa];
-          clearTimeout(timeoutHandles[noWa]);
-          delete timeoutHandles[noWa];
-          return;
-        }
-        botpromt[noWa].atasan_satu = text;
-        const nama_atasansatu = text;
-        const result = await checkatasan(nama_atasansatu);
-
-        if (
-          result.message &&
-          result.message === 'Nama Atasan tidak ditemukan'
-        ) {
-          botpromt[noWa].attempts = (botpromt[noWa].attempts || 0) + 1;
-          if (botpromt[noWa].attempts >= 3) {
-            await sock.sendMessage(noWa, {
-              text: 'Anda sudah melakukan percobaan 3 kali. Silahkan coba kembali nanti.',
-            });
-            delete userchoice[noWa];
-            delete botpromt[noWa];
-            clearTimeout(timeoutHandles[noWa]);
-            delete timeoutHandles[noWa];
-          } else {
-            await sock.sendMessage(noWa, {
-              text: 'Nama Atasan Tidak ditemukan di database. Harap input ulang:',
-            });
-          }
-        } else if (result && result.length > 0) {
-          botpromt[noWa].atasan_options_satu = result;
-
-          let message =
-            'Pilih Nama Atasan Pertama.*HARAP MASUKAN ANGKA SAJA DARI PILIHAN TERSEDIA*:\n';
-          result.forEach((item, index) => {
-            message += `${index + 1}. ${item.nama} (${item.departemen})\n`;
-          });
-          message += `${
-            result.length + 1
-          }. Nama tidak tersedia di dalam pilihan\n`;
-          message += `${result.length + 2}. Coba masukan nama kembali`;
-
-          userchoice[noWa] = 'choose_atasan_satu';
-          await sock.sendMessage(noWa, { text: message });
+          this.clearedhandleTimeout(noWa);
         } else {
           await sock.sendMessage(noWa, {
             text: 'Nama Atasan Tidak ditemukan di database. Harap input ulang:',
           });
         }
-      } else if (step === 'choose_atasan_satu') {
-        if (text.toLowerCase() === 'batal') {
-          await sock.sendMessage(noWa, {
-            text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
-          });
-          delete userchoice[noWa];
-          delete botpromt[noWa];
-          clearTimeout(timeoutHandles[noWa]);
-          delete timeoutHandles[noWa];
-          return;
-        }
-        const chosenIndex = parseInt(text) - 1;
-        const options = botpromt[noWa].atasan_options_satu;
+      } else if (result !== null && result.length > 0) {
+        this.botpromt[noWa].atasan_options_dua = result;
 
-        if (
-          isNaN(chosenIndex) ||
-          !options ||
-          chosenIndex < 0 ||
-          chosenIndex >= options.length + 2
-        ) {
-          botpromt[noWa].attempts = (botpromt[noWa].attempts || 0) + 1;
-          if (botpromt[noWa].attempts >= 3) {
-            await sock.sendMessage(noWa, {
-              text: 'Anda sudah melakukan percobaan 3 kali. Silahkan coba kembali nanti.',
-            });
-            delete userchoice[noWa];
-            delete botpromt[noWa];
-            clearTimeout(timeoutHandles[noWa]);
-            delete timeoutHandles[noWa];
-            return;
-          } else {
-            await sock.sendMessage(noWa, {
-              text: 'Pilihan tidak valid. Silakan masukkan nomor yang sesuai:',
-            });
-            return;
-          }
-        }
+        let message =
+          'Pilih Nama Atasan kedua , *HARAP MASUKAN ANGKA SAJA DARI PILIHAN TERSEDIA*:\n';
+        result.forEach((item, index) => {
+          message += `${index + 1}. ${item.nama} (${item.departemen})\n`;
+        });
+        message += `${
+          result.length + 1
+        }. Nama tidak tersedia di dalam pilihan\n`;
+        message += `${result.length + 2}. Coba masukan nama kembali`;
 
-        if (chosenIndex === options.length) {
-          await sock.sendMessage(noWa, {
-            text: 'Nama Atasan tidak tersedia. Silakan hubungi admin Digital Architect untuk penambahan nama atasan.',
-          });
-          delete userchoice[noWa];
-          delete botpromt[noWa];
-          clearTimeout(timeoutHandles[noWa]);
-          delete timeoutHandles[noWa];
-        } else if (chosenIndex === options.length + 1) {
-          userchoice[noWa] = 'atasan_satu';
-          await sock.sendMessage(noWa, {
-            text: 'Silakan masukkan nama lengkap atasan *PERTAMA* atau nama depan saja tanpa tanda titik/koma/backtip (./,/`) untuk pencarian didatabase',
-          });
-        } else {
-          botpromt[noWa].atasan_satu = options[chosenIndex].nama;
-          botpromt[noWa].atasan_satu_id = options[chosenIndex].id;
-          delete botpromt[noWa].atasan_options_satu;
-
-          userchoice[noWa] = 'atasan_dua';
-          // botpromt[noWa] = { attempts: 0 };
-          await sock.sendMessage(noWa, {
-            text: 'Silakan masukkan nama lengkap *ATASAN KEDUA* atau nama depan saja tanpa tanda titik/koma/backtip (./,/`) untuk pencarian didatabase',
-          });
-        }
-      } else if (step === 'atasan_dua') {
-        if (text.toLowerCase() === 'batal') {
-          await sock.sendMessage(noWa, {
-            text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
-          });
-          delete userchoice[noWa];
-          delete botpromt[noWa];
-          clearTimeout(timeoutHandles[noWa]);
-          delete timeoutHandles[noWa];
-          return;
-        }
-        botpromt[noWa].atasan_dua = text;
-        const nama_atasandua = text;
-        const result = await checkatasan(nama_atasandua);
-        if (
-          result.message &&
-          result.message === 'Nama Atasan tidak ditemukan'
-        ) {
-          botpromt[noWa].attempts += 1;
-          if (botpromt[noWa].attempts >= 3) {
-            await sock.sendMessage(noWa, {
-              text: 'Anda sudah melakukan percobaan *3 kali*. Silahkan coba kembali nanti.',
-            });
-            delete userchoice[noWa];
-            delete botpromt[noWa];
-            clearTimeout(timeoutHandles[noWa]);
-            delete timeoutHandles[noWa];
-          } else {
-            await sock.sendMessage(noWa, {
-              text: 'Nama Atasan Tidak ditemukan di database. Harap input ulang:',
-            });
-          }
-        } else if (result !== null && result.length > 0) {
-          botpromt[noWa].atasan_options_dua = result;
-
-          let message =
-            'Pilih Nama Atasan kedua , *HARAP MASUKAN ANGKA SAJA DARI PILIHAN TERSEDIA*:\n';
-          result.forEach((item, index) => {
-            message += `${index + 1}. ${item.nama} (${item.departemen})\n`;
-          });
-          message += `${
-            result.length + 1
-          }. Nama tidak tersedia di dalam pilihan\n`;
-          message += `${result.length + 2}. Coba masukan nama kembali`;
-
-          userchoice[noWa] = 'choose_atasan_dua';
-          await sock.sendMessage(noWa, { text: message });
-        } else {
-          await sock.sendMessage(noWa, {
-            text: 'Nama Atasan Tidak ditemukan di database. Harap input ulang:',
-          });
-        }
-      } else if (step === 'choose_atasan_dua') {
-        const chosenIndex = parseInt(text) - 1;
-        const options = botpromt[noWa].atasan_options_dua;
-
-        if (
-          isNaN(chosenIndex) ||
-          !options ||
-          chosenIndex < 0 ||
-          chosenIndex >= options.length + 2
-        ) {
-          botpromt[noWa].attempts = (botpromt[noWa].attempts || 0) + 1;
-          if (botpromt[noWa].attempts >= 3) {
-            await sock.sendMessage(noWa, {
-              text: 'Anda sudah melakukan percobaan 3 kali. Silahkan coba kembali nanti.',
-            });
-            delete userchoice[noWa];
-            delete botpromt[noWa];
-            clearTimeout(timeoutHandles[noWa]);
-            delete timeoutHandles[noWa];
-            return;
-          } else {
-            await sock.sendMessage(noWa, {
-              text: 'Pilihan tidak valid. Silakan masukkan nomor atasan 2 yang sesuai:',
-            });
-            return;
-          }
-        }
-        if (chosenIndex === options.length) {
-          await sock.sendMessage(noWa, {
-            text: 'Nama Atasan tidak tersedia.Silakan hubungi admin Digital Architect untuk penambahan nama.',
-          });
-          delete userchoice[noWa];
-          delete botpromt[noWa];
-          clearTimeout(timeoutHandles[noWa]);
-          delete timeoutHandles[noWa];
-        } else if (chosenIndex === options.length + 1) {
-          userchoice[noWa] = 'atasan_dua';
-          await sock.sendMessage(noWa, {
-            text: 'Silakan masukkan nama lengkap atasan *KEDUA* atau nama depan untuk pencarian didatabase',
-          });
-        } else if (!isNaN(chosenIndex) && options && options[chosenIndex]) {
-          botpromt[noWa].atasan_dua = options[chosenIndex].nama;
-          botpromt[noWa].atasan_dua_id = options[chosenIndex].id;
-          delete botpromt[noWa].atasan_options_dua;
-
-          userchoice[noWa] = 'confirm';
-          await sock.sendMessage(noWa, {
-            text: `*HARAP CROSSCHECK DATA ANDA TERLEBIH DAHULU*:
-                            \nNama: ${botpromt[noWa].user_nama}
-                            \nTujuan: ${botpromt[noWa].location}
-                            \nKendaraan: ${botpromt[noWa].kendaraan}
-                            \nPlat Nomor: ${botpromt[noWa].plat_nomor}
-                            \nTanggal Izin Keluar: ${botpromt[noWa].date}
-                            \nTanggal Kembali: ${botpromt[noWa].date_2}
-                            \nJam Keluar: ${botpromt[noWa].jam_keluar}
-                            \nJam Kembali: ${botpromt[noWa].jam_kembali}
-                            \nKeperluan: ${botpromt[noWa].needs}
-                            \nAtasan Satu: ${botpromt[noWa].atasan_satu}
-                            \nAtasan Dua: ${botpromt[noWa].atasan_dua}
-                            \nApakah semua data sudah sesuai? (ya/tidak)`,
-          });
-        } else {
-          await sock.sendMessage(noWa, {
-            text: 'Pilihan tidak valid. Silakan masukkan pilihan yang sesuai:',
-          });
-          return;
-        }
-      } else if (step === 'confirm') {
-        if (text.toLowerCase() === 'ya') {
-          userchoice[noWa] = 'disclamer_user';
-          await sock.sendMessage(noWa, {
-            text: `*Disclamer Harap di baca dengan seksama apakah anda setuju atau tidak*:
-                        \n- Izin keluar kebun diberikan dengan tujuan yang telah ditentukan dan harus digunakan sesuai dengan ketentuan yang berlaku.
-                        \n- Pemberi izin tidak bertanggung jawab atas cedera, kerugian, atau kerusakan yang timbul dari kecelakaan, baik yang diakibatkan oleh kelalaian sendiri maupun orang lain.
-                        \n- Izin keluar kebun dapat dibatalkan sewaktu-waktu oleh pemberi izin jika ditemukan pelanggaran terhadap ketentuan yang berlaku.\n\nApakah Anda setuju dengan disclaimer ini? (ya/tidak)`,
-          });
-        } else if (text.toLowerCase() === 'tidak') {
-          await sock.sendMessage(noWa, {
-            text: 'Silakan coba lagi untuk input dengan mengetikkan !izin.',
-          });
-        } else {
-          await sock.sendMessage(noWa, {
-            text: 'Pilihan tidak valid. Silakan jawab dengan "ya" atau "tidak":',
-          });
-          return;
-        }
-      } else if (step === 'disclamer_user') {
-        if (text.toLowerCase() === 'ya') {
-          try {
-            const response = await axios.post(
-              'https://management.srs-ssms.com/api/formdataizin',
-              // 'http://127.0.0.1:8000/api/formdataizin',
-              {
-                name: botpromt[noWa].user_nama_id,
-                tujuan: botpromt[noWa].location,
-                pergi: botpromt[noWa].date,
-                kembali: botpromt[noWa].date_2,
-                keperluan: botpromt[noWa].needs,
-                atasan_satu: botpromt[noWa].atasan_satu_id,
-                atasan_dua: botpromt[noWa].atasan_dua_id,
-                kendaraan: botpromt[noWa].kendaraan,
-                plat_nomor: botpromt[noWa].plat_nomor,
-                jam_keluar: botpromt[noWa].jam_keluar,
-                jam_kembali: botpromt[noWa].jam_kembali,
-                no_hp: noWa,
-                email: 'j',
-                password: 'j',
-              }
-            );
-
-            let responses = response.data;
-
-            const responseKey = Object.keys(responses)[0];
-
-            // console.log(responses);
-            await sock.sendMessage(noWa, {
-              text: 'Mohon Tunggu server melakukan validasi.....',
-            });
-            if (responseKey === 'error_validasi') {
-              await sock.sendMessage(noWa, {
-                text: `Data gagal diverifikasi, Karena: ${responses[responseKey]}`,
-              });
-            } else {
-              await sock.sendMessage(noWa, {
-                text: 'Permohonan izin berhasil dikirim dan sedang menunggu persetujuan dari atasan. Harap tunggu notifikasi selanjutnya atau cek perkembangan di website: http://127.0.0.1:8000/.',
-              });
-            }
-          } catch (error) {
-            console.log('izinkebun error');
-
-            if (error.response && error.response.status === 404) {
-              await sock.sendMessage(noWa, {
-                text: 'Nama Atasan tidak ditemukan di database. Harap input ulang.',
-              });
-            } else {
-              console.log('Error fetching data:', error);
-              await sock.sendMessage(noWa, {
-                text: 'Terjadi kesalahan saat mengirim data. Silakan coba lagi.',
-              });
-            }
-          }
-
-          // await sock.sendMessage(noWa, { text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.' });
-          delete userchoice[noWa];
-          delete botpromt[noWa];
-          clearTimeout(timeoutHandles[noWa]);
-          delete timeoutHandles[noWa];
-        } else if (text.toLowerCase() === 'tidak') {
-          await sock.sendMessage(noWa, {
-            text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
-          });
-          delete userchoice[noWa];
-          delete botpromt[noWa];
-          clearTimeout(timeoutHandles[noWa]);
-          delete timeoutHandles[noWa];
-        } else {
-          await sock.sendMessage(noWa, {
-            text: 'Pilihan tidak valid. Silakan jawab dengan "ya" atau "tidak":',
-          });
-          return;
-        }
+        this.userchoice[noWa] = 'choose_atasan_dua';
+        await sock.sendMessage(noWa, { text: message });
       } else {
         await sock.sendMessage(noWa, {
-          text: 'Silahkan coba kembali dengan mengetikan perintah !izin:',
+          text: 'Nama Atasan Tidak ditemukan di database. Harap input ulang:',
         });
-        delete userchoice[noWa];
-        delete botpromt[noWa];
-        clearTimeout(timeoutHandles[noWa]);
-        delete timeoutHandles[noWa];
       }
+    } else if (step === 'choose_atasan_dua') {
+      const chosenIndex = parseInt(text) - 1;
+      const options = this.botpromt[noWa].atasan_options_dua;
+
+      if (
+        isNaN(chosenIndex) ||
+        !options ||
+        chosenIndex < 0 ||
+        chosenIndex >= options.length + 2
+      ) {
+        this.botpromt[noWa].attempts = (this.botpromt[noWa].attempts || 0) + 1;
+        if (this.botpromt[noWa].attempts >= 3) {
+          await sock.sendMessage(noWa, {
+            text: 'Anda sudah melakukan percobaan 3 kali. Silahkan coba kembali nanti.',
+          });
+          this.clearedhandleTimeout(noWa);
+        } else {
+          await sock.sendMessage(noWa, {
+            text: 'Pilihan tidak valid. Silakan masukkan nomor atasan 2 yang sesuai:',
+          });
+          return;
+        }
+      }
+      if (chosenIndex === options.length) {
+        await sock.sendMessage(noWa, {
+          text: 'Nama Atasan tidak tersedia.Silakan hubungi admin Digital Architect untuk penambahan nama.',
+        });
+        this.clearedhandleTimeout(noWa);
+      } else if (chosenIndex === options.length + 1) {
+        this.userchoice[noWa] = 'atasan_dua';
+        await sock.sendMessage(noWa, {
+          text: 'Silakan masukkan nama lengkap atasan *KEDUA* atau nama depan untuk pencarian didatabase',
+        });
+      } else if (!isNaN(chosenIndex) && options && options[chosenIndex]) {
+        this.botpromt[noWa].atasan_dua = options[chosenIndex].nama;
+        this.botpromt[noWa].atasan_dua_id = options[chosenIndex].id;
+        delete this.botpromt[noWa].atasan_options_dua;
+
+        this.userchoice[noWa] = 'confirm';
+        await sock.sendMessage(noWa, {
+          text: `*HARAP CROSSCHECK DATA ANDA TERLEBIH DAHULU*:
+                          \nNama: ${this.botpromt[noWa].user_nama}
+                          \nTujuan: ${this.botpromt[noWa].location}
+                          \nKendaraan: ${this.botpromt[noWa].kendaraan}
+                          \nPlat Nomor: ${this.botpromt[noWa].plat_nomor}
+                          \nTanggal Izin Keluar: ${this.botpromt[noWa].date}
+                          \nTanggal Kembali: ${this.botpromt[noWa].date_2}
+                          \nJam Keluar: ${this.botpromt[noWa].jam_keluar}
+                          \nJam Kembali: ${this.botpromt[noWa].jam_kembali}
+                          \nKeperluan: ${this.botpromt[noWa].needs}
+                          \nAtasan Satu: ${this.botpromt[noWa].atasan_satu}
+                          \nAtasan Dua: ${this.botpromt[noWa].atasan_dua}
+                          \nApakah semua data sudah sesuai? (ya/tidak)`,
+        });
+      } else {
+        await sock.sendMessage(noWa, {
+          text: 'Pilihan tidak valid. Silakan masukkan pilihan yang sesuai:',
+        });
+        return;
+      }
+    } else if (step === 'confirm') {
+      if (text.toLowerCase() === 'ya') {
+        this.userchoice[noWa] = 'disclamer_user';
+        await sock.sendMessage(noWa, {
+          text: `*Disclamer Harap di baca dengan seksama apakah anda setuju atau tidak*:
+                      \n- Izin keluar kebun diberikan dengan tujuan yang telah ditentukan dan harus digunakan sesuai dengan ketentuan yang berlaku.
+                      \n- Pemberi izin tidak bertanggung jawab atas cedera, kerugian, atau kerusakan yang timbul dari kecelakaan, baik yang diakibatkan oleh kelalaian sendiri maupun orang lain.
+                      \n- Izin keluar kebun dapat dibatalkan sewaktu-waktu oleh pemberi izin jika ditemukan pelanggaran terhadap ketentuan yang berlaku.\n\nApakah Anda setuju dengan disclaimer ini? (ya/tidak)`,
+        });
+      } else if (text.toLowerCase() === 'tidak') {
+        await sock.sendMessage(noWa, {
+          text: 'Silakan coba lagi untuk input dengan mengetikkan !izin.',
+        });
+      } else {
+        await sock.sendMessage(noWa, {
+          text: 'Pilihan tidak valid. Silakan jawab dengan "ya" atau "tidak":',
+        });
+        return;
+      }
+    } else if (step === 'disclamer_user') {
+      if (text.toLowerCase() === 'ya') {
+        try {
+          const response = await axios.post(
+            'https://management.srs-ssms.com/api/formdataizin',
+            // 'http://127.0.0.1:8000/api/formdataizin',
+            {
+              name: this.botpromt[noWa].user_nama_id,
+              tujuan: this.botpromt[noWa].location,
+              pergi: this.botpromt[noWa].date,
+              kembali: this.botpromt[noWa].date_2,
+              keperluan: this.botpromt[noWa].needs,
+              atasan_satu: this.botpromt[noWa].atasan_satu_id,
+              atasan_dua: this.botpromt[noWa].atasan_dua_id,
+              kendaraan: this.botpromt[noWa].kendaraan,
+              plat_nomor: this.botpromt[noWa].plat_nomor,
+              jam_keluar: this.botpromt[noWa].jam_keluar,
+              jam_kembali: this.botpromt[noWa].jam_kembali,
+              no_hp: noWa,
+              email: 'j',
+              password: 'j',
+            }
+          );
+
+          let responses = response.data;
+
+          const responseKey = Object.keys(responses)[0];
+
+          // console.log(responses);
+          await sock.sendMessage(noWa, {
+            text: 'Mohon Tunggu server melakukan validasi.....',
+          });
+          if (responseKey === 'error_validasi') {
+            await sock.sendMessage(noWa, {
+              text: `Data gagal diverifikasi, Karena: ${responses[responseKey]}`,
+            });
+          } else {
+            await sock.sendMessage(noWa, {
+              text: 'Permohonan izin berhasil dikirim dan sedang menunggu persetujuan dari atasan. Harap tunggu notifikasi selanjutnya atau cek perkembangan di website: http://127.0.0.1:8000/.',
+            });
+          }
+        } catch (error) {
+          console.log('izinkebun error');
+
+          if (error.response && error.response.status === 404) {
+            await sock.sendMessage(noWa, {
+              text: 'Nama Atasan tidak ditemukan di database. Harap input ulang.',
+            });
+          } else {
+            console.log('Error fetching data:', error);
+            await sock.sendMessage(noWa, {
+              text: 'Terjadi kesalahan saat mengirim data. Silakan coba lagi.',
+            });
+          }
+        }
+
+        // await sock.sendMessage(noWa, { text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.' });
+        this.clearedhandleTimeout(noWa);
+      } else if (text.toLowerCase() === 'tidak') {
+        await sock.sendMessage(noWa, {
+          text: 'Permintaan izin di batalkan, coba lagi untuk input dengan mengetikkan !izin.',
+        });
+        this.clearedhandleTimeout(noWa);
+      } else {
+        await sock.sendMessage(noWa, {
+          text: 'Pilihan tidak valid. Silakan jawab dengan "ya" atau "tidak":',
+        });
+        return;
+      }
+    } else {
+      await sock.sendMessage(noWa, {
+        text: 'Silahkan coba kembali dengan mengetikan perintah !izin:',
+      });
+      this.clearedhandleTimeout(noWa);
     }
   }
 
@@ -1158,13 +1050,13 @@ class IzinKebunProgram {
       } else {
         return {
           success: false,
-          message: 'PDF not found in the API response.',
+          message: 'PDF tidak ditemukan dalam respons API.',
         };
       }
     } catch (error) {
       return {
         success: false,
-        message: 'Error fetching data from API:',
+        message: 'Gagal mengambil data dari API:',
       };
     }
   }

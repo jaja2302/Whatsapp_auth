@@ -5,6 +5,7 @@ const logger = require('./logger');
 const GeneralProgram = require('../Programs/General');
 const IzinkebunProgram = require('../Programs/Izinkebun');
 const IotProgram = require('../Programs/Iot');
+
 class MessageUpsert {
   constructor() {
     this.userIotChoice = {};
@@ -12,6 +13,7 @@ class MessageUpsert {
     this.userchoiceSnoozeBotPengawasanOperator = {};
     this.configSnoozeBotPengawasanOperator = {};
     this.userTalsasiChoice = {};
+    this.userIzinkebunChoice = {};
   }
 
   static async init() {
@@ -325,6 +327,386 @@ class MessageUpsert {
         },
         { quoted: message }
       );
+    }
+  }
+
+  async handlePrivateMessage(lowerCaseMessage, noWa, text, sock, message) {
+    if (lowerCaseMessage === '!izin') {
+      // Start the ijin process only if it's not already started
+      // if (!this.userIzinkebunChoice[noWa]) {
+      //   await this.izinkebunProgram.handleijinmsg(noWa, lowerCaseMessage, sock);
+      //   this.userIzinkebunChoice[noWa] = true;
+      // }
+      // } else if (this.userIzinkebunChoice[noWa]) {
+      //   // Continue the ijin process if it has already started
+      //   await this.izinkebunProgram.handleijinmsg(noWa, text, sock);
+      //   // Add this condition to clear the state when user cancels
+      //   if (text.toLowerCase() === 'batal') {
+      //     delete this.userIzinkebunChoice[noWa];
+      //   }
+      // }
+      await sock.sendMessage(
+        noWa,
+        {
+          text: 'Maintenace, silahkan kunjungi https://izin-kebun.srs-ssms.com/ untuk izin kebun',
+        },
+        { quoted: message }
+      );
+    } else if (lowerCaseMessage === '!iot') {
+      if (!this.userIotChoice[noWa]) {
+        await this.iotProgram.handleIotInput(noWa, lowerCaseMessage, sock);
+        this.userIotChoice[noWa] = true;
+      }
+    } else if (this.userIotChoice[noWa]) {
+      // Continue the input process if it has already started
+      await this.iotProgram.handleIotInput(noWa, text, sock);
+    } else {
+      if (lowerCaseMessage === 'ya') {
+        const imagePath = 'izinkebun/step1.jpg';
+        const imagePath2 = 'izinkebun/step2.jpg';
+        const caption =
+          'Harap balas pesan dengan cara tekan/tahan pesan di atas';
+        const caption2 =
+          'Lalu balas *ya* untuk menyetujui izin di atas, atau balas *tidak* untuk menolak izin di atas.\n\nAtau balas *ya semua* tanpa menekan/menahan pesan di atas untuk menyetujui semua izin atas persetujuan anda.';
+
+        await this.generalProgram.sendImageWithCaption(
+          sock,
+          noWa,
+          imagePath,
+          caption
+        );
+        await this.generalProgram.sendImageWithCaption(
+          sock,
+          noWa,
+          imagePath2,
+          caption2
+        );
+      } else if (lowerCaseMessage === 'tidak') {
+        const imagePath = 'izinkebun/step1.jpg';
+        const imagePath2 = 'izinkebun/step2.jpg';
+        const caption =
+          'Harap balas pesan dengan cara tekan/tahan pesan di atas';
+        const caption2 =
+          'Lalu balas *tidak* untuk menyetujui izin di atas, atau balas *ya* untuk menerima izin di atas.\n\nAtau balas *tidak semua* tanpa menekan/menahan pesan di atas untuk menolak semua izin atas persetujuan anda.';
+
+        await this.generalProgram.sendImageWithCaption(
+          sock,
+          noWa,
+          imagePath,
+          caption
+        );
+        await this.generalProgram.sendImageWithCaption(
+          sock,
+          noWa,
+          imagePath2,
+          caption2
+        );
+      } else if (lowerCaseMessage === 'ya semua') {
+        try {
+          const response = await axios.post(
+            'https://management.srs-ssms.com/api/getizinverifinew',
+            {
+              email: 'j',
+              password: 'j',
+              no_hp: noWa,
+              jawaban: 'ya',
+            }
+          );
+
+          let responses = response.data;
+
+          // Split messages by `$` and join with newlines
+          const allMessages = responses.messages.split('$').join('\n');
+
+          await sock.sendMessage(noWa, {
+            text: `${allMessages}`,
+          });
+        } catch (error) {
+          // Handle error, send a specific error message or log the error
+          console.log('Error occurred:', error);
+          await sock.sendMessage(noWa, {
+            text: 'An error occurred while processing your request.',
+          });
+        }
+      } else if (lowerCaseMessage === 'tidak semua') {
+        try {
+          const response = await axios.post(
+            'https://management.srs-ssms.com/api/getizinverifinew',
+            // 'http://erpda.test/api/getizinverifinew',
+            {
+              email: 'j',
+              password: 'j',
+              no_hp: noWa,
+              jawaban: 'tidak',
+            }
+          );
+          let responses = response.data;
+          const allMessages = responses.messages.split('$').join('\n');
+
+          await sock.sendMessage(noWa, {
+            text: `${allMessages}`,
+          });
+        } catch (error) {
+          console.log('Error occurred:', error);
+          await sock.sendMessage(noWa, {
+            text: 'An error occurred while processing your request.',
+          });
+        }
+      }
+    }
+  }
+
+  async handleReplyNoDocMessage(
+    conversation,
+    noWa,
+    sock,
+    respon_atasan,
+    message
+  ) {
+    if (conversation.includes('Permintaan Persetujuan Izin Baru')) {
+      const idPemohonStartIndex =
+        conversation.indexOf('ID Pemohon: ') + 'ID Pemohon: '.length;
+      const idPemohonEndIndex = conversation.indexOf('\n', idPemohonStartIndex);
+      const idPemohon = conversation
+        .substring(idPemohonStartIndex, idPemohonEndIndex)
+        .trim();
+
+      // Splitting ID Pemohon into id and idAtasan
+      const [id, idAtasan] = idPemohon.split('/').map((part) => part.trim());
+
+      // Extracting Nama Pemohon
+      const namaStartIndex =
+        conversation.indexOf('Nama Pemohon: ') + 'Nama Pemohon: '.length;
+      const namaEndIndex = conversation.indexOf('\n', namaStartIndex);
+      const nama = conversation.substring(namaStartIndex, namaEndIndex).trim();
+      // console.log(conversation);
+      // console.log(idAtasan);
+
+      if (
+        respon_atasan.toLowerCase() !== 'ya' &&
+        respon_atasan.toLowerCase() !== 'tidak'
+      ) {
+        await sock.sendMessage(
+          noWa,
+          { text: 'Harap hanya balas ya atau tidak' },
+          { quoted: message }
+        );
+      } else if (respon_atasan.toLowerCase() === 'ya') {
+        try {
+          // const response = await axios.post('http://qc-apps2.test/api/updatenotifijin', {
+          const response = await axios.post(
+            'https://management.srs-ssms.com/api/updatenotifijin',
+            // 'http://127.0.0.1:8000/api/updatenotifijin',
+            {
+              id_data: id,
+              id_atasan: idAtasan,
+              answer: 'ya',
+              email: 'j',
+              password: 'j',
+              response: respon_atasan,
+            }
+          );
+          let responses = response.data;
+          await sock.sendMessage(noWa, {
+            text: responses.message,
+          });
+        } catch (error) {
+          // console.log(error);
+
+          await sock.sendMessage(noWa, {
+            text: error.response.data.message ?? 'Terjadi kesalahan',
+          });
+        }
+      } else if (respon_atasan.toLowerCase() === 'tidak') {
+        let message = `*Alasan izin di tolak?*:\n`;
+        message += `*ID Pemohon* : ${id}/${idAtasan}\n`;
+        message += `*Nama* : ${nama}\n`;
+        message += `Silahkan Reply Pesan ini untuk memberikan alasan izin di tolak\n`;
+        await sock.sendMessage(noWa, { text: message });
+      }
+    } else if (conversation.includes('Alasan izin di tolak')) {
+      const idPemohonStartIndex =
+        conversation.indexOf('*ID Pemohon* : ') + '*ID Pemohon* : '.length;
+      const idPemohonEndIndex = conversation.indexOf('\n', idPemohonStartIndex);
+      const idPemohon = conversation
+        .substring(idPemohonStartIndex, idPemohonEndIndex)
+        .trim();
+      const [id, idAtasan] = idPemohon.split('/').map((part) => part.trim());
+      try {
+        // const response = await axios.post('http://qc-apps2.test/api/updatenotifijin', {
+        const response = await axios.post(
+          'https://management.srs-ssms.com/api/updatenotifijin',
+          // 'http://127.0.0.1:8000/api/updatenotifijin',
+          {
+            id_data: id,
+            id_atasan: idAtasan,
+            answer: 'tidak',
+            email: 'j',
+            password: 'j',
+            response: respon_atasan,
+          }
+        );
+        let responses = response.data;
+        await sock.sendMessage(noWa, {
+          text: responses.message,
+        });
+      } catch (error) {
+        // console.log(error);
+
+        await sock.sendMessage(noWa, {
+          text: error.response.data.message ?? 'Terjadi kesalahan',
+        });
+      }
+    } else if (conversation.includes('*Permintaan barang perlu di review*:')) {
+      const idPemohonStartIndex =
+        conversation.indexOf('*ID* : ') + '*ID* : '.length;
+      const idPemohonEndIndex = conversation.indexOf('\n', idPemohonStartIndex);
+      const idPemohon = conversation
+        .substring(idPemohonStartIndex, idPemohonEndIndex)
+        .trim();
+      const [id] = idPemohon.split('/').map((part) => part.trim());
+      if (
+        respon_atasan.toLowerCase() !== 'ya' &&
+        respon_atasan.toLowerCase() !== 'tidak'
+      ) {
+        await sock.sendMessage(
+          noWa,
+          { text: 'Harap hanya balas ya atau tidak' },
+          { quoted: message }
+        );
+      } else if (respon_atasan.toLowerCase() === 'ya') {
+        try {
+          const response = await axios.post(
+            // 'http://127.0.0.1:8000/api/acceptedoreder',
+            'https://management.srs-ssms.com/api/acceptedoreder',
+            {
+              email: 'j',
+              password: 'j',
+              id: id,
+            }
+          );
+          let responses = response.data;
+          await sock.sendMessage(noWa, {
+            text: `${responses.message}`,
+          });
+        } catch (error) {
+          console.log('Error approving:', error);
+        }
+      } else if (respon_atasan.toLowerCase() === 'tidak') {
+        let message = `*Alasan request barang di tolak?*:\n`;
+        message += `*ID* : ${id}\n`;
+        message += `Silahkan *wajib* Reply Pesan ini dengan membalas *skip* untuk menolak tanpa alasan. Atau berikan alasan menolak request ini?\n`;
+        await sock.sendMessage(noWa, { text: message });
+      }
+    } else if (conversation.includes('Alasan request barang di tolak')) {
+      // console.log('disni');
+      const idPemohonStartIndex =
+        conversation.indexOf('*ID* : ') + '*ID* : '.length;
+      const idPemohonEndIndex = conversation.indexOf('\n', idPemohonStartIndex);
+      const idPemohon = conversation
+        .substring(idPemohonStartIndex, idPemohonEndIndex)
+        .trim();
+      const [id] = idPemohon.split('/').map((part) => part.trim());
+      console.log(respon_atasan);
+      try {
+        // const response = await axios.post('http://qc-apps2.test/api/updatenotifijin', {
+        const response = await axios.post(
+          'https://management.srs-ssms.com/api/rejectedoreder',
+          {
+            email: 'j',
+            password: 'j',
+            id: id,
+            alasan: respon_atasan,
+          }
+        );
+        let responses = response.data;
+        await sock.sendMessage(noWa, {
+          text: `${responses.message}`,
+        });
+      } catch (error) {
+        console.log('Error approving:', error);
+      }
+    }
+  }
+
+  async handleReplyDocMessage(
+    conversation,
+    noWa,
+    sock,
+    respon_atasan,
+    quotedMessage
+  ) {
+    const documentMessage =
+      quotedMessage.documentWithCaptionMessage.message.documentMessage.caption;
+    // Handle reply to document
+
+    // console.log(documentMessage);
+
+    if (
+      documentMessage.includes(
+        'Anda memiliki permintaan untuk meverifikasi data dari rekomendator'
+      )
+    ) {
+      // Extract the Doc ID
+      // console.log('test');
+
+      const docIdMatch = documentMessage.match(/\*Doc ID\* : (\d+\/\d+)/);
+      if (docIdMatch) {
+        const docId = docIdMatch[1];
+        const [id, user_id] = docId.split('/');
+        // console.log(respon_atasan.toLowerCase());
+        if (respon_atasan.toLowerCase() === 'ya') {
+          try {
+            const response = await axios.post(
+              'https://management.srs-ssms.com/api/get_approval_rapid_response',
+              {
+                id: id,
+                user_id: user_id,
+                answer: 'ya',
+                email: 'j',
+                password: 'j',
+              }
+            );
+            let responses = response.data;
+            await sock.sendMessage(noWa, {
+              text: 'Mohon Tunggu server melakukan validasi.....',
+            });
+            await sock.sendMessage(noWa, {
+              text: responses.message,
+            });
+          } catch (error) {
+            console.log('Error approving:', error);
+          }
+        } else if (respon_atasan.toLowerCase() === 'tidak') {
+          try {
+            const response = await axios.post(
+              'https://management.srs-ssms.com/api/get_approval_rapid_response',
+              {
+                id: id,
+                user_id: user_id,
+                answer: 'tidak',
+                email: 'j',
+                password: 'j',
+              }
+            );
+            let responses = response.data;
+            await sock.sendMessage(noWa, {
+              text: 'Mohon Tunggu server melakukan validasi.....',
+            });
+            await sock.sendMessage(noWa, {
+              text: responses.message,
+            });
+          } catch (error) {
+            console.log('Error approving:', error);
+          }
+        } else {
+          await sock.sendMessage(noWa, {
+            text: 'Hanya bisa memilih ya atau tidak',
+          });
+        }
+      } else {
+        console.log('Doc ID not found in the message.');
+      }
     }
   }
 }

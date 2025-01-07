@@ -149,22 +149,22 @@ async function connectToWhatsApp() {
 
             if (quotedMessage.conversation) {
               logger.info.whatsapp('Reply message:', conversation);
-              // await handleReplyNoDocMessage(
-              //   conversation,
-              //   noWa,
-              //   sock,
-              //   respon_atasan,
-              //   message
-              // );
+              await messageUpsertInstance.handleReplyNoDocMessage(
+                conversation,
+                noWa,
+                sock,
+                respon_atasan,
+                message
+              );
             } else if (quotedMessage.documentWithCaptionMessage) {
               logger.info.whatsapp('Reply document message:', conversation);
-              // await handleReplyDocMessage(
-              //   conversation,
-              //   noWa,
-              //   sock,
-              //   respon_atasan,
-              //   quotedMessage
-              // );
+              await messageUpsertInstance.handleReplyDocMessage(
+                conversation,
+                noWa,
+                sock,
+                respon_atasan,
+                quotedMessage
+              );
             }
           } else {
             if (isGroup) {
@@ -178,7 +178,13 @@ async function connectToWhatsApp() {
               );
             } else if (isPrivate) {
               logger.info.whatsapp('Private message:', lowerCaseMessage);
-              // await handlePrivateMessage(lowerCaseMessage, noWa, text, sock);
+              await messageUpsertInstance.handlePrivateMessage(
+                lowerCaseMessage,
+                noWa,
+                text,
+                sock,
+                message
+              );
             }
           }
         }

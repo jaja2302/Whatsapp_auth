@@ -15,6 +15,9 @@ class IotProgram {
     if (!global.queue) {
       global.queue = require('../services/queue');
     }
+    this.userIotChoice = {};
+    this.botIotPrompt = {};
+    this.timeoutHandles = {};
   }
 
   static async init() {
@@ -275,6 +278,198 @@ class IotProgram {
         success: false,
         message: 'Gagal mengirim data AWS harian',
       };
+    }
+  }
+
+  async handleTimeout(noWa, sock) {
+    if (this.timeoutHandles[noWa]) {
+      clearTimeout(this.timeoutHandles[noWa]);
+    }
+
+    this.timeoutHandles[noWa] = setTimeout(
+      async () => {
+        console.log(`Timeout triggered for ${noWa}`);
+        await sock.sendMessage(noWa, {
+          text: 'Waktu Anda telah habis. Silakan mulai kembali dengan mengetikkan !izin.',
+        });
+        delete this.userIotChoice[noWa];
+        delete this.botIotPrompt[noWa];
+        delete this.timeoutHandles[noWa];
+      },
+      5 * 60 * 1000
+    );
+
+    // console.log(`Timeout set for ${noWa}`);
+  }
+
+  async clearedhandleTimeout(noWa) {
+    delete this.userIotChoice[noWa];
+    delete this.botIotPrompt[noWa];
+    clearTimeout(this.timeoutHandles[noWa]);
+    delete this.timeoutHandles[noWa];
+  }
+  async handleIotInput(noWa, text, sock) {
+    // Initial command
+    if (text.toLowerCase() === '!iot') {
+      this.userIotChoice[noWa] = 'estate';
+      this.botIotPrompt[noWa] = { attempts: 0 };
+      await sock.sendMessage(noWa, { text: 'Masukkan estate' });
+      this.handleTimeout(noWa, sock);
+      return;
+    }
+
+    // If no active conversation and not initial command, ignore
+    if (!this.userIotChoice[noWa]) {
+      return;
+    }
+
+    // Reset timeout on each valid input
+    this.handleTimeout(noWa, sock);
+
+    const step = this.userIotChoice[noWa];
+
+    switch (step) {
+      case 'estate':
+        this.botIotPrompt[noWa].estate = text;
+        try {
+          const response = await axios.post(
+            'http://qc-apps2.test/api/inputiotdata',
+            {
+              estate: this.botIotPrompt[noWa].estate,
+              type: 'check_estate',
+            }
+          );
+          const responses = response.data.data;
+
+          await sock.sendMessage(noWa, {
+            text: 'Mohon tunggu, server sedang melakukan validasi.',
+          });
+
+          let message = 'Pilih list afdeling, Masukan angka saja\n';
+          let options = [];
+
+          Object.keys(responses).forEach((key) => {
+            responses[key].forEach((item) => {
+              options.push(item);
+              message += `${options.length}. ${item.nama}\n`;
+            });
+          });
+
+          message += `${options.length + 1}. Afd tidak tersedia dalam daftar.\n`;
+          message += `${options.length + 2}. Coba masukan afd kembali\n`;
+
+          this.botIotPrompt[noWa].afdelingOptions = options;
+          this.userIotChoice[noWa] = 'afdeling';
+          await sock.sendMessage(noWa, { text: message });
+        } catch (error) {
+          await sock.sendMessage(noWa, {
+            text: 'Terjadi kesalahan. Silakan mulai kembali dengan !iot',
+          });
+          this.clearedhandleTimeout(noWa);
+        }
+        break;
+
+      case 'afdeling':
+        const chosenIndex = parseInt(text) - 1;
+        const options = this.botIotPrompt[noWa].afdelingOptions;
+
+        if (
+          isNaN(chosenIndex) ||
+          chosenIndex < 0 ||
+          chosenIndex >= options.length + 2
+        ) {
+          await sock.sendMessage(noWa, {
+            text: 'Pilihan tidak valid. Silakan mulai kembali dengan !iot',
+          });
+          this.clearedhandleTimeout(noWa);
+          return;
+        }
+
+        if (chosenIndex >= options.length) {
+          await sock.sendMessage(noWa, {
+            text: 'Silakan mulai kembali dengan !iot untuk memilih afdeling lain',
+          });
+          this.clearedhandleTimeout(noWa);
+          return;
+        }
+
+        const selectedOption = options[chosenIndex];
+        this.botIotPrompt[noWa] = {
+          ...this.botIotPrompt[noWa],
+          afdeling: selectedOption.nama,
+          afdeling_id: selectedOption.afdeling_id,
+          estate_id: selectedOption.est_id,
+          estate_nama: selectedOption.est,
+        };
+
+        this.userIotChoice[noWa] = 'curah_hujan';
+        await sock.sendMessage(noWa, {
+          text: 'Masukkan curah hujan (harap angka saja)',
+        });
+        break;
+
+      case 'curah_hujan':
+        const curahHujan = parseFloat(text);
+        if (isNaN(curahHujan)) {
+          await sock.sendMessage(noWa, {
+            text: 'Curah hujan tidak valid. Silakan masukkan angka saja.',
+          });
+          return;
+        }
+
+        this.botIotPrompt[noWa].curahHujan = curahHujan;
+        this.userIotChoice[noWa] = 'confirm';
+        await sock.sendMessage(noWa, {
+          text: `*HARAP CROSSCHECK DATA ANDA TERLEBIH DAHULU*:
+                \nAfdeling ID: ${this.botIotPrompt[noWa].afdeling_id}
+                \nEstate: ${this.botIotPrompt[noWa].estate_nama}
+                \nCurah Hujan: ${this.botIotPrompt[noWa].curahHujan}
+                \nApakah semua data sudah sesuai? (ya/tidak)`,
+        });
+        break;
+
+      case 'confirm':
+        if (text.toLowerCase() === 'ya') {
+          try {
+            const response = await axios.post(
+              'http://qc-apps2.test/api/inputiotdata',
+              {
+                afdeling_id: this.botIotPrompt[noWa].afdeling_id,
+                estate_id: this.botIotPrompt[noWa].estate_id,
+                curahHujan: this.botIotPrompt[noWa].curahHujan,
+                estate: this.botIotPrompt[noWa].estate_nama,
+                afdeling: this.botIotPrompt[noWa].afdeling,
+                type: 'input',
+              }
+            );
+
+            const responses = response.data;
+            const responseKey = Object.keys(responses)[0];
+
+            await sock.sendMessage(noWa, {
+              text:
+                responseKey === 'error_validasi'
+                  ? `Data gagal diverifikasi, karena: ${responses[responseKey]}`
+                  : 'Data berhasil dimasukan ke dalam database',
+            });
+          } catch (error) {
+            await sock.sendMessage(noWa, {
+              text: 'Terjadi kesalahan saat mengirim data. Silakan coba lagi dengan !iot',
+            });
+          }
+        } else if (text.toLowerCase() === 'tidak') {
+          await sock.sendMessage(noWa, {
+            text: 'Silakan coba lagi untuk input dengan mengetikkan !iot.',
+          });
+        } else {
+          await sock.sendMessage(noWa, {
+            text: 'Pilihan tidak valid. Silakan jawab dengan "ya" atau "tidak"',
+          });
+          return;
+        }
+        // Clear state after confirmation (whether successful or not)
+        this.clearedhandleTimeout(noWa);
+        break;
     }
   }
 }
