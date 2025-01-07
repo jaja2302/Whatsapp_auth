@@ -12,7 +12,7 @@ class IzinKebunProgram {
     this.userchoice = {};
     this.botpromt = {};
     this.timeoutHandles = {};
-    this.idgroup = '120363205553012899@g.us';
+    this.idgroup = '120363384470022318@g.us';
 
     if (!global.queue) {
       global.queue = require('../services/queue');
@@ -149,13 +149,13 @@ class IzinKebunProgram {
       message += `Lokasi Tujuan: ${data.lokasi_tujuan}\n\n`;
       message += `Harap selalu berhati-hati selama perjalanan dan pastikan untuk mengikuti protokol keamanan yang berlaku. Kami mendoakan agar Anda tiba dengan selamat di tujuan dan kembali ke kebun dengan kondisi sehat dan aman.\n\n`;
       message += `Jika ada pertanyaan lebih lanjut, jangan ragu untuk menghubungi kami.\n\n`;
-      message += `Atau kunjungi web kami di :https://izin-kebun.srs-ssms.com \n\n`;
+      message += `Atau kunjungi web kami di :http://127.0.0.1:8000 \n\n`;
       message += `Terima kasih,\n`;
       message += `Tim Digital Architect SRS Bot`;
 
       try {
         const genpdf = await axios.get(
-          'https://izin-kebun.srs-ssms.com/api/generatePdfIzinKebun',
+          'http://127.0.0.1:8000/api/generatePdfIzinKebun',
           {
             params: {
               user: 'j',
@@ -1053,7 +1053,7 @@ class IzinKebunProgram {
               });
             } else {
               await sock.sendMessage(noWa, {
-                text: 'Permohonan izin berhasil dikirim dan sedang menunggu persetujuan dari atasan. Harap tunggu notifikasi selanjutnya atau cek perkembangan di website: https://izin-kebun.srs-ssms.com/.',
+                text: 'Permohonan izin berhasil dikirim dan sedang menunggu persetujuan dari atasan. Harap tunggu notifikasi selanjutnya atau cek perkembangan di website: http://127.0.0.1:8000/.',
               });
             }
           } catch (error) {
@@ -1135,30 +1135,37 @@ class IzinKebunProgram {
           //   fileName: pdfFilename,
           //   caption: captions,
           // };
-          queue.push({
+          global.queue.push({
             type: 'send_document',
             data: {
-              to: idgroup,
+              to: this.idgroup,
               document: pdfBuffer,
               filename: pdfFilename,
               caption: captions,
             },
           });
-          // Send the PDF as a document via WhatsApp
-          // await sock.sendMessage(idgroup, messageOptions);
-          // console.log('PDF sent successfully!');
+
+          return {
+            success: true,
+            message: 'Laporan izin kebun berhasil dikirim',
+          };
         } catch (sendError) {
-          console.log('Error sending PDF:', sendError.message);
+          return {
+            success: false,
+            message: 'Laporan izin kebun gagal dikirim',
+          };
         }
       } else {
-        console.log('PDF not found in the API response.');
+        return {
+          success: false,
+          message: 'PDF not found in the API response.',
+        };
       }
-
-      // Return the message if needed
-      return data.message;
     } catch (error) {
-      console.log('Error fetching data from API:', error.message);
-      throw error;
+      return {
+        success: false,
+        message: 'Error fetching data from API:',
+      };
     }
   }
   async Fail_send_pdf() {

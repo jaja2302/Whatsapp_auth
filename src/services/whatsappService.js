@@ -141,45 +141,45 @@ async function connectToWhatsApp() {
           const contextInfo = message.message?.extendedTextMessage?.contextInfo;
           const isReply = !!contextInfo?.quotedMessage;
 
-          try {
-            if (isReply) {
-              const text_repply = message.message.extendedTextMessage.text;
-              const quotedMessage = contextInfo.quotedMessage;
-              const conversation = contextInfo.quotedMessage.conversation;
-              const respon_atasan = text_repply;
+          if (isReply) {
+            const text_repply = message.message.extendedTextMessage.text;
+            const quotedMessage = contextInfo.quotedMessage;
+            const conversation = contextInfo.quotedMessage.conversation;
+            const respon_atasan = text_repply;
 
-              if (quotedMessage.conversation) {
-                // await handleReplyNoDocMessage(
-                //   conversation,
-                //   noWa,
-                //   sock,
-                //   respon_atasan,
-                //   message
-                // );
-              } else if (quotedMessage.documentWithCaptionMessage) {
-                // await handleReplyDocMessage(
-                //   conversation,
-                //   noWa,
-                //   sock,
-                //   respon_atasan,
-                //   quotedMessage
-                // );
-              }
-            } else {
-              if (isGroup) {
-                await messageUpsertInstance.handleGroupMessage(
-                  lowerCaseMessage,
-                  noWa,
-                  text,
-                  sock,
-                  message
-                );
-              } else if (isPrivate) {
-                // await handlePrivateMessage(lowerCaseMessage, noWa, text, sock);
-              }
+            if (quotedMessage.conversation) {
+              logger.info.whatsapp('Reply message:', conversation);
+              // await handleReplyNoDocMessage(
+              //   conversation,
+              //   noWa,
+              //   sock,
+              //   respon_atasan,
+              //   message
+              // );
+            } else if (quotedMessage.documentWithCaptionMessage) {
+              logger.info.whatsapp('Reply document message:', conversation);
+              // await handleReplyDocMessage(
+              //   conversation,
+              //   noWa,
+              //   sock,
+              //   respon_atasan,
+              //   quotedMessage
+              // );
             }
-          } catch (error) {
-            logger.error.whatsapp('Error handling message:', error);
+          } else {
+            if (isGroup) {
+              logger.info.whatsapp('Group message:', lowerCaseMessage);
+              await messageUpsertInstance.handleGroupMessage(
+                lowerCaseMessage,
+                noWa,
+                text,
+                sock,
+                message
+              );
+            } else if (isPrivate) {
+              logger.info.whatsapp('Private message:', lowerCaseMessage);
+              // await handlePrivateMessage(lowerCaseMessage, noWa, text, sock);
+            }
           }
         }
       }

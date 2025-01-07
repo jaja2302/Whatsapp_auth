@@ -1,6 +1,10 @@
 const axios = require('axios');
 const TaksasiProgram = require('../Programs/Taksasi');
+const GradingProgram = require('../Programs/Grading');
 const logger = require('./logger');
+const GeneralProgram = require('../Programs/General');
+const IzinkebunProgram = require('../Programs/Izinkebun');
+const IotProgram = require('../Programs/Iot');
 class MessageUpsert {
   constructor() {
     this.userIotChoice = {};
@@ -13,6 +17,10 @@ class MessageUpsert {
   static async init() {
     const instance = new MessageUpsert();
     instance.taksasiProgram = await TaksasiProgram.init();
+    instance.gradingProgram = await GradingProgram.init();
+    instance.generalProgram = await GeneralProgram.init();
+    instance.izinkebunProgram = await IzinkebunProgram.init();
+    instance.iotProgram = await IotProgram.init();
     return instance;
   }
 
@@ -91,18 +99,11 @@ class MessageUpsert {
       await sock.sendMessage(
         noWa,
         {
-          text: 'Mohon tunggu Taksasi sedang di proses',
+          text: 'Masih dalam tahap pengembangan',
         },
         { quoted: message }
       );
-      let respon = await handleTaksasi(lowerCaseMessage, sock);
-      await sock.sendMessage(
-        noWa,
-        {
-          text: respon.message,
-        },
-        { quoted: message }
-      );
+      // await this.taksasiProgram.handleTaksasi(lowerCaseMessage, sock);
     } else if (lowerCaseMessage === '!menu') {
       await sock.sendMessage(
         noWa,
@@ -120,14 +121,7 @@ class MessageUpsert {
         { quoted: message }
       );
 
-      await run_jobs_mill(sock);
-      await sock.sendMessage(
-        noWa,
-        {
-          text: 'Berhasil di kirim',
-        },
-        { quoted: message }
-      );
+      await this.gradingProgram.runJobsMill();
     } else if (lowerCaseMessage === '!failcronjob') {
       await sock.sendMessage(
         noWa,
@@ -136,10 +130,7 @@ class MessageUpsert {
         },
         { quoted: message }
       );
-      let response = await sendfailcronjob(sock);
-      // console.log(response);
-
-      // Send the message
+      let response = await this.taksasiProgram.sendfailcronjob();
       await sock.sendMessage(
         noWa,
         {
@@ -210,7 +201,11 @@ class MessageUpsert {
         const endDateTime = parseDateTime(endDate);
         if (startDateTime <= now || endDateTime <= now) {
           let text = 'Format tanggal dan waktu harus setelah waktu saat ini.';
-          await handleChatSnoozePengawasanOperatorAi(noWa, text, sock);
+          await this.generalProgram.handleChatSnoozePengawasanOperatorAi(
+            noWa,
+            text,
+            sock
+          );
         } else {
           const differenceInMillis = endDateTime - startDateTime;
           const differenceInHours = differenceInMillis / (1000 * 60 * 60);
@@ -218,7 +213,12 @@ class MessageUpsert {
             datetime: `${startDate} s/d ${endDate}`,
             hour: differenceInHours,
           };
-          await handleChatSnoozePengawasanOperatorAi(noWa, text, sock);
+          this.userchoiceSnoozeBotPengawasanOperator[noWa] = true;
+          await this.generalProgram.handleChatSnoozePengawasanOperatorAi(
+            noWa,
+            text,
+            sock
+          );
         }
       } else if (singleDatePattern.test(snoozeContent)) {
         const matches = snoozeContent.match(singleDatePattern);
@@ -226,13 +226,21 @@ class MessageUpsert {
         const singleDateTime = parseDateTime(singleDate);
         if (singleDateTime <= now) {
           let text = 'Format tanggal dan waktu harus setelah waktu saat ini.';
-          await handleChatSnoozePengawasanOperatorAi(noWa, text, sock);
+          await this.generalProgram.handleChatSnoozePengawasanOperatorAi(
+            noWa,
+            text,
+            sock
+          );
         } else {
           configSnoozeBotPengawasanOperator[noWa] = {
             datetime: singleDate,
             hour: 24,
           };
-          await handleChatSnoozePengawasanOperatorAi(noWa, text, sock);
+          await this.generalProgram.handleChatSnoozePengawasanOperatorAi(
+            noWa,
+            text,
+            sock
+          );
         }
       } else if (dateTimeRangePattern.test(snoozeContent)) {
         const matches = snoozeContent.match(dateTimeRangePattern);
@@ -243,7 +251,11 @@ class MessageUpsert {
         const endDateTime = parseDateTime(date, endTime);
         if (startDateTime <= now) {
           let text = 'Format tanggal dan waktu harus setelah waktu saat ini.';
-          await handleChatSnoozePengawasanOperatorAi(noWa, text, sock);
+          await this.generalProgram.handleChatSnoozePengawasanOperatorAi(
+            noWa,
+            text,
+            sock
+          );
         } else {
           const differenceInHours =
             (endDateTime - startDateTime) / (1000 * 60 * 60);
@@ -251,7 +263,11 @@ class MessageUpsert {
             datetime: `${date} ${startTime} - ${endTime}`,
             hour: differenceInHours,
           };
-          await handleChatSnoozePengawasanOperatorAi(noWa, text, sock);
+          await this.generalProgram.handleChatSnoozePengawasanOperatorAi(
+            noWa,
+            text,
+            sock
+          );
         }
       } else {
         // Invalid format
@@ -264,22 +280,48 @@ class MessageUpsert {
         );
         return;
       }
-    } else if (userchoiceSnoozeBotPengawasanOperator[noWa]) {
+    } else if (this.userchoiceSnoozeBotPengawasanOperator[noWa]) {
       let waUser = message.key.participant;
       let phoneNumber = waUser.replace(/[^0-9]/g, '');
       // Replace the first 3 digits (if they are '628') with '08'
       if (phoneNumber.length >= 3) {
         phoneNumber = phoneNumber.replace(/^628/, '08');
       }
-      await handleChatSnoozePengawasanOperatorAi(noWa, text, sock, phoneNumber);
-    } else if (lowerCaseMessage === '!laporan izinkebun') {
-      await Report_group_izinkebun(sock);
-    } else if (lowerCaseMessage === '!laporanaws') {
-      await get_data_harian_aws();
+      await this.generalProgram.handleChatSnoozePengawasanOperatorAi(
+        noWa,
+        text,
+        sock,
+        phoneNumber
+      );
+    } else if (lowerCaseMessage === '!laporanizinkebun') {
       await sock.sendMessage(
         noWa,
         {
-          text: 'Laporan AWS berhasil di kirim',
+          text: 'Mohon tunggu sedang mengirim laporan izin kebun',
+        },
+        { quoted: message }
+      );
+      let response = await this.izinkebunProgram.Report_group_izinkebun(sock);
+      await sock.sendMessage(
+        noWa,
+        {
+          text: response.message,
+        },
+        { quoted: message }
+      );
+    } else if (lowerCaseMessage === '!laporanaws') {
+      await sock.sendMessage(
+        noWa,
+        {
+          text: 'Mohon tunggu sedang mengirim laporan AWS harian',
+        },
+        { quoted: message }
+      );
+      let response = await this.iotProgram.get_data_harian_aws();
+      await sock.sendMessage(
+        noWa,
+        {
+          text: response.message,
         },
         { quoted: message }
       );

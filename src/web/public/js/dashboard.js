@@ -21,6 +21,14 @@ class Dashboard {
       );
     });
 
+    // Add logs container reference
+    this.activityLogs = document.getElementById('activity-logs');
+    this.clearLogsBtn = document.getElementById('clear-logs');
+
+    // Initialize socket connection
+    this.socket = io();
+    this.setupSocketListeners();
+
     this.setupEventListeners();
     this.loadInitialStatus();
   }
@@ -36,6 +44,11 @@ class Dashboard {
           this.toggleProgram(program);
         });
       }
+    });
+
+    // Add clear logs button handler
+    this.clearLogsBtn.addEventListener('click', () => {
+      this.clearLogs();
     });
   }
 
@@ -104,6 +117,46 @@ class Dashboard {
       indicator.className = `h-3 w-3 rounded-full ${
         running ? 'bg-green-500' : 'bg-red-500'
       }`;
+    }
+  }
+
+  setupSocketListeners() {
+    // Listen for WhatsApp logs
+    this.socket.on('log-whatsapp', (data) => {
+      this.addLog(data);
+    });
+  }
+
+  addLog(data) {
+    const logEntry = document.createElement('div');
+    logEntry.className = 'p-2 border-b border-gray-100';
+
+    // Check if the message is an array and join its elements
+    const message = Array.isArray(data.message)
+      ? data.message.join(' ')
+      : data.message;
+
+    logEntry.textContent = `${data.timestamp} - ${message}`;
+
+    // Add color based on log level
+    if (data.level === 'error') {
+      logEntry.classList.add('text-red-600');
+    } else if (data.level === 'warn') {
+      logEntry.classList.add('text-yellow-600');
+    }
+
+    this.activityLogs.insertBefore(logEntry, this.activityLogs.firstChild);
+
+    // Limit the number of log entries
+    while (this.activityLogs.children.length > 100) {
+      this.activityLogs.removeChild(this.activityLogs.lastChild);
+    }
+  }
+
+  clearLogs() {
+    // Clear all logs from the container
+    while (this.activityLogs.firstChild) {
+      this.activityLogs.removeChild(this.activityLogs.firstChild);
     }
   }
 }

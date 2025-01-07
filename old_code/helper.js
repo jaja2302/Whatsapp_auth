@@ -6,36 +6,36 @@ const http = require('http');
 const https = require('https');
 const { DateTime } = require('luxon');
 
-const { channel, channelPython } = require('./utils/pusher');
-const {
-  Report_group_izinkebun,
-  catcherror,
-  Fail_send_pdf,
-  reminder_izin_kebun,
-} = require('./utils/izinkebun/helper');
-const {
-  sendfailcronjob,
-  Generateandsendtaksasi,
-  Sendverificationtaksasi,
-} = require('./utils/taksasi/taksasihelper');
-const {
-  get_mill_data,
-  run_jobs_mill,
-} = require('./utils/grading/gradinghelper');
-const { pingGoogle, sendSummary } = require('./utils/rekap_harian_uptime');
-const {
-  get_iot_weatherstation,
-  get_iot_weatherstation_data_gap,
-  get_data_harian_aws,
-} = require('./utils/iot/iothelper');
-const { get_outstadingdata } = require('./utils/marcom/marcomhelper');
-const {
-  timeoutHandles,
-  userIotChoice,
-  botIotPrompt,
-  userchoiceSnoozeBotPengawasanOperator,
-  configSnoozeBotPengawasanOperator,
-} = require('./state');
+const { channel, channelPython } = require('./pusher');
+// const {
+//   Report_group_izinkebun,
+//   catcherror,
+//   Fail_send_pdf,
+//   reminder_izin_kebun,
+// } = require('./utils/izinkebun/helper');
+// const {
+//   sendfailcronjob,
+//   Generateandsendtaksasi,
+//   Sendverificationtaksasi,
+// } = require('./utils/taksasi/taksasihelper');
+// const {
+//   get_mill_data,
+//   run_jobs_mill,
+// } = require('./utils/grading/gradinghelper');
+// const { pingGoogle, sendSummary } = require('./utils/rekap_harian_uptime');
+// const {
+//   get_iot_weatherstation,
+//   get_iot_weatherstation_data_gap,
+//   get_data_harian_aws,
+// } = require('./utils/iot/iothelper');
+// const { get_outstadingdata } = require('./utils/marcom/marcomhelper');
+// const {
+//   timeoutHandles,
+//   userIotChoice,
+//   botIotPrompt,
+//   userchoiceSnoozeBotPengawasanOperator,
+//   configSnoozeBotPengawasanOperator,
+// } = require('./state');
 const moment = require('moment-timezone');
 const { text } = require('express');
 const { exec } = require('child_process');

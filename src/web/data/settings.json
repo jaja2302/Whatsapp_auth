@@ -7,7 +7,7 @@
       "getMillData": "0 */2 * * *"
     },
     "cronjob_status": {
-      "runJobsMill": "active",
+      "runJobsMill": "stopped",
       "getMillData": "stopped"
     },
     "groups": {
@@ -58,9 +58,9 @@
   "iot": {
     "status": "stopped",
     "cronjobs": {
-      "get_iot_weatherstation": "*/1 * * * *",
-      "get_data_harian_aws": "*/1 * * * *",
-      "get_iot_weatherstation_data_gap": "*/5 * * * *"
+      "get_iot_weatherstation": "0 0 * * *",
+      "get_data_harian_aws": "0 0 * * *",
+      "get_iot_weatherstation_data_gap": "0 0 * * *"
     },
     "cronjob_status": {
       "get_iot_weatherstation": "active",

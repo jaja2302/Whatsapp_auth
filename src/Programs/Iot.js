@@ -250,10 +250,16 @@ class IotProgram {
             });
 
             logger.info.iot('Sending message to iot group');
-            return { success: true, message: 'Success' };
+            return {
+              success: true,
+              message: 'Berhasil mengirim data AWS harian',
+            };
           } catch (error) {
             logger.error.iot('Error sending message to iot group:', error);
-            return { error: error, message: 'Error' };
+            return {
+              success: false,
+              message: 'Gagal mengirim data AWS harian',
+            };
           }
         }
       } else {
@@ -265,7 +271,10 @@ class IotProgram {
       return response;
     } catch (error) {
       logger.error.iot('Error fetching AWS daily data:', error);
-      return { error: error, message: 'Error' };
+      return {
+        success: false,
+        message: 'Gagal mengirim data AWS harian',
+      };
     }
   }
 }
