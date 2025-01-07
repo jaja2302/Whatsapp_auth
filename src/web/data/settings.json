@@ -32,7 +32,7 @@
   },
   "smartlabs": {
     "timezone": "Asia/Jakarta",
-    "status": "stopped",
+    "status": "active",
     "cronjobs": {
       "getdataSmartlabs": "*/5 * * * *"
     },

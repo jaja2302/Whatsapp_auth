@@ -3,9 +3,10 @@
     WhatsApp Bot Control Panel
   </h1>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <!-- Row 1: Connection & Queue Status -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
     <!-- Connection Status Card -->
-    <div class="bg-white rounded-lg shadow-md">
+    <div class="bg-white rounded-lg shadow-md h-full">
       <div class="border-b px-4 py-3">
         <h2 class="text-xl font-semibold text-gray-700">Connection Status</h2>
       </div>
@@ -42,7 +43,7 @@
     </div>
 
     <!-- Queue Status Card -->
-    <div class="bg-white rounded-lg shadow-md">
+    <div class="bg-white rounded-lg shadow-md h-full">
       <div class="border-b px-4 py-3">
         <h2 class="text-xl font-semibold text-gray-700">Queue Status</h2>
       </div>
@@ -86,116 +87,113 @@
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Program Control Card -->
-    <div class="bg-white rounded-lg shadow-md">
-      <div class="border-b px-4 py-3">
-        <h2 class="text-xl font-semibold text-gray-700">Program Control</h2>
-      </div>
-      <div class="p-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <!-- Smartlabs -->
-          <div class="border rounded-lg p-4">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center space-x-2">
-                <div
-                  class="h-3 w-3 rounded-full bg-red-500"
-                  id="smartlabs-indicator"
-                ></div>
-                <span
-                  class="text-lg font-medium text-gray-600"
-                  id="smartlabs-status"
-                  >Smartlabs</span
-                >
-              </div>
-              <button
-                id="toggle-smartlabs"
-                class="px-4 py-2 rounded-md font-medium transition-colors duration-150 bg-green-500 hover:bg-green-600 text-white"
-              >
-                Start Program
-              </button>
+  <!-- Row 2: Program Control -->
+  <div class="bg-white rounded-lg shadow-md mb-6">
+    <div class="border-b px-4 py-3">
+      <h2 class="text-xl font-semibold text-gray-700">Program Control</h2>
+    </div>
+    <div class="p-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Smartlabs -->
+        <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center space-x-2">
+              <div
+                class="h-3 w-3 rounded-full bg-red-500"
+                id="smartlabs-indicator"
+              ></div>
+              <span class="text-lg font-medium text-gray-600">Smartlabs</span>
             </div>
-          </div>
-
-          <!-- Izinkebun -->
-          <div class="border rounded-lg p-4">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center space-x-2">
-                <div
-                  class="h-3 w-3 rounded-full bg-red-500"
-                  id="izinkebun-indicator"
-                ></div>
-                <span
-                  class="text-lg font-medium text-gray-600"
-                  id="izinkebun-status"
-                  >Izin Kebun</span
-                >
-              </div>
-              <button
-                id="toggle-izinkebun"
-                class="px-4 py-2 rounded-md font-medium transition-colors duration-150 bg-green-500 hover:bg-green-600 text-white"
-              >
-                Start Program
-              </button>
-            </div>
-          </div>
-
-          <!-- Grading -->
-          <div class="border rounded-lg p-4">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center space-x-2">
-                <div
-                  class="h-3 w-3 rounded-full bg-red-500"
-                  id="grading-indicator"
-                ></div>
-                <span
-                  class="text-lg font-medium text-gray-600"
-                  id="grading-status"
-                  >Grading</span
-                >
-              </div>
-              <button
-                id="toggle-grading"
-                class="px-4 py-2 rounded-md font-medium transition-colors duration-150 bg-green-500 hover:bg-green-600 text-white"
-              >
-                Start Program
-              </button>
-            </div>
-          </div>
-
-          <!-- Taksasi -->
-          <div class="border rounded-lg p-4">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center space-x-2">
-                <div
-                  class="h-3 w-3 rounded-full bg-red-500"
-                  id="taksasi-indicator"
-                ></div>
-                <span
-                  class="text-lg font-medium text-gray-600"
-                  id="taksasi-status"
-                  >Taksasi</span
-                >
-              </div>
-              <button
-                id="toggle-taksasi"
-                class="px-4 py-2 rounded-md font-medium transition-colors duration-150 bg-green-500 hover:bg-green-600 text-white"
-              >
-                Start Program
-              </button>
-            </div>
+            <button
+              id="toggle-smartlabs"
+              class="px-4 py-2 rounded-md font-medium transition-colors duration-150 bg-green-500 hover:bg-green-600 text-white"
+            >
+              Start Program
+            </button>
           </div>
         </div>
-        <!-- Iot -->
-        <div class="border rounded-lg p-4">
-          <div class="flex items-center justify-between">
+
+        <!-- Izin Kebun -->
+        <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center space-x-2">
+              <div
+                class="h-3 w-3 rounded-full bg-red-500"
+                id="izinkebun-indicator"
+              ></div>
+              <span
+                class="text-lg font-medium text-gray-600"
+                id="izinkebun-status"
+                >Izin Kebun</span
+              >
+            </div>
+            <button
+              id="toggle-izinkebun"
+              class="px-4 py-2 rounded-md font-medium transition-colors duration-150 bg-green-500 hover:bg-green-600 text-white"
+            >
+              Start Program
+            </button>
+          </div>
+        </div>
+
+        <!-- Grading -->
+        <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center space-x-2">
+              <div
+                class="h-3 w-3 rounded-full bg-red-500"
+                id="grading-indicator"
+              ></div>
+              <span
+                class="text-lg font-medium text-gray-600"
+                id="grading-status"
+                >Grading</span
+              >
+            </div>
+            <button
+              id="toggle-grading"
+              class="px-4 py-2 rounded-md font-medium transition-colors duration-150 bg-green-500 hover:bg-green-600 text-white"
+            >
+              Start Program
+            </button>
+          </div>
+        </div>
+
+        <!-- Taksasi -->
+        <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center space-x-2">
+              <div
+                class="h-3 w-3 rounded-full bg-red-500"
+                id="taksasi-indicator"
+              ></div>
+              <span
+                class="text-lg font-medium text-gray-600"
+                id="taksasi-status"
+                >Taksasi</span
+              >
+            </div>
+            <button
+              id="toggle-taksasi"
+              class="px-4 py-2 rounded-md font-medium transition-colors duration-150 bg-green-500 hover:bg-green-600 text-white"
+            >
+              Start Program
+            </button>
+          </div>
+        </div>
+
+        <!-- IoT -->
+        <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+          <div class="flex items-center justify-between mb-4">
             <div class="flex items-center space-x-2">
               <div
                 class="h-3 w-3 rounded-full bg-red-500"
                 id="iot-indicator"
               ></div>
               <span class="text-lg font-medium text-gray-600" id="iot-status"
-                >Iot</span
+                >IoT</span
               >
             </div>
             <button
@@ -206,8 +204,10 @@
             </button>
           </div>
         </div>
-        <div class="border rounded-lg p-4">
-          <div class="flex items-center justify-between">
+
+        <!-- General -->
+        <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+          <div class="flex items-center justify-between mb-4">
             <div class="flex items-center space-x-2">
               <div
                 class="h-3 w-3 rounded-full bg-red-500"
@@ -229,9 +229,12 @@
         </div>
       </div>
     </div>
+  </div>
 
+  <!-- Row 3: Failed Jobs & Group Participants -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
     <!-- Failed Jobs Card -->
-    <div class="bg-white rounded-lg shadow-md mt-6">
+    <div class="bg-white rounded-lg shadow-md h-full">
       <div class="border-b px-4 py-3">
         <h2 class="text-xl font-semibold text-gray-700">Failed Jobs</h2>
       </div>
@@ -243,7 +246,7 @@
     </div>
 
     <!-- Group Participants Card -->
-    <div class="bg-white rounded-lg shadow-md">
+    <div class="bg-white rounded-lg shadow-md h-full">
       <div class="border-b px-4 py-3">
         <h2 class="text-xl font-semibold text-gray-700">Group Participants</h2>
       </div>
@@ -260,13 +263,13 @@
     </div>
   </div>
 
-  <!-- Activity Logs Card -->
-  <div class="mt-6 bg-white rounded-lg shadow-md">
+  <!-- Row 4: Activity Logs -->
+  <div class="bg-white rounded-lg shadow-md">
     <div class="border-b px-4 py-3 flex justify-between items-center">
       <h2 class="text-xl font-semibold text-gray-700">Activity Logs</h2>
       <button
         id="clear-logs"
-        class="px-3 py-1 bg-gray-500 text-white text-sm rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50"
+        class="px-3 py-1 bg-gray-500 text-white text-sm rounded hover:bg-gray-600"
       >
         Clear Logs
       </button>
@@ -274,8 +277,10 @@
     <div class="p-4">
       <div
         id="activity-logs"
-        class="h-96 overflow-y-auto space-y-2 font-mono text-sm"
-      ></div>
+        class="h-64 overflow-y-auto space-y-2 font-mono text-sm bg-gray-50 p-4 rounded"
+      >
+        <!-- Logs content -->
+      </div>
     </div>
   </div>
 </div>
