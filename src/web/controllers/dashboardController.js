@@ -270,6 +270,36 @@ class DashboardController {
     const participants = await getParticipants();
     res.json(participants);
   }
+
+  async restartService(req, res) {
+    try {
+      logger.info.whatsapp('Restarting service...');
+
+      // Notify clients about restart
+      this.io.emit('connection-status', {
+        whatsappConnected: false,
+        queueStatus: this.getQueueStatus(),
+        reconnecting: true,
+        message: 'Service is restarting...',
+      });
+
+      // Execute restart
+      process.on('exit', function () {
+        require('child_process').spawn(process.argv.shift(), process.argv, {
+          cwd: process.cwd(),
+          detached: true,
+          stdio: 'inherit',
+        });
+      });
+      process.exit();
+    } catch (error) {
+      logger.error.whatsapp('Error restarting service:', error);
+      res.status(500).json({
+        success: false,
+        error: error.message,
+      });
+    }
+  }
 }
 
 module.exports = DashboardController;

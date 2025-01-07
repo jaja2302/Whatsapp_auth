@@ -38,6 +38,9 @@ class Dashboard {
 
     this.setupEventListeners();
     this.loadInitialStatus();
+
+    // Immediately check initial status
+    this.checkInitialStatus();
   }
 
   setupEventListeners() {
@@ -57,6 +60,43 @@ class Dashboard {
     this.clearLogsBtn.addEventListener('click', () => {
       this.clearLogs();
     });
+
+    // Add restart service button handler
+    const restartServiceBtn = document.getElementById('restart-service-btn');
+    if (restartServiceBtn) {
+      restartServiceBtn.addEventListener('click', async () => {
+        if (
+          confirm(
+            'Are you sure you want to restart the service? Please refresh your browser after a few seconds to see the changes.'
+          )
+        ) {
+          try {
+            const response = await fetch('/api/service/restart', {
+              method: 'POST',
+            });
+
+            if (!response.ok) {
+              throw new Error('Failed to restart service');
+            }
+
+            // Service will restart automatically
+            this.addLog({
+              level: 'info',
+              timestamp: new Date().toISOString(),
+              message:
+                'Service restart initiated. Please refresh your browser after a few seconds.',
+            });
+          } catch (error) {
+            console.error('Error restarting service:', error);
+            this.addLog({
+              level: 'error',
+              timestamp: new Date().toISOString(),
+              message: `Error restarting service: ${error.message}`,
+            });
+          }
+        }
+      });
+    }
   }
 
   async loadInitialStatus() {
@@ -132,6 +172,44 @@ class Dashboard {
     this.socket.on('log-whatsapp', (data) => {
       this.addLog(data);
     });
+
+    // Listen for connection status updates
+    this.socket.on('connection-status', (status) => {
+      this.updateConnectionStatus(status);
+    });
+  }
+
+  updateConnectionStatus(status) {
+    const connectionStatus = document.getElementById('connection-status');
+    if (!connectionStatus) return;
+
+    let statusText = 'Disconnected';
+    let statusClass = 'bg-red-200 text-red-800';
+
+    if (status.reconnecting) {
+      statusText = 'Reconnecting...';
+      statusClass = 'bg-yellow-200 text-yellow-800';
+    } else if (status.whatsappConnected) {
+      statusText = 'Connected';
+      statusClass = 'bg-green-200 text-green-800';
+    }
+
+    connectionStatus.innerHTML = `
+      <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${statusClass}">
+        ${statusText}
+      </span>
+    `;
+
+    // Update button states
+    const reconnectBtn = document.getElementById('reconnect-btn');
+    const disconnectBtn = document.getElementById('disconnect-btn');
+
+    if (reconnectBtn) {
+      reconnectBtn.disabled = status.whatsappConnected || status.reconnecting;
+    }
+    if (disconnectBtn) {
+      disconnectBtn.disabled = !status.whatsappConnected;
+    }
   }
 
   addLog(data) {
@@ -164,6 +242,16 @@ class Dashboard {
     // Clear all logs from the container
     while (this.activityLogs.firstChild) {
       this.activityLogs.removeChild(this.activityLogs.firstChild);
+    }
+  }
+
+  async checkInitialStatus() {
+    try {
+      const response = await fetch('/api/status');
+      const status = await response.json();
+      this.updateConnectionStatus(status);
+    } catch (error) {
+      console.error('Error checking initial status:', error);
     }
   }
 }

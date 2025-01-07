@@ -325,4 +325,10 @@ router.post('/izinkebun/jobs/:jobName/stop', (req, res) => {
   izinkebunController.stopJob(req, res);
 });
 
+// Add new route for service restart
+router.post('/service/restart', (req, res) => {
+  logger.info.whatsapp('Service restart request received');
+  dashboardController.restartService(req, res);
+});
+
 module.exports = router;
