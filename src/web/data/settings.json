@@ -53,7 +53,16 @@
     }
   },
   "izinkebun": {
-    "status": "stopped"
+    "status": "stopped",
+    "cronjobs": {
+      "handleIzinKebunNotification": "*/15 * * * *",
+      "handleijinmsg": "*/5 * * * *"
+    },
+    "cronjob_status": {
+      "handleIzinKebunNotification": "stopped",
+      "handleijinmsg": "stopped"
+    },
+    "timezone": "Asia/Jakarta"
   },
   "iot": {
     "status": "stopped",

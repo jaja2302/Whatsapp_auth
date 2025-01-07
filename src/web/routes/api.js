@@ -295,4 +295,34 @@ router.post('/general/jobs/:jobName/stop', (req, res) => {
   generalController.stopJob(req, res);
 });
 
+// Izin Kebun routes
+router.get('/izinkebun/get-cron-settings', (req, res) => {
+  logger.debug.izinkebun('Getting izinkebun cron settings');
+  izinkebunController.getCronSettings(req, res);
+});
+
+router.post('/izinkebun/update-cron-settings', (req, res) => {
+  logger.info.izinkebun('Update izinkebun cron settings request received');
+  izinkebunController.updateCronSettings(req, res);
+});
+
+router.get('/izinkebun/get-cron-status', (req, res) => {
+  logger.debug.izinkebun('Getting izinkebun cron status');
+  izinkebunController.getCronJobStatus(req, res);
+});
+
+router.post('/izinkebun/jobs/:jobName/start', (req, res) => {
+  logger.info.izinkebun(
+    `Start izinkebun job ${req.params.jobName} request received`
+  );
+  izinkebunController.startJob(req, res);
+});
+
+router.post('/izinkebun/jobs/:jobName/stop', (req, res) => {
+  logger.info.izinkebun(
+    `Stop izinkebun job ${req.params.jobName} request received`
+  );
+  izinkebunController.stopJob(req, res);
+});
+
 module.exports = router;
