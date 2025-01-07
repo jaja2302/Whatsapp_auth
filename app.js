@@ -92,6 +92,18 @@ app.get('/iot', async (req, res) => {
   }
 });
 
+app.get('/general', async (req, res) => {
+  try {
+    const html = await templateEngine.render('general', {
+      title: 'General',
+      scripts: '<script src="/js/general.js" defer></script>',
+    });
+    res.send(html);
+  } catch (error) {
+    res.status(500).send('Error rendering template');
+  }
+});
+
 // API routes
 const apiRoutes = require('./src/web/routes/api');
 app.use('/api', apiRoutes);

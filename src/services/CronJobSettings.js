@@ -7,25 +7,94 @@ class CronJobSettings {
   constructor() {
     this.settingsPath = path.join(__dirname, '../web/data/settings.json');
     this.settings = {};
-    this.intervals = {
-      '1 minute': '*/1 * * * *',
-      '5 minutes': '*/5 * * * *',
-      '10 minutes': '*/10 * * * *',
-      '15 minutes': '*/15 * * * *',
-      '30 minutes': '*/30 * * * *',
-      '1 hour': '0 * * * *',
-      '2 hours': '0 */2 * * *',
-      '4 hours': '0 */4 * * *',
-      '6 hours': '0 */6 * * *',
-      '12 hours': '0 */12 * * *',
-      '24 hours': '0 0 * * *',
-    };
+    this.intervals = this.generateIntervals();
     this.timezones = [
       'Asia/Jakarta',
       'Asia/Singapore',
       'Asia/Kuala_Lumpur',
       'UTC',
     ];
+  }
+
+  generateIntervals() {
+    const intervals = {};
+
+    // Add minute-based intervals
+    [1, 5, 10, 15, 30].forEach((min) => {
+      intervals[`${min} minute${min > 1 ? 's' : ''}`] = `*/${min} * * * *`;
+    });
+
+    // Add hour-based intervals
+    [1, 2, 4, 6, 12, 24].forEach((hour) => {
+      if (hour === 24) {
+        intervals[`${hour} hours`] = `0 0 * * *`;
+      } else if (hour === 1) {
+        intervals[`${hour} hour`] = `0 * * * *`;
+      } else {
+        intervals[`${hour} hours`] = `0 */${hour} * * *`;
+      }
+    });
+
+    // Add every hour of the day
+    for (let hour = 0; hour < 24; hour++) {
+      const formattedHour = hour.toString().padStart(2, '0');
+      intervals[`Every day at ${formattedHour}:00`] = `0 ${hour} * * *`;
+
+      // Add half-hour intervals
+      intervals[`Every day at ${formattedHour}:30`] = `30 ${hour} * * *`;
+
+      // Add quarter-hour intervals
+      intervals[`Every day at ${formattedHour}:15`] = `15 ${hour} * * *`;
+      intervals[`Every day at ${formattedHour}:45`] = `45 ${hour} * * *`;
+    }
+
+    // Add specific weekday options
+    const weekdays = {
+      Sunday: 0,
+      Monday: 1,
+      Tuesday: 2,
+      Wednesday: 3,
+      Thursday: 4,
+      Friday: 5,
+      Saturday: 6,
+    };
+
+    // Add common business hours for each weekday
+    Object.entries(weekdays).forEach(([day, num]) => {
+      [9, 10, 11, 13, 14, 15, 16, 17].forEach((hour) => {
+        const formattedHour = hour.toString().padStart(2, '0');
+        intervals[`Every ${day} at ${formattedHour}:00`] =
+          `0 ${hour} * * ${num}`;
+        intervals[`Every ${day} at ${formattedHour}:30`] =
+          `30 ${hour} * * ${num}`;
+      });
+    });
+
+    // Add first day of month options
+    [0, 6, 9, 12, 15, 18].forEach((hour) => {
+      const formattedHour = hour.toString().padStart(2, '0');
+      intervals[`First day of month at ${formattedHour}:00`] =
+        `0 ${hour} 1 * *`;
+    });
+
+    // Add last day of month options
+    [0, 6, 9, 12, 15, 18].forEach((hour) => {
+      const formattedHour = hour.toString().padStart(2, '0');
+      intervals[`Last day of month at ${formattedHour}:00`] = `0 ${hour} L * *`;
+    });
+
+    // Add specific combinations that are commonly used
+    const commonTimes = {
+      'Every weekday at 09:00': '0 9 * * 1-5',
+      'Every weekday at 17:00': '0 17 * * 1-5',
+      'Every weekend at 10:00': '0 10 * * 0,6',
+      'Every Monday and Thursday at 09:00': '0 9 * * 1,4',
+      'Every Tuesday and Friday at 14:00': '0 14 * * 2,5',
+      'First Monday of month at 09:00': '0 9 1-7 * 1',
+      'Last Friday of month at 15:00': '0 15 L * 5',
+    };
+
+    return { ...intervals, ...commonTimes };
   }
 
   async loadSettings(program) {

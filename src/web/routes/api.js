@@ -9,6 +9,7 @@ const IotController = require('../controllers/iotController');
 const logger = require('../../services/logger');
 const fs = require('fs').promises;
 const path = require('path');
+const GeneralController = require('../controllers/generalController');
 
 // Add body parser middleware
 router.use(express.json());
@@ -26,6 +27,7 @@ const smartlabsController = new SmartlabsController(global.io);
 const taksasiController = new TaksasiController(global.io);
 const izinkebunController = new IzinKebunController(global.io);
 const iotController = new IotController(global.io);
+const generalController = new GeneralController(global.io);
 
 // Dashboard routes
 router.get('/status', (req, res) => {
@@ -262,4 +264,35 @@ router.post('/program/:program/start', (req, res) => {
 router.post('/program/:program/stop', (req, res) => {
   dashboardController.stopProgram(req, res);
 });
+
+// General routes
+router.get('/general/get-cron-settings', (req, res) => {
+  logger.debug.whatsapp('Getting general cron settings');
+  generalController.getCronSettings(req, res);
+});
+
+router.post('/general/update-cron-settings', (req, res) => {
+  logger.info.whatsapp('Update general cron settings request received');
+  generalController.updateCronSettings(req, res);
+});
+
+router.get('/general/get-cron-status', (req, res) => {
+  logger.debug.whatsapp('Getting general cron status');
+  generalController.getCronJobStatus(req, res);
+});
+
+router.post('/general/jobs/:jobName/start', (req, res) => {
+  logger.info.whatsapp(
+    `Start general job ${req.params.jobName} request received`
+  );
+  generalController.startJob(req, res);
+});
+
+router.post('/general/jobs/:jobName/stop', (req, res) => {
+  logger.info.whatsapp(
+    `Stop general job ${req.params.jobName} request received`
+  );
+  generalController.stopJob(req, res);
+});
+
 module.exports = router;

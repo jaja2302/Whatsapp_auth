@@ -3,8 +3,8 @@
     "timezone": "Asia/Jakarta",
     "status": "stopped",
     "cronjobs": {
-      "runJobsMill": "0 * * * *",
-      "getMillData": "0 */2 * * *"
+      "runJobsMill": "0 0 * * *",
+      "getMillData": "0 0 * * *"
     },
     "cronjob_status": {
       "runJobsMill": "stopped",
@@ -43,7 +43,7 @@
   "taksasi": {
     "status": "stopped",
     "cronjobs": {
-      "sendfailcronjob": "0 * * * *"
+      "sendfailcronjob": "0 0 * * *"
     },
     "cronjob_status": {
       "sendfailcronjob": "stopped"
@@ -63,8 +63,8 @@
       "get_iot_weatherstation_data_gap": "0 0 * * *"
     },
     "cronjob_status": {
-      "get_iot_weatherstation": "active",
-      "get_data_harian_aws": "active",
+      "get_iot_weatherstation": "stopped",
+      "get_data_harian_aws": "stopped",
       "get_iot_weatherstation_data_gap": "stopped"
     },
     "groups": {
@@ -79,6 +79,41 @@
     "credentials": {
       "email": "j",
       "password": "j"
+    },
+    "timezone": "Asia/Jakarta"
+  },
+  "general": {
+    "status": "stopped",
+    "cronjobs": {
+      "handleBotLaporanHarianFleetManagement": "0 0 * * *",
+      "handleBotDailyPengawasanOperatorAI": "0 0 * * *",
+      "updatePCStatus": "0 0 * * *",
+      "triggerStatusPCPengawasanOperatorAI": "0 0 * * *"
+    },
+    "cronjob_status": {
+      "handleBotLaporanHarianFleetManagement": "stopped",
+      "handleBotDailyPengawasanOperatorAI": "stopped",
+      "updatePCStatus": "stopped",
+      "triggerStatusPCPengawasanOperatorAI": "stopped"
+    },
+    "groups": {
+      "group_id_bot_fleetmanagement": "120363264196563911@g.us",
+      "default": "120363384470022318@g.us",
+      "handlePython": "120363384470022318@g.us"
+    },
+    "credentials": {
+      "email": "j",
+      "password": "j"
+    },
+    "url": {
+      "url_get_data_daily_pengawasan": "https://srs-ssms.com/op_monitoring/get_data_daily_pengawasan.php",
+      "url_change_status_bot_daily": "https://srs-ssms.com/op_monitoring/change_status_bot_daily.php",
+      "url_update_trigger_bot_mati": "https://srs-ssms.com/op_monitoring/update_trigger_bot_mati.php",
+      "url_check_last_online": "https://srs-ssms.com/op_monitoring/check_last_online.php",
+      "url_bot_laporan_harian_fleet_management": "https://srs-ssms.com/aplikasi_traksi/botLaporanHarianP2H.php",
+      "url_get_order_gudang": "https://management.srs-ssms.com/api/getorder_gudang",
+      "url_change_status_bot_management_gudang": "https://management.srs-ssms.com/api/changestatusbot",
+      "url_get_screenshot_file": "https://management.srs-ssms.com/api/getscreenshotfile"
     },
     "timezone": "Asia/Jakarta"
   }
