@@ -26,17 +26,22 @@ async function clearAuthInfo() {
   }
 }
 
+// Di server (whatsappService.js)
 async function disconnectAndClearAuth() {
+  logger.info.whatsapp('Disconnecting WhatsApp...');
   try {
     if (global.sock) {
+      logger.info.whatsapp('Logging out...');
       try {
         await global.sock.logout();
       } catch (error) {
         logger.info.whatsapp('Logout error (expected):', error.message);
       }
+      logger.info.whatsapp('Ending connection...');
       await global.sock.end();
       global.sock = null;
     }
+    logger.info.whatsapp('Clearing auth info...');
     await clearAuthInfo();
     return true;
   } catch (error) {

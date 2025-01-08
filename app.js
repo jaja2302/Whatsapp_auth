@@ -153,9 +153,39 @@ cronJobRunner.initialize().catch((error) => {
 });
 
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-  logger.info.whatsapp(`Server running on port ${PORT}`);
-});
+
+// Fungsi untuk mencari port yang tersedia
+function findAvailablePort(startPort) {
+  return new Promise((resolve, reject) => {
+    const server = http.createServer();
+    server.listen(startPort, () => {
+      const port = server.address().port;
+      server.close(() => resolve(port));
+    });
+    server.on('error', (err) => {
+      if (err.code === 'EADDRINUSE') {
+        // Jika port sedang digunakan, coba port berikutnya
+        resolve(findAvailablePort(startPort + 1));
+      } else {
+        reject(err);
+      }
+    });
+  });
+}
+
+// Menggunakan fungsi findAvailablePort
+findAvailablePort(PORT)
+  .then((availablePort) => {
+    server.listen(availablePort, () => {
+      logger.info.whatsapp(
+        `Server running on port http://localhost:${availablePort}`
+      );
+    });
+  })
+  .catch((err) => {
+    logger.error.whatsapp('Failed to find available port:', err);
+    process.exit(1);
+  });
 
 // Handle graceful shutdown
 process.on('SIGINT', async () => {

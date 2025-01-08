@@ -41,6 +41,14 @@ class Dashboard {
 
     // Immediately check initial status
     this.checkInitialStatus();
+
+    // Initialize containers including qrCode
+    this.containers = {
+      logContainer: document.getElementById('activity-logs'),
+      qrCode: document.getElementById('qr-code'),
+      connectionStatus: document.getElementById('connection-status'),
+      queueStatus: document.getElementById('queue-status'),
+    };
   }
 
   setupEventListeners() {
@@ -60,6 +68,26 @@ class Dashboard {
     this.clearLogsBtn.addEventListener('click', () => {
       this.clearLogs();
     });
+
+    // Add disconnect button handler
+    const disconnectBtn = document.getElementById('disconnect-btn');
+    if (disconnectBtn) {
+      console.log('Setting up disconnect button listener');
+      disconnectBtn.addEventListener('click', async () => {
+        console.log('Disconnect button clicked');
+        await this.handleDisconnect();
+      });
+    }
+
+    // Add reconnect button handler
+    const reconnectBtn = document.getElementById('reconnect-btn');
+    if (reconnectBtn) {
+      console.log('Setting up reconnect button listener');
+      reconnectBtn.addEventListener('click', async () => {
+        console.log('Reconnect button clicked');
+        await this.handleReconnect();
+      });
+    }
 
     // Add restart service button handler
     const restartServiceBtn = document.getElementById('restart-service-btn');
@@ -213,15 +241,20 @@ class Dashboard {
   }
 
   addLog(data) {
+    if (!this.activityLogs) return;
+
     const logEntry = document.createElement('div');
     logEntry.className = 'p-2 border-b border-gray-100';
+
+    // Format timestamp if it doesn't exist
+    const timestamp = data.timestamp || new Date().toLocaleTimeString();
 
     // Check if the message is an array and join its elements
     const message = Array.isArray(data.message)
       ? data.message.join(' ')
       : data.message;
 
-    logEntry.textContent = `${data.timestamp} - ${message}`;
+    logEntry.textContent = `${timestamp} - ${message}`;
 
     // Add color based on log level
     if (data.level === 'error') {
@@ -253,6 +286,126 @@ class Dashboard {
     } catch (error) {
       console.error('Error checking initial status:', error);
     }
+  }
+
+  async handleReconnect() {
+    try {
+      this.addLog({
+        timestamp: new Date().toLocaleTimeString(),
+        message: 'Initiating reconnection...',
+        level: 'info',
+      });
+
+      // Clear any existing QR code
+      if (this.containers.qrCode) {
+        this.containers.qrCode.innerHTML = '';
+      }
+
+      const response = await fetch('/api/whatsapp/reconnect', {
+        method: 'POST',
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to initiate reconnection');
+      }
+
+      const data = await response.json();
+      this.addLog({
+        timestamp: new Date().toLocaleTimeString(),
+        message: data.message,
+        level: 'info',
+      });
+
+      // Update UI to show reconnecting state
+      this.updateConnectionStatus({
+        whatsappConnected: false,
+        reconnecting: true,
+      });
+    } catch (error) {
+      console.error('Reconnect error:', error);
+      this.addLog({
+        timestamp: new Date().toLocaleTimeString(),
+        message: `Error during reconnection: ${error.message}`,
+        level: 'error',
+      });
+    }
+  }
+
+  async handleDisconnect() {
+    try {
+      this.addLog('Initiating disconnect...');
+      const response = await fetch('/api/whatsapp/disconnect', {
+        method: 'POST',
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to disconnect');
+      }
+
+      const data = await response.json();
+      this.addLog(data.message);
+
+      // Update UI to show disconnected state
+      this.updateConnectionStatus({
+        whatsappConnected: false,
+        reconnecting: false,
+      });
+
+      // Clear QR code if present
+      if (this.containers.qrCode) {
+        this.containers.qrCode.innerHTML = '';
+      }
+    } catch (error) {
+      console.error('Disconnect error:', error);
+      this.addLog(`Error during disconnect: ${error.message}`, 'error');
+    }
+  }
+
+  setupSocketHandlers() {
+    this.socket.on('connect', () => {
+      this.addLog({
+        timestamp: new Date().toLocaleTimeString(),
+        message: 'Connected to server',
+        level: 'info',
+      });
+    });
+
+    this.socket.on('qr', (qrDataURL) => {
+      console.log('QR code received');
+      if (this.containers.qrCode) {
+        this.containers.qrCode.innerHTML = `
+          <img src="${qrDataURL}" alt="QR Code" style="max-width: 300px;">
+        `;
+        this.addLog({
+          timestamp: new Date().toLocaleTimeString(),
+          message: 'New QR code received. Please scan!',
+          level: 'info',
+        });
+      } else {
+        console.error('QR code container not found');
+      }
+    });
+
+    this.socket.on('clear-qr', () => {
+      if (this.containers.qrCode) {
+        this.containers.qrCode.innerHTML = '';
+      }
+    });
+
+    this.socket.on('connection-status', (status) => {
+      this.updateConnectionStatus(status);
+      if (status.error) {
+        this.addLog({
+          timestamp: new Date().toLocaleTimeString(),
+          message: `Connection error: ${status.error}`,
+          level: 'error',
+        });
+      }
+    });
+
+    this.socket.on('log-whatsapp', (data) => {
+      this.addLog(data);
+    });
   }
 }
 
