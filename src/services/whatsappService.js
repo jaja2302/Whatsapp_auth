@@ -78,15 +78,16 @@ async function connectToWhatsApp() {
           );
           const qrDataURL = await qrcode.toDataURL(qr);
           currentQR = qrDataURL;
-          logger.info.whatsapp('QR Code converted, sending to client...');
+          // Emit to all connected clients
           global.io?.emit('qr', qrDataURL);
+          logger.info.whatsapp('QR Code sent to clients');
         } catch (err) {
           logger.error.whatsapp('QR code generation error:', err);
         }
       }
 
       if (connection === 'close') {
-        currentQR = null;
+        // Don't clear QR here, it might be needed for reconnection
         const statusCode = lastDisconnect?.error?.output?.statusCode;
         const shouldReconnect =
           statusCode !== DisconnectReason.loggedOut && statusCode !== 401;
@@ -116,6 +117,9 @@ async function connectToWhatsApp() {
           }
         }
       } else if (connection === 'open') {
+        // Only clear QR when successfully connected
+        currentQR = null;
+        global.io?.emit('clear-qr');
         logger.info.whatsapp('WhatsApp connected successfully');
         retryCount = 0;
 
@@ -124,8 +128,6 @@ async function connectToWhatsApp() {
           queueStatus: global.queue?.getStatus(),
           reconnecting: false,
         });
-
-        global.io?.emit('clear-qr');
       }
     });
 

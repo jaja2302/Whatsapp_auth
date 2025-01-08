@@ -49,6 +49,9 @@ class Dashboard {
       connectionStatus: document.getElementById('connection-status'),
       queueStatus: document.getElementById('queue-status'),
     };
+
+    // Make sure setupSocketHandlers is called
+    this.setupSocketHandlers();
   }
 
   setupEventListeners() {
@@ -333,7 +336,12 @@ class Dashboard {
 
   async handleDisconnect() {
     try {
-      this.addLog('Initiating disconnect...');
+      this.addLog({
+        timestamp: new Date().toLocaleTimeString(),
+        message: 'Initiating disconnect...',
+        level: 'info',
+      });
+
       const response = await fetch('/api/whatsapp/disconnect', {
         method: 'POST',
       });
@@ -343,21 +351,20 @@ class Dashboard {
       }
 
       const data = await response.json();
-      this.addLog(data.message);
-
-      // Update UI to show disconnected state
-      this.updateConnectionStatus({
-        whatsappConnected: false,
-        reconnecting: false,
+      this.addLog({
+        timestamp: new Date().toLocaleTimeString(),
+        message: data.message,
+        level: 'info',
       });
 
-      // Clear QR code if present
-      if (this.containers.qrCode) {
-        this.containers.qrCode.innerHTML = '';
-      }
+      // Don't clear QR code here - let the socket events handle it
     } catch (error) {
       console.error('Disconnect error:', error);
-      this.addLog(`Error during disconnect: ${error.message}`, 'error');
+      this.addLog({
+        timestamp: new Date().toLocaleTimeString(),
+        message: `Error during disconnect: ${error.message}`,
+        level: 'error',
+      });
     }
   }
 
@@ -373,9 +380,15 @@ class Dashboard {
     this.socket.on('qr', (qrDataURL) => {
       console.log('QR code received');
       if (this.containers.qrCode) {
-        this.containers.qrCode.innerHTML = `
-          <img src="${qrDataURL}" alt="QR Code" style="max-width: 300px;">
-        `;
+        // Clear existing content first
+        this.containers.qrCode.innerHTML = '';
+        // Create and add new QR code image
+        const img = document.createElement('img');
+        img.src = qrDataURL;
+        img.alt = 'WhatsApp QR Code';
+        img.style.maxWidth = '300px';
+        this.containers.qrCode.appendChild(img);
+
         this.addLog({
           timestamp: new Date().toLocaleTimeString(),
           message: 'New QR code received. Please scan!',
