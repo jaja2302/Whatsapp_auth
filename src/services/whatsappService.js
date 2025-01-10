@@ -60,9 +60,12 @@ async function connectToWhatsApp() {
       auth: state,
       logger: pino({ level: 'silent' }),
       retryRequestDelayMs: 3000,
-      qrTimeout: 60000,
-      connectTimeoutMs: 60000,
+      qrTimeout: 120000,
+      connectTimeoutMs: 120000,
       browser: ['WhatsApp Bot', 'Chrome', '4.0.0'],
+      keepAliveIntervalMs: 10000,
+      connectTimeoutMs: 60000,
+      emitOwnEvents: true,
     });
 
     global.sock = sock;
@@ -87,34 +90,53 @@ async function connectToWhatsApp() {
       }
 
       if (connection === 'close') {
-        // Don't clear QR here, it might be needed for reconnection
         const statusCode = lastDisconnect?.error?.output?.statusCode;
-        const shouldReconnect =
-          statusCode !== DisconnectReason.loggedOut && statusCode !== 401;
-
-        logger.info.whatsapp(
-          'Connection closed due to:',
-          lastDisconnect?.error?.message
-        );
-
-        global.io?.emit('connection-status', {
-          whatsappConnected: false,
-          queueStatus: global.queue?.getStatus(),
-          reconnecting: shouldReconnect,
-          error: lastDisconnect?.error?.message,
+        const shouldReconnect = new Promise((resolve) => {
+          // Check various disconnect reasons
+          if (statusCode === DisconnectReason.loggedOut) {
+            resolve(false);
+          } else if (statusCode === 408) {
+            // Handle timeout specifically
+            resolve(true);
+          } else if (statusCode === 401) {
+            // Unauthorized - clear auth and try again
+            clearAuthInfo().then(() => resolve(true));
+          } else {
+            // For other errors, attempt to reconnect
+            resolve(true);
+          }
         });
 
-        if (shouldReconnect && retryCount < maxRetries) {
-          retryCount++;
+        if (await shouldReconnect) {
           logger.info.whatsapp(
-            `Reconnecting... Attempt ${retryCount} of ${maxRetries}`
+            `Connection closed. Attempting reconnect in ${retryDelay}ms...`
           );
-          setTimeout(connectToWhatsApp, retryDelay);
+          setTimeout(async () => {
+            if (retryCount < maxRetries) {
+              retryCount++;
+              logger.info.whatsapp(
+                `Reconnecting... Attempt ${retryCount} of ${maxRetries}`
+              );
+              await connectToWhatsApp();
+            } else {
+              logger.error.whatsapp(
+                'Max retry attempts reached. Please restart the application.'
+              );
+              // Optionally emit a critical error to the frontend
+              global.io?.emit('connection-status', {
+                whatsappConnected: false,
+                queueStatus: global.queue?.getStatus(),
+                reconnecting: false,
+                error:
+                  'Max retry attempts reached. Please restart the application.',
+              });
+            }
+          }, retryDelay);
         } else {
-          retryCount = 0;
-          if (!shouldReconnect) {
-            await clearAuthInfo();
-          }
+          logger.info.whatsapp(
+            'Connection closed permanently. Manual restart required.'
+          );
+          await clearAuthInfo();
         }
       } else if (connection === 'open') {
         // Only clear QR when successfully connected
@@ -128,6 +150,26 @@ async function connectToWhatsApp() {
           queueStatus: global.queue?.getStatus(),
           reconnecting: false,
         });
+
+        // Resume queue processing when WhatsApp connects
+        global.queue?.onWhatsAppReconnect();
+      }
+    });
+
+    // Add error event handler
+    sock.ev.on('error', async (err) => {
+      logger.error.whatsapp('Socket error:', err);
+      if (global.sock === sock) {
+        // Only attempt reconnect if this is the current socket
+        setTimeout(async () => {
+          if (retryCount < maxRetries) {
+            retryCount++;
+            logger.info.whatsapp(
+              `Reconnecting after error... Attempt ${retryCount} of ${maxRetries}`
+            );
+            await connectToWhatsApp();
+          }
+        }, retryDelay);
       }
     });
 
@@ -203,12 +245,14 @@ async function connectToWhatsApp() {
     return sock;
   } catch (error) {
     logger.error.whatsapp('Error in connectToWhatsApp:', error);
-    global.io?.emit('connection-status', {
-      whatsappConnected: false,
-      queueStatus: global.queue?.getStatus(),
-      reconnecting: false,
-      error: error.message,
-    });
+    // Attempt to reconnect on initialization error
+    if (retryCount < maxRetries) {
+      retryCount++;
+      logger.info.whatsapp(
+        `Retrying connection... Attempt ${retryCount} of ${maxRetries}`
+      );
+      setTimeout(connectToWhatsApp, retryDelay);
+    }
     throw error;
   }
 }

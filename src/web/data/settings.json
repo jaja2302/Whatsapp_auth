@@ -1,7 +1,7 @@
 {
   "grading": {
     "timezone": "Asia/Jakarta",
-    "status": "stopped",
+    "status": "active",
     "cronjobs": {
       "runJobsMill": "0 0 * * *",
       "getMillData": "0 0 * * *"

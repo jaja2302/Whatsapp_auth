@@ -188,56 +188,85 @@ class MessageQueue {
   }
 
   async processQueue() {
+    // Don't process if paused, already processing, or queue is empty
     if (this.paused || this.processing || this.queue.length === 0) return;
+
+    // Check WhatsApp connection before starting to process
+    if (!(await isWhatsAppConnected())) {
+      logger.info.whatsapp(
+        'WhatsApp not connected, delaying queue processing...'
+      );
+      setTimeout(() => this.processQueue(), 5000); // Check again in 5 seconds
+      return;
+    }
 
     this.processing = true;
     try {
-      const item = this.queue[0]; // Get first item but don't remove it yet
+      const item = this.queue[0];
 
-      logger.info.whatsapp(`Processing queue item: ${item.type}`);
+      logger.info.whatsapp(
+        `Processing queue item: ${item.type} (Program: ${item.program || 'unknown'})`
+      );
 
       try {
+        // Double-check connection before executing task
+        if (!(await isWhatsAppConnected())) {
+          throw new Error('WhatsApp connection lost during processing');
+        }
+
         const success = await this.executeTask(item);
 
         if (success) {
           this.completed++;
-          logger.info.whatsapp(`Successfully processed ${item.type}`);
-          this.queue.shift(); // Only remove if successful
+          logger.info.whatsapp(
+            `Successfully processed ${item.type} from program ${item.program || 'unknown'}`
+          );
+          this.queue.shift();
         } else {
           throw new Error('Task execution returned false');
         }
       } catch (error) {
-        logger.error.whatsapp(`Error processing queue item:`, error);
+        logger.error.whatsapp(
+          `Error processing queue item from program ${item.program || 'unknown'}:`,
+          error
+        );
+
+        // If error is due to WhatsApp connection, don't mark as failed
+        if (error.message.includes('WhatsApp')) {
+          logger.info.whatsapp(
+            'Queue processing paused due to WhatsApp connection issue'
+          );
+          return; // Exit without removing the item from queue
+        }
+
         this.failed++;
-
-        // Save to failed jobs before removing from queue
-        await this.saveFailedJob({
-          ...this.queue[0],
-          error: {
-            message: error.message,
-            stack: error.stack,
-          },
-        });
-
-        this.queue.shift(); // Remove failed item
+        await this.saveFailedJob(this.queue[0]);
+        this.queue.shift();
       }
 
-      // Save queue state after processing
       await this.saveToFile();
 
       logger.info.whatsapp(
-        `Queue status - Remaining: ${this.queue.length}, Completed: ${this.completed}, Failed: ${this.failed}`
+        `Queue status - Remaining: ${this.queue.length}, Completed: ${this.completed}, Failed: ${this.failed}, Current Program: ${item.program || 'unknown'}`
       );
     } finally {
       this.processing = false;
       if (!this.paused && this.queue.length > 0) {
-        setTimeout(() => this.processQueue(), 5000); // 5 second delay between items
+        // Only schedule next processing if WhatsApp is connected
+        if (await isWhatsAppConnected()) {
+          setTimeout(() => this.processQueue(), 5000);
+        } else {
+          logger.info.whatsapp(
+            'Queue processing paused until WhatsApp reconnects'
+          );
+        }
       }
     }
   }
 
   async executeTask(task) {
-    if (!global.sock?.user) {
+    // Check WhatsApp connection before executing any task
+    if (!(await isWhatsAppConnected())) {
       throw new Error('WhatsApp is not connected');
     }
 
@@ -419,9 +448,10 @@ class MessageQueue {
         // File doesn't exist or is corrupted, start with empty array
       }
 
-      // Add new failed job with timestamp
+      // Add new failed job with timestamp and ensure program is included
       failedJobs.push({
         ...job,
+        program: job.program || 'unknown', // Include program in failed jobs
         failed_at: new Date().toISOString(),
       });
 
@@ -431,18 +461,28 @@ class MessageQueue {
         JSON.stringify(failedJobs, null, 2)
       );
 
-      logger.info.whatsapp(`Failed job saved to failed_jobs: ${job.type}`);
+      logger.info.whatsapp(
+        `Failed job saved to failed_jobs: ${job.type} (Program: ${job.program || 'unknown'})`
+      );
     } catch (error) {
       logger.error.whatsapp('Error saving failed job:', error);
     }
   }
 
   getStatus() {
+    // Group queue items by program
+    const programCounts = this.queue.reduce((acc, item) => {
+      const program = item.program || 'unknown';
+      acc[program] = (acc[program] || 0) + 1;
+      return acc;
+    }, {});
+
     return {
       isPaused: this.paused,
       total: this.queue.length,
       completed: this.completed,
       failed: this.failed,
+      byProgram: programCounts, // Add program-specific counts
     };
   }
 
@@ -467,19 +507,22 @@ class MessageQueue {
 
   async push(item) {
     try {
-      logger.info.whatsapp(`Adding new item to queue: ${item.type}`);
+      logger.info.whatsapp(
+        `Adding new item to queue: ${item.type} (Program: ${item.program || 'unknown'})`
+      );
 
-      // Ensure queue is initialized as array
       if (!Array.isArray(this.queue)) {
         this.queue = [];
       }
 
-      this.queue.push(item);
+      // Ensure program field exists
+      if (!item.program) {
+        item.program = 'unknown';
+      }
 
-      // Save queue state after adding new item
+      this.queue.push(item);
       await this.saveToFile();
 
-      // Start processing if queue is not paused
       if (!this.paused && !this.processing) {
         setTimeout(() => this.processQueue(), 100);
       }
@@ -490,8 +533,21 @@ class MessageQueue {
       throw error;
     }
   }
+
+  onWhatsAppReconnect() {
+    if (!this.paused && this.queue.length > 0 && !this.processing) {
+      logger.info.whatsapp(
+        'WhatsApp reconnected, resuming queue processing...'
+      );
+      this.processQueue();
+    }
+  }
 }
 
 // Initialize queue as a singleton
 const queue = MessageQueue.getInstance();
 module.exports = queue;
+
+async function isWhatsAppConnected() {
+  return !!global.sock?.user && global.sock.ws.readyState === 1;
+}

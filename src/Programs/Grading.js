@@ -79,6 +79,7 @@ class GradingProgram {
           if (targetGroup) {
             global.queue.push({
               type: 'send_document',
+              program: 'grading',
               data: {
                 to: targetGroup,
                 document: itemdata.pdf_url,
@@ -151,6 +152,7 @@ class GradingProgram {
           if (itemdata.collage_url) {
             global.queue.push({
               type: 'send_image',
+              program: 'grading',
               data: {
                 to: targetGroup,
                 image: itemdata.collage_url,
@@ -162,11 +164,12 @@ class GradingProgram {
           if (itemdata.pdf_url) {
             global.queue.push({
               type: 'send_document',
+              program: 'grading',
               data: {
                 to: targetGroup,
                 document: itemdata.pdf_url,
                 filename: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
-                caption: `${itemdata.tanggal_judul}(${itemdata.waktu_grading_judul})-Grading ${itemdata.mill}-${itemdata.estate}${itemdata.afdeling}.pdf`,
+                caption: message,
               },
             });
           }
