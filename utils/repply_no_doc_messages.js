@@ -1,4 +1,99 @@
 const axios = require('axios');
+require('dotenv').config();
+
+const userApprovalState = new Map();
+
+async function verifcationJobVacancy(noWa, sock, message) {
+  try {
+    // Get the quoted message
+    const quotedMsg =
+      message?.message?.extendedTextMessage?.contextInfo?.quotedMessage
+        ?.conversation ||
+      message?.message?.extendedTextMessage?.contextInfo?.quotedMessage
+        ?.extendedTextMessage?.text;
+
+    if (!quotedMsg) {
+      await sock.sendMessage(noWa, {
+        text: 'Mohon reply pesan persetujuan job vacancy yang valid',
+      });
+      return;
+    }
+
+    // Extract Nama Jabatan using regex
+    const namaJabatanMatch = quotedMsg.match(/Nama Jabatan : (.*?) \((\d+)\)/);
+
+    if (!namaJabatanMatch) {
+      await sock.sendMessage(noWa, {
+        text: 'Format pesan tidak valid',
+      });
+      return;
+    }
+
+    const [_, namaJabatan, idJabatan] = namaJabatanMatch;
+    const response = message?.message?.extendedTextMessage?.text;
+
+    // Validate response format (salary, date)
+    const responseMatch = response?.match(/^(\d+),\s*(\d{4}-\d{2}-\d{2})$/);
+
+    if (!responseMatch) {
+      await sock.sendMessage(noWa, {
+        text: `*PERSETUJUAN JOB VACANCY*\nNama Jabatan : ${namaJabatan} (${idJabatan})\n\nFormat tidak valid. Mohon reply pesan ini dengan format: gaji, tahun-bulan-tanggal\nContoh: 5000000, 2025-01-31`,
+      });
+      return;
+    }
+
+    const [__, salary, deadline] = responseMatch;
+
+    // Validate date format
+    const deadlineDate = new Date(deadline);
+    if (isNaN(deadlineDate.getTime())) {
+      await sock.sendMessage(noWa, {
+        text: `*PERSETUJUAN JOB VACANCY*\nNama Jabatan : ${namaJabatan} (${idJabatan})\n\nFormat tanggal tidak valid. Gunakan format: YYYY-MM-DD\nContoh: 5000000, 2025-01-31`,
+      });
+      return;
+    }
+
+    const apiToken = process.env.API_TOKEN?.trim();
+    if (!apiToken) {
+      console.error('API Token not found in environment variables');
+    }
+
+    try {
+      const response = await axios.post(
+        'http://127.0.0.1:8000/api/verification-job-vacancy',
+        {
+          id: idJabatan,
+          gaji: salary,
+          deadline: deadline,
+          user_number: noWa,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${apiToken}`,
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      // Send success message
+      await sock.sendMessage(noWa, {
+        text: `*PERSETUJUAN JOB VACANCY*\nNama Jabatan : ${namaJabatan} (${idJabatan})\n\n${response.data.message || 'Persetujuan job vacancy berhasil diproses'}`,
+      });
+    } catch (apiError) {
+      console.error('API Error:', apiError);
+      await sock.sendMessage(noWa, {
+        text: `*PERSETUJUAN JOB VACANCY*\nNama Jabatan : ${namaJabatan} (${idJabatan})\n\n${apiError.response?.data?.message || 'Terjadi kesalahan saat memproses persetujuan'}`,
+      });
+    }
+  } catch (error) {
+    console.error('Error in verifcationJobVacancy:', error);
+    await sock.sendMessage(noWa, {
+      text: 'Terjadi kesalahan dalam memproses permintaan',
+    });
+  }
+}
+
 const handleReplyNoDocMessage = async (
   conversation,
   noWa,
@@ -6,6 +101,13 @@ const handleReplyNoDocMessage = async (
   respon_atasan,
   message
 ) => {
+  // Cek apakah user sedang dalam proses approval
+  const state = userApprovalState.get(noWa);
+  if (state) {
+    await verifcationJobVacancy(noWa, sock, message, true);
+    return;
+  }
+
   if (conversation.includes('Permintaan Persetujuan Izin Baru')) {
     const idPemohonStartIndex =
       conversation.indexOf('ID Pemohon: ') + 'ID Pemohon: '.length;
@@ -169,6 +271,8 @@ const handleReplyNoDocMessage = async (
     } catch (error) {
       console.log('Error approving:', error);
     }
+  } else if (conversation.includes('*PERSETUJUAN JOB VACANCY*')) {
+    await verifcationJobVacancy(noWa, sock, message);
   }
 };
 

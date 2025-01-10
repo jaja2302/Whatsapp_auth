@@ -42,6 +42,7 @@ const { handleReplyNoDocMessage } = require('./utils/repply_no_doc_messages');
 const { handleReplyDocMessage } = require('./utils/repply_with_doc_messages');
 const { handleGroupMessage } = require('./utils/group_messages');
 const { helperfunctionSmartlabs } = require('./utils/smartlabs/smartlabs');
+const { socket_jobvacancy } = require('./utils/jobvacancy/helper');
 // App Initialization
 const app = express();
 const server = http.createServer(app);
@@ -172,25 +173,25 @@ async function connectToWhatsApp() {
             );
           } else if (quotedMessage.documentWithCaptionMessage) {
             // console.log('This is a reply to a text document');
-            await handleReplyDocMessage(
-              conversation,
-              noWa,
-              global.sock,
-              respon_atasan,
-              quotedMessage
-            );
+            // await handleReplyDocMessage(
+            //   conversation,
+            //   noWa,
+            //   global.sock,
+            //   respon_atasan,
+            //   quotedMessage
+            // );
           }
         } else {
           if (isGroup) {
             // console.log('This is a group message without reply:', text);
             // Handle group message
-            await handleGroupMessage(
-              lowerCaseMessage,
-              noWa,
-              text,
-              global.sock,
-              message
-            );
+            // await handleGroupMessage(
+            //   lowerCaseMessage,
+            //   noWa,
+            //   text,
+            //   global.sock,
+            //   message
+            // );
           } else if (isPrivate) {
             // console.log('This is a private message without reply:', text);
             // Handle other private messages
@@ -293,13 +294,14 @@ console.log('bot_grading_error.log and bot_grading.log cleared');
 connectToWhatsApp().catch((err) =>
   logger.error('Error connecting to WhatsApp:', err)
 );
-runfunction();
-setupCronJobs();
-function_rapidresponse();
-function_marcom();
-broadcast_grading_mill();
-helperfunctionSmartlabs();
-// ... other function calls
+// runfunction();
+// setupCronJobs();
+// function_rapidresponse();
+// function_marcom();
+// broadcast_grading_mill();
+// helperfunctionSmartlabs();
+socket_jobvacancy();
+
 const port = process.env.PORT || 8000;
 server.listen(port, () => logger.info(`Server running on port ${port}`));
 

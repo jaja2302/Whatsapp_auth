@@ -14,3 +14,4 @@
 .bot_grading_error.log
 .bot_grading.log
 .codegpt
+.env
